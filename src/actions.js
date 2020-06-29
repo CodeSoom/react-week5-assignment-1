@@ -34,4 +34,13 @@ module.exports = {
       },
     };
   },
+
+  setRestaurants: (restaurants) => {
+    return {
+      type: 'SET_RESTAURANTS',
+      payload: {
+        restaurants,
+      },
+    };
+  },
 };

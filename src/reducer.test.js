@@ -5,6 +5,7 @@ import {
   setRegions,
   selectCategory,
   setCategories,
+  setRestaurants,
 } from './actions';
 
 import { regions } from '../fixtures/regions';
@@ -76,12 +77,14 @@ describe('reducer', () => {
       };
       const state = reducer(
         initialState,
-        setRestaurants({
-          id: 1,
-          name: '홍콩반점',
-        }),
+        setRestaurants([
+          {
+            id: 1,
+            name: '홍콩반점',
+          },
+        ]),
       );
-      expect(state.categories).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
