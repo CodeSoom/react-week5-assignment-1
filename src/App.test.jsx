@@ -27,6 +27,8 @@ test('App', () => {
 
   expect(dispatch).toBeCalledWith({
     type: 'setRegions',
-    regions: [],
+    payload: {
+      regions: [],
+    },
   });
 });
