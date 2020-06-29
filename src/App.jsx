@@ -5,12 +5,17 @@ import RegionContainer from './RegionContainer';
 
 import { setRegions } from './actions';
 
-import { regions } from '../fixtures/regions';
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
+  dispatch(setRegions(regions));
+}
 
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setRegions(regions));
+    loadRegions({ dispatch });
   }, []);
   return (
     <>
