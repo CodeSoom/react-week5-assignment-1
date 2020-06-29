@@ -37,7 +37,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    loadRestaurants({ dispatch, selectedRegion, selectedCategory });
+    if (selectedRegion && selectedCategory) {
+      loadRestaurants({ dispatch, selectedRegion, selectedCategory });
+    }
   }, [selectedRegion, selectedCategory]);
 
   return (
