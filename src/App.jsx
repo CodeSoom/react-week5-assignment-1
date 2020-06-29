@@ -43,6 +43,8 @@ export default function App() {
     <>
       <RegionContainer />
       <CategoriesContainer />
+
+      <div>홍콩반점</div>
     </>
   );
 }

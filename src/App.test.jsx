@@ -16,6 +16,12 @@ describe('App', () => {
     selector({
       regions,
       categories,
+      restaurants: [
+        {
+          id: 1,
+          name: '홍콩반점',
+        },
+      ],
     }),
   );
   it('지역 리스트가 나타난다.', () => {
@@ -42,20 +48,8 @@ describe('App', () => {
   it('검색된 레스토랑 리스트가 나타난다.', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) =>
-      selector({
-        restaurants: [
-          {
-            id: 1,
-            name: '홍콩반점',
-          },
-        ],
-      }),
-    );
     const { getByText } = render(<App />);
 
-    expect(getByText('한식')).not.toBeNull();
-    expect(getByText('중식')).not.toBeNull();
-    expect(getByText('일식')).not.toBeNull();
+    expect(getByText('홍콩반점')).not.toBeNull();
   });
 });
