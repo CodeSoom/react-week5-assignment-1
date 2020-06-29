@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Region({ categories, onClick }) {
+export default function Categories({ categories, onClick }) {
   return (
     <>
       <div>
