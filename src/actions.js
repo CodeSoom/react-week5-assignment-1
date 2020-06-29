@@ -7,4 +7,13 @@ module.exports = {
       },
     };
   },
+
+  setRegions: (regions) => {
+    return {
+      type: 'SET_REGIONS',
+      payload: {
+        regions,
+      },
+    };
+  },
 };

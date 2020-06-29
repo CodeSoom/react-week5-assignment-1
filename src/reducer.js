@@ -13,5 +13,13 @@ export default function reducer(state = initialState, action) {
       selectedRegion: region,
     };
   }
+
+  if (type === 'SET_REGIONS') {
+    const { regions } = payload;
+    return {
+      ...state,
+      regions,
+    };
+  }
   return state;
 }
