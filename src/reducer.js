@@ -31,5 +31,14 @@ export default function reducer(state = initialState, action) {
       selectedCategory: id,
     };
   }
+
+  if (type === 'SET_CATEGORIES') {
+    const { categories } = payload;
+    return {
+      ...state,
+      categories,
+    };
+  }
+
   return state;
 }
