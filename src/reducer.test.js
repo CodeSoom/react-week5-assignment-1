@@ -11,7 +11,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const state = reducer(previousState, setRegions(regions));
+      const state = reducer(previousState, setRegions({ regions }));
 
       expect(state.regions).toHaveLength(2);
     });
