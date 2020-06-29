@@ -1,8 +1,14 @@
 import reducer from './reducer';
 
-import { selectRegion, setRegions, selectCategory } from './actions';
+import {
+  selectRegion,
+  setRegions,
+  selectCategory,
+  setCategories,
+} from './actions';
 
 import { regions } from '../fixtures/regions';
+import { categories } from '../fixtures/categories';
 
 describe('reducer', () => {
   it('액션이 없으면 initialState를 반환한다.', () => {
@@ -50,6 +56,16 @@ describe('reducer', () => {
         selectCategory(1),
       );
       expect(state.selectedCategory).toBe(1);
+    });
+  });
+
+  describe('SET_CATEGORIES', () => {
+    it('카테고리 리스트가 변경된다,', () => {
+      const initialState = {
+        categories: [],
+      };
+      const state = reducer(initialState, setCategories(categories));
+      expect(state.categories).toHaveLength(3);
     });
   });
 });
