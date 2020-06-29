@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default function Region({ regions }) {
+export default function Region({ regions, onClick }) {
   return (
     <>
       <div>
         {regions.map((region) => (
-          <button type="button" key={region.id}>
+          <button
+            type="button"
+            key={region.id}
+            onClick={() => onClick(region.text)}
+          >
             {region.text}
           </button>
         ))}

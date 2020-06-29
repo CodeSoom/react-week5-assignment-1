@@ -19,11 +19,14 @@ describe('Region', () => {
 
   it('지역버튼을 클릭 할 수 있다.', () => {
     const dispatch = jest.fn();
+    const handleClick = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({ regions }));
 
-    const { getByText } = render(<Region regions={regions} />);
+    const { getByText } = render(
+      <Region regions={regions} onClick={handleClick} />,
+    );
     fireEvent.click(getByText('서울'));
-    expect(dispatch).toBeCalled();
+    expect(handleClick).toBeCalled();
   });
 });
