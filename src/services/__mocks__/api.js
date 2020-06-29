@@ -5,4 +5,7 @@ module.exports = {
   fetchCategories: async () => {
     return [];
   },
+  fetchRestaurants: async () => {
+    return [];
+  },
 };

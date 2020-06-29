@@ -4,9 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import RegionContainer from './RegionContainer';
 import CategoriesContainer from './CategoriesContainer';
 
-import { setRegions, setCategories } from './actions';
+import { setRegions, setCategories, setRestaurants } from './actions';
 
-import { fetchRegions, fetchCategories } from './services/api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
 
 async function loadRegions({ dispatch }) {
   const regions = await fetchRegions();
@@ -18,8 +22,8 @@ async function loadCategories({ dispatch }) {
   dispatch(setCategories(categories));
 }
 
-async function loadRestaurants({ dispatch }) {
-  const restaurants = await fetchRestaurants();
+async function loadRestaurants({ dispatch, selectedRegion, selectedCategory }) {
+  const restaurants = await fetchRestaurants(selectedRegion, selectedCategory);
   dispatch(setRestaurants(restaurants));
 }
 
@@ -32,7 +36,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    loadRestaurants({ dispatch });
+    loadRestaurants({ dispatch, selectedRegion, selectedCategory });
   }, [selectedRegion, selectedCategory]);
 
   return (
