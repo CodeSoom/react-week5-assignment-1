@@ -16,4 +16,17 @@ describe('Categories', () => {
     expect(getByText('중식')).not.toBeNull();
     expect(getByText('일식')).not.toBeNull();
   });
+
+  it('카테고리 버튼을 클릭 할 수 있다.', () => {
+    const dispatch = jest.fn();
+    const handleClick = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({ categories }));
+
+    const { getByText } = render(
+      <Categories categories={categories} onClick={handleClick} />,
+    );
+    fireEvent.click(getByText('한식'));
+    expect(handleClick).toBeCalled();
+  });
 });
