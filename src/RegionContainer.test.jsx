@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
 import RegionContainer from './RegionContainer';
+
+jest.mock('react-redux');
 
 describe('RegionContainer', () => {
   it('지역 리스트가 나타난다.', () => {
