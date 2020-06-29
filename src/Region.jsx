@@ -8,9 +8,9 @@ export default function Region({ regions, onClick }) {
           <button
             type="button"
             key={region.id}
-            onClick={() => onClick(region.text)}
+            onClick={() => onClick(region.name)}
           >
-            {region.text}
+            {region.name}
           </button>
         ))}
       </div>
