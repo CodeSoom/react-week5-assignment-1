@@ -19,6 +19,9 @@ describe('App', () => {
     }),
   );
   it('지역 리스트가 나타난다.', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+
     const { getByText } = render(<App />);
 
     expect(getByText('서울')).not.toBeNull();
