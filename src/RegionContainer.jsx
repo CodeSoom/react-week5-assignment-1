@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Region from './Region';
 
-import { regions } from '../fixtures/regions';
-
 export default function RegionContainer() {
+  const { regions } = useSelector((state) => state);
+
   return <Region regions={regions} />;
 }
