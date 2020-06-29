@@ -68,4 +68,20 @@ describe('reducer', () => {
       expect(state.categories).toHaveLength(3);
     });
   });
+
+  describe('SET_RESTAURANTS', () => {
+    it('레스토랑 리스트가 변경된다.', () => {
+      const initialState = {
+        restaurants: [],
+      };
+      const state = reducer(
+        initialState,
+        setRestaurants({
+          id: 1,
+          name: '홍콩반점',
+        }),
+      );
+      expect(state.categories).toHaveLength(1);
+    });
+  });
 });

@@ -18,12 +18,22 @@ async function loadCategories({ dispatch }) {
   dispatch(setCategories(categories));
 }
 
+async function loadRestaurants({ dispatch }) {
+  const restaurants = await fetchRestaurants();
+  dispatch(setRestaurants(restaurants));
+}
+
 export default function App() {
   const dispatch = useDispatch();
+  const { selectedRegion, selectedCategory } = useSelector((state) => state);
   useEffect(() => {
     loadRegions({ dispatch });
     loadCategories({ dispatch });
   }, []);
+
+  useEffect(() => {
+    loadRestaurants({ dispatch });
+  }, [selectedRegion, selectedCategory]);
 
   return (
     <>
