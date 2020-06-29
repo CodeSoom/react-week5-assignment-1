@@ -1,46 +1,36 @@
 module.exports = {
-  selectRegion: (region) => {
-    return {
-      type: 'SELECT_REGION',
-      payload: {
-        region,
-      },
-    };
-  },
+  selectRegion: (region) => ({
+    type: 'SELECT_REGION',
+    payload: {
+      region,
+    },
+  }),
 
-  setRegions: (regions) => {
-    return {
-      type: 'SET_REGIONS',
-      payload: {
-        regions,
-      },
-    };
-  },
+  setRegions: (regions) => ({
+    type: 'SET_REGIONS',
+    payload: {
+      regions,
+    },
+  }),
 
-  selectCategory: (id) => {
-    return {
-      type: 'SELECT_CATEGORY',
-      payload: {
-        id,
-      },
-    };
-  },
+  selectCategory: (id) => ({
+    type: 'SELECT_CATEGORY',
+    payload: {
+      id,
+    },
+  }),
 
-  setCategories: (categories) => {
-    return {
-      type: 'SET_CATEGORIES',
-      payload: {
-        categories,
-      },
-    };
-  },
+  setCategories: (categories) => ({
+    type: 'SET_CATEGORIES',
+    payload: {
+      categories,
+    },
+  }),
 
-  setRestaurants: (restaurants) => {
-    return {
-      type: 'SET_RESTAURANTS',
-      payload: {
-        restaurants,
-      },
-    };
-  },
+  setRestaurants: (restaurants) => ({
+    type: 'SET_RESTAURANTS',
+    payload: {
+      restaurants,
+    },
+  }),
 };
