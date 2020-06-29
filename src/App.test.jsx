@@ -8,6 +8,7 @@ import App from './App';
 import { regions } from '../fixtures/regions';
 
 jest.mock('react-redux');
+jest.mock('./services/api.js');
 
 describe('App', () => {
   it('지역 리스트가 나타난다.', () => {

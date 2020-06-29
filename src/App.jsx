@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
 
@@ -17,8 +17,14 @@ export default function App() {
   useEffect(() => {
     loadRegions({ dispatch });
   }, []);
+
+  // TODO: DELETE
+  const { selectedRegion } = useSelector((state) => state);
+
   return (
     <>
+      {selectedRegion}
+      <br />
       <RegionContainer />
     </>
   );
