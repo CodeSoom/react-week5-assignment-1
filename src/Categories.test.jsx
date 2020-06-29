@@ -29,4 +29,14 @@ describe('Categories', () => {
     fireEvent.click(getByText('한식'));
     expect(handleClick).toBeCalled();
   });
+
+  it('선택된 카테고리는 V 표시가 있다.', () => {
+    useSelector.mockImplementation((selector) => selector({ categories }));
+
+    const { getByText } = render(
+      <Categories categories={categories} selectedCategory={1} />,
+    );
+
+    expect(getByText(/(V)/)).not.toBeNull();
+  });
 });
