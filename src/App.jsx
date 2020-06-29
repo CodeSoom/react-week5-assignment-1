@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 import { setRegions } from './actions';
 
@@ -25,12 +26,7 @@ export default function App() {
     <>
       <p>{selectedRegion}</p>
       <RegionContainer />
-
-      <div>
-        <button type="button">한식</button>
-        <button type="button">중식</button>
-        <button type="button">일식</button>
-      </div>
+      <CategoriesContainer />
     </>
   );
 }
