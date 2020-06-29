@@ -1,6 +1,8 @@
 import reducer from './reducer';
 
-import { selectRegion } from './actions';
+import { selectRegion, setRegions } from './actions';
+
+import { regions } from '../fixtures/regions';
 
 describe('reducer', () => {
   it('액션이 없으면 initialState를 반환한다.', () => {
@@ -26,6 +28,16 @@ describe('reducer', () => {
         selectRegion('서울'),
       );
       expect(state.selectedRegion).toBe('서울');
+    });
+  });
+
+  describe('SET_REGIONS', () => {
+    it('지역리스트가 변경된다.', () => {
+      const initialState = {
+        regions: [],
+      };
+      const state = reducer(initialState, setRegions(regions));
+      expect(state.regions).toHaveLength(3);
     });
   });
 });
