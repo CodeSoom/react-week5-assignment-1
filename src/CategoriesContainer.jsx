@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Categories from './Categories';
 
+import { selectCategory } from './actions';
+
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 

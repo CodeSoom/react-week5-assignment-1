@@ -16,4 +16,13 @@ module.exports = {
       },
     };
   },
+
+  selectCategory: (id) => {
+    return {
+      type: 'SELECT_CATEGORY',
+      payload: {
+        id,
+      },
+    };
+  },
 };

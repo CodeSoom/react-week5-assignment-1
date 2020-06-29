@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { selectRegion, setRegions } from './actions';
+import { selectRegion, setRegions, selectCategory } from './actions';
 
 import { regions } from '../fixtures/regions';
 
@@ -45,11 +45,11 @@ describe('reducer', () => {
     it('선택된 음식점이 변경된다.', () => {
       const state = reducer(
         {
-          selectedCategoy: '',
+          selectedCategory: '',
         },
         selectCategory(1),
       );
-      expect(state.selectedCategoy).toBe(1);
+      expect(state.selectedCategory).toBe(1);
     });
   });
 });
