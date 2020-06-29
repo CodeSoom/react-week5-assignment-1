@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import { setRegions, setCategories, setRestaurants } from './actions';
 
@@ -43,8 +44,7 @@ export default function App() {
     <>
       <RegionContainer />
       <CategoriesContainer />
-
-      <div>홍콩반점</div>
+      <RestaurantsContainer />
     </>
   );
 }
