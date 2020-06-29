@@ -5,11 +5,12 @@ describe('api', () => {
     context('when requests regions', () => {
       it('get regions data', () => {
         async function loadRegions() {
-          const result = fetchRegions();
+          const result = await fetchRegions();
 
-          expect(result).not.toHaveLength(0);
-          expect(result[0].id).toBe(1);
-          expect(result[0].name).toBe('서울');
+          expect(result[0]).toEqual({
+            id: 1,
+            name: '서울',
+          });
         }
 
         loadRegions();
@@ -21,14 +22,15 @@ describe('api', () => {
     context('when requests categories', () => {
       it('get categories data', () => {
         async function loadCategories() {
-          const result = fetchCategories();
+          const result = await fetchCategories();
 
-          expect(result).not.toHaveLength(0);
-          expect(result[0].id).toBe(1);
-          expect(result[0].name).toBe('한식');
+          expect(result[0]).toEqual({
+            id: 1,
+            name: '한식',
+          });
         }
 
-        loadCategories()
+        loadCategories();
       });
     });
   });
