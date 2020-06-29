@@ -8,8 +8,8 @@ export default function CategoriesContainer() {
 
   const { categories } = useSelector((state) => state);
 
-  const onClick = () => {
-    dispatch({});
+  const onClick = (id) => {
+    dispatch(selectCategory(id));
   };
   return <Categories categories={categories} onClick={onClick} />;
 }

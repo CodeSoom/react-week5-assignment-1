@@ -40,4 +40,16 @@ describe('reducer', () => {
       expect(state.regions).toHaveLength(3);
     });
   });
+
+  describe('SELECT_CATEGORY', () => {
+    it('선택된 음식점이 변경된다.', () => {
+      const state = reducer(
+        {
+          selectedCategoy: '',
+        },
+        selectCategory(1),
+      );
+      expect(state.selectedCategoy).toBe(1);
+    });
+  });
 });
