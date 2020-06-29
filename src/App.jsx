@@ -23,8 +23,7 @@ export default function App() {
 
   return (
     <>
-      {selectedRegion}
-      <br />
+      <p>{selectedRegion}</p>
       <RegionContainer />
     </>
   );

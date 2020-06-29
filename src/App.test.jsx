@@ -25,4 +25,12 @@ describe('App', () => {
     expect(getByText('대전')).not.toBeNull();
     expect(getByText('대구')).not.toBeNull();
   });
+
+  it('카테고리 리스트가 나타난다.', () => {
+    const { getByText } = render(<App />);
+
+    expect(getByText('한식')).not.toBeNull();
+    expect(getByText('중식')).not.toBeNull();
+    expect(getByText('일식')).not.toBeNull();
+  });
 });
