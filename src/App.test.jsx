@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
@@ -11,6 +11,8 @@ jest.mock('react-redux');
 
 describe('App', () => {
   it('지역 리스트가 나타난다.', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) =>
       selector({
         regions,
