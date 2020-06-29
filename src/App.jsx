@@ -25,12 +25,8 @@ export default function App() {
     loadCategories({ dispatch });
   }, []);
 
-  // TODO: DELETE
-  const { selectedRegion } = useSelector((state) => state);
-
   return (
     <>
-      <p>{selectedRegion}</p>
       <RegionContainer />
       <CategoriesContainer />
     </>

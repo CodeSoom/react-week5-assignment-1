@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Region({ regions, onClick }) {
+export default function Region({ regions, selectedRegion, onClick }) {
   return (
     <>
       <div>
@@ -11,6 +11,7 @@ export default function Region({ regions, onClick }) {
             onClick={() => onClick(region.name)}
           >
             {region.name}
+            {selectedRegion === region.name && '(V)'}
           </button>
         ))}
       </div>
