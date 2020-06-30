@@ -1,3 +1,10 @@
+import React from 'react';
+
+import { render, fireEvent } from '@testing-library/react';
+
+import RegionsContainer from './RegionsContainer';
+
+import { regions } from '../__fixture__/data';
 
 describe('<RegionsContainer />', () => {
   context('with a selected region', () => {
