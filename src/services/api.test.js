@@ -1,4 +1,4 @@
-import { fetchRegions, fetchCategories } from './api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 describe('api', () => {
   describe('fetchRegions', () => {
