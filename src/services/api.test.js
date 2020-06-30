@@ -12,7 +12,7 @@ describe('api', () => {
       json: () => Promise.resolve(regionsFixture),
     }));
     // when
-    const regions = fetchRegions();
+    const regions = await fetchRegions();
     // then
     expect(regions).toEqual(regionsFixture);
   });
