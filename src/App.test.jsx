@@ -24,10 +24,5 @@ test('App', () => {
 
   expect(queryByText('서울')).toBeNull();
 
-  expect(dispatch).toBeCalledWith({
-    type: 'setRegions',
-    payload: {
-      regions: [],
-    },
-  });
+  expect(dispatch).toBeCalledTimes(1);
 });
