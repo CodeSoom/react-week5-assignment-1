@@ -1,9 +1,26 @@
 import reducer from './reducer';
 
-test('reducer', () => {
-  // when initializing reducer
-  const state = reducer(undefined, 'testAction');
+import { setCategories } from './actions';
 
-  // expect to have initial state with categories
-  expect(state.categories).toHaveLength(2);
+describe('reducer', () => {
+  const testCategories = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+  ];
+
+  context('when reducer is executed first time', () => {
+    it('returns initial state', () => {
+      const state = reducer(undefined, 'testAction');
+
+      expect(state.categories).toHaveLength(0);
+    });
+  });
+
+  context('when action type is setCategories', () => {
+    it('gets new categories', () => {
+      const state = reducer(undefined, setCategories(testCategories));
+
+      expect(state.categories).toHaveLength(2);
+    });
+  });
 });
