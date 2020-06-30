@@ -16,4 +16,6 @@ const fetchCategories = async () => {
   return categories;
 };
 
-export { fetchRegions, fetchCategories };
+const fetchRestaurants = () => {};
+
+export { fetchRegions, fetchCategories, fetchRestaurants };

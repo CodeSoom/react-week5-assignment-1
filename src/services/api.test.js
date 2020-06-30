@@ -1,7 +1,8 @@
-import { fetchRegions, fetchCategories } from './api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 import regionsFixture from '../__fixtures__/regions';
 import categoriesFixture from '../__fixtures__/categories';
+import restaurantsFixture from '../__fixtures__/restaurants';
 
 global.fetch = jest.fn();
 
@@ -32,5 +33,14 @@ describe('api', () => {
     const categories = await fetchCategories();
     // then
     expect(categories).toEqual(categoriesFixture);
+  });
+
+  it('fetch restaurants by region and category', async () => {
+    // given
+    mockFetch(restaurantsFixture);
+    // when
+    const restaurants = await fetchRestaurants('서울', 1);
+    // then
+    expect(restaurants).toEqual(restaurantsFixture);
   });
 });
