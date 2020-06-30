@@ -1,11 +1,11 @@
 import React from 'react';
 
+import RegionContainer from './RegionContainer';
+
 export default function App() {
   return (
     <div>
-      <ul>
-        <li>서울</li>
-      </ul>
+      <RegionContainer />
     </div>
   );
 }
