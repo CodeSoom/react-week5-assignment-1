@@ -1,7 +1,13 @@
 export async function fetchRegions() {
-  return Promise.resolve([{ id: 1, name: '서울' }]);
+  const url = 'https://eatgo-customer-api.ahastudio.com/regions';
+  const response = await fetch(url);
+  const regions = await response.json();
+  return regions;
 }
 
 export async function fetchCategories() {
-  return Promise.resolve([{ id: 1, name: '한식' }]);
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const response = await fetch(url);
+  const categories = await response.json();
+  return categories;
 }
