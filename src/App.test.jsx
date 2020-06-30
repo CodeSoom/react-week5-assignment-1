@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
@@ -18,5 +18,14 @@ describe('<App />', () => {
     // then
     expect(screen.getByRole('button', { name: '한식' }));
     expect(screen.getByRole('button', { name: '중식' }));
+  });
+
+  it('check on the button when clicked', () => {
+    // when
+    render(<App />);
+    const button = screen.getByRole('button', { name: '한식' });
+    fireEvent.click(button);
+    // then
+    expect(screen.getByDisplayValue()).toBe('한식(v)');
   });
 });
