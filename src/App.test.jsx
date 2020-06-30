@@ -9,6 +9,7 @@ describe('<App />', () => {
     // when
     render(<App />);
     // then
-    expect(screen.getByRole('buuton', { name: '서울' }));
+    expect(screen.getByRole('button', { name: '서울' }));
+    expect(screen.getByRole('button', { name: '대전' }));
   });
 });
