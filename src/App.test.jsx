@@ -37,9 +37,17 @@ describe('<App />', () => {
     it('shows a mark for a selected region', () => {
       const { getByRole, queryByRole } = render(<App />);
 
-      fireEvent.click(getByRole('button', { name: '서울' }));
+      regions.forEach((region) => {
+        fireEvent.click(getByRole('button', { name: region }));
+        expect(queryByRole('button', { name: `${region}(V)` })).not.toBeNull();
 
-      expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
+        const unselectedRegions = regions.filter((item) => item !== region);
+        unselectedRegions.forEach((unselectedRegion) => {
+          expect(
+            queryByRole('button', { name: unselectedRegion }),
+          ).not.toBeNull();
+        });
+      });
     });
   });
 });
