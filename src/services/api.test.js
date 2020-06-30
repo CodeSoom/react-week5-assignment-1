@@ -5,13 +5,20 @@ import categoriesFixture from '../__fixtures__/categories';
 
 global.fetch = jest.fn();
 
+function mockFetch(data) {
+  fetch.mockImplementation(() => Promise.resolve({
+    json: () => Promise.resolve(data),
+  }));
+}
+
 describe('api', () => {
+  beforeEach(() => {
+    fetch.mockClear();
+  });
+
   it('fetch regions', async () => {
     // given
-    fetch.mockClear();
-    fetch.mockImplementation(() => Promise.resolve({
-      json: () => Promise.resolve(regionsFixture),
-    }));
+    mockFetch(regionsFixture);
     // when
     const regions = await fetchRegions();
     // then
@@ -20,10 +27,7 @@ describe('api', () => {
 
   it('fetch categories', async () => {
     // given
-    fetch.mockClear();
-    fetch.mockImplementation(() => Promise.resolve({
-      json: () => Promise.resolve(categoriesFixture),
-    }));
+    mockFetch(categoriesFixture);
     // when
     const categories = await fetchCategories();
     // then
