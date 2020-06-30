@@ -1,11 +1,17 @@
 const initialState = {
-  categories: [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-  ],
+  categories: [],
 };
 
 function reducer(state = initialState, action) {
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+
+    return {
+      ...state,
+      categories,
+    };
+  }
+
   return state;
 }
 
