@@ -37,9 +37,11 @@ describe('api', () => {
 
   it('fetch restaurants by region and category', async () => {
     // given
+    const region = regionsFixture[0];
+    const category = categoriesFixture[0];
     mockFetch(restaurantsFixture);
     // when
-    const restaurants = await fetchRestaurants('서울', 1);
+    const restaurants = await fetchRestaurants(region, category);
     // then
     expect(restaurants).toEqual(restaurantsFixture);
   });
