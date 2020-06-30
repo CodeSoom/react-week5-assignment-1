@@ -11,6 +11,9 @@
  * 3. 레스토랑
  * - 카테고리 및 지역에 따른 레스토랑 목록 보기
  */
+import React from 'react';
+
+import { render } from '@testing-library/react';
 
 import App from './App';
 
@@ -19,10 +22,10 @@ import { regions } from '../__fixture__/data';
 describe('<App />', () => {
   context('render App', () => {
     it('shows regions', () => {
-      const { getByRole } = render(<App />);
+      const { queryByRole } = render(<App />);
 
       regions.forEach((region) => {
-        expect(getByRole('button', { name: region })).not.toThrowError();
+        expect(queryByRole('button', { name: region })).not.toBeNull();
       });
     });
     // it('shows categories', () => {
