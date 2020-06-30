@@ -4,11 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
-import regions from '../fixtures/regions';
-
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 test('App', () => {
   const dispatch = jest.fn();
@@ -16,14 +15,14 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => (selector({
-    regions,
+    regions: [],
   })));
 
-  const { getByText } = render((
+  const { queryByText } = render((
     <App />
   ));
 
-  expect(getByText('서울')).not.toBeNull();
+  expect(queryByText('서울')).toBeNull();
 
   expect(dispatch).toBeCalledWith({
     type: 'setRegions',
