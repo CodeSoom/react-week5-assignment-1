@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function Restaurants() {
+export default function Restaurants({ restaurants }) {
   return (
     <ul>
-      <li>
-        비동기처리
-      </li>
+      {restaurants.map((restaurant) => (
+        <li key={restaurant.id}>
+          {restaurant.name}
+        </li>
+      ))}
     </ul>
   );
 }
