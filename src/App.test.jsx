@@ -13,7 +13,7 @@
  */
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
@@ -32,12 +32,26 @@ describe('<App />', () => {
 
     // });
   });
+
+  context('with a selected region', () => {
+    it('shows a mark for a selected region', () => {
+      const { getByRole, queryByRole } = render(<App />);
+
+      const handleSelectRegion = jest.fn();
+
+      expect(handleSelectRegion).not.toBeCalled();
+
+      fireEvent.click(getByRole('button', { name: '서울' }));
+
+      expect(handleSelectRegion).toBeCalled(1);
+
+      expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
+
+    });
+  });
 });
 
 // TODO : App TEST
-// context('with a selected region', () => {
-//   it('shows a mark for a selected region', () => {});
-// });
 
 // context('with a selected category', () => {
 //   it('shows a mark for a selected category', () => {});
@@ -48,16 +62,6 @@ describe('<App />', () => {
 //   it('shows restaurants', () => {});
 // });
 // ----- end : App
-
-// describe('<Regions />', () => {
-//   context('render Regions', () => {
-//     it('shows regions', () => {});
-//   });
-
-//   context('with a selected region', () => {
-//     it('shows a mark for a selected region', () => {});
-//   });
-// });
 
 // describe('<Categories />', () => {
 //   context('render Categories', () => {
