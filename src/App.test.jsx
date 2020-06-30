@@ -12,50 +12,65 @@
  * - 카테고리 및 지역에 따른 레스토랑 목록 보기
  */
 
+import App from './App';
+
+import { regions } from '../__fixture__/data';
+
 describe('<App />', () => {
   context('render App', () => {
-    it('shows categories', () => {});
-    it('shows regions', () => {});
-  });
-  context('with a selected region', () => {
-    it('shows a mark for a selected region', () => {});
-  });
+    it('shows regions', () => {
+      const { getByRole } = render(<App />);
 
-  context('with a selected category', () => {
-    it('shows a mark for a selected category', () => {});
-  });
+      regions.forEach((region) => {
+        expect(getByRole('button', { name: region })).not.toThrowError();
+      });
+    });
+    // it('shows categories', () => {
 
-  context('with a selected region &  with a selected category', () => {
-    it('shows a mark for a selected category', () => {});
-    it('shows restaurants', () => {});
+    // });
   });
 });
 
-describe('<Regions />', () => {
-  context('render Regions', () => {
-    it('shows regions', () => {});
-  });
+// TODO : App TEST
+// context('with a selected region', () => {
+//   it('shows a mark for a selected region', () => {});
+// });
 
-  context('with a selected region', () => {
-    it('shows a mark for a selected region', () => {});
-  });
-});
+// context('with a selected category', () => {
+//   it('shows a mark for a selected category', () => {});
+// });
 
-describe('<Categories />', () => {
-  context('render Categories', () => {
-    it('shows categories', () => {});
-  });
+// context('with a selected region &  with a selected category', () => {
+//   it('shows a mark for a selected category', () => {});
+//   it('shows restaurants', () => {});
+// });
+// ----- end : App
 
-  context('with a selected category', () => {
-    it('shows a mark for a selected category', () => {});
-  });
-});
+// describe('<Regions />', () => {
+//   context('render Regions', () => {
+//     it('shows regions', () => {});
+//   });
 
-describe('<Restaurants />', () => {
-  context('render Restaurants', () => {
-    it('does not show restaurants', () => {});
-  });
-  context('with a selected region &  with a selected category', () => {
-    it('shows restaurants', () => {});
-  });
-});
+//   context('with a selected region', () => {
+//     it('shows a mark for a selected region', () => {});
+//   });
+// });
+
+// describe('<Categories />', () => {
+//   context('render Categories', () => {
+//     it('shows categories', () => {});
+//   });
+
+//   context('with a selected category', () => {
+//     it('shows a mark for a selected category', () => {});
+//   });
+// });
+
+// describe('<Restaurants />', () => {
+//   context('render Restaurants', () => {
+//     it('does not show restaurants', () => {});
+//   });
+//   context('with a selected region &  with a selected category', () => {
+//     it('shows restaurants', () => {});
+//   });
+// });
