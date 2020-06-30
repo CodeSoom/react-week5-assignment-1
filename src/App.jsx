@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 export default function App() {
-  const categories = [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-  ];
+  const { categories } = useSelector((state) => ({
+    categories: state.categories,
+  }));
 
   return (
     <div>
