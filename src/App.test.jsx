@@ -37,16 +37,9 @@ describe('<App />', () => {
     it('shows a mark for a selected region', () => {
       const { getByRole, queryByRole } = render(<App />);
 
-      const handleSelectRegion = jest.fn();
-
-      expect(handleSelectRegion).not.toBeCalled();
-
       fireEvent.click(getByRole('button', { name: '서울' }));
 
-      expect(handleSelectRegion).toBeCalled(1);
-
       expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
-
     });
   });
 });
