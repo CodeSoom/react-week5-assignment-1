@@ -18,4 +18,6 @@ test('Restaurants', () => {
   ));
 
   expect(getByText(/김밥제국/)).not.toBeNull();
+  expect(getByText(/분식/)).not.toBeNull();
+  expect(getByText(/서울시 강남구 역삼동/)).not.toBeNull();
 });
