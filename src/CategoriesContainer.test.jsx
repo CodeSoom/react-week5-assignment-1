@@ -4,18 +4,17 @@ import { useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
-import App from './App';
+import CategoriesContainer from './CategoriesContainer';
 
 import categories from '../fixtures/categories';
 
-jest.mock('react-redux');
-
-test('App', () => {
+test('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
   }));
+
   const { getByText } = render((
-    <App />
+    <CategoriesContainer />
   ));
 
   expect(getByText(/한식/)).not.toBeNull();
