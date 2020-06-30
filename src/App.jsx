@@ -6,13 +6,17 @@ import { setRegions } from './actions';
 
 import RegionsContainer from './RegionsContainer';
 
-import regions from '../fixtures/regions';
-
 export default function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  function loadRegions() {
+    const regions = [];
+    // TODO: fetch API
     dispatch(setRegions({ regions }));
+  }
+
+  useEffect(() => {
+    loadRegions();
   }, []);
 
   return (
