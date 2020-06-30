@@ -2,13 +2,28 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import App from './App';
 
-test('App', () => {
+jest.mock('react-redux');
+
+describe('App', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions: [],
+  }));
+
   const { queryByText } = render(
     <App />,
   );
-  // TODO: RegionContainer 테스트, 구현 후 갱신
-  // 지역 데이터가 잘 호출되는지 확인
-  // 화면에 서울이 있는지 확인
+
+  it('fetches Regions', () => {
+    expect(dispatch).toBeCalledWith({
+      type: 'fetchRegions',
+    });
+
+    expect(queryByText(/서울/)).not.toBeNull();
+  });
 });
