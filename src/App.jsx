@@ -1,11 +1,16 @@
 import React from 'react';
 
+import regions from './__fixtures__/regions';
+
 export default function App() {
   return (
     <>
       <li>
-        <button type="button">서울</button>
-        <button type="button">대전</button>
+        {regions.map(({ id, name }) => (
+          <button key={id} type="button">
+            {name}
+          </button>
+        ))}
       </li>
     </>
   );
