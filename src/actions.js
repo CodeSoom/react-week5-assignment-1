@@ -13,7 +13,10 @@ const checkRegion = (id) => ({
   payload: { id },
 });
 
-const checkCategory = () => {};
+const checkCategory = (id) => ({
+  type: 'checkCategory',
+  payload: { id },
+});
 
 export {
   setRegions, setCategories, checkRegion, checkCategory,
