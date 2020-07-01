@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setRegions, setCategories, checkRegion, checkCategory,
+  setRegions, setCategories, updateRegions, updateCategories,
 } from './actions';
 
 import regionsFixture from './__fixtures__/regions';
@@ -15,24 +15,12 @@ export default function App() {
     categories: state.categories,
   }));
 
-  const check = ({ id, name }, checkedId) => {
-    const element = { id, name: name.replace('(v)', '') };
-    if (element.id === checkedId) {
-      element.name += '(v)';
-    }
-    return element;
+  const handleClickRegion = (id) => {
+    dispatch(updateRegions(id));
   };
 
-  const handleClickRegion = (checkedId) => {
-    const checkedRegions = regions.map((region) => check(region, checkedId));
-    dispatch(setRegions(checkedRegions));
-    dispatch(checkRegion(checkedId));
-  };
-
-  const handleClickCategory = (checkedId) => {
-    const checkedCategories = categories.map((category) => check(category, checkedId));
-    dispatch(setCategories(checkedCategories));
-    dispatch(checkCategory(checkedId));
+  const handleClickCategory = (id) => {
+    dispatch(updateCategories(id));
   };
 
   useEffect(() => {

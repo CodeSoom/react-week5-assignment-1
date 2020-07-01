@@ -52,22 +52,7 @@ describe('<App />', () => {
     fireEvent.click(getButtonByName('서울'));
     fireEvent.click(getButtonByName('한식'));
     // then
-    expect(dispatch).toBeCalledWith({
-      type: 'setRegions',
-      payload: { regions: [{ id: 1, name: '서울(v)' }, ...regionsFixture.slice(1)] },
-    });
-    expect(dispatch).toBeCalledWith({
-      type: 'setCategories',
-      payload: { categories: [{ id: 1, name: '한식(v)' }, ...categoriesFixture.slice(1)] },
-    });
-    expect(dispatch).toBeCalledWith({
-      type: 'checkRegion',
-      payload: { id: 1 },
-    });
-    expect(dispatch).toBeCalledWith({
-      type: 'checkCategory',
-      payload: { id: 1 },
-    });
+    expect(dispatch).toBeCalledTimes(4);
   });
 
   it('uncheck when another button clicked', () => {

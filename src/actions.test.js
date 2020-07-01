@@ -7,6 +7,16 @@ import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
 
 describe('Action creators', () => {
+  const dispatch = jest.fn();
+  const getState = () => ({
+    regions: regionsFixture,
+    categories: categoriesFixture,
+  });
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   it('setRegions', () => {
     // given
     const regions = regionsFixture;
@@ -50,8 +60,7 @@ describe('Action creators', () => {
   it('updateRegions', () => {
     // given
     const id = 1;
-    const dispatch = jest.fn();
-    const getState = () => ({ regions: regionsFixture });
+
     // when
     const action = updateRegions(id);
     action(dispatch, getState);
@@ -69,8 +78,6 @@ describe('Action creators', () => {
   it('updateCategories', () => {
     // given
     const id = 1;
-    const dispatch = jest.fn();
-    const getState = () => ({ categories: categoriesFixture });
     // when
     const action = updateCategories(id);
     action(dispatch, getState);
