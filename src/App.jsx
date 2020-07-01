@@ -7,7 +7,7 @@ export default function App() {
   const [regions, setRegions] = useState(regionsFixture);
   const [categories, setCategories] = useState(categoriesFixture);
 
-  const check = (checkedId, { id, name }) => {
+  const check = ({ id, name }, checkedId) => {
     const element = { id, name: name.replace('(v)', '') };
     if (element.id === checkedId) {
       element.name += '(v)';
@@ -16,12 +16,12 @@ export default function App() {
   };
 
   const handleClickRegion = (checkedId) => {
-    const checkedRegions = regions.map((region) => check(checkedId, region));
+    const checkedRegions = regions.map((region) => check(region, checkedId));
     setRegions(checkedRegions);
   };
 
   const handleClickCategory = (checkedId) => {
-    const checkedCategories = categories.map((category) => check(checkedId, category));
+    const checkedCategories = categories.map((category) => check(category, checkedId));
     setCategories(checkedCategories);
   };
 
