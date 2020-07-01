@@ -1,3 +1,11 @@
+const check = ({ id, name }, checkedId) => {
+  const element = { id, name: name.replace('(v)', '') };
+  if (element.id === checkedId) {
+    element.name += '(v)';
+  }
+  return element;
+};
+
 const setRegions = (regions) => ({
   type: 'setRegions',
   payload: { regions },
@@ -18,8 +26,11 @@ const checkCategory = (id) => ({
   payload: { id },
 });
 
-const updateRegions = () => (dispatch, getState) => {
-
+const updateRegions = (id) => (dispatch, getState) => {
+  const { regions } = getState();
+  const checkedRegions = regions.map((region) => check(region, id));
+  dispatch(setRegions(checkedRegions));
+  dispatch(checkRegion(id));
 };
 
 export {
