@@ -2,8 +2,14 @@ import React from 'react';
 import {
   render, screen, fireEvent,
 } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import regionsFixture from './__fixtures__/regions';
+import categoriesFixture from './__fixtures__/categories';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 function renderApp() {
   render(<App />);
@@ -13,6 +19,17 @@ function renderApp() {
 }
 
 describe('<App />', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions: regionsFixture,
+    categories: categoriesFixture,
+  }));
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   it('renders region buttons', () => {
     // when
     const { getButtonByName } = renderApp();
@@ -37,6 +54,7 @@ describe('<App />', () => {
     // then
     expect(getButtonByName('서울(v)')).toBeInTheDocument();
     expect(getButtonByName('한식(v)')).toBeInTheDocument();
+    expect(dispatch).toBeCalled();
   });
 
   it('uncheck when another button clicked', () => {
@@ -47,5 +65,6 @@ describe('<App />', () => {
     // then
     expect(getButtonByName('서울')).toBeInTheDocument();
     expect(getButtonByName('부산(v)')).toBeInTheDocument();
+    expect(dispatch).toBeCalled();
   });
 });
