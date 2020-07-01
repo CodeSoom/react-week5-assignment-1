@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
-import { regions } from '../fixtures/restaurants';
+import { fetchRegions } from './service/api';
 
 import {
   setRegions,
 } from './actions';
 
-function loadRestaurantRegions({ dispatch }) {
+async function loadRestaurantRegions({ dispatch }) {
+  const regions = await fetchRegions();
   dispatch(setRegions(regions));
 }
 
