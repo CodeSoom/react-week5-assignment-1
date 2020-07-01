@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import { setRegions, setCategories } from './actions';
+import { setRegions, setCategories, checkRegion } from './actions';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
@@ -8,6 +8,10 @@ describe('reducer', () => {
   const previousState = {
     regions: [],
     categories: [],
+    checked: {
+      region: 4,
+      category: 5,
+    },
   };
 
   it('setRegions', () => {
@@ -28,5 +32,15 @@ describe('reducer', () => {
     const state = reducer(previousState, action);
     // then
     expect(state.categories).toEqual(categories);
+  });
+
+  it('checkRegion', () => {
+    // given
+    const id = 1;
+    const action = checkRegion(id);
+    // when
+    const state = reducer(previousState, action);
+    // then
+    expect(state.checked.region).toBe(id);
   });
 });
