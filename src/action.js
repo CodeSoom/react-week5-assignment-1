@@ -1,3 +1,5 @@
+import { fetchInitRegions } from './services/api';
+
 export function setInitRegions(initRegions) {
   return {
     type: 'setInitRegions',
@@ -7,7 +9,9 @@ export function setInitRegions(initRegions) {
   };
 }
 
-// TODO : 삭제 예정
-export function needDelete() {
-
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchInitRegions();
+    dispatch(setInitRegions(regions));
+  };
 }
