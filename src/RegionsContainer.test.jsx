@@ -27,6 +27,11 @@ describe('<RegionsContainer />', () => {
 
   context('with a selected region', () => {
     it('shows a mark for a selected region', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions,
+        selectRegion: '',
+      }));
+
       const { getByRole, queryByRole } = render(<RegionsContainer />);
 
       regions.forEach((region) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useSelector } from 'react-redux';
 
@@ -7,11 +7,11 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
-  const [selectRegion, setSelectRegion] = useState('');
+  // const [selectRegion, setSelectRegion] = useState('');
 
-  function handleSelectRegion(newSelectRegion) {
-    setSelectRegion(newSelectRegion);
-  }
+  // function handleSelectRegion(newSelectRegion) {
+  //   setSelectRegion(newSelectRegion);
+  // }
 
   return (
     <div>
