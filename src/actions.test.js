@@ -1,8 +1,8 @@
 import {
   setRegions, setCategories, setRestaurants, checkRegion, checkCategory,
-  updateRegions, updateCategories, getRegions,
+  updateRegions, updateCategories, getRegions, getCategories,
 } from './actions';
-import { fetchRegions } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
@@ -126,6 +126,21 @@ describe('Action creators', () => {
     expect(dispatch).toBeCalledWith({
       type: 'setRegions',
       payload: { regions: regionsFixture },
+    });
+  });
+
+  it('getCategories', async () => {
+    // given
+    fetchCategories.mockClear();
+    fetchCategories.mockImplementation(async () => categoriesFixture);
+    // when
+    const action = getCategories();
+    await action(dispatch, getState);
+    // then
+    expect(fetchCategories).toBeCalled();
+    expect(dispatch).toBeCalledWith({
+      type: 'setCategories',
+      payload: { categories: categoriesFixture },
     });
   });
 });
