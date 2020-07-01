@@ -1,6 +1,6 @@
 const initialState = {
   regions: [],
-  selectedRegion: 0,
+  selectedRegion: null,
 };
 
 export default function reducer(state = initialState, action) {

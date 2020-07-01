@@ -25,7 +25,7 @@ describe('reducer', () => {
       const userSelectId = 1;
 
       const previousState = {
-        selectedRegion: 0,
+        selectedRegion: null,
       };
 
       const state = reducer(previousState, setSelectedRegion(userSelectId));
