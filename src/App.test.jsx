@@ -60,6 +60,14 @@ describe('<App />', () => {
       type: 'setCategories',
       payload: { categories: [{ id: 1, name: '한식(v)' }, ...categoriesFixture.slice(1)] },
     });
+    expect(dispatch).toBeCalledWith({
+      type: 'checkRegion',
+      payload: { id: 1 },
+    });
+    expect(dispatch).toBeCalledWith({
+      type: 'checkCategory',
+      payload: { id: 1 },
+    });
   });
 
   it('uncheck when another button clicked', () => {
