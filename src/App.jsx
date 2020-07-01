@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { loadCategories } from './actions';
+import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -11,19 +12,9 @@ export default function App() {
     dispatch(loadCategories());
   }, []);
 
-  const { categories } = useSelector((state) => ({
-    categories: state.categories,
-  }));
-
   return (
     <div>
-      {
-        categories.map((category) => (
-          <button type="button" key={category.id}>
-            { category.name }
-          </button>
-        ))
-      }
+      <CategoriesContainer />
     </div>
   );
 }
