@@ -1,10 +1,4 @@
-const check = ({ id, name }, checkedId) => {
-  const element = { id, name: name.replace('(v)', '') };
-  if (element.id === checkedId) {
-    element.name += '(v)';
-  }
-  return element;
-};
+import check from './utils';
 
 const setRegions = (regions) => ({
   type: 'setRegions',
