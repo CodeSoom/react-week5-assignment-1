@@ -1,4 +1,4 @@
-import { fetchRegions } from "./services/api";
+import { fetchRegions } from './services/api';
 
 export function setRegions({ regions }) {
   return {
@@ -12,10 +12,6 @@ export function setRegions({ regions }) {
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
-    dispatch(setRegions(regions));
+    dispatch(setRegions({ regions }));
   };
-}
-
-export function xxx() {
-  // TODO: delete or modify to other action
 }

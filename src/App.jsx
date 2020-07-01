@@ -10,7 +10,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRegions);
+    dispatch(loadRegions());
   }, []);
 
   return (
