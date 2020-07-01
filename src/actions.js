@@ -10,7 +10,10 @@ const setCategories = (categories) => ({
   payload: { categories },
 });
 
-const setRestaurants = () => {};
+const setRestaurants = (restaurants) => ({
+  type: 'setRestaurants',
+  payload: { restaurants },
+});
 
 const checkRegion = (id) => ({
   type: 'checkRegion',
