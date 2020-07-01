@@ -16,6 +16,6 @@ describe('reducer', () => {
     // when
     const state = reducer(previousState, action);
     // then
-    expect(state.regions).toBe(regions);
+    expect(state.regions).toEqual(regions);
   });
 });
