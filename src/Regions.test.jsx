@@ -17,12 +17,13 @@ describe('App', () => {
     const { container, getByText } = render((
       <Regions
         regions={regions}
+        onClick={handleClick}
       />
     ));
 
     expect(container).toHaveTextContent('서울');
-    fireEvent.click(getByText('서울'));
 
+    fireEvent.click(getByText('서울'));
     expect(handleClick).toBeCalled();
   });
 });
