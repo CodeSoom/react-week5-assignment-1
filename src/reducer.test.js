@@ -2,7 +2,7 @@ import { regions } from '../__fixture__/data';
 
 import reducer from './reducer';
 
-import { setInitRegions } from './action';
+import { setInitRegions, selectRegion } from './action';
 
 describe('reducer', () => {
   context('setInitRegions', () => {

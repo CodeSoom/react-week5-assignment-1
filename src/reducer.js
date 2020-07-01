@@ -1,5 +1,6 @@
 const initState = {
   regions: [],
+  selectRegion: '',
 };
 
 export default function reducer(previousState = initState, action) {
@@ -7,6 +8,13 @@ export default function reducer(previousState = initState, action) {
     return {
       ...previousState,
       regions: action.payload.regions,
+    };
+  }
+
+  if (action.type === 'selectRegion') {
+    return {
+      ...previousState,
+      selectRegion: action.payload.selectRegion,
     };
   }
 
