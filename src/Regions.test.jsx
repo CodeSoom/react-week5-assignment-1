@@ -20,15 +20,15 @@ describe('<Regions />', () => {
       });
     });
 
-    // context('with newSelectRegion', () => {
-    //   it('shows a mark for a selected region', () => {
-    //     const { queryByRole } = render(
-    //       <Regions regions={regions} newSelectRegion="서울" />,
-    //     );
+    context('with newSelectRegion', () => {
+      it('shows a mark for a selected region', () => {
+        const { queryByRole } = render(
+          <Regions regions={regions} newSelectRegion="서울" />,
+        );
 
-    //     expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
-    //   });
-    // });
+        expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
+      });
+    });
   });
 
   // context('with a selected region', () => {
