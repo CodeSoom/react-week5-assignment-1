@@ -6,13 +6,13 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  context('with default state', () => {
+  context('with inital state', () => {
     it("doesn't change anything", () => {
       const state = reducer();
 
-      expect(state.newId).toBe(initalState.newId);
-      expect(state.taskTitle).toBe(initalState.region);
-      expect(state.tasks).toBe(initalState.category);
+      expect(state.newId).toBe(initialState.newId);
+      expect(state.taskTitle).toBe(initialState.region);
+      expect(state.tasks).toBe(initialState.category);
     });
   });
 });
