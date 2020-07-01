@@ -1,17 +1,18 @@
 import React from 'react';
 
 export default function RestaurantRegionsContainer() {
+  const regions = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+    { id: 3, name: '대구' },
+    { id: 4, name: '부산' },
+    { id: 5, name: '광주' },
+    { id: 6, name: '강원도' },
+    { id: 7, name: '인천' },
+  ];
   return (
     <>
-      <ul>
-        <li>서울</li>
-        <li>대전</li>
-        <li>대구</li>
-        <li>부산</li>
-        <li>광주</li>
-        <li>강원도</li>
-        <li>인천</li>
-      </ul>
+      <RestaurantRegions regions={regions} />
     </>
   );
 }
