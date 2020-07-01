@@ -5,6 +5,8 @@ import {
   updateRegions, updateCategories, getRegions, getCategories, getRestaurants,
 } from './actions';
 
+import ButtonList from './ButtonList';
+
 export default function App() {
   const dispatch = useDispatch();
   const { regions, categories, restaurants } = useSelector((state) => ({
@@ -30,30 +32,14 @@ export default function App() {
 
   return (
     <>
-      <ul>
-        {regions.map(({ id, name }) => (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => handleClickRegion(id)}
-            >
-              {name}
-            </button>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {categories.map(({ id, name }) => (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => handleClickCategory(id)}
-            >
-              {name}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <ButtonList
+        elements={regions}
+        onClick={handleClickRegion}
+      />
+      <ButtonList
+        elements={categories}
+        onClick={handleClickCategory}
+      />
       <ul>
         {restaurants.map(({ id, name }) => (
           <li key={id}>
