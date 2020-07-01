@@ -1,5 +1,7 @@
 import { regions } from '../__fixture__/data';
 
+import reducer from './reducer';
+
 describe('reducer', () => {
   context('setInitRegions', () => {
     it('set a regions', () => {
@@ -16,7 +18,7 @@ describe('reducer', () => {
 
       const newState = reducer(prevState, action);
 
-      expect(newState).not.toHaveLength(0);
+      expect(newState.regions).not.toHaveLength(0);
     });
   });
 });
