@@ -8,6 +8,10 @@ const handlers = {
     ...state,
     regions: [...regions],
   }),
+  setCategories: (state, { categories }) => ({
+    ...state,
+    categories: [...categories],
+  }),
 };
 
 export default function reducer(state = initialState, action) {
