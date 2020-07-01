@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setRegions, setCategories } from './actions';
+import {
+  setRegions, setCategories, checkRegion, checkCategory,
+} from './actions';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
@@ -24,11 +26,13 @@ export default function App() {
   const handleClickRegion = (checkedId) => {
     const checkedRegions = regions.map((region) => check(region, checkedId));
     dispatch(setRegions(checkedRegions));
+    dispatch(checkRegion(checkedId));
   };
 
   const handleClickCategory = (checkedId) => {
     const checkedCategories = categories.map((category) => check(category, checkedId));
     dispatch(setCategories(checkedCategories));
+    dispatch(checkCategory(checkedId));
   };
 
   useEffect(() => {
