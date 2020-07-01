@@ -6,6 +6,7 @@ import {
 } from './actions';
 
 import ButtonList from './ButtonList';
+import TextList from './TextList';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -40,13 +41,9 @@ export default function App() {
         elements={categories}
         onClick={handleClickCategory}
       />
-      <ul>
-        {restaurants.map(({ id, name }) => (
-          <li key={id}>
-            {name}
-          </li>
-        ))}
-      </ul>
+      <TextList
+        elements={restaurants}
+      />
     </>
   );
 }
