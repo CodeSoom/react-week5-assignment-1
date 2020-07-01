@@ -7,10 +7,12 @@ test('renders button list', () => {
   // given
   const elements = [1, 2, 3, 4, 5].map((i) => ({ id: i, name: `Button ${i}` }));
   // when
-  render(<ButtonList
-    elements={elements}
-    onClick={jest.fn()}
-  />);
+  render(
+    <ButtonList
+      elements={elements}
+      onClick={jest.fn()}
+    />,
+  );
   // then
   expect(screen.queryAllByRole('button')).toHaveLength(5);
 });
@@ -20,10 +22,12 @@ test('click button', () => {
   const elements = [1, 2, 3, 4, 5].map((i) => ({ id: i, name: `Button ${i}` }));
   const handleClick = jest.fn();
   // when
-  render(<ButtonList
-    elements={elements}
-    onClick={handleClick}
-  />);
+  render(
+    <ButtonList
+      elements={elements}
+      onClick={handleClick}
+    />,
+  );
   const button = screen.getByText('Button 1');
   fireEvent.click(button);
   // then
