@@ -28,4 +28,15 @@ describe('reducer', () => {
       expect(newState.newSelectRegion).toBe('서울');
     });
   });
+
+  context('without previousState', () => {
+    it('return initState', () => {
+      const newState = reducer(undefined, {});
+
+      expect(newState.regions).toHaveLength(0);
+      expect(newState.newSelectRegion).toBe('');
+    });
+  });
+
+
 });
