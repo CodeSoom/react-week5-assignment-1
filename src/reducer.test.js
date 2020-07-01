@@ -2,12 +2,9 @@ import reducer from './reducer';
 
 import { setCategories } from './actions';
 
-describe('reducer', () => {
-  const testCategories = [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-  ];
+import { categories } from '../fixture/test-data';
 
+describe('reducer', () => {
   context('when reducer is executed first time', () => {
     it('returns initial state', () => {
       const state = reducer(undefined, 'testAction');
@@ -18,9 +15,9 @@ describe('reducer', () => {
 
   context('when action type is setCategories', () => {
     it('gets new categories', () => {
-      const state = reducer(undefined, setCategories(testCategories));
+      const state = reducer(undefined, setCategories(categories));
 
-      expect(state.categories).toEqual(testCategories);
+      expect(state.categories).toEqual(categories);
     });
   });
 });
