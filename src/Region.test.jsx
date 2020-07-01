@@ -16,5 +16,5 @@ test('Region', () => {
   expect(getByText('부산')).not.toBeNull();
 
   fireEvent.click(getByText('부산'));
-  expect(getByText('부산')).toBeCalled();
+  expect(clickHandler).toBeCalled();
 });
