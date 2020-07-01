@@ -13,20 +13,34 @@
  */
 import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
 import { regions } from '../__fixture__/data';
 
+jest.mock('react-redux');
+
 describe('<App />', () => {
   context('render App', () => {
     it('shows regions', () => {
+      useSelector.mockImplementation((state) => ({
+        regions: state.regions,
+      }));
+
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
       const { queryByRole } = render(<App />);
 
       regions.forEach((region) => {
         expect(queryByRole('button', { name: region })).not.toBeNull();
       });
+
+      expect(dispatch).toBeCalledTimes(1);
     });
     // it('shows categories', () => {
 
