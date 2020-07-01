@@ -6,8 +6,10 @@ import { setRegions } from './actions';
 
 import RegionContainer from './RegionContainer';
 
-function loadRegions({ dispatch }) {
-  const regions = [];
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
   // TODO : load regions
   // 1. API server
   // 2. fetch
@@ -18,7 +20,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRegions({ dispatch });
+    dispatch(loadRegions());
   }, []);
 
   return (

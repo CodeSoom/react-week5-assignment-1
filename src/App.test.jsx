@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   it('should display regions', () => {
