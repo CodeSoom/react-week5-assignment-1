@@ -5,6 +5,9 @@ export const fetchRestaurantRegions = async () => {
             .catch(error => console.log(error))
 }
 export const fetchRestaurantInfo = async ({regionName, categoryId})=>{
+    if(!regionName || !categoryId){
+        return [];
+    }
     const API_RESTAURANT_INFO_PATH = "https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}"
     return fetch(API_RESTAURANT_INFO_PATH
                     .replace(/\${regionName}/, regionName)
@@ -15,7 +18,6 @@ export const fetchRestaurantInfo = async ({regionName, categoryId})=>{
 
 }
 export const fetchCategories = async () =>{
-    console.log("vs")
     const API_RESTAURANTS_CATERGORY_PATH = "https://eatgo-customer-api.ahastudio.com/categories";
     return fetch(API_RESTAURANTS_CATERGORY_PATH)
             .then(response=>response.json())
