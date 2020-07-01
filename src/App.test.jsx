@@ -22,6 +22,7 @@ import App from './App';
 import { regions } from '../__fixture__/data';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('<App />', () => {
   context('render App', () => {
