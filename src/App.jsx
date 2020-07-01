@@ -6,7 +6,7 @@ import { setRegions } from './actions';
 
 import RegionContainer from './RegionContainer';
 
-function loadRegions(dispatch) {
+function loadRegions({ dispatch }) {
   const regions = [];
   // TODO : load regions
   // 1. API server
