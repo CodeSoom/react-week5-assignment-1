@@ -53,7 +53,11 @@ const getCategories = () => async (dispatch) => {
   dispatch(setCategories(categories));
 };
 
+const getRestaurants = () => async (dispatch, getState) => {
+
+};
+
 export {
   setRegions, setCategories, setRestaurants, checkRegion, checkCategory,
-  updateRegions, updateCategories, getRegions, getCategories,
+  updateRegions, updateCategories, getRegions, getCategories, getRestaurants,
 };
