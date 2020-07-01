@@ -30,7 +30,7 @@ describe('<RegionsContainer />', () => {
     });
 
     context('with newSelectRegion', () => {
-      it('shows a mark for a selected region', () => {
+      it('shows a region with a selection mark', () => {
         useSelector.mockImplementation((selector) => selector({
           regions,
           newSelectRegion: '서울',
@@ -43,8 +43,8 @@ describe('<RegionsContainer />', () => {
     });
   });
 
-  context('with a selected region', () => {
-    it('shows a mark for a selected region', () => {
+  context('when the user selects region', () => {
+    it('shows a region with a selection mark', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
         newSelectRegion: '',

@@ -31,7 +31,7 @@ describe('<Regions />', () => {
     });
   });
 
-  context('with a selected region', () => {
+  context('when the user selects region', () => {
     it('run handleSelectRegion', () => {
       const handleSelectRegion = jest.fn();
 
