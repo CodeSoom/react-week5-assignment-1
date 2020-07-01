@@ -8,11 +8,17 @@ import { regions } from '../__fixture__/data'; // TODO : API 통신 구현 완�
 
 import { setInitRegions } from './action';
 
+export function loadRegions({ dispatch }) {
+  dispatch(setInitRegions(regions));
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setInitRegions(regions));
+    // dispatch(setInitRegions(regions));
+
+    loadRegions({ dispatch });
   }, []);
 
   return (
