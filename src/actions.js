@@ -38,27 +38,18 @@ export const setRegions = (regions) => ({
     regions,
   },
 });
-export const loadRegions = () => {
-  return async (dispatch) => {
-    const regions = await fetchRegions();
-    dispatch(setRegions(regions));
-  };
+export const loadRegions = () => async (dispatch) => {
+  const regions = await fetchRegions();
+  dispatch(setRegions(regions));
 };
 
-export const loadCategories = () => {
-  return async (dispatch, getState) => {
-    const categories = await fetchCategories();
-    dispatch(setCategories(categories));
-  };
+export const loadCategories = () => async (dispatch) => {
+  const categories = await fetchCategories();
+  dispatch(setCategories(categories));
 };
 
-export const loadRestaurants = () => {
-  return async (dispatch, getState) => {
-    const { selectedRegion, selectedCategory } = getState();
-    const restaurants = await fetchRestaurants(
-      selectedRegion,
-      selectedCategory,
-    );
-    dispatch(setRestaurants(restaurants));
-  };
+export const loadRestaurants = () => async (dispatch, getState) => {
+  const { selectedRegion, selectedCategory } = getState();
+  const restaurants = await fetchRestaurants(selectedRegion, selectedCategory);
+  dispatch(setRestaurants(restaurants));
 };
