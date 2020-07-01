@@ -1,4 +1,5 @@
 import { setRegions, setCategories } from './actions';
+
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
 
