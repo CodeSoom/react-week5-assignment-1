@@ -52,9 +52,14 @@ describe('<App />', () => {
     fireEvent.click(getButtonByName('서울'));
     fireEvent.click(getButtonByName('한식'));
     // then
-    expect(getButtonByName('서울(v)')).toBeInTheDocument();
-    expect(getButtonByName('한식(v)')).toBeInTheDocument();
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledWith({
+      type: 'setRegions',
+      payload: { regions: [{ id: 1, name: '서울(v)' }, ...regionsFixture.slice(1)] },
+    });
+    expect(dispatch).toBeCalledWith({
+      type: 'setCategories',
+      payload: { categories: [{ id: 1, name: '한식(v)' }, ...categoriesFixture.slice(1)] },
+    });
   });
 
   it('uncheck when another button clicked', () => {
@@ -63,8 +68,9 @@ describe('<App />', () => {
     fireEvent.click(getButtonByName('서울'));
     fireEvent.click(getButtonByName('부산'));
     // then
-    expect(getButtonByName('서울')).toBeInTheDocument();
-    expect(getButtonByName('부산(v)')).toBeInTheDocument();
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledWith({
+      type: 'setRegions',
+      payload: { regions: [{ id: 1, name: '서울' }, ...regionsFixture.slice(1)] },
+    });
   });
 });
