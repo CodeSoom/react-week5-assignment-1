@@ -23,5 +23,14 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setSelectedCategoryId') {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      selectedCategoryId: id,
+    };
+  }
+
   return state;
 }
