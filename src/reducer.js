@@ -1,6 +1,10 @@
 const initialState = {
   regions: [],
   categories: [],
+  checked: {
+    region: 0,
+    category: 0,
+  },
 };
 
 const handlers = {
@@ -11,6 +15,13 @@ const handlers = {
   setCategories: (state, { categories }) => ({
     ...state,
     categories: [...categories],
+  }),
+  checkRegion: (state, { id }) => ({
+    ...state,
+    checked: {
+      ...state.checked,
+      region: id,
+    },
   }),
 };
 
