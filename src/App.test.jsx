@@ -1,48 +1,51 @@
 import React from 'react';
 import {
-  render, screen, fireEvent, act,
+  render, screen, fireEvent,
 } from '@testing-library/react';
 
 import App from './App';
 
+function renderApp() {
+  render(<App />);
+  return {
+    getButtonByName: (name) => screen.getByRole('button', { name }),
+  };
+}
+
 describe('<App />', () => {
   it('renders region buttons', () => {
     // when
-    render(<App />);
+    const { getButtonByName } = renderApp();
     // then
-    expect(screen.getByRole('button', { name: '서울' }));
-    expect(screen.getByRole('button', { name: '대전' }));
+    expect(getButtonByName('서울'));
+    expect(getButtonByName('대전'));
   });
 
   it('renders category buttons', () => {
     // when
-    render(<App />);
+    const { getButtonByName } = renderApp();
     // then
-    expect(screen.getByRole('button', { name: '한식' }));
-    expect(screen.getByRole('button', { name: '중식' }));
+    expect(getButtonByName('한식'));
+    expect(getButtonByName('중식'));
   });
 
   it('check when button clicked', () => {
     // when
-    render(<App />);
-    const regionButton = screen.getByRole('button', { name: '서울' });
-    const categoryButton = screen.getByRole('button', { name: '한식' });
-    fireEvent.click(regionButton);
-    fireEvent.click(categoryButton);
+    const { getButtonByName } = renderApp();
+    fireEvent.click(getButtonByName('서울'));
+    fireEvent.click(getButtonByName('한식'));
     // then
-    expect(screen.getByRole('button', { name: '서울(v)' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '한식(v)' })).toBeInTheDocument();
+    expect(getButtonByName('서울(v)')).toBeInTheDocument();
+    expect(getButtonByName('한식(v)')).toBeInTheDocument();
   });
 
   it('uncheck when another button clicked', () => {
     // when
-    render(<App />);
-    const seoulButton = screen.getByRole('button', { name: '서울' });
-    const busanButton = screen.getByRole('button', { name: '부산' });
-    fireEvent.click(seoulButton);
-    fireEvent.click(busanButton);
+    const { getButtonByName } = renderApp();
+    fireEvent.click(getButtonByName('서울'));
+    fireEvent.click(getButtonByName('부산'));
     // then
-    expect(screen.getByRole('button', { name: '서울' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: '부산(v)' })).toBeInTheDocument();
+    expect(getButtonByName('서울')).toBeInTheDocument();
+    expect(getButtonByName('부산(v)')).toBeInTheDocument();
   });
 });
