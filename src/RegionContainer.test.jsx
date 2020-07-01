@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import RegionContainer from './RegionContainer';
 
+jest.mock('react-redux');
+
 test('RegionContainer', () => {
   const region = {
     id: 1,
