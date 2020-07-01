@@ -3,4 +3,6 @@ const setRegions = (regions) => ({
   payload: { regions },
 });
 
-export default setRegions;
+const setCategories = () => {};
+
+export { setRegions, setCategories };
