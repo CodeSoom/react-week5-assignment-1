@@ -7,19 +7,21 @@ import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 import { fetchRegions } from './services/api';
 
 import {
-  setRegions,
+  // setRegions,
+  loadRestaurantRegions,
 } from './actions';
 
-async function loadRestaurantRegions({ dispatch }) {
-  const regions = await fetchRegions();
-  dispatch(setRegions(regions));
-}
+// async function loadRestaurantRegions({ dispatch }) {
+//   const regions = await fetchRegions();
+//   dispatch(setRegions(regions));
+// }
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRestaurantRegions({ dispatch });
+    // loadRestaurantRegions({ dispatch });
+    dispatch(loadRestaurantRegions());
   }, []);
 
   return (
