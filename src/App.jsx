@@ -5,18 +5,9 @@ import RegionContainer from './RegionContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { setRegions, setCategories, setRestaurants } from './actions';
+import { setCategories, setRestaurants, loadRegions } from './actions';
 
-import {
-  fetchRegions,
-  fetchCategories,
-  fetchRestaurants,
-} from './services/api';
-
-async function loadRegions({ dispatch }) {
-  const regions = await fetchRegions();
-  dispatch(setRegions(regions));
-}
+import { fetchCategories, fetchRestaurants } from './services/api';
 
 async function loadCategories({ dispatch }) {
   const categories = await fetchCategories();

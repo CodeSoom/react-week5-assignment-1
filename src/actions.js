@@ -1,36 +1,42 @@
-module.exports = {
-  selectRegion: (region) => ({
-    type: 'SELECT_REGION',
-    payload: {
-      region,
-    },
-  }),
+import { fetchRegions } from './services/api';
 
-  setRegions: (regions) => ({
-    type: 'SET_REGIONS',
-    payload: {
-      regions,
-    },
-  }),
+export const selectRegion = (region) => ({
+  type: 'SELECT_REGION',
+  payload: {
+    region,
+  },
+});
 
-  selectCategory: (id) => ({
-    type: 'SELECT_CATEGORY',
-    payload: {
-      id,
-    },
-  }),
+export const selectCategory = (id) => ({
+  type: 'SELECT_CATEGORY',
+  payload: {
+    id,
+  },
+});
 
-  setCategories: (categories) => ({
-    type: 'SET_CATEGORIES',
-    payload: {
-      categories,
-    },
-  }),
+export const setCategories = (categories) => ({
+  type: 'SET_CATEGORIES',
+  payload: {
+    categories,
+  },
+});
 
-  setRestaurants: (restaurants) => ({
-    type: 'SET_RESTAURANTS',
-    payload: {
-      restaurants,
-    },
-  }),
+export const setRestaurants = (restaurants) => ({
+  type: 'SET_RESTAURANTS',
+  payload: {
+    restaurants,
+  },
+});
+
+export const setRegions = (regions) => ({
+  type: 'SET_REGIONS',
+  payload: {
+    regions,
+  },
+});
+export const loadRegions = () => {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
+  };
 };
