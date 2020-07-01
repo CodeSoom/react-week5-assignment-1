@@ -1,20 +1,19 @@
-export async function fetchRegions() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/regions';
+const baseUrl = 'https://eatgo-customer-api.ahastudio.com';
+
+async function fetchData(url) {
   const response = await fetch(url);
-  const regions = await response.json();
-  return regions;
+  const data = await response.json();
+  return data;
+}
+
+export function fetchRegions() {
+  return fetchData(`${baseUrl}/regions`);
 }
 
 export async function fetchCategories() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
-  const response = await fetch(url);
-  const categories = await response.json();
-  return categories;
+  return fetchData(`${baseUrl}/categories`);
 }
 
 export async function fetchRestaurants(regionName, categoryId) {
-  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
-  const response = await fetch(url);
-  const restaurants = await response.json();
-  return restaurants;
+  return fetchData(`${baseUrl}/restaurants?region=${regionName}&category=${categoryId}`);
 }
