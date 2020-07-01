@@ -19,7 +19,11 @@ export default function RegionsContainer() {
   return (
     <div>
       {regions.map((region) => (
-        <button key={region.id} onClick={() => handleSelectRegion(region.name)} type="button">
+        <button
+          key={region.id}
+          onClick={() => handleSelectRegion(region.name)}
+          type="button"
+        >
           {region.name === newSelectRegion ? `${region.name}(V)` : region.name}
         </button>
       ))}

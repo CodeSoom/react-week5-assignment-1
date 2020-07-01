@@ -4,3 +4,7 @@ export async function fetchInitRegions() {
   const data = await response.json();
   return data;
 }
+
+// TODO : 삭제 예정
+export function needDelete() {
+}
