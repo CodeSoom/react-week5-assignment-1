@@ -23,6 +23,13 @@ const handlers = {
       region: id,
     },
   }),
+  checkCategory: (state, { id }) => ({
+    ...state,
+    checked: {
+      ...state.checked,
+      category: id,
+    },
+  }),
 };
 
 export default function reducer(state = initialState, action) {
