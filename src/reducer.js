@@ -1,6 +1,6 @@
 export const initialState = {
   regionName: '',
-  categoryId: 0,
+  categoryId: -1,
 };
 
 const reducers = {

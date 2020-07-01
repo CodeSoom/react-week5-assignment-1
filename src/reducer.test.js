@@ -26,4 +26,15 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('chooseCategory', () => {
+    context('when click category button', () => {
+      it('change category id', () => {
+        const categoryId = 1;
+        const state = reducer(initialState, chooseCategory(categoryId));
+
+        expect(state.categoryId).toBe(categoryId);
+      });
+    });
+  });
 });
