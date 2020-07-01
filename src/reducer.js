@@ -3,20 +3,21 @@ const initState = {
   newSelectRegion: '',
 };
 
+const reducers = {
+  setInitRegions: (previousState, action) => ({
+    ...previousState,
+    regions: action.payload.regions,
+  }),
+  selectRegion: (previousState, action) => ({
+    ...previousState,
+    newSelectRegion: action.payload.newSelectRegion,
+  }),
+};
+
 export default function reducer(previousState = initState, action) {
-  if (action.type === 'setInitRegions') {
-    return {
-      ...previousState,
-      regions: action.payload.regions,
-    };
+  if (!action || !reducers[action.type]) {
+    return previousState;
   }
 
-  if (action.type === 'selectRegion') {
-    return {
-      ...previousState,
-      newSelectRegion: action.payload.newSelectRegion,
-    };
-  }
-
-  return previousState;
+  return reducers[action.type](previousState, action);
 }
