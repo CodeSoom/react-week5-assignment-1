@@ -2,21 +2,13 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setCategories } from './actions';
-
-import { fetchCategories } from './services/api';
-
-async function loadCategories(dispatch) {
-  const categories = await fetchCategories();
-
-  dispatch(setCategories(categories));
-}
+import { loadCategories } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadCategories(dispatch);
+    dispatch(loadCategories());
   }, []);
 
   const { categories } = useSelector((state) => ({
