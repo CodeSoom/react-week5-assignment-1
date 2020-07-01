@@ -11,6 +11,7 @@ describe('reducer', () => {
   const previousState = {
     regions: [],
     categories: [],
+    restaurants: [],
     checked: {
       region: 4,
       category: 5,

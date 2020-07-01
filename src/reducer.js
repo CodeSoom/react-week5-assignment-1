@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   categories: [],
+  restaurants: [],
   checked: {
     region: 0,
     category: 0,
@@ -15,6 +16,10 @@ const handlers = {
   setCategories: (state, { categories }) => ({
     ...state,
     categories: [...categories],
+  }),
+  setRestaurants: (state, { restaurants }) => ({
+    ...state,
+    restaurants: [...restaurants],
   }),
   checkRegion: (state, { id }) => ({
     ...state,
