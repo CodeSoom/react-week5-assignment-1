@@ -84,6 +84,10 @@ describe('Action creators', () => {
       type: 'checkRegion',
       payload: { id },
     });
+    expect(dispatch).toBeCalledWith({
+      type: 'setRestaurants',
+      paylaod: { restaurants: [] },
+    });
   });
 
   it('updateCategories', () => {
@@ -100,6 +104,10 @@ describe('Action creators', () => {
     expect(dispatch).toBeCalledWith({
       type: 'checkCategory',
       payload: { id },
+    });
+    expect(dispatch).toBeCalledWith({
+      type: 'setRestaurants',
+      paylaod: { restaurants: restaurantsFixture },
     });
   });
 });

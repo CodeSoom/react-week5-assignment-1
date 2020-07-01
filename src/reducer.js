@@ -3,8 +3,8 @@ const initialState = {
   categories: [],
   restaurants: [],
   checked: {
-    region: 0,
-    category: 0,
+    regionId: 0,
+    categoryId: 0,
   },
 };
 
@@ -25,14 +25,14 @@ const handlers = {
     ...state,
     checked: {
       ...state.checked,
-      region: id,
+      regionId: id,
     },
   }),
   checkCategory: (state, { id }) => ({
     ...state,
     checked: {
       ...state.checked,
-      category: id,
+      categoryId: id,
     },
   }),
 };

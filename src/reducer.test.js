@@ -13,8 +13,8 @@ describe('reducer', () => {
     categories: [],
     restaurants: [],
     checked: {
-      region: 4,
-      category: 5,
+      regionId: 4,
+      categoryId: 5,
     },
   };
 
@@ -55,7 +55,7 @@ describe('reducer', () => {
     // when
     const state = reducer(previousState, action);
     // then
-    expect(state.checked.region).toBe(id);
+    expect(state.checked.regionId).toBe(id);
   });
 
   it('checkCategory', () => {
@@ -65,6 +65,6 @@ describe('reducer', () => {
     // when
     const state = reducer(previousState, action);
     // then
-    expect(state.checked.category).toBe(id);
+    expect(state.checked.categoryId).toBe(id);
   });
 });
