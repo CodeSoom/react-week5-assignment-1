@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { setSelectedCategoryId } from './actions';
 
@@ -11,11 +11,24 @@ export default function CategoryContainer({ category }) {
 
   const dispatch = useDispatch();
 
+  const { selectedCategoryId } = useSelector((state) => ({
+    selectedCategoryId: state.selectedCategoryId,
+  }));
+
   function clickHandler() {
     dispatch(setSelectedCategoryId(id));
   }
 
+  function isSelected() {
+    if (id === selectedCategoryId) {
+      return `${name}(v)`;
+    }
+    return name;
+  }
+
+  const displayName = isSelected();
+
   return (
-    <Category name={name} onClick={clickHandler} />
+    <Category name={displayName} onClick={clickHandler} />
   );
 }

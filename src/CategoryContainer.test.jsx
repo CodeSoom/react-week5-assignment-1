@@ -42,10 +42,10 @@ describe('CategoryContainer', () => {
         selectedCategoryId,
       }));
 
-      const { getByText } = renderMockCategoryContainer();
+      const { queryByText } = renderMockCategoryContainer();
 
-      expect(getByText('한식')).toBeNull();
-      expect(getByText('한식(v)')).not.toBeNull();
+      expect(queryByText('한식')).toBeNull();
+      expect(queryByText('한식(v)')).not.toBeNull();
     });
   });
 
