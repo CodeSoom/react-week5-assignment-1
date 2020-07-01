@@ -15,3 +15,12 @@ export function loadCategories() {
     dispatch(setCategories(categories));
   };
 }
+
+export function selectCategory(categoryId) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      categoryId,
+    },
+  };
+}
