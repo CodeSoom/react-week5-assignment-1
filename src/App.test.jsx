@@ -38,7 +38,7 @@ describe('<App />', () => {
       const { queryByRole } = render(<App />);
 
       regions.forEach((region) => {
-        expect(queryByRole('button', { name: region })).not.toBeNull();
+        expect(queryByRole('button', { name: region.name })).not.toBeNull();
       });
 
       expect(dispatch).toBeCalledTimes(1);
@@ -50,16 +50,21 @@ describe('<App />', () => {
 
   context('with a selected region', () => {
     it('shows a mark for a selected region', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions,
+        newSelectRegion: '',
+      }));
+      
       const { getByRole, queryByRole } = render(<App />);
 
       regions.forEach((region) => {
-        fireEvent.click(getByRole('button', { name: region }));
-        expect(queryByRole('button', { name: `${region}(V)` })).not.toBeNull();
+        fireEvent.click(getByRole('button', { name: region.name }));
+        expect(queryByRole('button', { name: `${region.name}(V)` })).not.toBeNull();
 
-        const unselectedRegions = regions.filter((item) => item !== region);
+        const unselectedRegions = regions.filter((item) => item !== region.name);
         unselectedRegions.forEach((unselectedRegion) => {
           expect(
-            queryByRole('button', { name: unselectedRegion }),
+            queryByRole('button', { name: unselectedRegion.name }),
           ).not.toBeNull();
         });
       });

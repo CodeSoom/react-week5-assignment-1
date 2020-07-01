@@ -1,6 +1,6 @@
 const initState = {
   regions: [],
-  selectRegion: '',
+  newSelectRegion: '',
 };
 
 export default function reducer(previousState = initState, action) {
@@ -14,7 +14,7 @@ export default function reducer(previousState = initState, action) {
   if (action.type === 'selectRegion') {
     return {
       ...previousState,
-      selectRegion: action.payload.selectRegion,
+      newSelectRegion: action.payload.newSelectRegion,
     };
   }
 

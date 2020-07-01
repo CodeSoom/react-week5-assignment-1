@@ -1,23 +1,26 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectRegion } from './action';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const { regions, newSelectRegion } = useSelector((state) => ({
     regions: state.regions,
+    newSelectRegion: state.newSelectRegion,
   }));
 
-  // const [selectRegion, setSelectRegion] = useState('');
+  const dispatch = useDispatch();
 
-  // function handleSelectRegion(newSelectRegion) {
-  //   setSelectRegion(newSelectRegion);
-  // }
+  function handleSelectRegion(newRegion) {
+    dispatch(selectRegion(newRegion));
+  }
 
   return (
     <div>
       {regions.map((region) => (
-        <button key={region} onClick={() => handleSelectRegion(region)} type="button">
-          {region === selectRegion ? `${region}(V)` : region}
+        <button key={region.id} onClick={() => handleSelectRegion(region.name)} type="button">
+          {region.name === newSelectRegion ? `${region.name}(V)` : region.name}
         </button>
       ))}
     </div>

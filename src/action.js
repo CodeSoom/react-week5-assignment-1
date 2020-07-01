@@ -16,11 +16,11 @@ export function loadRegions() {
   };
 }
 
-export function selectRegion(selectNewRegion) {
+export function selectRegion(newSelectRegion) {
   return {
     type: 'selectRegion',
     payload: {
-      selectRegion: selectNewRegion,
+      newSelectRegion,
     },
   };
 }
