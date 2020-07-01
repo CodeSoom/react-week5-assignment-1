@@ -37,6 +37,4 @@ describe('reducer', () => {
       expect(newState.newSelectRegion).toBe('');
     });
   });
-
-
 });

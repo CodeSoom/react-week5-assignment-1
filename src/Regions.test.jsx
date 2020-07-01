@@ -35,7 +35,9 @@ describe('<Regions />', () => {
     it('run handleSelectRegion', () => {
       const handleSelectRegion = jest.fn();
 
-      const { getByRole } = render(<Regions regions={regions} onSelectRegion={handleSelectRegion} />);
+      const { getByRole } = render(
+        <Regions regions={regions} onSelectRegion={handleSelectRegion} />,
+      );
 
       regions.forEach((region) => {
         fireEvent.click(getByRole('button', { name: region.name }));
