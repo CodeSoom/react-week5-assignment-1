@@ -1,4 +1,6 @@
 export const initialState = {
+  regions: [],
+  categories: [],
   regionName: '',
   categoryId: -1,
 };
