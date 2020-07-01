@@ -18,6 +18,11 @@ const checkCategory = (id) => ({
   payload: { id },
 });
 
+const updateRegions = () => (dispatch, getState) => {
+
+};
+
 export {
   setRegions, setCategories, checkRegion, checkCategory,
+  updateRegions,
 };

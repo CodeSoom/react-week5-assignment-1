@@ -1,5 +1,6 @@
 import {
   setRegions, setCategories, checkRegion, checkCategory,
+  updateRegions,
 } from './actions';
 
 import regionsFixture from './__fixtures__/regions';
@@ -44,5 +45,24 @@ describe('Action creators', () => {
     // then
     expect(action.type).toBe('checkCategory');
     expect(action.payload.id).toBe(id);
+  });
+
+  it('updateRegions', () => {
+    // given
+    const id = 1;
+    const dispatch = jest.fn();
+    const getState = () => ({ regions: regionsFixture });
+    // when
+    const action = updateRegions(id);
+    action(dispatch, getState);
+    // then
+    expect(dispatch).toBeCalledWith({
+      type: 'setRegions',
+      payload: { regions: [{ id: 1, name: '서울(v)' }, ...regionsFixture.slice(1)] },
+    });
+    expect(dispatch).toBeCalledWith({
+      type: 'checkRegion',
+      payload: { id: 1 },
+    });
   });
 });
