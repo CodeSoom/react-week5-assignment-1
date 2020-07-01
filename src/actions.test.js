@@ -114,16 +114,16 @@ describe('Action creators', () => {
     });
   });
 
-  it('getRegions', () => {
+  it('getRegions', async () => {
     // given
     fetchRegions.mockClear();
     fetchRegions.mockImplementation(async () => regionsFixture);
     // when
     const action = getRegions();
-    action(dispatch, getState);
+    await action(dispatch, getState);
     // then
     expect(fetchRegions).toBeCalled();
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
+    expect(dispatch).toBeCalledWith({
       type: 'setRegions',
       payload: { regions: regionsFixture },
     });
