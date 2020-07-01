@@ -10,11 +10,13 @@ import { regions } from '../fixtures/regions';
 jest.mock('react-redux');
 
 describe('RegionContainer', () => {
-  it('지역 리스트가 나타난다.', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-    }));
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
 
+  it('지역 리스트가 나타난다.', () => {
     const { getByText } = render(<RegionContainer />);
 
     expect(getByText('서울')).not.toBeNull();
@@ -23,12 +25,6 @@ describe('RegionContainer', () => {
   });
 
   it('지역을 클릭할 수 있다.', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-    }));
-
     const { getByText } = render(<RegionContainer />);
     fireEvent.click(getByText('서울'));
 

@@ -13,6 +13,7 @@ import { categories } from '../fixtures/categories';
 
 describe('reducer', () => {
   const initialState = {};
+
   it('액션이 없으면 initialState를 반환한다.', () => {
     const expectState = {
       regions: [],
@@ -29,6 +30,7 @@ describe('reducer', () => {
   describe('SELECT_REGION', () => {
     it('선택된 지역이 변경된다.', () => {
       const state = reducer(initialState, selectRegion('서울'));
+
       expect(state.selectedRegion).toBe('서울');
     });
   });
@@ -36,6 +38,7 @@ describe('reducer', () => {
   describe('SET_REGIONS', () => {
     it('지역리스트가 변경된다.', () => {
       const state = reducer(initialState, setRegions(regions));
+
       expect(state.regions).toHaveLength(3);
     });
   });
@@ -48,6 +51,7 @@ describe('reducer', () => {
         },
         selectCategory(1),
       );
+
       expect(state.selectedCategory).toBe(1);
     });
   });
@@ -55,6 +59,7 @@ describe('reducer', () => {
   describe('SET_CATEGORIES', () => {
     it('카테고리 리스트가 변경된다,', () => {
       const state = reducer(initialState, setCategories(categories));
+
       expect(state.categories).toHaveLength(3);
     });
   });
@@ -70,6 +75,7 @@ describe('reducer', () => {
           },
         ]),
       );
+
       expect(state.restaurants).toHaveLength(1);
     });
   });

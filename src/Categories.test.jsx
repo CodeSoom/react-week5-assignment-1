@@ -34,6 +34,7 @@ describe('Categories', () => {
 
     // THEN
     fireEvent.click(getByText('한식'));
+
     expect(handleClick).toBeCalled();
   });
 

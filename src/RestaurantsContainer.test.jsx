@@ -10,11 +10,10 @@ import { restaurants } from '../fixtures/restaurants';
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
   it('지역 리스트가 나타난다.', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurants,
-    }));
-
     const { getByText } = render(<RestaurantsContainer />);
 
     expect(getByText('양천주가')).not.toBeNull();
