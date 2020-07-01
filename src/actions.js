@@ -1,5 +1,5 @@
 import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
-import check from './utils';
+import { CHECK_SYMBOL, check } from './utils';
 
 const setRegions = (regions) => ({
   type: 'setRegions',
@@ -44,35 +44,25 @@ const getCategories = () => async (dispatch) => {
   dispatch(setCategories(categories));
 };
 
-const getRestaurantsFromServer = async ({
-  regions, categories, regionId, categoryId,
-}) => {
+const getRestaurants = () => async (dispatch, getState) => {
+  const { regions, categories, checked: { regionId, categoryId } } = getState();
+  if (regionId === 0 || categoryId === 0) {
+    return;
+  }
   const region = regions.find((r) => r.id === regionId);
   const category = categories.find((c) => c.id === categoryId);
   const restaurants = await fetchRestaurants({
     id: region.id,
-    name: region.name.replace('(v)', ''),
+    name: region.name.replace(CHECK_SYMBOL, ''),
   }, category);
-  return restaurants;
-};
-
-const getRestaurants = () => async (dispatch, getState) => {
-  const { regions, categories, checked: { regionId, categoryId } } = getState();
-  const restaurants = await getRestaurantsFromServer({
-    regions, categories, regionId, categoryId,
-  });
   dispatch(setRestaurants(restaurants));
 };
 
 const updateCategories = (id) => async (dispatch, getState) => {
-  const { regions, categories, checked: { regionId } } = getState();
+  const { categories } = getState();
   const checkedCategories = categories.map((category) => check(category, id));
-  const restaurants = await getRestaurantsFromServer({
-    regions, categories, regionId, categoryId: id,
-  });
   dispatch(setCategories(checkedCategories));
   dispatch(checkCategory(id));
-  dispatch(setRestaurants(restaurants));
 };
 
 export {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  updateRegions, updateCategories, getRegions, getCategories,
+  updateRegions, updateCategories, getRegions, getCategories, getRestaurants,
 } from './actions';
 
 export default function App() {
@@ -15,10 +15,12 @@ export default function App() {
 
   const handleClickRegion = (id) => {
     dispatch(updateRegions(id));
+    dispatch(getRestaurants());
   };
 
   const handleClickCategory = (id) => {
     dispatch(updateCategories(id));
+    dispatch(getRestaurants());
   };
 
   useEffect(() => {

@@ -64,7 +64,7 @@ describe('<App />', () => {
     fireEvent.click(getButtonByName('서울'));
     fireEvent.click(getButtonByName('한식'));
     // then
-    expect(dispatch).toBeCalledTimes(4);
+    expect(dispatch).toBeCalledTimes(6);
   });
 
   it('uncheck when another button clicked', () => {
@@ -73,6 +73,6 @@ describe('<App />', () => {
     fireEvent.click(getButtonByName('서울'));
     fireEvent.click(getButtonByName('부산'));
     // then
-    expect(dispatch).toBeCalledTimes(4);
+    expect(dispatch).toBeCalledTimes(6);
   });
 });

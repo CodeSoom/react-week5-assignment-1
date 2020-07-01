@@ -1,4 +1,4 @@
-import check from './utils';
+import { CHECK_SYMBOL, check } from './utils';
 
 import regions from './__fixtures__/regions';
 
@@ -9,7 +9,7 @@ test('check the specific id element.', () => {
   const checkedRegion = check(region, 1);
   // then
   expect(checkedRegion.id).toBe(1);
-  expect(checkedRegion.name).toBe(`${region.name}(v)`);
+  expect(checkedRegion.name).toBe(`${region.name}${CHECK_SYMBOL}`);
 });
 
 test('do not check if id not match', () => {
@@ -19,5 +19,5 @@ test('do not check if id not match', () => {
   const checkedRegion = check(region, 2);
   // then
   expect(checkedRegion.id).toBe(1);
-  expect(checkedRegion.name).not.toBe(`${region.name}(v)`);
+  expect(checkedRegion.name).not.toBe(`${region.name}${CHECK_SYMBOL}`);
 });

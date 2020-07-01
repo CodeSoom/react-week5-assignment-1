@@ -3,6 +3,7 @@ import {
   updateRegions, updateCategories, getRegions, getCategories, getRestaurants,
 } from './actions';
 import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
+import { CHECK_SYMBOL } from './utils';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
@@ -11,8 +12,7 @@ import restaurantsFixture from './__fixtures__/restaurants';
 jest.mock('./services/api');
 
 describe('Action creators', () => {
-  const dispatch = jest.fn();
-  const getState = () => ({
+  const state = {
     regions: regionsFixture,
     categories: categoriesFixture,
     restaurants: restaurantsFixture,
@@ -20,7 +20,9 @@ describe('Action creators', () => {
       regionId: 2,
       categoryId: 3,
     },
-  });
+  };
+  const dispatch = jest.fn();
+  const getState = () => (state);
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -86,7 +88,7 @@ describe('Action creators', () => {
     // then
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'setRegions',
-      payload: { regions: [{ id, name: '서울(v)' }, ...regionsFixture.slice(1)] },
+      payload: { regions: [{ id, name: `서울${CHECK_SYMBOL}` }, ...regionsFixture.slice(1)] },
     });
     expect(dispatch).toHaveBeenNthCalledWith(2, {
       type: 'checkRegion',
@@ -107,7 +109,7 @@ describe('Action creators', () => {
     // then
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'setCategories',
-      payload: { categories: [{ id, name: '한식(v)' }, ...categoriesFixture.slice(1)] },
+      payload: { categories: [{ id, name: `한식${CHECK_SYMBOL}` }, ...categoriesFixture.slice(1)] },
     });
     expect(dispatch).toHaveBeenNthCalledWith(2, {
       type: 'checkCategory',
@@ -145,18 +147,43 @@ describe('Action creators', () => {
     });
   });
 
-  it('getRestaurants', async () => {
-    // given
-    fetchRestaurants.mockClear();
-    fetchRestaurants.mockImplementation(async () => restaurantsFixture);
-    // when
-    const action = getRestaurants();
-    await action(dispatch, getState);
-    // then
-    expect(fetchRestaurants).toBeCalled();
-    expect(dispatch).toBeCalledWith({
-      type: 'setRestaurants',
-      payload: { restaurants: restaurantsFixture },
+  describe('getRestaurants', () => {
+    context('with region and category', () => {
+      it('get restaurants', async () => {
+        // given
+        fetchRestaurants.mockClear();
+        fetchRestaurants.mockImplementation(async () => restaurantsFixture);
+        fetchRestaurants.mockClear();
+        const getStateWithRegionCategory = () => (state);
+        // when
+        const action = getRestaurants();
+        await action(dispatch, getStateWithRegionCategory);
+        // then
+        expect(fetchRestaurants).toBeCalled();
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: { restaurants: restaurantsFixture },
+        });
+      });
+    });
+
+    context('without region or category', () => {
+      it('do not get restaurants', () => {
+        // given
+        fetchRestaurants.mockClear();
+        const getStateWithoutRegion = () => ({
+          ...state,
+          checked: {
+            ...state.checked,
+            regionId: 0,
+          },
+        });
+        // when
+        const action = getRestaurants();
+        action(dispatch, getStateWithoutRegion);
+        // then
+        expect(fetchRestaurants).not.toBeCalled();
+      });
     });
   });
 });
