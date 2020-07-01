@@ -6,7 +6,10 @@ import { loadRestaurantsInfo } from '../actions';
 
 export default function RestaurantContainer() {
   const dispatch = useDispatch();
-  const { regionName, categoryId } = useSelector((state) => state.searchQuery);
+  const { regionName, categoryId } = useSelector((state) => ({
+    regionName: state.searchQuery.regionName,
+    categoryId: state.searchQuery.categoryId,
+  }));
   const restaurants = useSelector((state) => state.restaurants);
 
   useEffect(() => {

@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log('***** reducer.action ->', action);
   if (action.type === 'loadRegions') {
     return {
       ...state,
@@ -45,7 +44,7 @@ const reducer = (state = initialState, action) => {
       ...state,
       searchQuery: {
         ...state.searchQuery,
-        categoryId: categoryId,
+        categoryId,
       },
     };
   }

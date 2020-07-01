@@ -24,5 +24,5 @@ test('CategoriesContainer', () => {
     <CategoriesContainer />,
   );
 
-  expect(getByText(/한식/)).toBe();
+  expect(getByText(/한식/)).not.toBeNull();
 });

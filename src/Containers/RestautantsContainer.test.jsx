@@ -2,17 +2,20 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 test('[RegionsContainer]', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regionName: '',
-    categoryId: 0,
+    searchQuery: {
+      regionName: '',
+      categoryId: '',
+    },
+
   }));
 
   const { getByTest } = render((
-    <RegionsContainer />
+    <RestaurantsContainer />
   ));
 });
