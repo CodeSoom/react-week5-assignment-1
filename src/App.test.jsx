@@ -14,10 +14,10 @@ describe('App', () => {
       regions: [],
     }));
 
-    const { getByText } = render((
+    const { queryByText } = render((
       <App />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
+    expect(queryByText('서울')).toBeNull();
   });
 });

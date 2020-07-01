@@ -2,22 +2,22 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
-
 import Regions from './Regions';
 
 jest.mock('react-redux');
 
 describe('App', () => {
   it('should display regions', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions: [],
-    }));
+    const regions = [
+      { id: 101, name: '서울' },
+    ];
 
-    const { getByText } = render((
-      <Regions />
+    const { container } = render((
+      <Regions
+        regions={regions}
+      />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
+    expect(container).toHaveTextContent('서울');
   });
 });
