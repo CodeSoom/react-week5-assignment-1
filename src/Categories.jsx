@@ -5,7 +5,11 @@ export default function Categories({ categories, onClick }) {
     <div>
       {
         categories.map((category) => (
-          <button type="button" key={category.id} onClick={onClick}>
+          <button
+            type="button"
+            key={category.id}
+            onClick={() => onClick(category.id)}
+          >
             { category.name }
           </button>
         ))
