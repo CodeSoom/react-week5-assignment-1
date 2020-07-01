@@ -27,7 +27,11 @@ const updateRegions = (id) => (dispatch, getState) => {
   dispatch(checkRegion(id));
 };
 
-const updateCategories = () => (dispatch, getState) => {
+const updateCategories = (id) => (dispatch, getState) => {
+  const { categories } = getState();
+  const checkedCategories = categories.map((category) => check(category, id));
+  dispatch(setCategories(checkedCategories));
+  dispatch(checkCategory(id));
 };
 
 export {
