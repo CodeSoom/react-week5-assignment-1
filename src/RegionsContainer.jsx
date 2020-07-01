@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { regions } from '../__fixture__/data';
-
 export default function RegionsContainer() {
   const [selectRegion, setSelectRegion] = useState('');
 
