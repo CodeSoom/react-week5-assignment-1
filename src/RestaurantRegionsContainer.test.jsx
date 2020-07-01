@@ -12,9 +12,9 @@ jest.mock('react-redux');
 
 describe('RestaurantRegionContainer', () => {
   it('레스토랑 지역 목록을 화면에 보여준다.', () => {
-    // useSelector.mockImplementation((selector) => selector({
-    //   regions,
-    // }));
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
 
     const { getByText } = render((
       <RestaurantRegionsContainer />
