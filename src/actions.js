@@ -8,4 +8,6 @@ const setCategories = (categories) => ({
   payload: { categories },
 });
 
-export { setRegions, setCategories };
+const checkRegion = () => {};
+
+export { setRegions, setCategories, checkRegion };
