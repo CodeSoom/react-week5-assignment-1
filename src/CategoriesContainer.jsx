@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-// import Categories from './Categories';
+import Categories from './Categories';
 
 export default function CategoriesContainer() {
   const { categories } = useSelector((state) => ({
@@ -10,8 +10,8 @@ export default function CategoriesContainer() {
   }));
 
   return (
-    <Categories 
+    <Categories
       categories={categories}
     />
   );
-};
+}
