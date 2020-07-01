@@ -120,7 +120,7 @@ describe('Action creators', () => {
     fetchRegions.mockImplementation(async () => regionsFixture);
     // when
     const action = getRegions();
-    await action(dispatch, getState);
+    await action(dispatch);
     // then
     expect(fetchRegions).toBeCalled();
     expect(dispatch).toBeCalledWith({
@@ -135,7 +135,7 @@ describe('Action creators', () => {
     fetchCategories.mockImplementation(async () => categoriesFixture);
     // when
     const action = getCategories();
-    await action(dispatch, getState);
+    await action(dispatch);
     // then
     expect(fetchCategories).toBeCalled();
     expect(dispatch).toBeCalledWith({

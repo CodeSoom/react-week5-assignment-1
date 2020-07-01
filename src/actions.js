@@ -1,4 +1,4 @@
-import { fetchRegions } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 import check from './utils';
 import restaurantsFixture from './__fixtures__/restaurants';
 
@@ -48,7 +48,9 @@ const getRegions = () => async (dispatch) => {
   dispatch(setRegions(regions));
 };
 
-const getCategories = () => async () => {
+const getCategories = () => async (dispatch) => {
+  const categories = await fetchCategories();
+  dispatch(setCategories(categories));
 };
 
 export {
