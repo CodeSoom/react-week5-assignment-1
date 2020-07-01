@@ -6,7 +6,10 @@ import Buttons from './Buttons';
 
 describe('Buttons', () => {
   context('with region or category data', () => {
-    const regions = ['서울', '부산'];
+    const regions = [
+      { id: 1, name: '서울' },
+      { id: 2, name: '부산' },
+    ];
 
     it('can be clicked', () => {
       const handleClickChooseValue = jest.fn();
@@ -20,7 +23,7 @@ describe('Buttons', () => {
 
       fireEvent.click(getByText('서울'));
 
-      expect(handleClickChooseValue).toBeCalledWith(1);
+      expect(handleClickChooseValue).toBeCalledTimes(1);
     });
 
     it('renders regions or categories', () => {

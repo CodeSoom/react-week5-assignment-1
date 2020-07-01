@@ -39,7 +39,7 @@ describe('api', () => {
     context('when requests reataurants with region name and category id', () => {
       it('get reataurants data', () => {
         async function loadRestaurants() {
-          const result = await fetchRestaurants(regionName='서울', categoryId=1);
+          const result = await fetchRestaurants('서울', 1);
 
           expect(result[0]).toEqual({
             id: 1,
