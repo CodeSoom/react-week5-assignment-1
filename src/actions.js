@@ -42,6 +42,8 @@ const updateCategories = (id) => (dispatch, getState) => {
   dispatch(setRestaurants(restaurantsFixture));
 };
 
+const getRegions = () => {};
+
 export {
   setRegions, setCategories, setRestaurants, checkRegion, checkCategory,
   updateRegions, updateCategories,

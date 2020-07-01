@@ -1,11 +1,14 @@
 import {
   setRegions, setCategories, setRestaurants, checkRegion, checkCategory,
-  updateRegions, updateCategories,
+  updateRegions, updateCategories, getRegions,
 } from './actions';
+import { fetchRegions } from './services/api';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
 import restaurantsFixture from './__fixtures__/restaurants';
+
+jest.mock('./services/api');
 
 describe('Action creators', () => {
   const dispatch = jest.fn();
@@ -108,6 +111,21 @@ describe('Action creators', () => {
     expect(dispatch).toHaveBeenNthCalledWith(3, {
       type: 'setRestaurants',
       payload: { restaurants: restaurantsFixture },
+    });
+  });
+
+  it('getRegions', () => {
+    // given
+    fetchRegions.mockClear();
+    fetchRegions.mockImplementation(async () => regionsFixture);
+    // when
+    const action = getRegions();
+    action(dispatch, getState);
+    // then
+    expect(fetchRegions).toBeCalled();
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'setRegions',
+      payload: { regions: regionsFixture },
     });
   });
 });
