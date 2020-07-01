@@ -15,6 +15,11 @@ describe('Action creators', () => {
   const getState = () => ({
     regions: regionsFixture,
     categories: categoriesFixture,
+    restaurants: restaurantsFixture,
+    checked: {
+      regionId: 2,
+      categoryId: 3,
+    },
   });
 
   beforeEach(() => {
