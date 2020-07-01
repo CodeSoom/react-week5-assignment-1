@@ -1,4 +1,4 @@
-export async function fetchCategories() {
+export async function fetchInitRegions() {
   return [];
 }
 
