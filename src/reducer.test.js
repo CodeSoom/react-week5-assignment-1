@@ -1,6 +1,9 @@
 import reducer from './reducer';
 
-import { setRegions } from './actions';
+import {
+  setRegions,
+  setSelectedRegion,
+} from './actions';
 
 import regions from '../fixtures/regions';
 
@@ -14,6 +17,20 @@ describe('reducer', () => {
       const state = reducer(previousState, setRegions({ regions }));
 
       expect(state.regions).toHaveLength(2);
+    });
+  });
+
+  describe('setSelectedRegion', () => {
+    it('set selected region for filtering restaurnat', () => {
+      const userSelectId = 1;
+
+      const previousState = {
+        selectedRegion: 0,
+      };
+
+      const state = reducer(previousState, setSelectedRegion(userSelectId));
+
+      expect(state.selectedRegion).toBe(userSelectId);
     });
   });
 });
