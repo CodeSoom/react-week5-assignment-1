@@ -98,12 +98,12 @@ describe('Action creators', () => {
     });
   });
 
-  it('updateCategories', () => {
+  it('updateCategories', async () => {
     // given
     const id = 1;
     // when
     const action = updateCategories(id);
-    action(dispatch, getState);
+    await action(dispatch, getState);
     // then
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'setCategories',
@@ -114,8 +114,7 @@ describe('Action creators', () => {
       payload: { id },
     });
     expect(dispatch).toHaveBeenNthCalledWith(3, {
-      type: 'setRestaurants',
-      payload: { restaurants: restaurantsFixture },
+      type: 'getRestaurants',
     });
   });
 
