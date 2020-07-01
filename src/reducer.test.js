@@ -15,13 +15,12 @@ describe('reducer', () => {
   it('액션이 없으면 initialState를 반환한다.', () => {
     const expectState = {
       regions: [],
+      selectedRegion: '',
+      categories: [],
+      selectedCategory: '',
+      restaurants: [],
     };
-    const state = reducer(
-      {
-        regions: [],
-      },
-      {},
-    );
+    const state = reducer(undefined, {});
 
     expect(state).toEqual(expectState);
   });
