@@ -21,6 +21,8 @@ import App from './App';
 
 import { regions } from '../__fixture__/data';
 
+import { selectRegion } from './action';
+
 jest.mock('react-redux');
 jest.mock('./services/api');
 
@@ -54,19 +56,16 @@ describe('<App />', () => {
         regions,
         newSelectRegion: '',
       }));
-      
-      const { getByRole, queryByRole } = render(<App />);
+
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      const { getByRole } = render(<App />);
 
       regions.forEach((region) => {
         fireEvent.click(getByRole('button', { name: region.name }));
-        expect(queryByRole('button', { name: `${region.name}(V)` })).not.toBeNull();
-
-        const unselectedRegions = regions.filter((item) => item !== region.name);
-        unselectedRegions.forEach((unselectedRegion) => {
-          expect(
-            queryByRole('button', { name: unselectedRegion.name }),
-          ).not.toBeNull();
-        });
+        expect(dispatch).toBeCalledWith(selectRegion(region.name));
       });
     });
   });
