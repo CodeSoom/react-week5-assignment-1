@@ -12,6 +12,15 @@ function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'selectCategory') {
+    const { categoryId } = action.payload;
+
+    return {
+      ...state,
+      categoryId,
+    };
+  }
+
   return state;
 }
 
