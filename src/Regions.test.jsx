@@ -31,16 +31,16 @@ describe('<Regions />', () => {
     });
   });
 
-  // context('with a selected region', () => {
-  //   it('run handleSelectRegion', () => {
-  //     const handleSelectRegion = jest.fn();
+  context('with a selected region', () => {
+    it('run handleSelectRegion', () => {
+      const handleSelectRegion = jest.fn();
 
-  //     const { getByRole } = render(<Regions regions={regions} newSelectRegion="서울" onSelectRegion={handleSelectRegion} />);
+      const { getByRole } = render(<Regions regions={regions} newSelectRegion="서울" onSelectRegion={handleSelectRegion} />);
 
-  //     regions.forEach((region) => {
-  //       fireEvent.click(getByRole('button', { name: region.name }));
-  //     });
-  //     expect(handleSelectRegion).toBeCalledTimes(regions.length);
-  //   });
-  // });
+      regions.forEach((region) => {
+        fireEvent.click(getByRole('button', { name: region.name }));
+      });
+      expect(handleSelectRegion).toBeCalledTimes(regions.length);
+    });
+  });
 });
