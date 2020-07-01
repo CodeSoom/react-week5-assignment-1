@@ -1,4 +1,6 @@
-import { setRegions, setCategories, checkRegion } from './actions';
+import {
+  setRegions, setCategories, checkRegion, checkCategory,
+} from './actions';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
@@ -31,6 +33,16 @@ describe('Action creators', () => {
     const action = checkRegion(id);
     // then
     expect(action.type).toBe('checkRegion');
+    expect(action.payload.id).toBe(id);
+  });
+
+  it('checkCategory', () => {
+    // given
+    const id = 1;
+    // when
+    const action = checkCategory(id);
+    // then
+    expect(action.type).toBe('checkCategory');
     expect(action.payload.id).toBe(id);
   });
 });

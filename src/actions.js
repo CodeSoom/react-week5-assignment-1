@@ -13,4 +13,8 @@ const checkRegion = (id) => ({
   payload: { id },
 });
 
-export { setRegions, setCategories, checkRegion };
+const checkCategory = () => {};
+
+export {
+  setRegions, setCategories, checkRegion, checkCategory,
+};
