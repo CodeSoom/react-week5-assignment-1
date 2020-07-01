@@ -1,5 +1,7 @@
 import reducer from './reducer';
-import { setRegions, setCategories, checkRegion } from './actions';
+import {
+  setRegions, setCategories, checkRegion, checkCategory,
+} from './actions';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
@@ -42,5 +44,15 @@ describe('reducer', () => {
     const state = reducer(previousState, action);
     // then
     expect(state.checked.region).toBe(id);
+  });
+
+  it('checkCategory', () => {
+    // given
+    const id = 1;
+    const action = checkCategory(id);
+    // when
+    const state = reducer(previousState, action);
+    // then
+    expect(state.checked.category).toBe(id);
   });
 });
