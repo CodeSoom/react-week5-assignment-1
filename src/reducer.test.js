@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setRegions,
   setSelectedRegion,
+  setSelectedCategoryId,
 } from './actions';
 
 import regions from '../fixtures/regions';
@@ -34,15 +35,15 @@ describe('reducer', () => {
     });
   });
 
-  describe('setSelectedCategory', () => {
-    it('set selected category for filtering restaurnat', () => {
+  describe('setSelectedCategoryId', () => {
+    it('set selected category id for filtering restaurnat', () => {
       const userSelectId = 1;
 
       const previousState = {
         selectedCategoryId: null,
       };
 
-      const state = reducer(previousState, setSelectedRegion(userSelectId));
+      const state = reducer(previousState, setSelectedCategoryId(userSelectId));
 
       expect(state.selectedCategoryId).toBe(userSelectId);
     });
