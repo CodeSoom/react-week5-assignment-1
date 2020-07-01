@@ -3,6 +3,9 @@ const setRegions = (regions) => ({
   payload: { regions },
 });
 
-const setCategories = () => {};
+const setCategories = (categories) => ({
+  type: 'setCategories',
+  payload: { categories },
+});
 
 export { setRegions, setCategories };
