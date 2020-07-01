@@ -1,5 +1,6 @@
 const initialState = {
   regions: [],
+  selectedRegion: 0,
 };
 
 export default function reducer(state = initialState, action) {
@@ -9,6 +10,15 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       regions,
+    };
+  }
+
+  if (action.type === 'setSelectedRegion') {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      selectedRegion: id,
     };
   }
 
