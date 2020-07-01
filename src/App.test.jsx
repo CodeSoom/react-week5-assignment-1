@@ -23,6 +23,8 @@ describe('App', () => {
       <App />
     ));
 
+    expect(dispatch).toBeCalledTimes(1);
+
     expect(getByText('서울')).not.toBeNull();
     expect(getByText('대전')).not.toBeNull();
     expect(getByText('대구')).not.toBeNull();
