@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import Region from './Region';
+
 test('Region', () => {
   const name = '부산';
 
