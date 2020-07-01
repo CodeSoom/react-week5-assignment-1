@@ -1,4 +1,4 @@
-import setRegions from './actions':
+import setRegions from './actions';
 import regionsFixture from './__fixtures__/regions';
 
 describe('Action creators', () => {
