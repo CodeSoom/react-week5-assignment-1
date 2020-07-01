@@ -26,11 +26,11 @@ describe('Action creators', () => {
 
   it('checkRegion', () => {
     // given
-    const checkedId = 1;
+    const id = 1;
     // when
-    const action = checkRegion(checkedId);
+    const action = checkRegion(id);
     // then
     expect(action.type).toBe('checkRegion');
-    expect(action.payload.checkedId).toBe(checkedId);
+    expect(action.payload.id).toBe(id);
   });
 });

@@ -8,6 +8,9 @@ const setCategories = (categories) => ({
   payload: { categories },
 });
 
-const checkRegion = () => {};
+const checkRegion = (id) => ({
+  type: 'checkRegion',
+  payload: { id },
+});
 
 export { setRegions, setCategories, checkRegion };
