@@ -11,9 +11,9 @@ export default function App() {
         <h1>Restaurants</h1>
       </header>
       <main>
-        <RegionsContainer/>
-        <CategoriesContainer/>
-        <RestaurantsContainer/>
+        <RegionsContainer />
+        <CategoriesContainer />
+        <RestaurantsContainer />
       </main>
     </div>
   );

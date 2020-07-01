@@ -1,30 +1,27 @@
-import React, { useEffect } from "react";
-import Categories from "../Components/Categories"
-import { useSelector, useDispatch } from "react-redux";
-import { loadRestaurantsCategories, updateSearchCatetory } from "../actions";
-import {fetchCategories} from "../services/api"
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Categories from '../Components/Categories';
+import { loadRestaurantsCategories, updateSearchCatetory } from '../actions';
 
+export default function CategoriesContainer() {
+  const dispatch = useDispatch();
+  const { categories, searchQuery } = useSelector((state) => ({
+    categories: state.categories,
+    searchQuery: state.searchQuery,
+  }));
 
-export default function CategoriesContainer(){
-    const dispatch = useDispatch()
-    const {categories, searchQuery} = useSelector(state => ({
-        categories:state.categories,
-        searchQuery:state.searchQuery,
-    }));
+  const handleClickCategory = (categoryId) => {
+    dispatch(updateSearchCatetory(categoryId));
+  };
 
-    const handleClickCategory = (categoryId) =>{
-        console.log("[handleClickCategorie]",categoryId)
-        dispatch(updateSearchCatetory(categoryId))
-    }
-
-    useEffect(()=>{
-        fetchCategories().then(response => dispatch(loadRestaurantsCategories(response)))
-    },[])
-    return (
-        <Categories 
-            categories={categories}
-            selectedCategoryId={searchQuery.categoryId}
-            handleClickCategory={handleClickCategory}
-        />
-    )
+  useEffect(() => {
+    dispatch(loadRestaurantsCategories());
+  }, []);
+  return (
+    <Categories
+      categories={categories}
+      selectedCategoryId={searchQuery.categoryId}
+      handleClickCategory={handleClickCategory}
+    />
+  );
 }

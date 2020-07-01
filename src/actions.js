@@ -1,41 +1,53 @@
-export const loadRegions =  (regions) => {
-    return {
-        type:'loadRegions',
-        payload:{
-            regions
-        }
-    }
+import {
+  fetchCategories,
+  fetchRestaurantRegions,
+  fetchRestaurantInfo,
+} from './services/api';
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRestaurantRegions();
+    dispatch({
+      type: 'loadRegions',
+      payload: {
+        regions,
+      },
+    });
+  };
 }
-export const loadRestaurantsCategories = (categories) => {
-    return {
-        type:'loadRestaurantsCategories',
-        payload:{
-            categories
-        }
-    }
-}
-export const loadRestaurantsInfo =  (restaurantsInfo) => {
-    return {
-        type:'loadRestaurantsInfo',
-        payload:{
-            restaurantsInfo
-        }
-    }
+export function loadRestaurantsCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+    dispatch({
+      type: 'loadRestaurantsCategories',
+      payload: {
+        categories,
+      },
+    });
+  };
 }
 
-export const updateSearchRegion = (regionId)=>{
-    return {
-        type:'updateSearchRegion',
-        payload:{
-            regionId
-        }
-    }
+export function loadRestaurantsInfo(searchQuery) {
+  return async (dispatch) => {
+    const restaurantsInfo = await fetchRestaurantInfo(searchQuery);
+    dispatch({
+      type: 'loadRestaurantsInfo',
+      payload: {
+        restaurantsInfo,
+      },
+    });
+  };
 }
-export const updateSearchCatetory = (categoryId)=>{
-    return {
-        type:'updateSearchCatetory',
-        payload:{
-            categoryId
-        }
-    }
-}
+
+export const updateSearchRegion = (regionId) => ({
+  type: 'updateSearchRegion',
+  payload: {
+    regionId,
+  },
+});
+export const updateSearchCatetory = (categoryId) => ({
+  type: 'updateSearchCatetory',
+  payload: {
+    categoryId,
+  },
+});
