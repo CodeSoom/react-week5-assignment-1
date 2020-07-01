@@ -2,11 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setRegions, setCategories, updateRegions, updateCategories,
+  updateRegions, updateCategories, getRegions, getCategories,
 } from './actions';
-
-import regionsFixture from './__fixtures__/regions';
-import categoriesFixture from './__fixtures__/categories';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -25,8 +22,8 @@ export default function App() {
   };
 
   useEffect(() => {
-    dispatch(setRegions(regionsFixture));
-    dispatch(setCategories(categoriesFixture));
+    dispatch(getRegions());
+    dispatch(getCategories());
   }, []);
 
   return (

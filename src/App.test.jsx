@@ -73,9 +73,6 @@ describe('<App />', () => {
     fireEvent.click(getButtonByName('서울'));
     fireEvent.click(getButtonByName('부산'));
     // then
-    expect(dispatch).toBeCalledWith({
-      type: 'setRegions',
-      payload: { regions: [{ id: 1, name: '서울' }, ...regionsFixture.slice(1)] },
-    });
+    expect(dispatch).toBeCalledTimes(4);
   });
 });
