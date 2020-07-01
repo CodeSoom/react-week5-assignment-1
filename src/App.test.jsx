@@ -27,8 +27,8 @@ jest.mock('./services/api');
 describe('<App />', () => {
   context('render App', () => {
     it('shows regions', () => {
-      useSelector.mockImplementation((state) => ({
-        regions: state.regions,
+      useSelector.mockImplementation((selector) => selector({
+        regions,
       }));
 
       const dispatch = jest.fn();
