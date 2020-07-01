@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import Regions from './Regions';
+
 import { selectRegion } from './action';
 
 export default function RegionsContainer() {
@@ -17,16 +19,10 @@ export default function RegionsContainer() {
   }
 
   return (
-    <div>
-      {regions.map((region) => (
-        <button
-          key={region.id}
-          onClick={() => handleSelectRegion(region.name)}
-          type="button"
-        >
-          {region.name === newSelectRegion ? `${region.name}(V)` : region.name}
-        </button>
-      ))}
-    </div>
+    <Regions
+      regions={regions}
+      newSelectRegion={newSelectRegion}
+      onSelectRegions={handleSelectRegion}
+    />
   );
 }
