@@ -33,4 +33,18 @@ describe('reducer', () => {
       expect(state.selectedRegion).toBe(userSelectId);
     });
   });
+
+  describe('setSelectedCategory', () => {
+    it('set selected category for filtering restaurnat', () => {
+      const userSelectId = 1;
+
+      const previousState = {
+        selectedCategoryId: null,
+      };
+
+      const state = reducer(previousState, setSelectedRegion(userSelectId));
+
+      expect(state.selectedCategoryId).toBe(userSelectId);
+    });
+  });
 });
