@@ -76,17 +76,17 @@ describe('Action creators', () => {
     const action = updateRegions(id);
     action(dispatch, getState);
     // then
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'setRegions',
       payload: { regions: [{ id, name: '서울(v)' }, ...regionsFixture.slice(1)] },
     });
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
       type: 'checkRegion',
       payload: { id },
     });
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(3, {
       type: 'setRestaurants',
-      paylaod: { restaurants: [] },
+      payload: { restaurants: [] },
     });
   });
 
@@ -97,17 +97,17 @@ describe('Action creators', () => {
     const action = updateCategories(id);
     action(dispatch, getState);
     // then
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'setCategories',
       payload: { categories: [{ id, name: '한식(v)' }, ...categoriesFixture.slice(1)] },
     });
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
       type: 'checkCategory',
       payload: { id },
     });
-    expect(dispatch).toBeCalledWith({
+    expect(dispatch).toHaveBeenNthCalledWith(3, {
       type: 'setRestaurants',
-      paylaod: { restaurants: restaurantsFixture },
+      payload: { restaurants: restaurantsFixture },
     });
   });
 });

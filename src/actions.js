@@ -1,4 +1,5 @@
 import check from './utils';
+import restaurantsFixture from './__fixtures__/restaurants';
 
 const setRegions = (regions) => ({
   type: 'setRegions',
@@ -30,6 +31,7 @@ const updateRegions = (id) => (dispatch, getState) => {
   const checkedRegions = regions.map((region) => check(region, id));
   dispatch(setRegions(checkedRegions));
   dispatch(checkRegion(id));
+  dispatch(setRestaurants([]));
 };
 
 const updateCategories = (id) => (dispatch, getState) => {
@@ -37,6 +39,7 @@ const updateCategories = (id) => (dispatch, getState) => {
   const checkedCategories = categories.map((category) => check(category, id));
   dispatch(setCategories(checkedCategories));
   dispatch(checkCategory(id));
+  dispatch(setRestaurants(restaurantsFixture));
 };
 
 export {
