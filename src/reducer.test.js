@@ -20,7 +20,7 @@ describe('reducer', () => {
     it('gets new categories', () => {
       const state = reducer(undefined, setCategories(testCategories));
 
-      expect(state.categories).toHaveLength(2);
+      expect(state.categories).toEqual(testCategories);
     });
   });
 });
