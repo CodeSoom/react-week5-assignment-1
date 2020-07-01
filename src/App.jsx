@@ -1,37 +1,19 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import {
-  updateRegions, updateCategories, getRegions, getCategories, getRestaurants,
-} from './actions';
-
-import ButtonList from './ButtonList';
 import TextList from './TextList';
 import RegionButtonListContainer from './RegionButtonListContainer';
+import CategoryButtonListContainer from './CategoryButtonListContainer';
 
 export default function App() {
-  const dispatch = useDispatch();
-  const { categories, restaurants } = useSelector((state) => ({
-    categories: state.categories,
+  const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
   }));
-
-  const handleClickCategory = (id) => {
-    dispatch(updateCategories(id));
-    dispatch(getRestaurants());
-  };
-
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
 
   return (
     <>
       <RegionButtonListContainer />
-      <ButtonList
-        elements={categories}
-        onClick={handleClickCategory}
-      />
+      <CategoryButtonListContainer />
       <TextList
         elements={restaurants}
       />
