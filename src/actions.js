@@ -10,6 +10,8 @@ const setCategories = (categories) => ({
   payload: { categories },
 });
 
+const setRestaurants = () => {};
+
 const checkRegion = (id) => ({
   type: 'checkRegion',
   payload: { id },
@@ -35,6 +37,6 @@ const updateCategories = (id) => (dispatch, getState) => {
 };
 
 export {
-  setRegions, setCategories, checkRegion, checkCategory,
+  setRegions, setCategories, setRestaurants, checkRegion, checkCategory,
   updateRegions, updateCategories,
 };

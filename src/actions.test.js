@@ -1,10 +1,11 @@
 import {
-  setRegions, setCategories, checkRegion, checkCategory,
+  setRegions, setCategories, setRestaurants, checkRegion, checkCategory,
   updateRegions, updateCategories,
 } from './actions';
 
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
+import restaurantsFixture from './__fixtures__/restaurants';
 
 describe('Action creators', () => {
   const dispatch = jest.fn();
@@ -35,6 +36,16 @@ describe('Action creators', () => {
     // then
     expect(action.type).toBe('setCategories');
     expect(action.payload.categories).toBe(categories);
+  });
+
+  it('setRestaurants', () => {
+    // given
+    const restaurants = restaurantsFixture;
+    // when
+    const action = setRestaurants(restaurants);
+    // then
+    expect(action.type).toBe('setRestaurants');
+    expect(action.payload.restaurants).toBe(restaurants);
   });
 
   it('checkRegion', () => {
