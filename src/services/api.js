@@ -15,6 +15,7 @@ export const fetchRestaurantInfo = async ({regionName, categoryId})=>{
 
 }
 export const fetchCategories = async () =>{
+    console.log("vs")
     const API_RESTAURANTS_CATERGORY_PATH = "https://eatgo-customer-api.ahastudio.com/categories";
     return fetch(API_RESTAURANTS_CATERGORY_PATH)
             .then(response=>response.json())
