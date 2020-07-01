@@ -9,6 +9,7 @@ import App from './App';
 import { regions } from '../fixtures/restaurants';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   it('레스토랑 지역 목록을 보여준다.', () => {

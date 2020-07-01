@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
-import { fetchRegions } from './service/api';
+import { fetchRegions } from './services/api';
 
 import {
   setRegions,
