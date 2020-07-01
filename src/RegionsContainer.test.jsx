@@ -13,16 +13,32 @@ import { selectRegion } from './action';
 jest.mock('react-redux');
 
 describe('<RegionsContainer />', () => {
-  context('render RegionsContainer', () => {
-    it('shows regions', () => {
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-      }));
+  describe('render RegionsContainer', () => {
+    context('without newSelectRegion', () => {
+      it('shows regions', () => {
+        useSelector.mockImplementation((selector) => selector({
+          regions,
+          newSelectRegion: '',
+        }));
 
-      const { queryByRole } = render(<RegionsContainer />);
+        const { queryByRole } = render(<RegionsContainer />);
 
-      regions.forEach((region) => {
-        expect(queryByRole('button', { name: region.name })).not.toBeNull();
+        regions.forEach((region) => {
+          expect(queryByRole('button', { name: region.name })).not.toBeNull();
+        });
+      });
+    });
+
+    context('with newSelectRegion', () => {
+      it('shows a mark for a selected region', () => {
+        useSelector.mockImplementation((selector) => selector({
+          regions,
+          newSelectRegion: '서울',
+        }));
+
+        const { queryByRole } = render(<RegionsContainer />);
+
+        expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
       });
     });
   });
