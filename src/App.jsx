@@ -10,9 +10,10 @@ import categoriesFixture from './__fixtures__/categories';
 
 export default function App() {
   const dispatch = useDispatch();
-  const { regions, categories } = useSelector((state) => ({
+  const { regions, categories, restaurants } = useSelector((state) => ({
     regions: state.regions,
     categories: state.categories,
+    restaurants: state.restaurants,
   }));
 
   const handleClickRegion = (id) => {
@@ -46,12 +47,18 @@ export default function App() {
         {categories.map(({ id, name }) => (
           <li key={id}>
             <button
-              key={id}
               type="button"
               onClick={() => handleClickCategory(id)}
             >
               {name}
             </button>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {restaurants.map(({ id, name }) => (
+          <li key={id}>
+            {name}
           </li>
         ))}
       </ul>
