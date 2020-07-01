@@ -15,4 +15,15 @@ describe('reducer', () => {
       expect(state.tasks).toBe(initialState.category);
     });
   });
+
+  describe('chooseRegion', () => {
+    context('when click region button', () => {
+      it('change region name', () => {
+        const regionName = '서울';
+        const state = reducer(initialState, chooseRegion(regionName));
+
+        expect(state.regionName).toBe(regionName);
+      });
+    });
+  });
 });
