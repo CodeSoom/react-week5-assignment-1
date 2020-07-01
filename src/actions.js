@@ -24,3 +24,12 @@ export function setSelectedRegion(id) {
     },
   };
 }
+
+export function setSelectedCategoryId(id) {
+  return {
+    type: 'setSelectedCategoryId',
+    payload: {
+      id,
+    },
+  };
+}
