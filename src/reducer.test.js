@@ -11,6 +11,11 @@ const initialState = {
 };
 
 describe('reducer', () => {
+  it('state가 없으면 초기 상태 사용', () => {
+    const state = reducer(undefined);
+    expect(state).toEqual(initialState);
+  });
+
   it('set restaurant region into regions', () => {
     const regions = [
       { id: 1, name: '서울' },
