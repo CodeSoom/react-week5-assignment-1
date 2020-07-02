@@ -16,6 +16,12 @@ export default function App() {
   return (
     <div>
       <CategoriesContainer />
+      <div>
+        <ul>
+          <li>서울</li>
+          <li>대전</li>
+        </ul>
+      </div>
     </div>
   );
 }
