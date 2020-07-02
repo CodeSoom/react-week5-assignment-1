@@ -5,7 +5,7 @@ import reducer from './reducer';
 import { setInitRegions, selectRegion } from './action';
 
 describe('reducer', () => {
-  context('setInitRegions', () => {
+  describe('setInitRegions', () => {
     it('set regions', () => {
       const prevState = {
         regions: [],
@@ -17,7 +17,7 @@ describe('reducer', () => {
     });
   });
 
-  context('selectRegion', () => {
+  describe('selectRegion', () => {
     it('shows a mark for a selected region', () => {
       const prevState = {
         selectedRegion: '',
