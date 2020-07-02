@@ -25,7 +25,7 @@ export default function RegionContainer({ region }) {
   const dispatch = useDispatch();
 
   function clickHandler() {
-    dispatch(setSelectedRegion(region.id));
+    dispatch(setSelectedRegion(region.name));
   }
 
   const regionName = isSelcted();

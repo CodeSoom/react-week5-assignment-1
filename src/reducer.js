@@ -16,11 +16,11 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'setSelectedRegion') {
-    const { id } = action.payload;
+    const { name } = action.payload;
 
     return {
       ...state,
-      selectedRegion: id,
+      selectedRegion: name,
     };
   }
 

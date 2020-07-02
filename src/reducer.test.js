@@ -25,15 +25,15 @@ describe('reducer', () => {
 
   describe('setSelectedRegion', () => {
     it('set selected region for filtering restaurnat', () => {
-      const userSelectId = 1;
+      const userSelectRegion = '서울';
 
       const previousState = {
         selectedRegion: null,
       };
 
-      const state = reducer(previousState, setSelectedRegion(userSelectId));
+      const state = reducer(previousState, setSelectedRegion(userSelectRegion));
 
-      expect(state.selectedRegion).toBe(userSelectId);
+      expect(state.selectedRegion).toBe(userSelectRegion);
     });
   });
 
