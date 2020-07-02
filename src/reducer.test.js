@@ -16,4 +16,18 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('changeCategory', () => {
+    context('when with name', () => {
+      it('returns state with selected category', () => {
+        const initialState = {
+          category: '',
+        };
+
+        const state = reducer(initialState, changeRegion({ name: '한식' }));
+
+        expect(state.region).toBe('한식');
+      });
+    });
+  });
 });
