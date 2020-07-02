@@ -1,11 +1,14 @@
 import reducer from './reducer';
 
-import { setCategories, selectCategory } from './actions';
+import {
+  setCategories, selectCategory, setRegions,
+} from './actions';
 
-import { categories } from '../fixture/test-data';
+import { regions, categories } from '../fixture/test-data';
 
 describe('reducer', () => {
   const previousState = {
+    regions: [],
     categories: [],
   };
 
@@ -30,6 +33,14 @@ describe('reducer', () => {
       const state = reducer(previousState, selectCategory(1));
 
       expect(state.categoryId).toBe(1);
+    });
+  });
+
+  context('when action type is setRegions', () => {
+    it('gets new regions', () => {
+      const state = reducer(previousState, setRegions(regions));
+
+      expect(state.regions).toEqual(regions);
     });
   });
 });
