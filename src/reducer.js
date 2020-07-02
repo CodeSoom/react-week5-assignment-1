@@ -14,7 +14,11 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'selectAddress') {
-    const { selectedAddress } = action.payload;
+    const { selectedAddressId } = action.payload;
+
+    const selectedAddress = state.addressList
+      .filter((address) => address.id === selectedAddressId)[0].name;
+
     return {
       ...state,
       selectedAddress,

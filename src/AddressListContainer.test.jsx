@@ -40,7 +40,7 @@ describe('AddressListContainer', () => {
 
       fireEvent.click(getByText('서울'));
 
-      expect(dispatch).toBeCalledWith(selectAddress('서울'));
+      expect(dispatch).toBeCalledWith(selectAddress(1));
     });
   });
 });

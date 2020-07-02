@@ -16,10 +16,10 @@ function loadAddressList() {
   };
 }
 
-function selectAddress(selectedAddress) {
+function selectAddress(selectedAddressId) {
   return {
     type: 'selectAddress',
-    payload: { selectedAddress },
+    payload: { selectedAddressId },
   };
 }
 

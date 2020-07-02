@@ -15,8 +15,8 @@ export default function AddressListContainer() {
   }));
 
   function handleClick(event) {
-    const { target: { textContent } } = event;
-    dispatch(selectAddress(textContent));
+    const { target: { id } } = event;
+    dispatch(selectAddress(Number(id)));
   }
 
   return (

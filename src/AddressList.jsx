@@ -5,9 +5,9 @@ export default function AddressList({ addressList, onClick, selectedAddress }) {
     <ul>
       {addressList.map((address) => (
         <li key={address.id}>
-          <button type="button" onClick={onClick}>
+          <button type="button" onClick={onClick} id={address.id}>
             {address.name}
-            {selectedAddress === address.name ? '(V)' : ''}
+            {address.name === selectedAddress ? '(V)' : ''}
           </button>
         </li>
       ))}
