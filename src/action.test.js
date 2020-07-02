@@ -8,6 +8,8 @@ import {
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
+import { fetchRestaurants } from './services/api';
+
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
@@ -19,6 +21,22 @@ function onFetch(data) {
   beforeEach(() => {
     fetch.mockClear();
   });
+}
+
+function setRestaurants(initRestaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants: initRestaurants,
+    },
+  };
+}
+
+function loadRestaurants(regionName, categoryId) {
+  return async (dispatch) => {
+    const initRestaurants = await fetchRestaurants(regionName, categoryId);
+    dispatch(setRestaurants(initRestaurants));
+  };
 }
 
 describe('acton', () => {
