@@ -2,6 +2,10 @@ export function fetchRegions() {
   return [];
 }
 
-export function xxx() {
-  // TODO: implement or delete
+export function fetchCategories() {
+  return [];
+}
+
+export function fetchRestaurants() {
+  return [];
 }
