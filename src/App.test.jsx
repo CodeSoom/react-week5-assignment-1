@@ -27,7 +27,7 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('<App />', () => {
-  context('render App', () => {
+  describe('render App', () => {
     it('shows regions', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
