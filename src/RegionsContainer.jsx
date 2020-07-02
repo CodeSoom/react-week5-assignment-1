@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  updateRegions, getRegions, getRestaurants,
+  updateRegions, getRestaurants,
 } from './actions';
 
 import ButtonList from './ButtonList';
 
-export default function RegionButtonListContainer() {
+export default function RegionsContainer() {
   const dispatch = useDispatch();
   const { regions } = useSelector((state) => ({
     regions: state.regions,
@@ -17,10 +17,6 @@ export default function RegionButtonListContainer() {
     dispatch(updateRegions(id));
     dispatch(getRestaurants());
   };
-
-  useEffect(() => {
-    dispatch(getRegions());
-  }, []);
 
   return (
     <ButtonList

@@ -4,6 +4,10 @@ import {
 } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import {
+  updateRegions, getRegions, getRestaurants, getCategories, updateCategories,
+} from './actions';
+
 import regionsFixture from './__fixtures__/regions';
 import categoriesFixture from './__fixtures__/categories';
 import restaurantsFixture from './__fixtures__/restaurants';
@@ -11,6 +15,7 @@ import restaurantsFixture from './__fixtures__/restaurants';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./actions.js');
 
 function renderApp() {
   render(<App />);
@@ -33,20 +38,42 @@ describe('<App />', () => {
     dispatch.mockClear();
   });
 
+  it('fetch regions', () => {
+    // given
+    const getRegionsAction = jest.fn();
+    getRegions.mockImplementation(() => getRegionsAction);
+    // when
+    renderApp();
+    // then
+    expect(dispatch).toBeCalledWith(getRegionsAction);
+  });
+
+  it('fetch categories', () => {
+    // given
+    const getCategoriesAction = jest.fn();
+    getCategories.mockImplementation(() => getCategoriesAction);
+    // when
+    renderApp();
+    // then
+    expect(dispatch).toBeCalledWith(getCategoriesAction);
+  });
+
   it('renders region buttons', () => {
     // when
     const { getButtonByName } = renderApp();
     // then
-    expect(getButtonByName('서울')).toBeInTheDocument();
-    expect(getButtonByName('대전')).toBeInTheDocument();
+    regionsFixture.forEach(({ name }) => {
+      expect(getButtonByName(name)).toBeInTheDocument();
+    });
   });
 
   it('renders category buttons', () => {
     // when
     const { getButtonByName } = renderApp();
     // then
-    expect(getButtonByName('한식')).toBeInTheDocument();
-    expect(getButtonByName('중식')).toBeInTheDocument();
+    categoriesFixture.forEach(({ name }) => {
+      expect(getButtonByName(name)).toBeInTheDocument();
+    });
   });
 
   it('renders restaurant list', () => {
@@ -58,21 +85,40 @@ describe('<App />', () => {
     });
   });
 
-  it('check when button clicked', () => {
-    // when
-    const { getButtonByName } = renderApp();
-    fireEvent.click(getButtonByName('서울'));
-    fireEvent.click(getButtonByName('한식'));
-    // then
-    expect(dispatch).toBeCalledTimes(6);
-  });
+  describe('click button', () => {
+    const getRestaurantsAction = jest.fn();
+    getRestaurants.mockImplementation(() => getRestaurantsAction);
 
-  it('uncheck when another button clicked', () => {
-    // when
-    const { getButtonByName } = renderApp();
-    fireEvent.click(getButtonByName('서울'));
-    fireEvent.click(getButtonByName('부산'));
-    // then
-    expect(dispatch).toBeCalledTimes(6);
+    beforeEach(() => {
+      getRestaurantsAction.mockClear();
+    });
+
+    it('click region button', () => {
+      // given
+      const updateRegionsAction = jest.fn();
+      updateRegions.mockImplementation(() => updateRegionsAction);
+      const region = regionsFixture[0];
+      // when
+      const { getButtonByName } = renderApp();
+      fireEvent.click(getButtonByName(region.name));
+      // then
+      expect(dispatch).toBeCalledWith(updateRegionsAction);
+      expect(dispatch).toBeCalledWith(getRestaurantsAction);
+      expect(updateRegions).toBeCalledWith(region.id);
+    });
+
+    it('click category button', () => {
+      // given
+      const updateCategoriesAction = jest.fn();
+      updateCategories.mockImplementation(() => updateCategoriesAction);
+      const category = categoriesFixture[0];
+      // when
+      const { getButtonByName } = renderApp();
+      fireEvent.click(getButtonByName(category.name));
+      // then
+      expect(dispatch).toBeCalledWith(updateCategoriesAction);
+      expect(dispatch).toBeCalledWith(getRestaurantsAction);
+      expect(updateCategories).toBeCalledWith(category.id);
+    });
   });
 });

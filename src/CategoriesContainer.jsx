@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  updateCategories, getCategories, getRestaurants,
-} from './actions';
+import { updateCategories, getRestaurants } from './actions';
 
 import ButtonList from './ButtonList';
 
-export default function CategoryButtonListContainer() {
+export default function CategoriesContainer() {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => ({
     categories: state.categories,
@@ -18,16 +16,10 @@ export default function CategoryButtonListContainer() {
     dispatch(getRestaurants());
   };
 
-  useEffect(() => {
-    dispatch(getCategories());
-  }, []);
-
   return (
-    <>
-      <ButtonList
-        elements={categories}
-        onClick={handleClickCategory}
-      />
-    </>
+    <ButtonList
+      elements={categories}
+      onClick={handleClickCategory}
+    />
   );
 }

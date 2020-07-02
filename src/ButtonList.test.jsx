@@ -3,32 +3,34 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import ButtonList from './ButtonList';
 
-test('renders button list', () => {
-  // given
-  const elements = [1, 2, 3, 4, 5].map((i) => ({ id: i, name: `Button ${i}` }));
-  // when
-  render(
-    <ButtonList
-      elements={elements}
-      onClick={jest.fn()}
-    />,
-  );
-  // then
-  expect(screen.queryAllByRole('button')).toHaveLength(5);
-});
+const handleClick = jest.fn();
 
-test('click button', () => {
-  // given
+function renderButtonList() {
   const elements = [1, 2, 3, 4, 5].map((i) => ({ id: i, name: `Button ${i}` }));
-  const handleClick = jest.fn();
-  // when
   render(
     <ButtonList
       elements={elements}
       onClick={handleClick}
     />,
   );
-  const button = screen.getByText('Button 1');
+  return {
+    buttons: screen.queryAllByRole('button'),
+  };
+}
+
+test('renders button list', () => {
+  // when
+  const { buttons } = renderButtonList();
+  // then
+  expect(buttons).toHaveLength(5);
+});
+
+test('click button', () => {
+  // when
+  handleClick.mockClear();
+  const { buttons } = renderButtonList();
+  // then
+  const button = buttons[0];
   fireEvent.click(button);
   // then
   expect(handleClick).toBeCalledWith(1);

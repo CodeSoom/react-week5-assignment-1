@@ -100,23 +100,6 @@ describe('Action creators', () => {
     });
   });
 
-  it('updateCategories', async () => {
-    // given
-    const id = 1;
-    // when
-    const action = updateCategories(id);
-    await action(dispatch, getState);
-    // then
-    expect(dispatch).toHaveBeenNthCalledWith(1, {
-      type: 'setCategories',
-      payload: { categories: [{ id, name: `한식${CHECK_SYMBOL}` }, ...categoriesFixture.slice(1)] },
-    });
-    expect(dispatch).toHaveBeenNthCalledWith(2, {
-      type: 'checkCategory',
-      payload: { id },
-    });
-  });
-
   it('getRegions', async () => {
     // given
     fetchRegions.mockClear();
@@ -153,7 +136,6 @@ describe('Action creators', () => {
         // given
         fetchRestaurants.mockClear();
         fetchRestaurants.mockImplementation(async () => restaurantsFixture);
-        fetchRestaurants.mockClear();
         const getStateWithRegionCategory = () => (state);
         // when
         const action = getRestaurants();
@@ -184,6 +166,23 @@ describe('Action creators', () => {
         // then
         expect(fetchRestaurants).not.toBeCalled();
       });
+    });
+  });
+
+  it('updateCategories', async () => {
+    // given
+    const id = 1;
+    // when
+    const action = updateCategories(id);
+    await action(dispatch, getState);
+    // then
+    expect(dispatch).toHaveBeenNthCalledWith(1, {
+      type: 'setCategories',
+      payload: { categories: [{ id, name: `한식${CHECK_SYMBOL}` }, ...categoriesFixture.slice(1)] },
+    });
+    expect(dispatch).toHaveBeenNthCalledWith(2, {
+      type: 'checkCategory',
+      payload: { id },
     });
   });
 });
