@@ -22,14 +22,12 @@ describe('Categories', () => {
       />,
     );
 
-    expect(getByText('한식')).not.toBeNull();
-    expect(getByText('중식')).not.toBeNull();
-    expect(getByText('일식')).not.toBeNull();
-    expect(getByText('양식')).not.toBeNull();
-    expect(getByText('분식')).not.toBeNull();
+    categories.forEach((category) => {
+      expect(getByText(category.name)).not.toBeNull();
+    });
   });
 
-  it('버튼을 클릭하면 선택된다.', () => {
+  it('버튼을 클릭하면 handleClick이 호출된다.', () => {
     const { getByText } = render(
       <Categories
         categories={categories}
