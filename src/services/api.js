@@ -1,4 +1,4 @@
-export const fetchRestaurantRegions = async () => {
+export const fetchRegions = async () => {
   const API_REGION_PATH = 'https://eatgo-customer-api.ahastudio.com/regions';
   return fetch(API_REGION_PATH)
     .then((response) => response.json())

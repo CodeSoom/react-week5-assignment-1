@@ -12,3 +12,16 @@ export function loadCategories() {
     dispatch(setCategories(response));
   };
 }
+
+export const setRegions = (regions) => ({
+  type: 'setRegions',
+  payload: {
+    regions,
+  },
+});
+export function loadRegions() {
+  return async (dispatch) => {
+    const response = await services.fetchRegions();
+    dispatch(setRegions(response));
+  };
+}
