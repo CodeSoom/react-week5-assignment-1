@@ -1,6 +1,8 @@
 const inistialState = {
   regions: [],
   region: '',
+  categories: [],
+  category: '',
 };
 
 export default function reducer(state = inistialState, action) {
