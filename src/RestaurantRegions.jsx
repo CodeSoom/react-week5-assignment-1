@@ -5,7 +5,7 @@ export default function RestaurantRegions({ regions, onClick }) {
     <ul>
       {regions.map((region) => (
         <li key={region.id}>
-          <button type="button" onClick={onClick}>{region.name}</button>
+          <button type="button" onClick={onClick} data-name={region.name}>{region.name}</button>
         </li>
       ))}
     </ul>

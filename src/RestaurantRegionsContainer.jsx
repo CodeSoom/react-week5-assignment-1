@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantRegions from './RestaurantRegions';
 
+import { changeRegion } from './actions';
+
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
 
@@ -11,9 +13,7 @@ export default function RestaurantRegionsContainer() {
   }));
 
   function handleClick(event) {
-    // TODO dispatch
-    console.log(event.target);
-    // dispatch(changeRegion());
+    dispatch(changeRegion({ name: event.target.dataset.name }));
   }
 
   return (
