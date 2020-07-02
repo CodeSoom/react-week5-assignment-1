@@ -12,4 +12,12 @@ describe('reducer', () => {
       expect(state.addressList).not.toHaveLength(0);
     });
   });
+
+  describe('setAddressList', () => {
+    it('레스토랑 지역 정보가 등록된다.', () => {
+      const state = reducer(initialState, setAddressList());
+
+      expect(state.addressList).not.toHaveLength(0);
+    });
+  });
 });
