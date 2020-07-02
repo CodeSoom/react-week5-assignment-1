@@ -3,7 +3,7 @@ const initialState = {
   categories: [],
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action = {}) {
   const reducers = {
     setRegions: ({ regions }) => ({
       ...state,
