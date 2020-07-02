@@ -21,7 +21,7 @@ import App from './App';
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { selectRegion, selectCategory } from './action';
+import { selectRegion, selectCategory, loadCategories } from './action';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -51,7 +51,7 @@ describe('<App />', () => {
         expect(queryByRole('button', { name: region.name })).not.toBeNull();
       });
 
-      expect(dispatch).toBeCalledTimes(1);
+      expect(dispatch).toBeCalledTimes(2);
     });
     it('shows categories', () => {
       const { queryByRole } = render(<App />);
@@ -60,7 +60,8 @@ describe('<App />', () => {
         expect(queryByRole('button', { name: category.name })).not.toBeNull();
       });
 
-      expect(dispatch).toBeCalledTimes(1);
+      expect(dispatch).toBeCalledTimes(2);
+
     });
   });
 
@@ -93,7 +94,7 @@ describe('<App />', () => {
       fireEvent.click(getByRole('button', { name: '서울' }));
       fireEvent.click(getByRole('button', { name: '한식' }));
 
-      expect(dispatch).toBeCalledTimes(4);
+      expect(dispatch).toBeCalledTimes(5);
 
       restaurants.forEach((restaurant) => {
         expect(queryByText(restaurant.name)).not.toBeNull();
