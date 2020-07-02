@@ -16,6 +16,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => (selector({
     regions: [],
+    categories: [],
   })));
 
   const { queryByText } = render((
@@ -23,6 +24,7 @@ test('App', () => {
   ));
 
   expect(queryByText('서울')).toBeNull();
+  expect(queryByText('한식')).toBeNull();
 
-  expect(dispatch).toBeCalledTimes(1);
+  expect(dispatch).toBeCalledTimes(2);
 });
