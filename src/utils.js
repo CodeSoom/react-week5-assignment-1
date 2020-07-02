@@ -1,11 +1,13 @@
 const CHECK_SYMBOL = '(V)';
 
-const check = ({ id, name }, checkedId) => {
-  const element = { id, name: name.replace(CHECK_SYMBOL, '') };
-  if (element.id === checkedId) {
-    element.name += CHECK_SYMBOL;
+const check = (obj, id) => {
+  if (obj.id !== id) {
+    return obj;
   }
-  return element;
+  return {
+    ...obj,
+    name: obj.name.replace(CHECK_SYMBOL, '') + CHECK_SYMBOL,
+  };
 };
 
 export { CHECK_SYMBOL, check };
