@@ -1,6 +1,6 @@
 import { fetchInitRegions, fetchInitCategories } from './api';
 
-import { regions, categories } from '../../__fixture__/data';
+import { regions, categories, restaurants } from '../../__fixture__/data';
 
 function onFetch(data) {
   global.fetch = jest.fn(() => Promise.resolve({
@@ -10,6 +10,13 @@ function onFetch(data) {
   beforeEach(() => {
     fetch.mockClear();
   });
+}
+
+async function fetchRestaurants(regionName, categoryId) {
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
 }
 
 describe('api', () => {
@@ -37,7 +44,7 @@ describe('api', () => {
     it('fetch Restaurants', async () => {
       onFetch(restaurants);
 
-      const rate = await fetchRestaurants();
+      const rate = await fetchRestaurants('서울', 1);
 
       expect(rate).toEqual(restaurants);
       expect(fetch).toHaveBeenCalledTimes(1);
