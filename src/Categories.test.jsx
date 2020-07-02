@@ -6,12 +6,10 @@ import Categories from './Categories';
 
 import { categories } from '../fixture/test-data';
 
-test('Categories', () => {
-  const categoryId = 0;
-
+describe('Categories', () => {
   const handleClick = jest.fn();
 
-  const { getByText } = render((
+  const renderCategories = (categoryId) => render((
     <Categories
       categories={categories}
       categoryId={categoryId}
@@ -19,13 +17,37 @@ test('Categories', () => {
     />
   ));
 
-  categories.forEach((cateogory) => {
-    expect(getByText(cateogory.name)).not.toBeNull();
+  it('renders categories buttons', () => {
+    const { getByText } = renderCategories();
+
+    categories.forEach((cateogory) => {
+      expect(getByText(RegExp(cateogory.name))).not.toBeNull();
+    });
   });
 
-  fireEvent.click(getByText(categories[0].name));
+  context('when button is clicked', () => {
+    it('handleClick is called', () => {
+      const { getByText } = renderCategories();
 
-  expect(handleClick).toBeCalled();
+      fireEvent.click(getByText(categories[0].name));
 
-  expect(getByText(`${categories[0].name}(V)`));
+      expect(handleClick).toBeCalled();
+    });
+  });
+
+  context('with selected category id', () => {
+    it('render V sign on the clicked button', () => {
+      const { getByText } = renderCategories(1);
+
+      expect(getByText(/V/)).not.toBeNull();
+    });
+  });
+
+  context('without selected category id', () => {
+    it('does not render V sign on all buttons', () => {
+      const { queryByText } = renderCategories(undefined);
+
+      expect(queryByText(/V/)).toBeNull();
+    });
+  });
 });
