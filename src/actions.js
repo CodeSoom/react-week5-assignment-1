@@ -18,6 +18,15 @@ export function loadRegions() {
   };
 }
 
+export function selectRegion(regionName) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      regionName,
+    },
+  };
+}
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',
