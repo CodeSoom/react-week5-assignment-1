@@ -1,7 +1,7 @@
-export async function fetchCategories() {
+export async function fetchRegions() {
   return [];
 }
 
-export async function xxx() {
+export async function fetchCategories() {
   return [];
 }
