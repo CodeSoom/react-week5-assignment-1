@@ -12,16 +12,42 @@ import { selectRegion } from './action';
 
 jest.mock('react-redux');
 
+const initState = {
+  regions,
+  selectedRegion: '',
+};
+
+function mockUseSelector(state = initState) {
+  useSelector.mockImplementation((selector) => selector({
+    regions: state.regions,
+    selectedRegion: state.selectedRegion,
+    categories: state.categories,
+    selectedCategory: state.selectedCategory,
+    restaurants: state.restaurants,
+  }));
+}
+
+const dispatch = jest.fn();
+
+function renderRegionsContainer() {
+  return render(<RegionsContainer />);
+}
+
 describe('<RegionsContainer />', () => {
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
+  afterEach(() => {
+    dispatch.mockClear();
+  });
+
   describe('render RegionsContainer', () => {
     context('without selectedRegion', () => {
       it('shows regions', () => {
-        useSelector.mockImplementation((selector) => selector({
-          regions,
-          selectedRegion: '',
-        }));
+        mockUseSelector();
 
-        const { queryByRole } = render(<RegionsContainer />);
+        const { queryByRole } = renderRegionsContainer();
 
         regions.forEach((region) => {
           expect(queryByRole('button', { name: region.name })).not.toBeNull();
@@ -31,12 +57,12 @@ describe('<RegionsContainer />', () => {
 
     context('with selectedRegion', () => {
       it('shows a region with a selection mark', () => {
-        useSelector.mockImplementation((selector) => selector({
-          regions,
+        mockUseSelector({
+          ...initState,
           selectedRegion: '서울',
-        }));
+        });
 
-        const { queryByRole } = render(<RegionsContainer />);
+        const { queryByRole } = renderRegionsContainer();
 
         expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
       });
@@ -45,16 +71,9 @@ describe('<RegionsContainer />', () => {
 
   context('when the user selects region', () => {
     it('run selectRegion action', () => {
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-        selectedRegion: '',
-      }));
+      mockUseSelector();
 
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
-      const { getByRole } = render(<RegionsContainer />);
+      const { getByRole } = renderRegionsContainer();
 
       regions.forEach((region) => {
         fireEvent.click(getByRole('button', { name: region.name }));
