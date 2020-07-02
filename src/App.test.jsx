@@ -21,7 +21,7 @@ import App from './App';
 
 import { regions, categories } from '../__fixture__/data';
 
-import { selectRegion } from './action';
+import { selectRegion, selectCategory } from './action';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -75,11 +75,11 @@ describe('<App />', () => {
 
   context('when the user selects category', () => {
     it('shows a category with a selection mark', () => {
-      const { getByRole, queryByRole } = render(<App />);
+      const { getByRole } = render(<App />);
 
       categories.forEach((category) => {
         fireEvent.click(getByRole('button', { name: category.name }));
-        expect(queryByRole('button', { name: `${category.name}(V)` })).not.toBeNull();
+        expect(dispatch).toBeCalledWith(selectCategory(category.name));
       });
     });
   });
