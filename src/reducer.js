@@ -3,6 +3,7 @@ const initialState = {
   categories: [],
   selectedRegion: null,
   selectedCategoryId: null,
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
