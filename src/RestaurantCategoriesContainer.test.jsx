@@ -15,7 +15,7 @@ import {
 jest.mock('react-redux');
 
 describe('RestaurantCategoriesContainer', () => {
-  const dispatch = useDispatch();
+  const dispatch = jest.fn();
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({

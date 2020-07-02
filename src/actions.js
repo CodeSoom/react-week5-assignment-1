@@ -40,3 +40,7 @@ export function selectRegion(region) {
     },
   };
 }
+
+export function selectCategory(category) {
+  return {};
+}
