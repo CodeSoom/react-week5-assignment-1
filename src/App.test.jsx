@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
-jest.mock('./services/api');
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
