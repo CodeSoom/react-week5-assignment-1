@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
+import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 import {
   loadRestaurantRegions,
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <>
       <RestaurantRegionsContainer />
+      <RestaurantCategoriesContainer />
     </>
   );
 }
