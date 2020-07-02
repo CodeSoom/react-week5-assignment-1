@@ -19,9 +19,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
-import { regions, categories } from '../__fixture__/data';
+import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { selectRegion, selectCategory, loadRestaurants } from './action';
+import { selectRegion, selectCategory } from './action';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -32,6 +32,8 @@ describe('<App />', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions,
+      categories,
+      restaurants,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -86,14 +88,16 @@ describe('<App />', () => {
 
   context('when the user selects region and category', () => {
     it('shows restaurants', () => {
-      const { getByRole } = render(<App />);
+      const { getByRole, queryByText } = render(<App />);
 
       fireEvent.click(getByRole('button', { name: '서울' }));
       fireEvent.click(getByRole('button', { name: '한식' }));
 
-      expect(dispatch).toBeCalledWith(selectRegion('서울'));
-      expect(dispatch).toBeCalledWith(selectCategory('한식'));
-      expect(dispatch).toBeCalledWith(loadRestaurants('서울', 1));
+      expect(dispatch).toBeCalledTimes(4);
+
+      restaurants.forEach((restaurant) => {
+        expect(queryByText(restaurant.name)).not.toBeNull();
+      });
     });
   });
 });
