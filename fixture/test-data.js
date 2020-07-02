@@ -3,4 +3,7 @@ export const categories = [
   { id: 2, name: '중식' },
 ];
 
-export const restaurants = [];
+export const regions = [
+  { id: 1, name: '서울' },
+  { id: 2, name: '대구' },
+];
