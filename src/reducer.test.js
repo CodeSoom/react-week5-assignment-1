@@ -5,7 +5,7 @@ import { setCategories, selectCategory } from './actions';
 import { categories } from '../fixture/test-data';
 
 describe('reducer', () => {
-  const testState = {
+  const previousState = {
     categories: [],
   };
 
@@ -19,7 +19,7 @@ describe('reducer', () => {
 
   context('when action type is setCategories', () => {
     it('gets new categories', () => {
-      const state = reducer(testState, setCategories(categories));
+      const state = reducer(previousState, setCategories(categories));
 
       expect(state.categories).toEqual(categories);
     });
@@ -27,7 +27,7 @@ describe('reducer', () => {
 
   context('when action type is selectCategory', () => {
     it('set selected category id', () => {
-      const state = reducer(testState, selectCategory(1));
+      const state = reducer(previousState, selectCategory(1));
 
       expect(state.categoryId).toBe(1);
     });
