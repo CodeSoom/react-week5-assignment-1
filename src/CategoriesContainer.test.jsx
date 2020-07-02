@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
+
+import { selectCategory } from './action';
 
 import { categories } from '../__fixture__/data';
 
@@ -26,7 +28,23 @@ describe('<CategoriesContainer />', () => {
     });
   });
 
-  // context('when the user selects category', () => {
-  //   it('run selectCategory action', () => {});
-  // });
+  context('when the user selects category', () => {
+    it('run selectCategory action', () => {
+      useSelector.mockImplementation((selector) => selector({
+        categories,
+        selectedCategory: '',
+      }));
+
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      const { getByRole } = render(<CategoriesContainer />);
+
+      categories.forEach((category) => {
+        fireEvent.click(getByRole('button', { name: category.name }));
+        expect(dispatch).toBeCalledWith(selectCategory(category.name));
+      });
+    });
+  });
 });
