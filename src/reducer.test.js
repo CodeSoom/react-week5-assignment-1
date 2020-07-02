@@ -2,11 +2,13 @@ import reducer from './reducer';
 
 import {
   setRegions,
+  setCategories,
   setSelectedRegion,
   setSelectedCategoryId,
 } from './actions';
 
 import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -46,6 +48,18 @@ describe('reducer', () => {
       const state = reducer(previousState, setSelectedCategoryId(userSelectId));
 
       expect(state.selectedCategoryId).toBe(userSelectId);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('set new categories state', () => {
+      const previousState = {
+        categories: [],
+      };
+
+      const state = reducer(previousState, setCategories({ categories }));
+
+      expect(state.categories).toHaveLength(2);
     });
   });
 });
