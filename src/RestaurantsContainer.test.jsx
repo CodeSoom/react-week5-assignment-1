@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 
 import { restaurants } from '../__fixture__/data';
 
+import RestaurantsContainer from './RestaurantsContainer';
+
 jest.mock('react-redux');
 
 describe('<RestaurantsContainer />', () => {
@@ -15,6 +17,7 @@ describe('<RestaurantsContainer />', () => {
         useSelector.mockImplementation((selector) => selector({
           selectedRegion: '서울',
           selectedCategory: '한식',
+          restaurants,
         }));
 
         const { queryByText } = render(<RestaurantsContainer />);
