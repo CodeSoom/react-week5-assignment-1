@@ -21,7 +21,7 @@ describe('ButtonsContainer', () => {
   ];
 
   context('when click region button', () => {
-    it('dispatch chooseRegion', () => {
+    it('dispatch setRegion', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: testRegions,
         categories: testCategories,
@@ -34,7 +34,7 @@ describe('ButtonsContainer', () => {
       fireEvent.click(getByText(testRegions[0].name));
 
       expect(dispatch).toBeCalledWith({
-        type: 'chooseRegion',
+        type: 'setRegion',
         payload: {
           regionName: '서울',
         },
@@ -43,7 +43,7 @@ describe('ButtonsContainer', () => {
   });
 
   context('when click category button', () => {
-    it('dispatch chooseCategory', () => {
+    it('dispatch setCategory', () => {
 
     });
   });

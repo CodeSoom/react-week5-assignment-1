@@ -1,8 +1,8 @@
 import { reducer, initialState } from './reducer';
 
 import {
-  chooseRegion,
-  chooseCategory,
+  setRegion,
+  setCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -16,22 +16,22 @@ describe('reducer', () => {
     });
   });
 
-  describe('chooseRegion', () => {
+  describe('setRegion', () => {
     context('with a new region name', () => {
       it('change region name', () => {
         const regionName = '서울';
-        const state = reducer(initialState, chooseRegion(regionName));
+        const state = reducer(initialState, setRegion(regionName));
 
         expect(state.regionName).toBe(regionName);
       });
     });
   });
 
-  describe('chooseCategory', () => {
+  describe('setCategory', () => {
     context('with a new category id', () => {
       it('change category id', () => {
         const categoryId = 1;
-        const state = reducer(initialState, chooseCategory(categoryId));
+        const state = reducer(initialState, setCategory(categoryId));
 
         expect(state.categoryId).toBe(categoryId);
       });

@@ -1,15 +1,15 @@
-export function chooseRegion(regionName) {
+export function setRegion(regionName) {
   return {
-    type: 'chooseRegion',
+    type: 'setRegion',
     payload: {
       regionName,
     },
   };
 }
 
-export function chooseCategory(categoryId) {
+export function setCategory(categoryId) {
   return {
-    type: 'chooseCategory',
+    type: 'setCategory',
     payload: {
       categoryId,
     },

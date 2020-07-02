@@ -6,11 +6,11 @@ export const initialState = {
 };
 
 const reducers = {
-  chooseRegion: (state, action) => ({
+  setRegion: (state, action) => ({
     ...state,
     regionName: action.payload.regionName,
   }),
-  chooseCategory: (state, action) => ({
+  setCategory: (state, action) => ({
     ...state,
     categoryId: action.payload.categoryId,
   }),
