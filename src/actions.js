@@ -1,17 +1,21 @@
-export function setRegion(regionName) {
+export function setRegion(region) {
+  const { name } = region;
+
   return {
     type: 'setRegion',
     payload: {
-      regionName,
+      regionName: name,
     },
   };
 }
 
-export function setCategory(categoryId) {
+export function setCategory(category) {
+  const { id } = category;
+
   return {
     type: 'setCategory',
     payload: {
-      categoryId,
+      categoryId: id,
     },
   };
 }

@@ -16,7 +16,7 @@ describe('CategoriesContainer', () => {
     { id: 1, name: '한식' }, { id: 2, name: '중식' },
   ];
 
-  context('with a categories', () => {
+  context('with categories', () => {
     it('select categories', () => {
       useSelector.mockImplementation((selector) => selector({
         categories: testCategories,
@@ -27,6 +27,27 @@ describe('CategoriesContainer', () => {
       ));
 
       expect(getByText(testCategories[0].name)).toBeInTheDocument();
+    });
+  });
+
+  context('with a new category id', () => {
+    it('dispatch setCategory', () => {
+      useSelector.mockImplementation((selector) => selector({
+        categories: testCategories,
+      }));
+
+      const { getByText } = render((
+        <CategoriesContainer />
+      ));
+
+      fireEvent.click(getByText(testCategories[0].name));
+
+      expect(dispatch).toBeCalledWith({
+        type: 'setCategory',
+        payload: {
+          categoryId: 1,
+        },
+      });
     });
   });
 });

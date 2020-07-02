@@ -17,12 +17,12 @@ describe('reducer', () => {
   });
 
   describe('setRegion', () => {
-    context('with a new region name', () => {
+    context('with a new region', () => {
       it('change region name', () => {
-        const regionName = '서울';
-        const state = reducer(initialState, setRegion(regionName));
+        const region = { id: 1, name: '서울' };
+        const state = reducer(initialState, setRegion(region));
 
-        expect(state.regionName).toBe(regionName);
+        expect(state.regionName).toBe(region.name);
       });
     });
   });
@@ -30,10 +30,10 @@ describe('reducer', () => {
   describe('setCategory', () => {
     context('with a new category id', () => {
       it('change category id', () => {
-        const categoryId = 1;
-        const state = reducer(initialState, setCategory(categoryId));
+        const category = { id: 1, name: '한식' };
+        const state = reducer(initialState, setCategory(category));
 
-        expect(state.categoryId).toBe(categoryId);
+        expect(state.categoryId).toBe(category.id);
       });
     });
   });

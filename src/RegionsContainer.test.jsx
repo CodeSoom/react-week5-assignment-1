@@ -16,7 +16,7 @@ describe('RegionsContainer', () => {
     { id: 1, name: '서울' }, { id: 2, name: '대전' },
   ];
 
-  context('with a regions', () => {
+  context('with regions', () => {
     it('select regions', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: testRegions,
