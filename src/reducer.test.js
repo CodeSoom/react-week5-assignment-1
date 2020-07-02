@@ -33,22 +33,6 @@ describe('reducer', () => {
     });
   });
 
-  context('when action type is setCategories', () => {
-    it('gets new categories', () => {
-      const state = reducer(previousState, setCategories(categories));
-
-      expect(state.categories).toEqual(categories);
-    });
-  });
-
-  context('when action type is selectCategory', () => {
-    it('sets selected category id', () => {
-      const state = reducer(previousState, selectCategory(1));
-
-      expect(state.categoryId).toBe(1);
-    });
-  });
-
   context('when action type is setRegions', () => {
     it('gets new regions', () => {
       const state = reducer(previousState, setRegions(regions));
@@ -62,6 +46,22 @@ describe('reducer', () => {
       const state = reducer(previousState, selectRegion('서울'));
 
       expect(state.regionName).toBe('서울');
+    });
+  });
+
+  context('when action type is setCategories', () => {
+    it('gets new categories', () => {
+      const state = reducer(previousState, setCategories(categories));
+
+      expect(state.categories).toEqual(categories);
+    });
+  });
+
+  context('when action type is selectCategory', () => {
+    it('sets selected category id', () => {
+      const state = reducer(previousState, selectCategory(1));
+
+      expect(state.categoryId).toBe(1);
     });
   });
 });
