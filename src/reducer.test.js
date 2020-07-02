@@ -43,4 +43,10 @@ describe('reducer', () => {
     const state = reducer(initialState, selectRegion(region));
     expect(state.region).toBe('서울');
   });
+
+  it('select category', () => {
+    const category = '한식';
+    const state = reducer(initialState, selectRegion(category));
+    expect(state.category).toBe('한식');
+  });
 });
