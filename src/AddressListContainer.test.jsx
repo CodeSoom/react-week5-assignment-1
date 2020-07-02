@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 
 import AddressListContainer from './AddressListContainer';
 
+jest.mock('react-redux');
+
 describe('AddressListContainer', () => {
   it('레스토랑 지역 목록이 로딩된다.', () => {
     useSelector.mockImplementation((selector) => selector({
