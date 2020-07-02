@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantRegions from './RestaurantRegions';
 
@@ -16,5 +16,16 @@ describe('RestaurantRegions', () => {
       expect(getByText(name)).not.toBeNull();
       expect(getByText(name)).toHaveAttribute('type', 'button');
     });
+  });
+
+  it('지역을 클릭하면 화면에 표시한다.', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render((
+      <RestaurantRegions regions={regions} />
+    ));
+
+    fireEvent.click(getByText('서울'));
+    expect(handleClick).toBeCalled();
+    expect(getByText('서울(V)')).not.toBeNull();
   });
 });
