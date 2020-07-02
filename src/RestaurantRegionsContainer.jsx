@@ -7,7 +7,7 @@ import { changeRegion } from './actions';
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
 
-  const { region, regions } = useSelector((selector) => ({
+  const { regions } = useSelector((selector) => ({
     regions: selector.regions,
     region: selector.region,
   }));
