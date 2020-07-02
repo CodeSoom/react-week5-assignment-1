@@ -17,7 +17,7 @@ describe('reducer', () => {
   });
 
   describe('chooseRegion', () => {
-    context('when click region button', () => {
+    context('with a new region name', () => {
       it('change region name', () => {
         const regionName = '서울';
         const state = reducer(initialState, chooseRegion(regionName));
@@ -28,7 +28,7 @@ describe('reducer', () => {
   });
 
   describe('chooseCategory', () => {
-    context('when click category button', () => {
+    context('with a new category id', () => {
       it('change category id', () => {
         const categoryId = 1;
         const state = reducer(initialState, chooseCategory(categoryId));
