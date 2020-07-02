@@ -25,3 +25,21 @@ export function loadRegions() {
     dispatch(setRegions(response));
   };
 }
+
+export function setCategoryId(categoryId) {
+  return ({
+    type: 'setCategoryId',
+    payload: {
+      categoryId,
+    },
+  });
+}
+
+export function setRegionName(regionName) {
+  return ({
+    type: 'setRegionName',
+    payload: {
+      regionName,
+    },
+  });
+}

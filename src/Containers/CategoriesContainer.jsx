@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Categories from '../Components/Categories';
-import { loadCategories } from '../actions';
+import { loadCategories, setCategoryId } from '../actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories);
-  const handleClickCategory = (categoryId) => {
-    console.log(categoryId);
+  const { categories, categoryId } = useSelector((state) => ({
+    categories: state.categories,
+    categoryId: state.categoryId,
+  }));
+
+  const handleClickCategory = (id) => {
+    dispatch(setCategoryId(id));
   };
+
   useEffect(() => {
     dispatch(loadCategories());
   }, []);
 
-  return (<Categories categories={categories} handleClickCategory={handleClickCategory} />);
+  return (<Categories selected={categoryId} categories={categories} handleClickCategory={handleClickCategory} />);
 }

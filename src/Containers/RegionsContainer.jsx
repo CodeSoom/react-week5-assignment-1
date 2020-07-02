@@ -3,17 +3,24 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Regions from '../Components/Regions';
 
-import { loadRegions } from '../actions';
+import { loadRegions, setRegionName } from '../actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
-  const regions = useSelector((state) => state.regions);
+  const { regions, regionName } = useSelector((state) => ({
+    regions: state.regions,
+    regionName: state.regionName,
+  }));
+
+  const handleClickRegion = (name) => {
+    dispatch(setRegionName(name));
+  };
 
   useEffect(() => {
     dispatch(loadRegions());
   }, []);
 
   return (
-    <Regions regions={regions} />
+    <Regions regions={regions} selected={regionName} handleClickRegion={handleClickRegion} />
   );
 }
