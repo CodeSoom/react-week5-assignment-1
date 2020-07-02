@@ -14,7 +14,7 @@ jest.mock('react-redux');
 
 describe('<CategoriesContainer />', () => {
   describe('render CategoriesContainer', () => {
-    context('with selectedCategory', () => {
+    context('without selectedCategory', () => {
       it('shows categories', () => {
         useSelector.mockImplementation((selector) => selector({
           categories,
