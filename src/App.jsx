@@ -4,20 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import { loadRegions, selectCategory, loadRestaurants } from './action';
+import { loadRegions, selectCategory, loadRestaurants, loadCategories } from './action';
 
-const categories = [
-  { id: 1, name: '한식' },
-  { id: 2, name: '중식' },
-  { id: 3, name: '일식' },
-  { id: 4, name: '양식' },
-  { id: 5, name: '분식' },
-];
+// const categories = [
+//   { id: 1, name: '한식' },
+//   { id: 2, name: '중식' },
+//   { id: 3, name: '일식' },
+//   { id: 4, name: '양식' },
+//   { id: 5, name: '분식' },
+// ];
 
 export default function App() {
-  const { selectedRegion, selectedCategory, restaurants } = useSelector(
+  const { selectedRegion, categories, selectedCategory, restaurants } = useSelector(
     (state) => ({
       selectedRegion: state.selectedRegion,
+      categories: state.categories,
       selectedCategory: state.selectedCategory,
       restaurants: state.restaurants,
     }),
@@ -27,6 +28,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   function handleSelectCategory(newSelectedCategory, newSelectedCategoryId) {
