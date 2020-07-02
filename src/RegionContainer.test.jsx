@@ -23,7 +23,7 @@ describe('RegionContainer', () => {
   context('when not selected', () => {
     it('can see normal button', () => {
       useSelector.mockImplementation((selector) => selector({
-        selectedRegion: 2,
+        selectedRegion: '서울',
       }));
 
       const { getByText } = renderMockRegion();
@@ -35,7 +35,7 @@ describe('RegionContainer', () => {
   context('when selected', () => {
     it('can see selected button', () => {
       useSelector.mockImplementation((selector) => selector({
-        selectedRegion: 1,
+        selectedRegion: '부산',
       }));
 
       const { queryByText } = renderMockRegion();
@@ -48,7 +48,7 @@ describe('RegionContainer', () => {
   describe('click button', () => {
     it('can select region', () => {
       useSelector.mockImplementation((selector) => selector({
-        selectedRegion: 2,
+        selectedRegion: '서울',
       }));
 
       const dispatch = jest.fn();
