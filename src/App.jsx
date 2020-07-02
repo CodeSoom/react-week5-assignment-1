@@ -1,15 +1,11 @@
 import React from 'react';
-import AddressList from './AddressList';
+
+import AddressListContainer from './AddressListContainer';
 
 export default function App() {
-  const addressList = [
-    { id: 1, name: '서울' },
-  ];
-
   return (
     <div>
-      {/* Address List */}
-      <AddressList addressList={addressList} />
+      <AddressListContainer />
 
       {/* Category List */}
       <ul>
