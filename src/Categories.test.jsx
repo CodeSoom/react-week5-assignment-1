@@ -7,11 +7,14 @@ import Categories from './Categories';
 import { categories } from '../fixture/test-data';
 
 test('Categories', () => {
+  const categoryId = 0;
+
   const handleClick = jest.fn();
 
   const { getByText } = render((
     <Categories
       categories={categories}
+      categoryId={categoryId}
       onClick={handleClick}
     />
   ));
