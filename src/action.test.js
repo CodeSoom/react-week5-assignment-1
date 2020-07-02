@@ -2,13 +2,13 @@ import configureStore from 'redux-mock-store';
 
 import thunk from 'redux-thunk';
 
-import { loadRegions, setInitRegions } from './action';
+import {
+  loadRegions, setInitRegions, loadCategories, setInitCategories,
+} from './action';
 
 import { regions, categories } from '../__fixture__/data';
 
-import { fetchInitCategories } from './services/api';
-
-const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 function mockfetch(data) {
@@ -19,22 +19,6 @@ function mockfetch(data) {
   beforeEach(() => {
     fetch.mockClear();
   });
-}
-
-function setInitCategories(initCategories) {
-  return {
-    type: 'setInitCategories',
-    payload: {
-      regions: initCategories,
-    },
-  };
-}
-
-function loadCategories() {
-  return async (dispatch) => {
-    const initCategories = await fetchInitCategories();
-    dispatch(setInitCategories(initCategories));
-  };
 }
 
 describe('acton', () => {
