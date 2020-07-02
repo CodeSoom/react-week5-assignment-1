@@ -19,6 +19,7 @@ describe('RestaurantCategoriesContainer', () => {
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
+      category: '',
       categories,
     }));
   });
