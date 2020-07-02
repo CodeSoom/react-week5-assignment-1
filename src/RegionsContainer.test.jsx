@@ -16,6 +16,27 @@ describe('RegionsContainer', () => {
     { id: 1, name: '서울' }, { id: 2, name: '대전' },
   ];
 
+  context('with a regions', () => {
+    it('select regions', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: testRegions,
+      }));
+
+      const { getByText } = render((
+        <RegionsContainer />
+      ));
+
+      expect(getByText(testRegions[0].name)).toBeInTheDocument();
+
+      expect(dispatch).toBeCalledWith({
+        type: 'setRegion',
+        payload: {
+          regionName: '서울',
+        },
+      });
+    });
+  });
+
   context('with a new region name', () => {
     it('dispatch setRegion', () => {
       useSelector.mockImplementation((selector) => selector({
