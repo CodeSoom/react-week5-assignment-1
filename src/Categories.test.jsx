@@ -12,10 +12,9 @@ describe('<Categories />', () => {
   describe('render Categories', () => {
     context('without selectedCategory', () => {
       it('shows categories', () => {
-        const { queryByRole } = render(<Categories
-          categories={categories}
-          selectedCategory=""
-        />);
+        const { queryByRole } = render(
+          <Categories categories={categories} selectedCategory="" />,
+        );
 
         categories.forEach((category) => {
           expect(queryByRole('button', { name: category.name })).not.toBeNull();
@@ -24,10 +23,9 @@ describe('<Categories />', () => {
     });
     context('with selectedCategory', () => {
       it('shows a category with a selection mark', () => {
-        const { queryByRole } = render(<Categories
-          categories={categories}
-          selectedCategory="한식"
-        />);
+        const { queryByRole } = render(
+          <Categories categories={categories} selectedCategory="한식" />,
+        );
 
         expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
       });
@@ -48,8 +46,8 @@ describe('<Categories />', () => {
 
       categories.forEach((category) => {
         fireEvent.click(getByRole('button', { name: category.name }));
-        expect(handleSelectCategory).toBeCalledTimes(categories.length);
       });
+      expect(handleSelectCategory).toBeCalledTimes(categories.length);
     });
   });
 });
