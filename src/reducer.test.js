@@ -1,8 +1,10 @@
-import { regions, categories } from '../__fixture__/data';
+import { regions, categories, restaurants } from '../__fixture__/data';
 
 import reducer from './reducer';
 
-import { setInitRegions, selectRegion, setInitCategories, selectCategory } from './action';
+import {
+  setInitRegions, selectRegion, setInitCategories, selectCategory, setRestaurants,
+} from './action';
 
 describe('reducer', () => {
   describe('setInitRegions', () => {
@@ -50,6 +52,18 @@ describe('reducer', () => {
       const newState = reducer(prevState, selectCategory('한식'));
 
       expect(newState.selectedCategory).toBe('한식');
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('set restaurants', () => {
+      const prevState = {
+        restaurants: [],
+      };
+
+      const newState = reducer(prevState, setRestaurants(restaurants));
+
+      expect(newState.restaurants).not.toHaveLength(0);
     });
   });
 
