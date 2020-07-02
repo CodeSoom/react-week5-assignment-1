@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import AddressList from './AddressList';
 
@@ -13,5 +13,20 @@ describe('AddressList', () => {
     ));
 
     expect(getByText('서울')).toBeInTheDocument();
+  });
+
+  it('각각의 지역 버튼을 클릭할 수 있다.', () => {
+    const handleClick = jest.fn();
+
+    const { getByText } = render((
+      <AddressList
+        addressList={addressList}
+        onClick={handleClick}
+      />
+    ));
+
+    fireEvent.click(getByText(/서울/));
+
+    expect(handleClick).toBeCalled();
   });
 });
