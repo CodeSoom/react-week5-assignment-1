@@ -52,13 +52,16 @@ context('when click region value', () => {
           name: '대전',
         },
       ],
+      region: '서울',
     }));
 
     const { getByText } = render(<RestaurantRegionsContainer />);
 
-    expect(getByText('서울')).not.toBeNull();
+    expect(getByText(/서울/)).not.toBeNull();
 
-    fireEvent.click(getByText('서울'));
+    fireEvent.click(getByText(/서울/));
+
+    expect(getByText('서울(V)')).not.toBeNull();
 
     expect(dispatch).toBeCalledWith({
       type: 'changeRegion',
