@@ -14,6 +14,7 @@ describe('RestaurantRegions', () => {
 
     regions.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
+      expect(getByText(name)).toHaveAttribute('type', 'button');
     });
   });
 });
