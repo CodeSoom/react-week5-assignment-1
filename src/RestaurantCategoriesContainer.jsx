@@ -2,24 +2,32 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantCategories from './RestaurantCategories';
 
-import { changeCategory } from './actions';
+import { changeCategory, loadRestaurants } from './actions';
 
 export default function RestaurantCategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories, category } = useSelector((selector) => ({
+  const {
+    categories, category, categoryId, region,
+  } = useSelector((selector) => ({
     categories: selector.categories,
     category: selector.category,
+    categoryId: selector.categoryId,
+    region: selector.region,
   }));
 
   function handleClick(event) {
-    dispatch(changeCategory({ name: event.target.dataset.name }));
-    // TODO 비동기로 데이터 불러오기
+    dispatch(changeCategory({ name: event.target.dataset.name, id: event.target.dataset.id }));
+    dispatch(loadRestaurants({ region, categoryId }));
   }
 
   return (
     <>
-      <RestaurantCategories categories={categories} onClick={handleClick} selected={category} />
+      <RestaurantCategories
+        categories={categories}
+        onClick={handleClick}
+        selected={category}
+      />
     </>
   );
 }
