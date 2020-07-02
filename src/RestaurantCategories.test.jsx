@@ -24,11 +24,12 @@ describe('RestaurantCategories', () => {
         <RestaurantCategories
           categories={categories}
           onClick={handleClick}
+          selected="한식"
         />,
       );
 
-      expect(getByText('한식')).not.toBeNull();
-      expect(getByText('중식')).not.toBeNull();
+      expect(getByText(/한식/)).not.toBeNull();
+      expect(getByText(/중식/)).not.toBeNull();
     });
   });
 
@@ -51,15 +52,16 @@ describe('RestaurantCategories', () => {
         <RestaurantCategories
           categories={categories}
           onClick={handleClick}
+          selected="한식"
         />,
       );
 
-      fireEvent.click(getByText('한식'));
+      fireEvent.click(getByText(/한식/));
 
       expect(handleClick).toBeCalled();
 
-      expect(getByText('한식')).not.toBeNull();
-      expect(getByText('중식')).not.toBeNull();
+      expect(getByText(/한식/)).not.toBeNull();
+      expect(getByText(/중식/)).not.toBeNull();
     });
   });
 });
