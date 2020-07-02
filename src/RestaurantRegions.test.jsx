@@ -20,14 +20,20 @@ describe('RestaurantRegions', () => {
         },
       ];
 
-      const { getByText } = render(<RestaurantRegions regions={regions} onClick={handleClick} />);
+      const { getByText } = render(
+        <RestaurantRegions
+          regions={regions}
+          onClick={handleClick}
+          selected="서울"
+        />,
+      );
 
-      fireEvent.click(getByText('서울'));
+      fireEvent.click(getByText(/서울/));
 
       expect(handleClick).toBeCalled();
 
-      expect(getByText('서울')).not.toBeNull();
-      expect(getByText('대전')).not.toBeNull();
+      expect(getByText(/서울/)).not.toBeNull();
+      expect(getByText(/대전/)).not.toBeNull();
     });
   });
 });
