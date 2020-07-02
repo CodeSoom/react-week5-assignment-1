@@ -5,10 +5,12 @@ import {
   setCategories,
   setSelectedRegion,
   setSelectedCategoryId,
+  setRestaurants,
 } from './actions';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -60,6 +62,18 @@ describe('reducer', () => {
       const state = reducer(previousState, setCategories({ categories }));
 
       expect(state.categories).toHaveLength(2);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('set new restaurants state', () => {
+      const previousState = {
+        restaurants: [],
+      };
+
+      const state = reducer(previousState, setRestaurants({ restaurants }));
+
+      expect(state.restaurants).toHaveLength(2);
     });
   });
 });
