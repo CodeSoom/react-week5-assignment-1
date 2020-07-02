@@ -1,7 +1,9 @@
 const initState = {
   regions: [],
   selectedRegion: '',
+  categories: [],
   selectedCategory: '',
+  restaurants: [],
 };
 
 const reducers = {
@@ -13,10 +15,16 @@ const reducers = {
     ...previousState,
     selectedRegion: action.payload.selectedRegion,
   }),
+  // TODO : categories
   selectCategory: (previousState, action) => ({
     ...previousState,
     selectedCategory: action.payload.selectedCategory,
   }),
+  setRestaurants: (previousState, action) => ({
+    ...previousState,
+    restaurants: action.payload.restaurants,
+  }),
+
 };
 
 export default function reducer(previousState = initState, action) {

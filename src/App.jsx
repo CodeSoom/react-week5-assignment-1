@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import { loadRegions, selectCategory } from './action';
-
+import { loadRegions, selectCategory, loadRestaurants } from './action';
 
 const categories = [
   { id: 1, name: '한식' },
@@ -16,9 +15,13 @@ const categories = [
 ];
 
 export default function App() {
-  const { selectedCategory } = useSelector((state) => ({
-    selectedCategory: state.selectedCategory,
-  }));
+  const { selectedRegion, selectedCategory, restaurants } = useSelector(
+    (state) => ({
+      selectedRegion: state.selectedRegion,
+      selectedCategory: state.selectedCategory,
+      restaurants: state.restaurants,
+    }),
+  );
 
   const dispatch = useDispatch();
 
@@ -26,9 +29,9 @@ export default function App() {
     dispatch(loadRegions());
   }, []);
 
-  function handleSelectCategory(newSelectedCategory) {
+  function handleSelectCategory(newSelectedCategory, newSelectedCategoryId) {
     dispatch(selectCategory(newSelectedCategory));
-    // TODO : loadRestaurants(지역, 카테고리)
+    dispatch(loadRestaurants(selectedRegion, newSelectedCategoryId));
   }
 
   return (
@@ -37,13 +40,19 @@ export default function App() {
       {categories.map((category) => (
         <button
           key={category.id}
-          onClick={() => handleSelectCategory(category.name)}
+          onClick={() => handleSelectCategory(category.name, category.id)}
           type="button"
         >
-          {category.name === selectedCategory ? `${category.name}(V)` : category.name}
+          {category.name === selectedCategory
+            ? `${category.name}(V)`
+            : category.name}
         </button>
       ))}
-
+      <ul>
+        {restaurants.map((restaurant) => (
+          <li key={restaurant.id}>{restaurant.name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
