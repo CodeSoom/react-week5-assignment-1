@@ -1,14 +1,26 @@
 import { fetchInitRegions } from './api';
 
-import { regions } from '../../__fixture__/data';
+import { regions, categories } from '../../__fixture__/data';
+
+
+
+
 
 global.fetch = jest.fn(() => Promise.resolve({
   json: () => Promise.resolve(regions),
+  categories: () => Promise.resolve(categories),
 }));
 
 beforeEach(() => {
   fetch.mockClear();
 });
+
+async function fetchInitCategories() {
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const response = await fetch(url);
+  const data = await response.categories();
+  return data;
+}
 
 describe('api', () => {
   describe('fetchInitRegions', () => {
