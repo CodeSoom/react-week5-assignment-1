@@ -1,6 +1,6 @@
 const initState = {
   regions: [],
-  newSelectRegion: '',
+  selectedRegion: '',
 };
 
 const reducers = {
@@ -10,7 +10,7 @@ const reducers = {
   }),
   selectRegion: (previousState, action) => ({
     ...previousState,
-    newSelectRegion: action.payload.newSelectRegion,
+    selectedRegion: action.payload.selectedRegion,
   }),
 };
 

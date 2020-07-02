@@ -20,12 +20,12 @@ describe('reducer', () => {
   context('selectRegion', () => {
     it('shows a mark for a selected region', () => {
       const prevState = {
-        newSelectRegion: '',
+        selectedRegion: '',
       };
 
       const newState = reducer(prevState, selectRegion('서울'));
 
-      expect(newState.newSelectRegion).toBe('서울');
+      expect(newState.selectedRegion).toBe('서울');
     });
   });
 
@@ -34,7 +34,7 @@ describe('reducer', () => {
       const newState = reducer(undefined, {});
 
       expect(newState.regions).toHaveLength(0);
-      expect(newState.newSelectRegion).toBe('');
+      expect(newState.selectedRegion).toBe('');
     });
   });
 });

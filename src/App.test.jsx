@@ -54,7 +54,7 @@ describe('<App />', () => {
     it('shows a region with a selection mark', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
-        newSelectRegion: '',
+        selectedRegion: '',
       }));
 
       const dispatch = jest.fn();

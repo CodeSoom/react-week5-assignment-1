@@ -8,10 +8,10 @@ import { regions } from '../__fixture__/data';
 
 describe('<Regions />', () => {
   describe('render Regions', () => {
-    context('without newSelectRegion', () => {
+    context('without selectedRegion', () => {
       it('does not show a mark for a selected region ', () => {
         const { queryByRole } = render(
-          <Regions regions={regions} newSelectRegion="" />,
+          <Regions regions={regions} selectedRegion="" />,
         );
 
         regions.forEach((region) => {
@@ -20,10 +20,10 @@ describe('<Regions />', () => {
       });
     });
 
-    context('with newSelectRegion', () => {
+    context('with selectedRegion', () => {
       it('shows a mark for a selected region', () => {
         const { queryByRole } = render(
-          <Regions regions={regions} newSelectRegion="서울" />,
+          <Regions regions={regions} selectedRegion="서울" />,
         );
 
         expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();

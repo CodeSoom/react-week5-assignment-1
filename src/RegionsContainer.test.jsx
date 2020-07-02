@@ -14,11 +14,11 @@ jest.mock('react-redux');
 
 describe('<RegionsContainer />', () => {
   describe('render RegionsContainer', () => {
-    context('without newSelectRegion', () => {
+    context('without selectedRegion', () => {
       it('shows regions', () => {
         useSelector.mockImplementation((selector) => selector({
           regions,
-          newSelectRegion: '',
+          selectedRegion: '',
         }));
 
         const { queryByRole } = render(<RegionsContainer />);
@@ -29,11 +29,11 @@ describe('<RegionsContainer />', () => {
       });
     });
 
-    context('with newSelectRegion', () => {
+    context('with selectedRegion', () => {
       it('shows a region with a selection mark', () => {
         useSelector.mockImplementation((selector) => selector({
           regions,
-          newSelectRegion: '서울',
+          selectedRegion: '서울',
         }));
 
         const { queryByRole } = render(<RegionsContainer />);
@@ -47,7 +47,7 @@ describe('<RegionsContainer />', () => {
     it('shows a region with a selection mark', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
-        newSelectRegion: '',
+        selectedRegion: '',
       }));
 
       const dispatch = jest.fn();
@@ -60,6 +60,8 @@ describe('<RegionsContainer />', () => {
         fireEvent.click(getByRole('button', { name: region.name }));
         expect(dispatch).toBeCalledWith(selectRegion(region.name));
       });
+
+      
     });
   });
 });

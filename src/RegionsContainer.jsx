@@ -7,9 +7,9 @@ import Regions from './Regions';
 import { selectRegion } from './action';
 
 export default function RegionsContainer() {
-  const { regions, newSelectRegion } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
-    newSelectRegion: state.newSelectRegion,
+    selectedRegion: state.selectedRegion,
   }));
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function RegionsContainer() {
   return (
     <Regions
       regions={regions}
-      newSelectRegion={newSelectRegion}
+      selectedRegion={selectedRegion}
       onSelectRegion={handleSelectRegion}
     />
   );
