@@ -7,7 +7,6 @@ describe('reducer', () => {
     context('when with name', () => {
       it('returns state with selected region', () => {
         const initialState = {
-          regions: [],
           region: '',
         };
 
