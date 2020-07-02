@@ -20,5 +20,19 @@ export default function reducer(state = inistialState, action) {
     };
   }
 
+  if (action.type === 'setCategories') {
+    return {
+      ...state,
+      categories: action.payload,
+    };
+  }
+
+  if (action.type === 'setRegions') {
+    return {
+      ...state,
+      regions: action.payload,
+    };
+  }
+
   return state;
 }
