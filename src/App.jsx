@@ -1,14 +1,11 @@
 import React from 'react';
+import AddressList from './AddressList';
 
 export default function App() {
   return (
     <div>
       {/* Address List */}
-      <ul>
-        <li>
-          <button type="button">서울</button>
-        </li>
-      </ul>
+      <AddressList />
 
       {/* Category List */}
       <ul>
