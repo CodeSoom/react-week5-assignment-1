@@ -7,8 +7,9 @@ import { changeCategory } from './actions';
 export default function RestaurantCategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories } = useSelector((selector) => ({
+  const { categories, category } = useSelector((selector) => ({
     categories: selector.categories,
+    category: selector.category,
   }));
 
   function handleClick(event) {
@@ -18,7 +19,7 @@ export default function RestaurantCategoriesContainer() {
 
   return (
     <>
-      <RestaurantCategories categories={categories} onClick={handleClick} />
+      <RestaurantCategories categories={categories} onClick={handleClick} selected={category} />
     </>
   );
 }
