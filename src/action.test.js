@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 import { loadRegions, setInitRegions } from './action';
 
-import { regions } from '../__fixture__/data';
+import { regions, categories } from '../__fixture__/data';
 
 const middlewares = [thunk]; // add your middlewares like `redux-thunk`
 const mockStore = configureStore(middlewares);
@@ -28,4 +28,20 @@ describe('acton', () => {
       });
     });
   });
+
+  describe('loadCategories', () => {
+    it('load Categories', () => {
+      const store = mockStore({});
+
+      return store.dispatch(loadCategories()).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual(setInitCategories(categories));
+      });
+    });
+  });
+
+
+
+
+
 });
