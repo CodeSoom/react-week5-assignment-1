@@ -5,7 +5,7 @@ export default function Buttons({ values, onClick }) {
     <ul>
       {values.map((value) => (
         <li key={value.id}>
-          <button type="button" onClick={onClick}>{value.name}</button>
+          <button type="button" onClick={() => onClick(value.name)}>{value.name}</button>
         </li>
       ))}
     </ul>
