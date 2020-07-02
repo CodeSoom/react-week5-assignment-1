@@ -39,4 +39,19 @@ describe('Categories', () => {
 
     expect(handleClick).toBeCalled();
   });
+
+  context('with selected id', () => {
+    it('선택된 카테고리에 (V)가 표시된다.', () => {
+      const selectedId = 1;
+
+      const { getByText } = render(
+        <Categories
+          selected={selectedId}
+          categories={categories}
+        />,
+      );
+
+      expect(getByText('한식(V)')).not.toBeNull();
+    });
+  });
 });
