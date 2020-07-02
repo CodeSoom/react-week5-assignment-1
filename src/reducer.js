@@ -14,6 +14,10 @@ const reducers = {
     ...state,
     categoryId: action.payload.categoryId,
   }),
+  setRegions: (state, action) => ({
+    ...state,
+    regions: action.payload.regions,
+  }),
 };
 
 export function reducer(state = initialState, action) {

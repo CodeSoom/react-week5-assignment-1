@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Buttons from './Buttons';
 
-import { setRegion } from './actions';
+import { setRegion, loadRegions } from './actions';
 
 export default function RegionsContainer() {
   const { regions } = useSelector((state) => ({
@@ -16,6 +16,8 @@ export default function RegionsContainer() {
   function handleClickChooseRegion(regionName) {
     dispatch(setRegion(regionName));
   }
+
+  dispatch(loadRegions());
 
   return (
     <Buttons
