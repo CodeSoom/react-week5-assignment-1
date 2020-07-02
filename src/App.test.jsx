@@ -27,15 +27,21 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('<App />', () => {
-  describe('render App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions,
     }));
 
-    const dispatch = jest.fn();
-
     useDispatch.mockImplementation(() => dispatch);
+  });
 
+  afterEach(() => {
+    dispatch.mockClear();
+  });
+
+  describe('render App', () => {
     it('shows regions', () => {
       const { queryByRole } = render(<App />);
 
@@ -51,14 +57,6 @@ describe('<App />', () => {
   });
 
   context('when the user selects region', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-      selectedRegion: '',
-    }));
-
-    const dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
     it('shows a region with a selection mark', () => {
       const { getByRole } = render(<App />);
 
