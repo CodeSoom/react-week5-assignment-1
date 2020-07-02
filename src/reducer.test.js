@@ -1,4 +1,4 @@
-import { regions } from '../__fixture__/data';
+import { regions, categories } from '../__fixture__/data';
 
 import reducer from './reducer';
 
@@ -26,6 +26,18 @@ describe('reducer', () => {
       const newState = reducer(prevState, selectRegion('서울'));
 
       expect(newState.selectedRegion).toBe('서울');
+    });
+  });
+
+  describe('setInitCategories', () => {
+    it('set categories', () => {
+      const prevState = {
+        categories: [],
+      };
+
+      const newState = reducer(prevState, setInitCategories(categories));
+
+      expect(newState.categories).not.toHaveLength(0);
     });
   });
 
