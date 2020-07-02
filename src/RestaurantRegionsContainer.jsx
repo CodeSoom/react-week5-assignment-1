@@ -7,7 +7,7 @@ import { changeRegion } from './actions';
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((selector) => ({
+  const { regions, region } = useSelector((selector) => ({
     regions: selector.regions,
     region: selector.region,
   }));
@@ -18,7 +18,7 @@ export default function RestaurantRegionsContainer() {
 
   return (
     <>
-      <RestaurantRegions regions={regions} onClick={handleClick} />
+      <RestaurantRegions regions={regions} onClick={handleClick} selected={region} />
     </>
   );
 }
