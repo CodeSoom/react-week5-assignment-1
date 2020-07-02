@@ -53,15 +53,41 @@ describe('<App />', () => {
 
       expect(dispatch).toBeCalledTimes(2);
     });
-    it('shows categories', () => {
-      const { queryByRole } = render(<App />);
 
-      categories.forEach((category) => {
-        expect(queryByRole('button', { name: category.name })).not.toBeNull();
+    context('without selectedCategory', () => {
+      it('shows categories', () => {
+        useSelector.mockImplementation((selector) => selector({
+          regions,
+          categories,
+          restaurants,
+          selectedCategory: '',
+        }));
+
+        const { queryByRole } = render(<App />);
+
+        categories.forEach((category) => {
+          expect(queryByRole('button', { name: category.name })).not.toBeNull();
+        });
+
+        expect(dispatch).toBeCalledTimes(2);
       });
+    });
 
-      expect(dispatch).toBeCalledTimes(2);
+    context('with selectedCategory', () => {
+      it('shows a category with a selection mark', () => {
+        useSelector.mockImplementation((selector) => selector({
+          regions,
+          categories,
+          restaurants,
+          selectedCategory: '한식',
+        }));
 
+        const { queryByRole } = render(<App />);
+
+        expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
+
+        expect(dispatch).toBeCalledTimes(2);
+      });
     });
   });
 
