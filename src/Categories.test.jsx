@@ -23,4 +23,6 @@ test('Categories', () => {
   fireEvent.click(getByText(categories[0].name));
 
   expect(handleClick).toBeCalled();
+
+  expect(getByText(`${categories[0].name}(V)`));
 });
