@@ -21,11 +21,13 @@ describe('RestaurantRegions', () => {
   it('지역을 클릭하면 화면에 표시한다.', () => {
     const handleClick = jest.fn();
     const { getByText } = render((
-      <RestaurantRegions regions={regions} />
+      <RestaurantRegions
+        regions={regions}
+        onClick={handleClick}
+      />
     ));
 
     fireEvent.click(getByText('서울'));
     expect(handleClick).toBeCalled();
-    expect(getByText('서울(V)')).not.toBeNull();
   });
 });
