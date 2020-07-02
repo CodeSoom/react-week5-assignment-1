@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
@@ -18,10 +18,19 @@ export default function App() {
     dispatch(loadCategories());
   }, []);
 
+  const { restaurants } = useSelector((selector) => ({
+    restaurants: selector.restaurants,
+  }));
+
   return (
     <>
       <RestaurantRegionsContainer />
       <RestaurantCategoriesContainer />
+      <ul>
+        {restaurants
+      && restaurants.length > 0
+      && restaurants.map((restaurant) => (<li key={restaurant.id}>{restaurant.name}</li>))}
+      </ul>
     </>
   );
 }
