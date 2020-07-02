@@ -18,6 +18,7 @@ export default function reducer(state = inistialState, action) {
     return {
       ...state,
       category: action.payload.name,
+      categoryId: action.payload.id,
     };
   }
 
