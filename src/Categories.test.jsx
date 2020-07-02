@@ -35,7 +35,7 @@ describe('Categories', () => {
     });
   });
 
-  context('with selected category id', () => {
+  context('when category is selected', () => {
     it('render V sign on the clicked button', () => {
       const { getByText } = renderCategories(1);
 
@@ -43,7 +43,7 @@ describe('Categories', () => {
     });
   });
 
-  context('without selected category id', () => {
+  context('when nothing is selected', () => {
     it('does not render V sign on all buttons', () => {
       const { queryByText } = renderCategories(undefined);
 

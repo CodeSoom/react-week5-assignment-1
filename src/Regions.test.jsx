@@ -35,7 +35,7 @@ describe('Regions', () => {
     });
   });
 
-  context('with selected region name', () => {
+  context('when region is selected', () => {
     it('renders V sign on the clicked button', () => {
       const { getByText } = renderRegions('서울');
 
@@ -43,7 +43,7 @@ describe('Regions', () => {
     });
   });
 
-  context('without selected region name', () => {
+  context('when noting is selected', () => {
     it('does not render V sign on all buttons', () => {
       const { queryByText } = renderRegions(undefined);
 
