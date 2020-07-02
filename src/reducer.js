@@ -1,6 +1,6 @@
 const initialState = {
   regions: [],
-  categoires: [],
+  categories: [],
 };
 
 export default function reducer(state = initialState, action) {
