@@ -1,6 +1,7 @@
 const initState = {
   regions: [],
   selectedRegion: '',
+  selectedCategory: '',
 };
 
 const reducers = {
@@ -11,6 +12,10 @@ const reducers = {
   selectRegion: (previousState, action) => ({
     ...previousState,
     selectedRegion: action.payload.selectedRegion,
+  }),
+  selectCategory: (previousState, action) => ({
+    ...previousState,
+    selectedCategory: action.payload.selectedCategory,
   }),
 };
 

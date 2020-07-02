@@ -4,6 +4,16 @@ import reducer from './reducer';
 
 import { setInitRegions, selectRegion } from './action';
 
+
+function selectCategory(selectedCategory) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      selectedCategory,
+    },
+  };
+}
+
 describe('reducer', () => {
   describe('setInitRegions', () => {
     it('set regions', () => {
@@ -30,7 +40,7 @@ describe('reducer', () => {
   });
 
   describe('selectedCategory', () => {
-    it('shows a mark for a selected region', () => {
+    it('shows a mark for a selected category', () => {
       const prevState = {
         selectedCategory: '',
       };
@@ -40,8 +50,6 @@ describe('reducer', () => {
       expect(newState.selectedCategory).toBe('한식');
     });
   });
-
-
 
   context('without previousState', () => {
     it('return initState', () => {
