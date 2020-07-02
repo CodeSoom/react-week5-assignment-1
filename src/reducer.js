@@ -13,6 +13,15 @@ function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'selectRegion') {
+    const { regionName } = action.payload;
+
+    return {
+      ...state,
+      regionName,
+    };
+  }
+
   if (action.type === 'setCategories') {
     const { categories } = action.payload;
 
