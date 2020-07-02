@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function AddressList() {
+export default function AddressList({ addressList }) {
   return (
     <ul>
-      <li>
-        <button type="button">서울</button>
-      </li>
+      {addressList.map((address) => (
+        <li key={address.id}>
+          <button type="button">{address.name}</button>
+        </li>
+      ))}
     </ul>
   );
 }

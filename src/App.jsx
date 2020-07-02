@@ -2,10 +2,14 @@ import React from 'react';
 import AddressList from './AddressList';
 
 export default function App() {
+  const addressList = [
+    { id: 1, name: '서울' },
+  ];
+
   return (
     <div>
       {/* Address List */}
-      <AddressList />
+      <AddressList addressList={addressList} />
 
       {/* Category List */}
       <ul>
