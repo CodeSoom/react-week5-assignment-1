@@ -22,16 +22,16 @@ describe('<Categories />', () => {
         });
       });
     });
-    // context('with selectedCategory', () => {
-    //   it('shows a category with a selection mark', () => {
-    //     const { queryByRole } = render(<Categories
-    //       categories={categories}
-    //       selectedCategory="한식"
-    //     />);
+    context('with selectedCategory', () => {
+      it('shows a category with a selection mark', () => {
+        const { queryByRole } = render(<Categories
+          categories={categories}
+          selectedCategory="한식"
+        />);
 
-    //     expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
-    //   });
-    // });
+        expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
+      });
+    });
   });
 
   // context('when the user selects category', () => {
