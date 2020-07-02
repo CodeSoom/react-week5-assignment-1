@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('RestaurantCategoriesContainer', () => {
   context('with categories', () => {
