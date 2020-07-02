@@ -42,5 +42,10 @@ export function selectRegion(region) {
 }
 
 export function selectCategory(category) {
-  return {};
+  return {
+    type: 'selectCategory',
+    payload: {
+      category,
+    },
+  };
 }

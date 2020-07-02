@@ -1,5 +1,6 @@
 const initialState = {
   region: '',
+  category: '',
   regions: [],
   categories: [],
 };
@@ -17,6 +18,10 @@ export default function reducer(state = initialState, action = {}) {
     selectRegion: ({ region }) => ({
       ...state,
       region,
+    }),
+    selectCategory: ({ category }) => ({
+      ...state,
+      category,
     }),
   };
 
