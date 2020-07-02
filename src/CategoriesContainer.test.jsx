@@ -12,16 +12,40 @@ import { categories } from '../__fixture__/data';
 
 jest.mock('react-redux');
 
+const initState = {
+  categories,
+  selectedCategory: '',
+};
+
+function mockUseSelector(state = initState) {
+  useSelector.mockImplementation((selector) => selector({
+    categories: state.categories,
+    selectedCategory: state.selectedCategory,
+  }));
+}
+
+const dispatch = jest.fn();
+
+function renderCategoriesContainer() {
+  return render(<CategoriesContainer />);
+}
+
 describe('<CategoriesContainer />', () => {
+
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
+  afterEach(() => {
+    dispatch.mockClear();
+  });
+
   describe('render CategoriesContainer', () => {
     context('without selectedCategory', () => {
       it('shows categories', () => {
-        useSelector.mockImplementation((selector) => selector({
-          categories,
-          selectedCategory: '',
-        }));
+        mockUseSelector();
 
-        const { queryByRole } = render(<CategoriesContainer />);
+        const { queryByRole } = renderCategoriesContainer();
 
         categories.forEach((category) => {
           expect(queryByRole('button', { name: category.name })).not.toBeNull();
@@ -30,12 +54,12 @@ describe('<CategoriesContainer />', () => {
     });
     context('with selectedCategory', () => {
       it('shows a category with a selection mark', () => {
-        useSelector.mockImplementation((selector) => selector({
-          categories,
+        mockUseSelector({
+          ...initState,
           selectedCategory: '한식',
-        }));
+        });
 
-        const { queryByRole } = render(<CategoriesContainer />);
+        const { queryByRole } = renderCategoriesContainer();
 
         expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
       });
@@ -44,16 +68,9 @@ describe('<CategoriesContainer />', () => {
 
   context('when the user selects category', () => {
     it('run selectCategory action', () => {
-      useSelector.mockImplementation((selector) => selector({
-        categories,
-        selectedCategory: '',
-      }));
+      mockUseSelector();
 
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
-      const { getByRole } = render(<CategoriesContainer />);
+      const { getByRole } = renderCategoriesContainer();
 
       categories.forEach((category) => {
         fireEvent.click(getByRole('button', { name: category.name }));
