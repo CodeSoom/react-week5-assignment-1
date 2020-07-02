@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantCategories from './RestaurantCategories';
 
@@ -16,5 +16,18 @@ describe('RestaurantCategories', () => {
       expect(getByText(name)).not.toBeNull();
       expect(getByText(name)).toHaveAttribute('type', 'button');
     });
+  });
+
+  it('클릭 시 함수가 호출된다.', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render((
+      <RestaurantCategories
+        categories={categories}
+        onClick={handleClick}
+      />
+    ));
+
+    fireEvent.click(getByText('한식'));
+    expect(handleClick).toBeCalled();
   });
 });
