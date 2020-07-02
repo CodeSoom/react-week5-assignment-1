@@ -19,7 +19,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
-import { regions } from '../__fixture__/data';
+import { regions, categories } from '../__fixture__/data';
 
 import { selectRegion } from './action';
 
@@ -51,9 +51,16 @@ describe('<App />', () => {
 
       expect(dispatch).toBeCalledTimes(1);
     });
-    // it('shows categories', () => {
+    it('shows categories', () => {
+      const { queryByRole } = render(<App />);
 
-    // });
+      categories.forEach((category) => {
+        expect(queryByRole('button', { name: category.name })).not.toBeNull();
+      });
+
+      expect(dispatch).toBeCalledTimes(1);
+
+    });
   });
 
   context('when the user selects region', () => {
