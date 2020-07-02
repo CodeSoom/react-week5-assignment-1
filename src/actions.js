@@ -15,3 +15,12 @@ export function loadRestaurantRegions() {
     dispatch(setRegions(regions));
   };
 }
+
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}

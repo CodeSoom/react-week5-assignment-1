@@ -24,9 +24,10 @@ describe('reducer', () => {
   it('set restaurant category into categorys', () => {
     const categories = [
       { id: 1, name: '한식' },
+      { id: 2, name: '중식' },
     ];
 
     const state = reducer(initialState, setCategories(categories));
-    expect(state.categories).toHaveLength(1);
+    expect(state.categories).toHaveLength(2);
   });
 });
