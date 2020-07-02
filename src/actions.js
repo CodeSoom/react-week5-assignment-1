@@ -31,3 +31,12 @@ export function loadRestaurantCategories() {
     dispatch(setCategories(categories));
   };
 }
+
+export function selectRegion(region) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      region,
+    },
+  };
+}

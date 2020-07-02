@@ -1,4 +1,5 @@
 const initialState = {
+  region: '',
   regions: [],
   categories: [],
 };
@@ -12,6 +13,10 @@ export default function reducer(state = initialState, action = {}) {
     setCategories: ({ categories }) => ({
       ...state,
       categories,
+    }),
+    selectRegion: ({ region }) => ({
+      ...state,
+      region,
     }),
   };
 

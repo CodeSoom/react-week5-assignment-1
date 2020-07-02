@@ -3,9 +3,11 @@ import reducer from './reducer';
 import {
   setRegions,
   setCategories,
+  selectRegion,
 } from './actions';
 
 const initialState = {
+  region: '',
   regions: [],
   categories: [],
 };
