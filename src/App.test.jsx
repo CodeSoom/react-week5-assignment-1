@@ -21,7 +21,7 @@ import App from './App';
 
 import { regions, categories } from '../__fixture__/data';
 
-import { selectRegion, selectCategory } from './action';
+import { selectRegion, selectCategory, loadRestaurants } from './action';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -81,6 +81,19 @@ describe('<App />', () => {
         fireEvent.click(getByRole('button', { name: category.name }));
         expect(dispatch).toBeCalledWith(selectCategory(category.name));
       });
+    });
+  });
+
+  context('when the user selects region and category', () => {
+    it('shows restaurants', () => {
+      const { getByRole } = render(<App />);
+
+      fireEvent.click(getByRole('button', { name: '서울' }));
+      fireEvent.click(getByRole('button', { name: '한식' }));
+
+      expect(dispatch).toBeCalledWith(selectRegion('서울'));
+      expect(dispatch).toBeCalledWith(selectCategory('한식'));
+      expect(dispatch).toBeCalledWith(loadRestaurants('서울', 1));
     });
   });
 });
