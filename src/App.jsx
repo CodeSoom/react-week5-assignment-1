@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import AddressListContainer from './AddressListContainer';
 
+import { loadAddressList } from './actions';
+
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadAddressList());
+  }, []);
+
   return (
     <div>
       <AddressListContainer />
