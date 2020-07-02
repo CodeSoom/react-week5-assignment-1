@@ -28,6 +28,7 @@ export default function App() {
 
   function handleSelectCategory(newSelectedCategory) {
     dispatch(selectCategory(newSelectedCategory));
+    // TODO : loadRestaurants(지역, 카테고리)
   }
 
   return (
@@ -42,6 +43,7 @@ export default function App() {
           {category.name === selectedCategory ? `${category.name}(V)` : category.name}
         </button>
       ))}
+
     </div>
   );
 }
