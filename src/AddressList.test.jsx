@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import AddressList from './AddressList';
 
-import addressList from '../__fixture__/restaurants';
+import { addressList } from '../__fixture__/restaurants';
 
 describe('AddressList', () => {
   it('레스토랑 지역 목록이 로딩된다.', () => {

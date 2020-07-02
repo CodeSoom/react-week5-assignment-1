@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 
 import AddressListContainer from './AddressListContainer';
 
-import addressList from '../__fixture__/restaurants';
+import { addressList } from '../__fixture__/restaurants';
 
 jest.mock('react-redux');
 
