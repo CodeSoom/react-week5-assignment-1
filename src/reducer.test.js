@@ -29,6 +29,20 @@ describe('reducer', () => {
     });
   });
 
+  describe('selectedCategory', () => {
+    it('shows a mark for a selected region', () => {
+      const prevState = {
+        selectedCategory: '',
+      };
+
+      const newState = reducer(prevState, selectCategory('한식'));
+
+      expect(newState.selectedCategory).toBe('한식');
+    });
+  });
+
+
+
   context('without previousState', () => {
     it('return initState', () => {
       const newState = reducer(undefined, {});
