@@ -3,22 +3,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
 
-import {
-  loadRegions, selectCategory, loadRestaurants, loadCategories,
-} from './action';
+import { loadRegions, loadCategories } from './action';
 
 export default function App() {
-  const {
-    selectedRegion, categories, selectedCategory, restaurants,
-  } = useSelector(
-    (state) => ({
-      selectedRegion: state.selectedRegion,
-      categories: state.categories,
-      selectedCategory: state.selectedCategory,
-      restaurants: state.restaurants,
-    }),
-  );
+  const { restaurants } = useSelector((state) => ({
+    selectedRegion: state.selectedRegion,
+    restaurants: state.restaurants,
+  }));
 
   const dispatch = useDispatch();
 
@@ -27,25 +20,10 @@ export default function App() {
     dispatch(loadCategories());
   }, []);
 
-  function handleSelectCategory(newSelectedCategory, newSelectedCategoryId) {
-    dispatch(selectCategory(newSelectedCategory));
-    dispatch(loadRestaurants(selectedRegion, newSelectedCategoryId));
-  }
-
   return (
     <div>
       <RegionsContainer />
-      {categories.map((category) => (
-        <button
-          key={category.id}
-          onClick={() => handleSelectCategory(category.name, category.id)}
-          type="button"
-        >
-          {category.name === selectedCategory
-            ? `${category.name}(V)`
-            : category.name}
-        </button>
-      ))}
+      <CategoriesContainer />
       <ul>
         {restaurants.map((restaurant) => (
           <li key={restaurant.id}>{restaurant.name}</li>
