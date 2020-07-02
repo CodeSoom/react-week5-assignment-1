@@ -8,15 +8,18 @@ import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-test('RegionsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-  }));
-  const { queryByText } = render(
-    <RegionsContainer />,
-  );
+describe('RegionsContainer', () => {
+  it('contains regional names', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+    }));
 
-  expect(queryByText(/서울/)).not.toBeNull();
+    const { queryByText } = render(
+      <RegionsContainer />,
+    );
+
+    expect(queryByText(/서울/)).not.toBeNull();
+  });
 });
