@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -17,7 +17,9 @@ export default function RegionsContainer() {
     dispatch(setRegion(regionName));
   }
 
-  dispatch(loadRegions());
+  // useEffect(() => {
+  //   dispatch(loadRegions());
+  // }, []);
 
   return (
     <Buttons
