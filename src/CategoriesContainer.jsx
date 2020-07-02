@@ -3,6 +3,8 @@ import React from 'react';
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
+  const selectedId = null;
+
   const categories = [
     { id: 1, name: '한식' },
     { id: 2, name: '중식' },
@@ -17,6 +19,7 @@ export default function CategoriesContainer() {
 
   return (
     <Categories
+      selected={selectedId}
       categories={categories}
       onClick={handleClick}
     />
