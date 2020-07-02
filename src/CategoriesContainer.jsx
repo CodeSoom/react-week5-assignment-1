@@ -11,9 +11,14 @@ export default function CategoriesContainer() {
     { id: 5, name: '분식' },
   ];
 
+  function handleClick() {
+    // TODO: 버튼 클릭이 되었을 때
+  }
+
   return (
     <Categories
       categories={categories}
+      onClick={handleClick}
     />
   );
 }
