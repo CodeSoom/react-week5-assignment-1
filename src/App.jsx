@@ -1,26 +1,47 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import { loadRegions } from './action';
+import { loadRegions, selectCategory } from './action';
+
+
+const categories = [
+  { id: 1, name: '한식' },
+  { id: 2, name: '중식' },
+  { id: 3, name: '일식' },
+  { id: 4, name: '양식' },
+  { id: 5, name: '분식' },
+];
 
 export default function App() {
+  const { selectedCategory } = useSelector((state) => ({
+    selectedCategory: state.selectedCategory,
+  }));
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
   }, []);
 
+  function handleSelectCategory(newSelectedCategory) {
+    dispatch(selectCategory(newSelectedCategory));
+  }
+
   return (
     <div>
       <RegionsContainer />
-      <button type="button">한식</button>
-      <button type="button">중식</button>
-      <button type="button">일식</button>
-      <button type="button">양식</button>
-      <button type="button">분식</button>
+      {categories.map((category) => (
+        <button
+          key={category.id}
+          onClick={() => handleSelectCategory(category.name)}
+          type="button"
+        >
+          {category.name === selectedCategory ? `${category.name}(V)` : category.name}
+        </button>
+      ))}
     </div>
   );
 }
