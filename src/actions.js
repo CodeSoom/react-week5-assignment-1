@@ -5,5 +5,9 @@ export const changeRegion = ({ name }) => ({
   },
 });
 
-// TODO delete it
-export const x = () => ({});
+export const changeCategory = ({ name }) => ({
+  type: 'changeCategory',
+  payload: {
+    name,
+  },
+});
