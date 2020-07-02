@@ -6,7 +6,7 @@ import {
   loadRegions, setInitRegions, loadCategories, setInitCategories,
 } from './action';
 
-import { regions, categories } from '../__fixture__/data';
+import { regions, categories, restaurants } from '../__fixture__/data';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -47,4 +47,19 @@ describe('acton', () => {
       });
     });
   });
+
+  describe('loadRestaurants', () => {
+    it('load Categories', () => {
+      const store = mockStore({});
+
+      onFetch(restaurants);
+
+      return store.dispatch(loadRestaurants()).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual(setRestaurants(restaurants));
+      });
+    });
+  });
+
+
 });
