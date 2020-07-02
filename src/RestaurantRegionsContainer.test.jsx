@@ -19,6 +19,7 @@ describe('RestaurantRegionContainer', () => {
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
+      region: '',
       regions,
     }));
   });
