@@ -7,10 +7,10 @@ export const changeRegion = ({ name }) => ({
   },
 });
 
-export const changeCategory = ({ name }) => ({
+export const changeCategory = ({ name, id }) => ({
   type: 'changeCategory',
   payload: {
-    name,
+    name, id,
   },
 });
 
@@ -40,9 +40,10 @@ export const loadRegions = () => async (dispatch) => {
 };
 
 export const loadRestaurants = () => async (dispatch, getState) => {
+  const { region, categoryId } = getState();
   const restaurant = await fetchRestaurants({
-    regionName: getState.region,
-    categoryId: getState.categoryId,
+    regionName: region,
+    categoryId,
   });
   dispatch(setRestaurants(restaurant));
 };
