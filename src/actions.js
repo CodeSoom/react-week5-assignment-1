@@ -11,3 +11,13 @@ export const changeCategory = ({ name }) => ({
     name,
   },
 });
+
+export const setCategories = (categoreis) => ({
+  type: 'setCategories',
+  payload: categoreis,
+});
+
+export const setRegions = (regions) => ({
+  type: 'setRegions',
+  payload: regions,
+});
