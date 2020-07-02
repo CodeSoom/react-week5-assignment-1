@@ -6,6 +6,7 @@ import { render, fireEvent } from '@testing-library/react';
 import CategoriesContainer from './CategoriesContainer';
 
 import { selectCategory } from './actions';
+
 import { categories } from '../fixture/test-data';
 
 jest.mock('react-redux');
