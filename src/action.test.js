@@ -11,7 +11,7 @@ import { regions, categories } from '../__fixture__/data';
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-function mockfetch(data) {
+function onFetch(data) {
   global.fetch = jest.fn(() => Promise.resolve({
     json: () => Promise.resolve(data),
   }));
@@ -26,7 +26,7 @@ describe('acton', () => {
     it('load Regions', () => {
       const store = mockStore({});
 
-      mockfetch(regions);
+      onFetch(regions);
 
       return store.dispatch(loadRegions()).then(() => {
         const actions = store.getActions();
@@ -39,7 +39,7 @@ describe('acton', () => {
     it('load Categories', () => {
       const store = mockStore({});
 
-      mockfetch(categories);
+      onFetch(categories);
 
       return store.dispatch(loadCategories()).then(() => {
         const actions = store.getActions();

@@ -2,7 +2,7 @@ import { fetchInitRegions, fetchInitCategories } from './api';
 
 import { regions, categories } from '../../__fixture__/data';
 
-function mockfetch(data) {
+function onFetch(data) {
   global.fetch = jest.fn(() => Promise.resolve({
     json: () => Promise.resolve(data),
   }));
@@ -15,7 +15,7 @@ function mockfetch(data) {
 describe('api', () => {
   describe('fetchInitRegions', () => {
     it('fetch initRegions', async () => {
-      mockfetch(regions);
+      onFetch(regions);
 
       const rate = await fetchInitRegions();
 
@@ -25,7 +25,7 @@ describe('api', () => {
   });
   describe('fetchInitCategories', () => {
     it('fetch initCategories', async () => {
-      mockfetch(categories);
+      onFetch(categories);
 
       const rate = await fetchInitCategories();
 
