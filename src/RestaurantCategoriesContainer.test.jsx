@@ -1,17 +1,23 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { categories } from '../fixtures/restaurants';
 
 import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
+import {
+  selectCategory,
+} from './actions';
+
 jest.mock('react-redux');
 
 describe('RestaurantCategoriesContainer', () => {
+  const dispatch = useDispatch();
   beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       categories,
     }));
@@ -26,5 +32,15 @@ describe('RestaurantCategoriesContainer', () => {
       expect(getByText(name)).not.toBeNull();
       expect(getByText(name)).toHaveAttribute('type', 'button');
     });
+  });
+
+  it('선택한 지역을 category에 담는다.', () => {
+    const category = '한식';
+    const { getByText } = render((
+      <RestaurantCategoriesContainer />
+    ));
+
+    fireEvent.click(getByText('한식'));
+    expect(dispatch).toBeCalledWith(selectCategory(category));
   });
 });
