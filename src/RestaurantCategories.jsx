@@ -5,7 +5,7 @@ export default function RestaurantCategories({ categories, onClick, selected }) 
     <ul>
       {categories.map((category) => (
         <li key={category.id}>
-          <button type="button" onClick={onClick} data-name={category.name}>
+          <button type="button" onClick={onClick} data-name={category.name} data-id={category.id}>
             {category.name}
             {selected && category.name === selected && '(V)'}
           </button>
