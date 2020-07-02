@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
+import CategoriesContainer from './CategoriesContainer';
+
 import { categories } from '../__fixture__/data';
 
 jest.mock('react-redux');
