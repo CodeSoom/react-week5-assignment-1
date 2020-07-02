@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   selectRegion,
+  selectCategory,
 } from './actions';
 
 const initialState = {
@@ -47,7 +48,7 @@ describe('reducer', () => {
 
   it('select category', () => {
     const category = '한식';
-    const state = reducer(initialState, selectRegion(category));
+    const state = reducer(initialState, selectCategory(category));
     expect(state.category).toBe('한식');
   });
 });
