@@ -59,7 +59,6 @@ describe('<App />', () => {
       });
 
       expect(dispatch).toBeCalledTimes(1);
-
     });
   });
 
@@ -73,14 +72,20 @@ describe('<App />', () => {
       });
     });
   });
+
+  context('when the user selects category', () => {
+    it('shows a category with a selection mark', () => {
+      const { getByRole, queryByRole } = render(<App />);
+
+      categories.forEach((category) => {
+        fireEvent.click(getByRole('button', { name: category.name }));
+        expect(queryByRole('button', { name: `${category.name}(V)` })).not.toBeNull();
+      });
+    });
+  });
 });
 
 // TODO : App TEST
-
-// context('with a selected category', () => {
-//   it('shows a mark for a selected category', () => {});
-// });
-
 // context('with a selected region &  with a selected category', () => {
 //   it('shows a mark for a selected category', () => {});
 //   it('shows restaurants', () => {});
