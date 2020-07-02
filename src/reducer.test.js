@@ -14,9 +14,18 @@ describe('reducer', () => {
 
   context('when reducer is executed first time', () => {
     it('returns initial state', () => {
-      const state = reducer(undefined, 'testAction');
+      const state = reducer(undefined, 'INITIAL_EXECUTION');
 
+      expect(state.regions).toHaveLength(0);
       expect(state.categories).toHaveLength(0);
+    });
+  });
+
+  context('with wrong action', () => {
+    it('returns previous state', () => {
+      const state = reducer(previousState, 'WRONG_ACTION');
+
+      expect(state).toEqual(previousState);
     });
   });
 
@@ -29,7 +38,7 @@ describe('reducer', () => {
   });
 
   context('when action type is selectCategory', () => {
-    it('set selected category id', () => {
+    it('sets selected category id', () => {
       const state = reducer(previousState, selectCategory(1));
 
       expect(state.categoryId).toBe(1);
