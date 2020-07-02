@@ -8,6 +8,10 @@ import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 import { regions } from '../fixtures/restaurants';
 
+import {
+  selectRegion,
+} from './actions';
+
 jest.mock('react-redux');
 
 describe('RestaurantRegionContainer', () => {
@@ -36,11 +40,6 @@ describe('RestaurantRegionContainer', () => {
     ));
 
     fireEvent.click(getByText('광주'));
-    expect(dispatch).toBeCalledWith({
-      type: 'selectRegion',
-      payload: {
-        region,
-      },
-    });
+    expect(dispatch).toBeCalledWith(selectRegion(region));
   });
 });
