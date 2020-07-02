@@ -9,8 +9,9 @@ import { selectAddress } from './actions';
 export default function AddressListContainer() {
   const dispatch = useDispatch();
 
-  const { addressList } = useSelector((state) => ({
+  const { addressList, selectedAddress } = useSelector((state) => ({
     addressList: state.addressList,
+    selectedAddress: state.selectedAddress,
   }));
 
   function handleClick(event) {
@@ -22,6 +23,7 @@ export default function AddressListContainer() {
     <AddressList
       addressList={addressList}
       onClick={handleClick}
+      selectedAddress={selectedAddress}
     />
   );
 }
