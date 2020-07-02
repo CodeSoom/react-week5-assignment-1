@@ -53,6 +53,7 @@ context('when click category value', () => {
         },
       ],
       category: '한식',
+      categoryId: 1,
     }));
 
     const { getByText } = render(<RestaurantCategoriesContainer />);
