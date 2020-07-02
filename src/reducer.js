@@ -15,7 +15,10 @@ const reducers = {
     ...previousState,
     selectedRegion: action.payload.selectedRegion,
   }),
-  // TODO : categories
+  setInitCategories: (previousState, action) => ({
+    ...previousState,
+    categories: action.payload.categories,
+  }),
   selectCategory: (previousState, action) => ({
     ...previousState,
     selectedCategory: action.payload.selectedCategory,
