@@ -15,7 +15,7 @@ export default function RegionContainer({ region }) {
   }));
 
   function isSelcted() {
-    if (region.id === selectedRegion) {
+    if (region.name === selectedRegion) {
       return `${region.name}(v)`;
     }
 
