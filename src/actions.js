@@ -1,6 +1,6 @@
 import { fetchAddressList } from './services/api';
 
-export function setAddressList(addressList) {
+function setAddressList(addressList) {
   return {
     type: 'setAddressList',
     payload: {
@@ -9,9 +9,18 @@ export function setAddressList(addressList) {
   };
 }
 
-export function loadAddressList() {
+function loadAddressList() {
   return async (dispatch) => {
     const addressList = await fetchAddressList();
     dispatch(setAddressList(addressList));
   };
 }
+
+function selectAddress(selectedAddress) {
+  return {
+    type: 'selectAddress',
+    payload: { selectedAddress },
+  };
+}
+
+export { setAddressList, loadAddressList, selectAddress };

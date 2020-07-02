@@ -1,5 +1,8 @@
 const initialState = {
   addressList: [],
+  selectedAddress: '',
+  selectedCategory: '',
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -7,6 +10,14 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       addressList: action.payload.addressList,
+    };
+  }
+
+  if (action.type === 'selectAddress') {
+    const { selectedAddress } = action.payload;
+    return {
+      ...state,
+      selectedAddress,
     };
   }
 

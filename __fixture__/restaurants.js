@@ -1,5 +1,8 @@
 const initialState = {
   addressList: [],
+  selectedAddress: '',
+  selectedCategory: '',
+  restaurants: [],
 };
 
 const addressList = [

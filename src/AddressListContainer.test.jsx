@@ -8,6 +8,8 @@ import AddressListContainer from './AddressListContainer';
 
 import { addressList } from '../__fixture__/restaurants';
 
+import { selectAddress } from './actions';
+
 jest.mock('react-redux');
 
 describe('AddressListContainer', () => {
@@ -38,7 +40,7 @@ describe('AddressListContainer', () => {
 
       fireEvent.click(getByText('서울'));
 
-      expect(dispatch).toBeCalledWith(selectAddress());
+      expect(dispatch).toBeCalledWith(selectAddress('서울'));
     });
   });
 });
