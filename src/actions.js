@@ -5,6 +5,9 @@ export function loadAddressList() {
   };
 }
 
-export function xxx() {
-
+export function setAddressList(addressList) {
+  return {
+    type: 'setAddressList',
+    payload: { addressList },
+  };
 }
