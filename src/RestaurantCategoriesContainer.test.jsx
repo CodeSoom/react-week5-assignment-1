@@ -61,6 +61,6 @@ context('when click category value', () => {
 
     fireEvent.click(getByText(/한식/));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
