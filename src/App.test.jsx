@@ -28,15 +28,15 @@ jest.mock('./services/api');
 
 describe('<App />', () => {
   describe('render App', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
+
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
     it('shows regions', () => {
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-      }));
-
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
       const { queryByRole } = render(<App />);
 
       regions.forEach((region) => {
@@ -51,16 +51,15 @@ describe('<App />', () => {
   });
 
   context('when the user selects region', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      selectedRegion: '',
+    }));
+
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
     it('shows a region with a selection mark', () => {
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-        selectedRegion: '',
-      }));
-
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
       const { getByRole } = render(<App />);
 
       regions.forEach((region) => {

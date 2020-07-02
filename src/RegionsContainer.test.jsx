@@ -44,24 +44,26 @@ describe('<RegionsContainer />', () => {
   });
 
   context('when the user selects region', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      selectedRegion: '',
+    }));
+
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
     it('shows a region with a selection mark', () => {
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-        selectedRegion: '',
-      }));
-
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
-      const { getByRole } = render(<RegionsContainer />);
+      const { getByRole, queryByRole } = render(<RegionsContainer />);
 
       regions.forEach((region) => {
         fireEvent.click(getByRole('button', { name: region.name }));
         expect(dispatch).toBeCalledWith(selectRegion(region.name));
-      });
 
-      
+        expect(
+          queryByRole('button', { name: `${region.name}(V)` }),
+        ).not.toBeNull();
+      });
     });
   });
 });
