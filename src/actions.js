@@ -65,7 +65,7 @@ export function setRestaurants({ restaurants }) {
 
 export function loadRestaurants({ selectedRegion, selectedCategoryId }) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants(selectedRegion, selectedCategoryId);
+    const restaurants = await fetchRestaurants({ selectedRegion, selectedCategoryId });
     dispatch(setRestaurants({ restaurants }));
   };
 }
