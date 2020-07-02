@@ -4,11 +4,11 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import ButtonsContainer from './ButtonsContainer';
+import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-describe('ButtonsContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
@@ -28,7 +28,7 @@ describe('ButtonsContainer', () => {
       }));
 
       const { getByText } = render((
-        <ButtonsContainer />
+        <RegionsContainer />
       ));
 
       fireEvent.click(getByText(testRegions[0].name));
