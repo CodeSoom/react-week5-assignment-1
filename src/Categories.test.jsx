@@ -34,22 +34,22 @@ describe('<Categories />', () => {
     });
   });
 
-  // context('when the user selects category', () => {
-  //   it('run selectCategory action', () => {
-  //     const handleSelectCategory = jest.fn();
+  context('when the user selects category', () => {
+    it('run selectCategory action', () => {
+      const handleSelectCategory = jest.fn();
 
-  //     const { getByRole } = render(
-  //       <Categories
-  //         categories={categories}
-  //         selectedCategory=""
-  //         onSelectCategory={handleSelectCategory}
-  //       />,
-  //     );
+      const { getByRole } = render(
+        <Categories
+          categories={categories}
+          selectedCategory=""
+          onSelectCategory={handleSelectCategory}
+        />,
+      );
 
-  //     categories.forEach((category) => {
-  //       fireEvent.click(getByRole('button', { name: category.name }));
-  //       expect(handleSelectCategory).toBeCalledTimes(categories.length);
-  //     });
-  //   });
-  // });
+      categories.forEach((category) => {
+        fireEvent.click(getByRole('button', { name: category.name }));
+        expect(handleSelectCategory).toBeCalledTimes(categories.length);
+      });
+    });
+  });
 });
