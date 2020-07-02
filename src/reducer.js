@@ -4,20 +4,20 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
-    return {
+  const reducers = {
+    setRegions: ({ regions }) => ({
       ...state,
       regions,
-    };
-  }
-
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
-    return {
+    }),
+    setCategories: ({ categories }) => ({
       ...state,
       categories,
-    };
-  }
-  return state;
+    }),
+  };
+
+  return reducers[action.type] ? (
+    reducers[action.type](action.payload)
+  ) : (
+    state
+  );
 }
