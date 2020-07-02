@@ -25,5 +25,6 @@ describe('App', () => {
 
     fireEvent.click(getByText('서울'));
     expect(handleClick).toBeCalled();
+    expect(container).toHaveTextContent('서울(V)');
   });
 });
