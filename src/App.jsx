@@ -1,4 +1,5 @@
 import React from 'react';
+import CategoriesContainer from './Containers/CategoriesContainer';
 
 export default function App() {
   return (
@@ -6,7 +7,9 @@ export default function App() {
       <header>
         <h1>Restaurants</h1>
       </header>
-      <main></main>
+      <main>
+        <CategoriesContainer />
+      </main>
     </div>
   );
 }
