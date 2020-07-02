@@ -5,5 +5,5 @@ export const categories = [
 
 export const regions = [
   { id: 1, name: '서울' },
-  { id: 2, name: '대구' },
+  { id: 2, name: '대전' },
 ];
