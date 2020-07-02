@@ -2,17 +2,7 @@ import { regions } from '../__fixture__/data';
 
 import reducer from './reducer';
 
-import { setInitRegions, selectRegion } from './action';
-
-
-function selectCategory(selectedCategory) {
-  return {
-    type: 'selectCategory',
-    payload: {
-      selectedCategory,
-    },
-  };
-}
+import { setInitRegions, selectRegion, selectCategory } from './action';
 
 describe('reducer', () => {
   describe('setInitRegions', () => {
