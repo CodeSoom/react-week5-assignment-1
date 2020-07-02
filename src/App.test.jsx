@@ -27,7 +27,7 @@ describe('App', () => {
       <App />
     ));
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalledTimes(2);
 
     regions.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
@@ -39,7 +39,7 @@ describe('App', () => {
       <App />
     ));
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalledTimes(2);
 
     categories.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
