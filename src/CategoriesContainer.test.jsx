@@ -14,16 +14,30 @@ jest.mock('react-redux');
 
 describe('<CategoriesContainer />', () => {
   describe('render CategoriesContainer', () => {
-    it('shows categories', () => {
-      useSelector.mockImplementation((selector) => selector({
-        categories,
-        selectedCategory: '',
-      }));
+    context('with selectedCategory', () => {
+      it('shows categories', () => {
+        useSelector.mockImplementation((selector) => selector({
+          categories,
+          selectedCategory: '',
+        }));
 
-      const { queryByRole } = render(<CategoriesContainer />);
+        const { queryByRole } = render(<CategoriesContainer />);
 
-      categories.forEach((category) => {
-        expect(queryByRole('button', { name: category.name })).not.toBeNull();
+        categories.forEach((category) => {
+          expect(queryByRole('button', { name: category.name })).not.toBeNull();
+        });
+      });
+    });
+    context('with selectedCategory', () => {
+      it('shows a category with a selection mark', () => {
+        useSelector.mockImplementation((selector) => selector({
+          categories,
+          selectedCategory: '한식',
+        }));
+
+        const { queryByRole } = render(<CategoriesContainer />);
+
+        expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
       });
     });
   });
