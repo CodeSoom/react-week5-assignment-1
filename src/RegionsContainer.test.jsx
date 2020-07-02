@@ -27,13 +27,6 @@ describe('RegionsContainer', () => {
       ));
 
       expect(getByText(testRegions[0].name)).toBeInTheDocument();
-
-      expect(dispatch).toBeCalledWith({
-        type: 'setRegion',
-        payload: {
-          regionName: '서울',
-        },
-      });
     });
   });
 
