@@ -33,4 +33,14 @@ describe('api', () => {
       expect(fetch).toHaveBeenCalledTimes(1);
     });
   });
+  describe('fetchRestaurants', () => {
+    it('fetch Restaurants', async () => {
+      onFetch(restaurants);
+
+      const rate = await fetchRestaurants();
+
+      expect(rate).toEqual(restaurants);
+      expect(fetch).toHaveBeenCalledTimes(1);
+    });
+  });
 });
