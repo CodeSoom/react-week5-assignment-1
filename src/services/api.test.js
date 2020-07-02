@@ -19,4 +19,14 @@ describe('api', () => {
       expect(fetch).toHaveBeenCalledTimes(1);
     });
   });
+  describe('fetchInitCategories', () => {
+    it('fetch initCategories', async () => {
+      const rate = await fetchInitCategories();
+
+      expect(rate).toEqual(categories);
+      expect(fetch).toHaveBeenCalledTimes(1);
+    });
+  });
+
+
 });
