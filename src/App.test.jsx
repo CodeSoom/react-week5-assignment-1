@@ -21,21 +21,37 @@ import App from './App';
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { selectRegion, selectCategory, loadCategories } from './action';
+import { selectRegion, selectCategory } from './action';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
 
+const initState = {
+  regions,
+  selectedRegion: '',
+  categories,
+  selectedCategory: '',
+  restaurants: [],
+};
+
+function mockUseSelector(state = initState) {
+  useSelector.mockImplementation((selector) => selector({
+    regions: state.regions,
+    selectedRegion: state.selectedRegion,
+    categories: state.categories,
+    selectedCategory: state.selectedCategory,
+    restaurants: state.restaurants,
+  }));
+}
+
+const dispatch = jest.fn();
+
+function renderApp() {
+  return render(<App />);
+}
+
 describe('<App />', () => {
-  const dispatch = jest.fn();
-
   beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-      categories,
-      restaurants,
-    }));
-
     useDispatch.mockImplementation(() => dispatch);
   });
 
@@ -45,7 +61,8 @@ describe('<App />', () => {
 
   describe('render App', () => {
     it('shows regions', () => {
-      const { queryByRole } = render(<App />);
+      mockUseSelector();
+      const { queryByRole } = renderApp();
 
       regions.forEach((region) => {
         expect(queryByRole('button', { name: region.name })).not.toBeNull();
@@ -56,14 +73,9 @@ describe('<App />', () => {
 
     context('without selectedCategory', () => {
       it('shows categories', () => {
-        useSelector.mockImplementation((selector) => selector({
-          regions,
-          categories,
-          restaurants,
-          selectedCategory: '',
-        }));
+        mockUseSelector();
 
-        const { queryByRole } = render(<App />);
+        const { queryByRole } = renderApp();
 
         categories.forEach((category) => {
           expect(queryByRole('button', { name: category.name })).not.toBeNull();
@@ -75,14 +87,12 @@ describe('<App />', () => {
 
     context('with selectedCategory', () => {
       it('shows a category with a selection mark', () => {
-        useSelector.mockImplementation((selector) => selector({
-          regions,
-          categories,
-          restaurants,
+        mockUseSelector({
+          ...initState,
           selectedCategory: '한식',
-        }));
+        });
 
-        const { queryByRole } = render(<App />);
+        const { queryByRole } = renderApp();
 
         expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
 
@@ -93,7 +103,9 @@ describe('<App />', () => {
 
   context('when the user selects region', () => {
     it('shows a region with a selection mark', () => {
-      const { getByRole } = render(<App />);
+      mockUseSelector();
+
+      const { getByRole } = renderApp();
 
       regions.forEach((region) => {
         fireEvent.click(getByRole('button', { name: region.name }));
@@ -104,7 +116,9 @@ describe('<App />', () => {
 
   context('when the user selects category', () => {
     it('shows a category with a selection mark', () => {
-      const { getByRole } = render(<App />);
+      mockUseSelector();
+
+      const { getByRole } = renderApp();
 
       categories.forEach((category) => {
         fireEvent.click(getByRole('button', { name: category.name }));
@@ -115,7 +129,12 @@ describe('<App />', () => {
 
   context('when the user selects region and category', () => {
     it('shows restaurants', () => {
-      const { getByRole, queryByText } = render(<App />);
+      mockUseSelector({
+        ...initState,
+        restaurants,
+      });
+
+      const { getByRole, queryByText } = renderApp();
 
       fireEvent.click(getByRole('button', { name: '서울' }));
       fireEvent.click(getByRole('button', { name: '한식' }));
