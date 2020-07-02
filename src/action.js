@@ -29,7 +29,7 @@ export function setInitCategories(initCategories) {
   return {
     type: 'setInitCategories',
     payload: {
-      regions: initCategories,
+      categories: initCategories,
     },
   };
 }
