@@ -1,7 +1,8 @@
 import reducer from './reducer';
 
 import {
-  setCategories, selectCategory, setRegions,
+  setRegions, selectRegion,
+  setCategories, selectCategory,
 } from './actions';
 
 import { regions, categories } from '../fixture/test-data';
@@ -18,6 +19,9 @@ describe('reducer', () => {
 
       expect(state.regions).toHaveLength(0);
       expect(state.categories).toHaveLength(0);
+
+      expect(state.regionName).toBeUndefined();
+      expect(state.categoryId).toBeUndefined();
     });
   });
 
@@ -50,6 +54,14 @@ describe('reducer', () => {
       const state = reducer(previousState, setRegions(regions));
 
       expect(state.regions).toEqual(regions);
+    });
+  });
+
+  context('when action type is selectRegion', () => {
+    it('sets selected region name', () => {
+      const state = reducer(previousState, selectRegion('서울'));
+
+      expect(state.regionName).toBe('서울');
     });
   });
 });
