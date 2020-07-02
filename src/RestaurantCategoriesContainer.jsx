@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import RestaurantCategories from './RestaurantCategories';
 
-import { categories } from '../fixtures/restaurants';
-
 export default function RestaurantCategoriesContainer() {
+  const { categories } = useSelector((state) => ({
+    categories: state.categories,
+  }));
+
   return (
     <RestaurantCategories categories={categories} />
   );
