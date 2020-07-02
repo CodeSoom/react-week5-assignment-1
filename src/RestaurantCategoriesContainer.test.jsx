@@ -42,7 +42,7 @@ context('when click category value', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
+      categories: [
         {
           id: 1,
           name: '한식',
