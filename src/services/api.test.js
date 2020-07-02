@@ -1,4 +1,4 @@
-import { fetchInitRegions, fetchInitCategories } from './api';
+import { fetchInitRegions, fetchInitCategories, fetchRestaurants } from './api';
 
 import { regions, categories, restaurants } from '../../__fixture__/data';
 
@@ -10,13 +10,6 @@ function onFetch(data) {
   beforeEach(() => {
     fetch.mockClear();
   });
-}
-
-async function fetchRestaurants(regionName, categoryId) {
-  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
 }
 
 describe('api', () => {
