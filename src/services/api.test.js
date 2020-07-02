@@ -7,9 +7,11 @@ import restaurantsFixture from '../__fixtures__/restaurants';
 global.fetch = jest.fn();
 
 function mockFetch(data) {
-  fetch.mockImplementation(() => Promise.resolve({
-    json: () => Promise.resolve(data),
-  }));
+  fetch.mockImplementation(
+    jest.fn().mockResolvedValue({
+      json: jest.fn().mockResolvedValue(data),
+    }),
+  );
 }
 
 describe('api', () => {
