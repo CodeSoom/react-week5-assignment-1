@@ -3,7 +3,13 @@ import React from 'react';
 export default function RestaurantCategories({ categories }) {
   return (
     <ul>
-      <li>한식</li>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
+          <button type="button">
+            {name}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }
