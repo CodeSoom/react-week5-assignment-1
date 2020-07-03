@@ -1,4 +1,4 @@
-import { fetchAddressList } from './services/api';
+import { fetchAddressList, fetchCategoryList } from './services/api';
 
 function setAddressList(addressList) {
   return {
@@ -37,10 +37,18 @@ function setCategoryList(categoryList) {
   };
 }
 
+function loadCategoryList() {
+  return async (dispatch) => {
+    const categoryList = await fetchCategoryList();
+    dispatch(setCategoryList(categoryList));
+  };
+}
+
 export {
   setAddressList,
   loadAddressList,
   selectAddress,
   selectCategory,
   setCategoryList,
+  loadCategoryList,
 };

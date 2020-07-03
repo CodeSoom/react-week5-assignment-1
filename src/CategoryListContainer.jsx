@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CategoryList from './CategoryList';
 
-import { categoryList } from '../__fixture__/restaurants';
 import { selectCategory } from './actions';
 
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
+
+  const { categoryList } = useSelector((state) => ({
+    categoryList: state.categoryList,
+  }));
 
   function handleClick(event) {
     const { target: { id } } = event;
