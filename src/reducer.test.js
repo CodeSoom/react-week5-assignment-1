@@ -16,10 +16,26 @@ describe('reducer', () => {
       const id = 1;
 
       // When
-      const newState = reducer(previousState, updateSelected(id));
+      const newState = reducer(previousState, updateSelected('categoryId', id));
 
       // Then
       expect(newState.selected.categoryId).toBe(id);
+    });
+
+    it('selected region을 변경한다.', () => {
+    // Given
+      const previousState = {
+        selected: {
+          region: '',
+        },
+      };
+      const region = '서울';
+
+      // When
+      const newState = reducer(previousState, updateSelected('region', region));
+
+      // Then
+      expect(newState.selected.region).toBe(region);
     });
   });
 });
