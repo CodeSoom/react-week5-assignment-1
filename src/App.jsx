@@ -6,7 +6,7 @@ import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 import {
   loadRegions,
 } from './actions';
-import RestaurantCategories from './RestaurantCategories';
+import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function App() {
   return (
     <>
       <RestaurantRegionsContainer />
-      <RestaurantCategories />
+      <RestaurantCategoriesContainer />
     </>
   );
 }
