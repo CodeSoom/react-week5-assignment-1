@@ -1,12 +1,11 @@
 import React from 'react';
-import RestaurantRegions from './RestaurantRegions';
 
-import { regions } from '../fixtures/restaurants';
+import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 export default function App() {
   return (
     <>
-      <RestaurantRegions regions={regions} />
+      <RestaurantRegionsContainer />
     </>
   );
 }
