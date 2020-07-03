@@ -1,13 +1,16 @@
 import React from 'react';
 
-export default function RestaurantCategories() {
+export default function RestaurantCategories({ categories }) {
   return (
     <ul>
-      <li>한식</li>
-      <li>중식</li>
-      <li>일식</li>
-      <li>양식</li>
-      <li>분식</li>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
+          <input
+            type="button"
+            value={name}
+          />
+        </li>
+      ))}
     </ul>
   );
 }

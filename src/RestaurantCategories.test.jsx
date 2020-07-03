@@ -10,6 +10,7 @@ describe('RestaurantCategories', () => {
       { id: 1, name: '서양식' },
       { id: 2, name: '동양식' },
     ];
+
     const { getByText } = render((
       <RestaurantCategories categories={categories} />
     ));
