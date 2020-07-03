@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function CategoryList() {
+export default function CategoryList({ categoryList }) {
   return (
     <ul>
-      <li>
-        <button type="button">한식</button>
-      </li>
+      {categoryList.map((category) => (
+        <li key={category.id}>
+          <button type="button">{category.name}</button>
+        </li>
+      ))}
     </ul>
   );
 }

@@ -7,6 +7,8 @@ import CategoryList from './CategoryList';
 
 import { loadAddressList } from './actions';
 
+import { categoryList } from '../__fixture__/restaurants';
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -17,7 +19,7 @@ export default function App() {
   return (
     <div>
       <AddressListContainer />
-      <CategoryList />
+      <CategoryList categoryList={categoryList} />
     </div>
   );
 }
