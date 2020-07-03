@@ -6,7 +6,7 @@ import Buttons from './Buttons';
 
 import { setCategory } from './actions';
 
-export default function RegionsContainer() {
+export default function CategoriesContainer() {
   const { categories } = useSelector((state) => ({
     categories: state.categories,
   }));

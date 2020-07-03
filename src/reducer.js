@@ -23,6 +23,10 @@ const reducers = {
     ...state,
     categories: action.payload.categories,
   }),
+  setRestaurants: (state, action) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
+  }),
 };
 
 export function reducer(state = initialState, action) {
