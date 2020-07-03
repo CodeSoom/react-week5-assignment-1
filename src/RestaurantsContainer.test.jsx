@@ -32,7 +32,7 @@ describe('RestaurantsContainer', () => {
       }));
 
       const { container } = render((
-        <RestaurantsContainer/>
+        <RestaurantsContainer />
       ));
 
       expect(container).toHaveTextContent('');

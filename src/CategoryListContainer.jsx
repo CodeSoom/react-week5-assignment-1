@@ -9,8 +9,7 @@ import { selectCategory, loadRestaurants } from './actions';
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
 
-  const { addressList, categoryList, selectedAddress, selectedCategory } = useSelector((state) => ({
-    addressList: state.addressList,
+  const { categoryList, selectedAddress, selectedCategory } = useSelector((state) => ({
     categoryList: state.categoryList,
     selectedAddress: state.selectedAddress,
     selectedCategory: state.selectedCategory,
