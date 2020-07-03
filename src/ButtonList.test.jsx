@@ -4,9 +4,9 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ButtonList from './ButtonList';
 
 const handleClick = jest.fn();
+const elements = [1, 2, 3, 4, 5].map((i) => ({ id: i, name: `Button ${i}` }));
 
 function renderButtonList() {
-  const elements = [1, 2, 3, 4, 5].map((i) => ({ id: i, name: `Button ${i}` }));
   render(
     <ButtonList
       elements={elements}
@@ -26,14 +26,13 @@ test('renders button list', () => {
   // when
   const { buttons } = renderButtonList();
   // then
-  expect(buttons).toHaveLength(5);
+  expect(buttons).toHaveLength(elements.length);
 });
 
 test('click button', () => {
+  // when
   const { buttons } = renderButtonList();
+  fireEvent.click(buttons[0]);
   // then
-  const button = buttons[0];
-  fireEvent.click(button);
-  // then
-  expect(handleClick).toBeCalledWith(1);
+  expect(handleClick).toBeCalledWith(elements[0].id);
 });
