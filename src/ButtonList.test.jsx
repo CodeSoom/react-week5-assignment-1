@@ -18,6 +18,10 @@ function renderButtonList() {
   };
 }
 
+beforeEach(() => {
+  handleClick.mockClear();
+});
+
 test('renders button list', () => {
   // when
   const { buttons } = renderButtonList();
@@ -26,8 +30,6 @@ test('renders button list', () => {
 });
 
 test('click button', () => {
-  // when
-  handleClick.mockClear();
   const { buttons } = renderButtonList();
   // then
   const button = buttons[0];
