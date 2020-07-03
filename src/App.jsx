@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux';
 
 import AddressListContainer from './AddressListContainer';
 
-import { loadAddressList, loadCategoryList } from './actions';
-
 import CategoryListContainer from './CategoryListContainer';
+
+import Restaurants from './Restaurants';
+
+import { loadAddressList, loadCategoryList } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,9 +22,7 @@ export default function App() {
     <div>
       <AddressListContainer />
       <CategoryListContainer />
-      <ul>
-        <li>양천주가</li>
-      </ul>
+      <Restaurants />
     </div>
   );
 }
