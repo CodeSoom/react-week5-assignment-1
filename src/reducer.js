@@ -38,5 +38,12 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setCategoryList') {
+    return {
+      ...state,
+      categoryList: action.payload.categoryList,
+    };
+  }
+
   return state;
 }
