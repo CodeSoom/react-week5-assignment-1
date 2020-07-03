@@ -10,6 +10,8 @@ import Restaurants from './Restaurants';
 
 import { loadAddressList, loadCategoryList } from './actions';
 
+import { restaurants } from '../__fixture__/restaurants';
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -17,15 +19,6 @@ export default function App() {
     dispatch(loadAddressList());
     dispatch(loadCategoryList());
   }, []);
-
-  const restaurants = [
-    {
-      id: 1,
-      categoryId: 1,
-      name: '양천주가',
-      address: '서울 강남구',
-    },
-  ];
 
   return (
     <div>
