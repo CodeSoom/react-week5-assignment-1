@@ -3,12 +3,12 @@ import React from 'react';
 export default function RestaurantCategories({ categories, onClick }) {
   return (
     <ul>
-      {categories.map(({ id, name }) => (
-        <li key={id}>
+      {categories.map((category) => (
+        <li key={category.id}>
           <input
             type="button"
-            onClick={() => onClick(id)}
-            value={name}
+            onClick={() => onClick(category)}
+            value={category.name}
           />
         </li>
       ))}

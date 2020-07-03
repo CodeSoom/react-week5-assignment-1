@@ -12,6 +12,7 @@ export const initialState = {
   regions: [],
   categories: [],
   region: '',
+  category: '',
 };
 
 export const categories = [

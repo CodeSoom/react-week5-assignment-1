@@ -2,6 +2,7 @@ const initialState = {
   regions: [],
   categories: [],
   region: '',
+  category: '',
 };
 
 function newArray(array, value) {
@@ -43,7 +44,7 @@ export default function reducer(state = initialState, action = {}) {
     return {
       ...state,
       category,
-      categories: newArray(categories, category),
+      categories: newArray(categories, category.name),
     };
   }
   return state;

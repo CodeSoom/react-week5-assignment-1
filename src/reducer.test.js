@@ -73,6 +73,18 @@ describe('reducer', () => {
     expect(state.category).toBe('한식');
   });
 
+  it('분류중 선택하면 해당 분류는 체크 표시가 된다.', () => {
+    const state = reducer({
+      categories,
+      category: '',
+    }, setCategory({
+      id: 1,
+      name: '한식',
+    }));
+    expect(state.categories).toEqual(
+      expect.arrayContaining([{ id: 1, name: '한식(V)' }]),
+    );
+  });
   it('should execute fetch categories', () => {
     const store = mockStore({
       categories: [],
