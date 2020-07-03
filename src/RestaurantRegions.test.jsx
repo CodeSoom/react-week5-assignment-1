@@ -4,14 +4,16 @@ import { render } from '@testing-library/react';
 
 import RestaurantRegions from './RestaurantRegions';
 
+import { regions } from '../fixtures/restaurants';
+
 describe('RestaurantRegions', () => {
   it('show restaurant regions', () => {
     const { getByText } = render((
-      <RestaurantRegions />
+      <RestaurantRegions regions={regions} />
     ));
 
-    expect(getByText('서울')).toBeInTheDocument();
-    expect(getByText('인천')).toBeInTheDocument();
-    expect(getByText('광주')).toBeInTheDocument();
+    regions.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument();
+    });
   });
 });
