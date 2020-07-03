@@ -6,6 +6,7 @@ import { regions, categories, initialState } from '../fixtures/restaurants';
 
 import {
   setRegions,
+  setRegion,
   setCategories,
   loadRegions,
   loadCategories,
@@ -27,12 +28,7 @@ describe('reducer', () => {
   });
 
   it('지역 중 하나를 선택하면 region에 담는다', () => {
-    const state = reducer(initialState, {
-      type: 'setRegion',
-      payload: {
-        region: '서울',
-      },
-    });
+    const state = reducer(initialState, setRegion('서울'));
     expect(state.region).toBe('서울');
   });
 
