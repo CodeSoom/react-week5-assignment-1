@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
+
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
+import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 import {
-  loadRegions,
+  loadRegions, loadCategories,
 } from './actions';
-import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   return (
