@@ -28,8 +28,6 @@ describe('reducer', () => {
     const store = mockStore({
       regions: [],
     });
-    const expectAction = setRegions();
-
     return store.dispatch(loadRegions())
       .then(() => {
         const actions = store.getActions();
