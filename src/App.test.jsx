@@ -21,10 +21,7 @@ test('App', () => {
     <App />
   ));
 
-  // expect(dispatch).toBeCalledWith({
-  //   type: 'setCategories',
-  //   payload: { categories: [] },
-  // });
+  expect(dispatch).toBeCalledTimes(1);
 
-  // expect(queryByText(/한식/)).toBeNull();
+  expect(queryByText(/한식/)).toBeNull();
 });
