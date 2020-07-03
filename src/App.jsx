@@ -18,11 +18,20 @@ export default function App() {
     dispatch(loadCategoryList());
   }, []);
 
+  const restaurants = [
+    {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      address: '서울 강남구',
+    },
+  ];
+
   return (
     <div>
       <AddressListContainer />
       <CategoryListContainer />
-      <Restaurants />
+      <Restaurants restaurants={restaurants} />
     </div>
   );
 }
