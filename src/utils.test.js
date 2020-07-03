@@ -1,13 +1,17 @@
 import { CHECK_SYMBOL, check } from './utils';
 
 describe('check', () => {
-  const obj = {
-    id: 1004,
-    name: 'object name',
-  };
+  let obj;
 
   context('with equal id', () => {
-    it('check the obj', () => {
+    beforeEach(() => {
+      obj = {
+        id: 1,
+        name: 'some name',
+      };
+    });
+
+    it('returns obj updated name', () => {
       // when
       const result = check(obj, obj.id);
       // then
@@ -16,6 +20,13 @@ describe('check', () => {
   });
 
   context('without equal id', () => {
+    beforeEach(() => {
+      obj = {
+        id: 1,
+        name: 'some name',
+      };
+    });
+
     it('do not check th obj', () => {
       // when
       const result = check(obj, obj.id + 1);
@@ -25,16 +36,18 @@ describe('check', () => {
   });
 
   context('already with symbol', () => {
-    it('return it as it is', () => {
-      // given
-      const target = {
-        ...obj,
-        name: `${obj.name}${CHECK_SYMBOL}`,
+    beforeEach(() => {
+      obj = {
+        id: 1,
+        name: `some name${CHECK_SYMBOL}`,
       };
+    });
+
+    it('return it as it is', () => {
       // when
-      const result = check(target, obj.id);
+      const result = check(obj, obj.id);
       // then
-      expect(target.name).toBe(result.name);
+      expect(obj.name).toBe(result.name);
     });
   });
 });
