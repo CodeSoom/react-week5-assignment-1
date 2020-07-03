@@ -76,7 +76,7 @@ describe('reducer', () => {
     it('레스토랑 정보가 등록된다.', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(2);
     });
   });
 });
