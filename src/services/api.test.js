@@ -1,4 +1,4 @@
-import { fetchRegions, fetchInitCategories, fetchRestaurants } from './api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 import { regions, categories, restaurants } from '../../__fixture__/data';
 
@@ -13,7 +13,7 @@ function onFetch(data) { // TODO : 삭제 예정
 }
 
 describe('api', () => {
-  const mockFetch = (data) => { // onFecth 간단한 버전
+  const mockFetch = (data) => {
     global.fetch = jest.fn().mockResolvedValue({
       async json() {
         return data;
@@ -37,7 +37,7 @@ describe('api', () => {
     it('fetch initCategories', async () => {
       onFetch(categories);
 
-      const rate = await fetchInitCategories();
+      const rate = await fetchCategories();
 
       expect(rate).toEqual(categories);
       expect(fetch).toHaveBeenCalledTimes(1);
