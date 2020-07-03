@@ -8,6 +8,7 @@ import {
   setRegions,
   setRegion,
   setCategories,
+  setCategory,
   loadRegions,
   loadCategories,
 } from './actions';
@@ -56,6 +57,11 @@ describe('reducer', () => {
   it('분류 정보를 추가한다', () => {
     const state = reducer(initialState, setCategories(categories));
     expect(state.categories).toEqual(categories);
+  });
+
+  it('분류 중 하나를 선택하면 category에 담는다', () => {
+    const state = reducer(initialState, setCategory('한식'));
+    expect(state.category).toBe('한식');
   });
 
   it('should execute fetch categories', () => {

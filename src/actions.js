@@ -34,6 +34,15 @@ export function setCategories(categories) {
   };
 }
 
+export function setCategory(category) {
+  return {
+    type: 'setCategory',
+    payload: {
+      category,
+    },
+  };
+}
+
 export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
