@@ -7,6 +7,7 @@ import {
   addressList,
   containAddressState,
   containCategoryState,
+  categoryList,
 } from '../__fixture__/restaurants';
 
 describe('reducer', () => {
@@ -37,6 +38,14 @@ describe('reducer', () => {
       );
 
       expect(state.selectedCategory).toBe(state.categoryList[0].name);
+    });
+  });
+
+  describe('setCategoryList', () => {
+    it('레스토랑 지역 정보가 등록된다.', () => {
+      const state = reducer(initialState, setCategoryList(categoryList));
+
+      expect(state.categoryList).not.toHaveLength(0);
     });
   });
 });
