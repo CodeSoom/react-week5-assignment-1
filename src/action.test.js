@@ -3,15 +3,15 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import {
-  loadRegions, setInitRegions,
-  loadCategories, setInitCategories,
-  loadRestaurants, setRestaurants,
+  loadRegions,
+  setInitRegions,
+  loadCategories,
+  setInitCategories,
+  loadRestaurants,
+  setRestaurants,
 } from './action';
 
 import { regions, categories, restaurants } from '../__fixture__/data';
-
-const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
 
 function onFetch(data) {
   global.fetch = jest.fn(() => Promise.resolve({
@@ -24,10 +24,13 @@ function onFetch(data) {
 }
 
 describe('acton', () => {
-  describe('loadRegions', () => {
-    it('load Regions', () => {
-      const store = mockStore({});
+  const middlewares = [thunk];
+  const mockStore = configureStore(middlewares);
 
+  describe('loadRegions', () => {
+    const store = mockStore({});
+
+    it('load Regions', () => {
       onFetch(regions);
 
       return store.dispatch(loadRegions()).then(() => {
@@ -38,9 +41,9 @@ describe('acton', () => {
   });
 
   describe('loadCategories', () => {
-    it('load Categories', () => {
-      const store = mockStore({});
+    const store = mockStore({});
 
+    it('load Categories', () => {
       onFetch(categories);
 
       return store.dispatch(loadCategories()).then(() => {
@@ -51,9 +54,9 @@ describe('acton', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('load Categories', () => {
-      const store = mockStore({});
+    const store = mockStore({});
 
+    it('load Categories', () => {
       onFetch(restaurants);
 
       return store.dispatch(loadRestaurants()).then(() => {
