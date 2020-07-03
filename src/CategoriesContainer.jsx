@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { useDispatch } from 'react-redux';
+
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
+  const dispatch = useDispatch();
+
   const selectedId = null;
 
   const categories = [
@@ -13,8 +17,13 @@ export default function CategoriesContainer() {
     { id: 5, name: '분식' },
   ];
 
-  function handleClick() {
-    // TODO: 버튼 클릭이 되었을 때
+  function handleClick(id) {
+    dispatch({
+      type: 'updateSelected',
+      payload: {
+        categoryId: id,
+      },
+    });
   }
 
   return (
