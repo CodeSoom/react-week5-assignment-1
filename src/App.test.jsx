@@ -28,4 +28,12 @@ describe('App', () => {
     expect(getByText('서울')).toBeInTheDocument();
     expect(getByText('한식')).toBeInTheDocument();
   });
+
+  it('레스토랑 목록이 로딩된다.', () => {
+    const { getByText } = render((
+      <App />
+    ));
+
+    expect(getByText('양천주가')).toBeInTheDocument();
+  });
 });
