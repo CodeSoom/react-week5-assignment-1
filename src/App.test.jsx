@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { regions } from '../fixtures/restaurants';
+import { regions, categories } from '../fixtures/restaurants';
 
 import App from './App';
 
@@ -25,6 +25,16 @@ describe('App', () => {
     ));
 
     regions.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument();
+    });
+  });
+
+  it('show restaurant categories', () => {
+    const { getByText } = render((
+      <App />
+    ));
+
+    categories.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument();
     });
   });
