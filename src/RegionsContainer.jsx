@@ -24,10 +24,11 @@ export default function RegionsContainer() {
     dispatch(selectRegion(region));
 
     if (selectedCategory !== '') {
-      const seletecdCategories = categories.filter(
-        (category) => category.name === selectedCategory,
+      const category = categories.find(
+        (item) => item.name === selectedCategory,
       );
-      dispatch(loadRestaurants(region, seletecdCategories[0].id));
+
+      dispatch(loadRestaurants(region, category.id));
     }
   }
 
