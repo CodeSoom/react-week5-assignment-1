@@ -10,6 +10,7 @@ export const regions = [
 
 export const initialState = {
   regions: [],
+  categories: [],
 };
 
 export const categories = [
