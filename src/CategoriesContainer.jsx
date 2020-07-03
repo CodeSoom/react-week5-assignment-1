@@ -17,9 +17,9 @@ export default function CategoriesContainer() {
 
   const dispatch = useDispatch();
 
-  function handleSelectCategory(newSelectedCategory, newSelectedCategoryId) {
-    dispatch(selectCategory(newSelectedCategory));
-    dispatch(loadRestaurants(selectedRegion, newSelectedCategoryId));
+  function handleSelectCategory(category, categoryId) {
+    dispatch(selectCategory(category));
+    dispatch(loadRestaurants(selectedRegion, categoryId));
   }
 
   return (
