@@ -11,17 +11,10 @@ import {
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categoryId } = useSelector((state) => ({
+  const { categoryId, categories } = useSelector((state) => ({
     categoryId: state.selected.categoryId,
+    categories: state.categories,
   }));
-
-  const categories = [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-    { id: 3, name: '일식' },
-    { id: 4, name: '양식' },
-    { id: 5, name: '분식' },
-  ];
 
   function handleClick(type, id) {
     dispatch(updateSelected(type, id));
