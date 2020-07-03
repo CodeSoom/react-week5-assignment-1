@@ -13,10 +13,11 @@ export async function fetchCategories() {
 }
 
 export async function fetchInitCategories() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+  // const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  // const response = await fetch(url);
+  // const data = await response.json();
+  // return data;
+  return fetchCategories();
 }
 
 export async function fetchRestaurants(regionName, categoryId) {
