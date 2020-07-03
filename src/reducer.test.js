@@ -2,10 +2,11 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
 
-import { regions, initialState } from '../fixtures/restaurants';
+import { regions, categories, initialState } from '../fixtures/restaurants';
 
 import {
   setRegions,
+  setCategories,
   loadRegions,
 } from './actions';
 
@@ -33,5 +34,10 @@ describe('reducer', () => {
         const actions = store.getActions();
         expect(actions[0].type).toEqual('setRegions');
       });
+  });
+
+  it('분류 정보를 추가한다', () => {
+    const state = reducer(initialState, setCategories(categories));
+    expect(state.categories).toEqual(categories);
   });
 });
