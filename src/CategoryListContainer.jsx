@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import CategoryList from './CategoryList';
 
-import { selectCategory } from './actions';
+import { selectCategory, loadRestaurants } from './actions';
 
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
 
-  const { categoryList } = useSelector((state) => ({
+  const { addressList, categoryList, selectedAddress, selectedCategory } = useSelector((state) => ({
+    addressList: state.addressList,
     categoryList: state.categoryList,
+    selectedAddress: state.selectedAddress,
+    selectedCategory: state.selectedCategory,
   }));
+
+  useEffect(() => {
+    if (selectedAddress && selectedCategory) {
+      dispatch(loadRestaurants({
+        addressName: selectedAddress,
+        categoryId: categoryList.filter((category) => category.name === selectedCategory)[0].id,
+      }));
+    }
+  }, [selectedCategory]);
 
   function handleClick(event) {
     const { target: { id } } = event;
@@ -22,6 +34,7 @@ export default function CategoryListContainer() {
     <CategoryList
       categoryList={categoryList}
       onClick={handleClick}
+      selectedCategory={selectedCategory}
     />
   );
 }

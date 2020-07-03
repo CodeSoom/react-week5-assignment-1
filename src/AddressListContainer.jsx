@@ -5,12 +5,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddressList from './AddressList';
 
 import { selectAddress, loadRestaurants } from './actions';
-import { categoryList } from '../__fixture__/restaurants';
 
 export default function AddressListContainer() {
   const dispatch = useDispatch();
 
-  const { addressList, selectedAddress, selectedCategory } = useSelector((state) => ({
+  const {
+    addressList,
+    categoryList,
+    selectedAddress,
+    selectedCategory,
+  } = useSelector((state) => ({
     addressList: state.addressList,
     categoryList: state.categoryList,
     selectedAddress: state.selectedAddress,
