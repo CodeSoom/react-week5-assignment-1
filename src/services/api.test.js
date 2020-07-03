@@ -1,28 +1,38 @@
-import { fetchInitRegions, fetchInitCategories, fetchRestaurants } from './api';
+import { fetchRegions, fetchInitCategories, fetchRestaurants } from './api';
 
 import { regions, categories, restaurants } from '../../__fixture__/data';
 
-function onFetch(data) {
+function onFetch(data) { // TODO : 삭제 예정
   global.fetch = jest.fn(() => Promise.resolve({
     json: () => Promise.resolve(data),
   }));
 
-  beforeEach(() => {
+  beforeEach(() => { // 삭제! : beforeEach는 들어가면 안됨!
     fetch.mockClear();
   });
 }
 
 describe('api', () => {
-  describe('fetchInitRegions', () => {
-    it('fetch initRegions', async () => {
-      onFetch(regions);
+  const mockFetch = (data) => { // onFecth 간단한 버전
+    global.fetch = jest.fn().mockResolvedValue({
+      async json() {
+        return data;
+      },
+    });
+  };
 
-      const rate = await fetchInitRegions();
+  describe('fetchRegions', () => {
+    beforeEach(() => {
+      mockFetch(regions);
+    });
 
-      expect(rate).toEqual(regions);
-      expect(fetch).toHaveBeenCalledTimes(1);
+    it('returns regions', async () => {
+      const data = await fetchRegions();
+
+      expect(data).toEqual(regions);
     });
   });
+
   describe('fetchInitCategories', () => {
     it('fetch initCategories', async () => {
       onFetch(categories);
