@@ -15,7 +15,7 @@ export function loadRegions() {
       const regions = await fetchRegions();
       dispatch(setInitRegions(regions));
     } catch (err) {
-      // Do something
+      // TODO : 에러 처리
     }
   };
 }
@@ -40,8 +40,13 @@ export function setInitCategories(initCategories) {
 
 export function loadCategories() {
   return async (dispatch) => {
-    const initCategories = await fetchCategories();
-    dispatch(setInitCategories(initCategories));
+    try {
+      const initCategories = await fetchCategories();
+      dispatch(setInitCategories(initCategories));
+    } catch (error) {
+      // TODO : 에러 처리
+
+    }
   };
 }
 
