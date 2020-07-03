@@ -20,9 +20,11 @@ export default function reducer(state = initialState, action = {}) {
   }
 
   if (action.type === 'setRegion') {
+    const { region } = action.payload;
     return {
       ...state,
       region: action.payload.region,
+      regions: state.regions.map(({ id, name }) => (region === name ? { id, name: `${name}(V)` } : { id, name: name.replace('(V)', '') })),
     };
   }
   return state;
