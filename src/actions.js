@@ -29,6 +29,7 @@ const checkCategory = (id) => ({
 const updateRegions = (id) => (dispatch, getState) => {
   const { regions } = getState();
   const checkedRegions = regions.map((region) => check(region, id));
+
   dispatch(setRegions(checkedRegions));
   dispatch(checkRegion(id));
   dispatch(setRestaurants([]));
@@ -36,11 +37,13 @@ const updateRegions = (id) => (dispatch, getState) => {
 
 const getRegions = () => async (dispatch) => {
   const regions = await fetchRegions();
+
   dispatch(setRegions(regions));
 };
 
 const getCategories = () => async (dispatch) => {
   const categories = await fetchCategories();
+
   dispatch(setCategories(categories));
 };
 
@@ -51,16 +54,19 @@ const getRestaurants = () => async (dispatch, getState) => {
   }
   const region = regions.find((r) => r.id === regionId);
   const category = categories.find((c) => c.id === categoryId);
+
   const restaurants = await fetchRestaurants({
     id: region.id,
     name: region.name.replace(CHECK_SYMBOL, ''),
   }, category);
+
   dispatch(setRestaurants(restaurants));
 };
 
 const updateCategories = (id) => async (dispatch, getState) => {
   const { categories } = getState();
   const checkedCategories = categories.map((category) => check(category, id));
+
   dispatch(setCategories(checkedCategories));
   dispatch(checkCategory(id));
 };
