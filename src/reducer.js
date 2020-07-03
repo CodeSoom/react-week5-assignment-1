@@ -4,9 +4,9 @@ const initialRegion = {
 };
 
 const initialState = {
-  newId: 100,
   regions: [],
   region: { initialRegion },
+  selectedRegion: '',
 };
 
 const reducers = {
@@ -17,6 +17,10 @@ const reducers = {
       regions,
     };
   },
+  selectRegion: (state, action) => ({
+    ...state,
+    selectedRegion: action.payload.selectedRegion,
+  }),
 };
 
 export default function reducer(state = initialState, action) {

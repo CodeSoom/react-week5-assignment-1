@@ -15,3 +15,12 @@ export function loadRegions() {
     dispatch(setRegions(regions));
   };
 }
+
+export function selectRegion(selectedRegion) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      selectedRegion,
+    },
+  };
+}
