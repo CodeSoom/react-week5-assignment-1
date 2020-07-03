@@ -7,8 +7,8 @@ const initialState = {
 function newArray(array, value) {
   return array.map(({ id, name }) => (
     value === name
-      ? { id, name: `${name}(V)` }
-      : { id, name: name.replace('(V)', '') }
+      ? { id, name: `${name.replace(/\(V\)/g, '')}(V)` }
+      : { id, name: name.replace(/\(V\)/g, '') }
   ));
 }
 
