@@ -13,32 +13,42 @@ function mockFetch(data) {
 }
 
 describe('api', () => {
-  it('fetch regions', async () => {
-    // given
-    mockFetch(regionsFixture);
-    // when
-    const regions = await fetchRegions();
-    // then
-    expect(regions).toEqual(regionsFixture);
+  describe('fetchRegions', () => {
+    beforeEach(() => {
+      mockFetch(regionsFixture);
+    });
+
+    it('fetch regions', async () => {
+      // when
+      const regions = await fetchRegions();
+      // then
+      expect(regions).toEqual(regionsFixture);
+    });
   });
 
-  it('fetch categories', async () => {
-    // given
-    mockFetch(categoriesFixture);
-    // when
-    const categories = await fetchCategories();
-    // then
-    expect(categories).toEqual(categoriesFixture);
+  describe('fetchCategories', () => {
+    beforeEach(() => {
+      mockFetch(categoriesFixture);
+    });
+
+    it('fetch categories', async () => {
+      // when
+      const categories = await fetchCategories();
+      // then
+      expect(categories).toEqual(categoriesFixture);
+    });
   });
 
-  it('fetch restaurants by region and category', async () => {
-    // given
-    const region = regionsFixture[0];
-    const category = categoriesFixture[0];
-    mockFetch(restaurantsFixture);
-    // when
-    const restaurants = await fetchRestaurants(region, category);
-    // then
-    expect(restaurants).toEqual(restaurantsFixture);
+  describe('fetchRestaurants', () => {
+    beforeEach(() => {
+      mockFetch(restaurantsFixture);
+    });
+
+    it('fetch restaurants by region and category', async () => {
+      // when
+      const restaurants = await fetchRestaurants(regionsFixture[0], categoriesFixture[0]);
+      // then
+      expect(restaurants).toEqual(restaurantsFixture);
+    });
   });
 });
