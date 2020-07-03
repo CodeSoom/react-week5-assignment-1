@@ -4,7 +4,7 @@ export const fetchRegions = async () => {
     .then((response) => response.json())
     .catch((error) => console.log(error));
 };
-export const fetchRestaurantInfo = async ({ regionName, categoryId }) => {
+export const fetchRestaurants = async ({ regionName, categoryId }) => {
   if (!regionName || !categoryId) {
     return [];
   }

@@ -43,3 +43,19 @@ export function setRegionName(regionName) {
     },
   });
 }
+
+export function setRestaurants(restaurants) {
+  return ({
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  });
+}
+
+export function loadRestaurants(regionName, categoryId) {
+  return async (dispatch) => {
+    const response = await services.fetchRestaurants({ regionName, categoryId });
+    dispatch(setRestaurants(response));
+  };
+}

@@ -23,6 +23,7 @@ test('App', () => {
       },
     })
   );
+
   const { getByText } = render(<App />);
 
   expect(getByText(/Restaurants/)).not.toBeNull();

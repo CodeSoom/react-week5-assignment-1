@@ -1,6 +1,7 @@
 import React from 'react';
 import CategoriesContainer from './Containers/CategoriesContainer';
 import RegionsContainer from './Containers/RegionsContainer';
+import RestautantsContainer from './Containers/RestaurantsContainer';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <main>
         <RegionsContainer />
         <CategoriesContainer />
+        <RestautantsContainer />
       </main>
     </div>
   );
