@@ -57,14 +57,16 @@ describe('acton', () => {
       dispatch.mockClear();
     });
 
-    beforeEach(() => {
-      fetchCategories.mockResolvedValue(regions);
-    });
+    context('when successfully fetch data', () => {
+      beforeEach(() => {
+        fetchCategories.mockResolvedValue(categories);
+      });
 
-    it('dispatch loadCategories', async () => {
-      await loadCategories()(dispatch);
+      it('dispatch loadCategories', async () => {
+        await loadCategories()(dispatch);
 
-      expect(dispatch).toBeCalledWith(setInitCategories(regions));
+        expect(dispatch).toBeCalledWith(setInitCategories(categories));
+      });
     });
   });
 });
