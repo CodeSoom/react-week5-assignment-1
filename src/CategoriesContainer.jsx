@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const selectedId = null;
+  const { categoryId } = useSelector((state) => ({
+    categoryId: state.selected.categoryId,
+  }));
 
   const categories = [
     { id: 1, name: '한식' },
@@ -28,7 +30,7 @@ export default function CategoriesContainer() {
 
   return (
     <Categories
-      selected={selectedId}
+      selected={categoryId}
       categories={categories}
       onClick={handleClick}
     />
