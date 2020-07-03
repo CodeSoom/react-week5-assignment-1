@@ -6,11 +6,9 @@ import AddressListContainer from './AddressListContainer';
 
 import CategoryListContainer from './CategoryListContainer';
 
-import Restaurants from './Restaurants';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import { loadAddressList, loadCategoryList } from './actions';
-
-import { restaurants } from '../__fixture__/restaurants';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -24,7 +22,7 @@ export default function App() {
     <div>
       <AddressListContainer />
       <CategoryListContainer />
-      <Restaurants restaurants={restaurants} />
+      <RestaurantsContainer />
     </div>
   );
 }

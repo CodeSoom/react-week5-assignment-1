@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
-import { addressList, categoryList } from '../__fixture__/restaurants';
+import { addressList, categoryList, restaurants } from '../__fixture__/restaurants';
 
 jest.mock('react-redux');
 
@@ -19,6 +19,7 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       addressList,
       categoryList,
+      restaurants,
     }));
 
     const { getByText } = render((
