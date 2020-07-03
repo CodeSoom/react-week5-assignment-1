@@ -25,8 +25,8 @@ export default function RegionsContainer() {
     { id: 7, name: '인천' },
   ];
 
-  function handleClick(selectedRegion) {
-    dispatch(updateSelected(selectedRegion));
+  function handleClick(type, name) {
+    dispatch(updateSelected(type, name));
   }
 
   return (

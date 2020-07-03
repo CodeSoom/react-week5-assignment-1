@@ -23,8 +23,8 @@ export default function CategoriesContainer() {
     { id: 5, name: '분식' },
   ];
 
-  function handleClick(id) {
-    dispatch(updateSelected(id));
+  function handleClick(type, id) {
+    dispatch(updateSelected(type, id));
   }
 
   return (

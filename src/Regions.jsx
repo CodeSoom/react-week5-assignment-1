@@ -6,7 +6,7 @@ export default function Regions({ selected, regions, onClick }) {
       <ul>
         {regions.map((region) => (
           <li key={region.id}>
-            <button type="button" onClick={() => onClick(region.name)}>
+            <button type="button" onClick={() => onClick('region', region.name)}>
               {region.name}
               {selected === region.name && '(V)'}
             </button>

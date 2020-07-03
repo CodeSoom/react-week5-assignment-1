@@ -1,8 +1,8 @@
-export function updateSelected(id) {
+export function updateSelected(type, value) {
   return {
     type: 'updateSelected',
     payload: {
-      categoryId: id,
+      [type]: value,
     },
   };
 }
