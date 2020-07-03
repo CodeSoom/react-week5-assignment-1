@@ -25,13 +25,13 @@ describe('api', () => {
     });
   });
 
-  describe('fetchInitCategories', () => {
+  describe('fetchCategories', () => {
     beforeEach(() => {
       fetch.mockClear();
       mockFetch(categories);
     });
 
-    it('fetch initCategories', async () => {
+    it('returns categories', async () => {
       const data = await fetchCategories();
 
       expect(data).toEqual(categories);
@@ -45,7 +45,7 @@ describe('api', () => {
       mockFetch(restaurants);
     });
 
-    it('fetch Restaurants', async () => {
+    it('returns restaurants', async () => {
       const data = await fetchRestaurants('서울', 1);
 
       expect(data).toEqual(restaurants);
