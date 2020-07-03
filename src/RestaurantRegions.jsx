@@ -7,7 +7,7 @@ export default function RestaurantRegions({ regions, onClick }) {
         <li key={id}>
           <input
             type="button"
-            onClick={onClick}
+            onClick={() => onClick(name)}
             value={name}
           />
         </li>
