@@ -1,7 +1,17 @@
-export async function fetchAddressList() {
+async function fetchAddressList() {
   return [];
 }
 
-export async function fetchCategoryList() {
+async function fetchCategoryList() {
   return [];
 }
+
+async function fetchRestaurants() {
+  return [];
+}
+
+export {
+  fetchAddressList,
+  fetchCategoryList,
+  fetchRestaurants,
+};
