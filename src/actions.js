@@ -30,9 +30,17 @@ function selectCategory(selectedCategoryId) {
   };
 }
 
+function setCategoryList(categoryList) {
+  return {
+    type: 'setCategoryList',
+    payload: { categoryList },
+  };
+}
+
 export {
   setAddressList,
   loadAddressList,
   selectAddress,
   selectCategory,
+  setCategoryList,
 };
