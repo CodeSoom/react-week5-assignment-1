@@ -105,6 +105,18 @@ describe('acton', () => {
         expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
       });
     });
+
+    context('when fail to fetch data', () => {
+      beforeEach(() => {
+        fetchRestaurants.mockRejectedValue(new Error('some error'));
+      });
+
+      it('dispatch loadRestaurants', async () => {
+        await loadRestaurants()(dispatch);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
   });
 });
 
