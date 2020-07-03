@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Regions from './Regions';
+import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import Restaurants from './Restaurants';
 
 export default function App() {
   return (
     <div>
-      <Regions />
+      <RegionsContainer />
       <CategoriesContainer />
       <Restaurants />
     </div>
