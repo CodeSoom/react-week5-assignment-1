@@ -38,6 +38,9 @@ describe('RestaurantRegionsContainer', () => {
     ));
 
     fireEvent.click(getByText('서울'));
-    expect(dispatch).toBeCalledWith(setRegion('서울'));
+    expect(dispatch).toBeCalledWith(setRegion({
+      id: 1,
+      name: '서울',
+    }));
   });
 });
