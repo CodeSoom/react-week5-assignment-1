@@ -32,6 +32,16 @@ describe('reducer', () => {
     expect(state.region).toBe('서울');
   });
 
+  it('지역을 선택하면 해당 지역은 체크 표시가 된다.', () => {
+    const state = reducer({
+      regions,
+      region: '',
+    }, setRegion('서울'));
+    expect(state.regions).toEqual(
+      expect.arrayContaining([{ id: 1, name: '서울(V)' }]),
+    );
+  });
+
   it('should execute fetch regions', () => {
     const store = mockStore({
       regions: [],
