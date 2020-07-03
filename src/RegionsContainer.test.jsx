@@ -27,13 +27,13 @@ function mockUseSelector(state = initState) {
   }));
 }
 
-const dispatch = jest.fn();
-
 function renderRegionsContainer() {
   return render(<RegionsContainer />);
 }
 
 describe('<RegionsContainer />', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);

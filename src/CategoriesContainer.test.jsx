@@ -24,13 +24,13 @@ function mockUseSelector(state = initState) {
   }));
 }
 
-const dispatch = jest.fn();
-
 function renderCategoriesContainer() {
   return render(<CategoriesContainer />);
 }
 
 describe('<CategoriesContainer />', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);

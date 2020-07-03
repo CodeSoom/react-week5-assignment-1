@@ -31,13 +31,13 @@ function mockUseSelector(state = initState) {
   }));
 }
 
-const dispatch = jest.fn();
-
 function renderApp() {
   return render(<App />);
 }
 
 describe('<App />', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
