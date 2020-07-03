@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { render, fireEvent } from '@testing-library/react';
 
@@ -12,6 +12,12 @@ describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    selected: {
+      categoryId: '',
+    },
+  }));
 
   context('with categories', () => {
     it('카테고리 항목들이 보인다.', () => {
@@ -36,6 +42,16 @@ describe('CategoriesContainer', () => {
       fireEvent.click(getByText(/한식/));
 
       expect(dispatch).toBeCalled();
+    });
+
+    it('선택된 category에 (V)가 표시된다.', () => {
+      const { getByText } = render(
+        <CategoriesContainer />,
+      );
+
+      fireEvent.click(getByText(/한식/));
+
+      expect(getByText(/한식(V)/)).not.toBeNull();
     });
   });
 });
