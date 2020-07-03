@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
@@ -11,12 +11,21 @@ import categories from '../fixtures/categories';
 jest.mock('react-redux');
 
 test('App', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    categories,
+    categories: [],
   }));
-  const { getByText } = render((
+
+  const { queryByText } = render((
     <App />
   ));
 
-  expect(getByText(/한식/)).not.toBeNull();
+  expect(dispatch).toBeCalledWith({
+    type: 'setCategories',
+    payload: { categories: [] },
+  });
+
+  expect(queryByText(/한식/)).toBeNull();
 });
