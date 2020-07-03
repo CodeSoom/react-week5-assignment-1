@@ -23,7 +23,7 @@ describe('check', () => {
     beforeEach(() => {
       obj = {
         id: 1,
-        name: 'some name',
+        name: `some name${CHECK_SYMBOL}`,
       };
     });
 
@@ -31,7 +31,8 @@ describe('check', () => {
       // when
       const result = check(obj, obj.id + 1);
       // then
-      expect(result.name).toBe(obj.name);
+      expect(result.name).not.toBe(obj.name);
+      expect(result.name).toBe('some name');
     });
   });
 

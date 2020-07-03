@@ -1,12 +1,16 @@
 const CHECK_SYMBOL = '(V)';
 
 const check = (obj, id) => {
+  const name = obj.name.replace(CHECK_SYMBOL, '');
   if (obj.id !== id) {
-    return obj;
+    return {
+      ...obj,
+      name,
+    };
   }
   return {
     ...obj,
-    name: obj.name.replace(CHECK_SYMBOL, '') + CHECK_SYMBOL,
+    name: name + CHECK_SYMBOL,
   };
 };
 
