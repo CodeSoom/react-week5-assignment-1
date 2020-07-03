@@ -35,11 +35,8 @@ function renderRegionsContainer() {
 
 describe('<RegionsContainer />', () => {
   beforeEach(() => {
-    useDispatch.mockImplementation(() => dispatch);
-  });
-
-  afterEach(() => {
     dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   describe('render RegionsContainer', () => {

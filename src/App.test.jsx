@@ -39,11 +39,8 @@ function renderApp() {
 
 describe('<App />', () => {
   beforeEach(() => {
-    useDispatch.mockImplementation(() => dispatch);
-  });
-
-  afterEach(() => {
     dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   describe('render App', () => {

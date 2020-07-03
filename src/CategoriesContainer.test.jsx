@@ -32,11 +32,8 @@ function renderCategoriesContainer() {
 
 describe('<CategoriesContainer />', () => {
   beforeEach(() => {
-    useDispatch.mockImplementation(() => dispatch);
-  });
-
-  afterEach(() => {
     dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   describe('render CategoriesContainer', () => {
