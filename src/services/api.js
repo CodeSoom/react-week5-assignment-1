@@ -5,6 +5,10 @@ export async function fetchRegions() {
   return data;
 }
 
+export async function fetchCategories() {
+
+}
+
 export async function fetchInitCategories() {
   const url = 'https://eatgo-customer-api.ahastudio.com/categories';
   const response = await fetch(url);
