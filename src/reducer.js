@@ -1,5 +1,6 @@
 const initialState = {
   addressList: [],
+  categoryList: [],
   selectedAddress: '',
   selectedCategory: '',
   restaurants: [],

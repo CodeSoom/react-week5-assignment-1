@@ -1,5 +1,6 @@
 const initialState = {
   addressList: [],
+  categoryList: [],
   selectedAddress: '',
   selectedCategory: '',
   restaurants: [],
@@ -19,6 +20,15 @@ const categoryList = [
 
 const containAddressState = {
   addressList,
+  categoryList: [],
+  selectedAddress: '',
+  selectedCategory: '',
+  restaurants: [],
+};
+
+const containCategoryState = {
+  addressList: [],
+  categoryList,
   selectedAddress: '',
   selectedCategory: '',
   restaurants: [],
@@ -29,4 +39,5 @@ export {
   addressList,
   categoryList,
   containAddressState,
+  containCategoryState,
 };
