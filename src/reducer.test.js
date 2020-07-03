@@ -8,6 +8,7 @@ import {
   containAddressState,
   containCategoryState,
   categoryList,
+  restaurants,
 } from '../__fixture__/restaurants';
 
 describe('reducer', () => {
@@ -46,6 +47,14 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategoryList(categoryList));
 
       expect(state.categoryList).not.toHaveLength(0);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('레스토랑 정보가 등록된다.', () => {
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
