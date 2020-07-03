@@ -94,10 +94,16 @@ describe('acton', () => {
       fetchRestaurants.mockResolvedValue(restaurants);
     });
 
-    it('dispatch loadCategories', async () => {
-      await loadRestaurants()(dispatch);
+    context('when successfully fetch data', () => {
+      beforeEach(() => {
+        fetchRestaurants.mockResolvedValue(restaurants);
+      });
 
-      expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
+      it('dispatch loadCategories', async () => {
+        await loadRestaurants()(dispatch);
+
+        expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
+      });
     });
   });
 });
