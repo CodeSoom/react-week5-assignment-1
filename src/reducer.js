@@ -26,5 +26,17 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'selectCategory') {
+    const { selectedCategoryId } = action.payload;
+
+    const selectedCategory = state.categoryList
+      .filter((category) => category.id === selectedCategoryId)[0].name;
+
+    return {
+      ...state,
+      selectedCategory,
+    };
+  }
+
   return state;
 }
