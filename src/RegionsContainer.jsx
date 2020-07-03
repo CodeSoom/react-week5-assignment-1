@@ -14,8 +14,8 @@ export default function RegionsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleSelectRegion(newRegion) {
-    dispatch(selectRegion(newRegion));
+  function handleSelectRegion(region) {
+    dispatch(selectRegion(region));
   }
 
   return (
