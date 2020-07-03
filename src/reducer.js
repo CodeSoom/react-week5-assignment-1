@@ -17,5 +17,12 @@ export default function reducer(state = initialState, action = {}) {
       categories: action.payload.categories,
     };
   }
+
+  if (action.type === 'setRegion') {
+    return {
+      ...state,
+      region: action.payload.region,
+    };
+  }
   return state;
 }
