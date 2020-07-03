@@ -13,56 +13,84 @@ import {
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-function onFetch(data) {
-  global.fetch = jest.fn(() => Promise.resolve({
-    json: () => Promise.resolve(data),
-  }));
+import { fetchRegions } from './services/api'; // 1. mocking 할 함수 import
 
-  beforeEach(() => {
-    fetch.mockClear();
-  });
-}
+jest.mock('./services/api'); // 2. mocking 할꺼야
 
 describe('acton', () => {
-  const middlewares = [thunk];
-  const mockStore = configureStore(middlewares);
-
   describe('loadRegions', () => {
-    const store = mockStore({});
+    const dispatch = jest.fn();
 
-    it('load Regions', () => {
-      onFetch(regions);
+    beforeEach(() => {
+      dispatch.mockClear();
+    });
 
-      return store.dispatch(loadRegions()).then(() => {
-        const actions = store.getActions();
-        expect(actions[0]).toEqual(setInitRegions(regions));
+    context('when successfully fetch data', () => {
+      beforeEach(() => {
+        fetchRegions.mockResolvedValue(regions); // 3. mock 구현?
+      });
+
+      it('dispatch setInitRegions', async () => {
+        await loadRegions()(dispatch);
+
+        expect(dispatch).toBeCalledWith(setInitRegions(regions));
       });
     });
-  });
 
-  describe('loadCategories', () => {
-    const store = mockStore({});
-
-    it('load Categories', () => {
-      onFetch(categories);
-
-      return store.dispatch(loadCategories()).then(() => {
-        const actions = store.getActions();
-        expect(actions[0]).toEqual(setInitCategories(categories));
+    context('when fail to fetch data', () => {
+      beforeEach(() => {
+        fetchRegions.mockRejectedValue(new Error('some error'));
       });
-    });
-  });
 
-  describe('loadRestaurants', () => {
-    const store = mockStore({});
+      it('dispatch setInitRegions', async () => {
+        await loadRegions()(dispatch);
 
-    it('load Categories', () => {
-      onFetch(restaurants);
-
-      return store.dispatch(loadRestaurants()).then(() => {
-        const actions = store.getActions();
-        expect(actions[0]).toEqual(setRestaurants(restaurants));
+        expect(dispatch).not.toBeCalled();
       });
     });
   });
 });
+
+// describe('acton', () => {
+//   const middlewares = [thunk];
+//   const mockStore = configureStore(middlewares);
+
+//   describe('loadRegions', () => {
+//     const store = mockStore({});
+
+//     it('load Regions', () => {
+//       onFetch(regions);
+
+//       return store.dispatch(loadRegions()).then(() => {
+//         const actions = store.getActions();
+//         expect(actions[0]).toEqual(setInitRegions(regions));
+//       });
+//     });
+//   });
+
+//   describe('loadCategories', () => {
+//     const store = mockStore({});
+
+//     it('load Categories', () => {
+//       onFetch(categories);
+
+//       return store.dispatch(loadCategories()).then(() => {
+//         const actions = store.getActions();
+//         expect(actions[0]).toEqual(setInitCategories(categories));
+//       });
+//     });
+//   });
+
+//   describe('loadRestaurants', () => {
+//     const store = mockStore({});
+
+//     it('load Categories', () => {
+//       onFetch(restaurants);
+
+//       return store.dispatch(loadRestaurants()).then(() => {
+//         const actions = store.getActions();
+//         expect(actions[0]).toEqual(setRestaurants(restaurants));
+//       });
+//     });
+//   });
+// });
