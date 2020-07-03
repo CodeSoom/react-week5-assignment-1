@@ -8,9 +8,10 @@ import RegionsContainer from './RegionsContainer';
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { selectRegion } from './action';
+import { selectRegion, loadRestaurants } from './action';
 
 jest.mock('react-redux');
+jest.mock('./action.js');
 
 const initState = {
   regions,
@@ -96,11 +97,14 @@ describe('<RegionsContainer />', () => {
         selectedCategory: '한식',
       });
 
+      const fetchRestaurants = jest.fn();
+      loadRestaurants.mockImplementation(() => fetchRestaurants);
+
       const { getByRole } = renderRegionsContainer();
 
       fireEvent.click(getByRole('button', { name: '서울' }));
       expect(dispatch).toBeCalledWith(selectRegion('서울'));
-      // TODO : dispatch(loadRestaurants) 여부
+      expect(dispatch).toBeCalledWith(loadRestaurants('서울', 1));
     });
   });
 });
