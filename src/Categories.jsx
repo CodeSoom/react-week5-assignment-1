@@ -6,7 +6,7 @@ export default function Categories({ selected, categories, onClick }) {
       <ul>
         {categories.map((category) => (
           <li key={category.id}>
-            <button type="button" onClick={onClick}>
+            <button type="button" onClick={() => onClick(category.id)}>
               {category.name}
               {selected === category.id && '(V)'}
             </button>
