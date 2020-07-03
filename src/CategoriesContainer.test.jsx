@@ -8,7 +8,7 @@ import { updateCategories, getRestaurants } from './actions';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import categoriesFixture from './__fixtures__/categories';
+import categories from './__fixtures__/categories';
 
 jest.mock('react-redux');
 jest.mock('./actions');
@@ -24,35 +24,36 @@ describe('<CategoriesContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    categories: categoriesFixture,
+    categories,
   }));
+
+  const updateCategoriesAction = jest.fn();
+  updateCategories.mockImplementation(() => updateCategoriesAction);
+  const getRestaurantsAction = jest.fn();
+  getRestaurants.mockImplementation(() => getRestaurantsAction);
 
   beforeEach(() => {
     dispatch.mockClear();
+    updateCategoriesAction.mockClear();
+    getRestaurantsAction.mockClear();
   });
 
   it('renders category buttons', () => {
     // when
     const { getButtonByName } = renderCategoriesContainer();
     // then
-    categoriesFixture.forEach(({ name }) => {
+    categories.forEach(({ name }) => {
       expect(getButtonByName(name)).toBeInTheDocument();
     });
   });
 
   it('click category button', () => {
-    // given
-    const updateCategoriesAction = jest.fn();
-    const getRestaurantsAction = jest.fn();
-    updateCategories.mockImplementation(() => updateCategoriesAction);
-    getRestaurants.mockImplementation(() => getRestaurantsAction);
-    const category = categoriesFixture[0];
     // when
     const { getButtonByName } = renderCategoriesContainer();
-    fireEvent.click(getButtonByName(category.name));
+    fireEvent.click(getButtonByName(categories[0].name));
     // then
     expect(dispatch).toBeCalledWith(updateCategoriesAction);
     expect(dispatch).toBeCalledWith(getRestaurantsAction);
-    expect(updateCategories).toBeCalledWith(category.id);
+    expect(updateCategories).toBeCalledWith(categories[0].id);
   });
 });
