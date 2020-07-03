@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
+import {
+  updateSelected,
+} from './actions';
+
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
@@ -20,12 +24,7 @@ export default function CategoriesContainer() {
   ];
 
   function handleClick(id) {
-    dispatch({
-      type: 'updateSelected',
-      payload: {
-        categoryId: id,
-      },
-    });
+    dispatch(updateSelected(id));
   }
 
   return (
