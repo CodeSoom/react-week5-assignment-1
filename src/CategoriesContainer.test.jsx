@@ -15,7 +15,7 @@ describe('CategoriesContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     selected: {
-      categoryId: '',
+      categoryId: 1,
     },
   }));
 
@@ -44,14 +44,12 @@ describe('CategoriesContainer', () => {
       expect(dispatch).toBeCalled();
     });
 
-    it('선택된 category에 (V)가 표시된다.', () => {
+    it('선택된 categoryId에 (V)가 표시된다.', () => {
       const { getByText } = render(
         <CategoriesContainer />,
       );
 
-      fireEvent.click(getByText(/한식/));
-
-      expect(getByText(/한식(V)/)).not.toBeNull();
+      expect(getByText(/(V)/)).not.toBeNull();
     });
   });
 });
