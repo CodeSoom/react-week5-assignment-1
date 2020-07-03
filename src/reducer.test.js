@@ -9,6 +9,7 @@ import {
   loadRegions,
 } from './actions';
 
+jest.mock('./services/api');
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
@@ -24,13 +25,15 @@ describe('reducer', () => {
   });
 
   it('should execute fetch regions', () => {
-    const store = mockStore({});
+    const store = mockStore({
+      regions: [],
+    });
     const expectAction = setRegions();
 
     return store.dispatch(loadRegions())
       .then(() => {
         const actions = store.getActions();
-        expect(actions).toEqual(expectAction);
+        expect(actions[0].type).toEqual('setRegions');
       });
   });
 });
