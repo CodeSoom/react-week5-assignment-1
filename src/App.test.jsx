@@ -8,6 +8,8 @@ import { regions } from '../fixtures/restaurants';
 
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({

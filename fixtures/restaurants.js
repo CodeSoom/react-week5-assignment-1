@@ -7,3 +7,7 @@ export const regions = [
   { id: 6, name: '강원도' },
   { id: 7, name: '인천' },
 ];
+
+export const initialState = {
+  regions: [],
+};
