@@ -13,9 +13,9 @@ import {
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { fetchRegions } from './services/api'; // 1. mocking 할 함수 import
+import { fetchRegions, fetchCategories } from './services/api';
 
-jest.mock('./services/api'); // 2. mocking 할꺼야
+jest.mock('./services/api');
 
 describe('acton', () => {
   describe('loadRegions', () => {
@@ -27,7 +27,7 @@ describe('acton', () => {
 
     context('when successfully fetch data', () => {
       beforeEach(() => {
-        fetchRegions.mockResolvedValue(regions); // 3. mock 구현?
+        fetchRegions.mockResolvedValue(regions);
       });
 
       it('dispatch setInitRegions', async () => {
@@ -47,6 +47,24 @@ describe('acton', () => {
 
         expect(dispatch).not.toBeCalled();
       });
+    });
+  });
+
+  describe('loadCategories', () => {
+    const dispatch = jest.fn();
+
+    beforeEach(() => {
+      dispatch.mockClear();
+    });
+
+    beforeEach(() => {
+      fetchCategories.mockResolvedValue(regions);
+    });
+
+    it('dispatch loadCategories', async () => {
+      await loadCategories()(dispatch);
+
+      expect(dispatch).toBeCalledWith(setInitCategories(regions));
     });
   });
 });
