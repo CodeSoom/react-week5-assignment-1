@@ -1,5 +1,9 @@
 import reducer from './reducer';
 
+import {
+  updateSelected,
+} from './actions';
+
 describe('reducer', () => {
   describe('updateSeleted', () => {
     it('selected category id를 변경한다.', () => {
@@ -12,12 +16,7 @@ describe('reducer', () => {
       const id = 1;
 
       // When
-      const newState = reducer(previousState, {
-        type: 'updateSelected',
-        payload: {
-          categoryId: id,
-        },
-      });
+      const newState = reducer(previousState, updateSelected(id));
 
       // Then
       expect(newState.selected.categoryId).toBe(id);
