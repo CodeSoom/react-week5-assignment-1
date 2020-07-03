@@ -6,7 +6,11 @@ import { render, fireEvent } from '@testing-library/react';
 
 import AddressListContainer from './AddressListContainer';
 
-import { addressList, initialState } from '../__fixture__/restaurants';
+import {
+  addressList,
+  initialState,
+  selectedAddress,
+} from '../__fixture__/restaurants';
 
 import { selectAddress } from './actions';
 
@@ -27,12 +31,30 @@ describe('AddressListContainer', () => {
     }));
   });
 
-  it('레스토랑 지역 목록이 로딩된다.', () => {
-    const { getByText } = render((
-      <AddressListContainer />
-    ));
+  context('지역이 선택되지 않은 경우', () => {
+    it('레스토랑 지역 목록이 로딩된다.', () => {
+      const { getByText } = render((
+        <AddressListContainer />
+      ));
 
-    expect(getByText('서울')).toBeInTheDocument();
+      expect(getByText('서울')).toBeInTheDocument();
+    });
+  });
+
+  context('지역이 선택된 경우', () => {
+    it('레스토랑 지역 목록이 로딩되고 선택된 항목에 체크 표시됨.', () => {
+      useSelector.mockImplementation((selector) => selector({
+        addressList,
+        selectedAddress,
+        selectedCategory: {},
+      }));
+
+      const { getByText } = render((
+        <AddressListContainer />
+      ));
+
+      expect(getByText('서울(V)')).toBeInTheDocument();
+    });
   });
 
   context('지역 목록 중 하나의 버튼을 클릭하면', () => {

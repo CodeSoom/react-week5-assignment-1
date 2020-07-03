@@ -4,14 +4,13 @@ import { render, fireEvent } from '@testing-library/react';
 
 import CategoryList from './CategoryList';
 
-import { categoryList, initialState } from '../__fixture__/restaurants';
+import { categoryList } from '../__fixture__/restaurants';
 
 describe('CategoryList', () => {
   it('레스토랑 카테고리 목록이 로딩된다.', () => {
     const { getByText } = render((
       <CategoryList
         categoryList={categoryList}
-        selectedCategory={initialState.selectedCategory}
       />
     ));
 
@@ -25,7 +24,6 @@ describe('CategoryList', () => {
       <CategoryList
         categoryList={categoryList}
         onClick={handleClick}
-        selectedCategory={initialState.selectedCategory}
       />
     ));
 
