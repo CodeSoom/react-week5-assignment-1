@@ -1,16 +1,17 @@
 import React from 'react';
 
-export default function Regions() {
+export default function Regions({ selected, regions, onClick }) {
   return (
     <div>
       <ul>
-        <li><button type="button">서울</button></li>
-        <li><button type="button">대전</button></li>
-        <li><button type="button">대구</button></li>
-        <li><button type="button">부산</button></li>
-        <li><button type="button">광주</button></li>
-        <li><button type="button">강원도</button></li>
-        <li><button type="button">인천</button></li>
+        {regions.map((region) => (
+          <li key={region.id}>
+            <button type="button" onClick={() => onClick(region.name)}>
+              {region.name}
+              {selected === region.name && '(V)'}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
