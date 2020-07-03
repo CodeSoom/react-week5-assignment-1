@@ -13,8 +13,8 @@ export default function RegionsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleClickChooseCategory(categoryId) {
-    dispatch(setCategory(categoryId));
+  function handleClickChooseCategory(category) {
+    dispatch(setCategory(category));
   }
 
   return (
