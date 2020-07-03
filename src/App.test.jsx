@@ -6,7 +6,12 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
-import { addressList, categoryList, restaurants } from '../__fixture__/restaurants';
+import {
+  addressList,
+  categoryList,
+  restaurants,
+  initialState,
+} from '../__fixture__/restaurants';
 
 jest.mock('react-redux');
 
@@ -20,6 +25,8 @@ describe('App', () => {
       addressList,
       categoryList,
       restaurants,
+      selectedCategory: initialState.selectedCategory,
+      selectedAddress: initialState.selectedAddress,
     }));
 
     const { getByText } = render((

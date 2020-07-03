@@ -4,12 +4,15 @@ import { render, fireEvent } from '@testing-library/react';
 
 import AddressList from './AddressList';
 
-import { addressList } from '../__fixture__/restaurants';
+import { addressList, initialState } from '../__fixture__/restaurants';
 
 describe('AddressList', () => {
   it('레스토랑 지역 목록이 로딩된다.', () => {
     const { getByText } = render((
-      <AddressList addressList={addressList} />
+      <AddressList
+        addressList={addressList}
+        selectedAddress={initialState.selectedAddress}
+      />
     ));
 
     expect(getByText('서울')).toBeInTheDocument();
@@ -22,6 +25,7 @@ describe('AddressList', () => {
       <AddressList
         addressList={addressList}
         onClick={handleClick}
+        selectedAddress={initialState.selectedAddress}
       />
     ));
 

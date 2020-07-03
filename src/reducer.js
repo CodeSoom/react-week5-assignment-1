@@ -1,8 +1,8 @@
 const initialState = {
   addressList: [],
   categoryList: [],
-  selectedAddress: '',
-  selectedCategory: '',
+  selectedAddress: {},
+  selectedCategory: {},
   restaurants: [],
 };
 
@@ -18,7 +18,7 @@ export default function reducer(state = initialState, action) {
     const { selectedAddressId } = action.payload;
 
     const selectedAddress = state.addressList
-      .filter((address) => address.id === selectedAddressId)[0].name;
+      .filter((address) => address.id === selectedAddressId)[0];
 
     return {
       ...state,
@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
     const { selectedCategoryId } = action.payload;
 
     const selectedCategory = state.categoryList
-      .filter((category) => category.id === selectedCategoryId)[0].name;
+      .filter((category) => category.id === selectedCategoryId)[0];
 
     return {
       ...state,

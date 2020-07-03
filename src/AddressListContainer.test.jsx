@@ -6,7 +6,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import AddressListContainer from './AddressListContainer';
 
-import { addressList } from '../__fixture__/restaurants';
+import { addressList, initialState } from '../__fixture__/restaurants';
 
 import { selectAddress } from './actions';
 
@@ -17,14 +17,17 @@ describe('AddressListContainer', () => {
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
+
     dispatch.mockClear();
+
+    useSelector.mockImplementation((selector) => selector({
+      addressList,
+      selectedAddress: initialState.selectedAddress,
+      selectedCategory: initialState.selectedCategory,
+    }));
   });
 
   it('레스토랑 지역 목록이 로딩된다.', () => {
-    useSelector.mockImplementation((selector) => selector({
-      addressList,
-    }));
-
     const { getByText } = render((
       <AddressListContainer />
     ));
@@ -40,7 +43,7 @@ describe('AddressListContainer', () => {
 
       fireEvent.click(getByText('서울'));
 
-      expect(dispatch).toBeCalledWith(selectAddress(1));
+      expect(dispatch).toBeCalledWith(selectAddress(Number(getByText('서울').id)));
     });
   });
 });

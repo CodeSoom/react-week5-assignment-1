@@ -11,21 +11,19 @@ export default function AddressListContainer() {
 
   const {
     addressList,
-    categoryList,
     selectedAddress,
     selectedCategory,
   } = useSelector((state) => ({
     addressList: state.addressList,
-    categoryList: state.categoryList,
     selectedAddress: state.selectedAddress,
     selectedCategory: state.selectedCategory,
   }));
 
   useEffect(() => {
-    if (selectedAddress && selectedCategory) {
+    if (selectedAddress.name && selectedCategory.id) {
       dispatch(loadRestaurants({
-        addressName: selectedAddress,
-        categoryId: categoryList.filter((category) => category.name === selectedCategory)[0].id,
+        addressName: selectedAddress.name,
+        categoryId: selectedCategory.id,
       }));
     }
   }, [selectedAddress]);

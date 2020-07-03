@@ -16,10 +16,10 @@ export default function CategoryListContainer() {
   }));
 
   useEffect(() => {
-    if (selectedAddress && selectedCategory) {
+    if (selectedAddress.name && selectedCategory.id) {
       dispatch(loadRestaurants({
-        addressName: selectedAddress,
-        categoryId: categoryList.filter((category) => category.name === selectedCategory)[0].id,
+        addressName: selectedAddress.name,
+        categoryId: selectedCategory.id,
       }));
     }
   }, [selectedCategory]);

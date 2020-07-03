@@ -1,8 +1,8 @@
 const initialState = {
   addressList: [],
   categoryList: [],
-  selectedAddress: '',
-  selectedCategory: '',
+  selectedAddress: {},
+  selectedCategory: {},
   restaurants: [],
 };
 
@@ -43,6 +43,16 @@ const restaurants = [
   },
 ];
 
+const selectedAddress = {
+  id: '1',
+  name: '서울',
+};
+
+const selectedCategory = {
+  id: '1',
+  name: '한식',
+};
+
 export {
   initialState,
   addressList,
@@ -50,4 +60,6 @@ export {
   containAddressState,
   containCategoryState,
   restaurants,
+  selectedAddress,
+  selectedCategory,
 };

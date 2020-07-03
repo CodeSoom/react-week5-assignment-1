@@ -8,7 +8,7 @@ import CategoryListContainer from './CategoryListContainer';
 
 import { selectCategory } from './actions';
 
-import { categoryList } from '../__fixture__/restaurants';
+import { categoryList, initialState } from '../__fixture__/restaurants';
 
 jest.mock('react-redux');
 
@@ -20,6 +20,8 @@ describe('CategoryListContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       categoryList,
+      selectedAddress: initialState.selectedAddress,
+      selectedCategory: initialState.selectedCategory,
     }));
 
     dispatch.mockClear();

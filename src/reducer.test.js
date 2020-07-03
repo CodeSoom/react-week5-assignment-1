@@ -33,7 +33,7 @@ describe('reducer', () => {
         selectAddress(containAddressState.addressList[0].id),
       );
 
-      expect(state.selectedAddress).toBe(state.addressList[0].name);
+      expect(state.selectedAddress).toBe(state.addressList[0]);
     });
   });
 
@@ -44,7 +44,7 @@ describe('reducer', () => {
         selectCategory(containCategoryState.categoryList[0].id),
       );
 
-      expect(state.selectedCategory).toBe(state.categoryList[0].name);
+      expect(state.selectedCategory).toBe(state.categoryList[0]);
     });
   });
 
