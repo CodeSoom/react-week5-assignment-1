@@ -1,6 +1,7 @@
 export const initialState = {
   regions: [],
   categories: [],
+  restaurants: [],
   regionName: '',
   categoryId: -1,
 };
