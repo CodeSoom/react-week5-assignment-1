@@ -68,6 +68,18 @@ describe('acton', () => {
         expect(dispatch).toBeCalledWith(setInitCategories(categories));
       });
     });
+
+    context('when fail to fetch data', () => {
+      beforeEach(() => {
+        fetchCategories.mockRejectedValue(new Error('some error'));
+      });
+
+      it('dispatch loadCategories', async () => {
+        await loadCategories()(dispatch);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
   });
 });
 
