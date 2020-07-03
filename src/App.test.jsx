@@ -8,9 +8,9 @@ import {
   updateRegions, getRegions, getRestaurants, getCategories, updateCategories,
 } from './actions';
 
-import regionsFixture from './__fixtures__/regions';
-import categoriesFixture from './__fixtures__/categories';
-import restaurantsFixture from './__fixtures__/restaurants';
+import regions from './__fixtures__/regions';
+import categories from './__fixtures__/categories';
+import restaurants from './__fixtures__/restaurants';
 
 import App from './App';
 
@@ -29,19 +29,32 @@ describe('<App />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions: regionsFixture,
-    categories: categoriesFixture,
-    restaurants: restaurantsFixture,
+    regions,
+    categories,
+    restaurants,
   }));
+
+  const getRegionsAction = jest.fn();
+  getRegions.mockImplementation(() => getRegionsAction);
+  const getCategoriesAction = jest.fn();
+  getCategories.mockImplementation(() => getCategoriesAction);
+  const getRestaurantsAction = jest.fn();
+  getRestaurants.mockImplementation(() => getRestaurantsAction);
+  const updateRegionsAction = jest.fn();
+  updateRegions.mockImplementation(() => updateRegionsAction);
+  const updateCategoriesAction = jest.fn();
+  updateCategories.mockImplementation(() => updateCategoriesAction);
 
   beforeEach(() => {
     dispatch.mockClear();
+    getRegionsAction.mockClear();
+    getCategoriesAction.mockClear();
+    getRestaurantsAction.mockClear();
+    updateRegionsAction.mockClear();
+    updateCategoriesAction.mockClear();
   });
 
   it('fetch regions', () => {
-    // given
-    const getRegionsAction = jest.fn();
-    getRegions.mockImplementation(() => getRegionsAction);
     // when
     renderApp();
     // then
@@ -49,9 +62,6 @@ describe('<App />', () => {
   });
 
   it('fetch categories', () => {
-    // given
-    const getCategoriesAction = jest.fn();
-    getCategories.mockImplementation(() => getCategoriesAction);
     // when
     renderApp();
     // then
@@ -62,7 +72,7 @@ describe('<App />', () => {
     // when
     const { getButtonByName } = renderApp();
     // then
-    regionsFixture.forEach(({ name }) => {
+    regions.forEach(({ name }) => {
       expect(getButtonByName(name)).toBeInTheDocument();
     });
   });
@@ -71,7 +81,7 @@ describe('<App />', () => {
     // when
     const { getButtonByName } = renderApp();
     // then
-    categoriesFixture.forEach(({ name }) => {
+    categories.forEach(({ name }) => {
       expect(getButtonByName(name)).toBeInTheDocument();
     });
   });
@@ -80,45 +90,30 @@ describe('<App />', () => {
     // when
     const { getByText } = renderApp();
     // then
-    restaurantsFixture.forEach(({ name }) => {
+    restaurants.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument();
     });
   });
 
   describe('click button', () => {
-    const getRestaurantsAction = jest.fn();
-    getRestaurants.mockImplementation(() => getRestaurantsAction);
-
-    beforeEach(() => {
-      getRestaurantsAction.mockClear();
-    });
-
     it('click region button', () => {
-      // given
-      const updateRegionsAction = jest.fn();
-      updateRegions.mockImplementation(() => updateRegionsAction);
-      const region = regionsFixture[0];
       // when
       const { getButtonByName } = renderApp();
-      fireEvent.click(getButtonByName(region.name));
+      fireEvent.click(getButtonByName(regions[0].name));
       // then
       expect(dispatch).toBeCalledWith(updateRegionsAction);
       expect(dispatch).toBeCalledWith(getRestaurantsAction);
-      expect(updateRegions).toBeCalledWith(region.id);
+      expect(updateRegions).toBeCalledWith(regions[0].id);
     });
 
     it('click category button', () => {
-      // given
-      const updateCategoriesAction = jest.fn();
-      updateCategories.mockImplementation(() => updateCategoriesAction);
-      const category = categoriesFixture[0];
       // when
       const { getButtonByName } = renderApp();
-      fireEvent.click(getButtonByName(category.name));
+      fireEvent.click(getButtonByName(categories[0].name));
       // then
       expect(dispatch).toBeCalledWith(updateCategoriesAction);
       expect(dispatch).toBeCalledWith(getRestaurantsAction);
-      expect(updateCategories).toBeCalledWith(category.id);
+      expect(updateCategories).toBeCalledWith(categories[0].id);
     });
   });
 });
