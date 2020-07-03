@@ -3,11 +3,10 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import AddressListContainer from './AddressListContainer';
-import CategoryList from './CategoryList';
 
 import { loadAddressList } from './actions';
 
-import { categoryList } from '../__fixture__/restaurants';
+import CategoryListContainer from './CategoryListContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ export default function App() {
   return (
     <div>
       <AddressListContainer />
-      <CategoryList categoryList={categoryList} />
+      <CategoryListContainer />
     </div>
   );
 }
