@@ -38,32 +38,32 @@ describe('reducer', () => {
     });
   });
 
-  context('when action type is setRegions', () => {
-    it('gets new regions', () => {
+  context('with setRegions action', () => {
+    it('returns state with updated regions', () => {
       const state = reducer(previousState, setRegions(regions));
 
       expect(state.regions).toEqual(regions);
     });
   });
 
-  context('when action type is selectRegion', () => {
-    it('sets selected region name', () => {
+  context('with selectRegion action', () => {
+    it('returns state with selected region name', () => {
       const state = reducer(previousState, selectRegion('서울'));
 
       expect(state.regionName).toBe('서울');
     });
   });
 
-  context('when action type is setCategories', () => {
-    it('gets new categories', () => {
+  context('with setCategories action', () => {
+    it('returns state with updated categories', () => {
       const state = reducer(previousState, setCategories(categories));
 
       expect(state.categories).toEqual(categories);
     });
   });
 
-  context('when action type is selectCategory', () => {
-    it('sets selected category id', () => {
+  context('with selectCategory action', () => {
+    it('returns state with selected category id', () => {
       const state = reducer(previousState, selectCategory(1));
 
       expect(state.categoryId).toBe(1);
