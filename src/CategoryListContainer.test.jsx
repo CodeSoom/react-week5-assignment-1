@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import CategoryListContainer from './CategoryListContainer';
 
+import { selectCategory } from './actions';
+
 jest.mock('react-redux');
 
 describe('CategoryListContainer', () => {

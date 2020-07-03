@@ -23,4 +23,16 @@ function selectAddress(selectedAddressId) {
   };
 }
 
-export { setAddressList, loadAddressList, selectAddress };
+function selectCategory(selectedCategoryId) {
+  return {
+    type: 'selectCategory',
+    payload: { selectedCategoryId },
+  };
+}
+
+export {
+  setAddressList,
+  loadAddressList,
+  selectAddress,
+  selectCategory,
+};
