@@ -54,4 +54,19 @@ describe('Categories', () => {
       expect(getByText('한식(V)')).not.toBeNull();
     });
   });
+
+  context('without selected id', () => {
+    it('(V)가 표시되지 않는다..', () => {
+      const selectedId = '';
+
+      const { container } = render(
+        <Categories
+          selected={selectedId}
+          categories={categories}
+        />,
+      );
+
+      expect(container).not.toHaveTextContent('(V)');
+    });
+  });
 });
