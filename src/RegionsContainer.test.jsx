@@ -6,7 +6,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
-import { regions } from '../__fixture__/data';
+import { regions, categories, restaurants } from '../__fixture__/data';
 
 import { selectRegion } from './action';
 
@@ -15,6 +15,8 @@ jest.mock('react-redux');
 const initState = {
   regions,
   selectedRegion: '',
+  categories,
+  selectedCategory: '',
 };
 
 function mockUseSelector(state = initState) {
@@ -66,16 +68,39 @@ describe('<RegionsContainer />', () => {
     });
   });
 
-  context('when the user selects region', () => {
+  context('when the user selects region & without selectedCategory', () => {
     it('run selectRegion action', () => {
-      mockUseSelector();
+      mockUseSelector({
+        ...initState,
+        categories,
+        selectedCategory: '',
+      });
+
+      const { getByRole, queryByText } = renderRegionsContainer();
+
+      fireEvent.click(getByRole('button', { name: '서울' }));
+      expect(dispatch).toBeCalledWith(selectRegion('서울'));
+
+      restaurants.forEach((restaurant) => {
+        expect(queryByText(restaurant.name)).toBeNull();
+      });
+    });
+  });
+
+  context('when the user selects region & with selectedCategory', () => {
+    it('run selectRegion action', () => {
+      mockUseSelector({
+        ...initState,
+        categories,
+        selectedRegion: '대구',
+        selectedCategory: '한식',
+      });
 
       const { getByRole } = renderRegionsContainer();
 
-      regions.forEach((region) => {
-        fireEvent.click(getByRole('button', { name: region.name }));
-        expect(dispatch).toBeCalledWith(selectRegion(region.name));
-      });
+      fireEvent.click(getByRole('button', { name: '서울' }));
+      expect(dispatch).toBeCalledWith(selectRegion('서울'));
+      // TODO : dispatch(loadRestaurants) 여부
     });
   });
 });
