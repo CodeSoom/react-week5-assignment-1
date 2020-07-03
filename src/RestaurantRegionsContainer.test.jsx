@@ -4,9 +4,12 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import RestaurantRegionsContainer from './RestaurantRegionsContainer';
-
 import { regions } from '../fixtures/restaurants';
+import {
+  setRegion,
+} from './actions';
+
+import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 jest.mock('react-redux');
 
@@ -35,11 +38,6 @@ describe('RestaurantRegionsContainer', () => {
     ));
 
     fireEvent.click(getByText('서울'));
-    expect(dispatch).toBeCalledWith({
-      type: 'setRegion',
-      payload: {
-        region: '서울',
-      },
-    });
+    expect(dispatch).toBeCalledWith(setRegion('서울'));
   });
 });
