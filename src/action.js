@@ -1,4 +1,8 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
 
 export function setInitRegions(initRegions) {
   return {
@@ -45,7 +49,6 @@ export function loadCategories() {
       dispatch(setInitCategories(initCategories));
     } catch (error) {
       // TODO : 에러 처리
-
     }
   };
 }
@@ -70,7 +73,11 @@ export function setRestaurants(initRestaurants) {
 
 export function loadRestaurants(regionName, categoryId) {
   return async (dispatch) => {
-    const initRestaurants = await fetchRestaurants(regionName, categoryId);
-    dispatch(setRestaurants(initRestaurants));
+    try {
+      const initRestaurants = await fetchRestaurants(regionName, categoryId);
+      dispatch(setRestaurants(initRestaurants));
+    } catch (error) {
+      // TODO : 에러 처리
+    }
   };
 }
