@@ -20,6 +20,9 @@ export default function App() {
     <div>
       <AddressListContainer />
       <CategoryListContainer />
+      <ul>
+        <li>양천주가</li>
+      </ul>
     </div>
   );
 }

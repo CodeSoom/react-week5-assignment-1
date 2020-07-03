@@ -29,7 +29,7 @@ describe('App', () => {
     expect(getByText('한식')).toBeInTheDocument();
   });
 
-  it('레스토랑 목록이 로딩된다.', () => {
+  it('레스토랑 목록이 표시된다.', () => {
     const { getByText } = render((
       <App />
     ));
