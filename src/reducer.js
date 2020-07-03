@@ -33,7 +33,7 @@ export default function reducer(state = initialState, action = {}) {
     return {
       ...state,
       region,
-      regions: newArray(regions, region),
+      regions: newArray(regions, region.name),
     };
   }
 
