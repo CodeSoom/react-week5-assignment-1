@@ -14,9 +14,9 @@ describe('reducer', () => {
       const initialState = {
         regions: [],
       };
-  
+
       const state = reducer(initialState, setRegions(regions));
-  
+
       expect(state.regions).toHaveLength(1);
     });
   });
@@ -26,10 +26,10 @@ describe('reducer', () => {
       const initialState = {
         categories: [],
       };
-  
+
       const state = reducer(initialState, setCategories(categories));
-  
+
       expect(state.categories).toHaveLength(1);
     });
-  });  
+  });
 });

@@ -21,7 +21,7 @@ describe('actions', () => {
 
   test('loadRegions', async () => {
     const dispatch = jest.fn();
-    
+
     await loadRegions()(dispatch);
 
     expect(dispatch).toBeCalledTimes(1);
@@ -36,7 +36,7 @@ describe('actions', () => {
 
   test('loadCategories', async () => {
     const dispatch = jest.fn();
-    
+
     await loadCategories()(dispatch);
 
     expect(dispatch).toBeCalledTimes(1);
