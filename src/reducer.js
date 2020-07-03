@@ -4,6 +4,14 @@ const initialState = {
   region: '',
 };
 
+function newArray(array, value) {
+  return array.map(({ id, name }) => (
+    value === name
+      ? { id, name: `${name}(V)` }
+      : { id, name: name.replace('(V)', '') }
+  ));
+}
+
 export default function reducer(state = initialState, action = {}) {
   if (action.type === 'setRegions') {
     return {
@@ -21,10 +29,11 @@ export default function reducer(state = initialState, action = {}) {
 
   if (action.type === 'setRegion') {
     const { region } = action.payload;
+    const { regions } = state;
     return {
       ...state,
-      region: action.payload.region,
-      regions: state.regions.map(({ id, name }) => (region === name ? { id, name: `${name}(V)` } : { id, name: name.replace('(V)', '') })),
+      region,
+      regions: newArray(regions, region),
     };
   }
   return state;
