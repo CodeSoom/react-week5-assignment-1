@@ -36,5 +36,15 @@ export default function reducer(state = initialState, action = {}) {
       regions: newArray(regions, region),
     };
   }
+
+  if (action.type === 'setCategory') {
+    const { category } = action.payload;
+    const { categories } = state;
+    return {
+      ...state,
+      category,
+      categories: newArray(categories, category),
+    };
+  }
   return state;
 }
