@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
-import restaurantsFixture from './__fixtures__/restaurants';
+import restaurants from './__fixtures__/restaurants';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
@@ -16,16 +16,15 @@ function renderRestaurantsContainer() {
 }
 
 describe('<RestaurantsContainer />', () => {
-  it('renders restaurant list', () => {
-    // given
-    useSelector.mockImplementation((selector) => selector({
-      restaurants: restaurantsFixture,
-    }));
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
 
+  it('renders restaurant list', () => {
     // when
     const { getByText } = renderRestaurantsContainer();
     // then
-    restaurantsFixture.forEach(({ name }) => {
+    restaurants.forEach(({ name }) => {
       expect(getByText(name)).toBeInTheDocument();
     });
   });
