@@ -26,6 +26,16 @@ describe('reducer', () => {
     expect(state.regions).toEqual(regions);
   });
 
+  it('지역 중 하나를 선택하면 region에 담는다', () => {
+    const state = reducer(initialState, {
+      type: 'setRegion',
+      payload: {
+        region: '서울',
+      },
+    });
+    expect(state.region).toBe('서울');
+  });
+
   it('should execute fetch regions', () => {
     const store = mockStore({
       regions: [],
