@@ -8,8 +8,10 @@ import {
   setCategories,
 } from './actions';
 
-function loadCategories({ dispatch }) {
-  const categories = [];
+import { fetchCategories } from './services/api';
+
+async function loadCategories({ dispatch }) {
+  const categories = await fetchCategories();
   dispatch(setCategories(categories));
 }
 
