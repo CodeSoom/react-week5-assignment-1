@@ -44,6 +44,13 @@ function loadCategoryList() {
   };
 }
 
+function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: { restaurants },
+  };
+}
+
 export {
   setAddressList,
   loadAddressList,
@@ -51,4 +58,5 @@ export {
   selectCategory,
   setCategoryList,
   loadCategoryList,
+  setRestaurants,
 };

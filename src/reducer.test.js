@@ -1,6 +1,12 @@
 import reducer from './reducer';
 
-import { setAddressList, selectAddress, selectCategory, setCategoryList } from './actions';
+import {
+  setAddressList,
+  selectAddress,
+  selectCategory,
+  setCategoryList,
+  setRestaurants,
+} from './actions';
 
 import {
   initialState,
