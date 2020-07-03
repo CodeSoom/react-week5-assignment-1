@@ -18,6 +18,22 @@ import {
 } from '../__fixture__/restaurants';
 
 describe('reducer', () => {
+  context('state 값이 전달되지 않으면', () => {
+    it('initialState가 state 값으로 사용된다.', () => {
+      const state = reducer(undefined, setAddressList([]));
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
+  context('존재하지 않는 action을 전달하면', () => {
+    it('기존 state가 그대로 반환된다.', () => {
+      const state = reducer(initialState, { type: 'noExistAction' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
   describe('setAddressList', () => {
     it('레스토랑 지역 정보가 등록된다.', () => {
       const state = reducer(initialState, setAddressList(addressList));

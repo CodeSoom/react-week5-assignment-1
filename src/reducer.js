@@ -6,15 +6,10 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setAddressList') {
-    return {
-      ...state,
-      addressList: action.payload.addressList,
-    };
-  }
-
-  if (action.type === 'selectAddress') {
+const reducers = {
+  setAddressList: (state, action) => ({ ...state, addressList: action.payload.addressList }),
+  setCategoryList: (state, action) => ({ ...state, categoryList: action.payload.categoryList }),
+  selectAddress: (state, action) => {
     const { selectedAddressId } = action.payload;
 
     const selectedAddress = state.addressList
@@ -24,9 +19,8 @@ export default function reducer(state = initialState, action) {
       ...state,
       selectedAddress,
     };
-  }
-
-  if (action.type === 'selectCategory') {
+  },
+  selectCategory: (state, action) => {
     const { selectedCategoryId } = action.payload;
 
     const selectedCategory = state.categoryList
@@ -36,21 +30,11 @@ export default function reducer(state = initialState, action) {
       ...state,
       selectedCategory,
     };
-  }
+  },
+  setRestaurants: (state, action) => ({ ...state, restaurants: action.payload.restaurants }),
+};
 
-  if (action.type === 'setCategoryList') {
-    return {
-      ...state,
-      categoryList: action.payload.categoryList,
-    };
-  }
-
-  if (action.type === 'setRestaurants') {
-    return {
-      ...state,
-      restaurants: action.payload.restaurants,
-    };
-  }
-
-  return state;
+export default function reducer(state = initialState, action) {
+  if (!reducers[action.type]) return state;
+  return reducers[action.type](state, action);
 }
