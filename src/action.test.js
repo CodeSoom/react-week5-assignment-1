@@ -13,7 +13,11 @@ import {
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { fetchRegions, fetchCategories } from './services/api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
 
 jest.mock('./services/api');
 
@@ -79,6 +83,21 @@ describe('acton', () => {
 
         expect(dispatch).not.toBeCalled();
       });
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    const dispatch = jest.fn();
+
+    beforeEach(() => {
+      dispatch.mockClear();
+      fetchRestaurants.mockResolvedValue(restaurants);
+    });
+
+    it('dispatch loadCategories', async () => {
+      await loadRestaurants()(dispatch);
+
+      expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
     });
   });
 });
