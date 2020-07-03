@@ -4,21 +4,15 @@ import regionsFixture from '../__fixtures__/regions';
 import categoriesFixture from '../__fixtures__/categories';
 import restaurantsFixture from '../__fixtures__/restaurants';
 
-global.fetch = jest.fn();
-
 function mockFetch(data) {
-  fetch.mockImplementation(
-    jest.fn().mockResolvedValue({
-      json: jest.fn().mockResolvedValue(data),
-    }),
-  );
+  global.fetch = jest.fn().mockResolvedValue({
+    async json() {
+      return data;
+    },
+  });
 }
 
 describe('api', () => {
-  beforeEach(() => {
-    fetch.mockClear();
-  });
-
   it('fetch regions', async () => {
     // given
     mockFetch(regionsFixture);
