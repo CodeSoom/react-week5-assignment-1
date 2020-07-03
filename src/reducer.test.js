@@ -5,6 +5,12 @@ import {
 } from './actions';
 
 describe('reducer', () => {
+  const initialState = {
+    selected: {},
+    regions: [],
+    categories: [],
+  };
+
   describe('updateSeleted', () => {
     it('selected category id를 변경한다.', () => {
     // Given
@@ -36,6 +42,25 @@ describe('reducer', () => {
 
       // Then
       expect(newState.selected.region).toBe(region);
+    });
+  });
+
+  context('without existed action', () => {
+    it('state를 반환한다.', () => {
+      const state = reducer(initialState,
+        {
+          type: 'notExistedAction',
+        });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
+  context('without state', () => {
+    it('initialState를 사용한다.', () => {
+      const state = reducer(undefined, updateSelected('categoryId', 1));
+
+      expect(state.selected.categoryId).toBe(1);
     });
   });
 });
