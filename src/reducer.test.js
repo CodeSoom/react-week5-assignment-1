@@ -8,6 +8,7 @@ import {
   setRegions,
   setCategories,
   loadRegions,
+  loadCategories,
 } from './actions';
 
 jest.mock('./services/api');
@@ -39,5 +40,16 @@ describe('reducer', () => {
   it('분류 정보를 추가한다', () => {
     const state = reducer(initialState, setCategories(categories));
     expect(state.categories).toEqual(categories);
+  });
+
+  it('should execute fetch categories', () => {
+    const store = mockStore({
+      categories: [],
+    });
+    return store.dispatch(loadCategories())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions[0].type).toEqual('setCategories');
+      });
   });
 });
