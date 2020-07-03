@@ -3,9 +3,9 @@ import {
   setRegions, setCategories, checkRegion, checkCategory, setRestaurants,
 } from './actions';
 
-import regionsFixture from './__fixtures__/regions';
-import categoriesFixture from './__fixtures__/categories';
-import restaurantsFixture from './__fixtures__/restaurants';
+import regions from './__fixtures__/regions';
+import categories from './__fixtures__/categories';
+import restaurants from './__fixtures__/restaurants';
 
 describe('reducer', () => {
   const previousState = {
@@ -20,7 +20,6 @@ describe('reducer', () => {
 
   it('setRegions', () => {
     // given
-    const regions = regionsFixture;
     const action = setRegions(regions);
     // when
     const state = reducer(previousState, action);
@@ -30,7 +29,6 @@ describe('reducer', () => {
 
   it('setCategories', () => {
     // given
-    const categories = categoriesFixture;
     const action = setCategories(categories);
     // when
     const state = reducer(previousState, action);
@@ -40,7 +38,6 @@ describe('reducer', () => {
 
   it('setRestaurants', () => {
     // given
-    const restaurants = restaurantsFixture;
     const action = setRestaurants(restaurants);
     // when
     const state = reducer(previousState, action);
@@ -50,21 +47,19 @@ describe('reducer', () => {
 
   it('checkRegion', () => {
     // given
-    const id = 1;
-    const action = checkRegion(id);
+    const action = checkRegion(1);
     // when
     const state = reducer(previousState, action);
     // then
-    expect(state.checked.regionId).toBe(id);
+    expect(state.checked.regionId).toBe(1);
   });
 
   it('checkCategory', () => {
     // given
-    const id = 1;
-    const action = checkCategory(id);
+    const action = checkCategory(1);
     // when
     const state = reducer(previousState, action);
     // then
-    expect(state.checked.categoryId).toBe(id);
+    expect(state.checked.categoryId).toBe(1);
   });
 });
