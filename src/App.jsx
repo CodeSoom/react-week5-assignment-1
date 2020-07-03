@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { loadRegions, loadCategories } from './actions';
+import {
+  loadRegions, loadCategories, loadRestaurants,
+} from './actions';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -13,6 +15,7 @@ export default function App() {
   useEffect(() => {
     dispatch(loadRegions());
     dispatch(loadCategories());
+    dispatch(loadRestaurants());
   }, []);
 
   return (
