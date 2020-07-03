@@ -19,46 +19,36 @@ describe('reducer', () => {
   };
 
   it('setRegions', () => {
-    // given
-    const action = setRegions(regions);
     // when
-    const state = reducer(previousState, action);
+    const state = reducer(previousState, setRegions(regions));
     // then
     expect(state.regions).toEqual(regions);
   });
 
   it('setCategories', () => {
-    // given
-    const action = setCategories(categories);
     // when
-    const state = reducer(previousState, action);
+    const state = reducer(previousState, setCategories(categories));
     // then
     expect(state.categories).toEqual(categories);
   });
 
   it('setRestaurants', () => {
-    // given
-    const action = setRestaurants(restaurants);
     // when
-    const state = reducer(previousState, action);
+    const state = reducer(previousState, setRestaurants(restaurants));
     // then
     expect(state.restaurants).toEqual(restaurants);
   });
 
   it('checkRegion', () => {
-    // given
-    const action = checkRegion(1);
     // when
-    const state = reducer(previousState, action);
+    const state = reducer(previousState, checkRegion(1));
     // then
     expect(state.checked.regionId).toBe(1);
   });
 
   it('checkCategory', () => {
-    // given
-    const action = checkCategory(1);
     // when
-    const state = reducer(previousState, action);
+    const state = reducer(previousState, checkCategory(1));
     // then
     expect(state.checked.categoryId).toBe(1);
   });

@@ -13,5 +13,5 @@ test('renders text list', () => {
     />,
   );
   // then
-  expect(screen.queryAllByRole('listitem')).toHaveLength(5);
+  expect(screen.queryAllByRole('listitem')).toHaveLength(elements.length);
 });
