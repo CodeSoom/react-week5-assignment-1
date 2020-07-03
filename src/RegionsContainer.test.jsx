@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateRegions, getRestaurants } from './actions';
 
-import regionsFixture from './__fixtures__/regions';
+import regions from './__fixtures__/regions';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -24,35 +24,36 @@ describe('<RegionsContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions: regionsFixture,
+    regions,
   }));
+
+  const updateRegionsAction = jest.fn();
+  updateRegions.mockImplementation(() => updateRegionsAction);
+  const getRestaurantsAction = jest.fn();
+  getRestaurants.mockImplementation(() => getRestaurantsAction);
 
   beforeEach(() => {
     dispatch.mockClear();
+    updateRegionsAction.mockClear();
+    getRestaurantsAction.mockClear();
   });
 
   it('renders region buttons', () => {
     // when
     const { getButtonByName } = renderRegionsContainer();
     // then
-    regionsFixture.forEach(({ name }) => {
+    regions.forEach(({ name }) => {
       expect(getButtonByName(name)).toBeInTheDocument();
     });
   });
 
   it('click region button', () => {
-    // given
-    const updateRegionsAction = jest.fn();
-    const getRestaurantsAction = jest.fn();
-    updateRegions.mockImplementation(() => updateRegionsAction);
-    getRestaurants.mockImplementation(() => getRestaurantsAction);
-    const region = regionsFixture[0];
     // when
     const { getButtonByName } = renderRegionsContainer();
-    fireEvent.click(getButtonByName(region.name));
+    fireEvent.click(getButtonByName(regions[0].name));
     // then
     expect(dispatch).toBeCalledWith(updateRegionsAction);
     expect(dispatch).toBeCalledWith(getRestaurantsAction);
-    expect(updateRegions).toBeCalledWith(region.id);
+    expect(updateRegions).toBeCalledWith(regions[0].id);
   });
 });
