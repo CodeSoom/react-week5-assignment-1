@@ -1,12 +1,16 @@
-export default function reducer(state, action) {
-  const { categoryId } = action.payload;
+const initialState = {
+  selected: {
+    categoryId: '',
+  },
+};
 
+export default function reducer(state = initialState, action) {
   if (action.type === 'updateSelected') {
     return {
       ...state,
       selected: {
         ...state.selected,
-        categoryId,
+        categoryId: action.payload.categoryId,
       },
     };
   }
