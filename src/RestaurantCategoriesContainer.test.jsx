@@ -38,6 +38,9 @@ describe('RestaurantCategoriesContainer', () => {
     ));
 
     fireEvent.click(getByText('한식'));
-    expect(dispatch).toBeCalledWith(setCategory('한식'));
+    expect(dispatch).toBeCalledWith(setCategory({
+      id: 1,
+      name: '한식',
+    }));
   });
 });
