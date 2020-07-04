@@ -103,22 +103,6 @@ describe('App', () => {
   });
 
   describe('loadRestaurants', () => {
-    const withoutRegionStore = mockStore({
-      selected: {
-        region: '',
-        categoryId: 1,
-      },
-    });
-
-    context('without region', () => {
-      it('동작하지 않는다.', async () => {
-        await withoutRegionStore.dispatch(loadRestaurants());
-        const actions = withoutRegionStore.getActions();
-
-        expect(actions).toHaveLength(0);
-      });
-    });
-
     const withoutCategoryIdStore = mockStore({
       selected: {
         region: '서울',
@@ -143,7 +127,7 @@ describe('App', () => {
     });
 
     context('with region and categoryId', () => {
-      it('동작하지 않는다.', async () => {
+      it('restaurants를 가져온다.', async () => {
         await withSelectedStore.dispatch(loadRestaurants());
         const actions = withSelectedStore.getActions();
 
