@@ -118,7 +118,12 @@ describe('acton', () => {
 
   describe('loadRestaurants2', () => {
     const dispatch = jest.fn();
-    const getState = jest.fn();
+    const getState = jest.fn(() => ({
+      regions,
+      selectedRegion: '서울',
+      categories,
+      selectedCategory: '한식',
+    }));
 
     beforeEach(() => {
       dispatch.mockClear();
