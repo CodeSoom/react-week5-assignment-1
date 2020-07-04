@@ -1,25 +1,40 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
-  it('should display restaurants', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurants: [
-        { id: 101, name: '중식' },
-      ],
-    }));
+  context('when nothing selected', () => {
+    it('should display restaurants', () => {
+      useSelector.mockImplementation((selector) => selector({
+      }));
 
-    const { getByText } = render((
-      <RestaurantsContainer />
-    ));
+      const { getByText } = render((
+        <RestaurantsContainer />
+      ));
 
-    expect(getByText('원초밥')).not.toBeNull();
+      expect(getByText('원초밥')).toBeNull();
+    });
+  });
+
+  context('when category, region selected', () => {
+    it('should display restaurants', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [
+          { id: 101, name: '원초밥' },
+        ],
+      }));
+
+      const { getByText } = render((
+        <RestaurantsContainer />
+      ));
+
+      expect(getByText('원초밥')).not.toBeNull();
+    });
   });
 });
