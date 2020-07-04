@@ -8,10 +8,12 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 import {
   setRegions,
   setCategories,
+  setRestaurants,
 } from './actions';
 
 export default function App() {
@@ -20,6 +22,7 @@ export default function App() {
   useEffect(() => {
     dispatch(setRegions(regions));
     dispatch(setCategories(categories));
+    dispatch(setRestaurants(restaurants));
   }, []);
 
   return (
