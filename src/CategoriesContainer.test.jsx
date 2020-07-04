@@ -6,20 +6,18 @@ import { render, fireEvent } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import categories from '../fixtures/categories';
+
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
 
-  const categories = [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-    { id: 3, name: '일식' },
-    { id: 4, name: '양식' },
-    { id: 5, name: '분식' },
-  ];
+  useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     selected: {
