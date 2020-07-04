@@ -42,6 +42,7 @@ describe('<Regions />', () => {
       regions.forEach((region) => {
         fireEvent.click(getByRole('button', { name: region.name }));
       });
+
       expect(handleSelectRegion).toBeCalledTimes(regions.length);
     });
   });
