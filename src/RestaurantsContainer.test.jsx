@@ -6,22 +6,22 @@ import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import restuarants from '../fixtures/restaurants';
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restuarants,
+    restaurants,
   }));
 
-  context('with restuarants', () => {
-    it('카테고리 항목들이 보인다.', () => {
+  context('with restaurants', () => {
+    it('레스토랑 목록이 보인다.', () => {
       const { getByText } = render(
         <RestaurantsContainer />,
       );
 
-      restuarants.forEach((restaurant) => {
+      restaurants.forEach((restaurant) => {
         const { name } = restaurant;
         const regExp = new RegExp(name);
         expect(getByText(regExp)).not.toBeNull();
