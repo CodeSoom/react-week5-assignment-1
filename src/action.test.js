@@ -18,13 +18,13 @@ import {
 jest.mock('./services/api');
 
 describe('acton', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   describe('loadRegions', () => {
-    const dispatch = jest.fn();
-
-    beforeEach(() => {
-      dispatch.mockClear();
-    });
-
     context('when successfully fetch data', () => {
       beforeEach(() => {
         fetchRegions.mockResolvedValue(regions);
@@ -51,12 +51,6 @@ describe('acton', () => {
   });
 
   describe('loadCategories', () => {
-    const dispatch = jest.fn();
-
-    beforeEach(() => {
-      dispatch.mockClear();
-    });
-
     context('when successfully fetch data', () => {
       beforeEach(() => {
         fetchCategories.mockResolvedValue(categories);
@@ -83,12 +77,6 @@ describe('acton', () => {
   });
 
   describe('loadRestaurants', () => {
-    const dispatch = jest.fn();
-
-    beforeEach(() => {
-      dispatch.mockClear();
-    });
-
     context('when successfully fetch data', () => {
       const getState = jest.fn(() => ({
         regions,
