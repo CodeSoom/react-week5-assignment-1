@@ -8,18 +8,18 @@ import configureStore from 'redux-mock-store';
 
 import thunk from 'redux-thunk';
 
-import AddressListContainer from './AddressListContainer';
+import RegionsContainer from './RegionsContainer';
 
 import {
-  addressList,
+  regions,
   initialState,
-  selectedAddress,
+  selectedRegion,
   selectedCategory,
   restaurants,
 } from '../__fixture__/restaurants';
 
 import {
-  selectAddress,
+  selectRegion,
   loadRestaurants,
   setRestaurants,
 } from './actions';
@@ -29,7 +29,7 @@ jest.mock('react-redux');
 const middlewares = [thunk]; // add your middlewares like `redux-thunk`
 const mockStore = configureStore(middlewares);
 
-describe('AddressListContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -38,8 +38,8 @@ describe('AddressListContainer', () => {
     dispatch.mockClear();
 
     useSelector.mockImplementation((selector) => selector({
-      addressList,
-      selectedAddress: initialState.selectedAddress,
+      regions,
+      selectedRegion: initialState.selectedRegion,
       selectedCategory: initialState.selectedCategory,
     }));
   });
@@ -47,7 +47,7 @@ describe('AddressListContainer', () => {
   context('지역이 선택되지 않은 경우', () => {
     it('레스토랑 지역 목록이 로딩된다.', () => {
       const { getByText } = render((
-        <AddressListContainer />
+        <RegionsContainer />
       ));
 
       expect(getByText('서울')).toBeInTheDocument();
@@ -57,13 +57,13 @@ describe('AddressListContainer', () => {
   context('지역이 선택된 경우', () => {
     it('레스토랑 지역 목록이 로딩되고 선택된 항목에 체크 표시됨.', () => {
       useSelector.mockImplementation((selector) => selector({
-        addressList,
-        selectedAddress,
+        regions,
+        selectedRegion,
         selectedCategory: {},
       }));
 
       const { getByText } = render((
-        <AddressListContainer />
+        <RegionsContainer />
       ));
 
       expect(getByText('서울(V)')).toBeInTheDocument();
@@ -71,14 +71,14 @@ describe('AddressListContainer', () => {
   });
 
   context('지역 목록 중 하나의 버튼을 클릭하면', () => {
-    it('selectAddress 액션이 전달된다.', () => {
+    it('selectRegion 액션이 전달된다.', () => {
       const { getByText } = render((
-        <AddressListContainer />
+        <RegionsContainer />
       ));
 
       fireEvent.click(getByText('서울'));
 
-      expect(dispatch).toBeCalledWith(selectAddress(Number(getByText('서울').id)));
+      expect(dispatch).toBeCalledWith(selectRegion(Number(getByText('서울').id)));
     });
   });
 
@@ -86,13 +86,13 @@ describe('AddressListContainer', () => {
   context('레스토랑 카테고리와 지역이 모두 선택된 경우', () => {
     it('loadRestaurants 액션이 전달된다.', () => {
       useSelector.mockImplementation((selector) => selector({
-        addressList,
-        selectedAddress,
+        regions,
+        selectedRegion,
         selectedCategory,
       }));
 
       render((
-        <AddressListContainer />
+        <RegionsContainer />
       ));
 
       // 아래와 같이 테스트를 해도 다음과 같은 결과가 도출
@@ -100,7 +100,7 @@ describe('AddressListContainer', () => {
       // Received: [Function anonymous]
 
       // expect(dispatch).toBeCalledWith(loadRestaurants({
-      //   addressName: selectedAddress.name, categoryId: selectedCategory.id,
+      //   regionName: selectedRegion.name, categoryId: selectedCategory.id,
       // }));
 
       expect(dispatch).toBeCalled();
@@ -111,15 +111,15 @@ describe('AddressListContainer', () => {
     context('지역과 카테고리가 모두 선택되면', () => {
       it('loadRestaurants 액션을 통해 레스토랑 목록이 restaurants에 저장된다. ', async () => {
         useSelector.mockImplementation((selector) => selector({
-          addressList,
-          selectedAddress,
+          regions,
+          selectedRegion,
           selectedCategory,
         }));
 
         const store = mockStore({});
 
         await store.dispatch(loadRestaurants({
-          addressName: selectedAddress.name,
+          regionName: selectedRegion.name,
           categoryId: selectedCategory.id,
         }));
 
@@ -134,7 +134,7 @@ describe('AddressListContainer', () => {
         const store = mockStore({});
 
         await store.dispatch(loadRestaurants({
-          addressName: '',
+          regionName: '',
           categoryId: 0,
         }));
 

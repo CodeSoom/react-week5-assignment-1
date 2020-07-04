@@ -11,15 +11,15 @@ import thunk from 'redux-thunk';
 import App from './App';
 
 import {
-  addressList,
+  regions,
   categoryList,
   restaurants,
   initialState,
 } from '../__fixture__/restaurants';
 
 import {
-  loadAddressList,
-  setAddressList,
+  loadRegions,
+  setRegions,
   loadCategoryList,
   setCategoryList,
 } from './actions';
@@ -36,11 +36,11 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      addressList,
+      regions,
       categoryList,
       restaurants,
       selectedCategory: initialState.selectedCategory,
-      selectedAddress: initialState.selectedAddress,
+      selectedRegion: initialState.selectedRegion,
     }));
 
     const { getByText } = render((
@@ -60,14 +60,14 @@ describe('App', () => {
   });
 
   describe('API 호출', () => {
-    it('loadAddressList 액션을 통해 레스토랑 지역 목록이 addressList에 저장된다. ', async () => {
+    it('loadRegions 액션을 통해 레스토랑 지역 목록이 regions에 저장된다. ', async () => {
       const store = mockStore({});
 
-      await store.dispatch(loadAddressList());
+      await store.dispatch(loadRegions());
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setAddressList(addressList));
+      expect(actions[0]).toEqual(setRegions(regions));
     });
 
     it('loadCategoryList 액션을 통해 카테고리 목록이 categoryList에 저장된다. ', async () => {

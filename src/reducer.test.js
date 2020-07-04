@@ -1,8 +1,8 @@
 import reducer from './reducer';
 
 import {
-  setAddressList,
-  selectAddress,
+  setRegions,
+  selectRegion,
   selectCategory,
   setCategoryList,
   setRestaurants,
@@ -10,8 +10,8 @@ import {
 
 import {
   initialState,
-  addressList,
-  containAddressState,
+  regions,
+  containRegionState,
   containCategoryState,
   categoryList,
   restaurants,
@@ -20,7 +20,7 @@ import {
 describe('reducer', () => {
   context('state 값이 전달되지 않으면', () => {
     it('initialState가 state 값으로 사용된다.', () => {
-      const state = reducer(undefined, setAddressList([]));
+      const state = reducer(undefined, setRegions([]));
 
       expect(state).toEqual(initialState);
     });
@@ -34,22 +34,22 @@ describe('reducer', () => {
     });
   });
 
-  describe('setAddressList', () => {
+  describe('setRegions', () => {
     it('레스토랑 지역 정보가 등록된다.', () => {
-      const state = reducer(initialState, setAddressList(addressList));
+      const state = reducer(initialState, setRegions(regions));
 
-      expect(state.addressList).not.toHaveLength(0);
+      expect(state.regions).not.toHaveLength(0);
     });
   });
 
-  describe('selectAddress', () => {
+  describe('selectRegion', () => {
     it('레스토랑 지역 정보가 선택된다.', () => {
       const state = reducer(
-        containAddressState,
-        selectAddress(containAddressState.addressList[0].id),
+        containRegionState,
+        selectRegion(containRegionState.regions[0].id),
       );
 
-      expect(state.selectedAddress).toBe(state.addressList[0]);
+      expect(state.selectedRegion).toBe(state.regions[0]);
     });
   });
 

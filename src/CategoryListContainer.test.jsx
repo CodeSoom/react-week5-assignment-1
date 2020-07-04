@@ -16,7 +16,7 @@ import {
   categoryList,
   initialState,
   selectedCategory,
-  selectedAddress,
+  selectedRegion,
   restaurants,
 } from '../__fixture__/restaurants';
 
@@ -33,7 +33,7 @@ describe('CategoryListContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       categoryList,
-      selectedAddress: initialState.selectedAddress,
+      selectedRegion: initialState.selectedRegion,
       selectedCategory: initialState.selectedCategory,
     }));
 
@@ -54,7 +54,7 @@ describe('CategoryListContainer', () => {
     it('레스토랑 카테고리 목록이 로딩되고 선택된 카테고리가 체크 표시된다.', () => {
       useSelector.mockImplementation((selector) => selector({
         categoryList,
-        selectedAddress: {},
+        selectedRegion: {},
         selectedCategory,
       }));
 
@@ -83,7 +83,7 @@ describe('CategoryListContainer', () => {
     it('loadRestaurants 액션이 전달된다.', () => {
       useSelector.mockImplementation((selector) => selector({
         categoryList,
-        selectedAddress,
+        selectedRegion,
         selectedCategory,
       }));
 
@@ -96,7 +96,7 @@ describe('CategoryListContainer', () => {
       // Received: [Function anonymous]
 
       // expect(dispatch).toBeCalledWith(loadRestaurants({
-      //   addressName: selectedAddress.name, categoryId: selectedCategory.id,
+      //   regionName: selectedRegion.name, categoryId: selectedCategory.id,
       // }));
 
       expect(dispatch).toBeCalled();
@@ -107,14 +107,14 @@ describe('CategoryListContainer', () => {
     context('지역과 카테고리가 모두 선택되면', () => {
       it('loadRestaurants 액션을 통해 레스토랑 목록이 restaurants에 저장된다. ', async () => {
         useSelector.mockImplementation((selector) => selector({
-          selectedAddress,
+          selectedRegion,
           selectedCategory,
         }));
 
         const store = mockStore({});
 
         await store.dispatch(loadRestaurants({
-          addressName: selectedAddress.name,
+          regionName: selectedRegion.name,
           categoryId: selectedCategory.id,
         }));
 
@@ -129,7 +129,7 @@ describe('CategoryListContainer', () => {
         const store = mockStore({});
 
         await store.dispatch(loadRestaurants({
-          addressName: '',
+          regionName: '',
           categoryId: 0,
         }));
 

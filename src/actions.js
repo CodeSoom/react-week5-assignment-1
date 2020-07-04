@@ -1,25 +1,25 @@
-import { fetchAddressList, fetchCategoryList, fetchRestaurants } from './services/api';
+import { fetchRegions, fetchCategoryList, fetchRestaurants } from './services/api';
 
-function setAddressList(addressList) {
+function setRegions(regions) {
   return {
-    type: 'setAddressList',
+    type: 'setRegions',
     payload: {
-      addressList,
+      regions,
     },
   };
 }
 
-function loadAddressList() {
+function loadRegions() {
   return async (dispatch) => {
-    const addressList = await fetchAddressList();
-    dispatch(setAddressList(addressList));
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
   };
 }
 
-function selectAddress(selectedAddressId) {
+function selectRegion(selectedRegionId) {
   return {
-    type: 'selectAddress',
-    payload: { selectedAddressId },
+    type: 'selectRegion',
+    payload: { selectedRegionId },
   };
 }
 
@@ -51,17 +51,17 @@ function setRestaurants(restaurants) {
   };
 }
 
-function loadRestaurants({ addressName, categoryId }) {
+function loadRestaurants({ regionName, categoryId }) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants({ addressName, categoryId });
+    const restaurants = await fetchRestaurants({ regionName, categoryId });
     dispatch(setRestaurants(restaurants));
   };
 }
 
 export {
-  setAddressList,
-  loadAddressList,
-  selectAddress,
+  setRegions,
+  loadRegions,
+  selectRegion,
   selectCategory,
   setCategoryList,
   loadCategoryList,

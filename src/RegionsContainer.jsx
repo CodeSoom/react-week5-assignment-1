@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import CategoryList from './CategoryList';
+import Regions from './Regions';
 
-import { selectCategory, loadRestaurants } from './actions';
+import { selectRegion, loadRestaurants } from './actions';
 
-export default function CategoryListContainer() {
+export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { categoryList, selectedRegion, selectedCategory } = useSelector((state) => ({
-    categoryList: state.categoryList,
+  const {
+    regions,
+    selectedRegion,
+    selectedCategory,
+  } = useSelector((state) => ({
+    regions: state.regions,
     selectedRegion: state.selectedRegion,
     selectedCategory: state.selectedCategory,
   }));
@@ -22,18 +26,18 @@ export default function CategoryListContainer() {
         categoryId: selectedCategory.id,
       }));
     }
-  }, [selectedCategory]);
+  }, [selectedRegion]);
 
   function handleClick(event) {
     const { target: { id } } = event;
-    dispatch(selectCategory(Number(id)));
+    dispatch(selectRegion(Number(id)));
   }
 
   return (
-    <CategoryList
-      categoryList={categoryList}
+    <Regions
+      regions={regions}
       onClick={handleClick}
-      selectedCategory={selectedCategory}
+      selectedRegion={selectedRegion}
     />
   );
 }

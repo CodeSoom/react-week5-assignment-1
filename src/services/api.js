@@ -3,12 +3,12 @@ import fetch from 'node-fetch';
 
 const BASE_URL = 'https://eatgo-customer-api.ahastudio.com';
 
-async function fetchAddressList() {
+async function fetchRegions() {
   const url = '/regions';
   const response = await fetch(BASE_URL + url);
-  const addressList = await response.json();
+  const regions = await response.json();
 
-  return addressList;
+  return regions;
 }
 
 async function fetchCategoryList() {
@@ -19,8 +19,8 @@ async function fetchCategoryList() {
   return categoryList;
 }
 
-async function fetchRestaurants({ addressName, categoryId }) {
-  const url = `${BASE_URL}/restaurants?region=${encodeURI(addressName)}&category=${categoryId}`;
+async function fetchRestaurants({ regionName, categoryId }) {
+  const url = `${BASE_URL}/restaurants?region=${encodeURI(regionName)}&category=${categoryId}`;
   const response = await fetch(url);
   const categoryList = await response.json();
 
@@ -28,7 +28,7 @@ async function fetchRestaurants({ addressName, categoryId }) {
 }
 
 export {
-  fetchAddressList,
+  fetchRegions,
   fetchCategoryList,
   fetchRestaurants,
 };

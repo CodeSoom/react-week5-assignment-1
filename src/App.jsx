@@ -2,25 +2,25 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import AddressListContainer from './AddressListContainer';
+import RegionsContainer from './RegionsContainer';
 
 import CategoryListContainer from './CategoryListContainer';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { loadAddressList, loadCategoryList } from './actions';
+import { loadRegions, loadCategoryList } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadAddressList());
+    dispatch(loadRegions());
     dispatch(loadCategoryList());
   }, []);
 
   return (
     <div>
-      <AddressListContainer />
+      <RegionsContainer />
       <CategoryListContainer />
       <RestaurantsContainer />
     </div>

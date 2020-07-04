@@ -1,23 +1,23 @@
 const initialState = {
-  addressList: [],
+  regions: [],
   categoryList: [],
-  selectedAddress: {},
+  selectedRegion: {},
   selectedCategory: {},
   restaurants: [],
 };
 
 const reducers = {
-  setAddressList: (state, action) => ({ ...state, addressList: action.payload.addressList }),
+  setRegions: (state, action) => ({ ...state, regions: action.payload.regions }),
   setCategoryList: (state, action) => ({ ...state, categoryList: action.payload.categoryList }),
-  selectAddress: (state, action) => {
-    const { selectedAddressId } = action.payload;
+  selectRegion: (state, action) => {
+    const { selectedRegionId } = action.payload;
 
-    const selectedAddress = state.addressList
-      .filter((address) => address.id === selectedAddressId)[0];
+    const selectedRegion = state.regions
+      .filter((region) => region.id === selectedRegionId)[0];
 
     return {
       ...state,
-      selectedAddress,
+      selectedRegion,
     };
   },
   selectCategory: (state, action) => {

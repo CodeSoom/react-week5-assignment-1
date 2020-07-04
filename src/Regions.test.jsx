@@ -2,15 +2,15 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import AddressList from './AddressList';
+import Regions from './Regions';
 
-import { addressList } from '../__fixture__/restaurants';
+import { regions } from '../__fixture__/restaurants';
 
-describe('AddressList', () => {
+describe('Regions', () => {
   it('레스토랑 지역 목록이 로딩된다.', () => {
     const { getByText } = render((
-      <AddressList
-        addressList={addressList}
+      <Regions
+        regions={regions}
       />
     ));
 
@@ -21,8 +21,8 @@ describe('AddressList', () => {
     const handleClick = jest.fn();
 
     const { getByText } = render((
-      <AddressList
-        addressList={addressList}
+      <Regions
+        regions={regions}
         onClick={handleClick}
       />
     ));

@@ -1,4 +1,4 @@
-async function fetchAddressList() {
+async function fetchRegions() {
   return [];
 }
 
@@ -11,7 +11,7 @@ async function fetchRestaurants() {
 }
 
 export {
-  fetchAddressList,
+  fetchRegions,
   fetchCategoryList,
   fetchRestaurants,
 };
