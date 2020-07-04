@@ -18,6 +18,11 @@ export default function App() {
   return (
     <div>
       <RegionContainer />
+      <div>
+        <ul>
+          <li>중식</li>
+        </ul>
+      </div>
     </div>
   );
 }
