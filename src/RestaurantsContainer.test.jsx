@@ -10,7 +10,7 @@ jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
   context('when nothing selected', () => {
-    it('should display restaurants', () => {
+    it('should not display restaurants', () => {
       useSelector.mockImplementation((selector) => selector({
       }));
 
