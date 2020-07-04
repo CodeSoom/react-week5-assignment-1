@@ -2,11 +2,13 @@ import reducer from './reducer';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 import {
   updateSelected,
   setRegions,
   setCategories,
+  setRestaurants,
 } from './actions';
 
 describe('reducer', () => {
@@ -86,6 +88,14 @@ describe('reducer', () => {
       const newState = reducer(initialState, setCategories(categories));
 
       expect(newState.categories).toEqual(categories);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('restaurants가 변경된다.', () => {
+      const newState = reducer(initialState, setRestaurants(restaurants));
+
+      expect(newState.restaurants).toEqual(restaurants);
     });
   });
 });
