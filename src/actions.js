@@ -24,3 +24,12 @@ export function setCategories(categories) {
     },
   };
 }
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
