@@ -7,21 +7,33 @@ import CategoriesContainer from './CategoriesContainer';
 
 import { selectCategory } from './actions';
 
-import { categories } from '../fixture/test-data';
+import {
+  categories, regionName, categoryId,
+} from '../fixture/test-data';
 
 jest.mock('react-redux');
 
-test('CategoriesContainer', () => {
+describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({ categories }));
+  useSelector.mockImplementation((selector) => selector({
+    categories, regionName, categoryId,
+  }));
 
-  const { getByText } = render((
+  const renderCategoriesContainer = () => render((
     <CategoriesContainer />
   ));
 
-  fireEvent.click(getByText(categories[0].name));
+  context('when category button is clicked', () => {
+    it('occurs selectCategory and loadRestaurants', () => {
+      const { getByText } = renderCategoriesContainer();
 
-  expect(dispatch).toBeCalledWith(selectCategory(categories[0].id));
+      fireEvent.click(getByText(/한식/));
+
+      expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toHaveBeenNthCalledWith(1, selectCategory(1));
+      // TODO: asynchronous action test
+    });
+  });
 });
