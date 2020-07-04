@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Regions from './Regions';
 
-import { selectRegion, loadRestaurants } from './action';
+import { selectRegion, loadRestaurants, loadRestaurants2 } from './action';
 
 export default function RegionsContainer() {
   const {
@@ -23,13 +23,15 @@ export default function RegionsContainer() {
   function handleSelectRegion(region) {
     dispatch(selectRegion(region));
 
-    if (selectedCategory !== '') {
-      const category = categories.find(
-        (item) => item.name === selectedCategory,
-      );
+    // if (selectedCategory !== '') {
+    //   const category = categories.find(
+    //     (item) => item.name === selectedCategory,
+    //   );
 
-      dispatch(loadRestaurants(region, category.id));
-    }
+    //   dispatch(loadRestaurants(region, category.id));
+    //   // dispatch(loadRestaurants2());
+    // }
+    dispatch(loadRestaurants2());
   }
 
   return (

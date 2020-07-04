@@ -89,6 +89,10 @@ export function loadRestaurants2() {
   return async (dispatch, getState) => {
     const { regionName, selectedCategory, categories } = getState();
 
+    if (selectedCategory === '' || regionName === '') {
+      return;
+    }
+
     const category = categories.find((item) => item.name === selectedCategory);
 
     try {
