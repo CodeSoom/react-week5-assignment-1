@@ -7,9 +7,7 @@ export default function Restaurants({ restaurants }) {
         <li
           key={restaurant.id}
         >
-          <button type="button" value={restaurant.name}>
-            {restaurant.name}
-          </button>
+          {restaurant.name}
         </li>
       ))}
     </ul>

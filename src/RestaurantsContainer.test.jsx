@@ -12,13 +12,14 @@ describe('RestaurantsContainer', () => {
   context('when nothing selected', () => {
     it('should not display restaurants', () => {
       useSelector.mockImplementation((selector) => selector({
+        restaurants: [],
       }));
 
-      const { getByText } = render((
+      const { container } = render((
         <RestaurantsContainer />
       ));
 
-      expect(getByText('원초밥')).toBeNull();
+      expect(container).not.toHaveAttribute('li');
     });
   });
 
