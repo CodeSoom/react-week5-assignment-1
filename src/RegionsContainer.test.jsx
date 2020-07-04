@@ -44,9 +44,11 @@ describe('<RegionsContainer />', () => {
 
   describe('render RegionsContainer', () => {
     context('without selectedRegion', () => {
-      it('shows regions', () => {
+      beforeEach(() => {
         mockUseSelector();
+      });
 
+      it('shows regions', () => {
         const { queryByRole } = renderRegionsContainer();
 
         regions.forEach((region) => {
@@ -56,12 +58,14 @@ describe('<RegionsContainer />', () => {
     });
 
     context('with selectedRegion', () => {
-      it('shows a region with a selection mark', () => {
+      beforeEach(() => {
         mockUseSelector({
           ...initState,
           selectedRegion: '서울',
         });
+      });
 
+      it('shows a region with a selection mark', () => {
         const { queryByRole } = renderRegionsContainer();
 
         expect(queryByRole('button', { name: '서울(V)' })).not.toBeNull();
@@ -70,13 +74,15 @@ describe('<RegionsContainer />', () => {
   });
 
   context('when the user selects region & without selectedCategory', () => {
-    it('run selectRegion action', () => {
+    beforeEach(() => {
       mockUseSelector({
         ...initState,
         categories,
         selectedCategory: '',
       });
+    });
 
+    it('run selectRegion action', () => {
       const { getByRole, queryByText } = renderRegionsContainer();
 
       fireEvent.click(getByRole('button', { name: '서울' }));
@@ -89,14 +95,16 @@ describe('<RegionsContainer />', () => {
   });
 
   context('when the user selects region & with selectedCategory', () => {
-    it('run selectRegion action', () => {
+    beforeEach(() => {
       mockUseSelector({
         ...initState,
         categories,
         selectedRegion: '대구',
         selectedCategory: '한식',
       });
+    });
 
+    it('run selectRegion action', () => {
       const fetchRestaurants = jest.fn();
       loadRestaurants.mockImplementation(() => fetchRestaurants);
 
