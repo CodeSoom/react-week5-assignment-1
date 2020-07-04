@@ -19,10 +19,13 @@ export default function RegionsContainer() {
 
   function handleClick(name) {
     dispatch(selectRegion(name));
-    dispatch(loadRestaurants({
-      categoryId,
-      regionName: name,
-    }));
+
+    if (categoryId) {
+      dispatch(loadRestaurants({
+        categoryId,
+        regionName: name,
+      }));
+    }
   }
 
   return (

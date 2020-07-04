@@ -19,10 +19,13 @@ export default function CategoriesContainer() {
 
   function handleClick(id) {
     dispatch(selectCategory(id));
-    dispatch(loadRestaurants({
-      regionName,
-      categoryId: id,
-    }));
+
+    if (regionName) {
+      dispatch(loadRestaurants({
+        regionName,
+        categoryId: id,
+      }));
+    }
   }
 
   return (
