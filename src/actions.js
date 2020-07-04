@@ -7,6 +7,15 @@ export function updateSelected(type, value) {
   };
 }
 
+export function setRegions(regions) {
+  return {
+    type: 'setCategories',
+    payload: {
+      regions,
+    },
+  };
+}
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',
