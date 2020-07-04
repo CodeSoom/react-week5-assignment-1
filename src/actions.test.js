@@ -13,7 +13,7 @@ describe('actions', () => {
   const middlewares = [thunk];
   const mockStore = configureStore(middlewares);
 
-  context('when loadRegions is dispatched', () => {
+  describe('loadRegions', () => {
     it('get setRegions action', async () => {
       const store = mockStore({});
 
@@ -25,7 +25,7 @@ describe('actions', () => {
     });
   });
 
-  context('when loadCategories is dispatched', () => {
+  describe('loadCategories', () => {
     it('get setCategories action', async () => {
       const store = mockStore({});
 
@@ -37,18 +37,28 @@ describe('actions', () => {
     });
   });
 
-  context('when loadRestaurants is dispatched', () => {
-    it('get setRestaurants action', async () => {
-      const store = mockStore({});
-
-      return store.dispatch(loadRestaurants({
-        regionName: '서울',
-        categoryId: 1,
-      }))
-        .then(() => {
-          const actions = store.getActions();
-          expect(actions[0].type).toBe('setRestaurants');
+  describe('loadRestaurants', () => {
+    context('without regionName and categoryId', () => {
+      it('get setRestaurants action', async () => {
+        const store = mockStore({
+          regionName: '서울',
+          categoryId: 1,
         });
+
+        return store.dispatch(loadRestaurants())
+          .then(() => {
+            const actions = store.getActions();
+            expect(actions[0].type).toBe('setRestaurants');
+          });
+      });
+    });
+
+    context('without regionName and categoryId', () => {
+      it('get setRestaurants action', async () => {
+        const store = mockStore({});
+
+        return store.dispatch(loadRestaurants());
+      });
     });
   });
 });
