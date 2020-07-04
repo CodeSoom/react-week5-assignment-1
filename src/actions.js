@@ -1,6 +1,7 @@
 import {
   fetchRegions,
   fetchCategories,
+  fetchRestaurants,
 } from './services/api';
 
 export function updateSelected(type, value) {
@@ -52,5 +53,23 @@ export function loadCategories() {
     const categories = await fetchCategories();
 
     dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { region, categoryId } = getState().selected;
+
+    if (!region) {
+      return;
+    }
+
+    if (!categoryId) {
+      return;
+    }
+
+    const restaurants = await fetchRestaurants(region, categoryId);
+
+    dispatch(setRestaurants(restaurants));
   };
 }
