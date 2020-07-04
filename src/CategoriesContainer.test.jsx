@@ -13,27 +13,46 @@ import {
 
 jest.mock('react-redux');
 
-describe('CategoriesContainer', () => {
-  const dispatch = jest.fn();
-
-  useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    categories, regionName, categoryId,
-  }));
-
+describe('CategoriesContainer', () => { 
   const renderCategoriesContainer = () => render((
     <CategoriesContainer />
   ));
 
-  context('when category button is clicked', () => {
+  context('when category is clicked and region name is defined', () => {
     it('occurs selectCategory and loadRestaurants', () => {
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      useSelector.mockImplementation((selector) => selector({
+        categories, categoryId, regionName,
+      }));
+
       const { getByText } = renderCategoriesContainer();
 
       fireEvent.click(getByText(/한식/));
 
       expect(dispatch).toBeCalledTimes(2);
-      expect(dispatch).toHaveBeenNthCalledWith(1, selectCategory(1));
-      // TODO: asynchronous action test
+    });
+  });
+
+  context('when category is clicked and region name is undefined', () => {
+    it('occurs selectCategory', () => {
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      useSelector.mockImplementation((selector) => selector({
+        categories,
+        categoryId,
+        regionName: undefined,
+      }));
+
+      const { getByText } = renderCategoriesContainer();
+
+      fireEvent.click(getByText(/한식/));
+
+      expect(dispatch).toBeCalledTimes(1);
     });
   });
 });
