@@ -9,7 +9,7 @@ export function updateSelected(type, value) {
 
 export function setRegions(regions) {
   return {
-    type: 'setCategories',
+    type: 'setRegions',
     payload: {
       regions,
     },
