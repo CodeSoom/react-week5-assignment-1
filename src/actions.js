@@ -1,3 +1,5 @@
+import { fetchRegions } from './sevices/api';
+
 export function updateSelected(type, value) {
   return {
     type: 'updateSelected',
