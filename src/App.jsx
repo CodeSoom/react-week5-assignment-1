@@ -1,27 +1,32 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
-import restaurants from '../fixtures/restaurants';
-
 import {
-  setRestaurants,
   loadRegions,
   loadCategories,
+  loadRestaurants,
 } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
+  const { selected } = useSelector((state) => ({
+    selected: state.selected,
+  }));
+
   useEffect(() => {
     dispatch(loadRegions());
     dispatch(loadCategories());
-    dispatch(setRestaurants(restaurants));
   }, []);
+
+  useEffect(() => {
+    dispatch(loadRestaurants());
+  }, [selected]);
 
   return (
     <div>
