@@ -4,6 +4,7 @@ const initialState = {
   selectedRegion: '',
   categories: [],
   category: { id: '', name: '' },
+  selectedCategory: '',
 };
 
 const reducers = {
@@ -25,6 +26,10 @@ const reducers = {
       categories,
     };
   },
+  selectCategory: (state, action) => ({
+    ...state,
+    selectedCategory: action.payload.selectedCategory,
+  }),
 };
 
 export default function reducer(state = initialState, action) {

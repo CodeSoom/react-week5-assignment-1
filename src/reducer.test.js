@@ -4,6 +4,7 @@ import {
   setRegions,
   selectRegion,
   setCategories,
+  selectCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -57,7 +58,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectCategory('중식'));
 
-      expect(state.selectedRegion).toBe('중식');
+      expect(state.selectedCategory).toBe('중식');
     });
   });
 });
