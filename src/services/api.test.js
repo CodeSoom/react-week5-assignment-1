@@ -2,42 +2,53 @@ import {
   fetchRegions, fetchCategories, fetchRestaurants,
 } from './api';
 
-global.fetch = jest.fn(() => Promise.resolve({
-  json: () => Promise.resolve([]),
-}));
+import {
+  regions, categories, restaurants,
+} from '../../fixture/test-data';
 
 describe('api', () => {
-  beforeEach(() => {
-    fetch.mockClear();
-  });
+  describe('fetchRegions', () => {
+    it('returns regions', async () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        async json() {
+          return regions;
+        },
+      });
 
-  context('when fetchRegions is executed', () => {
-    it('get regions', () => {
-      const data = fetchRegions();
+      const fetched = await fetchRegions();
 
-      expect(data).not.toBeNull();
-      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetched).toEqual(regions);
     });
   });
 
-  context('when fetchCategories is executed', () => {
-    it('get categories', () => {
-      const data = fetchCategories();
+  describe('fetchCategories', () => {
+    it('returns categories', async () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        async json() {
+          return categories;
+        },
+      });
 
-      expect(data).not.toBeNull();
-      expect(fetch).toHaveBeenCalledTimes(1);
+      const fetched = await fetchCategories();
+
+      expect(fetched).toEqual(categories);
     });
   });
 
-  context('when fetchRestaurants is executed', () => {
-    it('get restaurants', () => {
-      const data = fetchRestaurants({
+  describe('fetchRestaurants', () => {
+    it('returns restaurants', async () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        async json() {
+          return restaurants;
+        },
+      });
+
+      const fetched = await fetchRestaurants({
         regionName: '서울',
         categoryId: 1,
       });
 
-      expect(data).not.toBeNull();
-      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(fetched).toEqual(restaurants);
     });
   });
 });
