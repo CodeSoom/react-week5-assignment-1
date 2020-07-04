@@ -123,7 +123,7 @@ describe('<App />', () => {
       fireEvent.click(getByRole('button', { name: '서울' }));
       fireEvent.click(getByRole('button', { name: '한식' }));
 
-      expect(dispatch).toBeCalledTimes(5);
+      expect(dispatch).toBeCalledTimes(6);
 
       restaurants.forEach((restaurant) => {
         expect(queryByText(restaurant.name)).not.toBeNull();
