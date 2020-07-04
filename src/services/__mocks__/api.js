@@ -2,6 +2,6 @@ export async function fetchRegions() {
   return [];
 }
 
-export function xxx() {
-  // todo
+export async function fetchCategories() {
+  return [];
 }
