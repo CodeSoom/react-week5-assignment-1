@@ -27,7 +27,6 @@ const reducers = {
     ...previousState,
     restaurants: action.payload.restaurants,
   }),
-
 };
 
 export default function reducer(previousState = initState, action) {
