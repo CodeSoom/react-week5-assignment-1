@@ -13,7 +13,7 @@ const reducers = {
     const { selectedRegionId } = action.payload;
 
     const selectedRegion = state.regions
-      .filter((region) => region.id === selectedRegionId)[0];
+      .find((region) => region.id === selectedRegionId);
 
     return {
       ...state,
@@ -24,7 +24,7 @@ const reducers = {
     const { selectedCategoryId } = action.payload;
 
     const selectedCategory = state.categoryList
-      .filter((category) => category.id === selectedCategoryId)[0];
+      .find((category) => category.id === selectedCategoryId);
 
     return {
       ...state,

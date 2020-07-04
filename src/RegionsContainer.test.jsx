@@ -12,7 +12,6 @@ import RegionsContainer from './RegionsContainer';
 
 import {
   regions,
-  initialState,
   selectedRegion,
   selectedCategory,
   restaurants,
@@ -32,6 +31,12 @@ const mockStore = configureStore(middlewares);
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
+  const initialState = {
+    regions: [],
+    selectedRegion: {},
+    selectedCategory: {},
+  };
+
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
@@ -39,8 +44,8 @@ describe('RegionsContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       regions,
-      selectedRegion: initialState.selectedRegion,
       selectedCategory: initialState.selectedCategory,
+      selectedRegion: initialState.selectedRegion,
     }));
   });
 
@@ -59,7 +64,7 @@ describe('RegionsContainer', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
         selectedRegion,
-        selectedCategory: {},
+        selectedCategory: initialState.selectedCategory,
       }));
 
       const { getByText } = render((

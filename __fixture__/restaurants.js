@@ -1,11 +1,3 @@
-const initialState = {
-  regions: [],
-  categoryList: [],
-  selectedRegion: {},
-  selectedCategory: {},
-  restaurants: [],
-};
-
 const regions = [
   {
     id: 1,
@@ -60,35 +52,19 @@ const categoryList = [
   },
 ];
 
-const containRegionState = {
-  regions,
-  categoryList: [],
-  selectedRegion: '',
-  selectedCategory: '',
-  restaurants: [],
-};
-
-const containCategoryState = {
-  regions: [],
-  categoryList,
-  selectedRegion: '',
-  selectedCategory: '',
-  restaurants: [],
-};
-
 const restaurants = [
   {
     id: 1,
     categoryId: 1,
     name: '양천주가',
-    region: '서울 강남구',
+    address: '서울 강남구',
     information: '양천주가 in 서울 강남구',
   },
   {
     id: 6,
     categoryId: 1,
     name: '한국식 초밥',
-    region: '서울 강남구',
+    address: '서울 강남구',
     information: '한국식 초밥 in 서울 강남구',
   },
 ];
@@ -104,11 +80,8 @@ const selectedCategory = {
 };
 
 export {
-  initialState,
   regions,
   categoryList,
-  containRegionState,
-  containCategoryState,
   restaurants,
   selectedRegion,
   selectedCategory,

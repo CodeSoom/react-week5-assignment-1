@@ -14,7 +14,6 @@ import { selectCategory, setRestaurants, loadRestaurants } from './actions';
 
 import {
   categoryList,
-  initialState,
   selectedCategory,
   selectedRegion,
   restaurants,
@@ -28,13 +27,19 @@ const mockStore = configureStore(middlewares);
 describe('CategoryListContainer', () => {
   const dispatch = jest.fn();
 
+  const initialState = {
+    categoryList: [],
+    selectedRegion: {},
+    selectedCategory: {},
+  };
+
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
       categoryList,
-      selectedRegion: initialState.selectedRegion,
       selectedCategory: initialState.selectedCategory,
+      selectedRegion: initialState.selectedRegion,
     }));
 
     dispatch.mockClear();
@@ -54,7 +59,7 @@ describe('CategoryListContainer', () => {
     it('레스토랑 카테고리 목록이 로딩되고 선택된 카테고리가 체크 표시된다.', () => {
       useSelector.mockImplementation((selector) => selector({
         categoryList,
-        selectedRegion: {},
+        selectedRegion: initialState.selectedRegion,
         selectedCategory,
       }));
 

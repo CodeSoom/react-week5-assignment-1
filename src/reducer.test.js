@@ -9,15 +9,20 @@ import {
 } from './actions';
 
 import {
-  initialState,
   regions,
-  containRegionState,
-  containCategoryState,
   categoryList,
   restaurants,
 } from '../__fixture__/restaurants';
 
 describe('reducer', () => {
+  const initialState = {
+    regions: [],
+    categoryList: [],
+    selectedRegion: {},
+    selectedCategory: {},
+    restaurants: [],
+  };
+
   context('state 값이 전달되지 않으면', () => {
     it('initialState가 state 값으로 사용된다.', () => {
       const state = reducer(undefined, setRegions([]));
@@ -38,29 +43,24 @@ describe('reducer', () => {
     it('레스토랑 지역 정보가 등록된다.', () => {
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).not.toHaveLength(0);
+      expect(state.regions).toHaveLength(7);
     });
   });
 
   describe('selectRegion', () => {
-    it('레스토랑 지역 정보가 선택된다.', () => {
-      const state = reducer(
-        containRegionState,
-        selectRegion(containRegionState.regions[0].id),
-      );
+    it('레스토랑 지역 목록의 첫번째를 선택하면 해당 지역 값이 state에 반영된다.', () => {
+      const state = reducer({ ...initialState, regions }, selectRegion(regions[0].id));
 
-      expect(state.selectedRegion).toBe(state.regions[0]);
+      expect(state.selectedRegion).toEqual(state.regions[0]);
     });
   });
 
   describe('selectCategory', () => {
-    it('레스토랑 지역 정보가 선택된다.', () => {
-      const state = reducer(
-        containCategoryState,
-        selectCategory(containCategoryState.categoryList[0].id),
-      );
+    it('레스토랑 카테고리 목록의 첫번째를 선택하면 해당 카테고리 값이 state에 반영된다.', () => {
+      const state = reducer({ ...initialState, categoryList },
+        selectCategory(categoryList[0].id));
 
-      expect(state.selectedCategory).toBe(state.categoryList[0]);
+      expect(state.selectedCategory).toEqual(state.categoryList[0]);
     });
   });
 
@@ -68,7 +68,7 @@ describe('reducer', () => {
     it('레스토랑 지역 정보가 등록된다.', () => {
       const state = reducer(initialState, setCategoryList(categoryList));
 
-      expect(state.categoryList).not.toHaveLength(0);
+      expect(state.categoryList).toHaveLength(5);
     });
   });
 

@@ -14,7 +14,6 @@ import {
   regions,
   categoryList,
   restaurants,
-  initialState,
 } from '../__fixture__/restaurants';
 
 import {
@@ -34,6 +33,14 @@ describe('App', () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
+
+    const initialState = {
+      regions: [],
+      categoryList: [],
+      selectedRegion: {},
+      selectedCategory: {},
+      restaurants: [],
+    };
 
     useSelector.mockImplementation((selector) => selector({
       regions,
