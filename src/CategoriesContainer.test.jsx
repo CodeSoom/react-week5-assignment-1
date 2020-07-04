@@ -22,4 +22,23 @@ describe('RegionContainer', () => {
 
     expect(getByText('중식')).not.toBeNull();
   });
+
+  it('should display selected category', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    const { getByText } = render((
+      <CategoriesContainer />
+    ));
+
+    fireEvent.click(getByText('중식'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'selectCategory',
+      payload: {
+        selectedCategory: '중식',
+      },
+    });
+  });
 });
