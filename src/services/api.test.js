@@ -12,9 +12,12 @@ describe('api', () => {
     });
   };
 
+  beforeEach(() => {
+    fetch.mockClear();
+  });
+
   describe('fetchRegions', () => {
     beforeEach(() => {
-      fetch.mockClear();
       mockFetch(regions);
     });
 
@@ -22,12 +25,12 @@ describe('api', () => {
       const data = await fetchRegions();
 
       expect(data).toEqual(regions);
+      expect(fetch).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('fetchCategories', () => {
     beforeEach(() => {
-      fetch.mockClear();
       mockFetch(categories);
     });
 
@@ -41,7 +44,6 @@ describe('api', () => {
 
   describe('fetchRestaurants', () => {
     beforeEach(() => {
-      fetch.mockClear();
       mockFetch(restaurants);
     });
 
