@@ -6,9 +6,13 @@ import {
 
 describe('reducer', () => {
   const initialState = {
-    selected: {},
+    selected: {
+      region: '',
+      categoryId: '',
+    },
     regions: [],
     categories: [],
+    restaurants: [],
   };
 
   describe('updateSeleted', () => {
