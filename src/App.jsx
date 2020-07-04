@@ -22,6 +22,13 @@ export default function App() {
     <div>
       <RegionContainer />
       <CategoriesContainer />
+      <div>
+        <ul>
+          <li>
+            원초밥
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
