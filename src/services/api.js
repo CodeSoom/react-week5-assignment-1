@@ -20,6 +20,8 @@ async function fetchCategoryList() {
 }
 
 async function fetchRestaurants({ regionName, categoryId }) {
+  if (!regionName || !categoryId) return [];
+
   const url = `${BASE_URL}/restaurants?region=${encodeURI(regionName)}&category=${categoryId}`;
   const response = await fetch(url);
   const categoryList = await response.json();

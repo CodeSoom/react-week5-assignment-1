@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,18 +15,14 @@ export default function CategoryListContainer() {
     selectedCategory: state.selectedCategory,
   }));
 
-  useEffect(() => {
-    if (selectedRegion.name && selectedCategory.id) {
-      dispatch(loadRestaurants({
-        regionName: selectedRegion.name,
-        categoryId: selectedCategory.id,
-      }));
-    }
-  }, [selectedCategory]);
-
   function handleClick(event) {
     const { target: { id } } = event;
+
     dispatch(selectCategory(Number(id)));
+    dispatch(loadRestaurants({
+      regionName: selectedRegion.name,
+      categoryId: id,
+    }));
   }
 
   return (

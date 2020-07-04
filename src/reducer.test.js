@@ -1,3 +1,7 @@
+import configureStore from 'redux-mock-store';
+
+import thunk from 'redux-thunk';
+
 import reducer from './reducer';
 
 import {
@@ -6,13 +10,19 @@ import {
   selectCategory,
   setCategoryList,
   setRestaurants,
+  loadRestaurants,
 } from './actions';
 
 import {
   regions,
   categoryList,
   restaurants,
+  selectedRegion,
+  selectedCategory,
 } from '../__fixture__/restaurants';
+
+const middlewares = [thunk]; // add your middlewares like `redux-thunk`
+const mockStore = configureStore(middlewares);
 
 describe('reducer', () => {
   const initialState = {
@@ -40,7 +50,7 @@ describe('reducer', () => {
   });
 
   describe('setRegions', () => {
-    it('레스토랑 지역 정보가 등록된다.', () => {
+    it('레스토랑 지역 정보가 state에 등록된다.', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(7);
@@ -65,7 +75,7 @@ describe('reducer', () => {
   });
 
   describe('setCategoryList', () => {
-    it('레스토랑 지역 정보가 등록된다.', () => {
+    it('레스토랑 지역 정보가 state에 등록된다.', () => {
       const state = reducer(initialState, setCategoryList(categoryList));
 
       expect(state.categoryList).toHaveLength(5);
@@ -73,10 +83,42 @@ describe('reducer', () => {
   });
 
   describe('setRestaurants', () => {
-    it('레스토랑 정보가 등록된다.', () => {
+    it('레스토랑 정보가 state에 등록된다.', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(2);
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    context('지역과 카테고리가 모두 선택되면', () => {
+      it('레스토랑 목록이 state에 저장된다. ', async () => {
+        const store = mockStore({});
+
+        await store.dispatch(loadRestaurants({
+          regionName: selectedRegion.name,
+          categoryId: selectedCategory.id,
+        }));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurants(restaurants));
+      });
+    });
+
+    context('지역과 카테고리가 선택되지 않거나 올바르지 않은 값이 전달 될 경우', () => {
+      it('레스토랑 목록이 state에 저장되지 않는다. ', async () => {
+        const store = mockStore({});
+
+        await store.dispatch(loadRestaurants({
+          regionName: '',
+          categoryId: '',
+        }));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurants([]));
+      });
     });
   });
 });
