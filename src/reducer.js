@@ -1,12 +1,9 @@
-const initialRegion = {
-  id: '',
-  name: '',
-};
-
 const initialState = {
   regions: [],
-  region: { initialRegion },
+  region: { id: '', name: '' },
   selectedRegion: '',
+  categories: [],
+  category: { id: '', name: '' },
 };
 
 const reducers = {
@@ -21,6 +18,13 @@ const reducers = {
     ...state,
     selectedRegion: action.payload.selectedRegion,
   }),
+  setCategories: (state, action) => {
+    const { categories } = action.payload;
+    return {
+      ...state,
+      categories,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action) {
