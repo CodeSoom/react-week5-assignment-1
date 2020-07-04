@@ -5,6 +5,7 @@ import {
   selectRegion,
   setCategories,
   selectCategory,
+  setRestaurants,
 } from './actions';
 
 describe('reducer', () => {
@@ -59,6 +60,21 @@ describe('reducer', () => {
       const state = reducer(initialState, selectCategory('중식'));
 
       expect(state.selectedCategory).toBe('중식');
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('should set restaurants array', () => {
+      const restaurants = [
+        { id: 101, name: '원초밥' },
+      ];
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
     });
   });
 });
