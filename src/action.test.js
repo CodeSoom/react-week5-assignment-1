@@ -118,18 +118,19 @@ describe('acton', () => {
 
   describe('loadRestaurants2', () => {
     const dispatch = jest.fn();
-    const getState = jest.fn(() => ({
-      regions,
-      selectedRegion: '서울',
-      categories,
-      selectedCategory: '한식',
-    }));
 
     beforeEach(() => {
       dispatch.mockClear();
     });
 
     context('when successfully fetch data', () => {
+      const getState = jest.fn(() => ({
+        regions,
+        selectedRegion: '서울',
+        categories,
+        selectedCategory: '한식',
+      }));
+
       beforeEach(() => {
         fetchRestaurants.mockResolvedValue(restaurants);
       });
@@ -141,16 +142,23 @@ describe('acton', () => {
       });
     });
 
-    // context('when fail to fetch data', () => {
-    //   beforeEach(() => {
-    //     fetchRestaurants.mockRejectedValue(new Error('some error'));
-    //   });
+    context('when fail to fetch data', () => {
+      const getState = jest.fn(() => ({
+        regions,
+        selectedRegion: '서울',
+        categories,
+        selectedCategory: '한쉭',
+      }));
 
-    //   it('dispatch loadRestaurants', async () => {
-    //     await loadRestaurants()(dispatch);
+      beforeEach(() => {
+        fetchRestaurants.mockRejectedValue(new Error('some error'));
+      });
 
-    //     expect(dispatch).not.toBeCalled();
-    //   });
-    // });
+      it('dispatch loadRestaurants', async () => {
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
   });
 });
