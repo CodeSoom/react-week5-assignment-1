@@ -17,6 +17,10 @@ describe('Regions', () => {
     />
   ));
 
+  beforeEach(() => {
+    handleClick.mockClear();
+  });
+
   it('renders regions buttons', () => {
     const { getByText } = renderRegions();
 

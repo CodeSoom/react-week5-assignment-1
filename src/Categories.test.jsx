@@ -17,6 +17,10 @@ describe('Categories', () => {
     />
   ));
 
+  beforeEach(() => {
+    handleClick.mockClear();
+  });
+
   it('renders categories buttons', () => {
     const { getByText } = renderCategories();
 
