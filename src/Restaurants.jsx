@@ -1,10 +1,12 @@
 import React from 'react';
 
-export default function Regions() {
+export default function Restaurants({ restaurants }) {
   return (
     <div>
       <ul>
-        <li>밀면넘어져요</li>
+        {restaurants.map((restaurant) => (
+          <li key={restaurant.id}>{restaurant.name}</li>
+        ))}
       </ul>
     </div>
   );
