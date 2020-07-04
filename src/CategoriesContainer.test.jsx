@@ -5,54 +5,26 @@ import { render, fireEvent } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { selectCategory } from './actions';
-
 import {
-  categories, regionName, categoryId,
+  categories, categoryId,
 } from '../fixture/test-data';
 
 jest.mock('react-redux');
 
-describe('CategoriesContainer', () => { 
-  const renderCategoriesContainer = () => render((
+test('CategoriesContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    categories, categoryId,
+  }));
+
+  const { getByText } = render((
     <CategoriesContainer />
   ));
 
-  context('when category is clicked and region name is defined', () => {
-    it('occurs selectCategory and loadRestaurants', () => {
-      const dispatch = jest.fn();
+  fireEvent.click(getByText(/한식/));
 
-      useDispatch.mockImplementation(() => dispatch);
-
-      useSelector.mockImplementation((selector) => selector({
-        categories, categoryId, regionName,
-      }));
-
-      const { getByText } = renderCategoriesContainer();
-
-      fireEvent.click(getByText(/한식/));
-
-      expect(dispatch).toBeCalledTimes(2);
-    });
-  });
-
-  context('when category is clicked and region name is undefined', () => {
-    it('occurs selectCategory', () => {
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
-      useSelector.mockImplementation((selector) => selector({
-        categories,
-        categoryId,
-        regionName: undefined,
-      }));
-
-      const { getByText } = renderCategoriesContainer();
-
-      fireEvent.click(getByText(/한식/));
-
-      expect(dispatch).toBeCalledTimes(1);
-    });
-  });
+  expect(dispatch).toBeCalledTimes(2);
 });

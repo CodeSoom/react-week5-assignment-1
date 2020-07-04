@@ -6,53 +6,28 @@ import { render, fireEvent } from '@testing-library/react';
 import RegionsContainer from './RegionsContainer';
 
 import {
-  regions, regionName, categoryId,
+  regions, regionName,
 } from '../fixture/test-data';
 
 jest.mock('react-redux');
 
-describe('RegionsContainer', () => {
+test('RegionsContainer', () => {
   const renderRegionsContainer = () => render((
     <RegionsContainer />
   ));
 
-  context('when region button is clicked', () => {
-    it('occurs selectRegion and loadRestaurants', () => {
-      const dispatch = jest.fn();
+  const dispatch = jest.fn();
 
-      useDispatch.mockImplementation(() => dispatch);
+  useDispatch.mockImplementation(() => dispatch);
 
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-        regionName,
-        categoryId,
-      }));
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+    regionName,
+  }));
 
-      const { getByText } = renderRegionsContainer();
+  const { getByText } = renderRegionsContainer();
 
-      fireEvent.click(getByText(/대전/));
+  fireEvent.click(getByText(/대전/));
 
-      expect(dispatch).toBeCalledTimes(2);
-    });
-  });
-
-  context('when region is clicked and category id is undefined', () => {
-    it('occurs selectRegion', () => {
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-        regionName,
-        categoryId: undefined,
-      }));
-
-      const { getByText } = renderRegionsContainer();
-
-      fireEvent.click(getByText(/대전/));
-
-      expect(dispatch).toBeCalledTimes(1);
-    });
-  });
+  expect(dispatch).toBeCalledTimes(2);
 });

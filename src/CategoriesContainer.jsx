@@ -8,24 +8,17 @@ import { selectCategory, loadRestaurants } from './actions';
 
 export default function CategoriesContainer() {
   const {
-    categories, categoryId, regionName,
+    categories, categoryId,
   } = useSelector((state) => ({
     categories: state.categories,
     categoryId: state.categoryId,
-    regionName: state.regionName,
   }));
 
   const dispatch = useDispatch();
 
   function handleClick(id) {
     dispatch(selectCategory(id));
-
-    if (regionName) {
-      dispatch(loadRestaurants({
-        regionName,
-        categoryId: id,
-      }));
-    }
+    dispatch(loadRestaurants());
   }
 
   return (
