@@ -5,6 +5,7 @@ const initialState = {
   categories: [],
   category: { id: '', name: '' },
   selectedCategory: '',
+  restaurants: [],
 };
 
 const reducers = {
