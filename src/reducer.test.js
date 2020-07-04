@@ -48,4 +48,16 @@ describe('reducer', () => {
       expect(state.categories).not.toHaveLength(0);
     });
   });
+
+  describe('selectCategory', () => {
+    it('should mark selected category', () => {
+      const initialState = {
+        selectedCategory: '',
+      };
+
+      const state = reducer(initialState, selectCategory('중식'));
+
+      expect(state.selectedRegion).toBe('중식');
+    });
+  });
 });
