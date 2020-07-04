@@ -44,8 +44,11 @@ describe('<App />', () => {
   });
 
   describe('render App', () => {
-    it('shows regions', () => {
+    beforeEach(() => {
       mockUseSelector();
+    });
+
+    it('shows regions', () => {
       const { queryByRole } = renderApp();
 
       regions.forEach((region) => {
@@ -56,9 +59,11 @@ describe('<App />', () => {
     });
 
     context('without selectedCategory', () => {
-      it('shows categories', () => {
+      beforeEach(() => {
         mockUseSelector();
+      });
 
+      it('shows categories', () => {
         const { queryByRole } = renderApp();
 
         categories.forEach((category) => {
@@ -70,12 +75,14 @@ describe('<App />', () => {
     });
 
     context('with selectedCategory', () => {
-      it('shows a category with a selection mark', () => {
+      beforeEach(() => {
         mockUseSelector({
           ...initState,
           selectedCategory: '한식',
         });
+      });
 
+      it('shows a category with a selection mark', () => {
         const { queryByRole } = renderApp();
 
         expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
@@ -86,9 +93,11 @@ describe('<App />', () => {
   });
 
   context('when the user selects region', () => {
-    it('shows a region with a selection mark', () => {
+    beforeEach(() => {
       mockUseSelector();
+    });
 
+    it('shows a region with a selection mark', () => {
       const { getByRole } = renderApp();
 
       regions.forEach((region) => {
@@ -99,9 +108,11 @@ describe('<App />', () => {
   });
 
   context('when the user selects category', () => {
-    it('shows a category with a selection mark', () => {
+    beforeEach(() => {
       mockUseSelector();
+    });
 
+    it('shows a category with a selection mark', () => {
       const { getByRole } = renderApp();
 
       categories.forEach((category) => {
@@ -112,12 +123,14 @@ describe('<App />', () => {
   });
 
   context('when the user selects region and category', () => {
-    it('shows restaurants', () => {
+    beforeEach(() => {
       mockUseSelector({
         ...initState,
         restaurants,
       });
+    });
 
+    it('shows restaurants', () => {
       const { getByRole, queryByText } = renderApp();
 
       fireEvent.click(getByRole('button', { name: '서울' }));
