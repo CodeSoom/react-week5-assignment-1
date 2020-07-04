@@ -4,53 +4,51 @@ const initialState = {
   restaurants: [],
 };
 
-function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
+const reducerHandler = {
+  setRegions: (state, payload) => {
+    const { regions } = payload;
 
     return {
       ...state,
       regions,
     };
-  }
-
-  if (action.type === 'selectRegion') {
-    const { regionName } = action.payload;
+  },
+  selectRegion: (state, payload) => {
+    const { regionName } = payload;
 
     return {
       ...state,
       regionName,
     };
-  }
-
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
+  },
+  setCategories: (state, payload) => {
+    const { categories } = payload;
 
     return {
       ...state,
       categories,
     };
-  }
-
-  if (action.type === 'selectCategory') {
-    const { categoryId } = action.payload;
+  },
+  selectCategory: (state, payload) => {
+    const { categoryId } = payload;
 
     return {
       ...state,
       categoryId,
     };
-  }
-
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
+  },
+  setRestaurants: (state, payload) => {
+    const { restaurants } = payload;
 
     return {
       ...state,
       restaurants,
     };
-  }
+  },
+};
 
-  return state;
+export default function reducer(state = initialState, action) {
+  return reducerHandler[action.type]
+    ? reducerHandler[action.type](state, action.payload)
+    : state;
 }
-
-export default reducer;
