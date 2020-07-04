@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import Restaurants from './Restaurants';
 
 export default function RestaurantsContainer() {
   const { restaurants } = useSelector((state) => ({
@@ -8,12 +10,8 @@ export default function RestaurantsContainer() {
   }));
 
   return (
-    <div>
-      <ul>
-        <li>
-          원초밥
-        </li>
-      </ul>
-    </div>
+    <Restaurants
+      restaurants={restaurants}
+    />
   );
 }

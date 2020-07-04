@@ -17,6 +17,7 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       regions: [],
       categories: [],
+      restaurants: [],
     }));
 
     const { queryByText } = render((
@@ -33,6 +34,7 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       regions: [],
       categories: [],
+      restaurants: [],
     }));
 
     const { queryByText } = render((
