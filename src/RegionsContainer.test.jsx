@@ -5,23 +5,37 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
-import { selectRegion } from './actions';
+import { selectRegion, loadRestaurants } from './actions';
 
-import { regions } from '../fixture/test-data';
+import {
+  regions, regionName, categoryId,
+} from '../fixture/test-data';
 
 jest.mock('react-redux');
 
-test('CategoriesContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({ regions }));
+  useSelector.mockImplementation((selector) => selector({
+    regions, regionName, categoryId,
+  }));
 
-  const { getByText } = render((
+  const renderRegionsContainer = () => render((
     <RegionsContainer />
   ));
 
-  fireEvent.click(getByText(regions[0].name));
+  context('when region button is clicked', () => {
+    it('occurs selectRegion and loadRestaurants', () => {
+      const { getByText } = renderRegionsContainer();
 
-  expect(dispatch).toBeCalledWith(selectRegion(regions[0].name));
+      fireEvent.click(getByText(/대전/));
+
+      expect(dispatch).toHaveBeenNthCalledWith(1, selectRegion('대전'));
+      expect(dispatch).toHaveBeenNthCalledWith(2, loadRestaurants({
+        regionName: '대전',
+        categoryId,
+      }));
+    });
+  });
 });

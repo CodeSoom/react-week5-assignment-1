@@ -12,3 +12,7 @@ export const restaurants = [
   { id: 1, name: '양천주가' },
   { id: 6, name: '한국식 초밥' },
 ];
+
+export const regionName = '서울';
+
+export const categoryId = 1;
