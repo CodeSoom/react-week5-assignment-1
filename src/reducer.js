@@ -3,13 +3,7 @@ const initialState = {
     region: '',
     categoryId: '',
   },
-  categories: [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-    { id: 3, name: '일식' },
-    { id: 4, name: '양식' },
-    { id: 5, name: '분식' },
-  ],
+  categories: [],
   regions: [
     { id: 1, name: '서울' },
     { id: 2, name: '대전' },
@@ -46,6 +40,14 @@ export default function reducer(state = initialState, action) {
         ...selected,
         ...action.payload,
       },
+    };
+  }
+
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+    return {
+      ...state,
+      categories,
     };
   }
 
