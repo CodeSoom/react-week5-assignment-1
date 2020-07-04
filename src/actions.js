@@ -1,7 +1,7 @@
 import {
   fetchRegions,
   fetchCategories,
-} from './sevices/api';
+} from './services/api';
 
 export function updateSelected(type, value) {
   return {
