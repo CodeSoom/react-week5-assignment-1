@@ -4,15 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
-describe('Categories', () => {
-  const categories = [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-    { id: 3, name: '일식' },
-    { id: 4, name: '양식' },
-    { id: 5, name: '분식' },
-  ];
+import categories from '../fixtures/categories';
 
+describe('Categories', () => {
   const handleClick = jest.fn();
 
   it('카테고리가 보인다.', () => {
