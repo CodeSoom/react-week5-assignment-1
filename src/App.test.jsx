@@ -16,6 +16,7 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions: [],
+      categories: [],
     }));
 
     const { queryByText } = render((
@@ -25,13 +26,13 @@ describe('App', () => {
     expect(queryByText('서울')).toBeNull();
   });
 
-  it('should display cetogories', () => {
+  it('should display categories', () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions: [],
-      cetogories: [],
+      categories: [],
     }));
 
     const { queryByText } = render((
