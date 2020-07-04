@@ -71,32 +71,18 @@ export function setRestaurants(initRestaurants) {
   };
 }
 
-// export function loadRestaurants(regionName, selectedCategoryId) {
-//   return async (dispatch) => {
-//     try {
-//       const initRestaurants = await fetchRestaurants(
-//         regionName,
-//         selectedCategoryId,
-//       );
-//       dispatch(setRestaurants(initRestaurants));
-//     } catch (error) {
-//       // TODO : 에러 처리
-//     }
-//   };
-// }
-
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const { regionName, selectedCategory, categories } = getState();
+    const { selectedRegion, selectedCategory, categories } = getState();
 
-    if (selectedCategory === '' || regionName === '') {
+    if (selectedCategory === '' || selectedRegion === '') {
       return;
     }
 
     const category = categories.find((item) => item.name === selectedCategory);
 
     try {
-      const initRestaurants = await fetchRestaurants(regionName, category.id);
+      const initRestaurants = await fetchRestaurants(selectedRegion, category.id);
       dispatch(setRestaurants(initRestaurants));
     } catch (error) {
       // TODO : 에러 처리

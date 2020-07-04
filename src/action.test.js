@@ -108,6 +108,25 @@ describe('acton', () => {
       });
     });
 
+    context('without selectedRegion and selectedCategory ', () => {
+      const getState = jest.fn(() => ({
+        regions,
+        selectedRegion: '',
+        categories,
+        selectedCategory: '',
+      }));
+
+      beforeEach(() => {
+        fetchRestaurants.mockResolvedValue(restaurants);
+      });
+
+      it('dispatch loadCategories', async () => {
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
+
     context('when fail to fetch data', () => {
       const getState = jest.fn(() => ({
         regions,
