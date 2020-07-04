@@ -38,9 +38,11 @@ describe('<CategoriesContainer />', () => {
 
   describe('render CategoriesContainer', () => {
     context('without selectedCategory', () => {
-      it('shows categories', () => {
+      beforeEach(() => {
         mockUseSelector();
+      });
 
+      it('shows categories', () => {
         const { queryByRole } = renderCategoriesContainer();
 
         categories.forEach((category) => {
@@ -49,12 +51,14 @@ describe('<CategoriesContainer />', () => {
       });
     });
     context('with selectedCategory', () => {
-      it('shows a category with a selection mark', () => {
+      beforeEach(() => {
         mockUseSelector({
           ...initState,
           selectedCategory: '한식',
         });
+      });
 
+      it('shows a category with a selection mark', () => {
         const { queryByRole } = renderCategoriesContainer();
 
         expect(queryByRole('button', { name: '한식(V)' })).not.toBeNull();
@@ -63,9 +67,11 @@ describe('<CategoriesContainer />', () => {
   });
 
   context('when the user selects category', () => {
-    it('run selectCategory action', () => {
+    beforeEach(() => {
       mockUseSelector();
+    });
 
+    it('run selectCategory action', () => {
       const { getByRole } = renderCategoriesContainer();
 
       categories.forEach((category) => {
