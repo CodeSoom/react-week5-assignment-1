@@ -22,20 +22,13 @@ function renderCategoriesContainer() {
 
 describe('<CategoriesContainer />', () => {
   const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }));
-
-  const updateCategoriesAction = jest.fn();
-  updateCategories.mockImplementation(() => updateCategoriesAction);
-  const getRestaurantsAction = jest.fn();
-  getRestaurants.mockImplementation(() => getRestaurantsAction);
 
   beforeEach(() => {
-    dispatch.mockClear();
-    updateCategoriesAction.mockClear();
-    getRestaurantsAction.mockClear();
+    jest.clearAllMocks();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+    }));
   });
 
   it('renders category buttons', () => {
@@ -52,8 +45,7 @@ describe('<CategoriesContainer />', () => {
     const { getButtonByName } = renderCategoriesContainer();
     fireEvent.click(getButtonByName(categories[0].name));
     // then
-    expect(dispatch).toBeCalledWith(updateCategoriesAction);
-    expect(dispatch).toBeCalledWith(getRestaurantsAction);
-    expect(updateCategories).toBeCalledWith(categories[0].id);
+    expect(updateCategories).toBeCalled();
+    expect(getRestaurants).toBeCalled();
   });
 });

@@ -2,9 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
-import restaurants from './__fixtures__/restaurants';
-
 import RestaurantsContainer from './RestaurantsContainer';
+
+import restaurants from './__fixtures__/restaurants';
 
 jest.mock('react-redux');
 
@@ -16,9 +16,12 @@ function renderRestaurantsContainer() {
 }
 
 describe('<RestaurantsContainer />', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants,
-  }));
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useSelector.mockImplementation((selector) => selector({
+      restaurants,
+    }));
+  });
 
   it('renders restaurant list', () => {
     // when

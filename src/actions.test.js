@@ -25,12 +25,9 @@ describe('Action creators', () => {
   const getState = () => (state);
 
   beforeEach(() => {
-    dispatch.mockClear();
-    fetchRegions.mockClear();
+    jest.clearAllMocks();
     fetchRegions.mockImplementation(async () => regions);
-    fetchCategories.mockClear();
     fetchCategories.mockImplementation(async () => categories);
-    fetchRestaurants.mockClear();
     fetchRestaurants.mockImplementation(async () => restaurants);
   });
 

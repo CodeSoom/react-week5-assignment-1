@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateRegions, getRestaurants } from './actions';
 
-import regions from './__fixtures__/regions';
-
 import RegionsContainer from './RegionsContainer';
+
+import regions from './__fixtures__/regions';
 
 jest.mock('react-redux');
 jest.mock('./actions');
@@ -22,20 +22,13 @@ function renderRegionsContainer() {
 
 describe('<RegionsContainer />', () => {
   const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    regions,
-  }));
-
-  const updateRegionsAction = jest.fn();
-  updateRegions.mockImplementation(() => updateRegionsAction);
-  const getRestaurantsAction = jest.fn();
-  getRestaurants.mockImplementation(() => getRestaurantsAction);
 
   beforeEach(() => {
-    dispatch.mockClear();
-    updateRegionsAction.mockClear();
-    getRestaurantsAction.mockClear();
+    jest.clearAllMocks();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
   });
 
   it('renders region buttons', () => {
@@ -52,8 +45,7 @@ describe('<RegionsContainer />', () => {
     const { getButtonByName } = renderRegionsContainer();
     fireEvent.click(getButtonByName(regions[0].name));
     // then
-    expect(dispatch).toBeCalledWith(updateRegionsAction);
-    expect(dispatch).toBeCalledWith(getRestaurantsAction);
-    expect(updateRegions).toBeCalledWith(regions[0].id);
+    expect(updateRegions).toBeCalled();
+    expect(getRestaurants).toBeCalled();
   });
 });
