@@ -24,4 +24,20 @@ describe('App', () => {
 
     expect(queryByText('서울')).toBeNull();
   });
+
+  it('should display cetogories', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: [],
+      cetogories: [],
+    }));
+
+    const { queryByText } = render((
+      <App />
+    ));
+
+    expect(queryByText('중식')).toBeNull();
+  });
 });
