@@ -7,9 +7,7 @@ import Categories from './Categories';
 import { selectCategory, loadRestaurants } from './actions';
 
 export default function CategoriesContainer() {
-  const {
-    categories, categoryId,
-  } = useSelector((state) => ({
+  const { categories, categoryId } = useSelector((state) => ({
     categories: state.categories,
     categoryId: state.categoryId,
   }));

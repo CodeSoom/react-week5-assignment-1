@@ -7,9 +7,7 @@ import Regions from './Regions';
 import { selectRegion, loadRestaurants } from './actions';
 
 export default function RegionsContainer() {
-  const {
-    regions, regionName,
-  } = useSelector((state) => ({
+  const { regions, regionName } = useSelector((state) => ({
     regions: state.regions,
     regionName: state.regionName,
   }));
