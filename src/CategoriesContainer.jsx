@@ -7,9 +7,8 @@ import Categories from './Categories';
 import { selectCategory, loadRestaurants } from './action';
 
 export default function CategoriesContainer() {
-  const { selectedRegion, categories, selectedCategory } = useSelector(
+  const { categories, selectedCategory } = useSelector(
     (state) => ({
-      selectedRegion: state.selectedRegion,
       categories: state.categories,
       selectedCategory: state.selectedCategory,
     }),
@@ -17,9 +16,9 @@ export default function CategoriesContainer() {
 
   const dispatch = useDispatch();
 
-  function handleSelectCategory(category, categoryId) {
+  function handleSelectCategory(category) {
     dispatch(selectCategory(category));
-    dispatch(loadRestaurants(selectedRegion, categoryId));
+    dispatch(loadRestaurants());
   }
 
   return (

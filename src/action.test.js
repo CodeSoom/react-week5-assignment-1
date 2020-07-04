@@ -4,7 +4,6 @@ import {
   loadCategories,
   setInitCategories,
   loadRestaurants,
-  loadRestaurants2,
   setRestaurants,
 } from './action';
 
@@ -88,39 +87,6 @@ describe('acton', () => {
 
     beforeEach(() => {
       dispatch.mockClear();
-      fetchRestaurants.mockResolvedValue(restaurants); // TODO : 삭제 필요
-    });
-
-    context('when successfully fetch data', () => {
-      beforeEach(() => {
-        fetchRestaurants.mockResolvedValue(restaurants);
-      });
-
-      it('dispatch loadCategories', async () => {
-        await loadRestaurants()(dispatch);
-
-        expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
-      });
-    });
-
-    context('when fail to fetch data', () => {
-      beforeEach(() => {
-        fetchRestaurants.mockRejectedValue(new Error('some error'));
-      });
-
-      it('dispatch loadRestaurants', async () => {
-        await loadRestaurants()(dispatch);
-
-        expect(dispatch).not.toBeCalled();
-      });
-    });
-  });
-
-  describe('loadRestaurants2', () => {
-    const dispatch = jest.fn();
-
-    beforeEach(() => {
-      dispatch.mockClear();
     });
 
     context('when successfully fetch data', () => {
@@ -136,7 +102,7 @@ describe('acton', () => {
       });
 
       it('dispatch loadCategories', async () => {
-        await loadRestaurants2()(dispatch, getState);
+        await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
       });

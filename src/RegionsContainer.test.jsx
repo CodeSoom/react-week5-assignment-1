@@ -8,7 +8,7 @@ import RegionsContainer from './RegionsContainer';
 
 import { regions, categories, restaurants } from '../__fixture__/data';
 
-import { selectRegion, loadRestaurants, loadRestaurants2 } from './action';
+import { selectRegion, loadRestaurants } from './action';
 
 jest.mock('react-redux');
 jest.mock('./action.js');
@@ -104,8 +104,7 @@ describe('<RegionsContainer />', () => {
 
       fireEvent.click(getByRole('button', { name: '서울' }));
       expect(dispatch).toBeCalledWith(selectRegion('서울'));
-      // expect(dispatch).toBeCalledWith(loadRestaurants('서울', 1));
-      expect(dispatch).toBeCalledWith(loadRestaurants2());
+      expect(dispatch).toBeCalledWith(loadRestaurants());
     });
   });
 });
