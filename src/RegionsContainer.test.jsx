@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
+import regions from '../fixtures/regions';
+
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
@@ -17,15 +19,7 @@ describe('RegionsContainer', () => {
     selected: {
       region: '서울',
     },
-    regions: [
-      { id: 1, name: '서울' },
-      { id: 2, name: '대전' },
-      { id: 3, name: '대구' },
-      { id: 4, name: '부산' },
-      { id: 5, name: '광주' },
-      { id: 6, name: '강원도' },
-      { id: 7, name: '인천' },
-    ],
+    regions,
   }));
 
   context('with regions', () => {
@@ -34,13 +28,11 @@ describe('RegionsContainer', () => {
         <RegionsContainer />,
       );
 
-      expect(getByText(/서울/)).not.toBeNull();
-      expect(getByText(/대전/)).not.toBeNull();
-      expect(getByText(/대구/)).not.toBeNull();
-      expect(getByText(/부산/)).not.toBeNull();
-      expect(getByText(/광주/)).not.toBeNull();
-      expect(getByText(/강원도/)).not.toBeNull();
-      expect(getByText(/인천/)).not.toBeNull();
+      regions.forEach((region) => {
+        const { name } = region;
+        const regExp = new RegExp(name);
+        expect(getByText(regExp)).not.toBeNull();
+      });
     });
   });
 
