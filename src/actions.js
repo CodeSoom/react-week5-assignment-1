@@ -7,6 +7,11 @@ export function updateSelected(type, value) {
   };
 }
 
-export function xxx() {
-  // TODO: delete this
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
 }
