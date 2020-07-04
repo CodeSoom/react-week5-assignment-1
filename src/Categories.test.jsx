@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Regions from './Regions';
+import Categories from './Categories';
 
 jest.mock('react-redux');
 
@@ -13,7 +13,7 @@ describe('App', () => {
     ];
 
     const { container } = render((
-      <Regions
+      <Categories
         categories={categories}
       />
     ));
