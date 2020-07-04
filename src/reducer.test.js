@@ -12,21 +12,22 @@ import {
 
 describe('reducer', () => {
   const previousState = {
-    regions: [],
-    categories: [],
-    restaurants: [],
+    regions,
+    categories,
+    restaurants,
   };
 
-  context('when reducer is executed first time', () => {
+  context('with initial execution', () => {
     it('returns initial state', () => {
+      const initialState = {
+        regions: [],
+        categories: [],
+        restaurants: [],
+      };
+
       const state = reducer(undefined, 'INITIAL_EXECUTION');
 
-      expect(state.regions).toHaveLength(0);
-      expect(state.categories).toHaveLength(0);
-      expect(state.restaurants).toHaveLength(0);
-
-      expect(state.regionName).toBeUndefined();
-      expect(state.categoryId).toBeUndefined();
+      expect(state).toEqual(initialState);
     });
   });
 
