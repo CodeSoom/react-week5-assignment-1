@@ -1,9 +1,11 @@
 import reducer from './reducer';
 
+import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
 
 import {
   updateSelected,
+  setRegions,
   setCategories,
 } from './actions';
 
@@ -68,6 +70,14 @@ describe('reducer', () => {
       const state = reducer(undefined, updateSelected('categoryId', 1));
 
       expect(state.selected.categoryId).toBe(1);
+    });
+  });
+
+  describe('setRegionss', () => {
+    it('regions가 변경된다.', () => {
+      const newState = reducer(initialState, setRegions(regions));
+
+      expect(newState.regions).toEqual(regions);
     });
   });
 
