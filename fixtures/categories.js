@@ -1,8 +1,11 @@
-const categories = [
+export const categories = [
   {
     id: 1,
     name: '한식',
   },
 ];
 
-export default categories;
+export const selectedCategory = {
+  id: 1,
+  name: '한식',
+};
