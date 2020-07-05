@@ -1,8 +1,10 @@
 import reducer from './reducer';
 import {
+  setCategories, setCurrentCategoryId,
   updateRestaurantProperty, addRestaurant,
 } from './action/action-creators';
 
+import CATEGORIES from '../__fixtures__/categories.json';
 import RESTAURANTS from '../__fixtures__/restaurants.json';
 
 describe('reducer', () => {
@@ -21,6 +23,37 @@ describe('reducer', () => {
       };
       const nextState = reducer(previousState, { type: 'some-invalid-action-type' });
       expect(previousState).toEqual(nextState);
+    });
+  });
+
+  describe('setCategories', () => {
+    // Given
+    const previousState = {
+      categories: [],
+    };
+    const categories = CATEGORIES;
+
+    it('change categories', () => {
+      // When
+      const nextState = reducer(previousState, setCategories(categories));
+      // Then
+      expect(nextState.categories.length).toEqual(categories.length);
+    });
+  });
+
+  describe('setCategoryId', () => {
+    // Given
+    const previousState = {
+      categories: CATEGORIES,
+      categoryId: null,
+    };
+    const category = CATEGORIES[0];
+
+    it('change current-category-id', () => {
+      // When
+      const nextState = reducer(previousState, setCurrentCategoryId(category.id));
+      // Then
+      expect(nextState.categoryId).toEqual(category.id);
     });
   });
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function List({ restaurants }) {
   return (
-    <ol>
+    <ol id="restaurant-list">
       {
         restaurants.map((e) => (
           <li key={e.id}>

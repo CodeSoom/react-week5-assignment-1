@@ -1,6 +1,25 @@
-import { UPDATE_RESTAURANT_PROPERTY, ADD_RESTAURANT } from './action/action-types';
+import {
+  SET_CATEGORIES, SET_CURRENT_CATEGORY_ID, UPDATE_RESTAURANT_PROPERTY, ADD_RESTAURANT,
+} from './action/action-types';
 
 const ReducerRouter = {
+  [SET_CATEGORIES]: (previousState, payload) => {
+    const { categories } = payload;
+    return {
+      ...previousState,
+      categories,
+      categoryId: null,
+    };
+  },
+
+  [SET_CURRENT_CATEGORY_ID]: (previousState, payload) => {
+    const { categoryId } = payload;
+    return {
+      ...previousState,
+      categoryId,
+    };
+  },
+
   [UPDATE_RESTAURANT_PROPERTY]: (previousState, payload) => {
     const { restaurant } = previousState;
     const { propertyName, propertyValue } = payload;
@@ -38,6 +57,8 @@ const ReducerRouter = {
 };
 
 const initialState = {
+  categories: [],
+  categoryId: null,
   restaurants: [],
   restaurant: {
     id: 0,
