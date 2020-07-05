@@ -6,6 +6,7 @@ import Regions from './Regions';
 
 import {
   selectRegion,
+  loadRestaurants,
 } from './actions';
 
 export default function RegionsContainer() {
@@ -17,6 +18,7 @@ export default function RegionsContainer() {
 
   function handleClick(regionId) {
     dispatch(selectRegion(regionId));
+    dispatch(loadRestaurants());
   }
 
   return (
