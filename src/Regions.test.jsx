@@ -4,8 +4,6 @@ import { render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-jest.mock('react-redux');
-
 describe('Regions', () => {
   it('contains regional list', () => {
     const regions = [
