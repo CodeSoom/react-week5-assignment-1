@@ -36,10 +36,10 @@ export const loadRegions = () => async (dispatch) => {
 };
 
 export const loadRestaurants = () => async (dispatch, getState) => {
-  const { region: regionName, categoryId } = getState();
+  const { region, category } = getState();
   const restaurant = await fetchRestaurants({
-    regionName,
-    categoryId,
+    regionName: region.name,
+    categoryId: category.id,
   });
   dispatch(setRestaurants(restaurant));
 };

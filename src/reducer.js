@@ -18,8 +18,7 @@ const reducers = {
   changeCategory(state, { payload: { category } }) {
     return {
       ...state,
-      category: category.name,
-      categoryId: category.id,
+      category,
     };
   },
   setCategories(state, { payload: { categories } }) {
