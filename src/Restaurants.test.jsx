@@ -7,7 +7,7 @@ import Restaurants from './Restaurants';
 describe('Restaurants', () => {
   context('with restaurants', () => {
     it('renders restaurants', () => {
-      const testRestaurants = [
+      const restaurants = [
         {
           id: 1, categoryId: 1, name: '양천주가', address: '서울 강남구', information: '양천주가 in 서울 강남구',
         },
@@ -18,12 +18,12 @@ describe('Restaurants', () => {
 
       const { getByText } = render((
         <Restaurants
-          restaurants={testRestaurants}
+          restaurants={restaurants}
         />
       ));
 
-      expect(getByText(testRestaurants[0].name)).toBeInTheDocument();
-      expect(getByText(testRestaurants[1].name)).toBeInTheDocument();
+      expect(getByText(restaurants[0].name)).toBeInTheDocument();
+      expect(getByText(restaurants[1].name)).toBeInTheDocument();
     });
   });
 });
