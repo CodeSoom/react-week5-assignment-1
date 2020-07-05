@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Buttons from './Buttons';
+import Regions from './Regions';
 
 import { setRegion } from './actions';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const { regionName, regions } = useSelector((state) => ({
+    regionName: state.regionName,
     regions: state.regions,
   }));
 
@@ -18,7 +19,8 @@ export default function RegionsContainer() {
   }
 
   return (
-    <Buttons
+    <Regions
+      clickedRegionsName={regionName}
       values={regions}
       onClick={handleClick}
     />
