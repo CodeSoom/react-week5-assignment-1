@@ -20,7 +20,7 @@ describe('CategoriesContainer', () => {
     expect(queryByText(/한식/)).not.toBeNull();
   });
 
-  it('selects a region and update display', () => {
+  it('selects a category and update display', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
@@ -31,8 +31,8 @@ describe('CategoriesContainer', () => {
     fireEvent.click(getByText(/한식/));
 
     expect(dispatch).toBeCalledWith({
-      type: 'selectRegion',
-      payload: { regionId: 1 },
+      type: 'selectCategory',
+      payload: { categoryId: 1 },
     });
   });
 });
