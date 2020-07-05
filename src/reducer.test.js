@@ -18,6 +18,8 @@ describe('reducer', () => {
       regions: [],
       selectRegion: null,
       categories: [],
+      selectCatrgory: null,
+      restaurants: [],
     };
 
     it('initialState', () => {

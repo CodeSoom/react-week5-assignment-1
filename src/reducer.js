@@ -2,6 +2,8 @@ const initialState = {
   regions: [],
   selectRegion: null,
   categories: [],
+  selectCatrgory: null,
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
