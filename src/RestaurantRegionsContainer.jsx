@@ -13,7 +13,7 @@ export default function RestaurantRegionsContainer() {
   }));
 
   function handleClick(event) {
-    dispatch(changeRegion({ name: event.target.dataset.name }));
+    dispatch(changeRegion(regions.find((v) => v.name === event.target.name)));
   }
 
   return (

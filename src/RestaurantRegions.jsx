@@ -7,11 +7,11 @@ export default function RestaurantRegions({ regions, onClick, selected }) {
         <li key={region.id}>
           <button
             type="button"
+            name={region.name}
             onClick={onClick}
-            data-name={region.name}
           >
             {region.name}
-            {selected && selected === region.name && '(V)'}
+            {selected && selected.name === region.name && '(V)'}
           </button>
         </li>
       ))}
