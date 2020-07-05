@@ -102,15 +102,17 @@ describe('reducer', () => {
     });
 
     it('should execute fetch restaurants', () => {
-      const regionName = '서울';
-      const categoryId = '1';
       const store = mockStore({
         restaurants: [],
+        region: { id: 1, name: '서울' },
+        category: { id: 1, name: '한식' },
       });
 
+      const { region, category } = store.getState();
+
       return store.dispatch(loadRestaurants(
-        regionName,
-        categoryId,
+        region.name,
+        category.id,
       ))
         .then(() => {
           const actions = store.getActions();
