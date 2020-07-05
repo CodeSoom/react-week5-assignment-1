@@ -1,8 +1,11 @@
-const regions = [
+export const regions = [
   {
     id: 1,
     name: '서울',
   },
 ];
 
-export default regions;
+export const selectedRegion = {
+  id: 1,
+  name: '서울',
+};
