@@ -17,9 +17,7 @@ export default function RegionsContainer() {
 
   function handleClick(region) {
     dispatch(setRegion(region));
-    if (categoryId > 0) {
-      dispatch(loadRestaurants(region.name, categoryId));
-    }
+    dispatch(loadRestaurants(region.name, categoryId));
   }
 
   return (
