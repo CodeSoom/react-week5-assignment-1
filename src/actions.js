@@ -26,7 +26,7 @@ export function setCategory(category) {
   };
 }
 
-function setRegions(regions) {
+export function setRegions(regions) {
   return {
     type: 'setRegions',
     payload: {
@@ -42,7 +42,7 @@ export function loadRegions() {
   };
 }
 
-function setCategories(categories) {
+export function setCategories(categories) {
   return {
     type: 'setCategories',
     payload: {
@@ -58,7 +58,7 @@ export function loadCategories() {
   };
 }
 
-function setRestaurants(restaurants) {
+export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
     payload: {

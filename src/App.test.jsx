@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   context('with regions and categories', () => {
@@ -19,13 +20,18 @@ describe('App', () => {
         { id: 1, name: '한식' }, { id: 2, name: '중식' },
       ];
 
+      const testRestaurants = [
+        { id: 1, name: '양천주가' },
+        { id: 6, name: '한국식 초밥' },
+      ];
+
       const dispatch = jest.fn();
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
         regions: testRegions,
         categories: testCategories,
-        restaurants: [],
+        restaurants: testRestaurants,
       }));
 
       const { getByText } = render((
