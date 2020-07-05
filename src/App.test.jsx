@@ -6,6 +6,9 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+import { regions } from '../fixtures/regions';
+import { categories } from '../fixtures/categories';
+
 jest.mock('react-redux');
 jest.mock('./services/api');
 
@@ -14,8 +17,8 @@ test('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    categories: [],
-    regions: [],
+    regions,
+    categories,
   }));
 
   const { queryByText } = render((
@@ -24,6 +27,6 @@ test('App', () => {
 
   expect(dispatch).toBeCalledTimes(2);
 
-  expect(queryByText(/서울/)).toBeNull();
-  expect(queryByText(/한식/)).toBeNull();
+  expect(queryByText(/서울/)).not.toBeNull();
+  expect(queryByText(/한식/)).not.toBeNull();
 });

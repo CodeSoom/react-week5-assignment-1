@@ -11,6 +11,26 @@ import { regions, selectedRegion } from '../fixtures/regions';
 import { categories, selectedCategory } from '../fixtures/categories';
 
 describe('reducer', () => {
+  describe('state와 action 테스트', () => {
+    const initialState = {
+      regions: [],
+      selectRegion: null,
+      categories: [],
+    };
+
+    it('initialState', () => {
+      const state = reducer(undefined, setRegions([]));
+
+      expect(state).toEqual(initialState);
+    });
+
+    it('unexist action', () => {
+      const state = reducer({}, { type: 'unexist action' });
+
+      expect(state).toEqual({});
+    });
+  });
+
   describe('Regions', () => {
     it('changes regions', () => {
       const initialState = {

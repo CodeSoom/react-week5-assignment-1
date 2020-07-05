@@ -1,22 +1,32 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
 import { regions, selectedRegion } from '../fixtures/regions';
 
-test('RegionsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    regions,
-    selectedRegion,
-  }));
+import { selectRegion } from './actions';
 
-  const { getByText } = render((
-    <RegionsContainer />
-  ));
+describe('RegionsContainer', () => {
+  it('handleClick 테스트', () => {
+    const dispatch = jest.fn();
 
-  expect(getByText(/서울/)).not.toBeNull();
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      selectedRegion,
+    }));
+    useDispatch.mockImplementation(() => dispatch);
+
+    const { getByText } = render((
+      <RegionsContainer />
+    ));
+
+    fireEvent.click(getByText(/서울/));
+
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toBeCalledWith(selectRegion(1));
+  });
 });
