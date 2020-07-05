@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import regions from '../fixtures/regions';
+import { regions, selectedRegion } from '../fixtures/regions';
 
 describe('Regions', () => {
   describe('상위 컴포넌트에서 받은 props 테스트', () => {
@@ -14,6 +14,7 @@ describe('Regions', () => {
       const { getByText } = render((
         <Regions
           regions={regions}
+          selectedRegion={selectedRegion}
           onClick={onClick}
         />
       ));
@@ -25,6 +26,7 @@ describe('Regions', () => {
       const { getByText } = render((
         <Regions
           regions={regions}
+          selectedRegion={selectedRegion}
           onClick={onClick}
         />
       ));
@@ -34,6 +36,18 @@ describe('Regions', () => {
       fireEvent.click(getByText(/서울/));
 
       expect(onClick).toBeCalledWith(1);
+    });
+
+    test('selectedRegion 테스트', () => {
+      const { container } = render((
+        <Regions
+          regions={regions}
+          selectedRegion={selectedRegion}
+          onClick={onClick}
+        />
+      ));
+
+      expect(container).toHaveTextContent('서울(V)');
     });
   });
 });
