@@ -42,7 +42,7 @@ describe('Categories', () => {
         const { container } = render((
           <Categories
             clickedCategoryId={clickedCategoryId}
-            Categories={Categories}
+            categories={categories}
           />
         ));
 

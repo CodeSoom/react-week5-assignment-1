@@ -25,6 +25,7 @@ describe('App', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: testRegions,
         categories: testCategories,
+        restaurants: [],
       }));
 
       const { getByText } = render((

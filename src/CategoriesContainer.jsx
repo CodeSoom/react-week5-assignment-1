@@ -2,12 +2,13 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Buttons from './Buttons';
+import Categories from './Categories';
 
 import { setCategory } from './actions';
 
 export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
+  const { categoryId, categories } = useSelector((state) => ({
+    categoryId: state.categoryId,
     categories: state.categories,
   }));
 
@@ -18,8 +19,9 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Buttons
-      values={categories}
+    <Categories
+      clickedCategoryId={categoryId}
+      categories={categories}
       onClick={handleClick}
     />
   );
