@@ -6,11 +6,12 @@ import { render } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
-import regions from '../fixtures/regions';
+import { regions, selectedRegion } from '../fixtures/regions';
 
 test('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
+    selectedRegion,
   }));
 
   const { getByText } = render((
