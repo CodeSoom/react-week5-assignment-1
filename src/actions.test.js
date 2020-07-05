@@ -4,6 +4,7 @@ import {
   selectRegion,
   setCategories,
   loadCategories,
+  selectCategory,
 } from './actions';
 
 import categories from '../fixtures/categories';
@@ -52,6 +53,14 @@ describe('actions', () => {
       await loadCategories()(dispatch);
 
       expect(dispatch).toBeCalledTimes(1);
+    });
+
+    it('selectCategory', () => {
+      const categoryId = 1;
+      const action = selectCategory(categoryId);
+
+      expect(action.type).toBe('selectCategory');
+      expect(action.payload.categoryId).toBe(categoryId);
     });
   });
 });
