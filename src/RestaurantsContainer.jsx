@@ -15,7 +15,7 @@ export default function RestaurantsContainer() {
 
   const dispatch = useDispatch();
 
-  dispatch(loadRestaurants(regionName, categoryId));
+  // dispatch(loadRestaurants(regionName, categoryId));
 
   return (
     <Restaurants
