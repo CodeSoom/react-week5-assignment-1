@@ -2,13 +2,16 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
 
-import { regions, categories, initialState } from '../fixtures/restaurants';
+import {
+  regions, categories, initialState, restaurants,
+} from '../fixtures/restaurants';
 
 import {
   setRegions,
   setRegion,
   setCategories,
   setCategory,
+  setRestaurants,
   loadRegions,
   loadCategories,
 } from './actions';
@@ -88,6 +91,13 @@ describe('reducer', () => {
           const actions = store.getActions();
           expect(actions[0].type).toEqual(setCategories().type);
         });
+    });
+  });
+
+  context('지역과 분류를 선택하면', () => {
+    it('레스토랑 목록을 추가한다.', () => {
+      const state = reducer(initialState, setRestaurants(restaurants));
+      expect(state.restaurants).toHaveLength(2);
     });
   });
 });
