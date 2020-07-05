@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -20,8 +20,8 @@ export default function RegionsContainer() {
 
   return (
     <Regions
-      clickedRegionsName={regionName}
-      values={regions}
+      clickedRegionName={regionName}
+      regions={regions}
       onClick={handleClick}
     />
   );

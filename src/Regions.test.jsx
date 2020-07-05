@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import Regions from './Regions';
@@ -14,7 +16,7 @@ describe('Regions', () => {
 
       const { getByText } = render((
         <Regions
-          values={regions}
+          regions={regions}
           onClick={handleClick}
         />
       ));
@@ -27,11 +29,27 @@ describe('Regions', () => {
     it('renders regions', () => {
       const { container } = render((
         <Regions
-          values={regions}
+          regions={regions}
         />
       ));
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('부산');
+    });
+
+    context('with clicked region', () => {
+      it('renders V mark next to clicked region name', () => {
+        const clickedRegionName = '부산';
+
+        const { container } = render((
+          <Regions
+            clickedRegionName={clickedRegionName}
+            regions={regions}
+          />
+        ));
+
+        expect(container).toHaveTextContent('서울');
+        expect(container).toHaveTextContent('부산(V)');
+      });
     });
   });
 });

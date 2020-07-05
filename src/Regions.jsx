@@ -13,7 +13,7 @@ export default function Regions({ clickedRegionName, regions, onClick }) {
     <ul>
       {regions.map((region) => (
         <li key={region.id}>
-          <button type="button" onClick={() => onClick(region.name)}>
+          <button type="button" onClick={() => onClick(region)}>
             {region.name}
             {getClickedMarkIfClicked(region.name)}
           </button>

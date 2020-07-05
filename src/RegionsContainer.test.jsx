@@ -16,22 +16,18 @@ describe('RegionsContainer', () => {
     { id: 1, name: '서울' }, { id: 2, name: '대전' },
   ];
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: testRegions,
-  }));
-
-  const { getByText } = render((
-    <RegionsContainer />
-  ));
-
-  context('with regions', () => {
-    it('select regions', () => {
-      expect(getByText(testRegions[0].name)).toBeInTheDocument();
-    });
-  });
+  
 
   context('with a new region name', () => {
     it('dispatch setRegion', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: testRegions,
+      }));
+
+      const { getByText } = render((
+        <RegionsContainer />
+      ));
+
       fireEvent.click(getByText(testRegions[0].name));
 
       expect(dispatch).toBeCalledWith({
@@ -40,6 +36,20 @@ describe('RegionsContainer', () => {
           regionName: '서울',
         },
       });
+    });
+  });
+
+  context('with regions', () => {
+    it('select regions', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: testRegions,
+      }));
+
+      const { getByText } = render((
+        <RegionsContainer />
+      ));
+
+      expect(getByText(testRegions[0].name)).toBeInTheDocument();
     });
   });
 });
