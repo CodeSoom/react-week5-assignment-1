@@ -26,9 +26,9 @@ describe('Action creators', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    fetchRegions.mockImplementation(async () => regions);
-    fetchCategories.mockImplementation(async () => categories);
-    fetchRestaurants.mockImplementation(async () => restaurants);
+    fetchRegions.mockResolvedValue(regions);
+    fetchCategories.mockResolvedValue(categories);
+    fetchRestaurants.mockResolvedValue(restaurants);
   });
 
   it('setRegions', () => {
