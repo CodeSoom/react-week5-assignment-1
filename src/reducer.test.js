@@ -5,10 +5,12 @@ import {
   selectRegion,
   setCategories,
   selectCategory,
+  setRestaurants,
 } from './actions';
 
 import { regions, selectedRegion } from '../fixtures/regions';
 import { categories, selectedCategory } from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('state와 action 테스트', () => {
@@ -55,7 +57,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setCategories', () => {
+  describe('Categories', () => {
     it('changes categories', () => {
       const initialState = {
         categories: [],
@@ -76,6 +78,18 @@ describe('reducer', () => {
       const state = reducer(initialState, selectCategory(categoryId));
 
       expect(state.selectedCategory).toEqual(selectedCategory);
+    });
+  });
+
+  describe('Restaurants', () => {
+    it('레스토랑 목록을 불러온다', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
