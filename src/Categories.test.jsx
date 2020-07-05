@@ -16,8 +16,8 @@ describe('Categories', () => {
       />,
     );
 
-    categories.forEach((category) => {
-      expect(getByText(category.name)).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(getByText(name)).not.toBeNull();
     });
   });
 
@@ -40,7 +40,7 @@ describe('Categories', () => {
 
       const { getByText } = render(
         <Categories
-          selected={selectedId}
+          selectedCategoryId={selectedId}
           categories={categories}
         />,
       );
@@ -50,12 +50,12 @@ describe('Categories', () => {
   });
 
   context('without selected id', () => {
-    it('(V)가 표시되지 않는다..', () => {
+    it('(V)가 표시되지 않는다.', () => {
       const selectedId = '';
 
       const { container } = render(
         <Categories
-          selected={selectedId}
+          selectedCategoryId={selectedId}
           categories={categories}
         />,
       );

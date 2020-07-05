@@ -14,8 +14,7 @@ describe('Restaurants', () => {
       />,
     );
 
-    restaurants.forEach((restaurant) => {
-      const { name } = restaurant;
+    restaurants.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
     });
   });

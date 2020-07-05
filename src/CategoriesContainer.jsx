@@ -22,7 +22,7 @@ export default function CategoriesContainer() {
 
   return (
     <Categories
-      selected={categoryId}
+      selectedCategoryId={categoryId}
       categories={categories}
       onClick={handleClick}
     />

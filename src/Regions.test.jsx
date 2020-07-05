@@ -16,8 +16,7 @@ describe('Regions', () => {
       />,
     );
 
-    regions.forEach((region) => {
-      const { name } = region;
+    regions.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
     });
   });

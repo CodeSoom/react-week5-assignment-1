@@ -49,10 +49,8 @@ describe('App', () => {
       <App />,
     );
 
-    categories.forEach((category) => {
-      const { name } = category;
-      const regExp = new RegExp(name);
-      expect(getByText(regExp)).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(getByText(new RegExp(name))).not.toBeNull();
     });
   });
 
@@ -61,10 +59,8 @@ describe('App', () => {
       <App />,
     );
 
-    regions.forEach((region) => {
-      const { name } = region;
-      const regExp = new RegExp(name);
-      expect(getByText(regExp)).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(getByText(new RegExp(name))).not.toBeNull();
     });
   });
 
@@ -73,10 +69,8 @@ describe('App', () => {
       <App />,
     );
 
-    restaurants.forEach((restaurant) => {
-      const { name } = restaurant;
-      const regExp = new RegExp(name);
-      expect(getByText(regExp)).not.toBeNull();
+    restaurants.forEach(({ name }) => {
+      expect(getByText(new RegExp(name))).not.toBeNull();
     });
   });
 

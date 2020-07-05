@@ -28,10 +28,8 @@ describe('RegionsContainer', () => {
         <RegionsContainer />,
       );
 
-      regions.forEach((region) => {
-        const { name } = region;
-        const regExp = new RegExp(name);
-        expect(getByText(regExp)).not.toBeNull();
+      regions.forEach(({ name }) => {
+        expect(getByText(new RegExp(name))).not.toBeNull();
       });
     });
   });

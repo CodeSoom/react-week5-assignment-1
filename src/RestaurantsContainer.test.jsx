@@ -21,10 +21,8 @@ describe('RestaurantsContainer', () => {
         <RestaurantsContainer />,
       );
 
-      restaurants.forEach((restaurant) => {
-        const { name } = restaurant;
-        const regExp = new RegExp(name);
-        expect(getByText(regExp)).not.toBeNull();
+      restaurants.forEach(({ name }) => {
+        expect(getByText(new RegExp(name))).not.toBeNull();
       });
     });
   });
