@@ -6,11 +6,12 @@ import { render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import categories from '../fixtures/categories';
+import { categories, selectedCategory } from '../fixtures/categories';
 
 test('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
+    selectedCategory,
   }));
 
   const { getByText } = render((
