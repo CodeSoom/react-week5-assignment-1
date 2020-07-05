@@ -26,7 +26,7 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(getByText(/한식/));
 
-    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toBeCalledWith(selectCategory(1));
   });
 });
