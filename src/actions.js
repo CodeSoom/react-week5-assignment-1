@@ -1,32 +1,28 @@
 import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
 
-export const changeRegion = ({ name }) => ({
+export const changeRegion = (region) => ({
   type: 'changeRegion',
-  payload: {
-    name,
-  },
+  payload: { region },
 });
 
-export const changeCategory = ({ name, id }) => ({
+export const changeCategory = (category) => ({
   type: 'changeCategory',
-  payload: {
-    name, id,
-  },
+  payload: { category },
 });
 
-export const setCategories = (categoreis) => ({
+export const setCategories = (categories) => ({
   type: 'setCategories',
-  payload: categoreis,
+  payload: { categories },
 });
 
 export const setRegions = (regions) => ({
   type: 'setRegions',
-  payload: regions,
+  payload: { regions },
 });
 
-export const setRestaurants = (restaurant) => ({
+export const setRestaurants = (restaurants) => ({
   type: 'setRestaurants',
-  payload: restaurant,
+  payload: { restaurants },
 });
 
 export const loadCategories = () => async (dispatch) => {
