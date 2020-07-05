@@ -4,10 +4,11 @@ import {
   setRegions,
   selectRegion,
   setCategories,
+  selectCategory,
 } from './actions';
 
-import categories from '../fixtures/categories';
-import { regions } from '../fixtures/regions';
+import { regions, selectedRegion } from '../fixtures/regions';
+import { categories, selectedCategory } from '../fixtures/categories';
 
 describe('reducer', () => {
   describe('Regions', () => {
@@ -30,10 +31,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectRegion(regionId));
 
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
-      });
+      expect(state.selectedRegion).toEqual(selectedRegion);
     });
   });
 
@@ -46,6 +44,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+
+    it('select Category', () => {
+      const categoryId = 1;
+      const initialState = {
+        categories,
+        selectedCategory: null,
+      };
+
+      const state = reducer(initialState, selectCategory(categoryId));
+
+      expect(state.selectedCategory).toEqual(selectedCategory);
     });
   });
 });
