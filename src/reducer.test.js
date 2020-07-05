@@ -97,7 +97,7 @@ describe('reducer', () => {
   context('지역과 분류를 선택하면', () => {
     it('레스토랑 목록을 추가한다.', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
-      expect(state.restaurants).toHaveLength(2);
+      expect(state.restaurants).toEqual(restaurants);
     });
   });
 });
