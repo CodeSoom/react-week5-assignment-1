@@ -14,6 +14,7 @@ import {
   setRestaurants,
   loadRegions,
   loadCategories,
+  loadRestaurants,
 } from './actions';
 
 jest.mock('./services/api');
@@ -101,10 +102,15 @@ describe('reducer', () => {
     });
 
     it('should execute fetch restaurants', () => {
+      const regionName = '서울';
+      const categoryId = '1';
       const store = mockStore({
         restaurants: [],
       });
-      return store.dispatch(loadRestaurants())
+      return store.dispatch(loadRestaurants(
+        regionName,
+        categoryId,
+      ))
         .then(() => {
           const actions = store.getActions();
           expect(actions[0].type).toEqual(setRestaurants().type);
