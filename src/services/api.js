@@ -13,7 +13,6 @@ export async function fetchCategories() {
 }
 
 export async function fetchRestaurants({ regionName, categoryId }) {
-  console.log(regionName, categoryId);
   if (!regionName || !categoryId) {
     return null;
   }
