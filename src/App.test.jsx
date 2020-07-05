@@ -19,12 +19,12 @@ describe('App', () => {
   }));
 
   it('contains region, category data', () => {
-    const { container, queryByText } = render(
+    const { queryByText } = render(
       <App />,
     );
     expect(dispatch).toBeCalled();
 
-    expect(container).toHaveTextContent(/서울/);
+    // expect(container).toHaveTextContent(/서울/);
     expect(queryByText(/한식/)).not.toBeNull();
     // expect(container).toHaveTextContent(/한식/);
   });

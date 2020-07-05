@@ -8,10 +8,7 @@ import {
 } from './actions';
 
 import RegionsContainer from './RegionsContainer';
-
-function CategoriesContainer() {
-  return null;
-}
+import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
