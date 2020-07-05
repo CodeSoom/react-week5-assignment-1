@@ -2,14 +2,15 @@ import reducer from './reducer';
 
 import {
   setRegions,
+  selectRegion,
   setCategories,
 } from './actions';
 
 import categories from '../fixtures/categories';
-import regions from '../fixtures/regions';
+import { regions } from '../fixtures/regions';
 
 describe('reducer', () => {
-  describe('setRegions', () => {
+  describe('Regions', () => {
     it('changes regions', () => {
       const initialState = {
         regions: [],
@@ -18,6 +19,21 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
+    });
+
+    it('select Region', () => {
+      const regionId = 1;
+      const initialState = {
+        regions,
+        selectedRegion: null,
+      };
+
+      const state = reducer(initialState, selectRegion(regionId));
+
+      expect(state.selectedRegion).toEqual({
+        id: 1,
+        name: '서울',
+      });
     });
   });
 
