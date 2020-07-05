@@ -30,5 +30,14 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'selectCategory') {
+    const { categories } = state;
+    const { categoryId } = action.payload;
+    return {
+      ...state,
+      selectedCategory: categories.find((category) => category.id === categoryId),
+    };
+  }
+
   return state;
 }
