@@ -13,9 +13,9 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    region: '',
+    region: null,
     regions: [],
-    category: '',
+    category: null,
     categories: [],
   }));
 
