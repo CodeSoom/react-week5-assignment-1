@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setRegions,
   selectRegion,
+  setCategories,
 } from './actions';
 
 describe('reducer', () => {
@@ -19,6 +20,20 @@ describe('reducer', () => {
         const state = reducer(initialState, setRegions(regions));
 
         expect(state.regions).not.toHaveLength(0);
+      });
+    });
+    describe('setCategories', () => {
+      it('changes Categories array', () => {
+        const initialState = {
+          categories: [],
+        };
+        const categories = [
+          { id: 1, name: '한식' },
+        ];
+
+        const state = reducer(initialState, setCategories(categories));
+
+        expect(state.categories).toHaveLength(1);
       });
     });
     describe('selectRegion', () => {
