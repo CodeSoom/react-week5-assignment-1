@@ -13,14 +13,14 @@ export default function RegionsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleClickChooseRegion(region) {
+  function handleClick(region) {
     dispatch(setRegion(region));
   }
 
   return (
     <Buttons
       values={regions}
-      onClick={handleClickChooseRegion}
+      onClick={handleClick}
     />
   );
 }

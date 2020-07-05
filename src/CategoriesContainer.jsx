@@ -13,14 +13,14 @@ export default function CategoriesContainer() {
 
   const dispatch = useDispatch();
 
-  function handleClickChooseCategory(category) {
+  function handleClick(category) {
     dispatch(setCategory(category));
   }
 
   return (
     <Buttons
       values={categories}
-      onClick={handleClickChooseCategory}
+      onClick={handleClick}
     />
   );
 }
