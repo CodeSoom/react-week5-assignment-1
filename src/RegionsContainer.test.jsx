@@ -6,8 +6,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-jest.mock('react-redux');
-
 const regions = [
   { id: 1, name: '서울' },
 ];
