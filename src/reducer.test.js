@@ -99,5 +99,16 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
       expect(state.restaurants).toEqual(restaurants);
     });
+
+    it('should execute fetch restaurants', () => {
+      const store = mockStore({
+        restaurants: [],
+      });
+      return store.dispatch(loadRestaurants())
+        .then(() => {
+          const actions = store.getActions();
+          expect(actions[0].type).toEqual(setRestaurants().type);
+        });
+    });
   });
 });
