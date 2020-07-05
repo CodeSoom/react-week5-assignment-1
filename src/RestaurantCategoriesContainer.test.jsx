@@ -5,6 +5,8 @@ import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
+import { categories } from './fixture/initialState';
+
 jest.mock('react-redux');
 jest.mock('./services/api');
 
@@ -16,16 +18,7 @@ describe('RestaurantCategoriesContainer', () => {
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
-        categories: [
-          {
-            id: 1,
-            name: '한식',
-          },
-          {
-            id: 2,
-            name: '중식',
-          },
-        ],
+        categories,
       }));
 
       const { getByText } = render(<RestaurantCategoriesContainer />);
@@ -43,25 +36,15 @@ context('when click category value', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      categories: [
-        {
-          id: 1,
-          name: '한식',
-        },
-        {
-          id: 2,
-          name: '중식',
-        },
-      ],
-      category: '한식',
-      categoryId: 1,
+      categories,
+      category: { id: 1, name: '한식' },
     }));
 
     const { getByText } = render(<RestaurantCategoriesContainer />);
 
-    expect(getByText(/한식/)).not.toBeNull();
+    expect(getByText('한식(V)')).not.toBeNull();
 
-    fireEvent.click(getByText(/한식/));
+    fireEvent.click(getByText(/중식/));
 
     expect(dispatch).toBeCalledTimes(2);
   });

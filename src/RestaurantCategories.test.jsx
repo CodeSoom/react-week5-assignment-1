@@ -4,21 +4,12 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantCategories from './RestaurantCategories';
 
+import { categories } from './fixture/initialState';
+
 describe('RestaurantCategories', () => {
   context('with categories', () => {
     it('renders buttons with categories value', () => {
       const handleClick = jest.fn();
-
-      const categories = [
-        {
-          id: 1,
-          name: '한식',
-        },
-        {
-          id: 2,
-          name: '중식',
-        },
-      ];
 
       const { getByText } = render(
         <RestaurantCategories
@@ -36,17 +27,6 @@ describe('RestaurantCategories', () => {
   context('when click category value', () => {
     it('change category', () => {
       const handleClick = jest.fn();
-
-      const categories = [
-        {
-          id: 1,
-          name: '한식',
-        },
-        {
-          id: 2,
-          name: '중식',
-        },
-      ];
 
       const { getByText } = render(
         <RestaurantCategories
