@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   selectedRegion: null,
+  categories: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -11,6 +12,13 @@ export default function reducer(state = initialState, action) {
       regions,
     };
   }
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+    return {
+      ...state,
+      categories,
+    };
+  }
   if (action.type === 'selectRegion') {
     const { regionId } = action.payload;
     const { regions } = state;
@@ -19,5 +27,6 @@ export default function reducer(state = initialState, action) {
       selectedRegion: regions.find((region) => region.id === regionId),
     };
   }
+
   return state;
 }
