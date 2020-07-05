@@ -107,6 +107,7 @@ describe('reducer', () => {
       const store = mockStore({
         restaurants: [],
       });
+
       return store.dispatch(loadRestaurants(
         regionName,
         categoryId,
