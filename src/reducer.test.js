@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  changeRegion, setCategories, setRestaurants, setRegions,
+  changeRegion, setCategories, setRestaurants, setRegions, changeCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -23,10 +23,10 @@ describe('reducer', () => {
       it('returns state with selected category', () => {
         const state = reducer({
           region: null,
-        }, changeRegion({ id: 1, name: '한식' }));
+        }, changeCategory({ id: 1, name: '한식' }));
 
-        expect(state.region.name).toBe('한식');
-        expect(state.region.id).toBe(1);
+        expect(state.category.name).toBe('한식');
+        expect(state.category.id).toBe(1);
       });
     });
   });
