@@ -8,45 +8,43 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  const { selected } = state;
-
-  if (action.type === 'updateSelected') {
+const reducers = {
+  updateSelected(state, action) {
     return {
       ...state,
       selected: {
-        ...selected,
+        ...state.selected,
         ...action.payload,
       },
     };
-  }
+  },
 
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
-
+  setRegions(state, { payload: { regions } }) {
     return {
       ...state,
       regions,
     };
-  }
+  },
 
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
-
+  setCategories(state, { payload: { categories } }) {
     return {
       ...state,
       categories,
     };
-  }
+  },
 
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
-
+  setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
       restaurants,
     };
-  }
+  },
+};
 
+function defaultRecuder(state) {
   return state;
+}
+
+export default function reducer(state = initialState, action) {
+  return (reducers[action.type] || defaultRecuder)(state, action);
 }
