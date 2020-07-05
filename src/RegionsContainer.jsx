@@ -8,13 +8,13 @@ import {
   updateSelected,
 } from './actions';
 
+import { get } from './utils';
+
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { region, regions } = useSelector((state) => ({
-    region: state.selected.region,
-    regions: state.regions,
-  }));
+  const { region } = useSelector(get('selected'));
+  const regions = useSelector(get('regions'));
 
   function handleClick(type, name) {
     dispatch(updateSelected(type, name));

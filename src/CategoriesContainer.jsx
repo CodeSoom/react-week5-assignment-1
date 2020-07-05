@@ -8,13 +8,13 @@ import {
   updateSelected,
 } from './actions';
 
+import { get } from './utils';
+
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categoryId, categories } = useSelector((state) => ({
-    categoryId: state.selected.categoryId,
-    categories: state.categories,
-  }));
+  const { categoryId } = useSelector(get('selected'));
+  const categories = useSelector(get('categories'));
 
   function handleClick(type, id) {
     dispatch(updateSelected(type, id));

@@ -12,12 +12,12 @@ import {
   loadRestaurants,
 } from './actions';
 
+import { get } from './utils';
+
 export default function App() {
   const dispatch = useDispatch();
 
-  const { selected } = useSelector((state) => ({
-    selected: state.selected,
-  }));
+  const selected = useSelector(get('selected'));
 
   useEffect(() => {
     dispatch(loadRegions());
