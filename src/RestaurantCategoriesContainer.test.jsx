@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 import { categories } from './fixture/initialState';
+import { changeCategory } from './actions';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -47,5 +48,10 @@ context('when click category value', () => {
     fireEvent.click(getByText(/중식/));
 
     expect(dispatch).toBeCalledTimes(2);
+
+    expect(dispatch).toBeCalledWith(changeCategory({
+      id: 2,
+      name: '중식',
+    }));
   });
 });
