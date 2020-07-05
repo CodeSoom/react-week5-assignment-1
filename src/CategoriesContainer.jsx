@@ -1,20 +1,28 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Categories from './Categories';
 
-export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
-    categories: state.categories,
-  }));
+import {
+  selectCategory,
+} from './actions';
 
-  function handleClick() {
+export default function CategoriesContainer() {
+  const { categories, selectedCategory } = useSelector((state) => ({
+    categories: state.categories,
+    selectedCategory: state.selectedCategory,
+  }));
+  const dispatch = useDispatch();
+
+  function handleClick(categoryId) {
+    dispatch(selectCategory(categoryId));
   }
 
   return (
     <Categories
       categories={categories}
+      selectedCategory={selectedCategory}
       onClick={handleClick}
     />
   );
