@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import categories from '../fixtures/categories';
+import { categories, selectedCategory } from '../fixtures/categories';
 
 describe('Categories', () => {
   describe('상위 컴포넌트에서 받은 props 테스트', () => {
@@ -34,6 +34,18 @@ describe('Categories', () => {
       fireEvent.click(getByText(/한식/));
 
       expect(onClick).toBeCalledWith(1);
+    });
+
+    test('selectedCategory 테스트', () => {
+      const { container } = render((
+        <Categories
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onClick={onClick}
+        />
+      ));
+
+      expect(container).toHaveTextContent('한식(V)');
     });
   });
 });
