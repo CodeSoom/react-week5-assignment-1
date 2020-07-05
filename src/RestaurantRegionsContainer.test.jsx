@@ -5,6 +5,10 @@ import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
+import { regions } from './fixture/initialState';
+
+import { changeRegion } from './actions';
+
 jest.mock('react-redux');
 
 describe('RestaurantRegionsContainer', () => {
@@ -15,16 +19,7 @@ describe('RestaurantRegionsContainer', () => {
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
-        regions: [
-          {
-            id: 1,
-            name: '서울',
-          },
-          {
-            id: 2,
-            name: '대전',
-          },
-        ],
+        regions,
       }));
 
       const { getByText } = render(<RestaurantRegionsContainer />);
@@ -42,17 +37,8 @@ context('when click region value', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        {
-          id: 1,
-          name: '서울',
-        },
-        {
-          id: 2,
-          name: '대전',
-        },
-      ],
-      region: '서울',
+      regions,
+      region: { id: 2, name: '대전' },
     }));
 
     const { getByText } = render(<RestaurantRegionsContainer />);
@@ -61,13 +47,11 @@ context('when click region value', () => {
 
     fireEvent.click(getByText(/서울/));
 
-    expect(getByText('서울(V)')).not.toBeNull();
+    expect(getByText('대전(V)')).not.toBeNull();
 
-    expect(dispatch).toBeCalledWith({
-      type: 'changeRegion',
-      payload: {
-        name: '서울',
-      },
-    });
+    expect(dispatch).toBeCalledWith(changeRegion({
+      id: 1,
+      name: '서울',
+    }));
   });
 });

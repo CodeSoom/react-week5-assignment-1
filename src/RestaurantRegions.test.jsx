@@ -4,21 +4,12 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantRegions from './RestaurantRegions';
 
+import { regions } from './fixture/initialState';
+
 describe('RestaurantRegions', () => {
   context('with fetch data', () => {
     it('renders regions', () => {
       const handleClick = jest.fn();
-
-      const regions = [
-        {
-          id: 1,
-          name: '서울',
-        },
-        {
-          id: 2,
-          name: '대전',
-        },
-      ];
 
       const { getByText } = render(
         <RestaurantRegions
