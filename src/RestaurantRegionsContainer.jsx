@@ -7,9 +7,9 @@ import { changeRegion } from './actions';
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions, region } = useSelector((selector) => ({
-    regions: selector.regions,
-    region: selector.region,
+  const { regions, region } = useSelector((state) => ({
+    regions: state.regions,
+    region: state.region,
   }));
 
   function handleClick(event) {

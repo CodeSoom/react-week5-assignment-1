@@ -18,8 +18,8 @@ export default function App() {
     dispatch(loadCategories());
   }, []);
 
-  const { restaurants } = useSelector((selector) => ({
-    restaurants: selector.restaurants,
+  const { restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants,
   }));
 
   return (
