@@ -99,4 +99,26 @@ describe('reducer', () => {
       expect(state.restaurants).toEqual(restaurants);
     });
   });
+
+  describe('without action', () => {
+    it('returns original state', () => {
+      const state = reducer({
+        region: null,
+      }, {
+        type: 'WOW',
+      });
+
+      expect(state.region).toBeNull();
+    });
+  });
+
+  describe('without state', () => {
+    it('returns initial state', () => {
+      const state = reducer(undefined, changeRegion({ id: 1, name: '서울' }));
+
+      expect(state.region.name).toBe('서울');
+      expect(state.region.id).toBe(1);
+      expect(state.category).toBeNull();
+    });
+  });
 });
