@@ -13,13 +13,39 @@ const reducers = {
     const selectedRegion = state.regions
       .find((region) => region.id === selectedRegionId);
 
-    return { ...state, selectedRegion };
+    const regions = state.regions.map((region) => {
+      if (region.id !== selectedRegionId) {
+        return {
+          ...region,
+          name: region.name.replace(/\([\S\s]\)/g, ''),
+        };
+      }
+      return {
+        ...region,
+        name: `${region.name}(V)`,
+      };
+    });
+
+    return { ...state, regions, selectedRegion };
   },
   selectCategory: (state, { payload: { selectedCategoryId } }) => {
     const selectedCategory = state.categoryList
       .find((category) => category.id === selectedCategoryId);
 
-    return { ...state, selectedCategory };
+    const categoryList = state.categoryList.map((category) => {
+      if (category.id !== selectedCategoryId) {
+        return {
+          ...category,
+          name: category.name.replace(/\([\S\s]\)/g, ''),
+        };
+      }
+      return {
+        ...category,
+        name: `${category.name}(V)`,
+      };
+    });
+
+    return { ...state, categoryList, selectedCategory };
   },
   setRestaurants: (state, action) => ({ ...state, restaurants: action.payload.restaurants }),
 };

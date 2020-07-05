@@ -61,16 +61,17 @@ describe('reducer', () => {
     it('레스토랑 지역 목록의 첫번째를 선택하면 해당 지역 값이 state에 반영된다.', () => {
       const state = reducer({ ...initialState, regions }, selectRegion(regions[0].id));
 
-      expect(state.selectedRegion).toEqual(state.regions[0]);
+      expect(state.selectedRegion.id).toEqual(state.regions[0].id);
+      expect(state.selectedRegion.name).toEqual(state.regions[0].name.replace(/\([\S\s]\)/g, ''));
     });
   });
 
   describe('selectCategory', () => {
     it('레스토랑 카테고리 목록의 첫번째를 선택하면 해당 카테고리 값이 state에 반영된다.', () => {
-      const state = reducer({ ...initialState, categoryList },
-        selectCategory(categoryList[0].id));
+      const state = reducer({ ...initialState, categoryList }, selectCategory(categoryList[0].id));
 
-      expect(state.selectedCategory).toEqual(state.categoryList[0]);
+      expect(state.selectedCategory.id).toEqual(state.categoryList[0].id);
+      expect(state.selectedCategory.name).toEqual(state.categoryList[0].name.replace(/\([\S\s]\)/g, ''));
     });
   });
 

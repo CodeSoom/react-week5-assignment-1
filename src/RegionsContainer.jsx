@@ -11,10 +11,8 @@ export default function RegionsContainer() {
 
   const {
     regions,
-    selectedRegion,
   } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegion: state.selectedRegion,
   }));
 
   function handleClick(event) {
@@ -28,7 +26,6 @@ export default function RegionsContainer() {
     <Regions
       regions={regions}
       onClick={handleClick}
-      selectedRegion={selectedRegion}
     />
   );
 }

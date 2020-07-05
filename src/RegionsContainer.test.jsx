@@ -8,7 +8,6 @@ import RegionsContainer from './RegionsContainer';
 
 import {
   regions,
-  selectedRegion,
 } from '../__fixture__/restaurants';
 
 import {
@@ -45,22 +44,6 @@ describe('RegionsContainer', () => {
       ));
 
       expect(getByText('서울')).toBeInTheDocument();
-    });
-  });
-
-  context('지역이 선택된 경우', () => {
-    it('레스토랑 지역 목록이 로딩되고 선택된 항목에 체크 표시됨.', () => {
-      useSelector.mockImplementation((selector) => selector({
-        regions,
-        selectedRegion,
-        selectedCategory: initialState.selectedCategory,
-      }));
-
-      const { getByText } = render((
-        <RegionsContainer />
-      ));
-
-      expect(getByText('서울(V)')).toBeInTheDocument();
     });
   });
 
