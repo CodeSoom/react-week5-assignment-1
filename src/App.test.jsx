@@ -12,7 +12,9 @@ jest.mock('react-redux');
 
 describe('App', () => {
   const dispatch = jest.fn();
+
   beforeEach(() => {
+    dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions,
