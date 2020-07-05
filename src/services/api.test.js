@@ -2,7 +2,7 @@ import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 import { regions } from '../../fixtures/regions';
 import { categories } from '../../fixtures/categories';
-import { restaurants } from '../../fixtures/restaurants';
+import restaurants from '../../fixtures/restaurants';
 
 describe('api', () => {
   const fetch = jest.fn();
