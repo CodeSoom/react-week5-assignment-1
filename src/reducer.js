@@ -3,6 +3,7 @@ const initialState = {
   categories: [],
   region: '',
   category: '',
+  restaurants: [],
 };
 
 function newArray(array, value) {
@@ -45,6 +46,14 @@ export default function reducer(state = initialState, action = {}) {
       ...state,
       category,
       categories: newArray(categories, category.name),
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
+    return {
+      ...state,
+      restaurants,
     };
   }
   return state;

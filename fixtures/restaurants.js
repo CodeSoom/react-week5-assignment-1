@@ -13,6 +13,7 @@ export const initialState = {
   categories: [],
   region: '',
   category: '',
+  restaurants: [],
 };
 
 export const categories = [
