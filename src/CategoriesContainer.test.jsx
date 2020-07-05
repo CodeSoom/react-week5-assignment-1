@@ -24,7 +24,7 @@ describe('CategoriesContainer', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    const { getByText } = render(
+    const { container, getByText } = render(
       <CategoriesContainer />,
     );
 
@@ -34,5 +34,7 @@ describe('CategoriesContainer', () => {
       type: 'selectCategory',
       payload: { categoryId: 1 },
     });
+
+    expect(container).toHaveTextContent('한식(V)');
   });
 });
