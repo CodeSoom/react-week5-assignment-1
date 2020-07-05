@@ -19,10 +19,10 @@ async function fetchCategoryList() {
   return categoryList;
 }
 
-async function fetchRestaurants({ regionName, categoryId }) {
-  if (!regionName || !categoryId) return [];
+async function fetchRestaurants({ region, category }) {
+  if (!region.name || !category.id) return [];
 
-  const url = `${BASE_URL}/restaurants?region=${encodeURI(regionName)}&category=${categoryId}`;
+  const url = `${BASE_URL}/restaurants?region=${encodeURI(region.name)}&category=${category.id}`;
   const response = await fetch(url);
   const categoryList = await response.json();
 

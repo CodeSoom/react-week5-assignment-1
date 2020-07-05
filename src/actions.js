@@ -51,9 +51,10 @@ function setRestaurants(restaurants) {
   };
 }
 
-function loadRestaurants({ regionName, categoryId }) {
-  return async (dispatch) => {
-    const restaurants = await fetchRestaurants({ regionName, categoryId });
+function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { selectedRegion: region = {}, selectedCategory: category = {} } = getState();
+    const restaurants = await fetchRestaurants({ region, category });
     dispatch(setRestaurants(restaurants));
   };
 }

@@ -28,9 +28,9 @@ describe('reducer', () => {
   const initialState = {
     regions: [],
     categoryList: [],
+    restaurants: [],
     selectedRegion: {},
     selectedCategory: {},
-    restaurants: [],
   };
 
   context('state 값이 전달되지 않으면', () => {
@@ -93,12 +93,12 @@ describe('reducer', () => {
   describe('loadRestaurants', () => {
     context('지역과 카테고리가 모두 선택되면', () => {
       it('레스토랑 목록이 state에 저장된다. ', async () => {
-        const store = mockStore({});
+        const store = mockStore({
+          selectedRegion,
+          selectedCategory,
+        });
 
-        await store.dispatch(loadRestaurants({
-          regionName: selectedRegion.name,
-          categoryId: selectedCategory.id,
-        }));
+        await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
 
@@ -110,10 +110,7 @@ describe('reducer', () => {
       it('레스토랑 목록이 state에 저장되지 않는다. ', async () => {
         const store = mockStore({});
 
-        await store.dispatch(loadRestaurants({
-          regionName: '',
-          categoryId: '',
-        }));
+        await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
 

@@ -18,9 +18,7 @@ import {
 
 import {
   loadRegions,
-  setRegions,
   loadCategoryList,
-  setCategoryList,
 } from './actions';
 
 jest.mock('react-redux');
@@ -74,7 +72,7 @@ describe('App', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRegions(regions));
+      expect(actions[0].payload.regions).toEqual(expect.arrayContaining(regions));
     });
 
     it('loadCategoryList 액션을 통해 카테고리 목록이 categoryList에 저장된다. ', async () => {
@@ -84,7 +82,7 @@ describe('App', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setCategoryList(categoryList));
+      expect(actions[0].payload.categoryList).toEqual(expect.arrayContaining(categoryList));
     });
   });
 });

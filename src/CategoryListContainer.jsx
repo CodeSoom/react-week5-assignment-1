@@ -9,9 +9,8 @@ import { selectCategory, loadRestaurants } from './actions';
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
 
-  const { categoryList, selectedRegion, selectedCategory } = useSelector((state) => ({
+  const { categoryList, selectedCategory } = useSelector((state) => ({
     categoryList: state.categoryList,
-    selectedRegion: state.selectedRegion,
     selectedCategory: state.selectedCategory,
   }));
 
@@ -19,10 +18,7 @@ export default function CategoryListContainer() {
     const { target: { id } } = event;
 
     dispatch(selectCategory(Number(id)));
-    dispatch(loadRestaurants({
-      regionName: selectedRegion.name,
-      categoryId: id,
-    }));
+    dispatch(loadRestaurants());
   }
 
   return (

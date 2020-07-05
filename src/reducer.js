@@ -9,27 +9,17 @@ const initialState = {
 const reducers = {
   setRegions: (state, action) => ({ ...state, regions: action.payload.regions }),
   setCategoryList: (state, action) => ({ ...state, categoryList: action.payload.categoryList }),
-  selectRegion: (state, action) => {
-    const { selectedRegionId } = action.payload;
-
+  selectRegion: (state, { payload: { selectedRegionId } }) => {
     const selectedRegion = state.regions
       .find((region) => region.id === selectedRegionId);
 
-    return {
-      ...state,
-      selectedRegion,
-    };
+    return { ...state, selectedRegion };
   },
-  selectCategory: (state, action) => {
-    const { selectedCategoryId } = action.payload;
-
+  selectCategory: (state, { payload: { selectedCategoryId } }) => {
     const selectedCategory = state.categoryList
       .find((category) => category.id === selectedCategoryId);
 
-    return {
-      ...state,
-      selectedCategory,
-    };
+    return { ...state, selectedCategory };
   },
   setRestaurants: (state, action) => ({ ...state, restaurants: action.payload.restaurants }),
 };
