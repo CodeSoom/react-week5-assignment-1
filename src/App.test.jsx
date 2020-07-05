@@ -6,22 +6,26 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
-jest.mock('react-redux');
-jest.mock('./services/api');
-
 describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions: [],
+    regions: [
+      { id: 1, name: '서울' },
+    ],
+    categories: [
+      { id: 1, name: '한식' },
+    ],
   }));
 
-  const { queryByText } = render(
-    <App />,
-  );
+  it('contains region, category data', () => {
+    const { container, queryByText } = render(
+      <App />,
+    );
+    expect(dispatch).toBeCalled();
 
-  it('fetches Regions', () => {
-    // TODO: 더 정밀하게 테스트 할 수 있는 방법은?
-    expect(dispatch).toBeCalledTimes(1);
+    expect(container).toHaveTextContent(/서울/);
+    expect(queryByText(/한식/)).not.toBeNull();
+    // expect(container).toHaveTextContent(/한식/);
   });
 });
