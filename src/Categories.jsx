@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function Categories({ categories }) {
+export default function Categories({ categories, onClick }) {
   return (
     <ul>
       {categories.map((category) => (
         <li key={category.id}>
-          {category.name}
+          <button type="button" onClick={() => onClick(category.id)}>
+            {category.name}
+          </button>
         </li>
       ))}
     </ul>

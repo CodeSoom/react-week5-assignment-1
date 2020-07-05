@@ -9,9 +9,13 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
 
+  function handleClick() {
+  }
+
   return (
     <Categories
       categories={categories}
+      onClick={handleClick}
     />
   );
 }
