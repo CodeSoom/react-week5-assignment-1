@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import RestaurantStore from './stores/stores';
+import RestaurantStore from './store';
 
 import App from './App';
 

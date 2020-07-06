@@ -1,4 +1,4 @@
-import { fetchCategories } from './api';
+import { fetchCategories } from './category';
 
 import CATEGORIES from '../__fixtures__/categories.json';
 

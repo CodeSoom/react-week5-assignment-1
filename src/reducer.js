@@ -1,6 +1,6 @@
 import {
   SET_CATEGORIES, SET_CURRENT_CATEGORY_ID, UPDATE_RESTAURANT_PROPERTY, ADD_RESTAURANT,
-} from './action/action-types';
+} from './actions';
 
 const ReducerRouter = {
   [SET_CATEGORIES]: (previousState, payload) => {

@@ -3,14 +3,14 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentCategoryId } from '../stores/action/action-creators';
+import { setCurrentCategoryId } from '../actions';
 
 import CATEGORIES from '../__fixtures__/categories.json';
 
 import RestaurantCategoryContainer from './RestaurantCategoryContainer';
 
 jest.mock('react-redux');
-jest.mock('../services/api');
+jest.mock('../services/category');
 
 function renderComponent() {
   return render(<RestaurantCategoryContainer />);

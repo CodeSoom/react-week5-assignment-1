@@ -2,10 +2,10 @@ import reducer from './reducer';
 import {
   setCategories, setCurrentCategoryId,
   updateRestaurantProperty, addRestaurant,
-} from './action/action-creators';
+} from './actions';
 
-import CATEGORIES from '../__fixtures__/categories.json';
-import RESTAURANTS from '../__fixtures__/restaurants.json';
+import CATEGORIES from './__fixtures__/categories.json';
+import RESTAURANTS from './__fixtures__/restaurants.json';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {

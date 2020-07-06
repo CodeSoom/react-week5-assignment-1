@@ -5,7 +5,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   updateRestaurantProperty, addRestaurant,
-} from '../stores/action/action-creators';
+} from '../actions';
 
 import RESTAURANTS from '../__fixtures__/restaurants.json';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   updateRestaurantProperty, addRestaurant,
-} from '../stores/action/action-creators';
+} from '../actions';
 
 import InputBox from '../components/InputBox';
 import AddButton from '../components/AddButton';
