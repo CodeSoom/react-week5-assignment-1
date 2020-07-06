@@ -4,9 +4,6 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import CATEGORIES from './__fixtures__/categories.json';
-import RESTAURANTS from './__fixtures__/restaurants.json';
-
 import App from './App';
 
 jest.mock('react-redux');
@@ -22,65 +19,14 @@ describe('<App />', () => {
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      categories: [],
+      restaurants: [],
+    }));
   });
 
-  context('without restaurants', () => {
-    beforeEach(() => {
-      // Given
-      useSelector.mockImplementation((selector) => selector({
-        categories: [],
-        restaurants: [],
-      }));
-    });
-
-    it('display empty restaurants', () => {
-      const { container } = renderComponent();
-      expect(container.querySelector('#list').children).toHaveLength(0);
-    });
-  });
-
-  context('with restaurants', () => {
-    beforeEach(() => {
-      // Given
-      useSelector.mockImplementation((selector) => selector({
-        categories: [],
-        restaurants: RESTAURANTS,
-      }));
-    });
-
-    it('display restaurants', () => {
-      const { container } = renderComponent();
-      expect(container.querySelector('#list').children).toHaveLength(RESTAURANTS.length);
-    });
-  });
-
-  context('without categories', () => {
-    beforeEach(() => {
-      // Given
-      useSelector.mockImplementation((selector) => selector({
-        categories: [],
-        restaurants: [],
-      }));
-    });
-
-    it('display empty restaurants', () => {
-      const { container } = renderComponent();
-      expect(container.querySelector('#button-list').children).toHaveLength(0);
-    });
-  });
-
-  context('with categories', () => {
-    beforeEach(() => {
-      // Given
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-        restaurants: [],
-      }));
-    });
-
-    it('display categories', () => {
-      const { container } = renderComponent();
-      expect(container.querySelector('#button-list').children).toHaveLength(CATEGORIES.length);
-    });
+  it('display app name', () => {
+    const { getByText } = renderComponent();
+    expect(getByText('Restaurants')).not.toBe(null);
   });
 });
