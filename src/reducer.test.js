@@ -77,4 +77,13 @@ describe('reducer', () => {
       expect(state.restaurants).not.toHaveLength(0);
     });
   });
+
+  context('without state', () => {
+    it('should return initialState', () => {
+      const state = reducer(undefined, {});
+
+      expect(state.regions).toHaveLength(0);
+      expect(state.selectedRegion).toBe('');
+    });
+  });
 });

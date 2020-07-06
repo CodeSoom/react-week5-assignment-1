@@ -7,7 +7,7 @@ export default function Categories({ categories, selectedCategory, handleClick }
         <li
           key={category.id}
         >
-          <button type="button" onClick={handleClick} value={category.name}>
+          <button type="button" onClick={() => handleClick(category.id)} value={category.name}>
             {category.name === selectedCategory ? `${category.name}(V)` : category.name}
           </button>
         </li>

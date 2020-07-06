@@ -8,7 +8,7 @@ import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-describe('RegionContainer', () => {
+describe('CategoriesContainer', () => {
   it('should display categories', () => {
     useSelector.mockImplementation((selector) => selector({
       categories: [
@@ -37,7 +37,7 @@ describe('RegionContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'selectCategory',
       payload: {
-        selectedCategory: '중식',
+        selectedCategory: 101,
       },
     });
   });
