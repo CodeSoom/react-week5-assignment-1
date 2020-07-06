@@ -1,3 +1,7 @@
-export const fetchRestaurantRegions = async () => [];
-export const fetchRestaurantInfo = async ({ regionName, categoryId }) => [];
-export const fetchCategories = async () => [];
+export async function fetchRegions() {
+  return [];
+}
+
+export async function fetchCategoies() {
+  return [];
+}
