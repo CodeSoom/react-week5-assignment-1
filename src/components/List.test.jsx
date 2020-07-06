@@ -7,7 +7,7 @@ import List from './List';
 
 describe('<List />', () => {
   const renderComponent = (restaurants) => render((
-    <List restaurants={restaurants} />
+    <List items={restaurants} />
   ));
 
   context('empty list', () => {

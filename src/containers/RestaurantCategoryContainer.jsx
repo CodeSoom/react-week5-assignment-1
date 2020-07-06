@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import CategoryButtonList from '../components/CategoryButtonList';
+import ButtonList from '../components/ButtonList';
 import { loadCategories, setCurrentCategoryId } from '../stores/action/action-creators';
 
 export default function RestaurantCategoryButtonContainer() {
@@ -21,10 +21,9 @@ export default function RestaurantCategoryButtonContainer() {
   }
 
   return (
-    <CategoryButtonList
-      id="CategoryButtonList"
-      categories={categories}
-      handleClickCategory={handleClickCategory}
+    <ButtonList
+      items={categories}
+      handleClickButton={handleClickCategory}
     />
   );
 }

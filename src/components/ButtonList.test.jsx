@@ -3,22 +3,22 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import CATEGORIES from '../__fixtures__/categories.json';
-import CategoryButtonList from './CategoryButtonList';
+import ButtonList from './ButtonList';
 
-describe('<CategoryButtonList />', () => {
-  const handleClickCategory = jest.fn();
+describe('<ButtonList />', () => {
+  const handleClickButton = jest.fn();
 
   const renderComponent = (categories) => render((
-    <CategoryButtonList
-      categories={categories}
-      handleClickCategory={handleClickCategory}
+    <ButtonList
+      items={categories}
+      handleClickButton={handleClickButton}
     />
   ));
 
   context('without categories', () => {
     it('display no category-buttons', () => {
       const { container } = renderComponent([]);
-      const categoryButtons = container.querySelector('#category-button-list').children;
+      const categoryButtons = container.querySelector('#button-list').children;
       expect(categoryButtons.length).toEqual(0);
     });
   });
@@ -26,7 +26,7 @@ describe('<CategoryButtonList />', () => {
   context('with categories', () => {
     it('display category-buttons', () => {
       const { container } = renderComponent(CATEGORIES);
-      const categoryButtons = container.querySelector('#category-button-list').children;
+      const categoryButtons = container.querySelector('#button-list').children;
       expect(categoryButtons.length).toEqual(CATEGORIES.length);
     });
 
@@ -37,7 +37,7 @@ describe('<CategoryButtonList />', () => {
         const categoryButtons = getAllByRole('button');
         categoryButtons.forEach((button) => fireEvent.click(button));
         // Then
-        expect(handleClickCategory).toBeCalledTimes(CATEGORIES.length);
+        expect(handleClickButton).toBeCalledTimes(CATEGORIES.length);
       });
     });
   });

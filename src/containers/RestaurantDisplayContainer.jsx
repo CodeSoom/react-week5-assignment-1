@@ -10,6 +10,6 @@ export default function RestaurantDisplayContainer() {
   }));
 
   return (
-    <List restaurants={restaurants} />
+    <List items={restaurants} />
   );
 }

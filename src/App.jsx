@@ -1,13 +1,13 @@
 import React from 'react';
 
-import RestaurantCategoryButtonContainer from './containers/RestaurantCategoryButtonContainer';
+import RestaurantCategoryContainer from './containers/RestaurantCategoryContainer';
 import RestaurantDisplayContainer from './containers/RestaurantDisplayContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <RestaurantCategoryButtonContainer />
+      <RestaurantCategoryContainer />
       <RestaurantDisplayContainer />
     </div>
   );

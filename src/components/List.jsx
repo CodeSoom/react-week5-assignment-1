@@ -1,16 +1,17 @@
 import React from 'react';
 
-export default function List({ restaurants }) {
+export default function List({ listId = 'list', items }) {
   return (
-    <ol id="restaurant-list">
+    <ol id={listId}>
       {
-        restaurants.map((e) => (
-          <li key={e.id}>
-            {e.name}
-            |
-            {e.category}
-            |
-            {e.address}
+        items.map((item) => (
+          <li key={item.id}>
+            {
+              Object.keys(item)
+                .filter((key) => key !== 'id')
+                .map((key) => item[key])
+                .join(' | ')
+            }
           </li>
         ))
       }

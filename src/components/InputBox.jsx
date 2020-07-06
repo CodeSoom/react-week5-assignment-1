@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function InputBox({ inputProperty, inputValue, handleChangeInputValue }) {
+export default function InputBox({ property, value, handleChangeInput }) {
   return (
-    <input type="text" name={inputProperty} value={inputValue} onChange={handleChangeInputValue} />
+    <input type="text" name={property} value={value} onChange={handleChangeInput} />
   );
 }

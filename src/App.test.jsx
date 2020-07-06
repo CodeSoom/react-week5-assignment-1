@@ -35,7 +35,7 @@ describe('<App />', () => {
 
     it('display empty restaurants', () => {
       const { container } = renderComponent();
-      expect(container.querySelector('#restaurant-list').children).toHaveLength(0);
+      expect(container.querySelector('#list').children).toHaveLength(0);
     });
   });
 
@@ -50,7 +50,7 @@ describe('<App />', () => {
 
     it('display restaurants', () => {
       const { container } = renderComponent();
-      expect(container.querySelector('#restaurant-list').children).toHaveLength(RESTAURANTS.length);
+      expect(container.querySelector('#list').children).toHaveLength(RESTAURANTS.length);
     });
   });
 
@@ -65,7 +65,7 @@ describe('<App />', () => {
 
     it('display empty restaurants', () => {
       const { container } = renderComponent();
-      expect(container.querySelector('#category-button-list').children).toHaveLength(0);
+      expect(container.querySelector('#button-list').children).toHaveLength(0);
     });
   });
 
@@ -80,7 +80,7 @@ describe('<App />', () => {
 
     it('display categories', () => {
       const { container } = renderComponent();
-      expect(container.querySelector('#category-button-list').children).toHaveLength(CATEGORIES.length);
+      expect(container.querySelector('#button-list').children).toHaveLength(CATEGORIES.length);
     });
   });
 });

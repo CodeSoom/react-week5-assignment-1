@@ -25,9 +25,9 @@ export default function RestaurantInputContainer() {
 
   return (
     <>
-      <InputBox inputProperty="name" inputValue={restaurant.name} handleChangeInputValue={handleupdateRestaurantProperty} />
-      <InputBox inputProperty="category" inputValue={restaurant.category} handleChangeInputValue={handleupdateRestaurantProperty} />
-      <InputBox inputProperty="address" inputValue={restaurant.address} handleChangeInputValue={handleupdateRestaurantProperty} />
+      <InputBox property="name" value={restaurant.name} handleChangeInput={handleupdateRestaurantProperty} />
+      <InputBox property="category" value={restaurant.category} handleChangeInput={handleupdateRestaurantProperty} />
+      <InputBox property="address" value={restaurant.address} handleChangeInput={handleupdateRestaurantProperty} />
       <AddButton handleClickButton={handleAddRestaurant} />
     </>
   );
