@@ -18,7 +18,7 @@ export function setCategories(categories) {
   };
 }
 
-export async function loadCategories() {
+export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
