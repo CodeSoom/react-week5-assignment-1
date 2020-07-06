@@ -1,4 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export async function fetchCategories() {
-  return [];
-}
+export const fetchCategories = jest.fn();
