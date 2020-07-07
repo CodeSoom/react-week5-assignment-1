@@ -1,6 +1,6 @@
 import { fetchCategories } from './category';
 
-import CATEGORIES from '../__fixtures__/categories.json';
+import CATEGORIES from '../../__fixtures__/categories.json';
 
 describe('fetchCategories', () => {
   global.fetch = jest.fn().mockResolvedValue({

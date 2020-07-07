@@ -1,4 +1,4 @@
-import { fetchCategories } from '../services/category';
+import { fetchCategories } from '../services/api';
 
 /**
  * Action Types

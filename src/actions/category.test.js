@@ -3,11 +3,11 @@ import {
   setCategories, loadCategories, setCurrentCategoryId,
 } from './category';
 
-import { fetchCategories } from '../services/category';
+import { fetchCategories } from '../services/api';
 
 import CATEGORIES from '../__fixtures__/categories.json';
 
-jest.mock('../services/category');
+jest.mock('../services/api');
 
 describe('Category Action Creator', () => {
   const dispatch = jest.fn();

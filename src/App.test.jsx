@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
-jest.mock('./services/category');
+jest.mock('./services/api');
 
 function renderComponent() {
   return render(<App />);

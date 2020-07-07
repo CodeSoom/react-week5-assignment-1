@@ -10,7 +10,7 @@ import CATEGORIES from '../__fixtures__/categories.json';
 import RestaurantCategoryContainer from './RestaurantCategoryContainer';
 
 jest.mock('react-redux');
-jest.mock('../services/category');
+jest.mock('../services/api');
 
 function renderComponent() {
   return render(<RestaurantCategoryContainer />);
