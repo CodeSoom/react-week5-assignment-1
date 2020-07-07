@@ -4,7 +4,7 @@ export default function ButtonList({
   listId = 'button-list', items, selectedId, handleClickButton,
 }) {
   return (
-    <ol id={listId}>
+    <ul id={listId}>
       {
         items.map(({ id, name }) => (
           <li key={id}>
@@ -15,6 +15,6 @@ export default function ButtonList({
           </li>
         ))
       }
-    </ol>
+    </ul>
   );
 }

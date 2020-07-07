@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function List({ listId = 'list', items }) {
   return (
-    <ol id={listId}>
+    <ul id={listId}>
       {
         items.map((item) => (
           <li key={item.id}>
@@ -15,6 +15,6 @@ export default function List({ listId = 'list', items }) {
           </li>
         ))
       }
-    </ol>
+    </ul>
   );
 }
