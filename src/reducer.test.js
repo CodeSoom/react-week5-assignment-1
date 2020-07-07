@@ -2,6 +2,7 @@ import reducer from './reducer';
 import {
   setCategories, setSelectedCategoryId,
   setRegions, setSelectedRegionId,
+  setRestaurants,
 } from './actions';
 
 import CATEGORIES from './__fixtures__/categories.json';
@@ -86,6 +87,21 @@ describe('reducer', () => {
       const nextState = reducer(previousState, setSelectedRegionId(regionId));
       // Then
       expect(nextState.selectedRegionId).toEqual(regionId);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    // Given
+    const previousState = {
+      restaurants: [],
+    };
+    const restaurants = RESTAURANTS;
+
+    it('change restaurants', () => {
+      // When
+      const nextState = reducer(previousState, setRestaurants(restaurants));
+      // Then
+      expect(nextState.restaurants.length).toEqual(restaurants.length);
     });
   });
 });

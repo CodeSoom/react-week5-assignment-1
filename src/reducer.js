@@ -1,6 +1,7 @@
 import {
   SET_CATEGORIES, SET_SELECTED_CATEGORY_ID,
   SET_REGIONS, SET_SELECTED_REGIONS_ID,
+  SET_RESTAURANTS,
 } from './actions';
 
 const ReducerRouter = {
@@ -35,6 +36,14 @@ const ReducerRouter = {
     return {
       ...previousState,
       selectedRegionId,
+    };
+  },
+
+  [SET_RESTAURANTS]: (previousState, payload) => {
+    const { restaurants } = payload;
+    return {
+      ...previousState,
+      restaurants,
     };
   },
 };
