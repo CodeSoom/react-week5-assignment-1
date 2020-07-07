@@ -6,8 +6,9 @@ import ButtonList from '../components/ButtonList';
 import { loadCategories, setSelectedCategoryId } from '../actions';
 
 export default function RestaurantCategoryButtonContainer() {
-  const { categories } = useSelector((state) => ({
+  const { categories, selectedCategoryId } = useSelector((state) => ({
     categories: state.categories,
+    selectedCategoryId: state.selectedCategoryId,
   }));
 
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function RestaurantCategoryButtonContainer() {
   return (
     <ButtonList
       items={categories}
+      selectedId={selectedCategoryId}
       handleClickButton={handleClickCategory}
     />
   );

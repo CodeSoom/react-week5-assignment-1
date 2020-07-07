@@ -8,9 +8,10 @@ import ButtonList from './ButtonList';
 describe('<ButtonList />', () => {
   const handleClickButton = jest.fn();
 
-  const renderComponent = (categories) => render((
+  const renderComponent = (categories, selectedCategoryId = null) => render((
     <ButtonList
       items={categories}
+      selectedId={selectedCategoryId}
       handleClickButton={handleClickButton}
     />
   ));
@@ -38,6 +39,16 @@ describe('<ButtonList />', () => {
         categoryButtons.forEach((button) => fireEvent.click(button));
         // Then
         expect(handleClickButton).toBeCalledTimes(CATEGORIES.length);
+      });
+    });
+
+    context('when select button', () => {
+      it('selected-button contains checked-string', () => {
+        const { getAllByRole } = renderComponent(CATEGORIES, CATEGORIES[0].id);
+        // When
+        const categoryButtons = getAllByRole('button');
+        // Then
+        expect(categoryButtons[0].textContent).toBe(`${CATEGORIES[0].name} (V)`);
       });
     });
   });
