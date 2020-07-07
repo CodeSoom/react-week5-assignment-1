@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonList from '../components/ButtonList';
 import { loadRegions, setSelectedRegionId } from '../actions';
 
-export default function RestaurantRegionButtonContainer() {
+export default function RestaurantRegionContainer() {
   const { regions, selectedRegionId } = useSelector((state) => ({
     regions: state.regions,
     selectedRegionId: state.selectedRegionId,
