@@ -9,7 +9,8 @@ export default function ButtonList({
         items.map(({ id, name }) => (
           <li key={id}>
             <button type="button" onClick={() => handleClickButton(id)}>
-              {`${name}${id === selectedId && ' (V)'}`}
+              {name}
+              {id === selectedId && ' (V)'}
             </button>
           </li>
         ))
