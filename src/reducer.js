@@ -1,5 +1,7 @@
 import {
-  SET_CATEGORIES, SET_SELECTED_CATEGORY_ID, UPDATE_RESTAURANT_PROPERTY, ADD_RESTAURANT,
+  SET_CATEGORIES, SET_SELECTED_CATEGORY_ID,
+  SET_REGIONS, SET_SELECTED_REGIONS_ID,
+  UPDATE_RESTAURANT_PROPERTY, ADD_RESTAURANT,
 } from './actions';
 
 const ReducerRouter = {
@@ -17,6 +19,23 @@ const ReducerRouter = {
     return {
       ...previousState,
       selectedCategoryId,
+    };
+  },
+
+  [SET_REGIONS]: (previousState, payload) => {
+    const { regions } = payload;
+    return {
+      ...previousState,
+      regions,
+      selectedRegionId: null,
+    };
+  },
+
+  [SET_SELECTED_REGIONS_ID]: (previousState, payload) => {
+    const { selectedRegionId } = payload;
+    return {
+      ...previousState,
+      selectedRegionId,
     };
   },
 
@@ -59,6 +78,8 @@ const ReducerRouter = {
 const initialState = {
   categories: [],
   selectedCategoryId: null,
+  regions: [],
+  selectedRegionId: null,
   restaurants: [],
   restaurant: {
     id: 0,
