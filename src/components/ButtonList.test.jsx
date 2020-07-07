@@ -48,7 +48,7 @@ describe('<ButtonList />', () => {
         // When
         const categoryButtons = getAllByRole('button');
         // Then
-        expect(categoryButtons[0].textContent).toBe(`${CATEGORIES[0].name} (V)`);
+        expect(categoryButtons[0].textContent).toBe(`${CATEGORIES[0].name}(V)`);
       });
     });
   });

@@ -6,12 +6,7 @@ export default function List({ listId = 'list', items }) {
       {
         items.map((item) => (
           <li key={item.id}>
-            {
-              Object.keys(item)
-                .filter((key) => key !== 'id')
-                .map((key) => item[key])
-                .join(' | ')
-            }
+            {item.name}
           </li>
         ))
       }

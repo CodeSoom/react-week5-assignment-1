@@ -10,7 +10,7 @@ export default function ButtonList({
           <li key={id}>
             <button type="button" onClick={() => handleClickButton(id)}>
               {name}
-              {id === selectedId && ' (V)'}
+              {id === selectedId && '(V)'}
             </button>
           </li>
         ))

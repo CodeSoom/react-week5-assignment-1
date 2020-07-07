@@ -46,12 +46,13 @@ describe('Restaurant Action Creator', () => {
       });
     });
     context('without selectedCategory & selectedRegion', () => {
-      it('return no restaurants ', async () => {
+      it('no nothing ', async () => {
         // When
         function getState() {
           return {
             selectedCategoryId: null,
             selectedRegionId: null,
+            regions: [],
           };
         }
         const action = loadRestaurants();
