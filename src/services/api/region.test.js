@@ -9,7 +9,7 @@ describe('fetchRegions', () => {
     },
   });
 
-  it('returns categories', async () => {
+  it('returns regions', async () => {
     const regions = await fetchRegions();
     expect(regions).toEqual(REGIONS);
   });
