@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import ButtonList from '../components/ButtonList';
-import { loadRegions, setSelectedRegionId } from '../actions';
+import { setSelectedRegionId } from '../actions';
 
 export default function RestaurantRegionContainer() {
   const { regions, selectedRegionId } = useSelector((state) => ({
@@ -12,10 +12,6 @@ export default function RestaurantRegionContainer() {
   }));
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadRegions());
-  }, []);
 
   function handleClickRegion(categoryId) {
     dispatch(setSelectedRegionId(categoryId));
