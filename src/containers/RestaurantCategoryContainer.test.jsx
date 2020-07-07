@@ -3,7 +3,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentCategoryId } from '../actions';
+import { setSelectedCategoryId } from '../actions';
 
 import CATEGORIES from '../__fixtures__/categories.json';
 
@@ -54,14 +54,14 @@ describe('<RestaurantCategoryContainer />', () => {
     });
 
     context('when click category-button', () => {
-      it('change current-category-id', () => {
+      it('change selected-category-id', () => {
         const { getAllByRole } = renderComponent();
         // When
         const categoryButtons = getAllByRole('button');
         categoryButtons.forEach((button, buttonIndex) => {
           fireEvent.click(button);
           // Then
-          expect(dispatch).toBeCalledWith(setCurrentCategoryId(CATEGORIES[buttonIndex].id));
+          expect(dispatch).toBeCalledWith(setSelectedCategoryId(CATEGORIES[buttonIndex].id));
         });
       });
     });

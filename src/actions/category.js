@@ -4,15 +4,15 @@ import { fetchCategories } from '../services/api';
  * Action Types
  */
 export const SET_CATEGORIES = Symbol('setCategories');
-export const SET_CURRENT_CATEGORY_ID = Symbol('setCurrentCategoryId');
+export const SET_SELECTED_CATEGORY_ID = Symbol('setSelectedCategoryId');
 
 /**
  * Actions
  */
-export function setCurrentCategoryId(categoryId) {
+export function setSelectedCategoryId(selectedCategoryId) {
   return {
-    type: SET_CURRENT_CATEGORY_ID,
-    payload: { categoryId },
+    type: SET_SELECTED_CATEGORY_ID,
+    payload: { selectedCategoryId },
   };
 }
 export function setCategories(categories) {

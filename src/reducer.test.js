@@ -1,6 +1,6 @@
 import reducer from './reducer';
 import {
-  setCategories, setCurrentCategoryId,
+  setCategories, setSelectedCategoryId,
   updateRestaurantProperty, addRestaurant,
 } from './actions';
 
@@ -45,15 +45,15 @@ describe('reducer', () => {
     // Given
     const previousState = {
       categories: CATEGORIES,
-      categoryId: null,
+      selectedCategoryId: null,
     };
     const category = CATEGORIES[0];
 
-    it('change current-category-id', () => {
+    it('change selected-category-id', () => {
       // When
-      const nextState = reducer(previousState, setCurrentCategoryId(category.id));
+      const nextState = reducer(previousState, setSelectedCategoryId(category.id));
       // Then
-      expect(nextState.categoryId).toEqual(category.id);
+      expect(nextState.selectedCategoryId).toEqual(category.id);
     });
   });
 

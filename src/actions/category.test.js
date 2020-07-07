@@ -1,6 +1,6 @@
 import {
-  SET_CATEGORIES, SET_CURRENT_CATEGORY_ID,
-  setCategories, loadCategories, setCurrentCategoryId,
+  SET_CATEGORIES, SET_SELECTED_CATEGORY_ID,
+  setCategories, loadCategories, setSelectedCategoryId,
 } from './category';
 
 import { fetchCategories } from '../services/api';
@@ -37,11 +37,11 @@ describe('Category Action Creator', () => {
     });
   });
 
-  it('setCurrentCategoryId', async () => {
+  it('setSelectedCategoryId', async () => {
     // When
-    const action = setCurrentCategoryId(CATEGORIES[0].id);
+    const action = setSelectedCategoryId(CATEGORIES[0].id);
     // Then
-    expect(action.type).toBe(SET_CURRENT_CATEGORY_ID);
-    expect(action.payload.categoryId).toBe(CATEGORIES[0].id);
+    expect(action.type).toBe(SET_SELECTED_CATEGORY_ID);
+    expect(action.payload.selectedCategoryId).toBe(CATEGORIES[0].id);
   });
 });

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ButtonList from '../components/ButtonList';
-import { loadCategories, setCurrentCategoryId } from '../actions';
+import { loadCategories, setSelectedCategoryId } from '../actions';
 
 export default function RestaurantCategoryButtonContainer() {
   const { categories } = useSelector((state) => ({
@@ -17,7 +17,7 @@ export default function RestaurantCategoryButtonContainer() {
   }, []);
 
   function handleClickCategory(categoryId) {
-    dispatch(setCurrentCategoryId(categoryId));
+    dispatch(setSelectedCategoryId(categoryId));
   }
 
   return (
