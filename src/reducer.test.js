@@ -81,7 +81,7 @@ describe('reducer', () => {
     };
     const regionId = REGIONS[0].id;
 
-    it('change selected-category-id', () => {
+    it('change selected-region-id', () => {
       // When
       const nextState = reducer(previousState, setSelectedRegionId(regionId));
       // Then
