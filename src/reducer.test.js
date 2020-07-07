@@ -2,7 +2,6 @@ import reducer from './reducer';
 import {
   setCategories, setSelectedCategoryId,
   setRegions, setSelectedRegionId,
-  updateRestaurantProperty, addRestaurant,
 } from './actions';
 
 import CATEGORIES from './__fixtures__/categories.json';
@@ -87,67 +86,6 @@ describe('reducer', () => {
       const nextState = reducer(previousState, setSelectedRegionId(regionId));
       // Then
       expect(nextState.selectedRegionId).toEqual(regionId);
-    });
-  });
-
-  describe('updateRestaurantProperty', () => {
-    // Given
-    const previousState = undefined;
-    const restaurant = {
-      name: '레스토랑 이름',
-      category: '레스토랑 카테고리',
-      address: '레스토랑 주소',
-    };
-
-    it('updates restaurant property', () => {
-      Object.entries(restaurant).forEach(([name, value]) => {
-        const state = reducer(previousState, updateRestaurantProperty(name, value));
-        expect(state.restaurant[name]).toBe(value);
-      });
-    });
-  });
-
-  describe('addRestaurant', () => {
-    context('with restaurant', () => {
-      it('appends a new-restaurant into restaurants', () => {
-        const previousState = {
-          restaurants: [],
-          restaurant: {
-            name: '레스토랑 이름',
-            category: '레스토랑 카테고리',
-            address: '레스토랑 주소',
-          },
-        };
-        const nextState = reducer(previousState, addRestaurant());
-        expect(nextState.restaurants).toHaveLength(1);
-        expect(nextState.restaurants[0]).toEqual(previousState.restaurant);
-      });
-    });
-
-    context('with empty-restaurant-properties', () => {
-      it('does not work', () => {
-        const previousState = {
-          restaurants: RESTAURANTS,
-          restaurant: {
-            name: '',
-            category: '',
-            address: '',
-          },
-        };
-        const nextState = reducer(previousState, addRestaurant());
-        expect(nextState.restaurants).toEqual(previousState.restaurants);
-      });
-    });
-
-    context('without restaurant', () => {
-      it('does not work', () => {
-        const previousState = {
-          restaurants: RESTAURANTS,
-          restaurant: undefined,
-        };
-        const nextState = reducer(previousState, addRestaurant());
-        expect(nextState.restaurants).toEqual(previousState.restaurants);
-      });
     });
   });
 });
