@@ -4,48 +4,26 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import { categories, selectedCategory } from '../fixtures/categories';
+import { categories } from '../fixtures/categories';
 
 describe('Categories', () => {
-  describe('상위 컴포넌트에서 받은 props 테스트', () => {
-    const onClick = jest.fn();
+  it('renders list of categories and listens click event', () => {
+    const handleClick = jest.fn();
 
-    test('value를 버튼 이름으로 출력', () => {
-      const { getByText } = render((
-        <Categories
-          categories={categories}
-          onClick={onClick}
-        />
-      ));
+    const { getByText } = render((
+      <Categories
+        categories={categories}
+        selectedCategory={2}
+        onClick={handleClick}
+      />
+    ));
 
-      expect(getByText(/한식/)).not.toBeNull();
-    });
+    expect(getByText(/한식/)).not.toBeNull();
 
-    test('버튼 동작 테스트', () => {
-      const { getByText } = render((
-        <Categories
-          categories={categories}
-          onClick={onClick}
-        />
-      ));
+    expect(handleClick).not.toBeCalled();
 
-      expect(onClick).not.toBeCalled();
+    fireEvent.click(getByText(/한식/));
 
-      fireEvent.click(getByText(/한식/));
-
-      expect(onClick).toBeCalledWith(1);
-    });
-
-    test('selectedCategory 테스트', () => {
-      const { container } = render((
-        <Categories
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onClick={onClick}
-        />
-      ));
-
-      expect(container).toHaveTextContent('한식(V)');
-    });
+    expect(handleClick).toBeCalledWith(1);
   });
 });

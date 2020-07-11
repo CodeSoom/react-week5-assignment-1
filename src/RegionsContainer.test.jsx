@@ -11,7 +11,7 @@ import { regions, selectedRegion } from '../fixtures/regions';
 import { selectRegion } from './actions';
 
 describe('RegionsContainer', () => {
-  it('handleClick 테스트', () => {
+  it('listens click event', () => {
     const dispatch = jest.fn();
 
     useSelector.mockImplementation((selector) => selector({

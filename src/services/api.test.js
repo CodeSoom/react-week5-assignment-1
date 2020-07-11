@@ -1,9 +1,5 @@
 import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
-import { regions } from '../../fixtures/regions';
-import { categories } from '../../fixtures/categories';
-import restaurants from '../../fixtures/restaurants';
-
 describe('api', () => {
   const fetch = jest.fn();
   const mockFetch = (data) => {
@@ -14,8 +10,15 @@ describe('api', () => {
     });
   };
 
-  describe('fetchRegions 테스트', () => {
-    it('지역 목록을 반환한다', async () => {
+  describe('regions fetch event', () => {
+    it('return regions list', async () => {
+      const regions = [
+        {
+          id: 1,
+          name: '서울',
+        },
+      ];
+
       await mockFetch(regions);
       const data = await fetchRegions();
 
@@ -23,8 +26,15 @@ describe('api', () => {
     });
   });
 
-  describe('fetchCategories 테스트', () => {
-    it('카테고리 목록을 반환한다', async () => {
+  describe('categories fetch event', () => {
+    it('return categories list', async () => {
+      const categories = [
+        {
+          id: 1,
+          name: '한식',
+        },
+      ];
+
       await mockFetch(categories);
       const data = await fetchCategories();
 
@@ -32,8 +42,18 @@ describe('api', () => {
     });
   });
 
-  describe('fetchRestaurants 테스트', () => {
-    it('레스토랑 목록을 반환한다', async () => {
+  describe('restaurants fetch event', () => {
+    it('return restaurants list', async () => {
+      const restaurants = [
+        {
+          id: 1,
+          categoryId: 1,
+          name: '양천주가',
+          address: '서울 강남구',
+          information: '양천주가 in 서울 강남구',
+        },
+      ];
+
       await mockFetch(restaurants);
       const data = await fetchRestaurants({
         regionName: '서울',

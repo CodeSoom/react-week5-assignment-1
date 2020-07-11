@@ -4,50 +4,26 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import { regions, selectedRegion } from '../fixtures/regions';
+import { regions } from '../fixtures/regions';
+
+const onClick = jest.fn();
 
 describe('Regions', () => {
-  describe('상위 컴포넌트에서 받은 props 테스트', () => {
-    const onClick = jest.fn();
+  it('renders list of regions and listens click event', () => {
+    const { getByText } = render((
+      <Regions
+        regions={regions}
+        selectedRegion={1}
+        onClick={onClick}
+      />
+    ));
 
-    test('value를 버튼 이름으로 출력', () => {
-      const { getByText } = render((
-        <Regions
-          regions={regions}
-          selectedRegion={selectedRegion}
-          onClick={onClick}
-        />
-      ));
+    expect(getByText(/서울/)).not.toBeNull();
 
-      expect(getByText(/서울/)).not.toBeNull();
-    });
+    expect(onClick).not.toBeCalled();
 
-    test('버튼 동작 테스트', () => {
-      const { getByText } = render((
-        <Regions
-          regions={regions}
-          selectedRegion={selectedRegion}
-          onClick={onClick}
-        />
-      ));
+    fireEvent.click(getByText(/서울/));
 
-      expect(onClick).not.toBeCalled();
-
-      fireEvent.click(getByText(/서울/));
-
-      expect(onClick).toBeCalledWith(1);
-    });
-
-    test('selectedRegion 테스트', () => {
-      const { container } = render((
-        <Regions
-          regions={regions}
-          selectedRegion={selectedRegion}
-          onClick={onClick}
-        />
-      ));
-
-      expect(container).toHaveTextContent('서울(V)');
-    });
+    expect(onClick).toBeCalledWith(1);
   });
 });

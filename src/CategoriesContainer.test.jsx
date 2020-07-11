@@ -11,7 +11,7 @@ import { categories, selectedCategory } from '../fixtures/categories';
 import { selectCategory } from './actions';
 
 describe('CategoriesContainer', () => {
-  it('handleClick 테스트', () => {
+  it('listens click event', () => {
     const dispatch = jest.fn();
 
     useSelector.mockImplementation((selector) => selector({
