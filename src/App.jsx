@@ -3,14 +3,11 @@ import { useDispatch } from 'react-redux';
 
 import { loadInitialData } from './actions';
 
+// 1. 지역선택
 import RegionsContainer from './RegionsContainer';
-
-function CatetoriesContainer() {
-  return null;
-}
-function RestaurantsContainer() {
-  return null;
-}
+// 2. 카테고리 선택
+import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,7 +19,7 @@ export default function App() {
   return (
     <div>
       <RegionsContainer />
-      <CatetoriesContainer />
+      <CategoriesContainer />
       <RestaurantsContainer />
     </div>
   );
