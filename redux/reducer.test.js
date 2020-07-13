@@ -3,12 +3,14 @@ import reducer from './reducer';
 import {
   setRegions,
   setCategories,
+  setRestaurants,
   changeRegionName,
   changeCategoryId,
 } from './action';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -31,6 +33,17 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(6);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('click 서울 한식', () => {
+      const initialState = {
+        restaurants: [],
+      };
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(2);
     });
   });
   describe('changeRegionName', () => {

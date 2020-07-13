@@ -21,6 +21,13 @@ const actionType = {
       categories,
     };
   },
+  setRestaurants: (state, action) => {
+    const { restaurants } = action.payload;
+    return {
+      ...state,
+      restaurants,
+    };
+  },
   changeRegionName: (state, action) => {
     const { regionName } = action.payload;
     return {
