@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Region from './item';
+import Region from './Region';
 
 export default function Regions({ regions, regionName, onClick }) {
   return (

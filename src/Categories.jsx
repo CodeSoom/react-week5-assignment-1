@@ -1,14 +1,19 @@
 import React from 'react';
 
-import Category from './item';
+import Category from './Category';
 
-export default function Categories({ categories }) {
+export default function Categories({ categories, categoryId, onClick }) {
   return (
     <>
       <ul>
         {
           categories.map((category) => (
-            <Category name={category.name} key={category.id} />
+            <Category
+              category={category}
+              categoryId={categoryId}
+              onClick={onClick}
+              key={category.id}
+            />
           ))
         }
       </ul>

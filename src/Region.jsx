@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Item({ name, checkedName, onClick }) {
+export default function Region({ name, checkedName, onClick }) {
   const handleClick = (event) => {
     const { textContent } = event.target;
     onClick({ name: textContent });

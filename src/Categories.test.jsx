@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
@@ -18,5 +18,17 @@ describe('<Regions />', () => {
     expect(getByText('양식')).not.toBeNull();
     expect(getByText('분식')).not.toBeNull();
     expect(getByText('짬뽕밥')).not.toBeNull();
+  });
+
+  it('click region', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render((
+      <Categories categories={categories} onClick={handleClick} />
+    ));
+
+    fireEvent.click(getByText('한식'));
+    expect(handleClick).toBeCalledWith({
+      id: 1,
+    });
   });
 });
