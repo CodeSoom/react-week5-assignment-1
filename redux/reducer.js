@@ -28,6 +28,13 @@ const actionType = {
       regionName,
     };
   },
+  changeCategoryId: (state, action) => {
+    const { categoryId } = action.payload;
+    return {
+      ...state,
+      categoryId,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action) {

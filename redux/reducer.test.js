@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   changeRegionName,
+  changeCategoryId,
 } from './action';
 
 import regions from '../fixtures/regions';
@@ -33,23 +34,34 @@ describe('reducer', () => {
     });
   });
   describe('changeRegionName', () => {
+    const initialState = {
+      regionName: '',
+    };
     it('change Region 서울', () => {
-      const initialState = {
-        regionName: '',
-      };
-
       const state = reducer(initialState, changeRegionName('서울'));
 
       expect(state.regionName).toBe('서울');
     });
     it('change Region 부산', () => {
-      const initialState = {
-        regionName: '',
-      };
-
       const state = reducer(initialState, changeRegionName('부산'));
 
       expect(state.regionName).toBe('부산');
+    });
+  });
+
+  describe('changeCategoryId', () => {
+    const initialState = {
+      categoryId: 0,
+    };
+    it('change Category 한식', () => {
+      const state = reducer(initialState, changeCategoryId(1));
+
+      expect(state.categoryId).toBe(1);
+    });
+    it('change Category 양식', () => {
+      const state = reducer(initialState, changeCategoryId(4));
+
+      expect(state.categoryId).toBe(4);
     });
   });
 });
