@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Regions from './Regions';
 
@@ -20,5 +20,17 @@ describe('<Regions />', () => {
     expect(getByText('강원도')).not.toBeNull();
     expect(getByText('인천')).not.toBeNull();
     expect(getByText('제주도')).not.toBeNull();
+  });
+
+  it('click region', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render((
+      <Regions regions={regions} onClick={handleClick} />
+    ));
+
+    fireEvent.click(getByText('서울'));
+    expect(handleClick).toBeCalledWith({
+      name: '서울',
+    });
   });
 });
