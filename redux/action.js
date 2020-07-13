@@ -11,6 +11,10 @@ export function setCategories(categories) {
   return { type: 'setCategories', payload: { categories } };
 }
 
+export function changeRegionName(regionName) {
+  return { type: 'changeRegionName', payload: { regionName } };
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();

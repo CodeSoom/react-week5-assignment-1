@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setRegions,
   setCategories,
+  changeRegionName,
 } from './action';
 
 import regions from '../fixtures/regions';
@@ -29,6 +30,26 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(6);
+    });
+  });
+  describe('changeRegionName', () => {
+    it('change Region 서울', () => {
+      const initialState = {
+        regionName: '',
+      };
+
+      const state = reducer(initialState, changeRegionName('서울'));
+
+      expect(state.regionName).toBe('서울');
+    });
+    it('change Region 부산', () => {
+      const initialState = {
+        regionName: '',
+      };
+
+      const state = reducer(initialState, changeRegionName('부산'));
+
+      expect(state.regionName).toBe('부산');
     });
   });
 });

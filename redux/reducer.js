@@ -2,6 +2,8 @@ export const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  regionName: '',
+  categoryId: 0,
 };
 
 const actionType = {
@@ -17,6 +19,13 @@ const actionType = {
     return {
       ...state,
       categories,
+    };
+  },
+  changeRegionName: (state, action) => {
+    const { regionName } = action.payload;
+    return {
+      ...state,
+      regionName,
     };
   },
 };
