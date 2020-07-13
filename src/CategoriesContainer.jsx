@@ -5,6 +5,7 @@ import Categories from './Categories';
 
 import {
   changeCategoryId,
+  loadRestaurants,
 } from '../redux/action';
 
 export default function CategoriesContainer() {
@@ -16,6 +17,7 @@ export default function CategoriesContainer() {
 
   const handleClick = ({ id }) => {
     dispatch(changeCategoryId(id));
+    dispatch(loadRestaurants());
   };
 
   return (

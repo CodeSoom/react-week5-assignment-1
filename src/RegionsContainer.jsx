@@ -5,6 +5,7 @@ import Regions from './Regions';
 
 import {
   changeRegionName,
+  loadRestaurants,
 } from '../redux/action';
 
 export default function RegionsContainer() {
@@ -16,6 +17,7 @@ export default function RegionsContainer() {
 
   const handleClick = ({ name }) => {
     dispatch(changeRegionName(name));
+    dispatch(loadRestaurants());
   };
 
   return (
