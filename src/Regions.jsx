@@ -2,13 +2,18 @@ import React from 'react';
 
 import Region from './Region';
 
-export default function Regions({ regions, regionName, onClick }) {
+export default function Regions({ regions, selectedRegion, onClick }) {
   return (
     <>
       <ul>
         {
           regions.map((region) => (
-            <Region name={region.name} checkedName={regionName} onClick={onClick} key={region.id} />
+            <Region
+              region={region}
+              selectedRegion={selectedRegion}
+              onClick={onClick}
+              key={region.id}
+            />
           ))
         }
       </ul>

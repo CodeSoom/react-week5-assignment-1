@@ -29,8 +29,6 @@ describe('<Regions />', () => {
     ));
 
     fireEvent.click(getByText('서울'));
-    expect(handleClick).toBeCalledWith({
-      name: '서울',
-    });
+    expect(handleClick).toBeCalledWith(1);
   });
 });

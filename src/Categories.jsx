@@ -2,7 +2,7 @@ import React from 'react';
 
 import Category from './Category';
 
-export default function Categories({ categories, categoryId, onClick }) {
+export default function Categories({ categories, selectedCategory, onClick }) {
   return (
     <>
       <ul>
@@ -10,7 +10,7 @@ export default function Categories({ categories, categoryId, onClick }) {
           categories.map((category) => (
             <Category
               category={category}
-              categoryId={categoryId}
+              selectedCategory={selectedCategory}
               onClick={onClick}
               key={category.id}
             />

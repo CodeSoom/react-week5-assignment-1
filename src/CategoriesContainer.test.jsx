@@ -1,19 +1,21 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
 import categories from '../fixtures/categories';
 
 describe('<CategoriesContainer />', () => {
-  it('render categories', () => {
-    useSelector.mockImplementation((selector) => selector({
-      categories,
-    }));
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    categories,
+  }));
 
+  it('render categories', () => {
     const { getByText } = render((
       <CategoriesContainer />
     ));
@@ -24,5 +26,13 @@ describe('<CategoriesContainer />', () => {
     expect(getByText('양식')).not.toBeNull();
     expect(getByText('분식')).not.toBeNull();
     expect(getByText('짬뽕밥')).not.toBeNull();
+  });
+
+  it('click categories', () => {
+    const { getByText } = render((
+      <CategoriesContainer />
+    ));
+    fireEvent.click(getByText('한식'));
+    expect(dispatch).toBeCalled();
   });
 });

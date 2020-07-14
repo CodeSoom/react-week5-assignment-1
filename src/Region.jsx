@@ -1,15 +1,10 @@
 import React from 'react';
 
-export default function Region({ name, checkedName, onClick }) {
-  const handleClick = (event) => {
-    const { textContent } = event.target;
-    onClick({ name: textContent });
-  };
-
+export default function Region({ region: { id, name }, selectedRegion, onClick }) {
   return (
     <>
       <li>
-        <button type="button" onClick={handleClick}>{ `${name}${checkedName === name ? '(V)' : ''}` }</button>
+        <button type="button" onClick={() => onClick(id)}>{ `${name}${selectedRegion && selectedRegion.id === id ? '(V)' : ''}` }</button>
       </li>
     </>
   );

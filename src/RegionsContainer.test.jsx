@@ -1,19 +1,21 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
 import regions from '../fixtures/regions';
 
 describe('<RegionsContainer />', () => {
-  it('render regions', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-    }));
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
 
+  it('render regions', () => {
     const { getByText } = render((
       <RegionsContainer />
     ));
@@ -26,5 +28,13 @@ describe('<RegionsContainer />', () => {
     expect(getByText('강원도')).not.toBeNull();
     expect(getByText('인천')).not.toBeNull();
     expect(getByText('제주도')).not.toBeNull();
+  });
+
+  it('click regions', () => {
+    const { getByText } = render((
+      <RegionsContainer />
+    ));
+    fireEvent.click(getByText('서울'));
+    expect(dispatch).toBeCalled();
   });
 });

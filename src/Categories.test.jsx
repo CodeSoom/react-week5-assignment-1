@@ -6,8 +6,8 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
-describe('<Regions />', () => {
-  it('render regions', () => {
+describe('<Categories />', () => {
+  it('render Categories', () => {
     const { getByText } = render((
       <Categories categories={categories} />
     ));
@@ -20,15 +20,13 @@ describe('<Regions />', () => {
     expect(getByText('짬뽕밥')).not.toBeNull();
   });
 
-  it('click region', () => {
+  it('click Category', () => {
     const handleClick = jest.fn();
     const { getByText } = render((
       <Categories categories={categories} onClick={handleClick} />
     ));
 
     fireEvent.click(getByText('한식'));
-    expect(handleClick).toBeCalledWith({
-      id: 1,
-    });
+    expect(handleClick).toBeCalledWith(1);
   });
 });

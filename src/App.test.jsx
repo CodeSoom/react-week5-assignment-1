@@ -15,13 +15,12 @@ test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
+    restaurants: [],
   }));
 
-  const { queryByText } = render((
+  render((
     <App />
   ));
 
-  expect(dispatch).toBeCalledTimes(2);
-  expect(queryByText('서울')).toBeNull();
-  expect(queryByText('한식')).toBeNull();
+  expect(dispatch).toBeCalledTimes(1);
 });

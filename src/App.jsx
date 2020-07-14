@@ -7,16 +7,14 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
 import {
-  loadRegions,
-  loadCategories,
+  loadInitial,
 } from '../redux/action';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRegions());
-    dispatch(loadCategories());
+    dispatch(loadInitial());
   }, []);
   return (
     <>

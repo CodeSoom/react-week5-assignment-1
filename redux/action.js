@@ -16,23 +16,18 @@ export function setRestaurants(restaurants) {
   return { type: 'setRestaurants', payload: { restaurants } };
 }
 
-export function changeRegionName(regionName) {
-  return { type: 'changeRegionName', payload: { regionName } };
+export function changeRegion(regionId) {
+  return { type: 'changeRegion', payload: { regionId } };
 }
 
-export function changeCategoryId(categoryId) {
-  return { type: 'changeCategoryId', payload: { categoryId } };
+export function changeCategory(categoryId) {
+  return { type: 'changeCategory', payload: { categoryId } };
 }
 
-export function loadRegions() {
+export function loadInitial() {
   return async (dispatch) => {
     const regions = await fetchRegions();
     dispatch(setRegions(regions));
-  };
-}
-
-export function loadCategories() {
-  return async (dispatch) => {
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
@@ -40,10 +35,13 @@ export function loadCategories() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const { regionName, categoryId } = getState();
+    const { selectedRegion, selectedCategory } = getState();
 
-    if (regionName && categoryId) {
-      const restaurants = await fetchRestaurants(regionName, categoryId);
+    if (selectedRegion.name && selectedCategory.id) {
+      const restaurants = await fetchRestaurants({
+        regionName: selectedRegion.name,
+        categoryId: selectedCategory.id,
+      });
       dispatch(setRestaurants(restaurants));
     }
   };

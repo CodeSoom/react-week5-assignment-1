@@ -2,44 +2,39 @@ export const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  regionName: '',
-  categoryId: 0,
+  selectedRegion: {},
+  selectedCategory: {},
 };
 
+function equl(key, value) {
+  return (obj) => obj[key] === value;
+}
+
 const actionType = {
-  setRegions: (state, action) => {
-    const { regions } = action.payload;
+  setRegions: (state, { payload: { regions } }) => ({
+    ...state,
+    regions,
+  }),
+  setCategories: (state, { payload: { categories } }) => ({
+    ...state,
+    categories,
+  }),
+  setRestaurants: (state, { payload: { restaurants } }) => ({
+    ...state,
+    restaurants,
+  }),
+  changeRegion(state, { payload: { regionId } }) {
+    const { regions } = state;
     return {
       ...state,
-      regions,
+      selectedRegion: regions.find(equl('id', regionId)),
     };
   },
-  setCategories: (state, action) => {
-    const { categories } = action.payload;
+  changeCategory: (state, { payload: { categoryId } }) => {
+    const { categories } = state;
     return {
       ...state,
-      categories,
-    };
-  },
-  setRestaurants: (state, action) => {
-    const { restaurants } = action.payload;
-    return {
-      ...state,
-      restaurants,
-    };
-  },
-  changeRegionName: (state, action) => {
-    const { regionName } = action.payload;
-    return {
-      ...state,
-      regionName,
-    };
-  },
-  changeCategoryId: (state, action) => {
-    const { categoryId } = action.payload;
-    return {
-      ...state,
-      categoryId,
+      selectedCategory: categories.find(equl('id', categoryId)),
     };
   },
 };
