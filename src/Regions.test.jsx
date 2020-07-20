@@ -9,10 +9,13 @@ import regions from '../fixtures/regions';
 describe('<Regions />', () => {
   it('render regions', () => {
     const { getByText } = render((
-      <Regions regions={regions} />
+      <Regions
+        regions={regions}
+        selectedRegion={{ id: 1, name: '서울' }}
+      />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
+    expect(getByText('서울(V)')).not.toBeNull();
     expect(getByText('대전')).not.toBeNull();
     expect(getByText('대구')).not.toBeNull();
     expect(getByText('부산')).not.toBeNull();

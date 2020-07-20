@@ -6,13 +6,29 @@ import {
   setRestaurants,
   changeRegion,
   changeCategory,
-} from './action';
+} from './actions';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
+  context('when previous state is undefined', () => {
+    const initialState = {
+      regions: [],
+      categories: [],
+      restaurants: [],
+      selectedRegion: {},
+      selectedCategory: {},
+    };
+
+    it('returns initialState', () => {
+      const state = reducer(undefined, { type: 'action' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
   describe('setRegions', () => {
     it('set regions array', () => {
       const initialState = {

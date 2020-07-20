@@ -8,7 +8,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitial,
-} from '../redux/action';
+} from '../redux/actions';
 
 export default function App() {
   const dispatch = useDispatch();
