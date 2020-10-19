@@ -6,14 +6,17 @@ import { loadRestaurantCategories } from './actions';
 
 export default function RestaurantsCategoriesContainer() {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state);
+  const { categories, selectedCategory } = useSelector((state) => state);
 
   useEffect(() => {
     dispatch(loadRestaurantCategories());
   }, []);
 
-  const handleClick = () => {
-    dispatch();
+  const handleClick = (category) => {
+    dispatch({
+      type: 'SET_SELECTED_CATEGORY',
+      payload: category,
+    });
   };
 
   return (
@@ -23,11 +26,11 @@ export default function RestaurantsCategoriesContainer() {
           <button
             type="button"
             name={category.name}
-            onClick={handleClick}
+            onClick={() => handleClick(category)}
           >
             {category.name}
+            {category.id === selectedCategory.id && '(V)'}
           </button>
-          {category.name}
         </li>
       ))}
     </ul>
