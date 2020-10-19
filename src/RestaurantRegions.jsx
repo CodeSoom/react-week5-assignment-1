@@ -2,15 +2,17 @@ import React from 'react';
 
 export default function RestaurantRegions({ restaurantRegions }) {
   return (
-    <div>
+    <ul>
       { restaurantRegions.map(({ id, name }) => (
-        <button
-          key={id + name}
-          type="button"
-        >
-          {name}
-        </button>
+        <li>
+          <button
+            key={id + name}
+            type="button"
+          >
+            {name}
+          </button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
