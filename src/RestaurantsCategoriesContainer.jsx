@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadRestaurantCategories } from './actions';
+import {
+  loadRestaurantCategories,
+  setRestaurantCategory,
+} from './actions';
 
 export default function RestaurantsCategoriesContainer() {
   const dispatch = useDispatch();
@@ -13,10 +16,7 @@ export default function RestaurantsCategoriesContainer() {
   }, []);
 
   const handleClick = (category) => {
-    dispatch({
-      type: 'SET_SELECTED_CATEGORY',
-      payload: category,
-    });
+    dispatch(setRestaurantCategory(category));
   };
 
   return (

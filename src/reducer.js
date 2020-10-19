@@ -2,6 +2,7 @@ import {
   SET_REGIONS,
   SET_CATEGORIES,
   SET_SELECTED_REGION,
+  SET_SELECTED_CATEGORY,
 } from './actions';
 
 const initialState = {
@@ -33,7 +34,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'SET_SELECTED_CATEGORY') {
+  if (action.type === SET_SELECTED_CATEGORY) {
     return {
       ...state,
       selectedCategory: action.payload,

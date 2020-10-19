@@ -4,6 +4,7 @@ import {
   SET_REGIONS,
   SET_CATEGORIES,
   SET_SELECTED_REGION,
+  SET_SELECTED_CATEGORY,
 } from './actions';
 
 describe('reducer', () => {
@@ -52,13 +53,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('SET_SELECTED_CATEGORY', () => {
+  describe(SET_SELECTED_CATEGORY, () => {
     it('sets selected restaurnat category', () => {
       const previousState = {
         selectedCategory: {},
       };
       const action = {
-        type: 'SET_SELECTED_CATEGORY',
+        type: SET_SELECTED_CATEGORY,
         payload: { id: 1, name: '한식' },
       };
       const state = reducer(previousState, action);
