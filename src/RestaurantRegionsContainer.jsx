@@ -9,7 +9,7 @@ import {
 
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
-  const { regions } = useSelector((state) => state);
+  const { regions, selectedRegion } = useSelector((state) => state);
 
   const handleClick = (region) => {
     dispatch(setRestaurantRegion(region));
@@ -29,6 +29,7 @@ export default function RestaurantRegionsContainer() {
             onClick={() => handleClick(region)}
           >
             {region.name}
+            {region.id === selectedRegion.id && '(V)'}
           </button>
         </li>
       ))}
