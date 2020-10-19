@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import { loadRestaurantRegion } from './actions';
 
 export default function RestaurantRegionsContainer() {
+  const dispatch = useDispatch();
+  const { regions } = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(loadRestaurantRegion());
+  }, []);
+
   return (
     <ul>
-      <li>서울</li>
+      {regions.map((region) => (
+        <li key={region.id}>
+          {region.name}
+        </li>
+      ))}
     </ul>
   );
 }
