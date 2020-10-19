@@ -4,13 +4,13 @@ import { render } from '@testing-library/react';
 
 import restaurantRegions from '../__fixtures__/restaurantRegions';
 
-import RestaurantRegions from './RestaurantRegions';
+import Regions from './Regions';
 
 jest.mock('react-redux');
 
 test('RestaurantRegions', () => {
   const { container } = render((
-    <RestaurantRegions restaurantRegions={restaurantRegions} />
+    <Regions restaurantRegions={restaurantRegions} />
   ));
 
   restaurantRegions.forEach(({ name }) => {
