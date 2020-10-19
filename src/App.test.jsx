@@ -20,5 +20,5 @@ test('App', () => {
 
   expect(queryByText(/서울/)).not.toBeNull();
 
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledWith(setRegions(regions));
 });
