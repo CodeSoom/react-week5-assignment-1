@@ -51,4 +51,19 @@ describe('reducer', () => {
       expect(state.selectedRegion).toMatchObject({ id: 1, name: '서울' });
     });
   });
+
+  describe('SET_SELECTED_CATEGORY', () => {
+    it('sets selected restaurnat category', () => {
+      const previousState = {
+        selectedCategory: {},
+      };
+      const action = {
+        type: 'SET_SELECTED_CATEGORY',
+        payload: { id: 1, name: '한식' },
+      };
+      const state = reducer(previousState, action);
+
+      expect(state.selectedCategory).toMatchObject({ id: 1, name: '한식' });
+    });
+  });
 });
