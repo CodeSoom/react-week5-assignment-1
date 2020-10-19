@@ -3,11 +3,15 @@ import { useDispatch } from 'react-redux';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
+import { setRestaurantRegions } from './actions';
+
+import restaurantRegions from '../__fixtures__/restaurantRegions';
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch();
+    dispatch(setRestaurantRegions(restaurantRegions));
   }, {});
 
   return (
