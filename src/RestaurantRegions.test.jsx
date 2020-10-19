@@ -8,7 +8,7 @@ import RestaurantRegions from './RestaurantRegions';
 
 jest.mock('react-redux');
 
-test('App', () => {
+test('RestaurantRegions', () => {
   const { container } = render((
     <RestaurantRegions restaurantRegions={restaurantRegions} />
   ));

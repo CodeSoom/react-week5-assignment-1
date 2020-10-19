@@ -10,7 +10,7 @@ import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 jest.mock('react-redux');
 
-test('App', () => {
+test('RestaurantRegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurantRegions,
   }));
