@@ -1,9 +1,9 @@
 import React from 'react';
 
+import RegionsContainer from './RegionsContainer';
+
 export default function App() {
   return (
-    <ul>
-      <li><button type="button">서울</button></li>
-    </ul>
+    <RegionsContainer />
   );
 }
