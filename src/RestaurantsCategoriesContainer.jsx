@@ -12,10 +12,21 @@ export default function RestaurantsCategoriesContainer() {
     dispatch(loadRestaurantCategories());
   }, []);
 
+  const handleClick = () => {
+    dispatch();
+  };
+
   return (
     <ul>
       {categories.map((category) => (
         <li key={category.id}>
+          <button
+            type="button"
+            name={category.name}
+            onClick={handleClick}
+          >
+            {category.name}
+          </button>
           {category.name}
         </li>
       ))}
