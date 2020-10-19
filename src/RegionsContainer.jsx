@@ -1,9 +1,13 @@
 import React from 'react';
 
+import Regions from './Regions';
+
 export default function RegionsContainer() {
+  const regions = [
+    { id: 1, name: '서울' },
+  ];
+
   return (
-    <ul>
-      <li><button type="button">서울</button></li>
-    </ul>
+    <Regions regions={regions} />
   );
 }
