@@ -35,4 +35,19 @@ describe('reducer', () => {
       expect(state.categories).toMatchObject([{ id: 1, name: '한식' }]);
     });
   });
+
+  describe('SET_REGION', () => {
+    it('sets restaurant region', () => {
+      const previousState = {
+        region: null,
+      };
+      const action = {
+        type: 'SET_REGION',
+        payload: { id: 1, name: '서울' },
+      };
+      const state = reducer(previousState, action);
+
+      expect(state.region).toMatchObject({ id: 1, name: '서울' });
+    });
+  });
 });
