@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import restaurantRegions from '../__fixtures__/restaurantRegions';
+import regions from '../__fixtures__/regions';
 
 import Regions from './Regions';
 
@@ -10,10 +10,10 @@ jest.mock('react-redux');
 
 test('RestaurantRegions', () => {
   const { container } = render((
-    <Regions restaurantRegions={restaurantRegions} />
+    <Regions restaurantRegions={regions} />
   ));
 
-  restaurantRegions.forEach(({ name }) => {
+  regions.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 });

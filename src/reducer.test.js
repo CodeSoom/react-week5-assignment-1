@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import restaurantRegions from '../__fixtures__/restaurantRegions';
+import regions from '../__fixtures__/regions';
 
 describe('reducer', () => {
   describe('setRestaurantRegions', () => {
@@ -11,10 +11,10 @@ describe('reducer', () => {
         restaurantRegions: initialRestautrantRegions,
       }, {
         type: 'setRestaurantRegions',
-        payload: { restaurantRegions },
+        payload: { restaurantRegions: regions },
       });
 
-      expect(state.restaurantRegions).toHaveLength(restaurantRegions.length);
+      expect(state.restaurantRegions).toHaveLength(regions.length);
     });
   });
 });

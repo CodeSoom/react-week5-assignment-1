@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import restaurantRegions from '../__fixtures__/restaurantRegions';
+import regions from '../__fixtures__/regions';
 
 import App from './App';
 
@@ -13,7 +13,7 @@ jest.mock('react-redux');
 test('App', () => {
   const dispatch = jest.fn();
   useSelector.mockImplementation((selector) => selector({
-    restaurantRegions,
+    restaurantRegions: regions,
   }));
 
   useDispatch.mockImplementation(() => dispatch);
