@@ -11,28 +11,32 @@ export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
   const { regions, selectedRegion } = useSelector((state) => state);
 
-  const handleClick = (region) => {
-    dispatch(setRestaurantRegion(region));
-  };
-
   useEffect(() => {
     dispatch(loadRestaurantRegions());
   }, []);
 
+  const handleClick = (region) => {
+    dispatch(setRestaurantRegion(region));
+  };
+
   return (
     <ul>
-      {regions.map((region) => (
-        <li key={region.id}>
-          <button
-            type="button"
-            name={region.name}
-            onClick={() => handleClick(region)}
-          >
-            {region.name}
-            {region.id === selectedRegion.id && '(V)'}
-          </button>
-        </li>
-      ))}
+      {regions.map((region) => {
+        const { id, name } = region;
+
+        return (
+          <li key={id}>
+            <button
+              type="button"
+              name={name}
+              onClick={() => handleClick(region)}
+            >
+              {name}
+              {id === selectedRegion.id && '(V)'}
+            </button>
+          </li>
+        );
+      })}
     </ul>
   );
 }
