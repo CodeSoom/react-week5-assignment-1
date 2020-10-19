@@ -3,6 +3,7 @@ import {
   SET_CATEGORIES,
   SET_SELECTED_REGION,
   SET_SELECTED_CATEGORY,
+  SET_RESTAURANTS,
 } from './actions';
 
 const initialState = {
@@ -42,7 +43,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'SET_RESTAURANTS') {
+  if (action.type === SET_RESTAURANTS) {
     return {
       ...state,
       restaurants: action.payload,

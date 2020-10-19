@@ -5,6 +5,7 @@ import {
   SET_CATEGORIES,
   SET_SELECTED_REGION,
   SET_SELECTED_CATEGORY,
+  SET_RESTAURANTS,
 } from './actions';
 
 describe('reducer', () => {
@@ -68,13 +69,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('SET_RESTAURANTS', () => {
+  describe(SET_RESTAURANTS, () => {
     it('sets restaurants', () => {
       const previousState = {
         restaurants: [],
       };
       const action = {
-        type: 'SET_RESTAURANTS',
+        type: SET_RESTAURANTS,
         payload: [{
           id: 1,
           categoryId: 1,
