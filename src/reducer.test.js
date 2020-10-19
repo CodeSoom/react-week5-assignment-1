@@ -1,3 +1,5 @@
+import reducer from './reducer';
+
 import { setRegions } from './actions';
 
 import regions from '../fixtures/regions';
