@@ -5,13 +5,17 @@ import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 import { setRestaurantRegions } from './actions';
 
-import restaurantRegions from '../__fixtures__/restaurantRegions';
+function loadRestaurantRegions({ dispatch }) {
+  const restaurantRegions = [];
+
+  dispatch(setRestaurantRegions(restaurantRegions));
+}
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRestaurantRegions(restaurantRegions));
+    loadRestaurantRegions({ dispatch });
   }, {});
 
   return (
