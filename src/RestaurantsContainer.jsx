@@ -1,9 +1,17 @@
 import React from 'react';
 
-export default function renderRestaurantsContainer() {
+import { useSelector } from 'react-redux';
+
+export default function RestaurantsContainer() {
+  const { restaurants } = useSelector((state) => state);
+
   return (
     <ul>
-      <li>호호식당</li>
+      {restaurants.map((restaurant) => (
+        <li key={restaurant.id}>
+          {restaurant.name}
+        </li>
+      ))}
     </ul>
   );
 }
