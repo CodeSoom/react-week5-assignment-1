@@ -1,9 +1,13 @@
+const reducers = {
+  setRestaurantRegions: (state, payload) => {
+    const { restaurantRegions } = payload;
+    return {
+      ...state,
+      restaurantRegions,
+    };
+  },
+};
 
-export default function reducer(state, action) {
-  return {
-    restaurantRegions: [
-      { id: 1, name: '서울' },
-      { id: 2, name: '대전' },
-    ],
-  };
+export default function reducer(state, { type, payload }) {
+  return reducers[type](state, payload);
 }
