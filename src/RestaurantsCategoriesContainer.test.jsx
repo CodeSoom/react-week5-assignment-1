@@ -16,6 +16,7 @@ describe('<RestaurantsCategoriesContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     categories: [{ id: 1, name: '한식' }],
+    selectedCategory: { id: 1, name: '한식' },
   }));
 
   const renderRestaurantsCategoriesContainer = () => render((
@@ -28,6 +29,14 @@ describe('<RestaurantsCategoriesContainer />', () => {
 
     // Then
     expect(getByRole('list')).toHaveTextContent('한식');
+  });
+
+  it('renders check mark on selected region', () => {
+    // When
+    const { getByRole } = renderRestaurantsCategoriesContainer();
+
+    // Then
+    expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
   });
 
   it('calls dispach', () => {
