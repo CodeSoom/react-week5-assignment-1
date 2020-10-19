@@ -3,19 +3,19 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import { setRestaurantRegions } from './actions';
+import { setRegions } from './actions';
 
-function loadRestaurantRegions({ dispatch }) {
-  const restaurantRegions = [];
+function loadRegions({ dispatch }) {
+  const regions = [];
 
-  dispatch(setRestaurantRegions(restaurantRegions));
+  dispatch(setRegions(regions));
 }
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRestaurantRegions({ dispatch });
+    loadRegions({ dispatch });
   }, {});
 
   return (

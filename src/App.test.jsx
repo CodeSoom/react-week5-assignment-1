@@ -13,7 +13,7 @@ jest.mock('react-redux');
 test('App', () => {
   const dispatch = jest.fn();
   useSelector.mockImplementation((selector) => selector({
-    restaurantRegions: regions,
+    regions,
   }));
 
   useDispatch.mockImplementation(() => dispatch);

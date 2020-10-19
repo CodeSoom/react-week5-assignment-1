@@ -3,18 +3,18 @@ import reducer from './reducer';
 import regions from '../__fixtures__/regions';
 
 describe('reducer', () => {
-  describe('setRestaurantRegions', () => {
-    it('changes restaurantRegions', () => {
-      const initialRestautrantRegions = [];
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const initialRegions = [];
 
       const state = reducer({
-        restaurantRegions: initialRestautrantRegions,
+        regions: initialRegions,
       }, {
-        type: 'setRestaurantRegions',
-        payload: { restaurantRegions: regions },
+        type: 'setRegions',
+        payload: { regions },
       });
 
-      expect(state.restaurantRegions).toHaveLength(regions.length);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 });

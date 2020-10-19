@@ -1,9 +1,9 @@
 const reducers = {
-  setRestaurantRegions: (state, payload) => {
-    const { restaurantRegions } = payload;
+  setRegions: (state, payload) => {
+    const { regions } = payload;
     return {
       ...state,
-      restaurantRegions,
+      regions,
     };
   },
 };

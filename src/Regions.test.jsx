@@ -8,9 +8,9 @@ import Regions from './Regions';
 
 jest.mock('react-redux');
 
-test('RestaurantRegions', () => {
+test('Regions', () => {
   const { container } = render((
-    <Regions restaurantRegions={regions} />
+    <Regions regions={regions} />
   ));
 
   regions.forEach(({ name }) => {

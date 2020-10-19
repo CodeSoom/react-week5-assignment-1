@@ -1,8 +1,8 @@
-export function setRestaurantRegions(restaurantRegions) {
+export function setRegions(regions) {
   return ({
-    type: 'setRestaurantRegions',
+    type: 'setRegions',
     payload: {
-      restaurantRegions,
+      regions,
     },
   });
 }

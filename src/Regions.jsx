@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Regions({ restaurantRegions }) {
+export default function Regions({ regions }) {
   return (
     <ul>
-      { restaurantRegions.map(({ id, name }) => (
+      { regions.map(({ id, name }) => (
         <li>
           <button
             key={id + name}
