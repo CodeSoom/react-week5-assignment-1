@@ -1,12 +1,12 @@
 import React from 'react';
 
-import RestaurantRegions from './RestaurantRegions';
+import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-   <RestaurantRegions />
+      <RestaurantRegionsContainer />
     </div>
   );
 }

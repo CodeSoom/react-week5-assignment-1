@@ -1,11 +1,6 @@
 import React from 'react';
 
-export default function RestaurantRegions() {
-  const restaurantRegions = [
-    { id: 1, name: '서울' },
-    { id: 2, name: '대전' },
-  ];
-
+export default function RestaurantRegions({ restaurantRegions }) {
   return (
     <div>
       { restaurantRegions.map(({ id, name }) => (
