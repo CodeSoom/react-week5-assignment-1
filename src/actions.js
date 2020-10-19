@@ -5,7 +5,7 @@ import {
 
 export const SET_REGIONS = 'SET_REGIONS';
 export const SET_CATEGORIES = 'SET_CATEGORIES';
-export const SET_REGION = 'SET_REGION';
+export const SET_SELECTED_REGION = 'SET_SELECTED_REGION';
 
 export const loadRestaurantRegions = () => async (dispatch) => {
   const data = await fetchRestaurantRegion();
@@ -20,6 +20,6 @@ export const loadRestaurantCategories = () => async (dispatch) => {
 };
 
 export const setRestaurantRegion = (value) => ({
-  type: SET_REGION,
+  type: SET_SELECTED_REGION,
   payload: value,
 });

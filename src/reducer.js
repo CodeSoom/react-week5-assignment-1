@@ -1,13 +1,13 @@
 import {
   SET_REGIONS,
   SET_CATEGORIES,
-  SET_REGION,
+  SET_SELECTED_REGION,
 } from './actions';
 
 const initialState = {
   regions: [],
   categories: [],
-  region: null,
+  selectedRegion: {},
 };
 
 export default function reducer(state = initialState, action) {
@@ -25,10 +25,10 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === SET_REGION) {
+  if (action.type === SET_SELECTED_REGION) {
     return {
       ...state,
-      region: action.payload,
+      selectedRegion: action.payload,
     };
   }
 

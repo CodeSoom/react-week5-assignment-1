@@ -3,7 +3,7 @@ import reducer from './reducer';
 import {
   SET_REGIONS,
   SET_CATEGORIES,
-  SET_REGION,
+  SET_SELECTED_REGION,
 } from './actions';
 
 describe('reducer', () => {
@@ -37,18 +37,18 @@ describe('reducer', () => {
     });
   });
 
-  describe(SET_REGION, () => {
+  describe(SET_SELECTED_REGION, () => {
     it('sets restaurant region', () => {
       const previousState = {
-        region: null,
+        selectedRegion: null,
       };
       const action = {
-        type: SET_REGION,
+        type: SET_SELECTED_REGION,
         payload: { id: 1, name: '서울' },
       };
       const state = reducer(previousState, action);
 
-      expect(state.region).toMatchObject({ id: 1, name: '서울' });
+      expect(state.selectedRegion).toMatchObject({ id: 1, name: '서울' });
     });
   });
 });
