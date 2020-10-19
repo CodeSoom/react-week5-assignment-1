@@ -1,10 +1,21 @@
 import React from 'react';
 
 export default function RestaurantRegions() {
+  const restaurantRegions = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+  ];
+
   return (
     <div>
-      <button type="button">서울</button>
-      <button type="button">대전</button>
+      { restaurantRegions.map(({ id, name }) => (
+        <button
+          key={id + name}
+          type="button"
+        >
+          {name}
+        </button>
+      ))}
     </div>
   );
 }
