@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import RestaurantRegionsContainer from './RestaurantRegionsContainer';
+import RegionsContainer from './RegionsContainer';
 
 import { setRestaurantRegions } from './actions';
 
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <RestaurantRegionsContainer />
+      <RegionsContainer />
     </div>
   );
 }

@@ -6,17 +6,17 @@ import { useSelector } from 'react-redux';
 
 import restaurantRegions from '../__fixtures__/restaurantRegions';
 
-import RestaurantRegionsContainer from './RestaurantRegionsContainer';
+import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-test('RestaurantRegionsContainer', () => {
+test('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurantRegions,
   }));
 
   const { container } = render((
-    <RestaurantRegionsContainer />
+    <RegionsContainer />
   ));
 
   restaurantRegions.forEach(({ name }) => {
