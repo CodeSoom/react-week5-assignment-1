@@ -8,6 +8,10 @@ import App from './App';
 
 import regions from '../fixtures/regions';
 
+import {
+  setRegions,
+} from './actions';
+
 jest.mock('react-redux');
 
 test('App', () => {

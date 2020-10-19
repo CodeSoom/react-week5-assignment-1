@@ -4,11 +4,17 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
+import {
+  setRegions,
+} from './actions';
+
+import regions from '../fixtures/regions';
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch();
+    dispatch(setRegions(regions));
   }, []);
 
   return (
