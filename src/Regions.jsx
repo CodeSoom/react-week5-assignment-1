@@ -3,9 +3,11 @@ import React from 'react';
 export default function Regions({ regions }) {
   return (
     <ul>
-      <li>
-        서울
-      </li>
+      {regions.map((region) => (
+        <li key={region.id}>
+          {region.name}
+        </li>
+      ))}
     </ul>
   );
 }
