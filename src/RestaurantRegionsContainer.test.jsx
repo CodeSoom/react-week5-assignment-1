@@ -8,6 +8,8 @@ import restaurantRegions from '../__fixtures__/restaurantRegions';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
+jest.mock('react-redux');
+
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurantRegions,
