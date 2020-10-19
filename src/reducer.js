@@ -1,4 +1,7 @@
-import { SET_REGIONS } from './actions';
+import {
+  SET_REGIONS,
+  SET_CATEGORIES,
+} from './actions';
 
 const initialState = {
   regions: [],
@@ -13,7 +16,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'SET_CATEGORIES') {
+  if (action.type === SET_CATEGORIES) {
     return {
       ...state,
       categories: action.payload,

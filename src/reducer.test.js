@@ -1,6 +1,9 @@
 import reducer from './reducer';
 
-import { SET_REGIONS } from './actions';
+import {
+  SET_REGIONS,
+  SET_CATEGORIES,
+} from './actions';
 
 describe('reducer', () => {
   describe(SET_REGIONS, () => {
@@ -18,13 +21,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('SET_CATEGORIES', () => {
+  describe(SET_CATEGORIES, () => {
     it('sets restaurant categories', () => {
       const previousState = {
         categories: [],
       };
       const action = {
-        type: 'SET_CATEGORIES',
+        type: SET_CATEGORIES,
         payload: [{ id: 1, name: '한식' }],
       };
       const state = reducer(previousState, action);
