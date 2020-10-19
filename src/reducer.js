@@ -2,6 +2,7 @@ import { SET_REGIONS } from './actions';
 
 const initialState = {
   regions: [],
+  categories: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -9,6 +10,13 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       regions: action.payload,
+    };
+  }
+
+  if (action.type === 'SET_CATEGORIES') {
+    return {
+      ...state,
+      categories: action.payload,
     };
   }
 
