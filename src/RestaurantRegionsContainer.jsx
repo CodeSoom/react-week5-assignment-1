@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { loadRestaurantRegion } from './actions';
+import {
+  loadRestaurantRegions,
+  setRestaurantRegion,
+} from './actions';
 
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();
   const { regions } = useSelector((state) => state);
 
-  const handleClick = (event) => {
-    dispatch({
-      type: 'SET_REGION',
-      payload: event.target.name,
-    });
+  const handleClick = (region) => {
+    dispatch(setRestaurantRegion(region));
   };
 
   useEffect(() => {
-    dispatch(loadRestaurantRegion());
+    dispatch(loadRestaurantRegions());
   }, []);
 
   return (
@@ -26,7 +26,7 @@ export default function RestaurantRegionsContainer() {
           <button
             type="button"
             name={region.name}
-            onClick={handleClick}
+            onClick={() => handleClick(region)}
           >
             {region.name}
           </button>
