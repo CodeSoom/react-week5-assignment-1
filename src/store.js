@@ -1,10 +1,6 @@
 import { createStore } from 'redux';
 
-function reducer(state, action) {
-  return {
-    restaurantRegions: [],
-  };
-}
+import reducer from './reducer';
 
 const store = createStore(reducer);
 
