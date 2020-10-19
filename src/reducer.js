@@ -8,6 +8,7 @@ const initialState = {
   regions: [],
   categories: [],
   selectedRegion: {},
+  selectedCategory: {},
 };
 
 export default function reducer(state = initialState, action) {
@@ -29,6 +30,13 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       selectedRegion: action.payload,
+    };
+  }
+
+  if (action.type === 'SET_SELECTED_CATEGORY') {
+    return {
+      ...state,
+      selectedCategory: action.payload,
     };
   }
 
