@@ -21,18 +21,22 @@ export default function RestaurantsCategoriesContainer() {
 
   return (
     <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
-          <button
-            type="button"
-            name={category.name}
-            onClick={() => handleClick(category)}
-          >
-            {category.name}
-            {category.id === selectedCategory.id && '(V)'}
-          </button>
-        </li>
-      ))}
+      {categories.map((category) => {
+        const { id, name } = category;
+
+        return (
+          <li key={id}>
+            <button
+              type="button"
+              name={name}
+              onClick={() => handleClick(category)}
+            >
+              {name}
+              {id === selectedCategory.id && '(V)'}
+            </button>
+          </li>
+        );
+      })}
     </ul>
   );
 }
