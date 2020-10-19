@@ -10,4 +10,5 @@ test('App', () => {
   ));
 
   expect(container).toHaveTextContent('Restaurants');
+  expect(container).toHaveTextContent('서울');
 });
