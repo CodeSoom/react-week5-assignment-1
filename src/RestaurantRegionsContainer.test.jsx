@@ -2,9 +2,13 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('<RestaurantRegionsContainer />', () => {
   const dispatch = jest.fn();
@@ -32,5 +36,18 @@ describe('<RestaurantRegionsContainer />', () => {
 
     // Then
     expect(dispatch).toBeCalled();
+  });
+
+  it('calls dispatch on region button click', () => {
+    // Given
+    const { getAllByRole } = renderRestaurantRegionsContainer();
+
+    // When
+    getAllByRole('button').forEach((button) => {
+      fireEvent.click(button);
+    });
+
+    // Then
+    expect(dispatch).toBeCalledTimes(getAllByRole('button').length + 1);
   });
 });
