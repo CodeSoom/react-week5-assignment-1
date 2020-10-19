@@ -67,4 +67,31 @@ describe('reducer', () => {
       expect(state.selectedCategory).toMatchObject({ id: 1, name: '한식' });
     });
   });
+
+  describe('SET_RESTAURANTS', () => {
+    it('sets restaurants', () => {
+      const previousState = {
+        restaurants: [],
+      };
+      const action = {
+        type: 'SET_RESTAURANTS',
+        payload: [{
+          id: 1,
+          categoryId: 1,
+          name: '양천주가',
+          address: '서울 강남구 123456',
+          information: '양천주가 in 서울 강남구 123456',
+        }],
+      };
+      const state = reducer(previousState, action);
+
+      expect(state.restaurants).toMatchObject([{
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        information: '양천주가 in 서울 강남구 123456',
+      }]);
+    });
+  });
 });
