@@ -6,6 +6,8 @@ import restaurantRegions from '../__fixtures__/restaurantRegions';
 
 import RestaurantRegions from './RestaurantRegions';
 
+jest.mock('react-redux');
+
 test('App', () => {
   const { container } = render((
     <RestaurantRegions restaurantRegions={restaurantRegions} />
