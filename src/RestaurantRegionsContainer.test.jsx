@@ -16,6 +16,7 @@ describe('<RestaurantRegionsContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions: [{ id: 1, name: '서울' }],
+    selectedRegion: { id: 1, name: '서울' },
   }));
 
   const renderRestaurantRegionsContainer = () => render((
@@ -28,6 +29,14 @@ describe('<RestaurantRegionsContainer />', () => {
 
     // Then
     expect(getByRole('list')).toHaveTextContent('서울');
+  });
+
+  it('renders check mark on selected region', () => {
+    // When
+    const { getByRole } = renderRestaurantRegionsContainer();
+
+    // Then
+    expect(getByRole('button', { name: '서울(V)' })).toBeInTheDocument();
   });
 
   it('calls dispatch', () => {
