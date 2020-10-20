@@ -6,7 +6,7 @@ import Categories from './Categories';
 describe('Categories', () => {
   it('show all categories', () => {
     const handleClick = jest.fn();
-    const categories = [
+    const initialCategories = [
       { id: 1, category: '한식' },
       { id: 2, category: '중식' },
       { id: 3, category: '일식' },
@@ -14,16 +14,14 @@ describe('Categories', () => {
       { id: 5, category: '분식' },
     ];
 
-    const { getByText } = render(<Categories categories={categories} onClick={handleClick} />);
+    const { getByText } = render(<Categories categories={initialCategories} onClick={handleClick} />);
 
-    categories.forEach(({ category }) => {
+    initialCategories.forEach(({ category }) => {
       expect(getByText(`${category}`)).not.toBeNull();
 
       fireEvent.click(getByText(`${category}`));
 
       expect(handleClick).toBeCalled();
-
-      expect(getByText(`${category}(V)`)).not.toBeNull();
     });
   });
 });
