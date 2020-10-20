@@ -6,7 +6,7 @@ export default function Regions({ regions }) {
       { regions.map(({ id, name }) => (
         <li>
           <button
-            key={id + name}
+            key={`${id}:${name}`}
             type="button"
           >
             {name}
