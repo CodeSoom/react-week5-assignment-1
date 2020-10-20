@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
+
 import Categories from './Categories';
 
 describe('Categories', () => {
   it('show all categories', () => {
     const handleClick = jest.fn();
+
     const initialCategories = [
       { id: 1, category: '한식' },
       { id: 2, category: '중식' },
