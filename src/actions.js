@@ -1,3 +1,5 @@
+import fixture from '../fixtures/regions';
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',
@@ -7,7 +9,11 @@ export function setRegions(regions) {
   };
 }
 
-// TODO: delete this
-export function xxx() {
-
+export function loadRegions() {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions: fixture,
+    },
+  };
 }
