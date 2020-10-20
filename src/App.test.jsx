@@ -8,22 +8,18 @@ import App from './App';
 
 import regions from '../fixtures/regions';
 
-import {
-  setRegions,
-} from './actions';
-
 jest.mock('react-redux');
 jest.mock('./service/api');
 
-test('App', async () => {
+test('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({ regions }));
 
-  const { queryByText } = await render(<App />);
+  const { queryByText } = render(<App />);
 
   expect(queryByText(/서울/)).not.toBeNull();
 
-  expect(dispatch).toBeCalledWith(setRegions(regions));
+  expect(dispatch).toBeCalled();
 });
