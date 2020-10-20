@@ -63,10 +63,20 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes the name of selected region', () => {
       const state = reducer({
-        regions,
+        regions: [
+          { id: 1, name: '서울' },
+          { id: 2, name: '대전(v)' },
+        ],
       }, selectRegion(regions[0].id));
 
-      expect(state.regions[0].name).toBe(`${regions[0].name}(v)`);
+      state.regions.forEach((region, index) => {
+        if (index === 0) {
+          expect(region.name).toContain('(v)');
+          return;
+        }
+
+        expect(region.name).not.toContain('(v)');
+      });
     });
   });
 });
