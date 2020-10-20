@@ -1,7 +1,8 @@
-import regions from '../../fixtures/regions';
-
 export async function fetchRegions() {
-  return regions;
+  const url = 'https://eatgo-customer-api.ahastudio.com/regions';
+  const response = await fetch(url);
+  const data = response.json();
+  return data;
 }
 
 // TODO: delete this
