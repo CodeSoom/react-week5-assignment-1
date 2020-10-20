@@ -14,18 +14,22 @@ export default function App() {
     regions: state.initialRegions,
   }));
 
-  function onClick(id, isChecked) {
-    dispatch([
-      ...categories.map((category) => (
-        category.id === id ? { ...category, isChecked: !isChecked } : category
-      )),
-    ]);
+  console.log(categories, regions);
 
-    dispatch([
-      ...regions.map((region) => (
-        region.id === id ? { ...region, isChecked: !isChecked } : region
-      )),
-    ]);
+  function onClick(id, isChecked) {
+    dispatch();
+    // [
+    //   ...categories.map((category) => (
+    //     category.id === id ? { ...category, isChecked: !isChecked } : category
+    //   )),
+    // ]
+
+    dispatch();
+    // [
+    //   ...regions.map((region) => (
+    //     region.id === id ? { ...region, isChecked: !isChecked } : region
+    //   )),
+    // ]
   }
 
   return (
