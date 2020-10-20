@@ -17,4 +17,5 @@ test('LocaleListContainer', () => {
   render(<FoodLocationListContainer />);
 
   expect(screen.getByText('서울')).toBeInTheDocument();
+  expect(screen.getByText('한식')).toBeInTheDocument();
 });
