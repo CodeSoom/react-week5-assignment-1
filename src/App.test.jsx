@@ -4,12 +4,14 @@ import { render, screen } from '@testing-library/react';
 
 import App from './App';
 import locales from '../fixtures/locales';
+import foodClassifications from '../fixtures/foodClassifications';
 
 jest.mock('react-redux');
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     locales,
+    foodClassifications,
   }));
 
   render(<App />);

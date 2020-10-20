@@ -2,17 +2,19 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 
-import LocaleListContainer from './LocaleListContainer';
+import FoodLocationListContainer from './FoodLocationListContainer';
 import locales from '../../fixtures/locales';
+import foodClassifications from '../../fixtures/foodClassifications';
 
 jest.mock('react-redux');
 
 test('LocaleListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     locales,
+    foodClassifications,
   }));
 
-  render(<LocaleListContainer />);
+  render(<FoodLocationListContainer />);
 
   expect(screen.getByText('서울')).toBeInTheDocument();
 });

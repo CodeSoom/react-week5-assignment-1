@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function LocaleList({ locales }) {
+export default function FoodLocationList({ items }) {
   return (
     <li>
       {
-        locales.map((locale) => (
+        items.map((item) => (
           <button
             type="button"
-            key={locale.id}
+            key={item.id}
           >
-            {locale.name}
+            {item.name}
           </button>
         ))
       }

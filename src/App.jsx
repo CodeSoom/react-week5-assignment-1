@@ -1,9 +1,9 @@
 import React from 'react';
 
-import LocaleListContainer from './container/LocaleListContainer';
+import FoodLocationListContainer from './container/FoodLocationListContainer';
 
 export default function App() {
   return (
-    <LocaleListContainer />
+    <FoodLocationListContainer />
   );
 }
