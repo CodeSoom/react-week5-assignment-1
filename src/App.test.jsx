@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import regions from '../__fixtures__/regions';
 
+import categories from '../__fixtures__/categories';
+
 import App from './App';
 
 jest.mock('react-redux');
@@ -15,6 +17,7 @@ test('App', () => {
   const dispatch = jest.fn();
   useSelector.mockImplementation((selector) => selector({
     regions,
+    categories,
   }));
 
   useDispatch.mockImplementation(() => dispatch);
@@ -26,6 +29,10 @@ test('App', () => {
   expect(container).toHaveTextContent('Restaurants');
 
   regions.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
+  });
+
+  categories.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 
