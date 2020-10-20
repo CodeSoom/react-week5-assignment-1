@@ -34,13 +34,24 @@ const reducers = {
       categories: newCategories,
     };
   },
-  selectRegion: (state, payload) => ({
-    ...state,
-    regions: [
-      { id: 1, name: '서울(v)' },
-      { id: 2, name: '대전' },
-    ],
-  }),
+  selectRegion: (state, payload) => {
+    const newRegions = state.regions
+      .map((region) => {
+        const { id, name } = region;
+
+        return {
+          ...region,
+          name: id === payload.id
+            ? `${name}(v)`
+            : name,
+        };
+      });
+
+    return {
+      ...state,
+      regions: newRegions,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action = initialAction) {
