@@ -34,6 +34,13 @@ const reducers = {
       categories: newCategories,
     };
   },
+  selectRegion: (state, payload) => ({
+    ...state,
+    regions: [
+      { id: 1, name: '서울(v)' },
+      { id: 2, name: '대전' },
+    ],
+  }),
 };
 
 export default function reducer(state = initialState, action = initialAction) {
