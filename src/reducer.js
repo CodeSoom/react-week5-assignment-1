@@ -17,5 +17,15 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  if (action.type === 'checkCategories') {
+    const { id, isChecked } = action.payload;
+    return {
+      ...state,
+      initialCategories: [...state.initialCategories.map((category) => (
+        category.id === id ? { ...category, isChecked: !isChecked } : category
+      )),
+      ],
+    };
+  }
   return state;
 }

@@ -13,11 +13,6 @@ export default function App() {
 
   function onClick(id, isChecked) {
     dispatch({ type: 'checkCategories', payload: { id, isChecked } });
-    // [
-    //   ...categories.map((category) => (
-    //     category.id === id ? { ...category, isChecked: !isChecked } : category
-    //   )),
-    // ]
   }
 
   return (
