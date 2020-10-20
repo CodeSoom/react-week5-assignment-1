@@ -8,13 +8,17 @@ import {
   setRegions,
 } from './actions';
 
-import regions from '../fixtures/regions';
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
+
+  dispatch(setRegions(regions));
+}
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRegions(regions));
+    loadRegions({ dispatch });
   }, []);
 
   return (
