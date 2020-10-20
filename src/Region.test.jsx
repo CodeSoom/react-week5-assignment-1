@@ -6,12 +6,12 @@ import Region from './Region';
 
 describe('Region', () => {
   const handleClick = jest.fn();
-  const regionRender = () => render((
-    <Region onClick={handleClick} />
+  const regionRender = ({ region }) => render((
+    <Region onClick={handleClick} region={region} />
   ));
 
   it('버튼 클릭 시 onClick 핸들러가 실행된다.', () => {
-    const { getByText } = regionRender();
+    const { getByText } = regionRender({ region: '대전' });
     const button = getByText(/대전/);
 
     expect(button).not.toBeNull();
