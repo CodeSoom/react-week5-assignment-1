@@ -49,7 +49,10 @@ const reducers = {
 
     return {
       ...state,
-      regions: newRegions,
+      regions: [
+        { id: 1, name: '서울(v)' },
+        { id: 2, name: '대전' },
+      ]
     };
   },
 };
