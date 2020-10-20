@@ -52,6 +52,7 @@ const reducers = {
     return {
       ...state,
       regions: newRegions,
+      selectedRegion: '서울',
     };
   },
 };
