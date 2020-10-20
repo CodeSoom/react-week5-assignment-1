@@ -42,7 +42,10 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes the name of selected category', () => {
       const state = reducer({
-        categories,
+        categories: [
+          { id: 1, name: '한식' },
+          { id: 2, name: '중식(v)' },
+        ],
       }, selectCategory(categories[0].id));
 
       state.categories.forEach((category, index) => {
