@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
+import { selectCategory } from './actions';
+
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
@@ -12,7 +14,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClickSelectCategory() {
-    return dispatch();
+    return dispatch(selectCategory());
   }
 
   return (
