@@ -1,10 +1,15 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import App from './App';
 
 describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  })
+
+  const handleClickSelect = jest.fn();
 
   context('지역 리스트가 주어지면,', () => {
     const locationList = ['서울', '대전', '부산'];
@@ -41,4 +46,21 @@ describe('App', () => {
       });
     })
   })
+
+  it('서울 버튼을 클릭하면 handleClickSelect 함수가 출력됩니다.', () => {
+    const { getByText } = render(<App />);
+    const button = getByText('서울');
+
+    expect(handleClickSelect).not.toBeCalled();
+    fireEvent.click(button);
+    expect(handleClickSelect).toBeCalled();
+  });
+
+  it('서울 버튼을 클릭하면 서울(V)문구로 변경됩니다.', () => {
+    const { getByText } = render(<App />);
+    const button = getByText('서울');
+
+    fireEvent.click(button);
+    expect(button).toHaveTextContent('서울(V)');
+  });
 });
