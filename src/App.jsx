@@ -16,7 +16,7 @@ export default function App() {
   }, []);
 
   const { locationList, foodTypeList, resultList } = useSelector((state) => ({
-    localList: state.locationList,
+    locationList: state.locationList,
     foodTypeList: state.foodTypeList,
     resultList: state.resultList,
   }));
