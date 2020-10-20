@@ -1,5 +1,6 @@
 const initialState = {
   regions: [],
+  categories: [],
 };
 
 const initialAction = {
@@ -14,6 +15,12 @@ const reducers = {
       regions,
     };
   },
+  setCategories: () => ({
+    categories: [
+      { id: 1, name: '한식' },
+      { id: 2, name: '중식' },
+    ],
+  }),
 };
 
 export default function reducer(state = initialState, action = initialAction) {
