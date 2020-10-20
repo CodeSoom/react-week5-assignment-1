@@ -87,5 +87,14 @@ describe('reducer', () => {
         expect(region.name).not.toContain('(v)');
       });
     });
+
+    it('changes selected region', () => {
+      const state = reducer({
+        regions,
+        selectedRegion: '',
+      }, selectRegion(regions[0].id, regions[0].name));
+
+      expect(state.selectedRegion).toBe(regions[0].name);
+    });
   });
 });
