@@ -1,4 +1,4 @@
-import fixture from '../fixtures/regions';
+import { fetchRegions } from './service/api';
 
 export function setRegions(regions) {
   return {
@@ -10,10 +10,9 @@ export function setRegions(regions) {
 }
 
 export function loadRegions() {
-  return {
-    type: 'setRegions',
-    payload: {
-      regions: fixture,
-    },
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+
+    dispatch(setRegions(regions));
   };
 }
