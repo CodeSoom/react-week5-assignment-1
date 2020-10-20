@@ -23,6 +23,11 @@ export default function App() {
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
-    </div>
+      <ul>
+      <li>양천주가</li>
+      <li>한국식 초밥</li>
+      <li>김초밥</li>
+      </ul>
+      </div>
   );
 }
