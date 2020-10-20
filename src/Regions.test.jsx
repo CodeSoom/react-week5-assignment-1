@@ -8,7 +8,7 @@ describe('Regions', () => {
   it('show all regions', () => {
     const handleClick = jest.fn();
 
-    const regions = [
+    const initialRegions = [
       { id: 1, region: '서울' },
       { id: 2, region: '대구' },
       { id: 3, region: '부산' },
@@ -18,14 +18,19 @@ describe('Regions', () => {
 
     ];
 
-    const { getByText } = render(<Regions regions={regions} onClick={handleClick} />);
+    const { getByText } = render(
+      <Regions
+        regions={initialRegions}
+        onClick={handleClick}
+      />,
+    );
 
-    regions.forEach(({ region }) => {
+    initialRegions.forEach(({ region }) => {
       expect(getByText(`${region}`)).not.toBeNull();
+
+      fireEvent.click(getByText(`${region}`));
+
+      expect(handleClick).toBeCalled();
     });
-
-    fireEvent.click(getByText('서울'));
-
-    expect(handleClick).toBeCalled();
   });
 });

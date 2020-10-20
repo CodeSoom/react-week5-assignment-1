@@ -16,7 +16,12 @@ describe('Categories', () => {
       { id: 5, category: '분식' },
     ];
 
-    const { getByText } = render(<Categories categories={initialCategories} onClick={handleClick} />);
+    const { getByText } = render(
+      <Categories
+        categories={initialCategories}
+        onClick={handleClick}
+      />,
+    );
 
     initialCategories.forEach(({ category }) => {
       expect(getByText(`${category}`)).not.toBeNull();
