@@ -2,16 +2,17 @@ import React from 'react';
 
 import Region from './Region';
 
-const RegionList = ({ regions }) => {
+const RegionList = ({ regions, onSelectRegionClick }) => {
   if (regions.length === 0) {
     return null;
   }
   return (
     <ul>
-      {regions.map((region) => (
+      {regions.map(({ id, name }) => (
         <Region
-          key={region.id}
-          region={region.name}
+          key={id}
+          region={name}
+          onClick={() => onSelectRegionClick(id)}
         />
       ))}
     </ul>
