@@ -8,6 +8,8 @@ import {
   setRegions,
 } from './actions';
 
+import { fetchRegions } from './service/api';
+
 async function loadRegions({ dispatch }) {
   const regions = await fetchRegions();
 

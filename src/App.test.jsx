@@ -14,13 +14,13 @@ import {
 
 jest.mock('react-redux');
 
-test('App', () => {
+test('App', async () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({ regions }));
 
-  const { queryByText } = render(<App />);
+  const { queryByText } = await render(<App />);
 
   expect(queryByText(/서울/)).not.toBeNull();
 
