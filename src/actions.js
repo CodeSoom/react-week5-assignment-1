@@ -5,9 +5,10 @@ export const loadRegion = (regions) => ({
   },
 });
 
-export const loadCategory = (categorys) => ({
-  type: 'loadCategory',
+export const loadRestaurantInfo = ({ type, info }) => ({
+  type: 'loadRestaurantInfo',
   payload: {
-    categorys,
+    type,
+    info,
   },
 });
