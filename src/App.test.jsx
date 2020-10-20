@@ -42,7 +42,5 @@ test('App', () => {
     expect(container).toHaveTextContent(name);
   });
 
-  expect(container).toHaveTextContent(`${selectedRegion}:${selectedCategory}`);
-
   expect(dispatch).toBeCalled();
 });
