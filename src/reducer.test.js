@@ -7,6 +7,14 @@ import { setRegions } from './actions';
 describe('reducer', () => {
   const initialRegions = [];
 
+  describe('undefined action', () => {
+    it('changes nothing', () => {
+      const state = reducer();
+
+      expect(state.regions).toStrictEqual(initialRegions);
+    });
+  });
+
   describe('setRegions', () => {
     it('changes regions', () => {
       const state = reducer({
