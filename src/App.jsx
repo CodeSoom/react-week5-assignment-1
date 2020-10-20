@@ -1,4 +1,5 @@
 import React from 'react';
+import Categories from './Categories';
 
 export default function App() {
   function onClick(e) {
@@ -13,11 +14,7 @@ export default function App() {
 
   return (
     <>
-      <ul>
-        {categories.map((category) => (
-          <li><button onClick={onClick} type="button">{category}</button></li>
-        ))}
-      </ul>
+      <Categories categories={categories} onClick={onClick} />
       <ul>
         {regions.map((region) => (
           <li><button onClick={onClick} type='button'>{region}</button></li>
