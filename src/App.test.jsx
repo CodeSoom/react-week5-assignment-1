@@ -9,6 +9,7 @@ import regions from '../__fixtures__/regions';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 test('App', () => {
   const dispatch = jest.fn();
