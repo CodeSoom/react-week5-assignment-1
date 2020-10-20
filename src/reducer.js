@@ -2,6 +2,10 @@ const initialState = {
   regions: [],
 };
 
+const initialAction = {
+  type: 'initialAction',
+};
+
 const reducers = {
   setRegions: (state, payload) => {
     const { regions } = payload;
@@ -12,12 +16,12 @@ const reducers = {
   },
 };
 
-export default function reducer(state = initialState, action) {
-  if (!action) {
+export default function reducer(state = initialState, action = initialAction) {
+  const { type, payload } = action;
+
+  if (!reducers[type]) {
     return state;
   }
-
-  const { type, payload } = action;
 
   return reducers[type](state, payload);
 }
