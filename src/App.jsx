@@ -5,6 +5,7 @@ export default function App() {
   function onClick(e) {
     console.log(`${e.target.value}`)
   }
+
   const categories = [
     { id: 1, category: '한식' },
     { id: 2, category: '중식' },

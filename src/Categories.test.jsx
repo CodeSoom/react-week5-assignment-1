@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import Categories from './Categories';
 
 describe('Categories', () => {
@@ -19,5 +19,9 @@ describe('Categories', () => {
     categories.forEach(({ category }) => {
       expect(getByText(`${category}`)).not.toBeNull();
     });
+
+    fireEvent.click(getByText('한식'));
+
+    expect(handleClick).toBeCalled();
   });
 });
