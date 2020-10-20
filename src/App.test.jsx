@@ -14,12 +14,18 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 test('App', () => {
+  const selectedCategory = 1;
+  const selectedRegion = '서울';
+
   const dispatch = jest.fn();
+
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
+    selectedCategory,
+    selectedRegion,
   }));
 
   const { container } = render((
@@ -35,6 +41,8 @@ test('App', () => {
   categories.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
+
+  expect(container).toHaveTextContent(`${selectedRegion}:${selectedCategory}`);
 
   expect(dispatch).toBeCalled();
 });
