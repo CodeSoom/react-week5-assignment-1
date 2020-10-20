@@ -42,17 +42,14 @@ const reducers = {
         return {
           ...region,
           name: id === payload.id
-            ? `${name}(v)`
-            : name,
+            ? `${name.replace('(v)', '')}(v)`
+            : name.replace('(v)', ''),
         };
       });
 
     return {
       ...state,
-      regions: [
-        { id: 1, name: '서울(v)' },
-        { id: 2, name: '대전' },
-      ]
+      regions: newRegions,
     };
   },
 };
