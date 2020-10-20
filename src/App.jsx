@@ -6,10 +6,14 @@ export default function App() {
     console.log(`${e.target.value}`)
   }
   const categories = [
-    '서울', '대구', '부산', '대전', '강원도', '광주'
-  ]
+    { id: 1, category: '한식' },
+    { id: 2, category: '중식' },
+    { id: 3, category: '일식' },
+    { id: 4, category: '양식' },
+    { id: 5, category: '분식' },
+  ];
   const regions = [
-    '한식', '중식', '일식', '양식', '분식'
+    '서울', '대구', '부산', '대전', '강원도', '광주'
   ]
 
   return (
