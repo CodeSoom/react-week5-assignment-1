@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Region = ({ region, onClick }) => (
+const Item = ({ name, onClick }) => (
   <li>
     <button type="button" onClick={onClick}>
-      {region}
+      {name}
     </button>
   </li>
 );
 
-export default Region;
+export default Item;

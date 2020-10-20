@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Region from './Region';
+import Item from './Item';
 
 const RegionList = ({ regions, onSelectRegionClick }) => {
   if (regions.length === 0) {
@@ -9,9 +9,9 @@ const RegionList = ({ regions, onSelectRegionClick }) => {
   return (
     <ul>
       {regions.map(({ id, name }) => (
-        <Region
+        <Item
           key={id}
-          region={name}
+          name={name}
           onClick={() => onSelectRegionClick(id)}
         />
       ))}
