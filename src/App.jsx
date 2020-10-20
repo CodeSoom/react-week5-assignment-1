@@ -5,8 +5,10 @@ import RegionsContainer from './RegionsContainer';
 
 import { setRegions } from './actions';
 
-function loadRegions({ dispatch }) {
-  const regions = [];
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
 
   dispatch(setRegions(regions));
 }
