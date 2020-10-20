@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setSelectButtons } from './actions';
 
 import Buttons from './Buttons';
 import List from './List';
 
 export default function App() {
 
-  const locationList = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
-  const foodTypeList = ['한식', '중식', '일식', '양식', '분식'];
-  const resultList = ['양천주가', '밀면넘어져요'];
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(setSelectButtons());
+  }, []);
+
+  const { locationList, foodTypeList, resultList } = useSelector((state) => ({
+    localList: state.locationList,
+    foodTypeList: state.foodTypeList,
+    resultList: state.resultList,
+  }));
 
   return (
     <>
