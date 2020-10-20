@@ -15,7 +15,7 @@ describe('App', () => {
 
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => { dispatch });
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     locationList: [],
     foodTypeList: [],
