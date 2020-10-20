@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   loadRestaurantCategories,
+  loadRestaurnats,
   setRestaurantCategory,
 } from './actions';
 
@@ -17,6 +18,7 @@ export default function RestaurantsCategoriesContainer() {
 
   const handleClick = (category) => {
     dispatch(setRestaurantCategory(category));
+    dispatch(loadRestaurnats());
   };
 
   return (
