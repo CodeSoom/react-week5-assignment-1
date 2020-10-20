@@ -26,18 +26,6 @@ describe('Buttons', () => {
     expect(handleClickSelect).toBeCalled();
   });
 
-  it('서울 버튼을 클릭하면 서울(V)문구로 변경됩니다.', () => {
-    const { getByText } = render((
-      <Buttons
-        buttonNameList={['서울']}
-        handleClickSelect={handleClickSelect}
-      />));
-    const button = getByText('서울');
-
-    fireEvent.click(button);
-    expect(button).toHaveTextContent('서울(V)');
-  });
-
   context('ButtonsNameList가 주어지면,', () => {
     const buttonNameList = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
 
