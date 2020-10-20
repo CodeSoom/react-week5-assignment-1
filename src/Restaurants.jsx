@@ -1,11 +1,10 @@
 import React from 'react';
 
-export default function Restaurants() {
+export default function Restaurants({ restaurants }) {
   return (
     <ul>
-      <li>
-        서울:1
-      </li>
+      <li>양천주가</li>
+      <li>한국식 초밥</li>
     </ul>
   );
 }
