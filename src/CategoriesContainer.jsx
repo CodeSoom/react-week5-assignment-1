@@ -13,8 +13,8 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
 
-  function handleClickSelectCategory() {
-    return dispatch(selectCategory());
+  function handleClickSelectCategory(id) {
+    return dispatch(selectCategory(id));
   }
 
   return (
