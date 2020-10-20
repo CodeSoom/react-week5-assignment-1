@@ -2,29 +2,34 @@ import React from 'react';
 
 export default function App() {
 
+  const locationList = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+  const foodTypeList = ['한식', '중식', '일식', '양식', '분식'];
+  const resultList = ['양천주가', '밀면넘어져요'];
+
   return (
     <>
       <ul>
-        <li><button>서울</button></li>
-        <li><button>대전</button></li>
-        <li><button>대구</button></li>
-        <li><button>부산</button></li>
-        <li><button>광주</button></li>
-        <li><button>강원도</button></li>
-        <li><button>인천</button></li>
+        {
+          locationList.map((location) => (
+            <li><button>{location}</button></li>
+          ))
+        }
       </ul>
 
       <ul>
-        <li><button>한식</button></li>
-        <li><button>중식</button></li>
-        <li><button>일식</button></li>
-        <li><button>양식</button></li>
-        <li><button>분식</button></li>
+        {
+          foodTypeList.map((foodType) => (
+            <li><button>{foodType}</button></li>
+          ))
+        }
       </ul>
 
       <ul>
-        <li>양천주가</li>
-        <li>밀면넘어져요</li>
+        {
+          resultList.map((result) => (
+            <li>{result}</li>
+          ))
+        }
       </ul>
     </>
   );
