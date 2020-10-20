@@ -1,11 +1,12 @@
 import React from "react";
 
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import App from "./App";
 
 describe("App", () => {
   const renderApp = () => render(<App />);
+  const handleClick = jest.fn();
   it("show categories and regions", () => {
     const { getByText } = renderApp();
 
@@ -23,6 +24,10 @@ describe("App", () => {
     regions.forEach((category) => {
       expect(getByText(`${category}`)).not.toBeNull();
     })
+
+    fireEvent.click(getByText("서울"));
+
+    expect(handleClick).toBeCalled();
   })
 })
 
