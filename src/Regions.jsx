@@ -3,10 +3,9 @@ import React from 'react';
 export default function Regions({ regions }) {
   return (
     <ul>
-      { regions.map(({ id, name }) => (
-        <li>
+      { regions.map(({ name }) => (
+        <li key={name}>
           <button
-            key={`${id}:${name}`}
             type="button"
           >
             {name}
