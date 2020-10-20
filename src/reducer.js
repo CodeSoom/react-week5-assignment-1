@@ -6,7 +6,7 @@ import {
   SET_RESTAURANTS,
 } from './actions';
 
-const initialState = {
+export const initialState = {
   regions: [],
   categories: [],
   selectedRegion: {},
