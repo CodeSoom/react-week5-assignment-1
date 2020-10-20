@@ -22,7 +22,6 @@ describe("App", () => {
     regions: regionsTestData,
   }))
 
-
   it("show categories and regions", () => {
     const { getByText } = render(<App />)
 
