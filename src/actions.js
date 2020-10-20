@@ -1,10 +1,3 @@
-export const loadRegion = (regions) => ({
-  type: 'loadRegion',
-  payload: {
-    regions,
-  },
-});
-
 export const loadRestaurantInfo = ({ type, info }) => ({
   type: 'loadRestaurantInfo',
   payload: {
@@ -12,3 +5,5 @@ export const loadRestaurantInfo = ({ type, info }) => ({
     info,
   },
 });
+
+export const temp = () => ({});
