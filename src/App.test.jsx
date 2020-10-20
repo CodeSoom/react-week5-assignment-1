@@ -15,12 +15,12 @@ jest.mock('./services/api');
 
 test('App', () => {
   const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
   }));
-
-  useDispatch.mockImplementation(() => dispatch);
 
   const { container } = render((
     <App />
