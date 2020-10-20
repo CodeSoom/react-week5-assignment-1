@@ -14,8 +14,6 @@ export default function App() {
     regions: state.initialRegions,
   }));
 
-  console.log(categories, regions);
-
   function onClick(id, isChecked) {
     dispatch();
     // [

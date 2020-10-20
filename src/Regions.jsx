@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Regions({ regions, onClick }) {
+export default function Regions({ regions = [], onClick }) {
   return (
     <ul>
       {regions.map(({ id, region, isChecked }) => (

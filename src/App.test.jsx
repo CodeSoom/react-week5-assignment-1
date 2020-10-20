@@ -6,22 +6,25 @@ import App from "./App";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import categoriesTestData from "./fixtures/categories";
+
+import regionsTestData from "./fixtures/regions";
+
 jest.mock('react-redux');
 
 describe("App", () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  useDispatch.mockImplementation(() => dispatch)
 
   useSelector.mockImplementation((selector) => selector({
-    categories: [],
-    regions: []
+    categories: categoriesTestData,
+    regions: regionsTestData,
   }))
 
-  const renderApp = () => render(<App />);
 
   it("show categories and regions", () => {
-    const { getByText } = renderApp();
+    const { getByText } = render(<App />)
 
     const categories = [
       '한식', '중식', '일식', '양식', '분식'
