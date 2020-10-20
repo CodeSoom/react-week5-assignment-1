@@ -16,3 +16,9 @@ export function loadRegions() {
     dispatch(setRegions(regions));
   };
 }
+
+export function loadCategories() {
+  return async (dispatch) => {
+
+  };
+}
