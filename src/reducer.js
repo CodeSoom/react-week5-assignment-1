@@ -3,6 +3,7 @@ const initialState = {
   categories: [],
   selectedCategory: '',
   selectedRegion: '',
+  restaurants: [],
 };
 
 const initialAction = {
