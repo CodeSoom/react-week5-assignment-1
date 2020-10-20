@@ -8,6 +8,8 @@ import regions from '../__fixtures__/regions';
 
 import RegionsContainer from './RegionsContainer';
 
+import { selectRegion } from './actions';
+
 jest.mock('react-redux');
 
 test('RegionsContainer', () => {
@@ -22,11 +24,11 @@ test('RegionsContainer', () => {
     <RegionsContainer />
   ));
 
-  regions.forEach(({ name }) => {
+  regions.forEach(({ id, name }) => {
     expect(container).toHaveTextContent(name);
 
     fireEvent.click(getByText(name));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledWith(selectRegion(id));
   });
 });
