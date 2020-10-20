@@ -25,7 +25,7 @@ describe("App", () => {
       expect(getByText(`${category}`)).not.toBeNull();
     })
 
-    fireEvent.click(getByText("서울"));
+    fireEvent.click(getByText('서울'));
 
     expect(handleClick).toBeCalled();
   })
