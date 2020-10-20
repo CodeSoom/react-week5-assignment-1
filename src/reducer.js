@@ -16,23 +16,13 @@ const reducers = {
     ...state,
     categories,
   }),
-  selectCategory: (state, payload) => {
-    const newCategories = state.categories.map((category) => {
-      const { id, name } = category;
-
-      return {
-        ...category,
-        name: id === payload.id
-          ? `${name}(v)`
-          : name,
-      };
-    });
-
-    return {
-      ...state,
-      categories: newCategories,
-    };
-  },
+  selectCategory: (state, payload) => ({
+    ...state,
+    categories: [
+      { id: 1, name: '한식(v)' },
+      { id: 2, name: '중식' },
+    ],
+  }),
 };
 
 export default function reducer(state = initialState, action = initialAction) {
