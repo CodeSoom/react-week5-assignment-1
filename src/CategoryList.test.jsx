@@ -3,31 +3,31 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 import CategoryList from './CategoryList';
-import { categorysFixture } from '../fixtures/fixtures';
+import { categoriesFixture } from '../fixtures/fixtures';
 
 describe('CategoryList', () => {
   const handleSelectClick = jest.fn();
 
-  const categoryListRender = (categorys) => render((
+  const categoryListRender = (categories) => render((
     <CategoryList
-      categorys={categorys}
+      categories={categories}
       onSelectCategoryClick={handleSelectClick}
     />
   ));
 
-  context('with categorys', () => {
-    it('see renders categorys', () => {
-      const { getByText } = categoryListRender(categorysFixture);
+  context('with categories', () => {
+    it('see renders categories', () => {
+      const { getByText } = categoryListRender(categoriesFixture);
 
-      categorysFixture.forEach(({ name }) => {
+      categoriesFixture.forEach(({ name }) => {
         expect(getByText(name)).not.toBeNull();
       });
     });
 
     it('renders button to click a category', () => {
-      const { getByText } = categoryListRender(categorysFixture);
+      const { getByText } = categoryListRender(categoriesFixture);
 
-      categorysFixture.forEach(({ name, id }) => {
+      categoriesFixture.forEach(({ name, id }) => {
         fireEvent.click(getByText(name));
 
         expect(handleSelectClick).toBeCalledWith(id);
@@ -35,11 +35,11 @@ describe('CategoryList', () => {
     });
   });
 
-  context('without categorys', () => {
-    const categorys = [];
+  context('without categories', () => {
+    const categories = [];
 
-    it('nothing render categorys', () => {
-      const { container } = categoryListRender(categorys);
+    it('nothing render categories', () => {
+      const { container } = categoryListRender(categories);
 
       expect(container).toBeEmptyDOMElement();
     });

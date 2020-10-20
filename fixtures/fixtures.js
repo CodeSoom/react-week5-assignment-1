@@ -8,7 +8,7 @@ export const regionsFixture = [
   { id: 7, name: '인천' },
 ];
 
-export const categorysFixture = [
+export const categoriesFixture = [
   { id: 1, name: '한식' },
   { id: 2, name: '중식' },
   { id: 3, name: '일식' },
