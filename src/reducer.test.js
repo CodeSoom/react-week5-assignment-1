@@ -40,12 +40,19 @@ describe('reducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('changes categories', () => {
+    it('changes the name of selected category', () => {
       const state = reducer({
         categories,
       }, selectCategory(categories[0].id));
 
-      expect(state.categories[0].name).toBe(`${categories[0].name}(v)`);
+      state.categories.forEach((category, index) => {
+        if (index === 0) {
+          expect(category.name).toContain('(v)');
+          return;
+        }
+
+        expect(category.name).not.toContain('(v)');
+      });
     });
   });
 });
