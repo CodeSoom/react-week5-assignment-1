@@ -2,6 +2,7 @@ const initialState = {
   regions: [],
   categories: [],
   selectedCategory: '',
+  selectedRegion: '',
 };
 
 const initialAction = {
