@@ -3,8 +3,17 @@ import React from "react";
 import { render } from "@testing-library/react";
 
 import App from "./App";
+import { useDispatch, useSelector } from "react-redux";
 
 describe("App", () => {
+  const dispatch = jest.fn();
+
+  useDispatch.Implemetation(() => dispatch)
+
+  useSelector.Implemetation((selector) => selector({
+
+  }))
+
   const renderApp = () => render(<App />);
 
   it("show categories and regions", () => {
