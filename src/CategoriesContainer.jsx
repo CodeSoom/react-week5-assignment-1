@@ -1,0 +1,26 @@
+import React from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import Categories from './Categories';
+
+export default function App() {
+  const dispatch = useDispatch();
+
+  const { categories } = useSelector((state) => ({
+    categories: state.initialCategories,
+  }));
+
+  function onClick(id, isChecked) {
+    dispatch({ type: 'checkCategories', payload: { id, isChecked } });
+    // [
+    //   ...categories.map((category) => (
+    //     category.id === id ? { ...category, isChecked: !isChecked } : category
+    //   )),
+    // ]
+  }
+
+  return (
+    <Categories categories={categories} onClick={onClick} />
+  );
+}
