@@ -20,6 +20,11 @@ export default function App() {
       <h1>Restaurants</h1>
       <RegionsContainer />
       <CategoriesContainer />
+      <ul>
+      <li>
+      서울:1
+      </li>
+      </ul>
     </div>
   );
 }
