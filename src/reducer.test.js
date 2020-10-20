@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 
 import {
   SET_REGIONS,
@@ -93,6 +93,39 @@ describe('reducer', () => {
         address: '서울 강남구 123456',
         information: '양천주가 in 서울 강남구 123456',
       }]);
+    });
+  });
+
+  context('without any matched type', () => {
+    it('returns state', () => {
+      // Given
+      const previousState = {
+        regions: [{ id: 2, name: '대전' }],
+        categories: [{ id: 4, name: '양식' }],
+        selectedRegion: { id: 2, name: '대전' },
+        selectedCategory: { id: 4, name: '양식' },
+        restaurants: [{}],
+      };
+      const action = { type: 'NOTHING' };
+
+      // When
+      const state = reducer(previousState, action);
+
+      // Then
+      expect(state).toMatchObject(previousState);
+    });
+  });
+
+  context('without state', () => {
+    it('use initialState', () => {
+      // Given
+      const action = { type: null };
+
+      // When
+      const state = reducer(undefined, action);
+
+      // Then
+      expect(state).toMatchObject(initialState);
     });
   });
 });
