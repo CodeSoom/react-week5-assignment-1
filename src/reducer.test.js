@@ -41,7 +41,7 @@ describe('reducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('changes the name of selected category', () => {
+    it('changes category in categories', () => {
       const state = reducer({
         categories: [
           { id: 1, name: '한식' },
@@ -59,7 +59,7 @@ describe('reducer', () => {
       });
     });
 
-    it('changes selected category', () => {
+    it('changes selectedCategory', () => {
       const state = reducer({
         categories,
         selectedCategory: '',
@@ -72,7 +72,7 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     const { id, name } = regions[0];
 
-    it('changes the name of selected region', () => {
+    it('changes region in regions', () => {
       const state = reducer({
         regions: [
           { id: 1, name: '서울' },
@@ -90,7 +90,7 @@ describe('reducer', () => {
       });
     });
 
-    it('changes selected region', () => {
+    it('changes selectedRegion', () => {
       const state = reducer({
         regions,
         selectedRegion: '',
