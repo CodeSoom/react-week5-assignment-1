@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   categories: [],
+  selectedCategory: '',
 };
 
 const initialAction = {
@@ -32,7 +33,7 @@ const reducers = {
     return {
       ...state,
       categories: newCategories,
-      selectedCategory: 1,
+      selectedCategory: payload.id,
     };
   },
   selectRegion: (state, payload) => {
