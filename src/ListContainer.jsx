@@ -14,15 +14,11 @@ const ListContainer = () => {
     regions: state.regions,
   }));
 
+  const loadRestaurantDispatch = ({ type, info }) => dispatch(loadRestaurantInfo({ type, info }));
+
   useEffect(() => {
-    dispatch(loadRestaurantInfo({
-      type: 'categories',
-      info: categoriesFixture,
-    }));
-    dispatch(loadRestaurantInfo({
-      type: 'regions',
-      info: regionsFixture,
-    }));
+    loadRestaurantDispatch({ type: 'categories', info: categoriesFixture });
+    loadRestaurantDispatch({ type: 'regions', info: regionsFixture });
   }, []);
 
   return (
