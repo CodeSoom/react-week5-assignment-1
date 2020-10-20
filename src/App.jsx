@@ -13,29 +13,37 @@ export default function App() {
     { id: 5, category: '분식', isChecked: false },
   ];
 
-  const [categories, setState] = useState(initialCategories);
+  const initialRegions = [
+    { id: 1, region: '서울', isChecked: false },
+    { id: 2, region: '대구', isChecked: false },
+    { id: 3, region: '부산', isChecked: false },
+    { id: 4, region: '대전', isChecked: false },
+    { id: 5, region: '강원도', isChecked: false },
+    { id: 6, region: '광주', isChecked: false },
+  ];
+
+  const [categories, setCategories] = useState(initialCategories);
+
+  const [regions, setRegions] = useState(initialRegions);
 
   function onClick(id, isChecked) {
-    setState([
+    setCategories([
       ...categories.map((category) => (
         category.id === id ? { ...category, isChecked: !isChecked } : category
       )),
     ]);
-  }
 
-  const regions = [
-    { id: 1, region: '서울' },
-    { id: 2, region: '대구' },
-    { id: 3, region: '부산' },
-    { id: 4, region: '대전' },
-    { id: 5, region: '강원도' },
-    { id: 6, region: '광주' },
-  ];
+    setRegions([
+      ...regions.map((region) => (
+        region.id === id ? { ...region, isChecked: !isChecked } : region
+      )),
+    ]);
+  }
 
   return (
     <>
       <Categories categories={categories} onClick={onClick} />
-      <Regions regions={regions} />
+      <Regions regions={regions} onClick={onClick} />
     </>
   );
 }
