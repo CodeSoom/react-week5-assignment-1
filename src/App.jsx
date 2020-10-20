@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
+import { fetchRegions } from './services/api';
+
 import { setRegions } from './actions';
 
 function loadRegions({ dispatch }) {
-  const regions = [];
+  const regions = fetchRegions();
 
   dispatch(setRegions(regions));
 }
