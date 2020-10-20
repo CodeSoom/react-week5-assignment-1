@@ -58,6 +58,15 @@ describe('reducer', () => {
         expect(category.name).not.toContain('(v)');
       });
     });
+
+    it('changes selected category', () => {
+      const state = reducer({
+        categories,
+        selectedCategory: '',
+      }, selectCategory(categories[0].id));
+
+      expect(state.selectedCategory).toBe(categories[0].id);
+    });
   });
 
   describe('selectRegion', () => {
