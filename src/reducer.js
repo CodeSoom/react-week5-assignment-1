@@ -32,6 +32,7 @@ const reducers = {
     return {
       ...state,
       categories: newCategories,
+      selectedCategory: 1,
     };
   },
   selectRegion: (state, payload) => {
