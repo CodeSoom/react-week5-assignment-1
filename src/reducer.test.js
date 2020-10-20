@@ -7,6 +7,7 @@ import {
   setRegions,
   setCategories,
   selectCategory,
+  selectRegion,
 } from './actions';
 
 describe('reducer', () => {
@@ -56,6 +57,16 @@ describe('reducer', () => {
 
         expect(category.name).not.toContain('(v)');
       });
+    });
+  });
+
+  describe('selectRegion', () => {
+    it('changes the name of selected region', () => {
+      const state = reducer({
+        regions,
+      }, selectRegion(regions[0].id));
+
+      expect(state.regions[0].name).toBe(`${regions[0].name}(v)`);
     });
   });
 });
