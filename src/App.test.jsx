@@ -13,6 +13,7 @@ import {
 } from './actions';
 
 jest.mock('react-redux');
+jest.mock('./service/api');
 
 test('App', async () => {
   const dispatch = jest.fn();
