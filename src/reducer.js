@@ -8,16 +8,29 @@ const initialAction = {
 };
 
 const reducers = {
-  setRegions: (state, { regions }) => {
+  setRegions: (state, { regions }) => ({
+    ...state,
+    regions,
+  }),
+  setCategories: (state, { categories }) => ({
+    ...state,
+    categories,
+  }),
+  selectCategory: (state, payload) => {
+    const newCategories = state.categories.map((category) => {
+      const { id, name } = category;
+
+      return {
+        ...category,
+        name: id === payload.id
+          ? `${name}(v)`
+          : name,
+      };
+    });
+
     return {
       ...state,
-      regions,
-    };
-  },
-  setCategories: (state, { categories }) => {
-    return {
-      ...state,
-      categories,
+      categories: newCategories,
     };
   },
 };
