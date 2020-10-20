@@ -5,8 +5,8 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import regions from '../__fixtures__/regions';
-
 import categories from '../__fixtures__/categories';
+import restaurants from '../__fixtures__/restaurants';
 
 import App from './App';
 
@@ -16,11 +16,6 @@ jest.mock('./services/api');
 test('App', () => {
   const selectedCategory = 1;
   const selectedRegion = '서울';
-  const restaurants = [
-    { id: 1, name: '양천주가' },
-    { id: 6, name: '한국식 초밥' },
-    { id: 14, name: '김초밥' },
-  ];
 
   const dispatch = jest.fn();
 
