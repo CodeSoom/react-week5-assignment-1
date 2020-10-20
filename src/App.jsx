@@ -5,6 +5,8 @@ import RegionsContainer from './RegionsContainer';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import Restaurants from './Restaurants';
+
 import { loadRegions, loadCategories } from './actions';
 
 export default function App() {
@@ -20,11 +22,7 @@ export default function App() {
       <h1>Restaurants</h1>
       <RegionsContainer />
       <CategoriesContainer />
-      <ul>
-      <li>
-      서울:1
-      </li>
-      </ul>
+      <Restaurants />
     </div>
   );
 }
