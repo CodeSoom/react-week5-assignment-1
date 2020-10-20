@@ -36,5 +36,5 @@ test('App', () => {
     expect(container).toHaveTextContent(name);
   });
 
-  expect(dispatch).toBeCalledTimes(2);
+  expect(dispatch).toBeCalled();
 });
