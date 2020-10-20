@@ -8,7 +8,7 @@ export default function Categories({ categories, onClick }) {
           <li key={name}>
             <button
               type="button"
-              onClick={onClick(id)}
+              onClick={() => onClick(id)}
             >
               {name}
             </button>
