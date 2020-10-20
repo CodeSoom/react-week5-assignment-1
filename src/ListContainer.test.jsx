@@ -22,16 +22,26 @@ describe('ListContainer', () => {
     <ListContainer />
   ));
 
-  it('renders setting initial list', () => {
-    const { getByText } = listContainerRender();
-
+  const calledDispatch = ({ type, info }) => {
     expect(dispatch).toBeCalledWith({
       type: 'loadRestaurantInfo',
       payload: {
-        type: 'categories',
-        info: categoriesFixture,
+        type,
+        info,
       },
     });
+  };
+
+  it('renders setting initial list', () => {
+    const { getByText } = listContainerRender();
+
+    calledDispatch({ type: 'regions', info: regionsFixture });
+
+    regionsFixture.forEach(({ name }) => {
+      expect(getByText(name)).not.toBeNull();
+    });
+
+    calledDispatch({ type: 'categories', info: categoriesFixture });
 
     categoriesFixture.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
