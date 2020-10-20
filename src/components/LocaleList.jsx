@@ -1,9 +1,18 @@
 import React from 'react';
 
-export default function LocaleList() {
+export default function LocaleList({ locales }) {
   return (
     <li>
-      <button type="button">서울</button>
+      {
+        locales.map((locale) => (
+          <button
+            type="button"
+            key={locale.id}
+          >
+            {locale.name}
+          </button>
+        ))
+      }
     </li>
   );
 }
