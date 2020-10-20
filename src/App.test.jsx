@@ -24,7 +24,10 @@ test('App', () => {
   ));
 
   expect(container).toHaveTextContent('Restaurants');
-  expect(container).toHaveTextContent('서울');
+
+  regions.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
+  });
 
   expect(dispatch).toBeCalled();
 });
