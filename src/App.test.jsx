@@ -16,6 +16,11 @@ jest.mock('./services/api');
 test('App', () => {
   const selectedCategory = 1;
   const selectedRegion = '서울';
+  const restaurants = [
+    { id: 1, name: '양천주가' },
+    { id: 6, name: '한국식 초밥' },
+    { id: 14, name: '김초밥' },
+  ];
 
   const dispatch = jest.fn();
 
@@ -26,6 +31,7 @@ test('App', () => {
     categories,
     selectedCategory,
     selectedRegion,
+    restaurants,
   }));
 
   const { container } = render((
@@ -39,6 +45,10 @@ test('App', () => {
   });
 
   categories.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
+  });
+
+  restaurants.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 
