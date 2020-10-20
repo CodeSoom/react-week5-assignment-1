@@ -8,6 +8,8 @@ import categories from '../__fixtures__/categories';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import { selectCategory } from './actions';
+
 jest.mock('react-redux');
 
 test('CategoriesContainer', () => {
@@ -22,11 +24,11 @@ test('CategoriesContainer', () => {
     <CategoriesContainer />
   ));
 
-  categories.forEach(({ name }) => {
+  categories.forEach(({ id, name }) => {
     expect(container).toHaveTextContent(name);
 
     fireEvent.click(getByText(name));
-  });
 
-  expect(dispatch).toBeCalledTimes(categories.length);
+    expect(dispatch).toBeCalledWith(selectCategory(id));
+  });
 });
