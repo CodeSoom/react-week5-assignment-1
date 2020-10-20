@@ -3,14 +3,13 @@ import { useSelector } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 
 import LocaleListContainer from './LocaleListContainer';
+import locales from '../../fixtures/locales';
 
 jest.mock('react-redux');
 
 test('LocaleListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    locales: [
-      { id: 1, name: '서울' },
-    ],
+    locales,
   }));
 
   render(<LocaleListContainer />);
