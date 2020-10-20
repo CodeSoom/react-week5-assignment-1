@@ -18,10 +18,12 @@ describe('Categories', () => {
 
     categories.forEach(({ category }) => {
       expect(getByText(`${category}`)).not.toBeNull();
+
+      fireEvent.click(getByText(`${category}`));
+
+      expect(handleClick).toBeCalled();
+
+      expect(getByText(`${category}(V)`)).not.toBeNull();
     });
-
-    fireEvent.click(getByText('한식'));
-
-    expect(handleClick).toBeCalled();
   });
 });
