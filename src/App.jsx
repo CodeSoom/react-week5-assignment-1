@@ -12,16 +12,23 @@ export default function App() {
     { id: 4, category: '양식' },
     { id: 5, category: '분식' },
   ];
+
   const regions = [
-    '서울', '대구', '부산', '대전', '강원도', '광주'
-  ]
+    { id: 1, region: '서울' },
+    { id: 2, region: '대구' },
+    { id: 3, region: '부산' },
+    { id: 4, region: '대전' },
+    { id: 5, region: '강원도' },
+    { id: 6, region: '광주' },
+
+  ];
 
   return (
     <>
       <Categories categories={categories} onClick={onClick} />
       <ul>
-        {regions.map((region) => (
-          <li><button onClick={onClick} type='button'>{region}</button></li>
+        {regions.map(({ id, region }) => (
+          <li key={id}><button onClick={onClick} type='button'>{region}</button></li>
         ))}
       </ul>
     </>
