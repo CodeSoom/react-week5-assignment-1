@@ -1,14 +1,21 @@
 const initialState = {
   categorys: [],
+  regions: [],
 };
 
 const reducers = {
-  loadCategory: (state, { categorys }) => ({
+  loadRestaurantInfo: (state, { type, info }) => ({
     ...state,
-    categorys,
+    [type]: info,
   }),
 };
 
-const reducer = (state = initialState, { type, payload }) => reducers[type](state, payload);
+const reducer = (state = initialState, { type, payload }) => {
+  if (!reducers[type]) {
+    return state;
+  }
+
+  return reducers[type](state, payload);
+};
 
 export default reducer;
