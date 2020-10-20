@@ -25,6 +25,10 @@ export const loadRestaurantCategories = () => async (dispatch) => {
 export const loadRestaurnats = () => async (dispatch, getState) => {
   const { selectedRegion, selectedCategory } = getState();
 
+  if (!selectedRegion.name || !selectedCategory.id) {
+    return;
+  }
+
   const data = await fetchRestaurants({
     regionName: selectedRegion.name,
     categoryId: selectedCategory.id,
