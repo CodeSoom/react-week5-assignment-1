@@ -16,7 +16,7 @@ export default function App() {
 
   useEffect(() => {
     loadRegions({ dispatch });
-  }, {});
+  }, []);
 
   return (
     <div>
