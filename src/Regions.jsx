@@ -3,9 +3,9 @@ import React from 'react';
 export default function Regions({ regions }) {
   return (
     <ul>
-      {regions.map((region) => (
-        <li key={region.id}>
-          {region.name}
+      {regions.map(({ id, name }) => (
+        <li key={id}>
+          {name}
         </li>
       ))}
     </ul>
