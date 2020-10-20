@@ -30,7 +30,10 @@ const reducers = {
 
     return {
       ...state,
-      categories: newCategories,
+      categories: [
+        { id: 1, name: '한식(v)' },
+        { id: 2, name: '중식' },
+      ],
     };
   },
 };
