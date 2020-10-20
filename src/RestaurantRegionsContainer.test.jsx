@@ -57,6 +57,6 @@ describe('<RestaurantRegionsContainer />', () => {
     });
 
     // Then
-    expect(dispatch).toBeCalledTimes(getAllByRole('button').length + 1);
+    expect(dispatch).toBeCalledTimes((getAllByRole('button').length) * 2 + 1);
   });
 });
