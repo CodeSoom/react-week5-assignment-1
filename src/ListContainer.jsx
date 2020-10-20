@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { categoriesFixture } from '../fixtures/fixtures';
+import { categoriesFixture, regionsFixture } from '../fixtures/fixtures';
 import { loadRestaurantInfo } from './actions';
 import CategoryList from './CategoryList';
+import RegionList from './RegionList';
 
 const ListContainer = () => {
   const dispatch = useDispatch();
 
-  const { categories } = useSelector((state) => ({
+  const { categories, regions } = useSelector((state) => ({
     categories: state.categories,
+    regions: state.regions,
   }));
 
   useEffect(() => {
@@ -17,12 +19,21 @@ const ListContainer = () => {
       type: 'categories',
       info: categoriesFixture,
     }));
+    dispatch(loadRestaurantInfo({
+      type: 'regions',
+      info: regionsFixture,
+    }));
   }, []);
 
   return (
-    <CategoryList
-      categories={categories}
-    />
+    <>
+      <RegionList
+        regions={regions}
+      />
+      <CategoryList
+        categories={categories}
+      />
+    </>
   );
 };
 
