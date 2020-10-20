@@ -17,23 +17,21 @@ const reducers = {
     categories,
   }),
   selectCategory: (state, payload) => {
-    const newCategories = state.categories.map((category) => {
-      const { id, name } = category;
+    const newCategories = state.categories
+      .map((category) => {
+        const { id, name } = category;
 
-      return {
-        ...category,
-        name: id === payload.id
-          ? `${name}(v)`
-          : name,
-      };
-    });
+        return {
+          ...category,
+          name: id === payload.id
+            ? `${name.replace('(v)', '')}(v)`
+            : name.replace('(v)', ''),
+        };
+      });
 
     return {
       ...state,
-      categories: [
-        { id: 1, name: '한식(v)' },
-        { id: 2, name: '중식' },
-      ],
+      categories: newCategories,
     };
   },
 };
