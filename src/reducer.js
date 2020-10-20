@@ -1,18 +1,24 @@
 const initialState = {
-  regions: [
-    { id: 1, name: '서울' },
-  ],
+  regions: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
+const reducers = {
+  setRegions(state, action) {
     const { regions } = action.payload;
 
     return {
       ...state,
       regions,
     };
+  },
+};
+
+export default function reducer(state = initialState, action = {}) {
+  const reduce = reducers[action.type];
+
+  if (!reduce) {
+    return state;
   }
 
-  return state;
+  return reduce(state, action);
 }
