@@ -30,7 +30,9 @@ export function selectCategory(id) {
   });
 }
 
-export function selectRegion(id, name) {
+export function selectRegion(selectedRegion) {
+  const { id, name } = selectedRegion;
+
   return ({
     type: 'selectRegion',
     payload: {

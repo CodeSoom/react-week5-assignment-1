@@ -13,8 +13,8 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
-  function handleClickSelectRegion(id) {
-    return dispatch(selectRegion(id));
+  function handleClickSelectRegion(selectedRegion) {
+    return dispatch(selectRegion(selectedRegion));
   }
 
   return (

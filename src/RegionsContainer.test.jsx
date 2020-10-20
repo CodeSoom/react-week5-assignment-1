@@ -29,6 +29,6 @@ test('RegionsContainer', () => {
 
     fireEvent.click(getByText(name));
 
-    expect(dispatch).toBeCalledWith(selectRegion(id));
+    expect(dispatch).toBeCalledWith(selectRegion({ id, name }));
   });
 });

@@ -70,13 +70,15 @@ describe('reducer', () => {
   });
 
   describe('selectRegion', () => {
+    const { id, name } = regions[0];
+
     it('changes the name of selected region', () => {
       const state = reducer({
         regions: [
           { id: 1, name: '서울' },
           { id: 2, name: '대전(v)' },
         ],
-      }, selectRegion(regions[0].id));
+      }, selectRegion({ id, name }));
 
       state.regions.forEach((region, index) => {
         if (index === 0) {
@@ -92,7 +94,7 @@ describe('reducer', () => {
       const state = reducer({
         regions,
         selectedRegion: '',
-      }, selectRegion(regions[0].id, regions[0].name));
+      }, selectRegion({ id, name }));
 
       expect(state.selectedRegion).toBe(regions[0].name);
     });
