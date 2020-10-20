@@ -48,7 +48,7 @@ describe('App', () => {
   })
 
   it('서울 버튼을 클릭하면 handleClickSelect 함수가 출력됩니다.', () => {
-    const { getByText } = render(<App />);
+    const { getByText } = render(<App handleClickSelect={handleClickSelect} />);
     const button = getByText('서울');
 
     expect(handleClickSelect).not.toBeCalled();
@@ -57,7 +57,7 @@ describe('App', () => {
   });
 
   it('서울 버튼을 클릭하면 서울(V)문구로 변경됩니다.', () => {
-    const { getByText } = render(<App />);
+    const { getByText } = render(<App handleClickSelect={handleClickSelect} />);
     const button = getByText('서울');
 
     fireEvent.click(button);
