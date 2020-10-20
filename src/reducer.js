@@ -8,6 +8,12 @@ const reducers = {
   },
 };
 
-export default function reducer(state, { type, payload }) {
+export default function reducer(state, action) {
+  if (!action) {
+    return { regions: [] };
+  }
+
+  const { type, payload } = action;
+
   return reducers[type](state, payload);
 }
