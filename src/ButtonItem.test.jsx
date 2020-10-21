@@ -6,8 +6,9 @@ import Button from './ButtonItem';
 
 test('ButtonItem', () => {
   const handleClick = jest.fn();
+
   const { getByText } = render((
-    <Button onClick={handleClick}>
+    <Button onClick={handleClick} checked={false}>
       서울
     </Button>
   ));
@@ -16,4 +17,6 @@ test('ButtonItem', () => {
   fireEvent.click(button);
 
   expect(handleClick).toBeCalled();
+
+  expect(getByText('서울(V)')).not.toBeNull();
 });
