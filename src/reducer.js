@@ -41,5 +41,23 @@ export default function reducer(state = initialState, action) {
       ],
     };
   }
+
+  if (action.type === 'initializeCheckedItem') {
+    const { categories } = state;
+    const { id } = action.payload;
+
+    const checkedCategories = categories.filter((category) => category.isChecked === true);
+
+    if (checkedCategories.length === 2) {
+      return {
+        ...state,
+        categories: [...categories.map((category) => (
+          category.id === id ? category : { ...category, isChecked: false }
+        )),
+        ],
+      };
+    }
+    return state;
+  }
   return state;
 }
