@@ -4,7 +4,7 @@ import categories from './fixtures/categories';
 
 import regions from './fixtures/regions';
 
-import { checkCategories, checkRegions } from './actions';
+import { checkCategories, checkRegions, initializeCheckedItem } from './actions';
 
 describe('reducer', () => {
   describe('checkCategories', () => {
@@ -30,7 +30,7 @@ describe('reducer', () => {
       const state = reducer({ categories },
         initializeCheckedItem());
 
-      const checkedItemsNumber = categories.filter((category) => category.isChecked === true).length;
+      const checkedItemsNumber = state.filter((category) => category.isChecked === true).length;
       expect(checkedItemsNumber).toBe(1);
     });
   });
