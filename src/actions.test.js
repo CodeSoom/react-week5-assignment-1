@@ -9,6 +9,7 @@ import restaurants from '../__fixtures__/restaurants';
 import {
   fetchRegions,
   fetchCategories,
+  fetchRestaurants,
 } from './services/api';
 
 import {
@@ -55,7 +56,9 @@ describe('actions', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('dispatches fetched categories data', async () => {
+    it('dispatches fetched restaurants data', async () => {
+      fetchRestaurants.mockResolvedValue(restaurants);
+
       const store = mockStore({});
 
       await store.dispatch(loadRestaurants());
