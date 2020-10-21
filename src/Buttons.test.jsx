@@ -16,7 +16,7 @@ describe('Buttons', () => {
     const { getByText } = render((
       <Buttons
         buttonNameList={['서울']}
-        handleClickSelect={handleClickSelect}
+        onClickSelect={handleClickSelect}
       />));
 
     const button = getByText('서울');
