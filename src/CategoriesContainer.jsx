@@ -8,9 +8,11 @@ import {
   checkCategories, initializeCheckedCategories, setCategories,
 } from './actions';
 
+import { fetchCategories } from './services/api';
+
 function loadCategories({ dispatch }) {
-  const categories = [];
-  // TODO : fetch Categories
+  const categories = fetchCategories();
+
   dispatch(setCategories(categories));
 }
 
