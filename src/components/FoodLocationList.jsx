@@ -4,13 +4,13 @@ export default function FoodLocationList({ items, onClick }) {
   return (
     <li>
       {
-        items.map((item) => (
+        items.map(({ id, name }) => (
           <button
             type="button"
-            key={item.id}
+            key={id}
             onClick={onClick}
           >
-            {item.name}
+            {name}
           </button>
         ))
       }
