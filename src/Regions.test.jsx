@@ -4,22 +4,20 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import regionsTestData from './fixtures/regions';
+import regions from './fixtures/regions';
 
 describe('Regions', () => {
   it('show all regions', () => {
     const handleClick = jest.fn();
 
-    const initialRegions = regionsTestData;
-
     const { getByText } = render(
       <Regions
-        regions={initialRegions}
+        regions={regions}
         onClick={handleClick}
       />,
     );
 
-    initialRegions.forEach(({ region }) => {
+    regions.forEach(({ region }) => {
       expect(getByText(`${region}`)).not.toBeNull();
 
       fireEvent.click(getByText(`${region}`));

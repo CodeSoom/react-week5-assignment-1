@@ -21,8 +21,6 @@ describe('CategoriesContainer', () => {
     categories: categoriesTestData,
   }));
 
-  const state = reducer(categoriesTestData, { type: 'renderCategories' });
-
   it('show categories and regions', () => {
     const { getByText } = render(<CategoriesContainer />);
 

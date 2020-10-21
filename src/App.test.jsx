@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import categoriesTestData from './fixtures/categories';
+import categories from './fixtures/categories';
 
-import regionsTestData from './fixtures/regions';
+import regions from './fixtures/regions';
 
 jest.mock('react-redux');
 
@@ -18,16 +18,12 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    categories: categoriesTestData,
-    regions: regionsTestData,
+    categories,
+    regions,
   }));
 
   it('show categories and regions', () => {
     const { getByText } = render(<App />);
-
-    const categories = categoriesTestData;
-
-    const regions = regionsTestData;
 
     categories.forEach(({ category }) => {
       expect(getByText(`${category}`)).not.toBeNull();

@@ -8,14 +8,14 @@ export default function App() {
   const dispatch = useDispatch();
 
   const { categories } = useSelector((state) => ({
-    categories: state.initialCategories,
+    categories: state.categories,
   }));
 
-  function onClick(id, isChecked) {
+  function handleClick(id, isChecked) {
     dispatch({ type: 'checkCategories', payload: { id, isChecked } });
   }
 
   return (
-    <Categories categories={categories} onClick={onClick} />
+    <Categories categories={categories} onClick={handleClick} />
   );
 }

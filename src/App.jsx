@@ -10,8 +10,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   const { categories, regions } = useSelector((state) => ({
-    categories: state.initialCategories,
-    regions: state.initialRegions,
+    categories: state.categories,
+    regions: state.regions,
   }));
 
   function onClick(id, isChecked) {

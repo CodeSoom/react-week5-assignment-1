@@ -5,7 +5,7 @@ export default function Regions({ regions, onClick }) {
     <ul>
       {regions.map(({ id, region, isChecked }) => (
         <li key={id}>
-          <button onClick={() => onClick(id, isChecked)} type="button">
+          <button type="button" onClick={() => onClick(id, isChecked)}>
             {region && isChecked ? `${region}(V)` : region}
           </button>
         </li>
