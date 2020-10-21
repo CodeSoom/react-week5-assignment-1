@@ -6,8 +6,6 @@ import { fireEvent, render } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
-import regions from './fixtures/regions';
-
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
@@ -16,25 +14,69 @@ describe('RegionsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions,
+    regions: [
+      { id: 1, region: '서울', isChecked: false },
+      { id: 2, region: '대구', isChecked: false },
+    ],
   }));
 
-  it('show categories and regions', () => {
+  it('show all regions', () => {
     const { getByText } = render(<RegionsContainer />);
 
     expect(getByText('서울')).not.toBeNull();
+    expect(getByText('대구')).not.toBeNull();
   });
 
-  it('click category', () => {
-    const { getByText } = render(<RegionsContainer />);
+  context('click region', () => {
+    it('calls check dispatch', () => {
+      const { getByText } = render(<RegionsContainer />);
 
-    fireEvent.click(getByText('서울'));
+      const regions = [
+        { id: 1, region: '서울', isChecked: false },
+      ];
 
-    expect(dispatch).toBeCalledWith(
-      {
-        type: 'checkRegions',
-        payload: { id: regions[0].id, isChecked: regions[0].isChecked },
-      },
-    );
+      fireEvent.click(getByText('서울'));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'checkRegions',
+          payload: { id: regions[0].id, isChecked: regions[0].isChecked },
+        },
+      );
+    });
+
+    it('initialize previously checked region', () => {
+      const { getByText } = render(<RegionsContainer />);
+
+      const regions = [
+        { id: 1, region: '서울', isChecked: false },
+        { id: 2, region: '대구', isChecked: false },
+      ];
+
+      fireEvent.click(getByText('서울'));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'checkRegions',
+          payload: { id: regions[0].id, isChecked: regions[0].isChecked },
+        },
+      );
+
+      fireEvent.click(getByText('대구'));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'checkRegions',
+          payload: { id: regions[1].id, isChecked: regions[1].isChecked },
+        },
+      );
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'initializeCheckedItem',
+          payload: { id: regions[1].id },
+        },
+      );
+    });
   });
 });
