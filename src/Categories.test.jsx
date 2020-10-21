@@ -7,12 +7,12 @@ import categories from '../__fixtures__/categories';
 import Categories from './Categories';
 
 test('Categories', () => {
-  const handleClickSelect = jest.fn();
+  const handleClickCategory = jest.fn();
 
   const { container, getByText } = render((
     <Categories
       categories={categories}
-      onClick={handleClickSelect}
+      onClick={handleClickCategory}
     />
   ));
 
@@ -21,5 +21,5 @@ test('Categories', () => {
     fireEvent.click(getByText(name));
   });
 
-  expect(handleClickSelect).toBeCalledTimes(categories.length);
+  expect(handleClickCategory).toBeCalledTimes(categories.length);
 });
