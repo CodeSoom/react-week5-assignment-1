@@ -11,7 +11,12 @@ import categories from '../../fixtures/categories';
 jest.mock('react-redux');
 
 test('CategoriesContainer', () => {
-  useSelector.mockImplementation((selector) => selector({ categories }));
+  useSelector.mockImplementation((selector) => selector({
+    categories,
+    query: {
+      categoryId: 4,
+    },
+  }));
 
   const { queryByText } = render(<CategoriesContainer />);
 
