@@ -18,7 +18,7 @@ describe('Regions', () => {
 
   context('with one or more regions', () => {
     const regions = [
-      { id: 1, region: '서울', checked: false },
+      { id: 1, region: '서울', checked: true },
       { id: 2, region: '경기', checked: false },
       { id: 3, region: '부산', checked: false },
     ];
@@ -26,16 +26,18 @@ describe('Regions', () => {
     it('show regions of restaurant', () => {
       const { getByText } = renderRegions(regions);
 
-      regions.forEach(({ region }) => {
-        expect(getByText(region)).not.toBeNull();
+      regions.forEach(({ region, checked }) => {
+        const buttonText = region + (checked ? '(V)' : '');
+        expect(getByText(buttonText)).not.toBeNull();
       });
     });
 
     it('click region button then checked', () => {
       const { getByText } = renderRegions(regions);
 
-      regions.forEach(({ region }) => {
-        const button = getByText(region);
+      regions.forEach(({ region, checked }) => {
+        const buttonText = region + (checked ? '(V)' : '');
+        const button = getByText(buttonText);
 
         expect(button).not.toBeNull();
 
