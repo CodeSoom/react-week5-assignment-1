@@ -27,22 +27,6 @@ export function updateLoading(loading) {
   };
 }
 
-export function loadRegions() {
-  return async (dispatch) => {
-    const regions = await fetchRegions();
-
-    dispatch(setRegions(regions));
-  };
-}
-
-export function loadCategories() {
-  return async (dispatch) => {
-    const regions = await fetchCategories();
-
-    dispatch(setCategories(regions));
-  };
-}
-
 export function loadInitialState() {
   return async (dispatch) => {
     dispatch(updateLoading(true));
