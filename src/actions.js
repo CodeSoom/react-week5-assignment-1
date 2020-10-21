@@ -6,4 +6,7 @@ export const loadRestaurantInfo = ({ type, info }) => ({
   },
 });
 
-export const temp = () => ({});
+export const updateRestaurant = (payload) => ({
+  type: 'updateRestaurant',
+  payload,
+});
