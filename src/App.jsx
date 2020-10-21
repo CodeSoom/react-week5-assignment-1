@@ -1,25 +1,11 @@
 import React from 'react';
 
+import RegionsContainer from './RegionsContainer';
+
 export default function App() {
   return (
     <div>
-      <ul>
-        <li>
-          <button type="button">
-            서울
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            대전
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            대구
-          </button>
-        </li>
-      </ul>
+      <RegionsContainer />
     </div>
   );
 }
