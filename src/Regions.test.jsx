@@ -8,20 +8,24 @@ import Regions from './Regions';
 
 jest.mock('react-redux');
 
-test('Regions', () => {
+describe('Regions', () => {
   const handleClickRegion = jest.fn();
 
-  const { container, getByText } = render((
-    <Regions
-      regions={regions}
-      onClick={handleClickRegion}
-    />
-  ));
+  context('when the button clicked', () => {
+    it('run onClick function', () => {
+      const { container, getByText } = render((
+        <Regions
+          regions={regions}
+          onClick={handleClickRegion}
+        />
+      ));
 
-  regions.forEach(({ name }) => {
-    expect(container).toHaveTextContent(name);
-    fireEvent.click(getByText(name));
+      regions.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+        fireEvent.click(getByText(name));
+      });
+
+      expect(handleClickRegion).toBeCalledTimes(regions.length);
+    });
   });
-
-  expect(handleClickRegion).toBeCalledTimes(regions.length);
 });
