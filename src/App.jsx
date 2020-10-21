@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+import Loading from './Loading';
 
 import {
   loadRegions,
@@ -21,7 +22,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <p>로딩중...</p>
+      <Loading />
     );
   }
 
