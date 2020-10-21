@@ -41,24 +41,6 @@ describe('reducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('changes category in categories', () => {
-      const state = reducer({
-        categories: [
-          { id: 1, name: '한식' },
-          { id: 2, name: '중식' },
-        ],
-      }, selectCategory(categories[0].id));
-
-      state.categories.forEach((category, index) => {
-        if (index === 0) {
-          expect(category.checked).toBe('checked');
-          return;
-        }
-
-        expect(category.checked).toBe('');
-      });
-    });
-
     it('changes selectedCategory', () => {
       const state = reducer({
         categories,
@@ -71,24 +53,6 @@ describe('reducer', () => {
 
   describe('selectRegion', () => {
     const { id, name } = regions[0];
-
-    it('changes region in regions', () => {
-      const state = reducer({
-        regions: [
-          { id: 1, name: '서울' },
-          { id: 2, name: '대전' },
-        ],
-      }, selectRegion({ id, name }));
-
-      state.regions.forEach((region, index) => {
-        if (index === 0) {
-          expect(region.checked).toBe('checked');
-          return;
-        }
-
-        expect(region.checked).toBe('');
-      });
-    });
 
     it('changes selectedRegion', () => {
       const state = reducer({

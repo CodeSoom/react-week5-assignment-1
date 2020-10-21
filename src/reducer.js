@@ -19,40 +19,14 @@ const reducers = {
     ...state,
     categories,
   }),
-  selectCategory: (state, payload) => {
-    const newCategories = state.categories
-      .map((category) => {
-        const { id } = category;
-
-        return {
-          ...category,
-          checked: id === payload.id ? 'checked' : '',
-        };
-      });
-
-    return {
-      ...state,
-      categories: newCategories,
-      selectedCategory: payload.id,
-    };
-  },
-  selectRegion: (state, payload) => {
-    const newRegions = state.regions
-      .map((region) => {
-        const { id } = region;
-
-        return {
-          ...region,
-          checked: id === payload.id ? 'checked' : '',
-        };
-      });
-
-    return {
-      ...state,
-      regions: newRegions,
-      selectedRegion: payload.name,
-    };
-  },
+  selectCategory: (state, payload) => ({
+    ...state,
+    selectedCategory: payload.id,
+  }),
+  selectRegion: (state, payload) => ({
+    ...state,
+    selectedRegion: payload.name,
+  }),
 };
 
 export default function reducer(state = initialState, action = initialAction) {
