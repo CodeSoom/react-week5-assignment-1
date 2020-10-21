@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const reducers = {
-  loadRestaurantInfo: (state, { type, info }) => ({
+  setRestaurants: (state, { type, info }) => ({
     ...state,
     [type]: info,
   }),

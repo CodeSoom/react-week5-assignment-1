@@ -1,10 +1,10 @@
 import reducer from './reducer';
 
-import { loadRestaurantInfo, updateRestaurant } from './actions';
+import { setRestaurants, updateRestaurant } from './actions';
 import { categoriesFixture, regionsFixture } from '../fixtures/fixtures';
 
 describe('reducer', () => {
-  describe('loadRestaurantInfo', () => {
+  describe('setRestaurants', () => {
     const initialState = {
       categories: [],
       regions: [],
@@ -13,13 +13,13 @@ describe('reducer', () => {
     it('초기 "Restaurant" 정보를 불러온다.', () => {
       const { categories } = reducer({
         initialState,
-      }, loadRestaurantInfo({ type: 'categories', info: categoriesFixture }));
+      }, setRestaurants({ type: 'categories', info: categoriesFixture }));
 
       expect(categories).not.toHaveLength(0);
 
       const { regions } = reducer({
         initialState,
-      }, loadRestaurantInfo({ type: 'regions', info: regionsFixture }));
+      }, setRestaurants({ type: 'regions', info: regionsFixture }));
 
       expect(regions).not.toHaveLength(0);
     });
