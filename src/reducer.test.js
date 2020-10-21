@@ -55,8 +55,8 @@ describe('reducer', () => {
 
     it('initialize previously checked regions', () => {
       const checkedRegions = [
-        { id: 1, region: '서울', isChecked: true },
-        { id: 2, region: '대구', isChecked: true },
+        { id: 1, name: '서울', isChecked: true },
+        { id: 2, name: '대구', isChecked: true },
       ];
 
       const state = reducer({ regions: checkedRegions },

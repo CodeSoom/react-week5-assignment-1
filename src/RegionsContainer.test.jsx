@@ -16,8 +16,8 @@ describe('RegionsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions: [
-      { id: 1, region: '서울', isChecked: false },
-      { id: 2, region: '대구', isChecked: false },
+      { id: 1, name: '서울', isChecked: false },
+      { id: 2, name: '대구', isChecked: false },
     ],
   }));
 
@@ -33,7 +33,7 @@ describe('RegionsContainer', () => {
       const { getByText } = render(<RegionsContainer />);
 
       const regions = [
-        { id: 1, region: '서울', isChecked: false },
+        { id: 1, name: '서울', isChecked: false },
       ];
 
       fireEvent.click(getByText('서울'));
@@ -50,8 +50,8 @@ describe('RegionsContainer', () => {
       const { getByText } = render(<RegionsContainer />);
 
       const regions = [
-        { id: 1, region: '서울', isChecked: false },
-        { id: 2, region: '대구', isChecked: false },
+        { id: 1, name: '서울', isChecked: false },
+        { id: 2, name: '대구', isChecked: false },
       ];
 
       fireEvent.click(getByText('서울'));

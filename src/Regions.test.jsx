@@ -17,10 +17,10 @@ describe('Regions', () => {
       />,
     );
 
-    regions.forEach(({ region }) => {
-      expect(getByText(`${region}`)).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
 
-      fireEvent.click(getByText(`${region}`));
+      fireEvent.click(getByText(`${name}`));
 
       expect(handleClick).toBeCalled();
     });

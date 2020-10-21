@@ -3,7 +3,14 @@ export async function fetchCategories() {
 
   const response = await fetch(url);
 
-  const data = await response.json();
+  const rawData = await response.json();
+
+  const data = rawData.filter((category) => {
+    if (category.name === '과자' || category.name === '치킨') {
+      return false;
+    }
+    return true;
+  });
 
   return data;
 }

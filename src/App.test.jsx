@@ -30,8 +30,8 @@ describe('App', () => {
       expect(getByText(`${name}`)).not.toBeNull();
     });
 
-    regions.forEach(({ region }) => {
-      expect(getByText(`${region}`)).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
     });
   });
 
