@@ -6,7 +6,7 @@ import Restaurants from './Restaurants';
 
 import restaurants from '../fixtures/restaurants';
 
-test('RestaurantsContainer', () => {
+test('Restaurants', () => {
   const { getByText } = render((
     <Restaurants
       restaurants={restaurants}
