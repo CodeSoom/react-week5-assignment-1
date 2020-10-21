@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
+import RegionsContainer from './regions/RegionsContainer';
+import CategoriesContainer from './categories/CategoriesContainer';
 import Loading from './Loading';
 
 import {
   loadRegions,
-} from './actions';
+} from './redux/actions';
 
 export default function App() {
   const { loading } = useSelector(((state) => ({

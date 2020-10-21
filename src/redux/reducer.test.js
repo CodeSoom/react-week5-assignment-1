@@ -5,7 +5,7 @@ import {
   updateLoading,
 } from './actions';
 
-import regions from '../fixtures/regions';
+import regions from '../../fixtures/regions';
 
 describe('reducer', () => {
   describe('setRegions', () => {

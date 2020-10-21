@@ -1,4 +1,4 @@
-import { fetchRegions } from './service/api';
+import { fetchRegions } from '../services/api';
 
 export function setRegions(regions) {
   return {

@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import categories from '../fixtures/categories';
+import categories from '../../fixtures/categories';
 
 test('Categories', () => {
   const { queryByText } = render((

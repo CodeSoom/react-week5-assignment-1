@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 
 import configureStore from 'redux-mock-store';
 
-import regions from '../fixtures/regions';
+import regions from '../../fixtures/regions';
 
 import {
   loadRegions,
@@ -10,7 +10,7 @@ import {
   updateLoading,
 } from './actions';
 
-jest.mock('./service/api');
+jest.mock('../services/api');
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
