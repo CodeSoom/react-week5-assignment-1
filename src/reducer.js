@@ -1,6 +1,11 @@
 const initialState = {
   categories: [],
   regions: [],
+  restaurants: [],
+  regionNameAndcategoryId: {
+    regionName: '',
+    categoryId: 0,
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -41,6 +46,9 @@ export default function reducer(state = initialState, action) {
           category.id === id ? category : { ...category, isChecked: false }
         )),
         ],
+        regionNameAndcategoryId: {
+          categoryId: id,
+        },
       };
     }
 
@@ -59,6 +67,9 @@ export default function reducer(state = initialState, action) {
           region.id === id ? region : { ...region, isChecked: false }
         )),
         ],
+        regionNameAndcategoryId: {
+          regionName: checkedRegions[0],
+        },
       };
     }
     return state;
