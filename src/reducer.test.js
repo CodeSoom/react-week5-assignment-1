@@ -1,5 +1,5 @@
 import {
-  setSelectButtons,
+  intializeSelectButtons,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -28,11 +28,11 @@ describe('reducer', () => {
     expect(state).toEqual(initialState);
   });
 
-  describe('setSelectButtons', () => {
+  describe('intializeSelectButtons', () => {
     it('state를 주어진 값으로 설정합니다.', () => {
       const { locations, foodTypes, results } = reducer(
         initialState,
-        setSelectButtons({ type: 'setSelectButtons' })
+        intializeSelectButtons({ type: 'intializeSelectButtons' })
       );
 
       expect(locations).toEqual(['서울', '대전', '대구', '부산', '광주', '강원도', '인천']);

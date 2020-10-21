@@ -1,10 +1,10 @@
 import {
-  setSelectButtons,
+  intializeSelectButtons,
 } from './actions';
 
-describe('setSelectButtons', () => {
-  it('호출하면 setSelectButtons action이 반환합니다. ', () => {
-    const action = setSelectButtons();
-    expect(action).toEqual({ type: 'setSelectButtons' });
+describe('intializeSelectButtons', () => {
+  it('호출하면 intializeSelectButtons action이 반환합니다. ', () => {
+    const action = intializeSelectButtons();
+    expect(action).toEqual({ type: 'intializeSelectButtons' });
   });
 });

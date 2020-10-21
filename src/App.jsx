@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setSelectButtons } from './actions';
+import { intializeSelectButtons } from './actions';
 
 import Buttons from './Buttons';
 import List from './List';
@@ -12,7 +12,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setSelectButtons());
+    dispatch(intializeSelectButtons());
   }, []);
 
   const { locations, foodTypes, results } = useSelector((state) => ({

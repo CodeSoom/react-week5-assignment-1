@@ -1,5 +1,5 @@
-export const setSelectButtons = () => ({
-  type: 'setSelectButtons',
+export const intializeSelectButtons = () => ({
+  type: 'intializeSelectButtons',
 });
 
 export const tempActions = () => {

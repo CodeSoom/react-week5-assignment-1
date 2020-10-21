@@ -22,11 +22,11 @@ describe('App', () => {
     results: [],
   }));
 
-  it('컴포넌트가 생성되면 setSelectButtons action이 dispatch 됩니다.', () => {
+  it('컴포넌트가 생성되면 intializeSelectButtons action이 dispatch 됩니다.', () => {
     render(<App />);
 
     expect(dispatch).toBeCalledWith({
-      type: 'setSelectButtons',
+      type: 'intializeSelectButtons',
     });
   });
 });
