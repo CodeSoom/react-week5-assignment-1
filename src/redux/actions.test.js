@@ -6,11 +6,9 @@ import regions from '../../fixtures/regions';
 import categories from '../../fixtures/categories';
 
 import {
-  loadRegions,
   setRegions,
   updateLoading,
   setCategories,
-  loadCategories,
   loadInitialState,
 } from './actions';
 
@@ -26,27 +24,7 @@ describe('actions', () => {
     store.clearActions();
   });
 
-  it('loadRegions', async () => {
-    await store.dispatch(loadRegions());
-
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      setRegions(regions),
-    ]);
-  });
-
-  it('loadCategories', async () => {
-    await store.dispatch(loadCategories());
-
-    const actions = store.getActions();
-
-    expect(actions).toEqual([
-      setCategories(categories),
-    ]);
-  });
-
-  it('loadInitialState', async () => {
+  test('loadInitialState', async () => {
     await store.dispatch(loadInitialState());
 
     const actions = store.getActions();
