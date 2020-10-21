@@ -3,5 +3,5 @@ import reducer from './reducer';
 test('reducer', () => {
   const state = reducer();
 
-  expect(state).toHaveLength(0);
+  expect(state.regions).toHaveLength(0);
 });
