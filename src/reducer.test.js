@@ -1,7 +1,18 @@
 import reducer from './reducer';
 
-test('reducer', () => {
-  const state = reducer();
+import { setRegions } from './actions';
 
-  expect(state.regions).toHaveLength(0);
+import regions from '../__fixtures__/regions';
+
+describe('reducer', () => {
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const initialState = {
+        regions: [],
+      };
+
+      const state = reducer(initialState, setRegions(regions));
+      expect(state.regions).toHaveLength(3);
+    });
+  });
 });
