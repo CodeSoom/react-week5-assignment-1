@@ -1,14 +1,14 @@
 import React from 'react';
 
-export default function Buttons({ buttonNameList, selectButton, onClickSelect }) {
+export default function Buttons({ buttonNames, selectedButton, onClickSelect }) {
 
   return (
     <ul>
       {
-        buttonNameList.map((buttonName, index) => (
+        buttonNames.map((buttonName, index) => (
           <li key={index}>
             <button onClick={onClickSelect}>
-              {buttonName === selectButton ? buttonName + '(V)' : buttonName}
+              {buttonName === selectedButton ? buttonName + '(V)' : buttonName}
             </button>
           </li>
         ))

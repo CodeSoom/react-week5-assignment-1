@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { intializeSelectButtons } from './actions';
+import { intializeSelectButtons, setSelectInfo } from './actions';
 
 import Buttons from './Buttons';
 import List from './List';
@@ -23,8 +23,8 @@ export default function App() {
 
   return (
     <>
-      <Buttons buttonNameList={locations} />
-      <Buttons buttonNameList={foodTypes} />
+      <Buttons buttonNames={locations} />
+      <Buttons buttonNames={foodTypes} />
       <List itemList={results} />
     </>
   );

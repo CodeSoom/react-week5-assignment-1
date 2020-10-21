@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 
 import Buttons from './Buttons';
@@ -16,7 +15,7 @@ describe('Buttons', () => {
   it('버튼을 클릭하면 handleClickSelect 함수가 출력됩니다.', () => {
     const { getByText } = render((
       <Buttons
-        buttonNameList={['서울']}
+        buttonNames={['서울']}
         onClickSelect={handleClickSelect}
       />));
 
@@ -28,28 +27,28 @@ describe('Buttons', () => {
   });
 
   context('selectButton이 주어지면', () => {
-    const buttonNameList = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
-    const selectButton = '서울';
+    const buttonNames = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+    const selectedButton = '서울';
 
     it('해당 버튼 문구에 "(V)"가 추가됩니다.', () => {
 
       const { container } = render((
         <Buttons
-          buttonNameList={buttonNameList}
-          selectButton={selectButton}
+          buttonNames={buttonNames}
+          selectedButton={selectedButton}
         />));
 
-      expect(container).toHaveTextContent(selectButton + '(V)');
+      expect(container).toHaveTextContent(selectedButton + '(V)');
     });
   })
 
-  context('ButtonsNameList가 주어지면,', () => {
-    const buttonNameList = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+  context('buttonNames가 주어지면,', () => {
+    const buttonNames = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
 
     it('ButtonsNameList의 이름을 가진 버튼들이 출력됩니다.', () => {
-      const { container } = render(<Buttons buttonNameList={buttonNameList} />);
+      const { container } = render(<Buttons buttonNames={buttonNames} />);
 
-      buttonNameList.forEach((buttonName) => {
+      buttonNames.forEach((buttonName) => {
         expect(container).toHaveTextContent(buttonName);
       });
     });
