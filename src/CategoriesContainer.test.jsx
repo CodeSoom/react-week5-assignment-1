@@ -5,10 +5,11 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import categories from '../__fixtures__/categories';
+import restaurants from '../__fixtures__/restaurants';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { selectCategory } from './actions';
+import { selectCategory, setRestaurants } from './actions';
 
 jest.mock('react-redux');
 
@@ -28,6 +29,13 @@ test('CategoriesContainer', () => {
     expect(container).toHaveTextContent(name);
 
     fireEvent.click(getByText(name));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'setCategories',
+      payload: {
+        restaurants,
+      },
+    });
 
     expect(dispatch).toBeCalledWith(selectCategory(id));
   });
