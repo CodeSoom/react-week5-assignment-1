@@ -5,7 +5,7 @@ export default function Categories({ categories, onClick }) {
     <ul>
       {
         categories.map(({ id, name }) => (
-          <li key={name}>
+          <li key={id}>
             <button
               type="button"
               onClick={() => onClick(id)}
