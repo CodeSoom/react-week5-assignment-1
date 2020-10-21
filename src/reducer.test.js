@@ -1,5 +1,6 @@
 import {
   intializeSelectButtons,
+  setSelectInfo,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -16,6 +17,13 @@ describe('initialState', () => {
     expect(initialState.results).toHaveLength(0);
   });
 
+  it('초기 selecInfo의 location이 빈 값으로 초기화됩니다.', () => {
+    expect(initialState.selectInfo.location).toBe('');
+  });
+
+  it('초기 selecInfo의 foodType이 빈 값으로 초기화됩니다.', () => {
+    expect(initialState.selectInfo.foodType).toBe('');
+  });
 });
 
 describe('reducer', () => {
@@ -29,7 +37,7 @@ describe('reducer', () => {
   });
 
   describe('intializeSelectButtons', () => {
-    it('state를 주어진 값으로 설정합니다.', () => {
+    it('locations, foddTypes, results를 주어진 값으로 초기화합니다.', () => {
       const { locations, foodTypes, results } = reducer(
         initialState,
         intializeSelectButtons({ type: 'intializeSelectButtons' })
@@ -39,5 +47,25 @@ describe('reducer', () => {
       expect(foodTypes).toEqual(['한식', '중식', '일식', '양식', '분식']);
       expect(results).toEqual(['양천주가', '밀면넘어져요']);
     });
+  });
+
+  describe('setSelectInfo', () => {
+    it('selectInfo의 location을 value로 설정합니다.', () => {
+      const { selectInfo: { location } } = reducer(
+        initialState,
+        setSelectInfo({ type: 'location', value: '서울' })
+      );
+
+      expect(location).toBe('서울');
+    });
+  });
+
+  it('selectInfo의 foodType을 value로 설정합니다.', () => {
+    const { selectInfo: { foodType } } = reducer(
+      initialState,
+      setSelectInfo({ type: 'foodType', value: '한식' })
+    );
+
+    expect(foodType).toBe('한식');
   });
 });
