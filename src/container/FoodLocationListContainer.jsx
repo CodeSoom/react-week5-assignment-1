@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import FoodLocationList from '../components/FoodLocationList';
 
 export default function LocaleListContainer() {
-  const { locales, foodClassifications } = useSelector((state) => ({
+  const { locales, foodCategories } = useSelector((state) => ({
     locales: state.locales,
-    foodClassifications: state.foodClassifications,
+    foodCategories: state.foodCategories,
   }));
 
   return (
@@ -19,7 +19,7 @@ export default function LocaleListContainer() {
 
       <ul>
         <FoodLocationList
-          items={foodClassifications}
+          items={foodCategories}
         />
       </ul>
     </div>

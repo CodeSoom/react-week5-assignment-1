@@ -4,14 +4,14 @@ import { render, screen } from '@testing-library/react';
 
 import FoodLocationListContainer from './FoodLocationListContainer';
 import locales from '../../fixtures/locales';
-import foodClassifications from '../../fixtures/foodClassifications';
+import foodCategories from '../../fixtures/foodCategories';
 
 jest.mock('react-redux');
 
 test('LocaleListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     locales,
-    foodClassifications,
+    foodCategories,
   }));
 
   render(<FoodLocationListContainer />);

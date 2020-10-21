@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import FoodLocationList from './FoodLocationList';
 import locales from '../../fixtures/locales';
-import foodClassifications from '../../fixtures/foodClassifications';
+import foodCategories from '../../fixtures/foodCategories';
 
 describe('List', () => {
   context('with locales', () => {
@@ -14,9 +14,9 @@ describe('List', () => {
     });
   });
 
-  context('with foodClassifications', () => {
+  context('with foodCategories', () => {
     it('see "한식"', () => {
-      render(<FoodLocationList items={foodClassifications} />);
+      render(<FoodLocationList items={foodCategories} />);
 
       expect(screen.getByText('한식')).toBeInTheDocument();
     });
