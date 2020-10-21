@@ -20,6 +20,10 @@ describe('App', () => {
     locations: [],
     foodTypes: [],
     results: [],
+    selectInfo: {
+      location: '',
+      foodType: '',
+    }
   }));
 
   it('컴포넌트가 생성되면 intializeSelectButtons action이 dispatch 됩니다.', () => {
