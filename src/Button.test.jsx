@@ -7,10 +7,9 @@ import Button from './Button';
 describe('Button', () => {
   const handleClick = jest.fn();
   const { getByText } = render((
-    <Button
-      label="서울"
-      onClick={handleClick}
-    />
+    <Button onClick={handleClick}>
+      서울
+    </Button>
   ));
 
   const button = getByText('서울');
