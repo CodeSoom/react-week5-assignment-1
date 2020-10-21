@@ -81,5 +81,14 @@ export default function reducer(state = initialState, action) {
       regions,
     };
   }
+
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
+    };
+  }
   return state;
 }
