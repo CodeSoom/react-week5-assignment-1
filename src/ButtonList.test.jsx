@@ -8,12 +8,12 @@ import regions from '../fixtures/regions';
 
 describe('ButtonList', () => {
   const handleClick = jest.fn();
-  function renderButtonList() {
+  function renderButtonList(id = 0) {
     return render((
       <ButtonList
         labels={regions}
         onClick={handleClick}
-        checkedValue={1}
+        checkedValue={id}
       />
     ));
   }
@@ -25,7 +25,7 @@ describe('ButtonList', () => {
   });
 
   it('show checked value with (V)', () => {
-    const { getByText } = renderButtonList();
+    const { getByText } = renderButtonList(1);
     expect(getByText('서울(V)')).not.toBeNull();
   });
 });

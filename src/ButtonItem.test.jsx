@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Button from './ButtonItem';
 
-describe('Button', () => {
+test('ButtonItem', () => {
   const handleClick = jest.fn();
   const { getByText } = render((
     <Button onClick={handleClick}>
@@ -16,5 +16,4 @@ describe('Button', () => {
   fireEvent.click(button);
 
   expect(handleClick).toBeCalled();
-  expect(button.nodeValue).toBe('서울(V)');
 });
