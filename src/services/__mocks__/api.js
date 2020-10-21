@@ -1,7 +1,3 @@
-export async function fetchRegions() {
-  return [];
-}
+export const fetchRegions = jest.fn();
 
-export function blank() {
-
-}
+export const fetchCategories = jest.fn();
