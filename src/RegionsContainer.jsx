@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { checkRegions } from './actions';
+import { checkRegions, initializeCheckedItem } from './actions';
 
 import Regions from './Regions';
 
@@ -14,6 +14,8 @@ export default function App() {
 
   function handleClick(id, isChecked) {
     dispatch(checkRegions({ id, isChecked }));
+
+    dispatch(initializeCheckedItem({ id }));
   }
 
   return (
