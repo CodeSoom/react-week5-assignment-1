@@ -6,7 +6,7 @@ describe('reducer', () => {
   context('setRegions', () => {
     it('changes regions', () => {
       const initialState = {
-        categories: [],
+        regions: [],
       };
 
       const regions = [
