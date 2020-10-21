@@ -13,3 +13,7 @@ export async function fetchCategories() {
 
   return categories;
 }
+
+export async function fetchRestaurants() {
+  return [];
+}
