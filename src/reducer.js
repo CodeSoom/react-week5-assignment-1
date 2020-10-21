@@ -6,7 +6,6 @@ const initialState = {
     { id: 4, category: '양식', isChecked: false },
     { id: 5, category: '분식', isChecked: false },
   ],
-
   regions: [
     { id: 1, region: '서울', isChecked: false },
     { id: 2, region: '대구', isChecked: false },
@@ -42,7 +41,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'initializeCheckedItem') {
+  if (action.type === 'initializeCheckedCategories') {
     const { categories } = state;
     const { id } = action.payload;
 
@@ -53,6 +52,24 @@ export default function reducer(state = initialState, action) {
         ...state,
         categories: [...categories.map((category) => (
           category.id === id ? category : { ...category, isChecked: false }
+        )),
+        ],
+      };
+    }
+
+    return state;
+  }
+  if (action.type === 'initializeCheckedRegions') {
+    const { regions } = state;
+    const { id } = action.payload;
+
+    const checkedRegions = regions.filter((region) => region.isChecked === true);
+
+    if (checkedRegions.length === 2) {
+      return {
+        ...state,
+        regions: [...regions.map((region) => (
+          region.id === id ? region : { ...region, isChecked: false }
         )),
         ],
       };

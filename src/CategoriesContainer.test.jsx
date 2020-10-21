@@ -72,7 +72,7 @@ describe('CategoriesContainer', () => {
 
       expect(dispatch).toBeCalledWith(
         {
-          type: 'initializeCheckedItem',
+          type: 'initializeCheckedCategories',
           payload: { id: categories[1].id },
         },
       );

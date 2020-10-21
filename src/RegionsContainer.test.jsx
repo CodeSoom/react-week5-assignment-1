@@ -73,7 +73,7 @@ describe('RegionsContainer', () => {
 
       expect(dispatch).toBeCalledWith(
         {
-          type: 'initializeCheckedItem',
+          type: 'initializeCheckedRegions',
           payload: { id: regions[1].id },
         },
       );

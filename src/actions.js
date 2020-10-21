@@ -12,9 +12,16 @@ export function checkRegions({ id, isChecked }) {
   };
 }
 
-export function initializeCheckedItem({ id }) {
+export function initializeCheckedCategories({ id }) {
   return {
-    type: 'initializeCheckedItem',
+    type: 'initializeCheckedCategories',
+    payload: { id },
+  };
+}
+
+export function initializeCheckedRegions({ id }) {
+  return {
+    type: 'initializeCheckedRegions',
     payload: { id },
   };
 }
