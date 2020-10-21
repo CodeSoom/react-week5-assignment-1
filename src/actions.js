@@ -25,3 +25,8 @@ export function setCategories(categories) {
     },
   };
 }
+
+export function loadCategories() {
+  return () => {
+  };
+}
