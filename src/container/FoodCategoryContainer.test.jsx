@@ -23,5 +23,6 @@ test('FoodCategoryContainer', () => {
 
   expect(dispatch).toBeCalledWith({
     type: 'updateFoodCategory',
+    payload: { value: '한식' },
   });
 });

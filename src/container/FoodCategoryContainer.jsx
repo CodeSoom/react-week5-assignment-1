@@ -13,8 +13,8 @@ export default function FoodCategoryContainer() {
 
   const dispatch = useDispatch();
 
-  function handleClick(value) {
-    dispatch(updateFoodCategory(value));
+  function handleClick(e) {
+    dispatch(updateFoodCategory(e.target.textContent));
   }
 
   return (
