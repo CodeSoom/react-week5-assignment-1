@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function List({ itemList }) {
+export default function List({ items }) {
 
   return (
     <ul>
       {
-        itemList.map((item, index) => (
+        items.map((item, index) => (
           <li key={index}>{item}</li>
         ))
       }

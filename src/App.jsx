@@ -25,7 +25,7 @@ export default function App() {
     <>
       <Buttons buttonNames={locations} />
       <Buttons buttonNames={foodTypes} />
-      <List itemList={results} />
+      <List items={results} />
     </>
   );
 }
