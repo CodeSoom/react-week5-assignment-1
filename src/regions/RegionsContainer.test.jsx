@@ -16,4 +16,6 @@ test('RegionsContainer', () => {
   const { queryByText } = render(<RegionsContainer />);
 
   expect(queryByText(/서울/)).not.toBeNull();
+
+  expect(queryByText(/부산\(V\)/)).not.toBeNull();
 });
