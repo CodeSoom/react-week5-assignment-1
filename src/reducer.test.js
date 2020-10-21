@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegions,
+  setLoading,
 } from './actions';
 
 import regions from '../fixtures/regions';

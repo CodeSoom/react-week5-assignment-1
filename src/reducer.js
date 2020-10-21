@@ -1,5 +1,6 @@
 const initialState = {
   regions: [],
+  loading: false,
 };
 
 const reducers = {
@@ -7,6 +8,12 @@ const reducers = {
     return {
       ...state,
       regions: action.payload.regions,
+    };
+  },
+  setLoading(state, action) {
+    return {
+      ...state,
+      loading: action.payload.loading,
     };
   },
   default(state) {
