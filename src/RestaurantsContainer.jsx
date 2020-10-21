@@ -1,13 +1,11 @@
 import React from 'react';
 
-export default function App() {
+import Restaurants from './Restaurants';
+
+export default function RestaurantsContainer() {
   return (
     <>
-      <ul>
-        <li>
-          홍콩반점
-        </li>
-      </ul>
+      <Restaurants />
     </>
   );
 }
