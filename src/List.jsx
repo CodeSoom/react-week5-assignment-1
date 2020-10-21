@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function List({ items }) {
-
   return (
     <ul>
       {
@@ -10,5 +9,5 @@ export default function List({ items }) {
         ))
       }
     </ul>
-  )
+  );
 }

@@ -11,7 +11,7 @@ jest.mock('react-redux');
 describe('ButtonsContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   const dispatch = jest.fn();
 
@@ -22,7 +22,7 @@ describe('ButtonsContainer', () => {
     selectInfo: {
       location: '',
       foodType: '',
-    }
+    },
   }));
 
   it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {

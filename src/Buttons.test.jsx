@@ -5,7 +5,6 @@ import { fireEvent, render } from '@testing-library/react';
 import Buttons from './Buttons';
 
 describe('Buttons', () => {
-
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -31,16 +30,15 @@ describe('Buttons', () => {
     const selectedButton = '서울';
 
     it('해당 버튼 문구에 "(V)"가 추가됩니다.', () => {
-
       const { container } = render((
         <Buttons
           buttonNames={buttonNames}
           selectedButton={selectedButton}
         />));
 
-      expect(container).toHaveTextContent(selectedButton + '(V)');
+      expect(container).toHaveTextContent(`${selectedButton}(V)`);
     });
-  })
+  });
 
   context('buttonNames가 주어지면,', () => {
     const buttonNames = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
