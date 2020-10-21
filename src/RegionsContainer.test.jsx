@@ -12,23 +12,30 @@ import { selectRegion } from './actions';
 
 jest.mock('react-redux');
 
-test('RegionsContainer', () => {
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
+describe('RegionsContainer', () => {
+  it('dispatches selectRegion action', () => {
+    const dispatch = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions,
-  }));
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
 
-  const { container, getByText } = render((
-    <RegionsContainer />
-  ));
+    useDispatch.mockImplementation(() => dispatch);
 
-  regions.forEach(({ id, name }) => {
-    expect(container).toHaveTextContent(name);
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
 
-    fireEvent.click(getByText(name));
+    const { container, getByText } = render((
+      <RegionsContainer />
+    ));
 
-    expect(dispatch).toBeCalledWith(selectRegion({ id, name }));
+    regions.forEach(({ id, name }) => {
+      expect(container).toHaveTextContent(name);
+
+      fireEvent.click(getByText(name));
+
+      expect(dispatch).toBeCalledWith(selectRegion({ id, name }));
+    });
   });
 });
