@@ -4,13 +4,14 @@ import CategoriesContainer from './CategoriesContainer';
 
 import RegionsContainer from './RegionsContainer';
 
+import Restaurants from './Restaurants';
+
 export default function App() {
   return (
     <>
       <CategoriesContainer />
       <RegionsContainer />
-      <p>새마을 식당</p>
+      <Restaurants />
     </>
-
   );
 }
