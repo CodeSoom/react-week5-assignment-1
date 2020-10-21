@@ -4,19 +4,31 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Button from './ButtonItem';
 
-test('ButtonItem', () => {
+describe('ButtonItem', () => {
   const handleClick = jest.fn();
 
-  const { getByText } = render((
-    <Button onClick={handleClick} checked={false}>
-      서울
-    </Button>
-  ));
+  function renderButton(checked = false) {
+    return render((
+      <Button onClick={handleClick} checked={checked}>
+        서울
+      </Button>
+    ));
+  }
 
-  const button = getByText('서울');
-  fireEvent.click(button);
+  it('show name', () => {
+    const { getByText } = renderButton();
+    expect(getByText('서울')).not.toBeNull();
+  });
 
-  expect(handleClick).toBeCalled();
+  context('with checked', () => {
+    const { getByText } = renderButton(true);
+    expect(getByText('서울(V)')).not.toBeNull();
+  });
 
-  expect(getByText('서울(V)')).not.toBeNull();
+  it('click', () => {
+    const { getByText } = renderButton();
+    fireEvent.click(getByText('서울'));
+
+    expect(handleClick).toBeCalled();
+  });
 });
