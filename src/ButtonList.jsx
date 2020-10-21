@@ -7,7 +7,7 @@ export default function ButtonList({ labels, onClick }) {
     <ul>
       {
         labels.map(({ id, name }) => (
-          <Button key={id} onClick={onClick}>{name}</Button>
+          <li><Button key={id} onClick={onClick}>{name}</Button></li>
         ))
       }
     </ul>
