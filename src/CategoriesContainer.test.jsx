@@ -6,8 +6,6 @@ import { fireEvent, render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import categories from './fixtures/categories';
-
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
@@ -16,7 +14,10 @@ describe('CategoriesContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    categories,
+    categories: [
+      { id: 1, category: '한식', isChecked: false },
+      { id: 2, category: '중식', isChecked: false },
+    ],
   }));
 
   it('show categories', () => {
@@ -25,16 +26,55 @@ describe('CategoriesContainer', () => {
     expect(getByText('한식')).not.toBeNull();
   });
 
-  it('click category', () => {
-    const { getByText } = render(<CategoriesContainer />);
+  context('click category', () => {
+    it('calls check dispatch', () => {
+      const { getByText } = render(<CategoriesContainer />);
 
-    fireEvent.click(getByText('한식'));
+      const categories = [
+        { id: 1, category: '한식', isChecked: false },
+      ];
 
-    expect(dispatch).toBeCalledWith(
-      {
-        type: 'checkCategories',
-        payload: { id: categories[0].id, isChecked: categories[0].isChecked },
-      },
-    );
+      fireEvent.click(getByText('한식'));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'checkCategories',
+          payload: { id: categories[0].id, isChecked: categories[0].isChecked },
+        },
+      );
+    });
+
+    it('initialize previously checked category', () => {
+      const { getByText } = render(<CategoriesContainer />);
+
+      const categories = [
+        { id: 1, category: '한식', isChecked: false },
+        { id: 2, category: '중식', isChecked: false },
+      ];
+
+      fireEvent.click(getByText('한식'));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'checkCategories',
+          payload: { id: categories[0].id, isChecked: categories[0].isChecked },
+        },
+      );
+
+      fireEvent.click(getByText('중식'));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'checkCategories',
+          payload: { id: categories[1].id, isChecked: categories[1].isChecked },
+        },
+      );
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'initializeCheckedItem',
+        },
+      );
+    });
   });
 });
