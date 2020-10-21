@@ -20,6 +20,7 @@ export default function App() {
 
     dispatch({
       type: 'initializeCheckedItem',
+      payload: { id },
     });
   }
 

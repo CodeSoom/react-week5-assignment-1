@@ -12,8 +12,9 @@ export function checkRegions({ id, isChecked }) {
   };
 }
 
-export function initializeCheckedItem() {
+export function initializeCheckedItem({ id }) {
   return {
     type: 'initializeCheckedItem',
+    payload: { id },
   };
 }

@@ -27,12 +27,18 @@ describe('reducer', () => {
 
   describe('initializeCheckedItem', () => {
     it('initialize previously checked item', () => {
-      const state = reducer({ categories },
-        initializeCheckedItem());
+      const checkedCategories = [
+        { id: 1, category: '분식', isChecked: true },
+        { id: 2, category: '중식', isChecked: true },
+      ];
+
+      const state = reducer({ categories: checkedCategories },
+        initializeCheckedItem({ id: 1 }));
 
       const checkedItemsNumber = state.categories.filter(
         (category) => category.isChecked === true,
       ).length;
+
       expect(checkedItemsNumber).toBe(1);
     });
   });
