@@ -1,25 +1,13 @@
 import React from 'react';
 
-export default function Regions() {
+export default function Regions({ regions }) {
   return (
-    <div>
-      <ul>
+    <ul>
+      {regions.map((region) => (
         <li>
-          <button type="button">
-            서울
-          </button>
+          {region}
         </li>
-        <li>
-          <button type="button">
-            대전
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            대구
-          </button>
-        </li>
-      </ul>
-    </div>
+      ))}
+    </ul>
   );
 }
