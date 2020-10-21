@@ -76,17 +76,17 @@ describe('reducer', () => {
       const state = reducer({
         regions: [
           { id: 1, name: '서울' },
-          { id: 2, name: '대전(v)' },
+          { id: 2, name: '대전' },
         ],
       }, selectRegion({ id, name }));
 
       state.regions.forEach((region, index) => {
         if (index === 0) {
-          expect(region.name).toContain('(v)');
+          expect(region.checked).toBe('checked');
           return;
         }
 
-        expect(region.name).not.toContain('(v)');
+        expect(region.checked).toBe('');
       });
     });
 
