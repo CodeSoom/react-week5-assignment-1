@@ -13,7 +13,7 @@ export default function RegionsContainer() {
   }));
 
   const handleClickSelectRegion = (regionName) => {
-    dispatch();
+    dispatch(selectRegion(regionName));
   };
 
   return (
