@@ -11,28 +11,30 @@ import CategoriesContainer from './CategoriesContainer';
 import { selectCategory } from './actions';
 
 describe('CategoriesContainer', () => {
-  describe('handleClickCategory', () => {
-    it('dispatches selectCategory action', () => {
-      jest.mock('react-redux');
+  it('dispatches selectCategory action', () => {
+    jest.mock('react-redux');
 
-      const dispatch = jest.fn();
-      useDispatch.mockImplementation(() => dispatch);
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
 
-      useSelector.mockImplementation((selector) => selector({
-        categories,
-      }));
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
 
-      const { container, getByText } = render((
-        <CategoriesContainer />
-      ));
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+    }));
 
-      categories.forEach(({ id, name }) => {
-        expect(container).toHaveTextContent(name);
+    const { container, getByText } = render((
+      <CategoriesContainer />
+    ));
 
-        fireEvent.click(getByText(name));
+    categories.forEach(({ id, name }) => {
+      expect(container).toHaveTextContent(name);
 
-        expect(dispatch).toBeCalledWith(selectCategory(id));
-      });
+      fireEvent.click(getByText(name));
+
+      expect(dispatch).toBeCalledWith(selectCategory(id));
     });
   });
 });
