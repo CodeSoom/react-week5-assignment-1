@@ -56,16 +56,21 @@ describe('actions', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('dispatches fetched restaurants data', async () => {
-      fetchRestaurants.mockResolvedValue(restaurants);
+    context('with region name and category id', () => {
+      it('dispatches fetched restaurants data', async () => {
+        fetchRestaurants.mockResolvedValue(restaurants);
 
-      const store = mockStore({});
+        const store = mockStore({
+          selectedCategory: 1,
+          selectedRegion: '서울',
+        });
 
-      await store.dispatch(loadRestaurants());
+        await store.dispatch(loadRestaurants());
 
-      const actions = store.getActions();
+        const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurants(restaurants));
+        expect(actions[0]).toEqual(setRestaurants(restaurants));
+      });
     });
   });
 });
