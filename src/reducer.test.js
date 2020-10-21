@@ -1,7 +1,5 @@
 import reducer from './reducer';
 
-import regions from './fixtures/regions';
-
 import {
   checkCategories,
   checkRegions,
@@ -26,6 +24,10 @@ describe('reducer', () => {
 
   describe('checkRegions', () => {
     it('changes Regions isChecked property', () => {
+      const regions = [
+        { id: 1, name: '서울', isChecked: false },
+        { id: 2, name: '부산', isChecked: false },
+      ];
       const state = reducer({ regions },
         checkRegions({ id: 1, isChecked: false }));
 
@@ -74,15 +76,29 @@ describe('reducer', () => {
       ];
 
       const initialState = {
-        categories: [
-          { id: 1 },
-        ],
-        regions: [],
+        categories: [],
+
       };
 
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const regions = [
+        { id: 1, name: '서울' },
+      ];
+
+      const initialState = {
+        regions: [],
+      };
+
+      const state = reducer(initialState, setCategories(regions));
+
+      expect(state.regions).toHaveLength(1);
     });
   });
 });
