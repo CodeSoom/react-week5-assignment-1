@@ -39,13 +39,11 @@ const reducers = {
   selectRegion: (state, payload) => {
     const newRegions = state.regions
       .map((region) => {
-        const { id, name } = region;
+        const { id } = region;
 
         return {
           ...region,
-          name: id === payload.id
-            ? `${name.replace('(v)', '')}(v)`
-            : name.replace('(v)', ''),
+          checked: id === payload.id ? 'checked' : '',
         };
       });
 
