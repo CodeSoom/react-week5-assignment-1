@@ -6,20 +6,30 @@ import categories from '../__fixtures__/categories';
 
 import Categories from './Categories';
 
-test('Categories', () => {
+describe('Categories', () => {
   const handleClickCategory = jest.fn();
 
-  const { container, getByText } = render((
-    <Categories
-      categories={categories}
-      onClick={handleClickCategory}
-    />
-  ));
+  describe('render buttons', () => {
+    context('when the button clicked', () => {
+      it('run onClick function', () => {
+        const selectedCategory = '';
 
-  categories.forEach(({ name }) => {
-    expect(container).toHaveTextContent(name);
-    fireEvent.click(getByText(name));
+        const { container, getByText } = render((
+          <Categories
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onClick={handleClickCategory}
+          />
+        ));
+
+        categories.forEach(({ name }) => {
+          expect(container).toHaveTextContent(name);
+
+          fireEvent.click(getByText(name));
+        });
+
+        expect(handleClickCategory).toBeCalledTimes(categories.length);
+      });
+    });
   });
-
-  expect(handleClickCategory).toBeCalledTimes(categories.length);
 });
