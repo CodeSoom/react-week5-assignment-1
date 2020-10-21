@@ -40,7 +40,7 @@ describe('reducer', () => {
     it('locations, foddTypes, results를 주어진 값으로 초기화합니다.', () => {
       const { locations, foodTypes, results } = reducer(
         initialState,
-        intializeSelectButtons({ type: 'intializeSelectButtons' })
+        intializeSelectButtons({ type: 'intializeSelectButtons' }),
       );
 
       expect(locations).toEqual(['서울', '대전', '대구', '부산', '광주', '강원도', '인천']);
@@ -53,7 +53,7 @@ describe('reducer', () => {
     it('selectInfo의 location을 value로 설정합니다.', () => {
       const { selectInfo: { location } } = reducer(
         initialState,
-        setSelectInfo({ type: 'location', value: '서울' })
+        setSelectInfo({ type: 'location', value: '서울' }),
       );
 
       expect(location).toBe('서울');
@@ -63,7 +63,7 @@ describe('reducer', () => {
   it('selectInfo의 foodType을 value로 설정합니다.', () => {
     const { selectInfo: { foodType } } = reducer(
       initialState,
-      setSelectInfo({ type: 'foodType', value: '한식' })
+      setSelectInfo({ type: 'foodType', value: '한식' }),
     );
 
     expect(foodType).toBe('한식');

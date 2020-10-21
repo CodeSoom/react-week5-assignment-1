@@ -5,7 +5,7 @@ export const initialState = {
   selectInfo: {
     location: '',
     foodType: '',
-  }
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,9 +22,9 @@ export default function reducer(state = initialState, action) {
       selectInfo: {
         ...state.selectInfo,
         [action.payload.type]: action.payload.value,
-      }
+      },
     }),
-  }
+  };
 
-  return (router[action.type] || (() => state))()
+  return (router[action.type] || (() => state))();
 }

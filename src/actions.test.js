@@ -15,7 +15,7 @@ describe('setSelectInfo', () => {
     const updateInfo = {
       type: 'lcation',
       value: '서울',
-    }
+    };
     const action = setSelectInfo(updateInfo);
     expect(action).toEqual({ type: 'setSelectInfo', payload: updateInfo });
   });

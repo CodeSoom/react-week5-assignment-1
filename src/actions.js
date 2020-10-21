@@ -4,5 +4,5 @@ export const intializeSelectButtons = () => ({
 
 export const setSelectInfo = ({ type, value }) => ({
   type: 'setSelectInfo',
-  payload: { type, value }
+  payload: { type, value },
 });
