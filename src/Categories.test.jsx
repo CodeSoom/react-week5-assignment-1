@@ -10,6 +10,24 @@ describe('Categories', () => {
   const handleClickCategory = jest.fn();
 
   describe('render buttons', () => {
+    it('show button text', () => {
+      const selectedCategory = 2;
+      const { container } = render((
+        <Categories
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onClick={handleClickCategory}
+        />
+      ));
+
+      categories.forEach(({ id, name }) => {
+        const buttonText = selectedCategory === id
+          ? `${name}(v)`
+          : name;
+        expect(container).toHaveTextContent(buttonText);
+      });
+    });
+
     context('when the button clicked', () => {
       it('run onClick function', () => {
         const selectedCategory = '';
