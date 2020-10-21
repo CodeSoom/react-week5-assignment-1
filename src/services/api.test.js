@@ -1,7 +1,10 @@
 import regions from '../../fixtures/regions';
 import categories from '../../fixtures/categories';
 
-import { fetchRegions } from './api';
+import {
+  fetchRegions,
+  fetchCategories,
+} from './api';
 
 const mockFetch = (resolvedValue) => {
   global.fetch = jest.fn(() => (
@@ -14,13 +17,13 @@ const mockFetch = (resolvedValue) => {
 describe('api', () => {
   test('fetchRegions', async () => {
     mockFetch(regions);
- 
+
     expect(await fetchRegions()).toEqual(regions);
   });
-  
-  test('fetchRegions', async () => {
+
+  test('fetchCategories', async () => {
     mockFetch(categories);
-    
-    expect(await fetchRegions()).toEqual(categories);
+
+    expect(await fetchCategories()).toEqual(categories);
   });
 });

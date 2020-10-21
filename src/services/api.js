@@ -5,7 +5,9 @@ export async function fetchRegions() {
   return data;
 }
 
-// TODO: delete this
-export function xxx() {
-
+export async function fetchCategories() {
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const response = await fetch(url);
+  const data = response.json();
+  return data;
 }
