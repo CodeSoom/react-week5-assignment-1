@@ -1,14 +1,17 @@
 import reducer from './reducer';
 
+import { selectRegion } from './actions';
+
 describe('reducer', () => {
   const initialState = {
-    newId: 100,
-    region: {
-      id: '',
-      name: '',
-      checked: '',
-    },
-    regions: [],
+    selectedRegionId: 0,
+    regions: [
+      { id: 1, name: '서울' },
+      { id: 2, name: '대전' },
+      { id: 3, name: '대구' },
+      { id: 4, name: '부산' },
+      { id: 5, name: '광주' },
+    ],
   };
 
   it('init state', () => {
@@ -24,5 +27,12 @@ describe('reducer', () => {
       },
     });
     expect(initialState).toBe(state);
+  });
+
+  describe('select region', () => {
+    const clickedRegionId = 1;
+    const state = reducer(initialState, selectRegion(clickedRegionId));
+
+    expect(state.selectedRegionId).toBe(clickedRegionId);
   });
 });
