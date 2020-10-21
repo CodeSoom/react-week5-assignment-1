@@ -21,6 +21,15 @@ export function setCategories(categories) {
   });
 }
 
+export function setRestaurants(restaurants) {
+  return ({
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  });
+}
+
 export function selectCategory(id) {
   return ({
     type: 'selectCategory',

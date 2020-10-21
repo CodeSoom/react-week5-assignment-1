@@ -30,12 +30,7 @@ test('CategoriesContainer', () => {
 
     fireEvent.click(getByText(name));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setCategories',
-      payload: {
-        restaurants,
-      },
-    });
+    expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
 
     expect(dispatch).toBeCalledWith(selectCategory(id));
   });
