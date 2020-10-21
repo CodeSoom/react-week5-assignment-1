@@ -1,7 +1,5 @@
 import reducer from './reducer';
 
-import categories from './fixtures/categories';
-
 import regions from './fixtures/regions';
 
 import {
@@ -9,11 +7,16 @@ import {
   checkRegions,
   initializeCheckedCategories,
   initializeCheckedRegions,
+  setCategories,
 } from './actions';
 
 describe('reducer', () => {
   describe('checkCategories', () => {
     it('changes categories isChecked property', () => {
+      const categories = [
+        { id: 1, category: '분식', isChecked: false },
+        { id: 2, category: '중식', isChecked: false },
+      ];
       const state = reducer({ categories },
         checkCategories({ id: 1, isChecked: false }));
 
@@ -61,6 +64,20 @@ describe('reducer', () => {
       ).length;
 
       expect(checkedItemsNumber).toBe(1);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('changes categories', () => {
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+
+      const initialState = { categories: [] };
+
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).toHaveLength(1);
     });
   });
 });
