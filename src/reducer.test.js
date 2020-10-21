@@ -33,6 +33,7 @@ describe('reducer', () => {
   it('returns initial state when state is undefined', () => {
     const initialState = {
       regions: [],
+      categories: [],
       loading: false,
     };
 

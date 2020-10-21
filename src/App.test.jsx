@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
 
 jest.mock('react-redux');
 jest.mock('./service/api');
@@ -24,12 +25,14 @@ describe('App', () => {
   });
 
   context('when state has been loaded', () => {
-    setState({
-      loading: false,
+    const state = {
       regions,
-    });
-
+      categories,
+      loading: false,
+    };
     it('renders state, has called dispatch', () => {
+      setState(state);
+
       const { queryByText } = render(<App />);
 
       expect(queryByText(/서울/)).not.toBeNull();
@@ -40,15 +43,11 @@ describe('App', () => {
   });
 
   context('when state is being loaded', () => {
-    setState({
-      loading: false,
-      regions,
-    });
-
+    const state = {
+      loading: true,
+    };
     it('renders loading message', () => {
-      setState({
-        loading: true,
-      });
+      setState(state);
 
       const { queryByText } = render(<App />);
 

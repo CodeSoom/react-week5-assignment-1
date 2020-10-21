@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
-import Categories from './Categories';
+import CategoriesContainer from './CategoriesContainer';
 import Loading from './Loading';
 
 import {
@@ -30,7 +30,7 @@ export default function App() {
   return (
     <>
       <RegionsContainer />
-      <Categories />
+      <CategoriesContainer />
     </>
   );
 }
