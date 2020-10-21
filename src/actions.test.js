@@ -11,9 +11,9 @@ import {
   loadRestaurantRegions,
   loadRestaurantCategories,
   loadRestaurnats,
-  SET_REGIONS,
-  SET_CATEGORIES,
-  SET_RESTAURANTS,
+  setRestaurantRegions,
+  setRestaurantCategories,
+  setRestaurants,
 } from './actions';
 
 jest.mock('./services/api');
@@ -44,7 +44,7 @@ describe('actions', () => {
       // Then
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual({ type: SET_REGIONS, payload: regions });
+      expect(actions[0]).toEqual(setRestaurantRegions(regions));
     });
   });
 
@@ -70,7 +70,7 @@ describe('actions', () => {
       // Then
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual({ type: SET_CATEGORIES, payload: categories });
+      expect(actions[0]).toEqual(setRestaurantCategories(categories));
     });
   });
 
@@ -101,7 +101,7 @@ describe('actions', () => {
         // Then
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual({ type: SET_RESTAURANTS, payload: restaurants });
+        expect(actions[0]).toEqual(setRestaurants(restaurants));
       });
     });
 

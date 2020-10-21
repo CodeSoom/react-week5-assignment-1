@@ -10,16 +10,31 @@ export const SET_SELECTED_REGION = 'SET_SELECTED_REGION';
 export const SET_SELECTED_CATEGORY = 'SET_SELECTED_CATEGORY';
 export const SET_RESTAURANTS = 'SET_RESTAURANTS';
 
+export const setRestaurantRegions = (value) => ({
+  type: SET_REGIONS,
+  payload: value,
+});
+
+export const setRestaurantCategories = (value) => ({
+  type: SET_CATEGORIES,
+  payload: value,
+});
+
+export const setRestaurants = (value) => ({
+  type: SET_RESTAURANTS,
+  payload: value,
+});
+
 export const loadRestaurantRegions = () => async (dispatch) => {
   const data = await fetchRestaurantRegion();
 
-  dispatch({ type: SET_REGIONS, payload: data });
+  dispatch(setRestaurantRegions(data));
 };
 
 export const loadRestaurantCategories = () => async (dispatch) => {
   const data = await fetchRestaurantCategories();
 
-  dispatch({ type: SET_CATEGORIES, payload: data });
+  dispatch(setRestaurantCategories(data));
 };
 
 export const loadRestaurnats = () => async (dispatch, getState) => {
@@ -34,7 +49,7 @@ export const loadRestaurnats = () => async (dispatch, getState) => {
     categoryId: selectedCategory.id,
   });
 
-  dispatch({ type: SET_RESTAURANTS, payload: data });
+  dispatch(setRestaurants(data));
 };
 
 export const setRestaurantRegion = (value) => ({
