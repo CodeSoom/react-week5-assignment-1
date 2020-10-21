@@ -1,4 +1,4 @@
-const cities = [
+const regions = [
   { id: 1, name: '서울' },
   { id: 2, name: '대전' },
   { id: 3, name: '대구' },
@@ -7,4 +7,4 @@ const cities = [
   { id: 6, name: '강원도' },
   { id: 7, name: '인천' },
 ];
-export default cities;
+export default regions;

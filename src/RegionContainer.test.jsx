@@ -2,9 +2,19 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import RegionContainer from './RegionContainer';
 
+import regions from '../fixtures/regions';
+
+jest.mock('react-redux');
+
 describe('RegionContainer', () => {
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
+
   function renderRegionContainer() {
     return render((
       <RegionContainer />

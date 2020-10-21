@@ -4,14 +4,14 @@ import { render } from '@testing-library/react';
 
 import ButtonList from './ButtonList';
 
-import cities from '../fixtures/cities';
+import regions from '../fixtures/regions';
 
 describe('ButtonList', () => {
   it('show buttons', () => {
     const handleClick = jest.fn();
     const { getByText } = render((
       <ButtonList
-        labels={cities}
+        labels={regions}
         onClick={handleClick}
       />
     ));
