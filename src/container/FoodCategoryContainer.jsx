@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import FoodLocationList from '../components/FoodLocationList';
 
-export default function LocaleListContainer() {
+export default function FoodCategoryContainer() {
   const { locales, foodCategories } = useSelector((state) => ({
     locales: state.locales,
     foodCategories: state.foodCategories,

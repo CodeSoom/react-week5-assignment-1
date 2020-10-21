@@ -1,9 +1,9 @@
 import React from 'react';
 
-import FoodLocationListContainer from './container/FoodLocationListContainer';
+import FoodCategoryContainer from './container/FoodCategoryContainer';
 
 export default function App() {
   return (
-    <FoodLocationListContainer />
+    <FoodCategoryContainer />
   );
 }
