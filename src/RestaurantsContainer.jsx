@@ -6,8 +6,10 @@ import Restaurants from './Restaurants';
 
 import { setRestaurants } from './actions';
 
+import { fetchRestaurants } from './services/api';
+
 function loadRestaurants({ dispatch }) {
-  const restaurants = [];
+  const restaurants = fetchRestaurants();
 
   dispatch(setRestaurants(restaurants));
 }
