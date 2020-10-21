@@ -45,17 +45,17 @@ describe('reducer', () => {
       const state = reducer({
         categories: [
           { id: 1, name: '한식' },
-          { id: 2, name: '중식(v)' },
+          { id: 2, name: '중식' },
         ],
       }, selectCategory(categories[0].id));
 
       state.categories.forEach((category, index) => {
         if (index === 0) {
-          expect(category.name).toContain('(v)');
+          expect(category.checked).toBe('checked');
           return;
         }
 
-        expect(category.name).not.toContain('(v)');
+        expect(category.checked).toBe('');
       });
     });
 
