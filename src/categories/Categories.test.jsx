@@ -12,6 +12,6 @@ test('Categories', () => {
   ));
 
   categories.forEach(({ name }) => {
-    expect(queryByText(name)).not.toBeNull();
+    expect(queryByText(new RegExp(name))).not.toBeNull();
   });
 });

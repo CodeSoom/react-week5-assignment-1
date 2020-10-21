@@ -7,6 +7,7 @@ export default function Categories({ categories }) {
         <li key={id}>
           <button type="button">
             {name}
+            {id === 4 && '(V)'}
           </button>
         </li>
       ))}

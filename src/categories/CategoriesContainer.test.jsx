@@ -16,6 +16,6 @@ test('CategoriesContainer', () => {
   const { queryByText } = render(<CategoriesContainer />);
 
   expect(queryByText(/한식/)).not.toBeNull();
-  
+
   expect(queryByText(/일식\(V\)/)).not.toBeNull();
 });
