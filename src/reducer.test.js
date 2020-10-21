@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   checkRegion,
+  setRegions,
 } from './actions';
 
 import regions from '../fixtures/regions';
@@ -18,7 +19,9 @@ describe('reducer', () => {
   });
 
   describe('setRegions', () => {
-    const state = reducer(undefined, setRegions(regions));
-    expect(state.regions).toBe(regions);
+    it('set initial value of regions', () => {
+      const state = reducer(undefined, setRegions(regions));
+      expect(state.regions).toBe(regions);
+    });
   });
 });

@@ -7,7 +7,11 @@ export function checkRegion(id) {
   };
 }
 
-// TODO : delete this
-export function xxx() {
-
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
 }

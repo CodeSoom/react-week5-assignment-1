@@ -13,8 +13,16 @@ function checkRegion({ state, payload }) {
   };
 }
 
+function setRegions({ state, payload }) {
+  return {
+    ...state,
+    regions: payload.regions,
+  };
+}
+
 const reducers = {
   checkRegion,
+  setRegions,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
