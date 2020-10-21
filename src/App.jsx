@@ -1,9 +1,13 @@
 import React from 'react';
 
 import FoodCategoryContainer from './container/FoodCategoryContainer';
+import LocaleContainer from './container/LocaleContainer';
 
 export default function App() {
   return (
-    <FoodCategoryContainer />
+    <div>
+      <FoodCategoryContainer />
+      <LocaleContainer />
+    </div>
   );
 }
