@@ -9,16 +9,20 @@ import Categories from './Categories';
 describe('Categories', () => {
   const handleClickCategory = jest.fn();
 
+  function renderCategories(selectedCategory) {
+    return render((
+      <Categories
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onClick={handleClickCategory}
+      />
+    ));
+  }
+
   describe('render buttons', () => {
     it('show button text', () => {
       const selectedCategory = 2;
-      const { container } = render((
-        <Categories
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onClick={handleClickCategory}
-        />
-      ));
+      const { container } = renderCategories(selectedCategory);
 
       categories.forEach(({ id, name }) => {
         const buttonText = selectedCategory === id
@@ -32,13 +36,7 @@ describe('Categories', () => {
       it('run onClick function', () => {
         const selectedCategory = '';
 
-        const { container, getByText } = render((
-          <Categories
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onClick={handleClickCategory}
-          />
-        ));
+        const { container, getByText } = renderCategories(selectedCategory);
 
         categories.forEach(({ name }) => {
           expect(container).toHaveTextContent(name);
