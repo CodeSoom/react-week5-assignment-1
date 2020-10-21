@@ -8,16 +8,24 @@ import { categoriesFixture } from '../fixtures/fixtures';
 describe('CategoryList', () => {
   const handleSelectClick = jest.fn();
 
-  const categoryListRender = (categories) => render((
+  const categoryListRender = ({ categories, categoryState }) => render((
     <CategoryList
       categories={categories}
+      categoryState={categoryState}
       onSelectCategoryClick={handleSelectClick}
     />
   ));
 
+  const categoryState = {
+    category: null,
+  };
+
   context('with categories', () => {
     it('see renders categories', () => {
-      const { getByText } = categoryListRender(categoriesFixture);
+      const { getByText } = categoryListRender({
+        categories: categoriesFixture,
+        categoryState,
+      });
 
       categoriesFixture.forEach(({ name }) => {
         expect(getByText(name)).not.toBeNull();
@@ -25,12 +33,18 @@ describe('CategoryList', () => {
     });
 
     it('renders button to click a category', () => {
-      const { getByText } = categoryListRender(categoriesFixture);
+      const { getByText } = categoryListRender({
+        categories: categoriesFixture,
+        categoryState,
+      });
 
       categoriesFixture.forEach(({ name, id }) => {
         fireEvent.click(getByText(name));
 
-        expect(handleSelectClick).toBeCalledWith(id);
+        expect(handleSelectClick).toBeCalledWith({
+          type: 'category',
+          id,
+        });
       });
     });
   });
@@ -39,7 +53,7 @@ describe('CategoryList', () => {
     const categories = [];
 
     it('nothing render categories', () => {
-      const { container } = categoryListRender(categories);
+      const { container } = categoryListRender({ categories, categoryState });
 
       expect(container).toBeEmptyDOMElement();
     });
