@@ -1,17 +1,23 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import App from './App';
 
+jest.mock('react-redux');
+
 test('App', () => {
-  const Regions = ['서울', '대전', '대구'];
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
 
   const { getByText } = render((
     <App />
   ));
 
-  Regions.forEach((region) => {
+  regions.forEach((region) => {
     expect(getByText(region)).not.toBeNull();
   });
 });
