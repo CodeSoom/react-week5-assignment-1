@@ -69,8 +69,9 @@ export function loadCategories() {
 }
 
 export function loadRestaurants() {
-  return async (dispatch) => {
-    const restaurants = await fetchRestaurants();
+  return async (dispatch, getStore) => {
+    const state = getStore();
+    const restaurants = await fetchRestaurants(state);
 
     dispatch(setRestaurants(restaurants));
   };
