@@ -1,25 +1,11 @@
 import React from 'react';
 
+import Regions from './Regions';
+
 export default function RegionsContainer() {
+  const regions = ['서울', '대전', '대구'];
+
   return (
-    <div>
-      <ul>
-        <li>
-          <button type="button">
-            서울
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            대전
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            대구
-          </button>
-        </li>
-      </ul>
-    </div>
+    <Regions regions={regions} />
   );
 }
