@@ -7,7 +7,11 @@ import Regions from './Regions';
 import regions from '../fixtures/regions';
 
 test('Regions', () => {
-  const { queryByText } = render(<Regions regions={regions} />);
+  const { queryByText } = render((
+    <Regions regions={regions} />
+  ));
 
-  expect(queryByText(/서울/)).not.toBeNull();
+  regions.forEach(({ name }) => {
+    expect(queryByText(name)).not.toBeNull();
+  });
 });
