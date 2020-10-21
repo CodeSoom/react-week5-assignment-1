@@ -8,8 +8,8 @@ import { setRestaurants } from './actions';
 
 import { fetchRestaurants } from './services/api';
 
-function loadRestaurants({ dispatch }) {
-  const restaurants = fetchRestaurants();
+async function loadRestaurants({ dispatch }) {
+  const restaurants = await fetchRestaurants();
 
   dispatch(setRestaurants(restaurants));
 }
