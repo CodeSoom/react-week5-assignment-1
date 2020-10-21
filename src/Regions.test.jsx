@@ -49,6 +49,17 @@ describe('Regions', () => {
 
       expect(handleClick).toBeCalledTimes(regions.length);
     });
+
+    it('shows a selected button', () => {
+      const selectedRegionId = 1;
+      const { getByText } = renderRegions(selectedRegionId, regions);
+
+      regions.forEach(({ id, name }) => {
+        const buttonText = name + (id === selectedRegionId ? '(V)' : '');
+
+        expect(getByText(buttonText)).not.toBeNull();
+      });
+    });
   });
 
   context('without region', () => {
