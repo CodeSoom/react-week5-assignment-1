@@ -17,6 +17,10 @@ export default function App() {
 
   function handleClick(id, isChecked) {
     dispatch(checkCategories({ id, isChecked }));
+
+    dispatch({
+      type: 'initializeCheckedItem',
+    });
   }
 
   return (
