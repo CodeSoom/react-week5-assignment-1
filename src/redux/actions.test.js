@@ -31,9 +31,7 @@ describe('actions', () => {
     const actions = store.getActions();
 
     expect(actions).toEqual([
-      updateLoading(true),
       setRegions(regions),
-      updateLoading(false),
     ]);
   });
 
@@ -45,5 +43,16 @@ describe('actions', () => {
     expect(actions).toEqual([
       setCategories(categories),
     ]);
+  });
+
+  it('loadInitialState', async () => {
+    await store.dispatch(loadInitialState());
+
+    const actions = store.getActions();
+
+    expect(actions).toContain(updateLoading(true));
+    expect(actions).toContain(setCategories(categories));
+    expect(actions).toContain(setRegions(regions));
+    expect(actions).toContain(updateLoading(false));
   });
 });
