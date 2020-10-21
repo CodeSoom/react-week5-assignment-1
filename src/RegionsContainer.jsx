@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { checkRegions, initializeCheckedRegions } from './actions';
+import { checkRegions, initializeCheckedRegions, setRegions } from './actions';
 
 import Regions from './Regions';
 
+function loadRegions({ dispatch }) {
+  const regions = [];
+  // TODO : fetch data
+  setRegions(regions);
+}
+
 export default function App() {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    loadRegions({ dispatch });
+  }, []);
 
   const { regions } = useSelector((state) => ({
     regions: state.regions,

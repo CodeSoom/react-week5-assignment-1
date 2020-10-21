@@ -1,19 +1,6 @@
 const initialState = {
-  categories: [
-    { id: 1, name: '한식', isChecked: false },
-    { id: 2, name: '중식', isChecked: false },
-    { id: 3, name: '일식', isChecked: false },
-    { id: 4, name: '양식', isChecked: false },
-    { id: 5, name: '분식', isChecked: false },
-  ],
-  regions: [
-    { id: 1, region: '서울', isChecked: false },
-    { id: 2, region: '대구', isChecked: false },
-    { id: 3, region: '부산', isChecked: false },
-    { id: 4, region: '대전', isChecked: false },
-    { id: 5, region: '강원도', isChecked: false },
-    { id: 6, region: '광주', isChecked: false },
-  ],
+  categories: [],
+  regions: [],
 };
 
 export default function reducer(state = initialState, action) {

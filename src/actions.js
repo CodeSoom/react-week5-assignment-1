@@ -32,3 +32,10 @@ export function setCategories(categories) {
     payload: { categories },
   };
 }
+
+export function setRegions(regions) {
+  return {
+    type: 'setCategories',
+    payload: { regions },
+  };
+}
