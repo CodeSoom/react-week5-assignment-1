@@ -35,7 +35,7 @@ describe('reducer', () => {
       regions: [],
       loading: false,
     };
-    
+
     expect(reducer()).toEqual(initialState);
   });
 });
