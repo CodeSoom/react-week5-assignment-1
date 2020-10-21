@@ -11,6 +11,7 @@ import {
   updateLoading,
   setCategories,
   loadCategories,
+  loadInitialState,
 } from './actions';
 
 jest.mock('../services/api');
@@ -50,9 +51,9 @@ describe('actions', () => {
 
     const actions = store.getActions();
 
-    expect(actions).toContain(updateLoading(true));
-    expect(actions).toContain(setCategories(categories));
-    expect(actions).toContain(setRegions(regions));
-    expect(actions).toContain(updateLoading(false));
+    expect(actions).toContainEqual(updateLoading(true));
+    expect(actions).toContainEqual(setCategories(categories));
+    expect(actions).toContainEqual(setRegions(regions));
+    expect(actions).toContainEqual(updateLoading(false));
   });
 });

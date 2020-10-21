@@ -29,11 +29,9 @@ export function updateLoading(loading) {
 
 export function loadRegions() {
   return async (dispatch) => {
-    dispatch(updateLoading(true));
     const regions = await fetchRegions();
 
     dispatch(setRegions(regions));
-    dispatch(updateLoading(false));
   };
 }
 
@@ -42,5 +40,21 @@ export function loadCategories() {
     const regions = await fetchCategories();
 
     dispatch(setCategories(regions));
+  };
+}
+
+export function loadInitialState() {
+  return async (dispatch) => {
+    dispatch(updateLoading(true));
+
+    await Promise.all([
+      fetchCategories(),
+      fetchRegions(),
+    ])
+      .then(([categories, regions]) => {
+        dispatch(setCategories(categories));
+        dispatch(setRegions(regions));
+        dispatch(updateLoading(false));
+      });
   };
 }
