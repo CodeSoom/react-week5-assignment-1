@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function RegionItem({ regionName, isSelected }) {
+export default function RegionItem({ regionName, isSelected, onClick }) {
   return (
     <li>
-      <button type="button">
+      <button type="button" onClick={onClick}>
         {regionName}
         {isSelected && '(V)'}
       </button>
