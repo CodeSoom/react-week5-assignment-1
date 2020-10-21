@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+import regions from '../__fixtures__/regions';
+
 jest.mock('react-redux');
 
 test('App', () => {
@@ -17,7 +19,7 @@ test('App', () => {
     <App />
   ));
 
-  regions.forEach((region) => {
-    expect(getByText(region)).not.toBeNull();
+  regions.forEach(({ name }) => {
+    expect(getByText(name)).not.toBeNull();
   });
 });
