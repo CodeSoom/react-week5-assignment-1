@@ -17,7 +17,7 @@ test('Categories', () => {
 
   fireEvent.click(getByText(/서울/));
 
-  expect(handleClick).toBeCalled();
+  expect(handleClick).toBeCalledWith('서울');
 
   expect(getByText(/서울/)).not.toBeNull();
   expect(getByText(/대전/)).not.toBeNull();

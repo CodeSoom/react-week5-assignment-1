@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default function Regions({ regions, onClick }) {
+  function handleClick(region) {
+    onClick(region);
+  }
   return (
     <>
       <ul>
@@ -8,7 +11,7 @@ export default function Regions({ regions, onClick }) {
           <li key={region.id}>
             <button
               type="button"
-              onClick={onClick}
+              onClick={() => handleClick(region.name)}
             >
               {region.name}
             </button>
