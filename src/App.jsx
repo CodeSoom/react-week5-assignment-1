@@ -9,6 +9,8 @@ export default function App() {
     <>
       <CategoriesContainer />
       <RegionsContainer />
+      <p>새마을 식당</p>
     </>
+
   );
 }
