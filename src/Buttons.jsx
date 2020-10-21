@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Buttons({ buttonNameList, onClickSelect }) {
+export default function Buttons({ buttonNameList, selectButton, onClickSelect }) {
 
   return (
     <ul>
@@ -8,7 +8,7 @@ export default function Buttons({ buttonNameList, onClickSelect }) {
         buttonNameList.map((buttonName, index) => (
           <li key={index}>
             <button onClick={onClickSelect}>
-              {buttonName}
+              {buttonName === selectButton ? buttonName + '(V)' : buttonName}
             </button>
           </li>
         ))
