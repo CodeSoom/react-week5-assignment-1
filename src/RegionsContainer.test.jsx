@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -23,5 +23,18 @@ describe('RegionsContainer', () => {
     const { getByText } = render(<RegionsContainer />);
 
     expect(getByText('서울')).not.toBeNull();
+  });
+
+  it('click category', () => {
+    const { getByText } = render(<RegionsContainer />);
+
+    fireEvent.click(getByText('서울'));
+
+    expect(dispatch).toBeCalledWith(
+      {
+        type: 'checkRegions',
+        payload: { id: regions[0].id, isChecked: regions[0].isChecked },
+      },
+    );
   });
 });

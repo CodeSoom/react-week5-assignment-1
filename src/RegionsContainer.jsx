@@ -12,7 +12,7 @@ export default function App() {
   }));
 
   function handleClick(id, isChecked) {
-    dispatch({ type: 'checkRegions', payload: { id, isChecked } });
+    dispatch();
   }
 
   return (
