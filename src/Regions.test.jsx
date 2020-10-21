@@ -10,16 +10,21 @@ jest.mock('react-redux');
 
 describe('Regions', () => {
   const handleClickRegion = jest.fn();
-  it('show button text', () => {
-    const selectedRegion = '서울';
 
-    const { container } = render((
+  function renderRegions(selectedRegion) {
+    return render((
       <Regions
         regions={regions}
         selectedRegion={selectedRegion}
         onClick={handleClickRegion}
       />
     ));
+  }
+
+  it('show button text', () => {
+    const selectedRegion = '서울';
+
+    const { container } = renderRegions(selectedRegion);
 
     regions.forEach(({ name }) => {
       const buttonText = selectedRegion === name
@@ -31,12 +36,9 @@ describe('Regions', () => {
 
   context('when the button clicked', () => {
     it('run onClick function', () => {
-      const { container, getByText } = render((
-        <Regions
-          regions={regions}
-          onClick={handleClickRegion}
-        />
-      ));
+      const selectedRegion = '';
+
+      const { container, getByText } = renderRegions(selectedRegion);
 
       regions.forEach(({ name }) => {
         expect(container).toHaveTextContent(name);
