@@ -13,7 +13,7 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
 
-  function handleClickSelectCategory(id) {
+  function handleClickCategory(id) {
     loadRestaurants();
     return dispatch(selectCategory(id));
   }
@@ -21,7 +21,7 @@ export default function CategoriesContainer() {
   return (
     <Categories
       categories={categories}
-      onClick={handleClickSelectCategory}
+      onClick={handleClickCategory}
     />
   );
 }
