@@ -2,17 +2,18 @@ import React from 'react';
 
 import Item from './Item';
 
-const CategoryList = ({ categories, onSelectCategoryClick }) => {
+const CategoryList = ({ categories, onSelectCategoryClick, categoryState }) => {
   if (categories.length === 0) {
     return null;
   }
+
   return (
     <ul>
       {categories.map(({ id, name }) => (
         <Item
           key={id}
-          name={name}
-          onClick={() => onSelectCategoryClick(id)}
+          name={id === categoryState ? `${name}(V)` : name}
+          onClick={() => onSelectCategoryClick({ type: 'category', id })}
         />
       ))}
     </ul>
