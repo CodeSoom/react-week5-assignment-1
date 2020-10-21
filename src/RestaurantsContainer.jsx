@@ -11,7 +11,9 @@ export default function RestaurantsContainer() {
 
   return (
     <>
-      <Restaurants />
+      <Restaurants
+        restaurants={restaurants}
+      />
     </>
   );
 }
