@@ -1,13 +1,22 @@
 import { fetchRegions } from './services/api';
 
-export function loadRegions() {
-    return async (dispatch) => {
-      const regions = await fetchRegions();
-      dispatch(setRegions(regions));
-    };
-  }
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
+}
 
-  //TODO : delete it!!
-export function xxx(){
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
+  };
+}
+
+// TODO : delete it!!
+export function xxx() {
 
 }
