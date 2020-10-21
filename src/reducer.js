@@ -6,6 +6,7 @@ const initialState = {
     { id: 4, category: '양식', isChecked: false },
     { id: 5, category: '분식', isChecked: false },
   ],
+
   regions: [
     { id: 1, region: '서울', isChecked: false },
     { id: 2, region: '대구', isChecked: false },
