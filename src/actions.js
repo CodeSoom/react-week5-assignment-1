@@ -1,7 +1,7 @@
 // Action creators
 export function selectRegion(id) {
   return {
-    type: '',
+    type: 'selectRegion',
     payload: {
       id,
     },
