@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FoodLocationList({ items }) {
+export default function FoodLocationList({ items, onClick }) {
   return (
     <li>
       {
@@ -8,6 +8,7 @@ export default function FoodLocationList({ items }) {
           <button
             type="button"
             key={item.id}
+            onClick={onClick}
           >
             {item.name}
           </button>
