@@ -29,5 +29,10 @@ test('RegionsContainer', () => {
 
   fireEvent.click(queryByText(/서울/));
 
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledWith({
+    type: 'selectRegion',
+    payload: {
+      regionName: '서울',
+    },
+  });
 });
