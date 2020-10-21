@@ -12,7 +12,7 @@ export default function App() {
   }));
 
   function handleClick(id, isChecked) {
-    dispatch({ type: 'checkCategories', payload: { id, isChecked } });
+    dispatch();
   }
 
   return (

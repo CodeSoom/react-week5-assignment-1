@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
@@ -19,9 +19,22 @@ describe('CategoriesContainer', () => {
     categories,
   }));
 
-  it('show categories and regions', () => {
+  it('show categories', () => {
     const { getByText } = render(<CategoriesContainer />);
 
     expect(getByText('한식')).not.toBeNull();
+  });
+
+  it('click category', () => {
+    const { getByText } = render(<CategoriesContainer />);
+
+    fireEvent.click(getByText('한식'));
+
+    expect(dispatch).toBeCalledWith(
+      {
+        type: 'checkCategories',
+        payload: { id: categories[0].id, isChecked: categories[0].isChecked },
+      },
+    );
   });
 });
