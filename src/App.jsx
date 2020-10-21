@@ -14,6 +14,9 @@ export default function App() {
   }, []);
 
   return (
-    <RegionsContainer />
+    <>
+      <RegionsContainer />
+      <div>한식</div>
+    </>
   );
 }
