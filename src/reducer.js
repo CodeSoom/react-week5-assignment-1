@@ -1,5 +1,5 @@
 const initialState = {
-    regions: [],
+  regions: [],
 };
 
 export default function reducer(state = initialState) {
