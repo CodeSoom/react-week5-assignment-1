@@ -42,3 +42,12 @@ export function loadInitialState() {
       });
   };
 }
+
+export function selectRegion(regionName) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      regionName,
+    },
+  };
+}
