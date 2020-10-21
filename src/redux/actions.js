@@ -9,6 +9,15 @@ export function setRegions(regions) {
   };
 }
 
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}
+
 export function updateLoading(loading) {
   return {
     type: 'updateLoading',

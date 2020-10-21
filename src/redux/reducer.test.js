@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegions,
+  setCategories,
   updateLoading,
 } from './actions';
 

@@ -13,6 +13,14 @@ const reducers = {
       regions,
     };
   },
+  setCategories(state, action) {
+    const { categories } = action.payload;
+
+    return {
+      ...state,
+      categories,
+    };
+  },
   updateLoading(state, action) {
     const { loading } = action.payload;
 
