@@ -21,7 +21,7 @@ export default function reducer(state = initialState, action) {
     const { id, isChecked } = action.payload;
     return {
       ...state,
-      initialCategories: [...state.initialCategories.map((category) => (
+      categories: [...state.categories.map((category) => (
         category.id === id ? { ...category, isChecked: !isChecked } : category
       )),
       ],

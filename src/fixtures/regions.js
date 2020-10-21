@@ -1,4 +1,4 @@
-const regionsTestData = [
+const regions = [
   { id: 1, region: '서울' },
   { id: 2, region: '대구' },
   { id: 3, region: '부산' },
@@ -7,4 +7,4 @@ const regionsTestData = [
   { id: 6, region: '광주' },
 ];
 
-export default regionsTestData;
+export default regions;

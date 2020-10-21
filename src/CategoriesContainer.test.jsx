@@ -6,9 +6,7 @@ import { render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import categoriesTestData from './fixtures/categories';
-
-import reducer from './reducer';
+import categories from './fixtures/categories';
 
 jest.mock('react-redux');
 
@@ -18,7 +16,7 @@ describe('CategoriesContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    categories: categoriesTestData,
+    categories,
   }));
 
   it('show categories and regions', () => {
