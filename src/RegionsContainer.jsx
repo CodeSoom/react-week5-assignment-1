@@ -13,7 +13,7 @@ async function loadRegions({ dispatch }) {
   dispatch(setRegions(regions));
 }
 
-export default function App() {
+export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
