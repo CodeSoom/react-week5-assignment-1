@@ -2,6 +2,8 @@ import React from 'react';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import restaurants from './fixtures/restaurants';
+
 import RegionsContainer from './RegionsContainer';
 
 import Restaurants from './Restaurants';
@@ -11,7 +13,7 @@ export default function App() {
     <>
       <CategoriesContainer />
       <RegionsContainer />
-      <Restaurants />
+      <Restaurants restaurants={restaurants} />
     </>
   );
 }

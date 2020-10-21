@@ -34,10 +34,4 @@ describe('App', () => {
       expect(getByText(`${name}`)).not.toBeNull();
     });
   });
-
-  it('show restaurants information', () => {
-    const { getByText } = render(<App />);
-
-    expect(getByText('새마을 식당')).not.toBeNull();
-  });
 });
