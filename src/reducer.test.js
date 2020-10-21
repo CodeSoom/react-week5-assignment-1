@@ -73,7 +73,12 @@ describe('reducer', () => {
         { id: 1, name: '한식' },
       ];
 
-      const initialState = { categories: [] };
+      const initialState = {
+        categories: [
+          { id: 1 },
+        ],
+        regions: [],
+      };
 
       const state = reducer(initialState, setCategories(categories));
 
