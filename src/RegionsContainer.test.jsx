@@ -22,6 +22,6 @@ describe('RegionsContainer', () => {
   it('show categories and regions', () => {
     const { getByText } = render(<RegionsContainer />);
 
-    expect(getByText('한식')).not.toBeNull();
+    expect(getByText('서울')).not.toBeNull();
   });
 });
