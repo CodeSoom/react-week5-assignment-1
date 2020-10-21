@@ -7,6 +7,7 @@ import { categoriesFixture, regionsFixture } from '../fixtures/fixtures';
 import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('ListContainer', () => {
   beforeEach(() => {
@@ -30,16 +31,6 @@ describe('ListContainer', () => {
     <ListContainer />
   ));
 
-  const loadRestaurantDispatch = ({ type, info }) => {
-    expect(dispatch).toBeCalledWith({
-      type: 'loadRestaurantInfo',
-      payload: {
-        type,
-        info,
-      },
-    });
-  };
-
   const updateRestaurantDispatch = (payload) => {
     expect(dispatch).toBeCalledWith({
       type: 'updateRestaurant',
@@ -50,17 +41,15 @@ describe('ListContainer', () => {
   it('renders setting initial list', () => {
     const { getByText } = listContainerRender();
 
-    loadRestaurantDispatch({ type: 'regions', info: regionsFixture });
-
     regionsFixture.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
     });
 
-    loadRestaurantDispatch({ type: 'categories', info: categoriesFixture });
-
     categoriesFixture.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
     });
+
+    expect(dispatch).toBeCalledTimes(2);
   });
 
   it('click region and category render button text status', () => {
