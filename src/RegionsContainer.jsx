@@ -13,14 +13,14 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
-  function handleClickSelectRegion(selectedRegion) {
+  function handleClickRegion(selectedRegion) {
     return dispatch(selectRegion(selectedRegion));
   }
 
   return (
     <Regions
       regions={regions}
-      onClick={handleClickSelectRegion}
+      onClick={handleClickRegion}
     />
   );
 }
