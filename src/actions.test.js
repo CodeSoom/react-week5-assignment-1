@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
+import restaurants from '../__fixtures__/restaurants';
 
 import {
   fetchRegions,
@@ -13,8 +14,10 @@ import {
 import {
   loadRegions,
   loadCategories,
+  loadRestaurants,
   setRegions,
   setCategories,
+  setRestaurants,
 } from './actions';
 
 jest.mock('./services/api');
@@ -48,6 +51,18 @@ describe('actions', () => {
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setCategories(categories));
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    it('dispatches fetched categories data', async () => {
+      const store = mockStore({});
+
+      await store.dispatch(loadRestaurants());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurants(restaurants));
     });
   });
 });
