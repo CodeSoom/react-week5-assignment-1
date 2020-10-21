@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+import Categories from './Categories';
 import Loading from './Loading';
 
 import {
@@ -27,6 +28,9 @@ export default function App() {
   }
 
   return (
-    <RegionsContainer />
+    <>
+      <RegionsContainer />
+      <Categories />
+    </>
   );
 }
