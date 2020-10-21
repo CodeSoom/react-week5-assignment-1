@@ -1,3 +1,9 @@
+import reducer from './reducer';
+
+import {
+  checkRegion,
+} from './actions';
+
 describe('reducer', () => {
   describe('checkRegion', () => {
     it('change checked Region', () => {
