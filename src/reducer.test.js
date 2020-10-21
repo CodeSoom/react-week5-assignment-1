@@ -18,4 +18,14 @@ describe('reducer', () => {
       expect(state.regions).not.toHaveLength(0);
     });
   });
+
+  describe('setLoading', () => {
+    it('changes loading', () => {
+      const state = reducer({
+        loading: false,
+      }, setLoading(true));
+
+      expect(state.loading).toBe(true);
+    });
+  });
 });
