@@ -7,7 +7,7 @@ import CategoriesContainer from './categories/CategoriesContainer';
 import Loading from './Loading';
 
 import {
-  loadRegions,
+  loadInitialState,
 } from './redux/actions';
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRegions());
+    dispatch(loadInitialState());
   }, []);
 
   if (loading) {
