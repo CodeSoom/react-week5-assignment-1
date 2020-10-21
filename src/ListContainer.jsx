@@ -17,15 +17,13 @@ const ListContainer = () => {
     regions: state.regions,
   }));
 
-  const updateRestaurantDispatch = (stateId) => dispatch(updateRestaurant(stateId));
-
   useEffect(() => {
     dispatch(loadRestaurants('categories'));
     dispatch(loadRestaurants('regions'));
   }, []);
 
-  const handleClickButton = (state) => {
-    updateRestaurantDispatch(state);
+  const handleClickButton = (stateId) => {
+    dispatch(updateRestaurant(stateId));
   };
 
   return (
