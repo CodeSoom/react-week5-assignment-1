@@ -1,27 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import FoodLocationList from '../components/FoodLocationList';
+import {
+  updateFoodCategory,
+} from '../modules/actions';
 
 export default function FoodCategoryContainer() {
-  const { locales, foodCategories } = useSelector((state) => ({
-    locales: state.locales,
+  const { foodCategories } = useSelector((state) => ({
     foodCategories: state.foodCategories,
   }));
 
-  return (
-    <div>
-      <ul>
-        <FoodLocationList
-          items={locales}
-        />
-      </ul>
+  const dispatch = useDispatch();
 
-      <ul>
-        <FoodLocationList
-          items={foodCategories}
-        />
-      </ul>
-    </div>
+  function handleClick(value) {
+    dispatch(updateFoodCategory(value));
+  }
+
+  return (
+    <ul>
+      <FoodLocationList
+        items={foodCategories}
+        onClick={handleClick}
+      />
+    </ul>
   );
 }
