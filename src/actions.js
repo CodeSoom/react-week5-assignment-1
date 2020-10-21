@@ -66,3 +66,10 @@ export function loadCategories() {
     dispatch(setCategories(categories));
   };
 }
+
+export function loadRestaurants() {
+  return (dispatch) => {
+    const restaurants = [];
+    dispatch(setRestaurants(restaurants));
+  };
+}

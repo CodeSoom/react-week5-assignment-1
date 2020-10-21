@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
-import { selectCategory, setRestaurants } from './actions';
-
-import restaurants from '../__fixtures__/restaurants';
+import { selectCategory, loadRestaurants } from './actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -16,8 +14,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClickSelectCategory(id) {
-    dispatch(setRestaurants(restaurants));
-
+    loadRestaurants();
     return dispatch(selectCategory(id));
   }
 
