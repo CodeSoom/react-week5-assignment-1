@@ -1,9 +1,9 @@
 import React from 'react';
 
+import Categories from './Categories';
+
 export default function CategoriesContainer() {
   return (
-    <li>
-      <button type="button">한식</button>
-    </li>
+    <Categories />
   );
 }
