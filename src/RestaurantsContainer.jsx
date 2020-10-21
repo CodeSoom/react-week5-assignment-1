@@ -6,7 +6,7 @@ import Restaurants from './Restaurants';
 
 export default function App() {
   const { restaurants } = useSelector((state) => ({
-    restaurants: state.restaurants,
+    restaurants: [],
   }));
 
   return (

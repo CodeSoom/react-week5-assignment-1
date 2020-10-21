@@ -21,6 +21,7 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
     regions,
+    restaurant: [],
   }));
 
   it('show categories and regions', () => {
