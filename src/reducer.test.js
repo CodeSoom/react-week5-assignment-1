@@ -2,9 +2,9 @@ import reducer from './reducer';
 
 import categories from './fixtures/categories';
 
-import regions from './fixtures/categories';
+import regions from './fixtures/regions';
 
-import { checkCategories } from './actions';
+import { checkCategories, checkRegions } from './actions';
 
 describe('reducer', () => {
   describe('checkCategories', () => {
@@ -19,7 +19,7 @@ describe('reducer', () => {
   describe('checkRegions', () => {
     it('changes Regions isChecked property', () => {
       const state = reducer({ regions },
-        checkCategories({ id: 1, isChecked: false }));
+        checkRegions({ id: 1, isChecked: false }));
 
       expect(state.regions[0].isChecked).toBe(true);
     });

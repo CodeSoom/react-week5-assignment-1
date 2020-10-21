@@ -29,5 +29,17 @@ export default function reducer(state = initialState, action) {
       ],
     };
   }
+
+  if (action.type === 'checkRegions') {
+    const { id, isChecked } = action.payload;
+
+    return {
+      ...state,
+      regions: [...state.regions.map((region) => (
+        region.id === id ? { ...region, isChecked: !isChecked } : region
+      )),
+      ],
+    };
+  }
   return state;
 }

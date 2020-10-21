@@ -5,6 +5,9 @@ export function checkCategories({ id, isChecked }) {
   };
 }
 
-export function XXX() {
-  //
+export function checkRegions({ id, isChecked }) {
+  return {
+    type: 'checkRegions',
+    payload: { id, isChecked },
+  };
 }
