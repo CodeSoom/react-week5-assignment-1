@@ -2,26 +2,19 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import CategoriesContainer from './CategoriesContainer';
 
 import Regions from './Regions';
 
 export default function App() {
   const dispatch = useDispatch();
 
-  const { categories, regions } = useSelector((state) => ({
-    categories: state.categories,
+  const { regions } = useSelector((state) => ({
+
     regions: state.regions,
   }));
 
   function onClick(id, isChecked) {
-    dispatch();
-    // [
-    //   ...categories.map((category) => (
-    //     category.id === id ? { ...category, isChecked: !isChecked } : category
-    //   )),
-    // ]
-
     dispatch();
     // [
     //   ...regions.map((region) => (
@@ -32,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <Categories categories={categories} onClick={onClick} />
+      <CategoriesContainer />
       <Regions regions={regions} onClick={onClick} />
     </>
   );

@@ -19,6 +19,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   if (action.type === 'checkCategories') {
     const { id, isChecked } = action.payload;
+
     return {
       ...state,
       categories: [...state.categories.map((category) => (
