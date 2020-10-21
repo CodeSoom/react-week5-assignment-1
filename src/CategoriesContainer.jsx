@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
+import {
+  checkCategories,
+} from './actions';
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -12,7 +16,7 @@ export default function App() {
   }));
 
   function handleClick(id, isChecked) {
-    dispatch();
+    dispatch(checkCategories({ id, isChecked }));
   }
 
   return (
