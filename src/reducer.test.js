@@ -30,7 +30,9 @@ describe('reducer', () => {
       const state = reducer({ categories },
         initializeCheckedItem());
 
-      const checkedItemsNumber = state.filter((category) => category.isChecked === true).length;
+      const checkedItemsNumber = state.categories.filter(
+        (category) => category.isChecked === true,
+      ).length;
       expect(checkedItemsNumber).toBe(1);
     });
   });
