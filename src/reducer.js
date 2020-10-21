@@ -5,15 +5,19 @@ const initialState = {
 
 const reducers = {
   setRegions(state, action) {
+    const { regions } = action.payload;
+
     return {
       ...state,
-      regions: action.payload.regions,
+      regions,
     };
   },
   updateLoading(state, action) {
+    const { loading } = action.payload;
+
     return {
       ...state,
-      loading: action.payload.loading,
+      loading,
     };
   },
   default(state) {
