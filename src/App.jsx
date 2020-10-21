@@ -15,17 +15,17 @@ export default function App() {
     dispatch(setSelectButtons());
   }, []);
 
-  const { locationList, foodTypeList, resultList } = useSelector((state) => ({
-    locationList: state.locationList,
-    foodTypeList: state.foodTypeList,
-    resultList: state.resultList,
+  const { locations, foodTypes, results } = useSelector((state) => ({
+    locations: state.locations,
+    foodTypes: state.foodTypes,
+    results: state.results,
   }));
 
   return (
     <>
-      <Buttons buttonNameList={locationList} />
-      <Buttons buttonNameList={foodTypeList} />
-      <List itemList={resultList} />
+      <Buttons buttonNameList={locations} />
+      <Buttons buttonNameList={foodTypes} />
+      <List itemList={results} />
     </>
   );
 }

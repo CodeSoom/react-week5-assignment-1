@@ -17,9 +17,9 @@ describe('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    locationList: [],
-    foodTypeList: [],
-    resultList: [],
+    locations: [],
+    foodTypes: [],
+    results: [],
   }));
 
   it('컴포넌트가 생성되면 setSelectButtons action이 dispatch 됩니다.', () => {
