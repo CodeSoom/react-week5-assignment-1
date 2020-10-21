@@ -22,6 +22,7 @@ test('LocaleContainer', () => {
   fireEvent.click(screen.getByRole('button', { name: '서울' }));
 
   expect(dispatch).toBeCalledWith({
-    type: 'updateLocation',
+    type: 'updateLocale',
+    payload: { value: '서울' },
   });
 });
