@@ -6,6 +6,7 @@ import {
   initializeCheckedCategories,
   initializeCheckedRegions,
   setCategories,
+  setRegions,
 } from './actions';
 
 describe('reducer', () => {
@@ -77,7 +78,6 @@ describe('reducer', () => {
 
       const initialState = {
         categories: [],
-
       };
 
       const state = reducer(initialState, setCategories(categories));
@@ -96,7 +96,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const state = reducer(initialState, setCategories(regions));
+      const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
     });

@@ -8,7 +8,7 @@ import Regions from './Regions';
 function loadRegions({ dispatch }) {
   const regions = [];
   // TODO : fetch data
-  setRegions(regions);
+  dispatch(setRegions(regions));
 }
 
 export default function App() {
