@@ -22,13 +22,11 @@ const reducers = {
   selectCategory: (state, payload) => {
     const newCategories = state.categories
       .map((category) => {
-        const { id, name } = category;
+        const { id } = category;
 
         return {
           ...category,
-          name: id === payload.id
-            ? `${name.replace('(v)', '')}(v)`
-            : name.replace('(v)', ''),
+          checked: id === payload.id ? 'checked' : '',
         };
       });
 
