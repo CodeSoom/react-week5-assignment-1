@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegions,
-  setLoading,
+  updateLoading,
 } from './actions';
 
 import regions from '../fixtures/regions';
@@ -24,7 +24,7 @@ describe('reducer', () => {
     it('changes loading', () => {
       const state = reducer({
         loading: false,
-      }, setLoading(true));
+      }, updateLoading(true));
 
       expect(state.loading).toBe(true);
     });

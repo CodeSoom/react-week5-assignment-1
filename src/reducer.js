@@ -10,7 +10,7 @@ const reducers = {
       regions: action.payload.regions,
     };
   },
-  setLoading(state, action) {
+  updateLoading(state, action) {
     return {
       ...state,
       loading: action.payload.loading,

@@ -9,9 +9,9 @@ export function setRegions(regions) {
   };
 }
 
-export function setLoading(loading) {
+export function updateLoading(loading) {
   return {
-    type: 'setLoading',
+    type: 'updateLoading',
     payload: {
       loading,
     },
