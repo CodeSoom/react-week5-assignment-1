@@ -4,10 +4,14 @@ import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';
 
-describe('Restaurants', () => {
-  it('show all information', () => {
-    const { container } = render(<Restaurants />);
+import restaurants from './fixtures/restaurants';
 
-    expect(container).toHaveTextContent('새마을 식당');
+describe('Restaurants', () => {
+  it('show all restaurants information', () => {
+    const { getByText } = render(<Restaurants restaurants={restaurants} />);
+
+    restaurants.forEach((restaurant) => {
+      expect(getByText(`${restaurant.name}`)).not.toBeNull();
+    });
   });
 });
