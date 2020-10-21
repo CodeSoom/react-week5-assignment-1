@@ -12,11 +12,9 @@ import categories from '../../fixtures/categories';
 describe('reducer', () => {
   describe('setRegions', () => {
     it('changes regions', () => {
-      const initialState = {
+      const state = reducer({
         regions: [],
-      };
-
-      const state = reducer(initialState, setRegions(regions));
+      }, setRegions(regions));
 
       expect(state.regions).not.toHaveLength(0);
     });
