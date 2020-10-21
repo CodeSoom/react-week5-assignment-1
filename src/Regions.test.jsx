@@ -21,7 +21,6 @@ describe('Regions', () => {
       { id: 1, region: '서울', checked: false },
       { id: 2, region: '경기', checked: false },
       { id: 3, region: '부산', checked: false },
-
     ];
 
     it('show regions of restaurant', () => {
