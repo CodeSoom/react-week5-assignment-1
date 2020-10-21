@@ -10,18 +10,22 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeAll(() => {
+    jest.clearAllMocks();
+  });
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    regions: [
+      { id: 1, name: '서울' },
+    ],
+  }));
+
   context('RegionsContainer', () => {
     it('checks region', () => {
-      const dispatch = jest.fn();
-
-      useDispatch.mockImplementation(() => dispatch);
-
-      useSelector.mockImplementation((selector) => selector({
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-      }));
-
       const { getByText } = render(<App />);
 
       expect(getByText('서울')).not.toBeNull();
