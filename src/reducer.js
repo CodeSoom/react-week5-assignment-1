@@ -12,6 +12,15 @@ const reducers = {
       regions,
     };
   },
+
+  setCategories(state, action) {
+    const { categories } = action.payload;
+
+    return {
+      ...state,
+      categories,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action = {}) {
