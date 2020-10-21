@@ -5,13 +5,17 @@ import { useDispatch } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 
-import { loadRegions } from './actions';
+import {
+  loadRegions,
+  loadCategories,
+} from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   return (
