@@ -6,6 +6,8 @@ import Categories from './Categories';
 
 import { selectCategory } from './actions';
 
+import restaurants from '../__fixtures__/restaurants';
+
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
@@ -14,6 +16,13 @@ export default function CategoriesContainer() {
   }));
 
   function handleClickSelectCategory(id) {
+    dispatch({
+      type: 'setCategories',
+      payload: {
+        restaurants,
+      },
+    });
+
     return dispatch(selectCategory(id));
   }
 
