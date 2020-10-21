@@ -22,7 +22,7 @@ export default function RestaurantRegionContainer() {
     <div>
       <h2>Restaurant Regions</h2>
       <Regions
-        selected={selectedRegionId}
+        selectedRegionId={selectedRegionId}
         regions={regions}
         onClick={handleClick}
       />

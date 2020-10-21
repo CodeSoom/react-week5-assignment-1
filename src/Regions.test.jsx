@@ -7,9 +7,10 @@ import Regions from './Regions';
 describe('Regions', () => {
   const handleClick = jest.fn();
 
-  function renderRegions(regions) {
+  function renderRegions(selectedRegionId, regions) {
     return render((
       <Regions
+        selectedRegionId={selectedRegionId}
         regions={regions}
         onClick={handleClick}
       />
@@ -18,26 +19,28 @@ describe('Regions', () => {
 
   context('with one or more regions', () => {
     const regions = [
-      { id: 1, region: '서울', checked: true },
-      { id: 2, region: '경기', checked: false },
-      { id: 3, region: '부산', checked: false },
+      { id: 1, name: '서울' },
+      { id: 2, name: '대전' },
+      { id: 3, name: '대구' },
     ];
 
-    it('show regions of restaurant', () => {
-      const { getByText } = renderRegions(regions);
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
 
-      regions.forEach(({ region, checked }) => {
-        const buttonText = region + (checked ? '(V)' : '');
-        expect(getByText(buttonText)).not.toBeNull();
+    it('show regions of restaurant', () => {
+      const { getByText } = renderRegions(0, regions);
+
+      regions.forEach(({ name }) => {
+        expect(getByText(name)).not.toBeNull();
       });
     });
 
-    it('click region button then checked', () => {
-      const { getByText } = renderRegions(regions);
+    it('click region button', () => {
+      const { getByText } = renderRegions(0, regions);
 
-      regions.forEach(({ region, checked }) => {
-        const buttonText = region + (checked ? '(V)' : '');
-        const button = getByText(buttonText);
+      regions.forEach(({ name }) => {
+        const button = getByText(name);
 
         expect(button).not.toBeNull();
 

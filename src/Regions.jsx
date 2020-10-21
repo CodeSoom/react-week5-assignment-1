@@ -1,21 +1,21 @@
 import React from 'react';
 
-const isEmpty = (array) => array.length === 0;
+const isEmpty = (array = []) => array.length === 0;
 
-export default function Regions({ regions, onClick }) {
+export default function Regions({ selectedRegionId, regions, onClick }) {
   if (isEmpty(regions)) {
     return <p>음식점 지역 정보를 등록해주세요!</p>;
   }
 
   return (
     <ul>
-      {regions.map(({ id, region, checked }) => (
+      {regions.map(({ id, name }) => (
         <li key={id}>
           <button
             type="button"
-            onClick={onClick}
+            onClick={onClick(id)}
           >
-            {region + (checked ? '(V)' : '')}
+            {name + (id === selectedRegionId ? '(V)' : '')}
           </button>
         </li>
       ))}
