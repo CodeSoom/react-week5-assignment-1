@@ -11,6 +11,7 @@ import categories from './fixtures/categories';
 import regions from './fixtures/regions';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
@@ -25,8 +26,8 @@ describe('App', () => {
   it('show categories and regions', () => {
     const { getByText } = render(<App />);
 
-    categories.forEach(({ category }) => {
-      expect(getByText(`${category}`)).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
     });
 
     regions.forEach(({ region }) => {

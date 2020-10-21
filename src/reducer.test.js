@@ -14,8 +14,8 @@ describe('reducer', () => {
   describe('checkCategories', () => {
     it('changes categories isChecked property', () => {
       const categories = [
-        { id: 1, category: '분식', isChecked: false },
-        { id: 2, category: '중식', isChecked: false },
+        { id: 1, name: '분식', isChecked: false },
+        { id: 2, name: '중식', isChecked: false },
       ];
       const state = reducer({ categories },
         checkCategories({ id: 1, isChecked: false }));
@@ -36,8 +36,8 @@ describe('reducer', () => {
   describe('initializeCheckedItem', () => {
     it('initialize previously checked categories', () => {
       const checkedCategories = [
-        { id: 1, category: '분식', isChecked: true },
-        { id: 2, category: '중식', isChecked: true },
+        { id: 1, name: '분식', isChecked: true },
+        { id: 2, name: '중식', isChecked: true },
       ];
 
       const state = reducer({ categories: checkedCategories },

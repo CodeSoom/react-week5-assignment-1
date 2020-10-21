@@ -16,8 +16,8 @@ describe('CategoriesContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     categories: [
-      { id: 1, category: '한식', isChecked: false },
-      { id: 2, category: '중식', isChecked: false },
+      { id: 1, name: '한식', isChecked: false },
+      { id: 2, name: '중식', isChecked: false },
     ],
   }));
 
@@ -32,7 +32,7 @@ describe('CategoriesContainer', () => {
       const { getByText } = render(<CategoriesContainer />);
 
       const categories = [
-        { id: 1, category: '한식', isChecked: false },
+        { id: 1, name: '한식', isChecked: false },
       ];
 
       fireEvent.click(getByText('한식'));
@@ -49,8 +49,8 @@ describe('CategoriesContainer', () => {
       const { getByText } = render(<CategoriesContainer />);
 
       const categories = [
-        { id: 1, category: '한식', isChecked: false },
-        { id: 2, category: '중식', isChecked: false },
+        { id: 1, name: '한식', isChecked: false },
+        { id: 2, name: '중식', isChecked: false },
       ];
 
       fireEvent.click(getByText('한식'));

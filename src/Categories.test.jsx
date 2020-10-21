@@ -16,10 +16,10 @@ describe('Categories', () => {
       />,
     );
 
-    categories.forEach(({ category }) => {
-      expect(getByText(`${category}`)).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
 
-      fireEvent.click(getByText(`${category}`));
+      fireEvent.click(getByText(`${name}`));
 
       expect(handleClick).toBeCalled();
     });
