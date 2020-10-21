@@ -5,8 +5,10 @@ import { checkRegions, initializeCheckedRegions, setRegions } from './actions';
 
 import Regions from './Regions';
 
-function loadRegions({ dispatch }) {
-  const regions = [];
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
   // TODO : fetch data
   dispatch(setRegions(regions));
 }

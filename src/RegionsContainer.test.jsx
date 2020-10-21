@@ -7,6 +7,7 @@ import { fireEvent, render } from '@testing-library/react';
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();

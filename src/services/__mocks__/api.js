@@ -1,7 +1,7 @@
 export async function fetchCategories() {
   return [];
 }
-// ToDo : delete!
-export function xxX() {
 
+export async function fetchRegions() {
+  return [];
 }
