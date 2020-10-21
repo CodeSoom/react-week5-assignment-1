@@ -1,14 +1,16 @@
 import React from 'react';
 
+import RegionItem from './RegionItem';
+
 export default function Regions({ regions, selectedRegionName }) {
   return (
     <ul>
       {regions.map(({ id, name }) => (
-        <li key={id}>
-          <button type="button">
-            {name.replace(selectedRegionName, name.concat('(V)'))}
-          </button>
-        </li>
+        <RegionItem
+          key={id}
+          regionName={name}
+          isSelected={name === selectedRegionName}
+        />
       ))}
     </ul>
   );
