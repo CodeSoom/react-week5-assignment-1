@@ -9,12 +9,12 @@ import Regions from './Regions';
 jest.mock('react-redux');
 
 test('Regions', () => {
-  const handleClickSelectRegion = jest.fn();
+  const handleClickRegion = jest.fn();
 
   const { container, getByText } = render((
     <Regions
       regions={regions}
-      onClick={handleClickSelectRegion}
+      onClick={handleClickRegion}
     />
   ));
 
@@ -23,5 +23,5 @@ test('Regions', () => {
     fireEvent.click(getByText(name));
   });
 
-  expect(handleClickSelectRegion).toBeCalledTimes(regions.length);
+  expect(handleClickRegion).toBeCalledTimes(regions.length);
 });
