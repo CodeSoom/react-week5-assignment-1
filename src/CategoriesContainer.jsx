@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Categories from './Categories';
 
 import {
-  checkCategories, initializeCheckedCategories,
+  checkCategories, initializeCheckedCategories, setCategories,
 } from './actions';
 
 function loadCategories({ dispatch }) {
-  dispatch({ type: 'setCategories' });
+  const categories = [];
+  // TODO : fetch Categories
+  dispatch(setCategories(categories));
 }
 
 export default function App() {

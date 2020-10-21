@@ -25,3 +25,10 @@ export function initializeCheckedRegions({ id }) {
     payload: { id },
   };
 }
+
+export function setCategories(categories) {
+  return {
+    type: 'loadCategories',
+    payload: { categories },
+  };
+}
