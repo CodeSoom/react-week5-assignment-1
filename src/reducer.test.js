@@ -29,4 +29,13 @@ describe('reducer', () => {
       expect(state.loading).toBe(true);
     });
   });
+
+  it('returns initial state when state is undefined', () => {
+    const initialState = {
+      regions: [],
+      loading: false,
+    };
+    
+    expect(reducer()).toEqual(initialState);
+  });
 });
