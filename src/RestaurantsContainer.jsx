@@ -6,7 +6,10 @@ import Restaurants from './Restaurants';
 
 export default function App() {
   const { restaurants } = useSelector((state) => ({
-    restaurants: [],
+    restaurants: [
+      { id: 1, name: '도미노피자' },
+      { id: 2, name: ' 치킨' },
+    ],
   }));
 
   return (
