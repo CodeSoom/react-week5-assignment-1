@@ -1,12 +1,18 @@
 const initialState = {
   categories: [],
   regions: [],
+  category: null,
+  region: null,
 };
 
 const reducers = {
   loadRestaurantInfo: (state, { type, info }) => ({
     ...state,
     [type]: info,
+  }),
+  updateRestaurant: (state, { type, id }) => ({
+    ...state,
+    [type]: id,
   }),
 };
 
