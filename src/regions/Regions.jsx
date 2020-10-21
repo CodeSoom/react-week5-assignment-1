@@ -6,7 +6,7 @@ export default function Regions({ regions }) {
       {regions.map(({ id, name }) => (
         <li key={id}>
           <button type="button">
-            {name}
+            {name.replace('부산', '부산(V)')}
           </button>
         </li>
       ))}

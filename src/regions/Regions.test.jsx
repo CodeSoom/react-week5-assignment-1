@@ -12,6 +12,6 @@ test('Regions', () => {
   ));
 
   regions.forEach(({ name }) => {
-    expect(queryByText(name)).not.toBeNull();
+    expect(queryByText(new RegExp(name))).not.toBeNull();
   });
 });
