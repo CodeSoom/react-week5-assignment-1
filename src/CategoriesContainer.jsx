@@ -15,7 +15,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClickCategory(id) {
-    loadRestaurants();
+    dispatch(loadRestaurants());
     return dispatch(selectCategory(id));
   }
 
