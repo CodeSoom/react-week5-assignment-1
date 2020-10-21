@@ -6,6 +6,7 @@ import {
 } from './actions';
 
 import regions from '../../fixtures/regions';
+import categories from '../../fixtures/categories';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -17,6 +18,15 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).not.toHaveLength(0);
+    });
+  });
+  describe('setCategories', () => {
+    it('changes categories', () => {
+      const state = reducer({
+        categories: [],
+      }, setCategories(categories));
+
+      expect(state.categories).not.toHaveLength(0);
     });
   });
 
