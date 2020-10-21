@@ -24,4 +24,14 @@ describe('reducer', () => {
       expect(state.regions[0].isChecked).toBe(true);
     });
   });
+
+  describe('initializeCheckedItem', () => {
+    it('initialize previously checked item', () => {
+      const state = reducer({ categories },
+        initializeCheckedItem());
+
+      const checkedItemsNumber = categories.filter((category) => category.isChecked === true).length;
+      expect(checkedItemsNumber).toBe(1);
+    });
+  });
 });
