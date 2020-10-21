@@ -23,26 +23,35 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
-  it('renders correctly when state has been loaded', () => {
+  context('when state has been loaded', () => {
     setState({
-      regions,
       loading: false,
+      regions,
     });
 
-    const { queryByText } = render(<App />);
+    it('renders state, has called dispatch', () => {
+      const { queryByText } = render(<App />);
 
-    expect(queryByText(/서울/)).not.toBeNull();
+      expect(queryByText(/서울/)).not.toBeNull();
 
-    expect(dispatch).toBeCalled();
+      expect(dispatch).toHaveBeenCalled();
+    });
   });
 
-  it('renders loading message when state is being loaded', () => {
+  context('when state is being loaded', () => {
     setState({
-      loading: true,
+      loading: false,
+      regions,
     });
 
-    const { queryByText } = render(<App />);
+    it('renders loading message', () => {
+      setState({
+        loading: true,
+      });
 
-    expect(queryByText(/로딩중/)).not.toBeNull();
+      const { queryByText } = render(<App />);
+
+      expect(queryByText(/로딩중/)).not.toBeNull();
+    });
   });
 });
