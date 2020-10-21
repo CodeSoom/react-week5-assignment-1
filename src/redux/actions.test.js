@@ -9,6 +9,7 @@ import {
   loadRegions,
   setRegions,
   updateLoading,
+  setCategories,
   loadCategories,
 } from './actions';
 
@@ -18,9 +19,13 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe('actions', () => {
-  it('loadRegions', async () => {
-    const store = mockStore({});
+  const store = mockStore({});
 
+  beforeEach(() => {
+    store.clearActions();
+  });
+
+  it('loadRegions', async () => {
     await store.dispatch(loadRegions());
 
     const actions = store.getActions();
@@ -33,8 +38,6 @@ describe('actions', () => {
   });
 
   it('loadCategories', async () => {
-    const store = mockStore({});
-
     await store.dispatch(loadCategories());
 
     const actions = store.getActions();
