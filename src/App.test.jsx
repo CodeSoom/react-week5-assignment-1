@@ -27,6 +27,7 @@ describe('App', () => {
     const state = {
       regions,
       categories,
+      query: {},
       loading: false,
     };
     it('renders state, has called dispatch', () => {
