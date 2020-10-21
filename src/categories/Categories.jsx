@@ -5,7 +5,9 @@ export default function Categories({ categories }) {
     <ul>
       {categories.map(({ id, name }) => (
         <li key={id}>
-          {name}
+          <button type="button">
+            {name}
+          </button>
         </li>
       ))}
     </ul>

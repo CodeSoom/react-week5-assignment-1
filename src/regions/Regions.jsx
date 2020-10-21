@@ -5,7 +5,9 @@ export default function Regions({ regions }) {
     <ul>
       {regions.map(({ id, name }) => (
         <li key={id}>
-          {name}
+          <button type="button">
+            {name}
+          </button>
         </li>
       ))}
     </ul>
