@@ -11,15 +11,38 @@ import regions from '../fixtures/regions';
 jest.mock('react-redux');
 jest.mock('./service/api');
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
-
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({ regions }));
 
-  const { queryByText } = render(<App />);
+  const setState = (state) => {
+    useSelector.mockImplementation((selector) => selector(state));
+  };
 
-  expect(queryByText(/서울/)).not.toBeNull();
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(dispatch).toBeCalled();
+  it('renders correctly when state has been loaded', () => {
+    setState({
+      regions,
+      loading: false,
+    });
+
+    const { queryByText } = render(<App />);
+
+    expect(queryByText(/서울/)).not.toBeNull();
+
+    expect(dispatch).toBeCalled();
+  });
+
+  it('renders loading message when state is being loaded', () => {
+    setState({
+      loading: true,
+    });
+
+    const { queryByText } = render(<App />);
+
+    expect(queryByText(/로딩중/)).not.toBeNull();
+  });
 });
