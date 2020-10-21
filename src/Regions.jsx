@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function Regions({ regions, onClick }) {
+export default function Regions({
+  regions,
+  selectedRegion,
+  onClick,
+}) {
   return (
     <ul>
       { regions.map(({ id, name }) => (
@@ -10,6 +14,7 @@ export default function Regions({ regions, onClick }) {
             onClick={() => onClick({ id, name })}
           >
             {name}
+            {selectedRegion === name ? '(v)' : '' }
           </button>
         </li>
       ))}
