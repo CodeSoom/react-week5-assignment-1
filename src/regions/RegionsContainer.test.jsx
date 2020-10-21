@@ -11,7 +11,12 @@ import regions from '../../fixtures/regions';
 jest.mock('react-redux');
 
 test('RegionsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({ regions }));
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+    query: {
+      regionName: '부산',
+    },
+  }));
 
   const { queryByText } = render(<RegionsContainer />);
 
