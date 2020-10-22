@@ -5,6 +5,7 @@ import restaurants from '../../fixtures/restaurants';
 import {
   fetchRegions,
   fetchCategories,
+  fetchRestaurants,
 } from './api';
 
 const mockFetch = (resolvedValue) => {
