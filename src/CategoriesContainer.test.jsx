@@ -25,7 +25,7 @@ test('CategoriesContainer', () => {
   fireEvent.click(getByText(/한식/));
 
   expect(dispatch).toBeCalledWith({
-    type: 'updateCategory',
+    type: 'updateCategoryId',
     payload: {
       categoryId: 1,
     },

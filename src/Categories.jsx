@@ -1,15 +1,19 @@
 import React from 'react';
 
-export default function Categories({ categories }) {
+export default function Categories({ categories, onClick }) {
   return (
-    <>
-      <ul>
-        {categories.map((categorie) => (
-          <li key={categorie.id}>
-            {categorie.name}
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
+          <button
+            type="button"
+            onClick={() => onClick(id)}
+          >
+            {name}
+          </button>
+        </li>
+      ))}
+    </ul>
+
   );
 }

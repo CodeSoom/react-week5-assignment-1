@@ -7,7 +7,11 @@ export function updateRegion(region) {
   };
 }
 
-// TODO : delete this.
-export function xxx() {
-
+export function updateCategoryId(categoryId) {
+  return {
+    type: 'updateCategoryId',
+    payload: {
+      categoryId,
+    },
+  };
 }
