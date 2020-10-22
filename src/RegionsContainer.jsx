@@ -14,7 +14,7 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   function handleClick(event) {
-    const regionName = event.target.innerText;
+    const regionName = event.target.textContent;
 
     dispatch(setSelectedRegionName(regionName));
   }

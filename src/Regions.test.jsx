@@ -10,7 +10,7 @@ test('Regions', () => {
   const handleClick = jest.fn();
 
   const { getByText } = render((
-    <Regions regions={regions} onClick={handleClick}/>
+    <Regions regions={regions} onClick={handleClick} />
   ));
 
   regions.forEach(({ name }) => {
