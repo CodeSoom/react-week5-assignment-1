@@ -1,23 +1,47 @@
 import LoadingStateReducer from './LoadingStateReducer';
 
 import {
-  updateLoading,
+  updateRestaurantsLoading,
+  updateCategoriesLoading,
+  updateRegionsLoading,
 } from '../actions';
 
 describe('LoadingStateReducer', () => {
-  describe('updateLoading', () => {
-    it('changes loading', () => {
+  describe('updateRestaurantsLoading', () => {
+    it('changes restaurants loading state', () => {
       const state = LoadingStateReducer({
-        loading: false,
-      }, updateLoading(true));
+        restaurantsloading: false,
+      }, updateRestaurantsLoading(true));
 
-      expect(state.loading).toBe(true);
+      expect(state.restaurantsLoading).toBe(true);
+    });
+  });
+
+  describe('updateCategoriesLoading', () => {
+    it('changes categories loading state', () => {
+      const state = LoadingStateReducer({
+        categoriesloading: false,
+      }, updateCategoriesLoading(true));
+
+      expect(state.categoriesLoading).toBe(true);
+    });
+  });
+
+  describe('updateRegionsLoading', () => {
+    it('changes Regions loading state', () => {
+      const state = LoadingStateReducer({
+        regionsloading: false,
+      }, updateRegionsLoading(true));
+
+      expect(state.regionsLoading).toBe(true);
     });
   });
 
   it('returns initial state when state is undefined', () => {
     const initialState = {
-      loading: false,
+      restaurantsLoading: false,
+      categoriesLoading: false,
+      regionsLoading: false,
     };
 
     expect(LoadingStateReducer()).toEqual(initialState);
