@@ -72,5 +72,22 @@ describe('actions', () => {
         expect(actions[0]).toEqual(setRestaurants(restaurants));
       });
     });
+
+    context('without region name or category id', () => {
+      it('dispatches nothing', async () => {
+        const selectedCategory = '';
+
+        const store = mockStore({
+          selectedCategory,
+          selectedRegion: '서울',
+        });
+
+        await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
   });
 });
