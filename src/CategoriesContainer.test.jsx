@@ -1,23 +1,58 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
 import categories from '../__fixtures__/categories';
 
-test('CategoriesContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }));
+jest.mock('react-redux');
 
-  const { getByText } = render((
-    <CategoriesContainer />
-  ));
+describe('CategoriesContainer', () => {
+  const dispatch = jest.fn();
 
-  categories.forEach(({ name }) => {
-    expect(getByText(name)).not.toBeNull();
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+    }));
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  function renderCategoriesContainer() {
+    return render((
+      <CategoriesContainer />
+    ));
+  }
+
+  it('renders categories', () => {
+    const { getByText } = renderCategoriesContainer();
+
+    categories.forEach(({ name }) => {
+      expect(getByText(name)).not.toBeNull();
+    });
+  });
+
+  context('click category button', () => {
+    it('dispatch setSelectedCategory action', () => {
+      const { getByText } = renderCategoriesContainer();
+
+      fireEvent.click(getByText(categories[0]));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'setSelectedCategory',
+          payload: {
+            id: 1,
+          },
+        },
+      );
+    });
   });
 });
