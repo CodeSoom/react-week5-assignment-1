@@ -1,5 +1,6 @@
 import regions from '../../fixtures/regions';
 import categories from '../../fixtures/categories';
+import restaurants from '../../fixtures/restaurants';
 
 import {
   fetchRegions,
@@ -25,5 +26,14 @@ describe('api', () => {
     mockFetch(categories);
 
     expect(await fetchCategories()).toEqual(categories);
+  });
+
+  test('fetchRestaurants', async () => {
+    mockFetch(restaurants);
+
+    expect(await fetchRestaurants({
+      categoryId: 1,
+      regionName: '서울',
+    })).toEqual(restaurants);
   });
 });
