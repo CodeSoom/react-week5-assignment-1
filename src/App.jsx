@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RegionsContainer from './container/RegionsContainer';
+
 export default function App() {
   // TODO: 'https://eatgo-customer-api.ahastudio.com/regions' 에서 지역 리스트를 가져온다.
   // TODO: 'https://eatgo-customer-api.ahastudio.com/categories' 에서 음식분류 리스트를 가져온다.
@@ -13,12 +15,7 @@ export default function App() {
   // TODO: 음식점 리스트를 그린다.
   return (
     <div>
-      <ul>
-        <li>
-          <button type="button" name="서울">서울(V)</button>
-          <button type="button" name="대전">대전</button>
-        </li>
-      </ul>
+      <RegionsContainer />
 
       <ul>
         <li>
