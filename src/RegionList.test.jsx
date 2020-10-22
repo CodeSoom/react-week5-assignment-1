@@ -8,25 +8,25 @@ import { regionsFixture } from '../fixtures/fixtures';
 describe('RegionList', () => {
   const handleSelectClick = jest.fn();
 
-  const regionListRender = ({ regions, regionId }) => render((
+  const regionListRender = ({ regions, regionName }) => render((
     <RegionList
       regions={regions}
-      regionId={regionId}
+      regionName={regionName}
       onSelectRegionClick={handleSelectClick}
     />
   ));
 
   context('with regions', () => {
     it('see renders regions', () => {
-      const regionId = 1;
+      const regionName = '서울';
 
       const { getByText } = regionListRender({
         regions: regionsFixture,
-        regionId,
+        regionName,
       });
 
-      regionsFixture.forEach(({ id, name }) => {
-        if (regionId === id) {
+      regionsFixture.forEach(({ name }) => {
+        if (regionName === name) {
           expect(getByText(`${name}(V)`)).not.toBeNull();
           return;
         }
@@ -38,15 +38,15 @@ describe('RegionList', () => {
     it('renders button to click a region', () => {
       const { getByText } = regionListRender({
         regions: regionsFixture,
-        regionId: null,
+        regionName: null,
       });
 
-      regionsFixture.forEach(({ name, id }) => {
+      regionsFixture.forEach(({ name }) => {
         fireEvent.click(getByText(name));
 
         expect(handleSelectClick).toBeCalledWith({
           type: 'region',
-          id,
+          id: name,
         });
       });
     });
@@ -56,7 +56,7 @@ describe('RegionList', () => {
     const regions = [];
 
     it('nothing render regions', () => {
-      const { container } = regionListRender({ regions, regionId: null });
+      const { container } = regionListRender({ regions, regionName: null });
 
       expect(container).toBeEmptyDOMElement();
     });
