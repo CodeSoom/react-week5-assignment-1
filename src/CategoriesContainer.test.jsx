@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,6 +25,16 @@ describe('CategoriesContainer', () => {
       const { getByText } = render(<CategoriesContainer />);
 
       expect(getByText('한식')).not.toBeNull();
+
+      expect(dispatch).toBeCalled();
+    });
+  });
+
+  context('click category', () => {
+    it('calls check Categories dispatch', () => {
+      const { getByText } = render(<CategoriesContainer />);
+
+      fireEvent.click(getByText('한식'));
 
       expect(dispatch).toBeCalled();
     });
