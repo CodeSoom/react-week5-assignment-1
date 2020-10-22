@@ -26,7 +26,7 @@ describe('Categories', () => {
 
       categories.forEach(({ id, name }) => {
         const buttonText = selectedCategory === id
-          ? `${name}(v)`
+          ? `${name}(V)`
           : name;
         expect(container).toHaveTextContent(buttonText);
       });

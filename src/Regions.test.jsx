@@ -28,7 +28,7 @@ describe('Regions', () => {
 
     regions.forEach(({ name }) => {
       const buttonText = selectedRegion === name
-        ? `${name}(v)`
+        ? `${name}(V)`
         : name;
       expect(container).toHaveTextContent(buttonText);
     });

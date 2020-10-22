@@ -11,7 +11,7 @@ export default function Categories({ categories, selectedCategory, onClick }) {
               onClick={() => onClick(id)}
             >
               {name}
-              {selectedCategory === id ? '(v)' : ''}
+              {selectedCategory === id ? '(V)' : ''}
             </button>
           </li>
         ))
