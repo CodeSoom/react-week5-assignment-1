@@ -51,3 +51,12 @@ export function selectRegion(regionName) {
     },
   };
 }
+
+export function selectCategory(categoryId) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      categoryId,
+    },
+  };
+}
