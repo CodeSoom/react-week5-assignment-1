@@ -4,6 +4,10 @@ const initialState = {
 };
 
 const reducers = {
+  setRegions: (state, action) => ({
+    ...state,
+    regions: action.payload.regions,
+  }),
   selectRegion: (state, action) => ({
     ...state,
     selectedRegionId: action.payload.id,
