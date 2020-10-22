@@ -9,6 +9,15 @@ export function setRegions(regions) {
   };
 }
 
+export function setSelectedRegionName(name) {
+  return {
+    type: 'setSelectedRegionName',
+    payload: {
+      name,
+    },
+  };
+}
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',
