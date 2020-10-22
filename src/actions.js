@@ -1,4 +1,4 @@
-import { fetchRestaurants } from './services/api';
+import { fetchRestaurants, fetchRestaurantsName } from './services/api';
 
 export const setRestaurants = ({ type, info }) => ({
   type: 'setRestaurants',
@@ -22,3 +22,8 @@ export const setRestaurantsName = (payload) => ({
   type: 'setRestaurantsName',
   payload,
 });
+
+export const loadRestaurantsName = (path) => async (dispatch) => {
+  const restaurants = await fetchRestaurantsName(path);
+  dispatch(setRestaurantsName(restaurants));
+};
