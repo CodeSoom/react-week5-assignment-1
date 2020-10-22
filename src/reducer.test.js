@@ -28,7 +28,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, checkedRegion({ name: '서울' }));
 
-      expect(state.regionName).toBe(1);
+      expect(state.regionName).toBe('서울');
     });
   });
 
