@@ -16,14 +16,10 @@ const reducers = {
   }),
 };
 
-function unknownReducer(state) {
-  return state;
-}
-
 export default function reducer(state = initialState, action) {
-  if (typeof action === 'undefined') {
+  if (!action || !reducers[action.type]) {
     return state;
   }
 
-  return (reducers[action.type] || unknownReducer)(state, action);
+  return reducers[action.type](state, action);
 }
