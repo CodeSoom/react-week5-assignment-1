@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectRegion } from './actions';
 
-import RestaurantRegionContainer from './RestaurantRegionContainer';
+import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-describe('RestaurantRegionContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -26,14 +26,14 @@ describe('RestaurantRegionContainer', () => {
   }));
 
   it('shows a title', () => {
-    const { getByText } = render(<RestaurantRegionContainer />);
+    const { getByText } = render(<RegionsContainer />);
 
     expect(getByText('Restaurant Regions')).not.toBeNull();
   });
 
   describe('selects a region', () => {
     it('checks selected region', () => {
-      const { getByText } = render(<RestaurantRegionContainer />);
+      const { getByText } = render(<RegionsContainer />);
 
       fireEvent.click(getByText('서울'));
 

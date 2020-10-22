@@ -6,7 +6,7 @@ import { selectRegion } from './actions';
 
 import Regions from './Regions';
 
-export default function RestaurantRegionContainer() {
+export default function RegionsContainer() {
   const { selectedRegionId, regions } = useSelector((state) => ({
     selectedRegionId: state.selectedRegionId,
     regions: state.regions,
