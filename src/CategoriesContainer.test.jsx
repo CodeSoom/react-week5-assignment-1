@@ -43,7 +43,7 @@ describe('CategoriesContainer', () => {
     it('dispatch setSelectedCategory action', () => {
       const { getByText } = renderCategoriesContainer();
 
-      fireEvent.click(getByText(categories[0]));
+      fireEvent.click(getByText(categories[0].name));
 
       expect(dispatch).toBeCalledWith(
         {
