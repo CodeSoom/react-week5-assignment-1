@@ -1,6 +1,8 @@
 import reducer from './reducer';
 
-import { setRegions, setCategories, setSelectedCategory } from './actions';
+import {
+  setRegions, setSelectedRegionName, setCategories, setSelectedCategory,
+} from './actions';
 
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
@@ -14,6 +16,17 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRegions(regions));
       expect(state.regions).toHaveLength(3);
+    });
+  });
+
+  describe('setSelectedRegionName', () => {
+    it('changes selectedRegionName', () => {
+      const initialState = {
+        selectedRegionName: '',
+      };
+
+      const state = reducer(initialState, setSelectedRegionName('서울'));
+      expect(state.selectedRegionName).toBe('서울');
     });
   });
 
