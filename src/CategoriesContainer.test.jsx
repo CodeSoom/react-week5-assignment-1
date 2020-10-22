@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
@@ -11,6 +11,9 @@ import categories from '../fixtures/categories';
 jest.mock('react-redux');
 
 test('CategoriesContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     categories,
   }));
@@ -18,6 +21,15 @@ test('CategoriesContainer', () => {
   const { getByText } = render((
     <CategoriesContainer />
   ));
+
+  fireEvent.click(getByText(/한식/));
+
+  expect(dispatch).toBeCalledWith({
+    type: 'updateCategory',
+    payload: {
+      categoryId: 1,
+    },
+  });
 
   expect(getByText(/한식/)).not.toBeNull();
   expect(getByText(/중식/)).not.toBeNull();

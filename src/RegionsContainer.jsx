@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Regions from './Regions';
 
-import {
-  updateRegion,
-} from './actions';
+import { updateRegion } from './actions';
 
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();
