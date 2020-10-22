@@ -5,24 +5,16 @@ import {
 import reducer, { initialState } from './reducer';
 
 describe('initialState', () => {
-  it('초기 locationList는 빈 배열로 초기화됩니다.', () => {
-    expect(initialState.locations).toHaveLength(0);
-  });
-
-  it('초기 foodTypeList는 빈 배열로 초기화됩니다.', () => {
-    expect(initialState.foodTypes).toHaveLength(0);
-  });
-
-  it('초기 restaurants는 빈 배열로 초기화됩니다.', () => {
-    expect(initialState.restaurants).toHaveLength(0);
-  });
-
-  it('초기 selecInfo의 location이 빈 값으로 초기화됩니다.', () => {
-    expect(initialState.selectedButtons.location).toBe('');
-  });
-
-  it('초기 selecInfo의 foodType이 빈 값으로 초기화됩니다.', () => {
-    expect(initialState.selectedButtons.foodType).toBe('');
+  it('초기 state가 초기화됩니다.', () => {
+    expect(initialState).toEqual({
+      locations: [],
+      foodTypes: [],
+      restaurants: [],
+      selectedButtons: {
+        location: '',
+        foodType: '',
+      },
+    });
   });
 });
 
