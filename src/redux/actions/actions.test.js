@@ -2,16 +2,22 @@ import thunk from 'redux-thunk';
 
 import configureStore from 'redux-mock-store';
 
-import regions from '../../fixtures/regions';
-import categories from '../../fixtures/categories';
+import regions from '../../../fixtures/regions';
+import categories from '../../../fixtures/categories';
 
 import {
-  setRegions,
-  updateCategoriesLoading,
-  updateRegionsLoading,
-  setCategories,
   loadInitialState,
-} from './actions';
+} from './asyncActions';
+
+import {
+  updateCategoriesLoading,
+  setCategories,
+} from './categoryActions';
+
+import {
+  updateRegionsLoading,
+  setRegions,
+} from './regionActions';
 
 jest.mock('../services/api');
 
