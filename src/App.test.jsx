@@ -8,6 +8,7 @@ import App from './App';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
@@ -28,23 +29,21 @@ describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  context('when state has been loaded', () => {
-    const state = {
-      restaurantData: {
-        regions,
-        categories,
-      },
-      loadingState: {
-        categoriesLoading: false,
-        regionsLoading: false,
-      },
+  context('when regions, categories have been loaded', () => {
+    const loadingState = {
+      categoriesLoading: false,
+      regionsLoading: false,
+    };
+    const restaurantData = {
+      regions,
+      categories,
     };
 
     beforeEach(() => {
-      setState(state);
+      setState({ restaurantData, loadingState });
     });
 
-    it('renders state, has called dispatch', () => {
+    it('renders them, has called dispatch', () => {
       const { queryByText } = render(<App />);
 
       expect(queryByText(/서울/)).not.toBeNull();
@@ -54,16 +53,55 @@ describe('App', () => {
     });
   });
 
-  context('when state is being loaded', () => {
-    const state = {
-      loadingState: {
-        categoriesLoading: true,
-        regionsLoading: true,
-      },
+  context('when categories and regions are being loaded', () => {
+    const loadingState = {
+      categoriesLoading: true,
+      regionsLoading: true,
     };
 
     beforeEach(() => {
-      setState(state);
+      setState({ loadingState });
+    });
+
+    it('renders loading message', () => {
+      const { queryByText } = render(<App />);
+
+      expect(queryByText(/로딩중/)).not.toBeNull();
+    });
+  });
+
+  context('when restaurants has been loaded', () => {
+    const loadingState = {
+      restauarantsLoading: false,
+    };
+    const restaurantData = {
+      regions,
+      categories,
+      restaurants,
+    };
+
+    beforeEach(() => {
+      setState({ loadingState, restaurantData });
+    });
+
+    it('renders restaurants name', () => {
+      const { queryByText } = render(<App />);
+
+      expect(queryByText(/양천주가/)).not.toBeNull();
+    });
+  });
+
+  context('when restaurants is being loaded', () => {
+    const loadingState = {
+      restaurantLoading: true,
+    };
+    const restaurantData = {
+      regions,
+      categories,
+    };
+
+    beforeEach(() => {
+      setState({ loadingState, restaurantData });
     });
 
     it('renders loading message', () => {
