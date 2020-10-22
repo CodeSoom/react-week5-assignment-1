@@ -18,6 +18,7 @@ export default function App() {
 
   useEffect(() => {
     loadRegions({ dispatch });
+    // dispatch(loadRegions());
   }, []);
 
   return (
