@@ -7,8 +7,9 @@ import Categories from './Categories';
 import { setSelectedCategory } from './actions';
 
 export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
+  const { categories, selectedCategoryId } = useSelector((state) => ({
     categories: state.categories,
+    selectedCategoryId: state.selectedCategoryId,
   }));
 
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Categories categories={categories} onClick={handleClick} />
+    <Categories 
+      categories={categories} 
+      selectedCategoryId={selectedCategoryId}
+      onClick={handleClick} 
+    />
   );
 }
