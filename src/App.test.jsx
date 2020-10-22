@@ -12,16 +12,21 @@ import categories from '../fixtures/categories';
 jest.mock('react-redux');
 
 describe('App', () => {
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-
-  const setState = (state) => {
-    useSelector.mockImplementation((selector) => selector(state));
+  const initialState = {
+    restaurantSearchQuery: {},
+    restaurantData: {},
+    loadingState: {},
   };
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  const setState = (state) => {
+    useSelector.mockImplementation((selector) => selector({
+      ...initialState,
+      ...state,
+    }));
+  };
+
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
 
   context('when state has been loaded', () => {
     const state = {
@@ -33,11 +38,13 @@ describe('App', () => {
         categoriesLoading: false,
         regionsLoading: false,
       },
-      restaurantSearchQuery: {},
     };
-    it('renders state, has called dispatch', () => {
-      setState(state);
 
+    beforeEach(() => {
+      setState(state);
+    });
+
+    it('renders state, has called dispatch', () => {
       const { queryByText } = render(<App />);
 
       expect(queryByText(/서울/)).not.toBeNull();
@@ -49,16 +56,17 @@ describe('App', () => {
 
   context('when state is being loaded', () => {
     const state = {
-      restaurantSearchQuery: {},
-      restaurantData: {},
       loadingState: {
         categoriesLoading: true,
         regionsLoading: true,
       },
     };
-    it('renders loading message', () => {
-      setState(state);
 
+    beforeEach(() => {
+      setState(state);
+    });
+
+    it('renders loading message', () => {
       const { queryByText } = render(<App />);
 
       expect(queryByText(/로딩중/)).not.toBeNull();
