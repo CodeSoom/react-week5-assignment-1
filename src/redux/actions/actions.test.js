@@ -19,7 +19,7 @@ import {
   setRegions,
 } from './regionActions';
 
-jest.mock('../services/api');
+jest.mock('../../services/api');
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
