@@ -1,3 +1,3 @@
 export const fetchRestaurants = async () => [];
 
-export const temp = () => {};
+export const fetchRestaurantsName = async () => [];
