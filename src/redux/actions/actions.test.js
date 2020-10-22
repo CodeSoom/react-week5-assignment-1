@@ -4,20 +4,17 @@ import configureStore from 'redux-mock-store';
 
 import regions from '../../../fixtures/regions';
 import categories from '../../../fixtures/categories';
+import restaurants from '../../../fixtures/restaurants';
 
 import {
   loadInitialState,
-} from './asyncActions';
-
-import {
   updateCategoriesLoading,
-  setCategories,
-} from './categoryActions';
-
-import {
   updateRegionsLoading,
+  updateRestaurantsLoading,
+  setCategories,
   setRegions,
-} from './regionActions';
+  setRestaurants,
+} from './index';
 
 jest.mock('../../services/api');
 
@@ -36,13 +33,29 @@ describe('actions', () => {
 
     const actions = store.getActions();
 
-    expect(actions).toContainEqual(updateCategoriesLoading(true));
-    expect(actions).toContainEqual(updateRegionsLoading(true));
+    expect(actions).toIncludeSameMembers([
+      updateCategoriesLoading(true),
+      updateRegionsLoading(true),
 
-    expect(actions).toContainEqual(setCategories(categories));
-    expect(actions).toContainEqual(setRegions(regions));
+      setCategories(categories),
+      setRegions(regions),
 
-    expect(actions).toContainEqual(updateCategoriesLoading(false));
-    expect(actions).toContainEqual(updateRegionsLoading(false));
+      updateCategoriesLoading(false),
+      updateRegionsLoading(false),
+    ]);
+  });
+
+  test('loadRestaurants', async () => {
+    await store.dispatch(loadRestaurants());
+
+    const actions = store.getActions();
+
+    expect(actions).toEqual([
+      updateRestaurantsLoading(true),
+
+      setRestaurants(restaurants),
+
+      updateRestaurantsLoading(false),
+    ]);
   });
 });
