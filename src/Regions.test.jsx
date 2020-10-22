@@ -8,9 +8,9 @@ import regions from '../__fixtures__/regions';
 
 test('Regions', () => {
   const handleClick = jest.fn();
-  
+
   const { getByText } = render((
-    <Regions regions={regions} />
+    <Regions regions={regions} onClick={handleClick}/>
   ));
 
   regions.forEach(({ name }) => {
