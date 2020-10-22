@@ -39,7 +39,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  describe('click each region button', () => {
+  context('when click each region button', () => {
     it('dispatches selectRegion action', () => {
       const { getByText } = renderRegionsContainer();
 
