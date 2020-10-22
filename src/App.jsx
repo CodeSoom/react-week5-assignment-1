@@ -11,12 +11,9 @@ import {
 } from './redux/actions';
 
 export default function App() {
-  const { loading, query } = useSelector((({ loadingState, restaurantSearchQuery }) => ({
+  const { loading } = useSelector((({ loadingState }) => ({
     loading: loadingState.loading,
-    query: restaurantSearchQuery,
   })));
-
-  console.log(query);
 
   const dispatch = useDispatch();
 
