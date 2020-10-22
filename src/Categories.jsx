@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function Categories({ categories, selectedCategory, onClick }) {
+export default function Categories({
+  categories,
+  selectedCategory,
+  onClick,
+}) {
   return (
     <ul>
       {
