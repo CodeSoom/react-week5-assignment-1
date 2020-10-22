@@ -12,6 +12,15 @@ export function setRegions(regions) {
   };
 }
 
+export function selectedRegion(region) {
+  return {
+    type: 'selectedRegion',
+    payload: {
+      region,
+    },
+  };
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
