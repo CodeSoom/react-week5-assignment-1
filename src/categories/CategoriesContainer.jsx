@@ -4,18 +4,28 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Categories from './Categories';
 
-import { selectCategory } from '../redux/actions';
+import {
+  loadRestaurants,
+  selectCategory,
+} from '../redux/actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories, selectedCategoryId } = useSelector(({ category }) => ({
+  const state = useSelector(({ category, region }) => ({
     categories: category.categories,
     selectedCategoryId: category.selectedId,
+    selectedRegionName: region.selectedName,
   }));
+
+  const { categories, selectedCategoryId, selectedRegionName } = state;
 
   const handleClickSelectCategory = (categoryId) => {
     dispatch(selectCategory(categoryId));
+
+    if (selectedRegionName && (selectedCategoryId !== categoryId)) {
+      dispatch(loadRestaurants(selectedRegionName, selectedCategoryId));
+    }
   };
 
   return (

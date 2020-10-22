@@ -1,5 +1,5 @@
-async function fetchData(url, options = {}) {
-  const response = await fetch(url, options);
+async function fetchData(url) {
+  const response = await fetch(url);
   const data = response.json();
   return data;
 }
@@ -16,11 +16,5 @@ export async function fetchCategories() {
 
 export async function fetchRestaurants(regionName, categoryId) {
   const url = 'https://eatgo-customer-api.ahastudio.com/restaurants';
-
-  const queryParams = {
-    region: regionName,
-    category: categoryId,
-  };
-
-  return fetchData(url, queryParams);
+  return fetchData(`${url}?region=${regionName}&category=${categoryId}`);
 }

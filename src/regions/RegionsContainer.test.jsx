@@ -76,7 +76,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  context('when category has not been selected', () => {
+  context('when region has not been selected', () => {
     beforeEach(() => {
       setState('서울', null);
     });

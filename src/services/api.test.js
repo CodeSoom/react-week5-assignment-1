@@ -32,9 +32,6 @@ describe('api', () => {
   test('fetchRestaurants', async () => {
     mockFetch(restaurants);
 
-    expect(await fetchRestaurants({
-      categoryId: 1,
-      regionName: '서울',
-    })).toEqual(restaurants);
+    expect(await fetchRestaurants()).toEqual(restaurants);
   });
 });
