@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import DataReducer from './DataReducer';
-import LoadingStateReducer from './LoadingStateReducer';
-import RestaurantSearchQueryReducer from './RestaurantSearchQueryReducer';
+import categoryReducer from './categoryReducer';
+import regionReducer from './regionReducer';
+import restaurantReducer from './restaurantReducer';
 
 export default combineReducers({
-  restaurantData: DataReducer,
-  loadingState: LoadingStateReducer,
-  restaurantSearchQuery: RestaurantSearchQueryReducer,
+  restaurant: restaurantReducer,
+  region: regionReducer,
+  category: categoryReducer,
 });
