@@ -31,12 +31,12 @@ const ListContainer = () => {
       <RegionList
         regions={regions}
         onSelectRegionClick={handleClickButton}
-        regionState={region}
+        regionId={region}
       />
       <CategoryList
         categories={categories}
         onSelectCategoryClick={handleClickButton}
-        categoryState={category}
+        categoryId={category}
       />
     </>
   );

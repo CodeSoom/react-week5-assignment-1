@@ -2,7 +2,7 @@ import React from 'react';
 
 import Item from './Item';
 
-const RegionList = ({ regions, onSelectRegionClick, regionState }) => {
+const RegionList = ({ regions, onSelectRegionClick, regionId }) => {
   if (regions.length === 0) {
     return null;
   }
@@ -12,7 +12,7 @@ const RegionList = ({ regions, onSelectRegionClick, regionState }) => {
       {regions.map(({ id, name }) => (
         <Item
           key={id}
-          name={id === regionState ? `${name}(V)` : name}
+          name={id === regionId ? `${name}(V)` : name}
           onClick={() => onSelectRegionClick({ type: 'region', id })}
         />
       ))}

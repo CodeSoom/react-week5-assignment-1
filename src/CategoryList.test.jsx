@@ -8,24 +8,24 @@ import { categoriesFixture } from '../fixtures/fixtures';
 describe('CategoryList', () => {
   const handleSelectClick = jest.fn();
 
-  const categoryListRender = ({ categories, categoryState }) => render((
+  const categoryListRender = ({ categories, categoryId }) => render((
     <CategoryList
       categories={categories}
-      categoryState={categoryState}
+      categoryId={categoryId}
       onSelectCategoryClick={handleSelectClick}
     />
   ));
 
   context('with categories', () => {
     it('see renders categories', () => {
-      const categoryState = 1;
+      const categoryId = 1;
       const { getByText } = categoryListRender({
         categories: categoriesFixture,
-        categoryState,
+        categoryId,
       });
 
       categoriesFixture.forEach(({ id, name }) => {
-        if (categoryState === id) {
+        if (categoryId === id) {
           expect(getByText(`${name}(V)`)).not.toBeNull();
           return;
         }
@@ -36,7 +36,7 @@ describe('CategoryList', () => {
     it('renders button to click a category', () => {
       const { getByText } = categoryListRender({
         categories: categoriesFixture,
-        categoryState: null,
+        categoryId: null,
       });
 
       categoriesFixture.forEach(({ name, id }) => {
@@ -55,7 +55,7 @@ describe('CategoryList', () => {
     const categories = [];
 
     it('nothing render categories', () => {
-      const { container } = categoryListRender({ categories, categoryState: null });
+      const { container } = categoryListRender({ categories, categoryId: null });
 
       expect(container).toBeEmptyDOMElement();
     });
