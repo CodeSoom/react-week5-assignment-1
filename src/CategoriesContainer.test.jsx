@@ -41,7 +41,7 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  describe('click each category button', () => {
+  context('when click each category button', () => {
     it('dispatches selectCategory action', () => {
       const { getByText } = renderCategoriesContainer();
 
