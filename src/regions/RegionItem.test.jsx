@@ -4,10 +4,10 @@ import { fireEvent, render } from '@testing-library/react';
 
 import RegionItem from './RegionItem';
 
-describe('RegionItem', ({ regionName, isSelected }) => {
+describe('RegionItem', () => {
   const handleClick = jest.fn();
 
-  const renderRegionItem = render((
+  const renderRegionItem = ({ regionName, isSelected }) => render((
     <RegionItem
       regionName={regionName}
       isSelected={isSelected}
@@ -34,11 +34,15 @@ describe('RegionItem', ({ regionName, isSelected }) => {
   });
 
   it('calls click handler when clicked', () => {
-    const { queryByText } = renderRegionItem({
+    const { getByText } = renderRegionItem({
       regionName: '부산',
-      isSelected: true,
+      isSelected: false,
     });
 
-    fireEvent.click(queryByText('부산'));
+    expect(handleClick).not.toBeCalled();
+
+    fireEvent.click(getByText('부산'));
+
+    expect(handleClick).toBeCalled();
   });
 });

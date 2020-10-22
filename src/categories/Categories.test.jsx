@@ -1,17 +1,32 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
 import categories from '../../fixtures/categories';
 
-test('Categories', () => {
-  const { queryByText } = render((
-    <Categories categories={categories} />
-  ));
+describe('Categories', () => {
+  it('renders each, calls click handler on each', () => {
+    const handleClickSelectCategory = jest.fn();
 
-  categories.forEach(({ name }) => {
-    expect(queryByText(new RegExp(name))).not.toBeNull();
+    const { queryByText } = render((
+      <Categories
+        categories={categories}
+        onClickSelectCategory={handleClickSelectCategory} 
+      />
+    ));
+
+    categories.forEach(({ name }) => {
+      jest.clearAllMocks();
+
+      expect(queryByText(new RegExp(name))).not.toBeNull();
+
+      expect(handleClickSelectCategory).not.toBeCalled();
+
+      fireEvent.click(queryByText(new RegExp(name)));
+
+      expect(handleClickSelectCategory).toBeCalled();
+    });
   });
 });

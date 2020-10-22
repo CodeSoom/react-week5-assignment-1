@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import CategoryItem from './CategoryItem';
 
-describe('CategoryItem', ({ categoryName, isSelected }) => {
-  const renderCategoryItem = render((
+describe('CategoryItem', () => {
+  const handleClick = jest.fn();
+
+  const renderCategoryItem = ({ categoryName, isSelected }) => render((
     <CategoryItem
       categoryName={categoryName}
       isSelected={isSelected}
+      onClick={handleClick}
     />
   ));
 
@@ -28,5 +31,18 @@ describe('CategoryItem', ({ categoryName, isSelected }) => {
     });
 
     expect(queryByText(/한식\(V\)/)).not.toBeNull();
+  });
+
+  it('calls click handler when clicked', () => {
+    const { getByText } = renderCategoryItem({
+      categoryName: '한식',
+      isSelected: false,
+    });
+
+    expect(handleClick).not.toBeCalled();
+
+    fireEvent.click(getByText('한식'));
+
+    expect(handleClick).toBeCalled();
   });
 });
