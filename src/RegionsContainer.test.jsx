@@ -1,23 +1,56 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
 import regions from '../__fixtures__/regions';
 
-test('RegionsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    regions,
-  }));
+describe('RegionsContainer', () => {
+  const dispatch = jest.fn();
 
-  const { getByText } = render((
-    <RegionsContainer />
-  ));
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
 
-  regions.forEach(({ name }) => {
-    expect(getByText(name)).not.toBeNull();
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  function renderRegionsContainer() {
+    return render((
+      <RegionsContainer />
+    ));
+  }
+
+  it('renders regions', () => {
+    const { getByText } = renderRegionsContainer();
+
+    regions.forEach(({ name }) => {
+      expect(getByText(name)).not.toBeNull();
+    });
+  });
+
+  context('click region button', () => {
+    it('dispatch setSelectedRegionName action', () => {
+      const { getByText } = renderRegionsContainer();
+
+      fireEvent.click(getByText(regions[0].name));
+
+      expect(dispatch).toBeCalledWith(
+        {
+          type: 'setSelectedRegionName',
+          payload: {
+            name: '서울',
+          },
+        },
+      );
+    });
   });
 });
