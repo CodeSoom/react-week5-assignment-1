@@ -46,6 +46,17 @@ const reducers = {
       },
     };
   },
+  selectCategory(state, action) {
+    const { categoryId } = action.payload;
+
+    return {
+      ...state,
+      restaurantSearchQuery: {
+        ...state.restaurantSearchQuery,
+        categoryId,
+      },
+    };
+  },
   default(state) {
     return state;
   },
