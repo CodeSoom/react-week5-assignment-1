@@ -60,9 +60,3 @@ export function loadRestaurants(categoryId, regionName, stopLoad) {
     }
   };
 }
-
-export function stopLoadRestaurants() {
-  return {
-    type: 'stopLoadRestaurants',
-  };
-}
