@@ -6,18 +6,48 @@ import Regions from './Regions';
 
 import regions from '../__fixtures__/regions';
 
-test('Regions', () => {
+describe('Regions', () => {
   const handleClick = jest.fn();
 
-  const { getByText } = render((
-    <Regions regions={regions} onClick={handleClick} />
-  ));
+  function renderRegions(selectedRegionName) {
+    return render((
+      <Regions
+        regions={regions}
+        onClick={handleClick}
+        selectedRegionName={selectedRegionName}
+      />
+    ));
+  }
 
-  regions.forEach(({ name }) => {
-    expect(getByText(name)).not.toBeNull();
+  context('equals selectedRegionName and button text content', () => {
+    const selectedRegionName = '서울';
+
+    it("appends '(V)' button text content", () => {
+      const { getByText } = renderRegions(selectedRegionName);
+
+      expect(getByText('서울(V)')).not.toBeNull();
+    });
   });
 
-  fireEvent.click(getByText(regions[0].name));
+  context('not equals selectedRegionName and button text content', () => {
+    const selectedRegionName = '';
 
-  expect(handleClick).toBeCalled();
+    it("appends '(V)' button text content", () => {
+      const { getByText } = renderRegions(selectedRegionName);
+
+      regions.forEach(({ name }) => {
+        expect(getByText(name)).not.toBeNull();
+      });
+    });
+  });
+
+  context('click region button', () => {
+    const { getByText } = renderRegions();
+
+    it('occurs onclick event', () => {
+      fireEvent.click(getByText(regions[0].name));
+
+      expect(handleClick).toBeCalled();
+    });
+  });
 });
