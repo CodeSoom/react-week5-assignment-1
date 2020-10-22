@@ -3,6 +3,7 @@ const initialState = {
   regions: [],
   categories: [],
   region: '',
+  categoryId: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -11,6 +12,15 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       region,
+    };
+  }
+
+  if (action.type === 'updateCategoryId') {
+    const { categoryId } = action.payload;
+
+    return {
+      ...state,
+      categoryId,
     };
   }
   return state;
