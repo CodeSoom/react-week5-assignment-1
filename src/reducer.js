@@ -7,35 +7,32 @@ const initialState = {
   stopLoad: 1,
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setCategories') {
+const reducers = {
+  setCategories: (state, action) => {
     const { categories } = action.payload;
     return {
       ...state,
       categories,
       restaurants: [],
     };
-  }
-
-  if (action.type === 'setRegions') {
+  },
+  setRegions: (state, action) => {
     const { regions } = action.payload;
     return {
       ...state,
       regions,
       restaurants: [],
     };
-  }
-
-  if (action.type === 'setRestaurants') {
+  },
+  setRestaurants: (state, action) => {
     const { restaurants } = action.payload;
     return {
       ...state,
       restaurants,
       stopLoad: 0,
     };
-  }
-
-  if (action.type === 'selectCategory') {
+  },
+  selectCategory: (state, action) => {
     const { id } = action.payload;
     return {
       ...state,
@@ -43,9 +40,8 @@ export default function reducer(state = initialState, action) {
       restaurants: [],
       stopLoad: 1,
     };
-  }
-
-  if (action.type === 'selectRegion') {
+  },
+  selectRegion: (state, action) => {
     const { name } = action.payload;
     return {
       ...state,
@@ -53,6 +49,9 @@ export default function reducer(state = initialState, action) {
       restaurants: [],
       stopLoad: 1,
     };
-  }
-  return state;
+  },
+};
+
+export default function reducer(state = initialState, action) {
+  return reducers[action.type] ? reducers[action.type](state, action) : state;
 }
