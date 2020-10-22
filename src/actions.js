@@ -51,11 +51,13 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function loadRestaurants(categoryId, regionName) {
+export function loadRestaurants(categoryId, regionName, stopLoad) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants(categoryId, regionName);
+    if (categoryId !== 0 && regionName !== '' && stopLoad === 1) {
+      const restaurants = await fetchRestaurants(categoryId, regionName);
 
-    dispatch(setRestaurants(restaurants));
+      dispatch(setRestaurants(restaurants));
+    }
   };
 }
 

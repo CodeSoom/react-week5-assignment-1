@@ -16,6 +16,8 @@ describe('RestaurantsContainer', () => {
     restaurants: [
       { id: 1, name: '새마을 식당' },
     ],
+    categoryId: 1,
+    regionName: '서울',
   }));
 
   useDispatch.mockImplementation(() => dispatch);
@@ -25,6 +27,8 @@ describe('RestaurantsContainer', () => {
       const { container } = render(<RestaurantsContainer />);
 
       expect(container).toHaveTextContent('새마을 식당');
+
+      expect(dispatch).toBeCalled();
     });
   });
 });

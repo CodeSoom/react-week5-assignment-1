@@ -20,9 +20,7 @@ export default function RestaurantsContainer() {
     stopLoad: state.stopLoad,
   }));
 
-  if (categoryId !== 0 && regionName !== '' && stopLoad === 1) {
-    dispatch(loadRestaurants(categoryId, regionName));
-  }
+  dispatch(loadRestaurants(categoryId, regionName, stopLoad));
 
   return (
     <Restaurants
