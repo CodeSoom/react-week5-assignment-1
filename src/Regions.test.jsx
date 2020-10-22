@@ -4,22 +4,32 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Regions from './Regions';
 
-test('Regions', () => {
-  const handleClick = jest.fn();
+describe('Regions', () => {
+  const handleClickRegion = jest.fn();
 
   const regions = [
     { id: 1, name: '서울' },
   ];
 
-  const { getByText } = render(
-    <Regions regions={regions} onClick={handleClick} />,
+  const renderRegions = () => render(
+    <Regions regions={regions} onClick={handleClickRegion} />,
   );
 
-  expect(getByText('서울')).not.toBeNull();
+  it('renders button', () => {
+    const { getByText } = renderRegions();
 
-  expect(handleClick).not.toBeCalled();
+    expect(getByText('서울')).not.toBeNull();
+  });
 
-  fireEvent.click(getByText('서울'));
+  context('when buttion is clicked', () => {
+    it('called onClick', () => {
+      const { getByText } = renderRegions();
 
-  expect(handleClick).toBeCalled();
+      expect(handleClickRegion).not.toBeCalled();
+
+      fireEvent.click(getByText('서울'));
+
+      expect(handleClickRegion).toBeCalled();
+    });
+  });
 });
