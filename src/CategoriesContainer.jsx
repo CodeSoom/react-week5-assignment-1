@@ -14,7 +14,9 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
   function handleClick(event) {
-    dispatch(setSelectedCategory(event.target.id));
+    const categoryId = Number(event.target.id);
+
+    dispatch(setSelectedCategory(categoryId));
   }
 
   return (
