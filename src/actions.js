@@ -18,7 +18,7 @@ export const loadRestaurants = (path) => async (dispatch) => {
   dispatch(setRestaurants({ type: path, info: response }));
 };
 
-export const loadRestaurantsName = (payload) => ({
-  type: 'loadRestaurantsName',
+export const setRestaurantsName = (payload) => ({
+  type: 'setRestaurantsName',
   payload,
 });

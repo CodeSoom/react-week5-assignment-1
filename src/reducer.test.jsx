@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { setRestaurants, updateRestaurant, loadRestaurantsName } from './actions';
+import { setRestaurants, updateRestaurant, setRestaurantsName } from './actions';
 import { categoriesFixture, regionsFixture, restaurantFixture } from '../fixtures/fixtures';
 
 describe('reducer', () => {
@@ -46,7 +46,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('loadRestaurantsName', () => {
+  describe('setRestaurantsName', () => {
     const initialState = {
       restaurants: [],
     };
@@ -54,7 +54,7 @@ describe('reducer', () => {
     it('load Restaurants name', () => {
       const { restaurants } = reducer({
         initialState,
-      }, loadRestaurantsName(restaurantFixture));
+      }, setRestaurantsName(restaurantFixture));
 
       expect(restaurants).toHaveLength(3);
     });

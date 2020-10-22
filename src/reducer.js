@@ -15,7 +15,7 @@ const reducers = {
     ...state,
     [type]: id,
   }),
-  loadRestaurantsName: (state, restaurants) => ({
+  setRestaurantsName: (state, restaurants) => ({
     ...state,
     restaurants,
   }),
