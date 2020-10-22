@@ -7,13 +7,31 @@ import restaurants from '../__fixtures__/restaurants';
 import Restaurants from './Restaurants';
 
 describe('Restaurants', () => {
-  it('renders restaurants', () => {
-    const { container } = render((
-      <Restaurants restaurants={restaurants} />
+  function renderRestaurants(restaurantsData) {
+    return render((
+      <Restaurants restaurants={restaurantsData} />
     ));
+  }
 
-    restaurants.forEach(({ name }) => {
-      expect(container).toHaveTextContent(name);
+  context('with restaurants', () => {
+    it('renders restaurants', () => {
+      const { container } = renderRestaurants(restaurants);
+
+      restaurants.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
+    });
+  });
+
+  context('without restaurants', () => {
+    it('renders nothing', () => {
+      const emptyRestaurants = [];
+
+      const { container } = renderRestaurants(emptyRestaurants);
+
+      restaurants.forEach(({ name }) => {
+        expect(container).not.toHaveTextContent(name);
+      });
     });
   });
 });
