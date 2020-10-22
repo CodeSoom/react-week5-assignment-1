@@ -1,6 +1,7 @@
 const initialState = {
   categories: [],
   regions: [],
+  restaurants: [],
   category: null,
   region: null,
 };
@@ -13,6 +14,10 @@ const reducers = {
   updateRestaurant: (state, { type, id }) => ({
     ...state,
     [type]: id,
+  }),
+  loadRestaurantsName: (state, restaurants) => ({
+    ...state,
+    restaurants,
   }),
 };
 
