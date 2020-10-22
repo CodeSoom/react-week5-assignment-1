@@ -12,8 +12,9 @@ import {
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => ({
+  const { regions, regionName } = useSelector((state) => ({
     regions: state.regions,
+    regionName: state.regionName,
   }));
 
   useEffect(() => {
@@ -25,6 +26,10 @@ export default function RegionsContainer() {
   }
 
   return (
-    <Regions regions={regions} onClick={handleClick} />
+    <Regions
+      regions={regions}
+      regionName={regionName}
+      onClick={handleClick}
+    />
   );
 }
