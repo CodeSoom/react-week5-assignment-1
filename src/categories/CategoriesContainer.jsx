@@ -9,9 +9,12 @@ import { selectCategory } from '../redux/actions';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories, selectedCategoryId } = useSelector((state) => ({
-    categories: state.categories,
-    selectedCategoryId: state.query.categoryId,
+  const { categories, selectedCategoryId } = useSelector(({
+    restaurantData,
+    restaurantSearchQuery,
+  }) => ({
+    categories: restaurantData.categories,
+    selectedCategoryId: restaurantSearchQuery.categoryId,
   }));
 
   const handleClickSelectCategory = (categoryId) => {

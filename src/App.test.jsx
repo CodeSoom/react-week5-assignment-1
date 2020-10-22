@@ -25,10 +25,14 @@ describe('App', () => {
 
   context('when state has been loaded', () => {
     const state = {
-      regions,
-      categories,
-      query: {},
-      loading: false,
+      restaurantData: {
+        regions,
+        categories,
+      },
+      loadingState: {
+        loading: false,
+      },
+      restaurantSearchQuery: {},
     };
     it('renders state, has called dispatch', () => {
       setState(state);
@@ -44,7 +48,11 @@ describe('App', () => {
 
   context('when state is being loaded', () => {
     const state = {
-      loading: true,
+      restaurantSearchQuery: {},
+      restaurantData: {},
+      loadingState: {
+        loading: true,
+      },
     };
     it('renders loading message', () => {
       setState(state);

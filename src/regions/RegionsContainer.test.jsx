@@ -15,8 +15,10 @@ test('RegionsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions,
-    query: {
+    restaurantData: {
+      regions,
+    },
+    restaurantSearchQuery: {
       regionName: '부산',
     },
   }));

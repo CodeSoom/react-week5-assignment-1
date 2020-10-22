@@ -11,9 +11,12 @@ import {
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions, selectedRegionName } = useSelector((state) => ({
-    regions: state.regions,
-    selectedRegionName: state.query.regionName,
+  const { regions, selectedRegionName } = useSelector(({
+    restaurantData,
+    restaurantSearchQuery,
+  }) => ({
+    regions: restaurantData.regions,
+    selectedRegionName: restaurantSearchQuery.regionName,
   }));
 
   const handleClickSelectRegion = (regionName) => {

@@ -12,7 +12,7 @@ describe('reducer', () => {
         regionName: '',
       }, selectRegion('서울'));
 
-      expect(state.restaurantSearchQuery.regionName).toBe('서울');
+      expect(state.regionName).toBe('서울');
     });
   });
 
@@ -22,7 +22,7 @@ describe('reducer', () => {
         categoryId: null,
       }, selectCategory(4));
 
-      expect(state.restaurantSearchQuery.categoryId).toBe(4);
+      expect(state.categoryId).toBe(4);
     });
   });
 

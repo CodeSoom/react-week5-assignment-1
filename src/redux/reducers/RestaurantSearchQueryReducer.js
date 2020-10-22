@@ -9,10 +9,7 @@ const reducers = {
 
     return {
       ...state,
-      restaurantSearchQuery: {
-        ...state.restaurantSearchQuery,
-        regionName,
-      },
+      regionName,
     };
   },
   selectCategory(state, action) {
@@ -20,10 +17,7 @@ const reducers = {
 
     return {
       ...state,
-      restaurantSearchQuery: {
-        ...state.restaurantSearchQuery,
-        categoryId,
-      },
+      categoryId,
     };
   },
   default(state) {
