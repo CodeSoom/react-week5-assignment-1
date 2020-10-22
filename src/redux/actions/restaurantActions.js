@@ -7,7 +7,11 @@ export function updateRestaurantsLoading(loading) {
   };
 }
 
-// TODO: delete this
-export function xxo() {
-
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
 }

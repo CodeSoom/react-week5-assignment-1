@@ -8,6 +8,7 @@ import restaurants from '../../../fixtures/restaurants';
 
 import {
   loadInitialState,
+  loadRestaurants,
   updateCategoriesLoading,
   updateRegionsLoading,
   updateRestaurantsLoading,
@@ -36,10 +37,8 @@ describe('actions', () => {
     expect(actions).toIncludeSameMembers([
       updateCategoriesLoading(true),
       updateRegionsLoading(true),
-
       setCategories(categories),
       setRegions(regions),
-
       updateCategoriesLoading(false),
       updateRegionsLoading(false),
     ]);
@@ -52,9 +51,7 @@ describe('actions', () => {
 
     expect(actions).toEqual([
       updateRestaurantsLoading(true),
-
       setRestaurants(restaurants),
-
       updateRestaurantsLoading(false),
     ]);
   });

@@ -1,6 +1,7 @@
 import {
   fetchCategories,
   fetchRegions,
+  fetchRestaurants,
 } from '../../services/api';
 
 import {
@@ -12,6 +13,11 @@ import {
   updateRegionsLoading,
   setRegions,
 } from './regionActions';
+
+import {
+  updateRestaurantsLoading,
+  setRestaurants,
+} from './restaurantActions';
 
 export function loadInitialState() {
   return async (dispatch) => {
@@ -31,7 +37,12 @@ export function loadInitialState() {
   };
 }
 
-// TODO: delete this
-export function xx() {
+export function loadRestaurants(regionName, categoryId) {
+  return async (dispatch) => {
+    dispatch(updateRestaurantsLoading(true));
+    const restaurants = await fetchRestaurants(regionName, categoryId);
 
+    dispatch(setRestaurants(restaurants));
+    dispatch(updateRestaurantsLoading(false));
+  };
 }
