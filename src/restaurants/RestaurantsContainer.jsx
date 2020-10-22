@@ -6,9 +6,9 @@ import Restaurants from './Restaurants';
 import Loading from '../Loading';
 
 export default function RestaurantsContainer() {
-  const { loading, restaurants } = useSelector((({ loadingState, restaurantData }) => ({
-    restaurants: restaurantData.restaurants,
-    loading: loadingState.restaurantsLoading,
+  const { loading, restaurants } = useSelector((({ restaurant }) => ({
+    restaurants: restaurant.restaurants,
+    loading: restaurant.loading,
   })));
 
   if (loading) {

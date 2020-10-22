@@ -13,8 +13,8 @@ import {
 } from './redux/actions';
 
 export default function App() {
-  const { loading } = useSelector((({ loadingState }) => ({
-    loading: loadingState.categoriesLoading && loadingState.regionsLoading,
+  const { loading } = useSelector((({ category, region }) => ({
+    loading: category.loading && region.loading,
   })));
 
   const dispatch = useDispatch();

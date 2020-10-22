@@ -15,11 +15,9 @@ test('CategoriesContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurantData: {
+    category: {
       categories,
-    },
-    restaurantSearchQuery: {
-      categoryId: 4,
+      selectedId: 4,
     },
   }));
 

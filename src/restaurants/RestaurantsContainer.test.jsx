@@ -11,20 +11,18 @@ import restaurants from '../../fixtures/restaurants';
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
-  const setLoadingState = (loadingState) => {
+  const setLoading = (loading) => {
     useSelector.mockImplementation((selector) => selector({
-      restaurantData: {
+      restaurant: {
         restaurants,
+        loading,
       },
-      loadingState,
     }));
   };
 
   context('when restaurants have been loaded', () => {
     beforeEach(() => {
-      setLoadingState({
-        restaurantsLoadingState: false,
-      });
+      setLoading(false);
     });
 
     it('renders restaurants', () => {
@@ -38,9 +36,7 @@ describe('RestaurantsContainer', () => {
 
   context('when restaurants is being loaded', () => {
     beforeEach(() => {
-      setLoadingState({
-        restaurantsLoading: true,
-      });
+      setLoading(true);
     });
 
     it('renders loading message', () => {

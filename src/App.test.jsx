@@ -14,9 +14,9 @@ jest.mock('react-redux');
 
 describe('App', () => {
   const initialState = {
-    restaurantSearchQuery: {},
-    restaurantData: {},
-    loadingState: {},
+    restaurant: {},
+    category: {},
+    region: {},
   };
 
   const setState = (state) => {
@@ -30,18 +30,21 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   context('when state has been loaded', () => {
-    const loadingState = {
-      categoriesLoading: false,
-      regionsLoading: false,
-    };
-    const restaurantData = {
-      regions,
-      categories,
+    const restaurant = {
+      loading: false,
       restaurants,
+    };
+    const category = {
+      loading: false,
+      categories,
+    };
+    const region = {
+      loading: false,
+      regions,
     };
 
     beforeEach(() => {
-      setState({ restaurantData, loadingState });
+      setState({ restaurant, category, region });
     });
 
     it('renders state, has called dispatch', () => {
@@ -56,13 +59,15 @@ describe('App', () => {
   });
 
   context('when state is being loaded', () => {
-    const loadingState = {
-      categoriesLoading: true,
-      regionsLoading: true,
-    };
-
     beforeEach(() => {
-      setState({ loadingState });
+      setState({
+        category: {
+          loading: true,
+        },
+        region: {
+          loading: true,
+        },
+      });
     });
 
     it('renders loading message', () => {

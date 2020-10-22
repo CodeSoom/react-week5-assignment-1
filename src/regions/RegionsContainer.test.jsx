@@ -15,11 +15,9 @@ test('RegionsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurantData: {
+    region: {
       regions,
-    },
-    restaurantSearchQuery: {
-      regionName: '부산',
+      selectedId: 2,
     },
   }));
 
@@ -34,7 +32,7 @@ test('RegionsContainer', () => {
   expect(dispatch).toBeCalledWith({
     type: 'selectRegion',
     payload: {
-      regionName: '서울',
+      regionId: 1,
     },
   });
 });
