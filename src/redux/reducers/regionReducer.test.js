@@ -32,10 +32,10 @@ describe('regionReducer', () => {
   describe('selectRegion', () => {
     it('changes selected region name', () => {
       const state = regionReducer({
-        selectedId: null,
-      }, selectRegion(4));
+        selectedName: '서울',
+      }, selectRegion('부산'));
 
-      expect(state.selectedId).toBe(4);
+      expect(state.selectedName).toBe('부산');
     });
   });
 
@@ -43,7 +43,7 @@ describe('regionReducer', () => {
     const initialState = {
       regions: [],
       loading: false,
-      selectedId: null,
+      selectedName: '',
     };
 
     expect(regionReducer()).toEqual(initialState);

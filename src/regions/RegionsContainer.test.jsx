@@ -17,7 +17,7 @@ test('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     region: {
       regions,
-      selectedId: 2,
+      selectedName: '부산',
     },
   }));
 
@@ -32,7 +32,7 @@ test('RegionsContainer', () => {
   expect(dispatch).toBeCalledWith({
     type: 'selectRegion',
     payload: {
-      regionId: 1,
+      regionName: '서울',
     },
   });
 });

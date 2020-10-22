@@ -1,6 +1,6 @@
 const initialState = {
   regions: [],
-  selectedId: null,
+  selectedName: '',
   loading: false,
 };
 
@@ -22,11 +22,11 @@ const reducers = {
     };
   },
   selectRegion(state, action) {
-    const { regionId } = action.payload;
+    const { regionName } = action.payload;
 
     return {
       ...state,
-      selectedId: regionId,
+      selectedName: regionName,
     };
   },
   default(state) {

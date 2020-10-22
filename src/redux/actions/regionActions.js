@@ -16,11 +16,11 @@ export function updateRegionsLoading(loading) {
   };
 }
 
-export function selectRegion(regionId) {
+export function selectRegion(regionName) {
   return {
     type: 'selectRegion',
     payload: {
-      regionId,
+      regionName,
     },
   };
 }
