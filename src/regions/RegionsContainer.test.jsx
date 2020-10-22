@@ -10,7 +10,7 @@ import regions from '../../fixtures/regions';
 
 jest.mock('react-redux');
 
-test('RegionsContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
@@ -21,18 +21,44 @@ test('RegionsContainer', () => {
     },
   }));
 
-  const { queryByText } = render(<RegionsContainer />);
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText(/서울/)).not.toBeNull();
+  test('renders region name, renders clicked name, calls dispatch', () => {
+    const { queryByText } = render(<RegionsContainer />);
 
-  expect(queryByText(/부산\(V\)/)).not.toBeNull();
+    expect(queryByText(/서울/)).not.toBeNull();
 
-  fireEvent.click(queryByText(/서울/));
+    expect(queryByText(/부산\(V\)/)).not.toBeNull();
 
-  expect(dispatch).toBeCalledWith({
-    type: 'selectRegion',
-    payload: {
-      regionName: '서울',
-    },
+    fireEvent.click(queryByText(/서울/));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'selectRegion',
+      payload: {
+        regionName: '서울',
+      },
+    });
+  });
+
+  context('when clicked name is different with previous selected name', () => {
+    it('calls dispatch 2 times', () => {
+      const { queryByText } = render(<RegionsContainer />);
+
+      fireEvent.click(queryByText(/서울/));
+
+      expect(dispatch).toBeCalledTimes(2);
+    });
+  });
+
+  context('when clicked name is the same with selected name', () => {
+    it('calls dispatch 1 time', () => {
+      const { queryByText } = render(<RegionsContainer />);
+
+      fireEvent.click(queryByText(/부산/));
+
+      expect(dispatch).toBeCalledTimes(1);
+    });
   });
 });
