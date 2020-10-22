@@ -29,16 +29,31 @@ describe('actions', () => {
   });
 
   describe('loadRestaurantsName', () => {
-    it('async "loadRestaurantsName" call test', async () => {
-      fetchRestaurantsName.mockResolvedValue(restaurantFixture);
+    context('with store', () => {
+      it('async "loadRestaurantsName" call success', async () => {
+        fetchRestaurantsName.mockResolvedValue(restaurantFixture);
 
-      const store = mockStore({});
+        const store = mockStore({ region: '서울', category: 1 });
 
-      await store.dispatch(loadRestaurantsName({ region: '서울', category: 1 }));
+        await store.dispatch(loadRestaurantsName());
 
-      const actions = store.getActions();
+        const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurantsName(restaurantFixture));
+        expect(actions[0]).toEqual(setRestaurantsName(restaurantFixture));
+      });
+    });
+    context('without store', async () => {
+      it('async "loadRestaurantsName" call return null', async () => {
+        fetchRestaurantsName.mockResolvedValue(restaurantFixture);
+
+        const store = mockStore({ region: null, category: null });
+
+        await store.dispatch(loadRestaurantsName());
+
+        const actions = store.getActions();
+
+        expect(actions).toEqual([]);
+      });
     });
   });
 });
