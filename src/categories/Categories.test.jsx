@@ -13,7 +13,7 @@ describe('Categories', () => {
     const { queryByText } = render((
       <Categories
         categories={categories}
-        onClickSelectCategory={handleClickSelectCategory} 
+        onClickSelectCategory={handleClickSelectCategory}
       />
     ));
 
