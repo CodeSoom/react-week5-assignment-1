@@ -2,14 +2,12 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
+import regions from '../__fixtures__/regions';
+
 import Regions from './Regions';
 
 describe('Regions', () => {
   const handleClickRegion = jest.fn();
-
-  const regions = [
-    { id: 1, name: '서울' },
-  ];
 
   const renderRegions = () => render(
     <Regions regions={regions} onClick={handleClickRegion} />,
