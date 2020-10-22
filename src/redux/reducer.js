@@ -35,6 +35,17 @@ const reducers = {
       loading,
     };
   },
+  selectRegion(state, action) {
+    const { regionName } = action.payload;
+
+    return {
+      ...state,
+      restaurantSearchQuery: {
+        ...state.restaurantSearchQuery,
+        regionName,
+      },
+    };
+  },
   default(state) {
     return state;
   },
