@@ -11,7 +11,7 @@ const middlewares = [thunk]; // NOTE: thunk 미들웨어 추가
 const mockStore = configureStore(middlewares);
 
 describe('actions', () => {
-  it('"loadRestaurants" 호출', async () => {
+  it('async "loadRestaurants" call test', async () => {
     // NOTE: mockResolvedValue 비동기 테스트에서 비동기 함수를 모의하는 데 유용
     fetchRestaurants.mockResolvedValue(categoriesFixture);
 
