@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
 import { setRegions } from './actions';
 
-function loadRegions({ dispatch }) {
-  const regions = [];
-  // TODO: fetch GET /regions /regions/{id}
-  // REST - CRUD => Read - collection / member, element
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
   dispatch(setRegions(regions));
 }
 
