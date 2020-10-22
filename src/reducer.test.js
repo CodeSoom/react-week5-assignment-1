@@ -83,7 +83,7 @@ describe('reducer', () => {
 
   context('Unhandled action type', () => {
     it('returns initial state', () => {
-      const state = reducer(undefined, { type: 'Unhandled action' });
+      const state = reducer(undefined, { type: 'Unhandled action tpye' });
 
       expect(state).toBe(state);
     });

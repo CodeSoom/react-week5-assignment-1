@@ -4,12 +4,10 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Categories from './Categories';
 
+import categories from './fixtures/categories';
+
 describe('Categories', () => {
   const handleClick = jest.fn();
-
-  const categories = [
-    { id: 1, name: '한식' },
-  ];
 
   const renderCategories = (id = 0) => render(
     <Categories
@@ -19,9 +17,11 @@ describe('Categories', () => {
     />,
   );
   it('show all categories', () => {
-    const { queryByText } = renderCategories();
+    const { getByText } = renderCategories();
 
-    expect(queryByText('한식')).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
+    });
   });
 
   context('click category', () => {
