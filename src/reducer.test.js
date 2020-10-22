@@ -19,7 +19,7 @@ describe('initialState', () => {
 });
 
 describe('reducer', () => {
-  it('잘못된 action을 입력하면 현재 state이 반환합니다.', () => {
+  it('정의되어 있지 않은 action을 입력하면 현재 state이 반환합니다.', () => {
     const state = reducer(
       initialState,
       { type: 'incorrectType', payload: { type: '', value: '' } },
