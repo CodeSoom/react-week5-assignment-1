@@ -14,14 +14,14 @@ describe('RestaurantsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
-      '새마을 식당',
+      { id: 1, name: '새마을 식당' },
     ],
   }));
 
   useDispatch.mockImplementation(() => dispatch);
 
-  context('when load complete', () => {
-    it('calls set Categories dispatch', () => {
+  context('when load start', () => {
+    it('calls load restaurants dispatch', () => {
       const { getByText } = render(<RestaurantsContainer />);
 
       expect(getByText('새마을 식당')).not.toBeNull();

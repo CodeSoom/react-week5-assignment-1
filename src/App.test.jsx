@@ -17,6 +17,7 @@ describe('App', () => {
     regions: [
       { id: 1, name: '서울' },
     ],
+    restaurants: [],
   }));
 
   useDispatch.mockImplementation(() => dispatch);

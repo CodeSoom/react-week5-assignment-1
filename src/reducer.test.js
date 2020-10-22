@@ -1,6 +1,7 @@
 import {
   checkedCategory,
   checkedRegion,
+  loadRestaurants,
   setCategories,
   setRegions,
 } from './actions';
@@ -61,6 +62,24 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    it('load restaurants', () => {
+      const initialState = {
+        restaurants: [],
+        categoryId: 1,
+        regionName: '서울',
+      };
+
+      const categoryId = 1;
+
+      const regionName = '서울';
+
+      const state = reducer(initialState, loadRestaurants(categoryId, regionName));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 
