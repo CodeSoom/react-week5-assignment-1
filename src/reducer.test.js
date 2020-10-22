@@ -6,7 +6,7 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  context('setRegions', () => {
+  describe('setRegions', () => {
     it('changes regions', () => {
       const initialState = {
         regions: [],
@@ -22,7 +22,7 @@ describe('reducer', () => {
     });
   });
 
-  context('setCategories', () => {
+  describe('setCategories', () => {
     it('changes categories', () => {
       const initialState = {
         categories: [],
