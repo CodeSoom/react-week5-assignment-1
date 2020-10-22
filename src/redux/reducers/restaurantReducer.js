@@ -1,23 +1,15 @@
 const initialState = {
-  regionName: null,
-  categoryId: null,
+  restaurants: [],
+  loading: false,
 };
 
 const reducers = {
-  selectRegion(state, action) {
-    const { regionName } = action.payload;
+  updateRestaurantsLoading(state, action) {
+    const { loading } = action.payload;
 
     return {
       ...state,
-      regionName,
-    };
-  },
-  selectCategory(state, action) {
-    const { categoryId } = action.payload;
-
-    return {
-      ...state,
-      categoryId,
+      loading,
     };
   },
   default(state) {
