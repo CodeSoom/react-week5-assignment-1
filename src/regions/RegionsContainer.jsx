@@ -21,11 +21,10 @@ export default function RegionsContainer() {
   const { regions, selectedRegionName, selectedCategoryId } = state;
 
   const handleClickSelectRegion = (regionName) => {
-    dispatch(selectRegion(regionName));
-
     if (selectedCategoryId && (selectedRegionName !== regionName)) {
       dispatch(loadRestaurants(regionName, selectedCategoryId));
     }
+    dispatch(selectRegion(regionName));
   };
 
   return (

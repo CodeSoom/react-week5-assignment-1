@@ -17,8 +17,6 @@ export default function RestaurantsContainer() {
     );
   }
 
-  console.log(restaurants);
-
   return (
     <Restaurants restaurants={restaurants} />
   );

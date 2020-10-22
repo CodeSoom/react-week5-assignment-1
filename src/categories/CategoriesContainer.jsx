@@ -21,11 +21,10 @@ export default function CategoriesContainer() {
   const { categories, selectedCategoryId, selectedRegionName } = state;
 
   const handleClickSelectCategory = (categoryId) => {
-    dispatch(selectCategory(categoryId));
-
     if (selectedRegionName && (selectedCategoryId !== categoryId)) {
-      dispatch(loadRestaurants(selectedRegionName, selectedCategoryId));
+      dispatch(loadRestaurants(selectedRegionName, categoryId));
     }
+    dispatch(selectCategory(categoryId));
   };
 
   return (
