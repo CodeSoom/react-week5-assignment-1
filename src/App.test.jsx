@@ -23,7 +23,7 @@ test('App', () => {
     <App />
   ));
 
-  // expect(dispatch).toBeCalledWith(() => {});
+  expect(dispatch).toBeCalled();
 
   expect(getByText('서울')).not.toBeNull();
 });

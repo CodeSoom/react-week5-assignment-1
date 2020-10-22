@@ -8,17 +8,11 @@ import {
   loadRegions,
 } from './actions';
 
-// async function loadRegions({ dispatch }) {
-//   const regions = await fetchRegions();
-//   dispatch(setRegions(regions));
-// }
-
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
-    // loadRegions({ dispatch });
   }, []);
 
   return (
