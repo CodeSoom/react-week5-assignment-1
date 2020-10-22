@@ -30,7 +30,8 @@ describe('App', () => {
         categories,
       },
       loadingState: {
-        loading: false,
+        categoriesLoading: false,
+        regionsLoading: false,
       },
       restaurantSearchQuery: {},
     };
@@ -51,7 +52,8 @@ describe('App', () => {
       restaurantSearchQuery: {},
       restaurantData: {},
       loadingState: {
-        loading: true,
+        categoriesLoading: true,
+        regionsLoading: true,
       },
     };
     it('renders loading message', () => {

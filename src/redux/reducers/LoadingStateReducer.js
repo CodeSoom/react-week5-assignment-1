@@ -1,14 +1,32 @@
 const initialState = {
-  loading: false,
+  restaurantsLoading: false,
+  regionsLoading: false,
+  categoriesLoading: false,
 };
 
 const reducers = {
-  updateLoading(state, action) {
+  updateRestaurantsLoading(state, action) {
     const { loading } = action.payload;
 
     return {
       ...state,
-      loading,
+      restaurantsLoading: loading,
+    };
+  },
+  updateCategoriesLoading(state, action) {
+    const { loading } = action.payload;
+
+    return {
+      ...state,
+      categoriesLoading: loading,
+    };
+  },
+  updateRegionsLoading(state, action) {
+    const { loading } = action.payload;
+
+    return {
+      ...state,
+      regionsLoading: loading,
     };
   },
   default(state) {

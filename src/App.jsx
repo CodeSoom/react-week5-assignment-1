@@ -12,7 +12,7 @@ import {
 
 export default function App() {
   const { loading } = useSelector((({ loadingState }) => ({
-    loading: loadingState.loading,
+    loading: loadingState.categoriesLoading && loadingState.regionsLoading,
   })));
 
   const dispatch = useDispatch();
