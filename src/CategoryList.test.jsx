@@ -16,18 +16,19 @@ describe('CategoryList', () => {
     />
   ));
 
-  const categoryState = {
-    category: null,
-  };
-
   context('with categories', () => {
     it('see renders categories', () => {
+      const categoryState = 1;
       const { getByText } = categoryListRender({
         categories: categoriesFixture,
         categoryState,
       });
 
-      categoriesFixture.forEach(({ name }) => {
+      categoriesFixture.forEach(({ id, name }) => {
+        if (categoryState === id) {
+          expect(getByText(`${name}(V)`)).not.toBeNull();
+          return;
+        }
         expect(getByText(name)).not.toBeNull();
       });
     });
@@ -35,11 +36,12 @@ describe('CategoryList', () => {
     it('renders button to click a category', () => {
       const { getByText } = categoryListRender({
         categories: categoriesFixture,
-        categoryState,
+        categoryState: null,
       });
 
       categoriesFixture.forEach(({ name, id }) => {
         fireEvent.click(getByText(name));
+        expect(getByText(name)).not.toBeNull();
 
         expect(handleSelectClick).toBeCalledWith({
           type: 'category',
@@ -53,7 +55,7 @@ describe('CategoryList', () => {
     const categories = [];
 
     it('nothing render categories', () => {
-      const { container } = categoryListRender({ categories, categoryState });
+      const { container } = categoryListRender({ categories, categoryState: null });
 
       expect(container).toBeEmptyDOMElement();
     });
