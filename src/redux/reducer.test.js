@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   updateLoading,
+  selectRegion,
 } from './actions';
 
 import regions from '../../fixtures/regions';
@@ -29,7 +30,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setLoading', () => {
+  describe('updateLoading', () => {
     it('changes loading', () => {
       const state = reducer({
         loading: false,
@@ -39,10 +40,26 @@ describe('reducer', () => {
     });
   });
 
+  describe('selectRegion', () => {
+    it('changes selected region name', () => {
+      const state = reducer({
+        restaurantSearchQuery: {
+          regionName: '',
+        },
+      }, selectRegion('서울'));
+
+      expect(state.restaurantSearchQuery.regionName).toBe('서울');
+    });
+  });
+
   it('returns initial state when state is undefined', () => {
     const initialState = {
       regions: [],
       categories: [],
+      restaurantSearchQuery: {
+        regionName: null,
+        categoryId: null,
+      },
       loading: false,
     };
 

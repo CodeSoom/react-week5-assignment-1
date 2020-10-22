@@ -1,6 +1,12 @@
+const initialRestaurantSearchQuery = {
+  regionName: null,
+  categoryId: null,
+};
+
 const initialState = {
   regions: [],
   categories: [],
+  restaurantSearchQuery: initialRestaurantSearchQuery,
   loading: false,
 };
 
