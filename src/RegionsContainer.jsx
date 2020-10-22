@@ -6,6 +6,7 @@ import Regions from './Regions';
 
 import {
   loadRegions,
+  checkedRegion,
 } from './actions';
 
 export default function RegionsContainer() {
@@ -18,6 +19,10 @@ export default function RegionsContainer() {
   useEffect(() => {
     dispatch(loadRegions());
   }, []);
+
+  function handleClick({ name }) {
+    dispatch(checkedRegion({ name }));
+  }
 
   return (
     <Regions regions={regions} onClick={handleClick} />

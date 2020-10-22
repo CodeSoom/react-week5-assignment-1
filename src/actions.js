@@ -36,3 +36,10 @@ export function checkedCategory({ id }) {
     payload: { id },
   };
 }
+
+export function checkedRegion({ name }) {
+  return {
+    type: 'checkedRegion',
+    payload: { name },
+  };
+}
