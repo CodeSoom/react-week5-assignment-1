@@ -10,17 +10,45 @@ import restaurants from '../../fixtures/restaurants';
 
 jest.mock('react-redux');
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurantData: {
-      restaurants,
-    },
-    loadingState: {},
-  }));
+describe('RestaurantsContainer', () => {
+  const setLoadingState = (loadingState) => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurantData: {
+        restaurants,
+      },
+      loadingState,
+    }));
+  };
 
-  const { queryByText } = render((
-    <RestaurantsContainer />
-  ));
+  context('when restaurants have been loaded', () => {
+    beforeEach(() => {
+      setLoadingState({
+        restaurantsLoadingState: false,
+      });
+    });
 
-  expect(queryByText(/양천주가/)).not.toBeNull();
+    it('renders restaurants', () => {
+      const { queryByText } = render((
+        <RestaurantsContainer />
+      ));
+
+      expect(queryByText(/양천주가/)).not.toBeNull();
+    });
+  });
+
+  context('when restaurants is being loaded', () => {
+    beforeEach(() => {
+      setLoadingState({
+        restaurantsLoading: true,
+      });
+    });
+
+    it('renders loading message', () => {
+      const { queryByText } = render((
+        <RestaurantsContainer />
+      ));
+
+      expect(queryByText(/로딩중/)).not.toBeNull();
+    });
+  });
 });

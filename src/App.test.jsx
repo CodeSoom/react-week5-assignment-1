@@ -29,50 +29,10 @@ describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  context('when regions, categories have been loaded', () => {
+  context('when state has been loaded', () => {
     const loadingState = {
       categoriesLoading: false,
       regionsLoading: false,
-    };
-    const restaurantData = {
-      regions,
-      categories,
-    };
-
-    beforeEach(() => {
-      setState({ restaurantData, loadingState });
-    });
-
-    it('renders them, has called dispatch', () => {
-      const { queryByText } = render(<App />);
-
-      expect(queryByText(/서울/)).not.toBeNull();
-      expect(queryByText(/한식/)).not.toBeNull();
-
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
-
-  context('when categories and regions are being loaded', () => {
-    const loadingState = {
-      categoriesLoading: true,
-      regionsLoading: true,
-    };
-
-    beforeEach(() => {
-      setState({ loadingState });
-    });
-
-    it('renders loading message', () => {
-      const { queryByText } = render(<App />);
-
-      expect(queryByText(/로딩중/)).not.toBeNull();
-    });
-  });
-
-  context('when restaurants has been loaded', () => {
-    const loadingState = {
-      restauarantsLoading: false,
     };
     const restaurantData = {
       regions,
@@ -81,27 +41,28 @@ describe('App', () => {
     };
 
     beforeEach(() => {
-      setState({ loadingState, restaurantData });
+      setState({ restaurantData, loadingState });
     });
 
-    it('renders restaurants name', () => {
+    it('renders state, has called dispatch', () => {
       const { queryByText } = render(<App />);
 
+      expect(queryByText(/서울/)).not.toBeNull();
+      expect(queryByText(/한식/)).not.toBeNull();
       expect(queryByText(/양천주가/)).not.toBeNull();
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 
-  context('when restaurants is being loaded', () => {
+  context('when state is being loaded', () => {
     const loadingState = {
-      restaurantsLoading: true,
-    };
-    const restaurantData = {
-      regions,
-      categories,
+      categoriesLoading: true,
+      regionsLoading: true,
     };
 
     beforeEach(() => {
-      setState({ loadingState, restaurantData });
+      setState({ loadingState });
     });
 
     it('renders loading message', () => {
