@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function Categories() {
+export default function Restaurants({ restaurants }) {
   return (
     <ul>
-      <li>양천주가</li>
+      {restaurants.map(({ name }) => (
+        <li>
+          {name}
+        </li>
+      ))}
     </ul>
   );
 }
