@@ -9,6 +9,15 @@ export function selectRegion(id) {
   };
 }
 
+export function selectCategory(id) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      id,
+    },
+  };
+}
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',

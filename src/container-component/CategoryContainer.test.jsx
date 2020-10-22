@@ -10,11 +10,11 @@ import categories from '../../fixtures/categories';
 
 jest.mock('react-redux');
 
-describe('RegionContainer', () => {
+describe('CategoryContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    selectedCategory: 1,
+    selectedCategory: -1,
     categories,
   }));
 

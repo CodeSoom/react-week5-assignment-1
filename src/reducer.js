@@ -13,6 +13,13 @@ function selectRegion({ state, payload }) {
   };
 }
 
+function selectCategory({ state, payload }) {
+  return {
+    ...state,
+    selectedCategory: payload.id,
+  };
+}
+
 function setRegions({ state, payload }) {
   return {
     ...state,
@@ -22,6 +29,7 @@ function setRegions({ state, payload }) {
 
 const reducers = {
   selectRegion,
+  selectCategory,
   setRegions,
 };
 
