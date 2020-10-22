@@ -4,21 +4,15 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import { setRegions } from './actions';
-
-import { fetchRegions } from './services/api';
-
-async function loadRegions({ dispatch }) {
-  const regions = await fetchRegions();
-  dispatch(setRegions(regions));
-}
+import {
+  loadRegions,
+} from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRegions({ dispatch });
-    // dispatch(loadRegions());
+    dispatch(loadRegions());
   }, []);
 
   return (
