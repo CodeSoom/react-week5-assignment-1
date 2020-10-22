@@ -11,12 +11,10 @@ describe('Categories', () => {
     { id: 1, name: '한식' },
   ];
 
-  const categoryId = 1;
-
-  const renderCategories = () => render(
+  const renderCategories = (id = 0) => render(
     <Categories
       categories={categories}
-      categoryId={categoryId}
+      categoryId={id}
       onClick={handleClick}
     />,
   );
@@ -36,9 +34,11 @@ describe('Categories', () => {
     });
 
     it('check mark in category', () => {
-      const { getByText, container } = renderCategories();
+      const { getByText } = renderCategories();
 
       fireEvent.click(getByText('한식'));
+
+      const { container } = renderCategories(1);
 
       expect(handleClick).toBeCalled();
 

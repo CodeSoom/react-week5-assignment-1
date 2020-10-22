@@ -16,7 +16,7 @@ describe('CategoriesContainer', () => {
     categories: [
       { id: 1, name: '한식' },
     ],
-    categoryId: 1,
+    categoryId: 0,
   }));
 
   useDispatch.mockImplementation(() => dispatch);
