@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,6 +16,7 @@ describe('RegionsContainer', () => {
     regions: [
       { id: 1, name: '서울' },
     ],
+    regionName: '',
   }));
 
   useDispatch.mockImplementation(() => dispatch);
@@ -25,6 +26,16 @@ describe('RegionsContainer', () => {
       const { getByText } = render(<RegionsContainer />);
 
       expect(getByText('서울')).not.toBeNull();
+
+      expect(dispatch).toBeCalled();
+    });
+  });
+
+  context('click region', () => {
+    it('calls check region dispatch', () => {
+      const { getByText } = render(<RegionsContainer />);
+
+      fireEvent.click(getByText('서울'));
 
       expect(dispatch).toBeCalled();
     });

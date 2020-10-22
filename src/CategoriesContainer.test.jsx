@@ -32,7 +32,7 @@ describe('CategoriesContainer', () => {
   });
 
   context('click category', () => {
-    it('calls check Categories dispatch', () => {
+    it('calls check category dispatch', () => {
       const { getByText } = render(<CategoriesContainer />);
 
       fireEvent.click(getByText('한식'));
