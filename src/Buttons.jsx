@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Buttons({
-  name,
+  type,
   buttonNames,
   selectedButton,
   onClickSelect,
@@ -9,15 +9,15 @@ export default function Buttons({
   return (
     <ul>
       {
-        buttonNames.map((buttonName, index) => (
-          <li key={index}>
+        buttonNames.map(({ id, name }) => (
+          <li key={id}>
             <button
               type="button"
-              name={name}
+              name={type}
               onClick={onClickSelect}
             >
-              {buttonName}
-              {(buttonName === selectedButton) && '(V)'}
+              {name}
+              {(name === selectedButton) && '(V)'}
             </button>
           </li>
         ))

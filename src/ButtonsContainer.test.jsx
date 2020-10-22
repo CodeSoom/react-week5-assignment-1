@@ -17,8 +17,8 @@ describe('ButtonsContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    locations: ['서울', '대구'],
-    foodTypes: ['한식', '일식'],
+    locations: [{ id: 1, name: '서울' }, { id: 2, name: '대구' }],
+    foodTypes: [{ id: 1, name: '한식' }, { id: 2, name: '일식' }],
     selectedButtons: {
       location: '',
       foodType: '',

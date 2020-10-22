@@ -4,8 +4,8 @@ export default function List({ items }) {
   return (
     <ul>
       {
-        items.map((item, index) => (
-          <li key={index}>{item}</li>
+        items.map(({ id, name }) => (
+          <li key={id}>{name}</li>
         ))
       }
     </ul>

@@ -14,7 +14,7 @@ describe('Buttons', () => {
   it('버튼을 클릭하면 handleClickSelect 함수가 출력됩니다.', () => {
     const { getByText } = render((
       <Buttons
-        buttonNames={['서울']}
+        buttonNames={[{ id: 1, name: '서울' }]}
         onClickSelect={handleClickSelect}
       />));
 
@@ -26,7 +26,7 @@ describe('Buttons', () => {
   });
 
   context('selectButton이 주어지면', () => {
-    const buttonNames = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+    const buttonNames = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
     const selectedButton = '서울';
 
     it('해당 버튼 문구에 "(V)"가 추가됩니다.', () => {
@@ -41,13 +41,13 @@ describe('Buttons', () => {
   });
 
   context('buttonNames가 주어지면,', () => {
-    const buttonNames = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+    const buttonNames = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
 
     it('ButtonsNameList의 이름을 가진 버튼들이 출력됩니다.', () => {
       const { container } = render(<Buttons buttonNames={buttonNames} />);
 
-      buttonNames.forEach((buttonName) => {
-        expect(container).toHaveTextContent(buttonName);
+      buttonNames.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
       });
     });
   });

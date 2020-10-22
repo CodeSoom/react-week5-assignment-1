@@ -25,7 +25,7 @@ export default function ButtonsContainer({ type }) {
 
   return (
     <Buttons
-      name={type}
+      type={type}
       selectedButton={selectedButton}
       buttonNames={buttonNames}
       onClickSelect={handleClickSelect}
