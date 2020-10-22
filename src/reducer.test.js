@@ -1,5 +1,6 @@
 import {
   checkedCategory,
+  checkedRegion,
   setCategories,
   setRegions,
 } from './actions';
@@ -18,6 +19,19 @@ describe('reducer', () => {
       expect(state.categoryId).toBe(1);
     });
   });
+
+  describe('checkedRegion', () => {
+    it('changes checked region', () => {
+      const initialState = {
+        regionName: '',
+      };
+
+      const state = reducer(initialState, checkedRegion({ name: '서울' }));
+
+      expect(state.regionName).toBe(1);
+    });
+  });
+
   describe('setCategories', () => {
     it('changes categories', () => {
       const initialState = {
