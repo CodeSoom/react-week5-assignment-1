@@ -17,16 +17,16 @@ describe('Regions', () => {
     ));
   }
 
-  context('with one or more regions', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  context('with regions', () => {
     const regions = [
       { id: 1, name: '서울' },
       { id: 2, name: '대전' },
       { id: 3, name: '대구' },
     ];
-
-    beforeEach(() => {
-      jest.clearAllMocks();
-    });
 
     it('show regions of restaurant', () => {
       const { getByText } = renderRegions(0, regions);
@@ -66,7 +66,7 @@ describe('Regions', () => {
     it('show nothing message', () => {
       const { getByText } = renderRegions([]);
 
-      expect(getByText(/음식점 지역 정보를 등록해주세요/)).not.toBeNull();
+      expect(getByText(/지역 정보가 없습니다/)).not.toBeNull();
     });
   });
 });

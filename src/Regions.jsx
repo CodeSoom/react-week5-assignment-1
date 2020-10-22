@@ -4,7 +4,7 @@ const isEmpty = (array = []) => array.length === 0;
 
 export default function Regions({ selectedRegionId, regions, onClick }) {
   if (isEmpty(regions)) {
-    return <p>음식점 지역 정보를 등록해주세요!</p>;
+    return <p>지역 정보가 없습니다!</p>;
   }
 
   return (
