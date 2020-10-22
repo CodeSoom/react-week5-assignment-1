@@ -16,4 +16,12 @@ describe('Restaurants', () => {
       expect(queryByText(name)).not.toBeNull();
     });
   });
+
+  it('renders default message without restaurants', () => {
+    const { queryByText } = render((
+      <Restaurants />
+    ));
+
+    expect(queryByText(/표시할 레스토랑이 없어요~/));
+  });
 });
