@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setSelectInfo } from './actions';
+import { setSelectedButton } from './actions';
 
 import Buttons from './Buttons';
 
@@ -11,16 +11,16 @@ export default function ButtonsContainer({ type }) {
 
   const { buttonNames, selectedButton } = useSelector((state) => ({
     buttonNames: state[`${type}s`],
-    selectedButton: state.selectInfo[type],
+    selectedButton: state.selectedButtons[type],
   }));
 
   function handleClickSelect(event) {
-    const updateInfo = {
+    const selectedButtonValue = {
       type: event.target.name,
       value: event.target.textContent,
     };
 
-    dispatch(setSelectInfo(updateInfo));
+    dispatch(setSelectedButton(selectedButtonValue));
   }
 
   return (

@@ -19,7 +19,7 @@ describe('ButtonsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     locations: ['서울', '대구'],
     foodTypes: ['한식', '일식'],
-    selectInfo: {
+    selectedButtons: {
       location: '',
       foodType: '',
     },
@@ -34,7 +34,7 @@ describe('ButtonsContainer', () => {
 
     fireEvent.click(button);
     expect(dispatch).toBeCalledWith({
-      type: 'setSelectInfo',
+      type: 'setSelectedButton',
       payload: { type, value },
     });
   });

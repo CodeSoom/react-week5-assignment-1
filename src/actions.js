@@ -2,7 +2,7 @@ export const intializeSelectButtons = () => ({
   type: 'intializeSelectButtons',
 });
 
-export const setSelectInfo = ({ type, value }) => ({
-  type: 'setSelectInfo',
+export const setSelectedButton = ({ type, value }) => ({
+  type: 'setSelectedButton',
   payload: { type, value },
 });

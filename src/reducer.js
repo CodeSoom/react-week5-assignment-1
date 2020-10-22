@@ -2,7 +2,7 @@ export const initialState = {
   locations: [],
   foodTypes: [],
   results: [],
-  selectInfo: {
+  selectedButtons: {
     location: '',
     foodType: '',
   },
@@ -17,10 +17,10 @@ export default function reducer(state = initialState, action) {
       results: ['양천주가', '밀면넘어져요'],
     }),
 
-    setSelectInfo: () => ({
+    setSelectedButton: () => ({
       ...state,
-      selectInfo: {
-        ...state.selectInfo,
+      selectedButtons: {
+        ...state.selectedButtons,
         [action.payload.type]: action.payload.value,
       },
     }),

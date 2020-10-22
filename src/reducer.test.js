@@ -1,6 +1,6 @@
 import {
   intializeSelectButtons,
-  setSelectInfo,
+  setSelectedButton,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -18,11 +18,11 @@ describe('initialState', () => {
   });
 
   it('초기 selecInfo의 location이 빈 값으로 초기화됩니다.', () => {
-    expect(initialState.selectInfo.location).toBe('');
+    expect(initialState.selectedButtons.location).toBe('');
   });
 
   it('초기 selecInfo의 foodType이 빈 값으로 초기화됩니다.', () => {
-    expect(initialState.selectInfo.foodType).toBe('');
+    expect(initialState.selectedButtons.foodType).toBe('');
   });
 });
 
@@ -49,21 +49,21 @@ describe('reducer', () => {
     });
   });
 
-  describe('setSelectInfo', () => {
-    it('selectInfo의 location을 value로 설정합니다.', () => {
-      const { selectInfo: { location } } = reducer(
+  describe('setSelectedButton', () => {
+    it('setSelectedButtons의 location을 value로 설정합니다.', () => {
+      const { selectedButtons: { location } } = reducer(
         initialState,
-        setSelectInfo({ type: 'location', value: '서울' }),
+        setSelectedButton({ type: 'location', value: '서울' }),
       );
 
       expect(location).toBe('서울');
     });
   });
 
-  it('selectInfo의 foodType을 value로 설정합니다.', () => {
-    const { selectInfo: { foodType } } = reducer(
+  it('setSelectedButton의 foodType을 value로 설정합니다.', () => {
+    const { selectedButtons: { foodType } } = reducer(
       initialState,
-      setSelectInfo({ type: 'foodType', value: '한식' }),
+      setSelectedButton({ type: 'foodType', value: '한식' }),
     );
 
     expect(foodType).toBe('한식');

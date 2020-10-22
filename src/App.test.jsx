@@ -20,7 +20,7 @@ describe('App', () => {
     locations: ['서울', '대구'],
     foodTypes: ['한식', '일식'],
     results: ['밀면'],
-    selectInfo: {
+    selectedButtons: {
       location: '',
       foodType: '',
     },

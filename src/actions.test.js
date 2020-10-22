@@ -1,6 +1,6 @@
 import {
   intializeSelectButtons,
-  setSelectInfo,
+  setSelectedButton,
 } from './actions';
 
 describe('intializeSelectButtons', () => {
@@ -10,13 +10,13 @@ describe('intializeSelectButtons', () => {
   });
 });
 
-describe('setSelectInfo', () => {
-  it('호출하면 setSelectInfo action이 반환합니다. ', () => {
-    const updateInfo = {
+describe('setSelectedButton', () => {
+  it('호출하면 setSelectedButton action이 반환합니다. ', () => {
+    const selectedButton = {
       type: 'lcation',
       value: '서울',
     };
-    const action = setSelectInfo(updateInfo);
-    expect(action).toEqual({ type: 'setSelectInfo', payload: updateInfo });
+    const action = setSelectedButton(selectedButton);
+    expect(action).toEqual({ type: 'setSelectedButton', payload: selectedButton });
   });
 });
