@@ -23,7 +23,13 @@ export const setRestaurantsName = (payload) => ({
   payload,
 });
 
-export const loadRestaurantsName = (path) => async (dispatch) => {
-  const restaurants = await fetchRestaurantsName(path);
+export const loadRestaurantsName = () => async (dispatch, getStore) => {
+  const { region, category } = getStore();
+
+  if (!region || !category) {
+    return;
+  }
+
+  const restaurants = await fetchRestaurantsName({ region, category });
   dispatch(setRestaurantsName(restaurants));
 };
