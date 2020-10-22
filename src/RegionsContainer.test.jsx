@@ -27,7 +27,7 @@ test('RegionsContainer', () => {
   expect(dispatch).toBeCalledWith({
     type: 'updateRegion',
     payload: {
-      regionName: '서울',
+      region: '서울',
     },
   });
 

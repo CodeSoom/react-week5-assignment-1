@@ -2,7 +2,7 @@ export function updateRegion(region) {
   return {
     type: 'updateRegion',
     payload: {
-      regionName: region,
+      region,
     },
   };
 }

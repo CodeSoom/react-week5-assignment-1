@@ -2,15 +2,15 @@ const initialState = {
   restaurants: [],
   regions: [],
   categories: [],
-  regionName: '',
+  region: '',
 };
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'updateRegion') {
-    const { regionName } = action.payload;
+    const { region } = action.payload;
     return {
       ...state,
-      regionName,
+      region,
     };
   }
   return state;

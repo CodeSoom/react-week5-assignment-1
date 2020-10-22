@@ -8,12 +8,12 @@ describe('reducer', () => {
   describe('updateRegion', () => {
     it('update region value', () => {
       const initialState = {
-        regionName: '',
+        region: '',
       };
 
       const state = reducer(initialState, updateRegion('서울'));
 
-      expect(state.regionName).toEqual('서울');
+      expect(state.region).toEqual('서울');
     });
   });
 });
