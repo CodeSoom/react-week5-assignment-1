@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import RegionItem from './RegionItem';
 
 describe('RegionItem', ({ regionName, isSelected }) => {
+  const handleClick = jest.fn();
+
   const renderRegionItem = render((
     <RegionItem
       regionName={regionName}
       isSelected={isSelected}
+      onClick={handleClick}
     />
   ));
 
@@ -28,5 +31,14 @@ describe('RegionItem', ({ regionName, isSelected }) => {
     });
 
     expect(queryByText(/부산\(V\)/)).not.toBeNull();
+  });
+
+  it('calls click handler when clicked', () => {
+    const { queryByText } = renderRegionItem({
+      regionName: '부산',
+      isSelected: true,
+    });
+
+    fireEvent.click(queryByText('부산'));
   });
 });
