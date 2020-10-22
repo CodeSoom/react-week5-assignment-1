@@ -22,9 +22,9 @@ describe('RestaurantsContainer', () => {
 
   context('when load start', () => {
     it('calls load restaurants dispatch', () => {
-      const { getByText } = render(<RestaurantsContainer />);
+      const { container } = render(<RestaurantsContainer />);
 
-      expect(getByText('새마을 식당')).not.toBeNull();
+      expect(container).toHaveTextContent('새마을 식당');
 
       expect(dispatch).toBeCalled();
     });

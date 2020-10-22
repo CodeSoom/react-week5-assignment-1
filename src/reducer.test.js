@@ -1,6 +1,6 @@
 import {
-  checkedCategory,
-  checkedRegion,
+  selectCategory,
+  selectRegion,
   loadRestaurants,
   setCategories,
   setRegions,
@@ -9,25 +9,25 @@ import {
 import reducer from './reducer';
 
 describe('reducer', () => {
-  describe('checkedCategory', () => {
-    it('changes checked category', () => {
+  describe('selectCategory', () => {
+    it('changes select category', () => {
       const initialState = {
         categoryId: 0,
       };
 
-      const state = reducer(initialState, checkedCategory({ id: 1 }));
+      const state = reducer(initialState, selectCategory({ id: 1 }));
 
       expect(state.categoryId).toBe(1);
     });
   });
 
-  describe('checkedRegion', () => {
-    it('changes checked region', () => {
+  describe('selectRegion', () => {
+    it('changes select region', () => {
       const initialState = {
         regionName: '',
       };
 
-      const state = reducer(initialState, checkedRegion({ name: '서울' }));
+      const state = reducer(initialState, selectRegion({ name: '서울' }));
 
       expect(state.regionName).toBe('서울');
     });

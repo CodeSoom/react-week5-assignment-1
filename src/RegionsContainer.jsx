@@ -6,7 +6,7 @@ import Regions from './Regions';
 
 import {
   loadRegions,
-  checkedRegion,
+  selectRegion,
 } from './actions';
 
 export default function RegionsContainer() {
@@ -22,7 +22,7 @@ export default function RegionsContainer() {
   }, []);
 
   function handleClick({ name }) {
-    dispatch(checkedRegion({ name }));
+    dispatch(selectRegion({ name }));
   }
 
   return (

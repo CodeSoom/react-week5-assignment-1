@@ -35,7 +35,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'checkedCategory') {
+  if (action.type === 'selectCategory') {
     const { id } = action.payload;
     return {
       ...state,
@@ -45,7 +45,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'checkedRegion') {
+  if (action.type === 'selectRegion') {
     const { name } = action.payload;
     return {
       ...state,

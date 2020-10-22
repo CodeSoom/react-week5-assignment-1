@@ -6,7 +6,7 @@ import Categories from './Categories';
 
 import {
   loadCategories,
-  checkedCategory,
+  selectCategory,
 } from './actions';
 
 export default function CategoriesContainer() {
@@ -18,7 +18,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClick({ id }) {
-    dispatch(checkedCategory({ id }));
+    dispatch(selectCategory({ id }));
   }
 
   useEffect(() => {
