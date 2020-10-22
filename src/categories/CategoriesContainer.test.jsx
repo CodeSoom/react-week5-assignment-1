@@ -10,29 +10,95 @@ import categories from '../../fixtures/categories';
 
 jest.mock('react-redux');
 
-test('CategoriesContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    category: {
-      categories,
-      selectedId: 4,
-    },
-  }));
+  const setState = (selectedCategoryId, selectedRegionName) => {
+    useSelector.mockImplementation((selector) => selector({
+      category: {
+        categories,
+        selectedId: selectedCategoryId,
+      },
+      region: {
+        selectedName: selectedRegionName,
+      },
+    }));
+  };
 
-  const { queryByText } = render(<CategoriesContainer />);
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText(/한식/)).not.toBeNull();
+  test('renders category name, renders clicked name, calls dispatch', () => {
+    setState(1, '서울');
 
-  expect(queryByText(/일식\(V\)/)).not.toBeNull();
+    const { queryByText } = render(<CategoriesContainer />);
 
-  fireEvent.click(queryByText(/한식/));
+    expect(queryByText(/양식/)).not.toBeNull();
 
-  expect(dispatch).toBeCalledWith({
-    type: 'selectCategory',
-    payload: {
-      categoryId: 1,
-    },
+    expect(queryByText(/한식\(V\)/)).not.toBeNull();
+
+    fireEvent.click(queryByText(/한식/));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'selectCategory',
+      payload: {
+        categoryId: 1,
+      },
+    });
+  });
+
+  context('when clicked id is different with previous selected id and region has been selected', () => {
+    beforeEach(() => {
+      setState(1, 'selected');
+    });
+
+    it('calls dispatch 2 times', () => {
+      const { queryByText } = render(<CategoriesContainer />);
+
+      fireEvent.click(queryByText(/양식/));
+
+      expect(dispatch).toBeCalledTimes(2);
+    });
+  });
+
+  context('when clicked name is the same with previous selected name', () => {
+    beforeEach(() => {
+      setState(1, 'selected');
+    });
+    it('calls dispatch 1 time', () => {
+      const { queryByText } = render(<CategoriesContainer />);
+
+      fireEvent.click(queryByText(/한식/));
+
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  context('when category has not been selected', () => {
+    beforeEach(() => {
+      setState(1, null);
+    });
+    it('calls dispatch 1 time', () => {
+      const { queryByText } = render(<CategoriesContainer />);
+
+      fireEvent.click(queryByText(/부산/));
+
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  context('when clicked id is the same with previous selected name and category has been selected', () => {
+    beforeEach(() => {
+      setState(1, null);
+    });
+    it('calls dispatch 1 time', () => {
+      const { queryByText } = render(<CategoriesContainer />);
+
+      fireEvent.click(queryByText(/한식/));
+
+      expect(dispatch).toBeCalledTimes(1);
+    });
   });
 });
