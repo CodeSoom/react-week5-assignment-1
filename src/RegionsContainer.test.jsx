@@ -28,7 +28,7 @@ describe('RegionsContainer', () => {
   it('shows a title', () => {
     const { getByText } = render(<RegionsContainer />);
 
-    expect(getByText('Restaurant Regions')).not.toBeNull();
+    expect(getByText('Regions')).not.toBeNull();
   });
 
   describe('selects a region', () => {
