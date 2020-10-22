@@ -6,7 +6,7 @@ import Categories from './Categories';
 
 export default function CategoriesContainer() {
   const { categories } = useSelector((state) => ({
-    regions: state.categories,
+    categories: state.categories,
   }));
 
   return (
