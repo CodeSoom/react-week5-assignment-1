@@ -1,38 +1,50 @@
 import reducer from './reducer';
 
-import { selectRegion } from './actions';
+import regions from '../__fixtures__/regions';
+
+import { selectRegion, setRegions } from './actions';
 
 describe('reducer', () => {
-  const initialState = {
-    selectedRegionId: 0,
-    regions: [
-      { id: 1, name: '서울' },
-      { id: 2, name: '대전' },
-      { id: 3, name: '대구' },
-      { id: 4, name: '부산' },
-      { id: 5, name: '광주' },
-    ],
-  };
+  context('with initial state', () => {
+    const initialState = {
+      selectedRegionId: 0,
+      regions: [],
+    };
 
-  it('init state', () => {
-    const state = reducer();
-    expect(state).toStrictEqual(initialState);
-  });
-
-  it('unknown reducer', () => {
-    const state = reducer(initialState, {
-      type: 'unknownAction',
-      payload: {
-        name: 'unknown',
-      },
+    it('return state', () => {
+      const state = reducer();
+      expect(state).toStrictEqual(initialState);
     });
-    expect(initialState).toBe(state);
+
+    it('return unchanges state', () => {
+      const state = reducer(initialState, {
+        type: 'unknownAction',
+        payload: {
+          name: 'unknown',
+        },
+      });
+      expect(state).toBe(initialState);
+    });
   });
 
-  describe('select region', () => {
-    const clickedRegionId = 1;
-    const state = reducer(initialState, selectRegion(clickedRegionId));
+  describe('setRegions', () => {
+    it('selectRegion', () => {
+      const clickedRegionId = 1;
+      const state = reducer(regions, selectRegion(clickedRegionId));
 
-    expect(state.selectedRegionId).toBe(clickedRegionId);
+      expect(state.selectedRegionId).toBe(clickedRegionId);
+    });
+  });
+
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const initialState = {
+        regions: [],
+      };
+
+      const state = reducer(initialState, setRegions(regions));
+
+      expect(state.regions).toHaveLength(7);
+    });
   });
 });

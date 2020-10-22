@@ -8,7 +8,11 @@ export function selectRegion(id) {
   };
 }
 
-// TODO: have to delete!
-export function temp() {
-
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
 }
