@@ -34,14 +34,18 @@ describe('actions', () => {
 
     const actions = store.getActions();
 
-    expect(actions).toIncludeSameMembers([
+    const expectedActions = [
       updateCategoriesLoading(true),
       updateRegionsLoading(true),
       setCategories(categories),
       setRegions(regions),
       updateCategoriesLoading(false),
       updateRegionsLoading(false),
-    ]);
+    ];
+
+    expectedActions.forEach((action) => {
+      expect(actions).toContainEqual(action);
+    });
   });
 
   test('loadRestaurants', async () => {
