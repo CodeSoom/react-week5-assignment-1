@@ -12,23 +12,27 @@ jest.mock('./services/api');
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '새마을 식당' },
-    ],
-    categoryId: 1,
-    regionName: '서울',
-  }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [
+        { id: 1, name: '새마을 식당' },
+      ],
+      categoryId: 1,
+      regionName: '서울',
+    }));
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
 
-  context('when load start', () => {
+    jest.clearAllMocks();
+  });
+
+  context('when loaded', () => {
     it('calls load restaurants dispatch', () => {
       const { container } = render(<RestaurantsContainer />);
 
       expect(container).toHaveTextContent('새마을 식당');
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(1);
     });
   });
 });

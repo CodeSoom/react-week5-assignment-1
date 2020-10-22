@@ -4,11 +4,9 @@ import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';
 
-describe('Restaurants', () => {
-  const restaurants = [
-    { id: 1, name: '서울' },
-  ];
+import restaurants from './fixtures/restaurants';
 
+describe('Restaurants', () => {
   const renderRestaurants = () => render(
     <Restaurants
       restaurants={restaurants}
@@ -16,8 +14,10 @@ describe('Restaurants', () => {
   );
 
   it('show all Restaurants', () => {
-    const { queryByText } = renderRestaurants();
+    const { getByText } = renderRestaurants();
 
-    expect(queryByText('서울')).not.toBeNull();
+    restaurants.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
+    });
   });
 });

@@ -10,7 +10,7 @@ import reducer from './reducer';
 
 describe('reducer', () => {
   describe('selectCategory', () => {
-    it('changes select category', () => {
+    it('changes selected category', () => {
       const initialState = {
         categoryId: 0,
       };
@@ -22,7 +22,7 @@ describe('reducer', () => {
   });
 
   describe('selectRegion', () => {
-    it('changes select region', () => {
+    it('changes selected region', () => {
       const initialState = {
         regionName: '',
       };
@@ -34,7 +34,7 @@ describe('reducer', () => {
   });
 
   describe('setCategories', () => {
-    it('changes categories', () => {
+    it('change categories', () => {
       const initialState = {
         categories: [],
       };
@@ -50,7 +50,7 @@ describe('reducer', () => {
   });
 
   describe('setRegions', () => {
-    it('changes regions', () => {
+    it('change regions', () => {
       const initialState = {
         regions: [],
       };
@@ -66,7 +66,7 @@ describe('reducer', () => {
   });
 
   describe('setRestaurants', () => {
-    it('load restaurants', () => {
+    it('change restaurants', () => {
       const initialState = {
         restaurants: [],
       };
@@ -83,7 +83,7 @@ describe('reducer', () => {
 
   context('Unhandled action type', () => {
     it('returns initial state', () => {
-      const state = reducer(undefined, { type: 'Unhandled action tpye' });
+      const state = reducer(undefined, { type: 'Unhandled action type' });
 
       expect(state).toBe(state);
     });

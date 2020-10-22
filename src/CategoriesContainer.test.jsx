@@ -5,6 +5,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
+import categories from './fixtures/categories';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -12,32 +13,35 @@ jest.mock('./services/api');
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    categoryId: 0,
-  }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+    }));
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
+
+    jest.clearAllMocks();
+  });
 
   context('when load complete', () => {
-    it('calls set Categories dispatch', () => {
+    it('calls set categories dispatch', () => {
       const { getByText } = render(<CategoriesContainer />);
 
-      expect(getByText('한식')).not.toBeNull();
+      categories.forEach(({ name }) => {
+        expect(getByText(`${name}`)).not.toBeNull();
+      });
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(1);
     });
   });
 
-  context('click category', () => {
-    it('calls check category dispatch', () => {
+  context('when click category', () => {
+    it('calls select category dispatch', () => {
       const { getByText } = render(<CategoriesContainer />);
 
       fireEvent.click(getByText('한식'));
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 });

@@ -4,12 +4,10 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Regions from './Regions';
 
+import regions from './fixtures/regions';
+
 describe('Regions', () => {
   const handleClick = jest.fn();
-
-  const regions = [
-    { id: 1, name: '서울' },
-  ];
 
   const renderRegions = (name = '') => render(
     <Regions
@@ -20,12 +18,14 @@ describe('Regions', () => {
   );
 
   it('show all regions', () => {
-    const { queryByText } = renderRegions();
+    const { getByText } = renderRegions();
 
-    expect(queryByText('서울')).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(getByText(`${name}`)).not.toBeNull();
+    });
   });
 
-  context('click category', () => {
+  context('click region', () => {
     it('calls handleClick function', () => {
       const { getByText } = renderRegions();
 
@@ -34,14 +34,12 @@ describe('Regions', () => {
       expect(handleClick).toBeCalled();
     });
 
-    it('check mark in category', () => {
+    it('be marked check', () => {
       const { getByText } = renderRegions();
 
       fireEvent.click(getByText('서울'));
 
       const { container } = renderRegions('서울');
-
-      expect(handleClick).toBeCalled();
 
       expect(container).toHaveTextContent('서울(V)');
     });

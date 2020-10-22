@@ -5,6 +5,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+import regions from './fixtures/regions';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -12,22 +13,25 @@ jest.mock('./services/api');
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    regionName: '',
-  }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
+
+    jest.clearAllMocks();
+  });
 
   context('when load complete', () => {
     it('calls set regions dispatch', () => {
       const { getByText } = render(<RegionsContainer />);
 
-      expect(getByText('서울')).not.toBeNull();
+      regions.forEach(({ name }) => {
+        expect(getByText(`${name}`)).not.toBeNull();
+      });
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(1);
     });
   });
 
@@ -37,7 +41,7 @@ describe('RegionsContainer', () => {
 
       fireEvent.click(getByText('서울'));
 
-      expect(dispatch).toBeCalledTimes(3);
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 });
