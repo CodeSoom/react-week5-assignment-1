@@ -1,11 +1,3 @@
-import {
-  SET_REGIONS,
-  SET_CATEGORIES,
-  SET_SELECTED_REGION,
-  SET_SELECTED_CATEGORY,
-  SET_RESTAURANTS,
-} from './actions';
-
 export const initialState = {
   regions: [],
   categories: [],
@@ -14,41 +6,31 @@ export const initialState = {
   restaurants: [],
 };
 
+const cases = {
+  SET_REGIONS: (state, action) => ({
+    ...state,
+    regions: action.payload,
+  }),
+  SET_CATEGORIES: (state, action) => ({
+    ...state,
+    categories: action.payload,
+  }),
+  SET_SELECTED_REGION: (state, action) => ({
+    ...state,
+    selectedRegion: action.payload,
+  }),
+  SET_SELECTED_CATEGORY: (state, action) => ({
+    ...state,
+    selectedCategory: action.payload,
+  }),
+  SET_RESTAURANTS: (state, action) => ({
+    ...state,
+    restaurants: action.payload,
+  }),
+};
+
 export default function reducer(state = initialState, action) {
-  if (action.type === SET_REGIONS) {
-    return {
-      ...state,
-      regions: action.payload,
-    };
-  }
+  const handler = cases[action.type];
 
-  if (action.type === SET_CATEGORIES) {
-    return {
-      ...state,
-      categories: action.payload,
-    };
-  }
-
-  if (action.type === SET_SELECTED_REGION) {
-    return {
-      ...state,
-      selectedRegion: action.payload,
-    };
-  }
-
-  if (action.type === SET_SELECTED_CATEGORY) {
-    return {
-      ...state,
-      selectedCategory: action.payload,
-    };
-  }
-
-  if (action.type === SET_RESTAURANTS) {
-    return {
-      ...state,
-      restaurants: action.payload,
-    };
-  }
-
-  return state;
+  return handler ? handler(state, action) : state;
 }
