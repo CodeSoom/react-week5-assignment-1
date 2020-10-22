@@ -26,4 +26,5 @@ test('App', () => {
   regions.forEach(({ name }) => {
     expect(getByText(name)).not.toBeNull();
   });
+
 });
