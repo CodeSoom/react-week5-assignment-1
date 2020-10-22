@@ -25,8 +25,6 @@ describe('RestaurantsContainer', () => {
       const { container } = render(<RestaurantsContainer />);
 
       expect(container).toHaveTextContent('새마을 식당');
-
-      expect(dispatch).toBeCalled();
     });
   });
 });
