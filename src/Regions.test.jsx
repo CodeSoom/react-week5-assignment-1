@@ -1,28 +1,15 @@
 import React from 'react';
 
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import regions from './fixtures/regions';
-
 describe('Regions', () => {
+  const regions = [];
+
   it('show all regions', () => {
-    const handleClick = jest.fn();
+    const { queryByText } = render(<Regions regions={regions} />);
 
-    const { getByText } = render(
-      <Regions
-        regions={regions}
-        onClick={handleClick}
-      />,
-    );
-
-    regions.forEach(({ name }) => {
-      expect(getByText(`${name}`)).not.toBeNull();
-
-      fireEvent.click(getByText(`${name}`));
-
-      expect(handleClick).toBeCalled();
-    });
+    expect(queryByText('서울')).toBeNull();
   });
 });

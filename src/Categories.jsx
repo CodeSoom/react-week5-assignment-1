@@ -3,11 +3,9 @@ import React from 'react';
 export default function Categories({ categories, onClick }) {
   return (
     <ul>
-      {categories.map(({ id, name, isChecked }) => (
+      {categories.map(({ id, name }) => (
         <li key={id}>
-          <button type="button" onClick={() => onClick(id, isChecked)}>
-            {name && isChecked ? `${name}(V)` : name}
-          </button>
+          <button type="button" onClick={onClick}>{name}</button>
         </li>
       ))}
     </ul>

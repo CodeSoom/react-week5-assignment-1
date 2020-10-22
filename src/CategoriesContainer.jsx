@@ -5,33 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import Categories from './Categories';
 
 import {
-  checkCategories, initializeCheckedCategories, setCategories,
+  loadCategories,
+  checkedCategories,
 } from './actions';
 
-import { fetchCategories } from './services/api';
-
-async function loadCategories({ dispatch }) {
-  const categories = await fetchCategories();
-
-  dispatch(setCategories(categories));
-}
-
-export default function App() {
+export default function CategoriesContainer() {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    loadCategories({ dispatch });
-  }, []);
 
   const { categories } = useSelector((state) => ({
     categories: state.categories,
   }));
 
-  function handleClick(id, isChecked) {
-    dispatch(checkCategories({ id, isChecked }));
-
-    dispatch(initializeCheckedCategories({ id }));
+  function handleClick({ id }) {
+    dispatch(checkedCategories(id));
   }
+
+  useEffect(() => {
+    dispatch(loadCategories());
+  }, []);
 
   return (
     <Categories categories={categories} onClick={handleClick} />

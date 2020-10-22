@@ -3,36 +3,33 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-
 import App from './App';
 
-import categories from './fixtures/categories';
-
-import regions from './fixtures/regions';
-
 jest.mock('react-redux');
-jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
-
   useSelector.mockImplementation((selector) => selector({
-    categories,
-    regions,
-    restaurant: [],
+    categories: [
+      { id: 1, name: '한식' },
+    ],
+    regions: [
+      { id: 1, name: '서울' },
+    ],
   }));
 
-  it('show categories and regions', () => {
+  useDispatch.mockImplementation(() => dispatch);
+
+  it('show all categories', () => {
     const { getByText } = render(<App />);
 
-    categories.forEach(({ name }) => {
-      expect(getByText(`${name}`)).not.toBeNull();
-    });
+    expect(getByText('한식')).not.toBeNull();
+  });
 
-    regions.forEach(({ name }) => {
-      expect(getByText(`${name}`)).not.toBeNull();
-    });
+  it('show all regions', () => {
+    const { getByText } = render(<App />);
+
+    expect(getByText('서울')).not.toBeNull();
   });
 });
