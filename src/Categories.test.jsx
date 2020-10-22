@@ -11,9 +11,12 @@ describe('Categories', () => {
     { id: 1, name: '한식' },
   ];
 
+  const categoryId = 1;
+
   const renderCategories = () => render(
     <Categories
       categories={categories}
+      categoryId={categoryId}
       onClick={handleClick}
     />,
   );
@@ -30,6 +33,16 @@ describe('Categories', () => {
       fireEvent.click(getByText('한식'));
 
       expect(handleClick).toBeCalled();
+    });
+
+    it('check mark in category', () => {
+      const { getByText, container } = renderCategories();
+
+      fireEvent.click(getByText('한식'));
+
+      expect(handleClick).toBeCalled();
+
+      expect(container).toHaveTextContent('한식(V)');
     });
   });
 });

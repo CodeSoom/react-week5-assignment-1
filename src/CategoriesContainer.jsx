@@ -26,6 +26,10 @@ export default function CategoriesContainer() {
   }, []);
 
   return (
-    <Categories categories={categories} categoryId={categoryId} onClick={handleClick} />
+    <Categories
+      categories={categories}
+      categoryId={categoryId}
+      onClick={handleClick}
+    />
   );
 }
