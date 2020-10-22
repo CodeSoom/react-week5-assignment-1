@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionContainer from './RegionContainer';
+import RegionContainer from './container-component/RegionContainer';
 
 import {
   loadRegions,

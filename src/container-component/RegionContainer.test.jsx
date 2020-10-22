@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
 
-import regions from '../fixtures/regions';
+import regions from '../../fixtures/regions';
 
 jest.mock('react-redux');
 
@@ -14,7 +14,7 @@ describe('RegionContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    selectedId: 1,
+    selectedRegion: 1,
     regions,
   }));
 

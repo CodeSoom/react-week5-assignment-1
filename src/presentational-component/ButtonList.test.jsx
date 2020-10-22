@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import ButtonList from './ButtonList';
 
-import regions from '../fixtures/regions';
+import regions from '../../fixtures/regions';
 
 describe('ButtonList', () => {
   const handleClick = jest.fn();
