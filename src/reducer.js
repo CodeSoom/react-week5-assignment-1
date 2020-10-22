@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   categories: [],
+  selectedRegion: [],
 };
 
 const reducers = {
@@ -10,6 +11,15 @@ const reducers = {
     return {
       ...state,
       regions,
+    };
+  },
+
+  selectedRegion(state, action) {
+    const { region } = action.payload;
+
+    return {
+      ...state,
+      selectedRegion: region,
     };
   },
 
