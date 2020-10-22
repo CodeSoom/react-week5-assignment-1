@@ -6,12 +6,14 @@ import restaurants from '../__fixtures__/restaurants';
 
 import Restaurants from './Restaurants';
 
-test('Restaurants', () => {
-  const { container } = render((
-    <Restaurants restaurants={restaurants} />
-  ));
+describe('Restaurants', () => {
+  it('renders restaurants', () => {
+    const { container } = render((
+      <Restaurants restaurants={restaurants} />
+    ));
 
-  restaurants.forEach(({ name }) => {
-    expect(container).toHaveTextContent(name);
+    restaurants.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
   });
 });
