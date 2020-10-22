@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
-import { setRestaurants, updateRestaurant } from './actions';
-import { categoriesFixture, regionsFixture } from '../fixtures/fixtures';
+import { setRestaurants, updateRestaurant, loadRestaurantsName } from './actions';
+import { categoriesFixture, regionsFixture, restaurantFixture } from '../fixtures/fixtures';
 
 describe('reducer', () => {
   describe('setRestaurants', () => {
@@ -43,6 +43,20 @@ describe('reducer', () => {
       }, updateRestaurant({ type: 'region', id: 2 }));
 
       expect(region).toBe(2);
+    });
+  });
+
+  describe('loadRestaurantsName', () => {
+    const initialState = {
+      restaurants: [],
+    };
+
+    it('load Restaurants name', () => {
+      const { restaurants } = reducer({
+        initialState,
+      }, loadRestaurantsName(restaurantFixture));
+
+      expect(restaurants).toHaveLength(3);
     });
   });
 
