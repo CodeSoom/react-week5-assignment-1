@@ -18,6 +18,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions,
+    categories,
   }));
 
   const { getByText } = render((
