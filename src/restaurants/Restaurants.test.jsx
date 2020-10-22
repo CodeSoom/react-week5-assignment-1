@@ -22,6 +22,6 @@ describe('Restaurants', () => {
       <Restaurants />
     ));
 
-    expect(queryByText(/표시할 레스토랑이 없어요~/));
+    expect(queryByText(/표시할 레스토랑이 없어요~/)).not.toBeNull();
   });
 });
