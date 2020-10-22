@@ -63,11 +63,11 @@ export function loadInitialState() {
   };
 }
 
-export function selectRegion(regionName) {
+export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
     payload: {
-      regionName,
+      regionId,
     },
   };
 }
