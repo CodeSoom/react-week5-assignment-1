@@ -52,9 +52,11 @@ describe('reducer', () => {
 
   describe('selectCategory', () => {
     it('changes selectedCategory', () => {
+      const selectedCategory = '';
+
       const state = reducer({
         categories,
-        selectedCategory: '',
+        selectedCategory,
       }, selectCategory(categories[0].id));
 
       expect(state.selectedCategory).toBe(categories[0].id);
@@ -62,12 +64,13 @@ describe('reducer', () => {
   });
 
   describe('selectRegion', () => {
-    const { id, name } = regions[0];
-
     it('changes selectedRegion', () => {
+      const selectedRegion = '';
+      const { id, name } = regions[0];
+
       const state = reducer({
         regions,
-        selectedRegion: '',
+        selectedRegion,
       }, selectRegion({ id, name }));
 
       expect(state.selectedRegion).toBe(regions[0].name);
