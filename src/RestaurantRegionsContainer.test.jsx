@@ -6,10 +6,6 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('<RestaurantRegionsContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -18,6 +14,10 @@ describe('<RestaurantRegionsContainer />', () => {
     regions: [{ id: 1, name: '서울' }],
     selectedRegion: { id: 1, name: '서울' },
   }));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   const renderRestaurantRegionsContainer = () => render((
     <RestaurantRegionsContainer />

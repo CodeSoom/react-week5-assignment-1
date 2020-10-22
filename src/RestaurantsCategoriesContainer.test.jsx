@@ -6,10 +6,6 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantsCategoriesContainer from './RestaurantsCategoriesContainer';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('<RestaurantsCategoriesContainer />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -18,6 +14,10 @@ describe('<RestaurantsCategoriesContainer />', () => {
     categories: [{ id: 1, name: '한식' }],
     selectedCategory: { id: 1, name: '한식' },
   }));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   const renderRestaurantsCategoriesContainer = () => render((
     <RestaurantsCategoriesContainer />
