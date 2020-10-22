@@ -6,19 +6,20 @@ import {
   SET_SELECTED_REGION,
   SET_SELECTED_CATEGORY,
   SET_RESTAURANTS,
+  setRestaurantRegions,
+  setRestaurantCategories,
+  setRestaurantRegion,
+  setRestaurantCategory,
+  setRestaurants,
 } from './actions';
 
 describe('reducer', () => {
   describe(SET_REGIONS, () => {
     it('sets restaurant regions', () => {
-      const previousState = {
-        regions: [],
-      };
-      const action = {
-        type: SET_REGIONS,
-        payload: [{ id: 1, name: '서울' }],
-      };
-      const state = reducer(previousState, action);
+      const state = reducer(
+        { regions: [] },
+        setRestaurantRegions([{ id: 1, name: '서울' }]),
+      );
 
       expect(state.regions).toMatchObject([{ id: 1, name: '서울' }]);
     });
@@ -26,14 +27,10 @@ describe('reducer', () => {
 
   describe(SET_CATEGORIES, () => {
     it('sets restaurant categories', () => {
-      const previousState = {
-        categories: [],
-      };
-      const action = {
-        type: SET_CATEGORIES,
-        payload: [{ id: 1, name: '한식' }],
-      };
-      const state = reducer(previousState, action);
+      const state = reducer(
+        { categories: [] },
+        setRestaurantCategories([{ id: 1, name: '한식' }]),
+      );
 
       expect(state.categories).toMatchObject([{ id: 1, name: '한식' }]);
     });
@@ -41,14 +38,10 @@ describe('reducer', () => {
 
   describe(SET_SELECTED_REGION, () => {
     it('sets restaurant region', () => {
-      const previousState = {
-        selectedRegion: null,
-      };
-      const action = {
-        type: SET_SELECTED_REGION,
-        payload: { id: 1, name: '서울' },
-      };
-      const state = reducer(previousState, action);
+      const state = reducer(
+        { selectedRegion: null },
+        setRestaurantRegion({ id: 1, name: '서울' }),
+      );
 
       expect(state.selectedRegion).toMatchObject({ id: 1, name: '서울' });
     });
@@ -56,14 +49,10 @@ describe('reducer', () => {
 
   describe(SET_SELECTED_CATEGORY, () => {
     it('sets selected restaurnat category', () => {
-      const previousState = {
-        selectedCategory: {},
-      };
-      const action = {
-        type: SET_SELECTED_CATEGORY,
-        payload: { id: 1, name: '한식' },
-      };
-      const state = reducer(previousState, action);
+      const state = reducer(
+        { selectedCategory: {} },
+        setRestaurantCategory({ id: 1, name: '한식' }),
+      );
 
       expect(state.selectedCategory).toMatchObject({ id: 1, name: '한식' });
     });
@@ -71,20 +60,16 @@ describe('reducer', () => {
 
   describe(SET_RESTAURANTS, () => {
     it('sets restaurants', () => {
-      const previousState = {
-        restaurants: [],
-      };
-      const action = {
-        type: SET_RESTAURANTS,
-        payload: [{
+      const state = reducer(
+        { restaurants: [] },
+        setRestaurants([{
           id: 1,
           categoryId: 1,
           name: '양천주가',
           address: '서울 강남구 123456',
           information: '양천주가 in 서울 강남구 123456',
-        }],
-      };
-      const state = reducer(previousState, action);
+        }]),
+      );
 
       expect(state.restaurants).toMatchObject([{
         id: 1,
