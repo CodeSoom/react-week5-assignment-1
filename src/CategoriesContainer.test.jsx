@@ -54,5 +54,13 @@ describe('CategoriesContainer', () => {
         },
       );
     });
+
+    it("appends '(V)' in button value", () => {
+      const { getByText } = renderCategoriesContainer();
+
+      fireEvent.click(getByText(categories[0].name));
+
+      expect(getByText('한식(V)')).not.toBeNull();
+    });
   });
 });
