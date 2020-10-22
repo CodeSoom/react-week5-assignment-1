@@ -22,6 +22,7 @@ describe('Categories', () => {
   describe('render buttons', () => {
     it('show button text', () => {
       const selectedCategory = 2;
+
       const { container } = renderCategories(selectedCategory);
 
       categories.forEach(({ id, name }) => {
@@ -33,7 +34,7 @@ describe('Categories', () => {
     });
 
     context('when the button clicked', () => {
-      it('run onClick function', () => {
+      it('run handleClickCategory function', () => {
         const selectedCategory = '';
 
         const { container, getByText } = renderCategories(selectedCategory);
