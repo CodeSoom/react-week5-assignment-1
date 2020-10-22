@@ -7,7 +7,8 @@ import categories from '../../fixtures/categories';
 
 import {
   setRegions,
-  updateLoading,
+  updateCategoriesLoading,
+  updateRegionsLoading,
   setCategories,
   loadInitialState,
 } from './actions';
@@ -29,9 +30,13 @@ describe('actions', () => {
 
     const actions = store.getActions();
 
-    expect(actions).toContainEqual(updateLoading(true));
+    expect(actions).toContainEqual(updateCategoriesLoading(true));
+    expect(actions).toContainEqual(updateRegionsLoading(true));
+
     expect(actions).toContainEqual(setCategories(categories));
     expect(actions).toContainEqual(setRegions(regions));
-    expect(actions).toContainEqual(updateLoading(false));
+
+    expect(actions).toContainEqual(updateCategoriesLoading(false));
+    expect(actions).toContainEqual(updateRegionsLoading(false));
   });
 });

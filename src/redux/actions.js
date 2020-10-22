@@ -18,9 +18,27 @@ export function setCategories(categories) {
   };
 }
 
-export function updateLoading(loading) {
+export function updateRestaurantsLoading(loading) {
   return {
-    type: 'updateLoading',
+    type: 'updateRestaurantsLoading',
+    payload: {
+      loading,
+    },
+  };
+}
+
+export function updateCategoriesLoading(loading) {
+  return {
+    type: 'updateCategoriesLoading',
+    payload: {
+      loading,
+    },
+  };
+}
+
+export function updateRegionsLoading(loading) {
+  return {
+    type: 'updateRegionsLoading',
     payload: {
       loading,
     },
@@ -29,17 +47,19 @@ export function updateLoading(loading) {
 
 export function loadInitialState() {
   return async (dispatch) => {
-    dispatch(updateLoading(true));
+    dispatch(updateCategoriesLoading(true));
+    dispatch(updateRegionsLoading(true));
 
-    await Promise.all([
+    const [categories, regions] = await Promise.all([
       fetchCategories(),
       fetchRegions(),
-    ])
-      .then(([categories, regions]) => {
-        dispatch(setCategories(categories));
-        dispatch(setRegions(regions));
-        dispatch(updateLoading(false));
-      });
+    ]);
+
+    dispatch(setCategories(categories));
+    dispatch(setRegions(regions));
+
+    dispatch(updateCategoriesLoading(false));
+    dispatch(updateRegionsLoading(false));
   };
 }
 
