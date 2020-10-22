@@ -19,5 +19,5 @@ test('Categories', () => {
 
   fireEvent.click(getByText(categories[0].name));
 
-  expect(handleClick).toBeCalledWith(1);
+  expect(handleClick).toBeCalled();
 });
