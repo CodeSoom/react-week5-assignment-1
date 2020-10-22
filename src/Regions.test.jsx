@@ -42,9 +42,9 @@ describe('Regions', () => {
   });
 
   context('click region button', () => {
-    const { getByText } = renderRegions();
-
     it('occurs onclick event', () => {
+      const { getByText } = renderRegions();
+
       fireEvent.click(getByText(regions[0].name));
 
       expect(handleClick).toBeCalled();
