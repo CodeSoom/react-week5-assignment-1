@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
+import CategoriesContainer from './CategoriesContainer';
+
 import { loadRegions } from './actions';
 
 export default function App() {
@@ -16,23 +18,7 @@ export default function App() {
   return (
     <div>
       <RegionsContainer />
-      <ul>
-        <li>
-          <button type="button">
-            한식
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            중식
-          </button>
-        </li>
-        <li>
-          <button type="button">
-            일식
-          </button>
-        </li>
-      </ul>
+      <CategoriesContainer />
     </div>
   );
 }
