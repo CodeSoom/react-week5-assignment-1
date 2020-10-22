@@ -10,12 +10,15 @@ import restaurants from '../fixtures/restaurants';
 
 import categories from '../fixtures/categories';
 
+import regions from '../fixtures/regions';
+
 jest.mock('react-redux');
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants,
     categories,
+    regions,
   }));
   const { getByText } = render((
     <App />
