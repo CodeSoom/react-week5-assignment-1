@@ -1,13 +1,15 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
+import Categories from './Categories';
+
 export default function CategoriesContainer() {
+  const { categories } = useSelector((state) => ({
+    regions: state.categories,
+  }));
+
   return (
-    <div>
-      <ul>
-        <li><button type="button">한식</button></li>
-        <li><button type="button">중식</button></li>
-        <li><button type="button">일식</button></li>
-      </ul>
-    </div>
+    <Categories categories={categories} />
   );
 }
