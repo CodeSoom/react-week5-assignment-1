@@ -30,9 +30,9 @@ export function loadRegions() {
   };
 }
 
-export function checkedCategories(id) {
+export function checkedCategory({ id }) {
   return {
-    type: 'checkedCategories',
+    type: 'checkedCategory',
     payload: { id },
   };
 }

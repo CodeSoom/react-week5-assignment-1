@@ -1,10 +1,22 @@
-import { setCategories, setRegions } from './actions';
+import {
+  checkedCategory,
+  setCategories,
+  setRegions,
+} from './actions';
 
 import reducer from './reducer';
 
 describe('reducer', () => {
-  describe('checkedCategories', () => {
+  describe('checkedCategory', () => {
+    it('changes checked category', () => {
+      const initialState = {
+        categoryId: 0,
+      };
 
+      const state = reducer(initialState, checkedCategory({ id: 1 }));
+
+      expect(state.categoryId).toBe(1);
+    });
   });
   describe('setCategories', () => {
     it('changes categories', () => {
