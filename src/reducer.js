@@ -26,9 +26,9 @@ const reducers = {
 };
 
 export default function reducer(state = initialState, { type, payload }) {
-  if (reducers[type]) {
-    return reducers[type]({ state, payload });
+  if (!reducers[type]) {
+    return state;
   }
 
-  return state;
+  return reducers[type]({ state, payload });
 }

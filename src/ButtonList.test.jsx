@@ -13,7 +13,7 @@ describe('ButtonList', () => {
       <ButtonList
         labels={regions}
         onClick={handleClick}
-        checkedValue={id}
+        selectedId={id}
       />
     ));
   }

@@ -9,11 +9,15 @@ describe('ButtonItem', () => {
 
   function renderButton(checked = false) {
     return render((
-      <Button onClick={handleClick} checked={checked}>
+      <Button onClick={handleClick} selected={checked}>
         서울
       </Button>
     ));
   }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('show name', () => {
     const { getByText } = renderButton();
@@ -21,14 +25,18 @@ describe('ButtonItem', () => {
   });
 
   context('with checked', () => {
-    const { getByText } = renderButton(true);
-    expect(getByText('서울(V)')).not.toBeNull();
+    it('draws with (V)', () => {
+      const { getByText } = renderButton(true);
+      expect(getByText('서울(V)')).not.toBeNull();
+    });
   });
 
-  it('click', () => {
-    const { getByText } = renderButton();
-    fireEvent.click(getByText('서울'));
+  context('when click button', () => {
+    it('calls handleClick', () => {
+      const { getByText } = renderButton();
+      fireEvent.click(getByText('서울'));
 
-    expect(handleClick).toBeCalled();
+      expect(handleClick).toBeCalled();
+    });
   });
 });
