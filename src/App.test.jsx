@@ -93,7 +93,7 @@ describe('App', () => {
 
   context('when restaurants is being loaded', () => {
     const loadingState = {
-      restaurantLoading: true,
+      restaurantsLoading: true,
     };
     const restaurantData = {
       regions,
