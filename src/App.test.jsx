@@ -19,7 +19,7 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     locations: [{ id: 1, name: '서울' }, { id: 2, name: '대구' }],
     foodTypes: [{ id: 1, name: '한식' }, { id: 2, name: '일식' }],
-    results: [{ id: 1, name: '밀면' }],
+    restaurants: [{ id: 1, name: '밀면' }],
     selectedButtons: {
       location: '',
       foodType: '',

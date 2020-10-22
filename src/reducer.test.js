@@ -13,8 +13,8 @@ describe('initialState', () => {
     expect(initialState.foodTypes).toHaveLength(0);
   });
 
-  it('초기 resultList는 빈 배열로 초기화됩니다.', () => {
-    expect(initialState.results).toHaveLength(0);
+  it('초기 restaurants는 빈 배열로 초기화됩니다.', () => {
+    expect(initialState.restaurants).toHaveLength(0);
   });
 
   it('초기 selecInfo의 location이 빈 값으로 초기화됩니다.', () => {
@@ -37,15 +37,15 @@ describe('reducer', () => {
   });
 
   describe('intializeSelectButtons', () => {
-    it('locations, foddTypes, results를 주어진 값으로 초기화합니다.', () => {
-      const { locations, foodTypes, results } = reducer(
+    it('locations, foddTypes, restaurants를 주어진 값으로 초기화합니다.', () => {
+      const { locations, foodTypes, restaurants } = reducer(
         initialState,
         intializeSelectButtons({ type: 'intializeSelectButtons' }),
       );
 
       expect(locations).toEqual([{ id: 1, name: '서울' }, { id: 2, name: '대전' }, { id: 3, name: '대구' }, { id: 4, name: '부산' }, { id: 5, name: '광주' }, { id: 6, name: '강원도' }, { id: 7, name: '인천' }]);
       expect(foodTypes).toEqual([{ id: 1, name: '한식' }, { id: 2, name: '중식' }, { id: 3, name: '일식' }, { id: 4, name: '양식' }, { id: 5, name: '분식' }, { id: 6, name: '과자' }, { id: 7, name: '치킨' }]);
-      expect(results).toEqual([{ id: 1, name: '양천주가' }, { id: 2, name: '밀면넘어져요' }]);
+      expect(restaurants).toEqual([{ id: 1, name: '양천주가' }, { id: 2, name: '밀면넘어져요' }]);
     });
   });
 
