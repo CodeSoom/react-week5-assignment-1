@@ -1,3 +1,5 @@
+import { fetchRegions } from './services/api';
+
 export function selectRegion(id) {
   return {
     type: 'selectRegion',
@@ -13,5 +15,12 @@ export function setRegions(regions) {
     payload: {
       regions,
     },
+  };
+}
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
   };
 }
