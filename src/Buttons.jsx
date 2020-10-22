@@ -11,8 +11,13 @@ export default function Buttons({
       {
         buttonNames.map((buttonName, index) => (
           <li key={index}>
-            <button type="submit" name={name} onClick={onClickSelect}>
-              {buttonName === selectedButton ? `${buttonName}(V)` : buttonName}
+            <button
+              type="button"
+              name={name}
+              onClick={onClickSelect}
+            >
+              {buttonName}
+              {(buttonName === selectedButton) && '(V)'}
             </button>
           </li>
         ))
