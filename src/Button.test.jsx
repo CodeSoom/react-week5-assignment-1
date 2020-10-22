@@ -2,9 +2,9 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import Button from './ButtonItem';
+import Button from './Button';
 
-describe('ButtonItem', () => {
+describe('Button', () => {
   const handleClick = jest.fn();
 
   function renderButton(checked = false) {
