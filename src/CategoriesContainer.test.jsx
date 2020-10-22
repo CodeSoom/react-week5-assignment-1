@@ -8,7 +8,7 @@ import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-test('<CategoriesContainer', () => {
+test('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories: [
       { id: 1, name: '한식' },

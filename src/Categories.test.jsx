@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import Categories from './Categories';
 
-test('<Categories>', () => {
+test('Categories', () => {
   const categories = [
     { id: 1, name: '한식' },
   ];
