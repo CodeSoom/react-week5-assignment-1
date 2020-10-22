@@ -14,6 +14,7 @@ describe('RegionContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
+    selectedId: 1,
     regions,
   }));
 
@@ -34,13 +35,13 @@ describe('RegionContainer', () => {
   });
 
   describe('checkRegion', () => {
-    it('change checked region', () => {
+    it('change select region', () => {
       const { getByText } = renderRegionContainer();
 
       fireEvent.click(getByText('서울'));
 
       expect(dispatch).toBeCalledWith({
-        type: 'checkRegion',
+        type: 'selectRegion',
         payload: {
           id: 1,
         },

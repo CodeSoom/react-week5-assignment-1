@@ -1,15 +1,15 @@
 const initialState = {
-  checkedRegion: -1,
-  checkedCategory: -1,
+  selectedRegion: -1,
+  selectedCategory: -1,
   regions: [],
   categories: [],
   restaurants: [],
 };
 
-function checkRegion({ state, payload }) {
+function selectRegion({ state, payload }) {
   return {
     ...state,
-    checkedRegion: payload.id,
+    selectedRegion: payload.id,
   };
 }
 
@@ -21,7 +21,7 @@ function setRegions({ state, payload }) {
 }
 
 const reducers = {
-  checkRegion,
+  selectRegion,
   setRegions,
 };
 

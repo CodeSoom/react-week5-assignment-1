@@ -7,8 +7,8 @@ export default function ButtonList({ labels, onClick, selectedId }) {
     <ul>
       {
         labels.map(({ id, name }) => (
-          <li>
-            <Button key={id} onClick={() => onClick(id)} selected={id === selectedId}>
+          <li key={id}>
+            <Button onClick={() => onClick(id)} selected={id === selectedId}>
               {name}
             </Button>
           </li>

@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  checkRegion,
+  selectRegion,
   setRegions,
 } from './actions';
 
@@ -11,10 +11,10 @@ describe('reducer', () => {
   describe('checkRegion', () => {
     it('change checked Region', () => {
       const state = reducer({
-        checkedRegion: 2,
-      }, checkRegion(1));
+        selectedRegion: 2,
+      }, selectRegion(1));
 
-      expect(state.checkedRegion).toBe(1);
+      expect(state.selectedRegion).toBe(1);
     });
   });
 

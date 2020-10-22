@@ -1,6 +1,6 @@
-export function checkRegion(id) {
+export function selectRegion(id) {
   return {
-    type: 'checkRegion',
+    type: 'selectRegion',
     payload: {
       id,
     },
