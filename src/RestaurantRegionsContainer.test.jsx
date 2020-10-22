@@ -8,15 +8,16 @@ import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 describe('<RestaurantRegionsContainer />', () => {
   const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    regions: [{ id: 1, name: '서울' }],
-    selectedRegion: { id: 1, name: '서울' },
-  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+      selectedRegion: { id: 1, name: '서울' },
+    }));
   });
 
   const renderRestaurantRegionsContainer = () => render((

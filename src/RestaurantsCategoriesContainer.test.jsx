@@ -8,15 +8,16 @@ import RestaurantsCategoriesContainer from './RestaurantsCategoriesContainer';
 
 describe('<RestaurantsCategoriesContainer />', () => {
   const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    categories: [{ id: 1, name: '한식' }],
-    selectedCategory: { id: 1, name: '한식' },
-  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      categories: [{ id: 1, name: '한식' }],
+      selectedCategory: { id: 1, name: '한식' },
+    }));
   });
 
   const renderRestaurantsCategoriesContainer = () => render((
