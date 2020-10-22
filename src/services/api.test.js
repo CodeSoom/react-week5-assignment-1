@@ -23,7 +23,7 @@ describe('api', () => {
 
     const regions = await fetchRegions();
 
-    expect(regions).toBe(regionsFixture);
+    expect(regions).toStrictEqual(regionsFixture);
   });
 
   it('fetchCategories', async () => {
@@ -31,14 +31,14 @@ describe('api', () => {
 
     const categories = await fetchCategories();
 
-    expect(categories).toBe(categoriesFixture);
+    expect(categories).toStrictEqual(categoriesFixture);
   });
 
   it('fetchRestaurants', async () => {
     mockingFetch(restaurantsFixture);
 
-    const restaurants = await fetchRestaurants();
+    const restaurants = await fetchRestaurants({ regionId: 1, categoryId: 1 });
 
-    expect(restaurants).toBe(restaurantsFixture);
+    expect(restaurants).toStrictEqual(restaurantsFixture);
   });
 });
