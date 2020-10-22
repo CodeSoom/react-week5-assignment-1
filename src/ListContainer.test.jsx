@@ -60,7 +60,7 @@ describe('ListContainer', () => {
 
     fireEvent.click(regionButton);
 
-    updateRestaurantDispatch({ type: 'region', id: 1 });
+    updateRestaurantDispatch({ type: 'region', id: '서울' });
 
     const categoryButton = getByText(/한식/);
     expect(categoryButton).not.toBeNull();

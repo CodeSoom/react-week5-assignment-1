@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { updateRestaurant, loadRestaurants } from './actions';
+import { updateRestaurant, loadRestaurants, loadRestaurantsName } from './actions';
 import CategoryList from './CategoryList';
 import RegionList from './RegionList';
 
@@ -24,6 +24,7 @@ const ListContainer = () => {
 
   const handleClickButton = (stateId) => {
     dispatch(updateRestaurant(stateId));
+    dispatch(loadRestaurantsName());
   };
 
   return (
@@ -31,7 +32,7 @@ const ListContainer = () => {
       <RegionList
         regions={regions}
         onSelectRegionClick={handleClickButton}
-        regionId={region}
+        regionName={region}
       />
       <CategoryList
         categories={categories}
