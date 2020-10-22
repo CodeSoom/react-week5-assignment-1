@@ -11,5 +11,26 @@ export default function App() {
   //       `https://eatgo-customer-api.ahastudio.com/restaurants?region=${region}&category=${category}`
   //       에서 음식점 리스트를 가져온다.
   // TODO: 음식점 리스트를 그린다.
-  return (<></>);
+  return (
+    <div>
+      <ul>
+        <li>
+          <button type="button" name="서울">서울(V)</button>
+          <button type="button" name="대전">대전</button>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <button type="button" name="한식">한식(V)</button>
+          <button type="button" name="중식">중식</button>
+        </li>
+      </ul>
+
+      <ul>
+        <li>양천주가</li>
+        <li>한국식 초밥</li>
+      </ul>
+    </div>
+  );
 }
