@@ -5,6 +5,7 @@ import {
   setCategories,
   updateLoading,
   selectRegion,
+  selectCategory,
 } from './actions';
 
 import regions from '../../fixtures/regions';
@@ -49,6 +50,18 @@ describe('reducer', () => {
       }, selectRegion('서울'));
 
       expect(state.restaurantSearchQuery.regionName).toBe('서울');
+    });
+  });
+
+  describe('selectCategory', () => {
+    it('changes selected category id', () => {
+      const state = reducer({
+        restaurantSearchQuery: {
+          categoryId: null,
+        },
+      }, selectCategory(4));
+
+      expect(state.restaurantSearchQuery.categoryId).toBe(4);
     });
   });
 
