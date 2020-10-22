@@ -21,5 +21,7 @@ test('App', () => {
     <App />
   ));
 
+  expect(getByText(/서울/)).not.toBeNull();
+  expect(getByText(/중식/)).not.toBeNull();
   expect(getByText(/홍콩반점/)).not.toBeNull();
 });
