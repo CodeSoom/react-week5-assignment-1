@@ -1,5 +1,7 @@
 import restaurantReducer from './restaurantReducer';
 
+import restaurants from '../../../fixtures/restaurants';
+
 import {
   setRestaurants,
   updateRestaurantsLoading,
@@ -7,17 +9,17 @@ import {
 
 describe('regionReducer', () => {
   describe('updateRegionsLoading', () => {
-    describe('setRegions', () => {
-      it('changes regions', () => {
+    describe('setRestaurants', () => {
+      it('changes restaurants', () => {
         const state = restaurantReducer({
-          regions: [],
+          restaurants: [],
         }, setRestaurants(restaurants));
 
-        expect(state.regions).not.toHaveLength(0);
+        expect(state.restaurants).not.toHaveLength(0);
       });
     });
 
-    it('changes Regions loading state', () => {
+    it('changes restaurants loading state', () => {
       const state = restaurantReducer({
         loading: false,
       }, updateRestaurantsLoading(true));

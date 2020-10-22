@@ -4,6 +4,14 @@ const initialState = {
 };
 
 const reducers = {
+  setRestaurants(state, action) {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
+    };
+  },
   updateRestaurantsLoading(state, action) {
     const { loading } = action.payload;
 
