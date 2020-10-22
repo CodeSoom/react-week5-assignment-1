@@ -2,6 +2,7 @@ const initialState = {
   categories: [],
   regions: [],
   categoryId: 0,
+  regionName: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -26,6 +27,14 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       categoryId: id,
+    };
+  }
+
+  if (action.type === 'checkedRegion') {
+    const { name } = action.payload;
+    return {
+      ...state,
+      regionName: name,
     };
   }
 
