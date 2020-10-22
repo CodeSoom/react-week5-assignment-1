@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   categories: [],
+  selectedCategoryId: 0,
 };
 
 const reducers = {
@@ -11,6 +12,10 @@ const reducers = {
   setCategories: (state, { categories }) => ({
     ...state,
     categories,
+  }),
+  setSelectedCategory: (state, { id }) => ({
+    ...state,
+    selectedCategoryId: id,
   }),
 };
 

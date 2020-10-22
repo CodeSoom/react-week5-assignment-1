@@ -29,13 +29,13 @@ describe('reducer', () => {
   });
 
   describe('setSelectedCategory', () => {
-    it('changes selectedCategory', () => {
+    it('changes selectedCategoryId', () => {
       const initialState = {
-        categories: [],
+        selectedCategoryId: 0,
       };
 
       const state = reducer(initialState, setSelectedCategory(1));
-      expect(state.selectedCategory).toBe(1);
+      expect(state.selectedCategoryId).toBe(1);
     });
   });
 });
