@@ -1,23 +1,20 @@
 export async function fetchRegions() {
-  return [
-    { id: 1, name: '서울' },
-    { id: 2, name: '대전' },
-  ];
+  const res = await fetch('https://eatgo-customer-api.ahastudio.com/regions');
+  const regions = await res.json();
+
+  return regions;
 }
 
 export async function fetchCategories() {
-  return [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-  ];
+  const res = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
+  const categories = await res.json();
+
+  return categories;
 }
 
 export async function fetchRestaurants({ regionId, categoryId }) {
-  return [{
-    id: 1,
-    categoryId: 1,
-    name: '양천주가',
-    address: '서울 강남구 123456',
-    information: '양천주가 in 서울 강남구 123456',
-  }];
+  const res = await fetch(`https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionId}&category=${categoryId}`);
+  const categories = await res.json();
+
+  return categories;
 }
