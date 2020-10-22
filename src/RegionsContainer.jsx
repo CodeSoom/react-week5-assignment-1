@@ -20,6 +20,6 @@ export default function RegionsContainer() {
   }, []);
 
   return (
-    <Regions regions={regions} />
+    <Regions regions={regions} onClick={handleClick} />
   );
 }
