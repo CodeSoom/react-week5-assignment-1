@@ -1,9 +1,9 @@
 import {
   selectCategory,
   selectRegion,
-  loadRestaurants,
   setCategories,
   setRegions,
+  setRestaurants,
 } from './actions';
 
 import reducer from './reducer';
@@ -65,19 +65,17 @@ describe('reducer', () => {
     });
   });
 
-  describe('loadRestaurants', () => {
+  describe('setRestaurants', () => {
     it('load restaurants', () => {
       const initialState = {
         restaurants: [],
-        categoryId: 1,
-        regionName: '서울',
       };
 
-      const categoryId = 1;
+      const restaurants = [
+        { id: 1, name: '식당' },
+      ];
 
-      const regionName = '서울';
-
-      const state = reducer(initialState, loadRestaurants(categoryId, regionName));
+      const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
     });
