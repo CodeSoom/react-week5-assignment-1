@@ -4,18 +4,24 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import regions from '../__fixtures__/regions';
+
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-test('RegionsContainer', () => {
+describe('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
+    regions,
   }));
 
-  const { getByText } = render(<RegionsContainer />);
+  const renderRegionsContainer = () => render(<RegionsContainer />);
 
-  expect(getByText('서울')).not.toBeNull();
+  it('renders Regions', () => {
+    const { container } = renderRegionsContainer();
+
+    regions.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
+  });
 });
