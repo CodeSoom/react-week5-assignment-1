@@ -27,6 +27,7 @@ const mockStore = configureStore(middlewares);
 describe('actions', () => {
   describe('loadCategories', () => {
     const store = mockStore({});
+
     it('update loading state and set categories', async () => {
       await store.dispatch(loadCategories());
 
@@ -40,6 +41,7 @@ describe('actions', () => {
 
   describe('loadRegions', () => {
     const store = mockStore({});
+
     it('update loading state and set regions', async () => {
       await store.dispatch(loadRegions());
 
@@ -53,6 +55,7 @@ describe('actions', () => {
 
   describe('loadRestaurants', () => {
     const store = mockStore({});
+
     it('update loading state and set restaurants', async () => {
       await store.dispatch(loadRestaurants());
 

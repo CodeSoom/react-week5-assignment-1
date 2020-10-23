@@ -51,7 +51,7 @@ export function loadRestaurants(regionName, categoryId) {
 }
 
 export function searchRestaurants() {
-  return async (dispatch, getState) => {
+  return (dispatch, getState) => {
     const { category, region } = getState();
     const { selectedId: categoryId } = category;
     const { selectedName: regionName } = region;
