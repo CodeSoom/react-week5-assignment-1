@@ -1,6 +1,7 @@
 import {
   intializeSelectButtons,
   setSelectedButton,
+  setRestaurants
 } from './actions';
 
 describe('intializeSelectButtons', () => {
@@ -21,5 +22,13 @@ describe('setSelectedButton', () => {
     };
     const action = setSelectedButton(selectedButton);
     expect(action).toEqual({ type: 'setSelectedButton', payload: selectedButton });
+  });
+});
+
+describe('setRestaurants', () => {
+  it('setRestaurants action을 반환합니다. ', () => {
+    const restaurants = ['밀면', '김밥천국'];
+    const action = setRestaurants(restaurants);
+    expect(action).toEqual({ type: 'setRestaurants', payload: restaurants });
   });
 });
