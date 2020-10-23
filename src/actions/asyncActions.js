@@ -17,23 +17,14 @@ import {
   setRestaurants,
 } from './restaurantActions';
 
-export function loadInitialState() {
-  updateRegionsLoading(true);
-  updateCategoriesLoading(true);
-
+export function loadCategories() {
   return async (dispatch) => {
-    const [categories, regions] = await Promise.all([
-      fetchCategories(),
-      fetchRegions(),
-    ]);
+    dispatch(updateCategoriesLoading(true));
 
+    const categories = await fetchCategories();
     dispatch(setCategories(categories));
-    dispatch(setRegions(regions));
 
-    return () => {
-      dispatch(updateRestaurantsLoading(false));
-      dispatch(updateRegionsLoading(false));
-    };
+    return dispatch(updateCategoriesLoading(false));
   };
 }
 

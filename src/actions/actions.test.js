@@ -9,6 +9,7 @@ import restaurants from '../../fixtures/restaurants';
 import {
   loadInitialState,
   loadRestaurants,
+  loadCategories,
   updateCategoriesLoading,
   updateRegionsLoading,
   updateRestaurantsLoading,
