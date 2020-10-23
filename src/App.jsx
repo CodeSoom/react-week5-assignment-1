@@ -6,6 +6,7 @@ import RegionContainer from './container-component/RegionContainer';
 
 import {
   loadRegions,
+  loadCategories,
 } from './actions';
 import CategoryContainer from './container-component/CategoryContainer';
 

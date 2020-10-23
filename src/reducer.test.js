@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   loadRegions,
+  loadCategories,
   selectOption,
   setOptions,
 } from './actions';
