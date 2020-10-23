@@ -1,10 +1,14 @@
 import React from 'react';
 
+const restaurants = ['홍콩반점'];
+
 export default function Restaurants() {
   return (
     <>
       <ul>
-        <li>홍콩반점</li>
+        {restaurants.map((restaurant) => (
+          <li>{restaurant}</li>
+        ))}
       </ul>
     </>
   );
