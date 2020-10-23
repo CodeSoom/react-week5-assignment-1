@@ -10,7 +10,7 @@ const reducers = {
     ...state,
     regions,
   }),
-  setSelectedRegionName: (state, { name }) => ({
+  selectRegion: (state, { name }) => ({
     ...state,
     selectedRegionName: name,
   }),

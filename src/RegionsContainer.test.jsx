@@ -38,14 +38,14 @@ describe('RegionsContainer', () => {
   });
 
   context('click region button', () => {
-    it('dispatch setSelectedRegionName action', () => {
+    it('dispatch selectRegion action', () => {
       const { getByText } = renderRegionsContainer();
 
       fireEvent.click(getByText(regions[0].name));
 
       expect(dispatch).toBeCalledWith(
         {
-          type: 'setSelectedRegionName',
+          type: 'selectRegion',
           payload: {
             name: '서울',
           },

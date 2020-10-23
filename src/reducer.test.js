@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  setRegions, setSelectedRegionName, setCategories, selectCategory,
+  setRegions, selectRegion, setCategories, selectCategory,
 } from './actions';
 
 import regions from '../__fixtures__/regions';
@@ -19,13 +19,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('setSelectedRegionName', () => {
+  describe('selectRegion', () => {
     it('changes selectedRegionName', () => {
       const initialState = {
         selectedRegionName: '',
       };
 
-      const state = reducer(initialState, setSelectedRegionName('서울'));
+      const state = reducer(initialState, selectRegion('서울'));
       expect(state.selectedRegionName).toBe('서울');
     });
   });

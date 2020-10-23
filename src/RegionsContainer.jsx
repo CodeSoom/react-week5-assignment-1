@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Regions from './Regions';
 
-import { setSelectedRegionName } from './actions';
+import { selectRegion } from './actions';
 
 export default function RegionsContainer() {
   const { regions, selectedRegionName } = useSelector((state) => ({
@@ -17,7 +17,7 @@ export default function RegionsContainer() {
   function handleClick(event) {
     const regionName = event.target.textContent;
 
-    dispatch(setSelectedRegionName(regionName));
+    dispatch(selectRegion(regionName));
   }
   return (
     <Regions

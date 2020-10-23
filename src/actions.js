@@ -9,9 +9,9 @@ export function setRegions(regions) {
   };
 }
 
-export function setSelectedRegionName(name) {
+export function selectRegion(name) {
   return {
-    type: 'setSelectedRegionName',
+    type: 'selectRegion',
     payload: {
       name,
     },
