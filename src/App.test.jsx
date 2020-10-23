@@ -27,19 +27,7 @@ test('App', () => {
     <App />
   ));
 
-  expect(dispatch).toBeCalledWith({
-    type: 'setRegions',
-    payload: {
-      regions
-    }
-  });
-
-  expect(dispatch).toBeCalledWith({
-    type: 'setCategories',
-    payload: {
-      categories
-    }
-  });
+  expect(dispatch).toBeCalledTimes(2);
 
   expect(getByText(/서울/)).not.toBeNull();
   expect(getByText(/중식/)).not.toBeNull();
