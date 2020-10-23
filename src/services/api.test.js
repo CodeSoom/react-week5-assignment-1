@@ -1,7 +1,12 @@
 import axios from 'axios';
-import { fetchRegions, fetchCategories } from './api';
 
-import { regions, categories } from '../../fixtures';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './api';
+
+import { regions, categories, restaurants } from '../../fixtures';
 
 jest.mock('axios');
 
@@ -18,6 +23,14 @@ describe('api', () => {
     const resp = { data: categories };
     axios.get.mockResolvedValue(resp);
     const data = await fetchCategories();
+
+    expect(data).not.toHaveLength(0);
+  });
+
+  it('fetchRestaurants', async () => {
+    const resp = { data: restaurants };
+    axios.get.mockResolvedValue(resp);
+    const data = await fetchRestaurants({ regionName: '서울', categoryId: '양천주가' });
 
     expect(data).not.toHaveLength(0);
   });
