@@ -6,10 +6,10 @@ export async function fetchRegions() {
   return regions;
 }
 
-export async function fetchCategories() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+export async function fetchOptions({ optionName }) {
+  const url = `https://eatgo-customer-api.ahastudio.com/${optionName}`;
   const response = await fetch(url);
-  const categories = response.json();
+  const data = response.json();
 
-  return categories;
+  return data;
 }
