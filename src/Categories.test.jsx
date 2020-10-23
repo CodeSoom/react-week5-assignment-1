@@ -6,8 +6,16 @@ import categories from '../__fixtures__/categories';
 
 import Categories from './Categories';
 
-test('Categories', () => {
-  const { getByText } = render(<Categories categories={categories} />);
+describe('Categories', () => {
+  const renderCategories = () => render(
+    <Categories categories={categories} />,
+  );
 
-  expect(getByText('한식')).not.toBeNull();
+  it('renders buttons', () => {
+    const { container } = renderCategories();
+
+    categories.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
+  });
 });
