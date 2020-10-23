@@ -2,21 +2,20 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import Restaurant from '../components/Restaurant';
+
 export default function RestaurantsContainer() {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurant.restaurants,
   }));
 
-  function handleClick() {
-    // TODO
-  }
-
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          {restaurant.name}
-        </li>
+        <Restaurant
+          key={restaurant.id}
+          name={restaurant.name}
+        />
       ))}
     </ul>
   );
