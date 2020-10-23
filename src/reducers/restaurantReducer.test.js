@@ -8,17 +8,17 @@ import {
 } from '../actions';
 
 describe('regionReducer', () => {
-  describe('updateRegionsLoading', () => {
-    describe('setRestaurants', () => {
-      it('changes restaurants', () => {
-        const state = restaurantReducer({
-          restaurants: [],
-        }, setRestaurants(restaurants));
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const state = restaurantReducer({
+        restaurants: [],
+      }, setRestaurants(restaurants));
 
-        expect(state.restaurants).not.toHaveLength(0);
-      });
+      expect(state.restaurants).not.toHaveLength(0);
     });
+  });
 
+  describe('updateRestaurantsLoading', () => {
     it('changes loading state of restaurants', () => {
       const state = restaurantReducer({
         loading: false,
