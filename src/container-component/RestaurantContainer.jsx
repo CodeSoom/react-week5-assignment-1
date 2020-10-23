@@ -8,20 +8,30 @@ import {
 export default function RestaurantContainer() {
   const dispatch = useDispatch();
 
-  const { selectedOption } = useSelector((state) => ({
+  const { selectedOption, regions, restaurants } = useSelector((state) => ({
     selectedOption: state.selectedOption,
+    regions: state.option.regions,
+    restaurants: state.restaurants,
   }));
 
   const { region, category } = selectedOption;
 
   useEffect(() => {
-    dispatch(loadRestaurants({ region, categoryId: category }));
+    if (region > 0 && category > 0) {
+      const { name } = regions.find((r) => r.id === region);
+      dispatch(loadRestaurants({ region: name, categoryId: category }));
+    }
   }, [selectedOption]);
 
   return (
     <ul>
-      <li>양천주가</li>
-      <li>한국식 초밥</li>
+      {
+        restaurants.map((r) => (
+          <li key={r.id}>
+            {r.name}
+          </li>
+        ))
+      }
     </ul>
   );
 }

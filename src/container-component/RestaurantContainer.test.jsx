@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
+import { regions, restaurants } from '../../fixtures/fixtures';
 
 jest.mock('react-redux');
 
@@ -16,7 +17,10 @@ describe('RestaurantContainer', () => {
       region: 1,
       category: 1,
     },
-    restaurant: [],
+    option: {
+      regions,
+    },
+    restaurants,
   }));
 
   function renderRegionContainer() {

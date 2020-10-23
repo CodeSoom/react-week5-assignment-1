@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import { regions, categories } from '../fixtures/fixtures';
+import { regions, categories, restaurants } from '../fixtures/fixtures';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -24,6 +24,7 @@ test('App', () => {
       regions,
       categories,
     },
+    restaurants,
   }));
 
   const { getByText } = render((
