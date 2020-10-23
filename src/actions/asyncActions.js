@@ -60,6 +60,6 @@ export function searchRestaurants() {
       return;
     }
 
-    dispatch(loadRestaurants(categoryId, regionName));
+    dispatch(loadRestaurants(regionName, categoryId));
   };
 }
