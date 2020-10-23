@@ -44,8 +44,8 @@ describe('reducer', () => {
 
   describe('setRegions', () => {
     it('set initial value of regions', () => {
-      const state = reducer(undefined, setRegions(regions));
-      expect(state.regions).toBe(regions);
+      const state = reducer(undefined, setOptions('regions', regions));
+      expect(state.option.regions).toBe(regions);
     });
   });
 
@@ -72,8 +72,8 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('set initial value of categories', () => {
-      const state = reducer(undefined, setCategories(categories));
-      expect(state.categories).toBe(categories);
+      const state = reducer(undefined, setOptions('categories', categories));
+      expect(state.option.categories).toBe(categories);
     });
   });
 });
