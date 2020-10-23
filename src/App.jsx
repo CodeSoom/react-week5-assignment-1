@@ -40,7 +40,6 @@ export default function App() {
           </button>
         </li>
       </ul>
-
     </div>
   );
 }
