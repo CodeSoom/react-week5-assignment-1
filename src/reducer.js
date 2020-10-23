@@ -3,9 +3,11 @@ const initialState = {
     region: null,
     category: null,
   },
+  option: {
+    regions: [],
+    categories: [],
+  },
 
-  regions: [],
-  categories: [],
   restaurants: [],
 };
 
@@ -20,24 +22,20 @@ function selectOption({ state, payload: { option, id } }) {
   };
 }
 
-function setRegions({ state, payload }) {
+function setOptions({ state, payload: { optionName, values } }) {
+  const { option } = state;
   return {
     ...state,
-    regions: payload.regions,
-  };
-}
-
-function setCategories({ state, payload }) {
-  return {
-    ...state,
-    categories: payload.categories,
+    option: {
+      ...option,
+      [optionName]: values,
+    },
   };
 }
 
 const reducers = {
   selectOption,
-  setRegions,
-  setCategories,
+  setOptions,
 };
 
 export default function reducer(state = initialState, { type, payload }) {

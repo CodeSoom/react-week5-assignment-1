@@ -3,8 +3,7 @@ import reducer from './reducer';
 import {
   loadRegions,
   selectOption,
-  setRegions,
-  setCategories,
+  setOptions,
 } from './actions';
 
 import regions from '../fixtures/regions';
