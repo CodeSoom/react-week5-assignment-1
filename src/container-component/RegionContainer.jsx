@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import ButtonList from '../presentational-component/ButtonList';
+import Buttons from '../presentational-component/Buttons';
 
 import {
   selectOption,
@@ -21,7 +21,7 @@ export default function RegionContainer() {
   }
 
   return (
-    <ButtonList
+    <Buttons
       labels={regions}
       onClick={handleClickRegion}
       selectedId={selectedRegionId}
