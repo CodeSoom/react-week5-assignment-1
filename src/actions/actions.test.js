@@ -23,26 +23,16 @@ const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe('actions', () => {
-  describe('loadInitialState', () => {
+  describe('loadCategories', () => {
     const store = mockStore({});
+    it('update loading state and set categories', async () => {
+      await store.dispatch(loadCategories());
 
-    it('update loading states, set categories and regions', async () => {
-      await store.dispatch(loadInitialState());
-
-      const actions = store.getActions();
-
-      const expectedActions = [
+      expect(store.getActions()).toEqual([
         updateCategoriesLoading(true),
-        updateRegionsLoading(true),
         setCategories(categories),
-        setRegions(regions),
         updateCategoriesLoading(false),
-        updateRegionsLoading(false),
-      ];
-
-      expectedActions.forEach((action) => {
-        expect(actions).toContainEqual(action);
-      });
+      ]);
     });
   });
 

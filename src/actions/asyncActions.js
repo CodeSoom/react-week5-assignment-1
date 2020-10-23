@@ -5,12 +5,11 @@ import {
 } from '../services/api';
 
 import {
-  setCategories,
+  setCategories, updateCategoriesLoading,
 } from './categoryActions';
-import { updateInitialLoading } from './helperActions';
 
 import {
-  setRegions,
+  setRegions, updateRegionsLoading,
 } from './regionActions';
 
 import {
@@ -19,9 +18,10 @@ import {
 } from './restaurantActions';
 
 export function loadInitialState() {
-  return async (dispatch) => {
-    dispatch(updateInitialLoading(true));
+  updateRegionsLoading(true);
+  updateCategoriesLoading(true);
 
+  return async (dispatch) => {
     const [categories, regions] = await Promise.all([
       fetchCategories(),
       fetchRegions(),
@@ -30,11 +30,14 @@ export function loadInitialState() {
     dispatch(setCategories(categories));
     dispatch(setRegions(regions));
 
-    dispatch(updateInitialLoading(false));
+    return () => {
+      dispatch(updateRestaurantsLoading(false));
+      dispatch(updateRegionsLoading(false));
+    };
   };
 }
 
-export function loadRestaurants() {
+export function searchRestaurants() {
   return async (dispatch, getState) => {
     const { category, region } = getState();
     const { selectedId: categoryId } = category;
@@ -53,3 +56,6 @@ export function loadRestaurants() {
     dispatch(updateRestaurantsLoading(false));
   };
 }
+
+// 할 일: loadRestaurants, loadCategories, loadRegions 를 만든다
+// 각 함수에서 로딩까지 함께 관리 할 수 있도록 한다.
