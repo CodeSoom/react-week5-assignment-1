@@ -1,4 +1,4 @@
-import { fetchRegions, fetchCategories } from './api';
+import { fetchOptions } from './api';
 
 describe('api', () => {
   describe('fetchRegion', () => {
@@ -15,7 +15,7 @@ describe('api', () => {
     });
 
     it('get regions from server', async () => {
-      const regions = await fetchRegions();
+      const regions = await fetchOptions({ optionName: 'regions' });
       expect(regions.length).toBeGreaterThan(1);
     });
   });
@@ -34,7 +34,7 @@ describe('api', () => {
     });
 
     it('get categories from server', async () => {
-      const categories = await fetchCategories();
+      const categories = await fetchOptions({ optionName: 'categories' });
       expect(categories.length).toBeGreaterThan(1);
     });
   });
