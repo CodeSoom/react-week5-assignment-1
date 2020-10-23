@@ -2,8 +2,7 @@ import reducer from './reducer';
 
 import {
   loadRegions,
-  selectCategory,
-  selectRegion,
+  selectOption,
   setRegions,
   setCategories,
 } from './actions';
@@ -34,10 +33,12 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('change selected Region', () => {
       const state = reducer({
-        selectedRegion: 2,
-      }, selectRegion(1));
+        selectedOption: {
+          region: 2,
+        },
+      }, selectOption('region', 1));
 
-      expect(state.selectedRegion).toBe(1);
+      expect(state.selectedOption.region).toBe(1);
     });
   });
 
@@ -60,10 +61,12 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('change selected Category', () => {
       const state = reducer({
-        selectedCategory: 2,
-      }, selectCategory(1));
+        selectedOption: {
+          category: 2,
+        },
+      }, selectOption('category', 1));
 
-      expect(state.selectedCategory).toBe(1);
+      expect(state.selectedOption.category).toBe(1);
     });
   });
 

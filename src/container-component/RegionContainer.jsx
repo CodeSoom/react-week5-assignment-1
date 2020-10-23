@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonList from '../presentational-component/ButtonList';
 
 import {
-  selectRegion,
+  selectOption,
 } from '../actions';
 
 export default function RegionContainer() {
@@ -17,7 +17,7 @@ export default function RegionContainer() {
   }));
 
   function handleClickRegion(id) {
-    dispatch(selectRegion(id));
+    dispatch(selectOption('region', id));
   }
 
   return (

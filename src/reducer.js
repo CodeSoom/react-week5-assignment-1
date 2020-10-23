@@ -1,22 +1,21 @@
 const initialState = {
-  selectedRegion: -1,
-  selectedCategory: -1,
+  selectedOption: {
+    region: null,
+    category: null,
+  },
   regions: [],
   categories: [],
   restaurants: [],
 };
 
-function selectRegion({ state, payload }) {
+function selectOption({ state, payload: { option, id } }) {
+  const { selectedOption } = state;
   return {
     ...state,
-    selectedRegion: payload.id,
-  };
-}
-
-function selectCategory({ state, payload }) {
-  return {
-    ...state,
-    selectedCategory: payload.id,
+    selectedOption: {
+      ...selectedOption,
+      [option]: id,
+    },
   };
 }
 
@@ -35,8 +34,7 @@ function setCategories({ state, payload }) {
 }
 
 const reducers = {
-  selectRegion,
-  selectCategory,
+  selectOption,
   setRegions,
   setCategories,
 };

@@ -14,7 +14,9 @@ describe('CategoryContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    selectedCategory: -1,
+    selectedOption: {
+      category: null,
+    },
     categories,
   }));
 
@@ -42,8 +44,9 @@ describe('CategoryContainer', () => {
       fireEvent.click(getByText('한식'));
 
       expect(dispatch).toBeCalledWith({
-        type: 'selectCategory',
+        type: 'selectOption',
         payload: {
+          option: 'category',
           id: 1,
         },
       });

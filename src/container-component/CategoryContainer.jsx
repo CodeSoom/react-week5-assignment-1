@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ButtonList from '../presentational-component/ButtonList';
 
 import {
-  selectCategory,
+  selectOption,
 } from '../actions';
 
 export default function CategoryContainer() {
@@ -17,7 +17,7 @@ export default function CategoryContainer() {
   }));
 
   function handleClickCategory(id) {
-    dispatch(selectCategory(id));
+    dispatch(selectOption('category', id));
   }
 
   return (
