@@ -1,10 +1,4 @@
-const initialState = {
-  regions: [],
-  categories: [],
-  selectedRegion: [],
-  selectedCategory: [],
-  restaurants: [],
-};
+import initialState from './initialState';
 
 const reducers = {
   setRegions(state, action) {

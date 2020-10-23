@@ -3,6 +3,8 @@ import reducer from './reducer';
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
 
+import initialState from './initialState';
+
 import {
   setRegions,
   setCategories,
@@ -11,14 +13,6 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  const initialState = {
-    regions: [],
-    categories: [],
-    selectedRegion: [],
-    selectedCategory: [],
-    restaurants: [],
-  };
-
   describe('undefined action', () => {
     it('changes nothing', () => {
       const state = reducer();
