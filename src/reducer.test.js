@@ -5,6 +5,7 @@ import {
   loadCategories,
   selectOption,
   setOptions,
+  loadRestaurants,
 } from './actions';
 
 import { regions, categories } from '../fixtures/fixtures';
@@ -84,6 +85,15 @@ describe('reducer', () => {
     it('set categories from server', async () => {
       const dispatch = jest.fn();
       await loadCategories()(dispatch);
+
+      expect(dispatch).toBeCalled();
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    it('set restaurants from server', async () => {
+      const dispatch = jest.fn();
+      await loadRestaurants()(dispatch);
 
       expect(dispatch).toBeCalled();
     });
