@@ -1,4 +1,4 @@
-export async function fetchRegions() {
+export async function fetchRestaurants() {
   return [];
 }
 

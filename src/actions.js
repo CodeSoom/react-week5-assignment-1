@@ -1,4 +1,3 @@
-import { restaurants } from '../fixtures/fixtures';
 import {
   fetchOptions, fetchRestaurants,
 } from './services/api';
@@ -33,6 +32,15 @@ export function selectOption(option, id) {
     payload: {
       option,
       id,
+    },
+  };
+}
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
     },
   };
 }

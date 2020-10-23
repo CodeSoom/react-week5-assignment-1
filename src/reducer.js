@@ -32,9 +32,17 @@ function setOptions({ state, payload: { optionName, values } }) {
   };
 }
 
+function setRestaurants({ state, payload }) {
+  return {
+    ...state,
+    restaurants: payload.restaurants,
+  };
+}
+
 const reducers = {
   selectOption,
   setOptions,
+  setRestaurants,
 };
 
 export default function reducer(state = initialState, { type, payload }) {

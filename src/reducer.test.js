@@ -6,6 +6,7 @@ import {
   selectOption,
   setOptions,
   loadRestaurants,
+  setRestaurants,
 } from './actions';
 
 import { regions, categories, restaurants } from '../fixtures/fixtures';
@@ -93,7 +94,7 @@ describe('reducer', () => {
   describe('loadRestaurants', () => {
     it('set restaurants from server', async () => {
       const dispatch = jest.fn();
-      await loadRestaurants()(dispatch);
+      await loadRestaurants({ region: '서울', categoryId: 1 })(dispatch);
 
       expect(dispatch).toBeCalled();
     });

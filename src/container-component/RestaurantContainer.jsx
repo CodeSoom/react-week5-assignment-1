@@ -12,8 +12,10 @@ export default function RestaurantContainer() {
     selectedOption: state.selectedOption,
   }));
 
+  const { region, category } = selectedOption;
+
   useEffect(() => {
-    dispatch(loadRestaurants());
+    dispatch(loadRestaurants({ region, categoryId: category }));
   }, [selectedOption]);
 
   return (
