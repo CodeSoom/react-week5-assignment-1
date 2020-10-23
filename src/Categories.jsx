@@ -7,7 +7,7 @@ export default function Categories({ categories, selectedCategory, onClick }) {
         <li key={id}>
           <button
             type="button"
-            onClick={onClick}
+            onClick={() => onClick(id)}
           >
             {selectedCategory === id ? `${name} (V)` : name}
           </button>
