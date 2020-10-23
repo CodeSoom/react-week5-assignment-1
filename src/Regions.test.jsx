@@ -27,9 +27,11 @@ describe('Regions', () => {
 
       expect(handleClickRegion).not.toBeCalled();
 
-      fireEvent.click(getByText('서울'));
+      regions.forEach(({ name }) => {
+        fireEvent.click(getByText(name));
+      });
 
-      expect(handleClickRegion).toBeCalled();
+      expect(handleClickRegion).toBeCalledTimes(4);
     });
   });
 });
