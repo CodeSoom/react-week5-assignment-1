@@ -7,8 +7,7 @@ import categories from '../../fixtures/categories';
 import restaurants from '../../fixtures/restaurants';
 
 import {
-  loadInitialState,
-  loadRestaurants,
+  loadRegions,
   loadCategories,
   updateCategoriesLoading,
   updateRegionsLoading,
@@ -17,6 +16,7 @@ import {
   setRegions,
   setRestaurants,
 } from './index';
+import { loadRestaurants, searchRestaurants } from './asyncActions';
 
 jest.mock('../services/api');
 
@@ -37,21 +37,45 @@ describe('actions', () => {
     });
   });
 
+  describe('loadRegions', () => {
+    const store = mockStore({});
+    it('update loading state and set regions', async () => {
+      await store.dispatch(loadRegions());
+
+      expect(store.getActions()).toEqual([
+        updateRegionsLoading(true),
+        setRegions(regions),
+        updateRegionsLoading(false),
+      ]);
+    });
+  });
+
   describe('loadRestaurants', () => {
+    const store = mockStore({});
+    it('update loading state and set restaurants', async () => {
+      await store.dispatch(loadRestaurants());
+
+      expect(store.getActions()).toEqual([
+        updateRestaurantsLoading(true),
+        setRestaurants(restaurants),
+        updateRestaurantsLoading(false),
+      ]);
+    });
+  });
+
+  describe('searchRestaurants', () => {
     context('when both category and region are selected', () => {
       const store = mockStore({
         region: { selectedName: '서울' },
         category: { selectedId: 1 },
       });
 
-      it('update loading state and set restaurants', async () => {
-        await store.dispatch(loadRestaurants());
+      it('load restaurants', async () => {
+        await store.dispatch(searchRestaurants());
 
-        expect(store.getActions()).toEqual([
+        expect(store.getActions()[0]).toEqual(
           updateRestaurantsLoading(true),
-          setRestaurants(restaurants),
-          updateRestaurantsLoading(false),
-        ]);
+        );
       });
     });
 
@@ -62,7 +86,7 @@ describe('actions', () => {
       });
 
       it('no action is dispatched', async () => {
-        await store.dispatch(loadRestaurants());
+        await store.dispatch(searchRestaurants());
 
         expect(store.getActions()).toEqual([]);
       });
@@ -75,7 +99,7 @@ describe('actions', () => {
       });
 
       it('no action is dispatched', async () => {
-        await store.dispatch(loadRestaurants());
+        await store.dispatch(searchRestaurants());
 
         expect(store.getActions()).toEqual([]);
       });
