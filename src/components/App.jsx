@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { categories, restaurants } from '../../fixtures';
+import { restaurants } from '../../fixtures';
 
 import RegionsContaioner from '../containers/RegionsContainer';
+import CategoriesContainer from '../containers/CategoriesContainer';
 
 import {
   loadRegions,
@@ -20,13 +21,7 @@ export default function App() {
   return (
     <>
       <RegionsContaioner />
-      <ul>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <button type="button">{category.name}</button>
-          </li>
-        ))}
-      </ul>
+      <CategoriesContainer />
       <ul>
         {restaurants.map((restaurant) => (
           <li key={restaurant.id}>
