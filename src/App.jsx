@@ -9,6 +9,7 @@ import {
   loadCategories,
 } from './actions';
 import CategoryContainer from './container-component/CategoryContainer';
+import RestaurantContainer from './container-component/RestaurantContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function App() {
     <div>
       <RegionContainer />
       <CategoryContainer />
+      <RestaurantContainer />
     </div>
   );
 }
