@@ -27,10 +27,18 @@ function setRegions({ state, payload }) {
   };
 }
 
+function setCategories({ state, payload }) {
+  return {
+    ...state,
+    categories: payload.categories,
+  };
+}
+
 const reducers = {
   selectRegion,
   selectCategory,
   setRegions,
+  setCategories,
 };
 
 export default function reducer(state = initialState, { type, payload }) {

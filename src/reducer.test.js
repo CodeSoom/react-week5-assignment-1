@@ -5,6 +5,7 @@ import {
   selectCategory,
   selectRegion,
   setRegions,
+  setCategories,
 } from './actions';
 
 import regions from '../fixtures/regions';
