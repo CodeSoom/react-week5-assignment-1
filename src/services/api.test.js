@@ -1,4 +1,5 @@
 import { enableFetchMocks } from 'jest-fetch-mock';
+
 import {
   fetchRegions,
   fetchCategories,
