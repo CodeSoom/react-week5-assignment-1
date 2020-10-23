@@ -42,7 +42,7 @@ describe('actions', () => {
         expect(actions[0]).toEqual(setRestaurantsName(restaurantFixture));
       });
     });
-    context('without store', async () => {
+    context('without store', () => {
       it('async "loadRestaurantsName" call return null', async () => {
         fetchRestaurantsName.mockResolvedValue(restaurantFixture);
 
