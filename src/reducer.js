@@ -18,7 +18,7 @@ const reducers = {
     ...state,
     categories,
   }),
-  setSelectedCategory: (state, { id }) => ({
+  selectCategory: (state, { id }) => ({
     ...state,
     selectedCategoryId: id,
   }),
