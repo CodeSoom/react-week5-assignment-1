@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
-import { regions } from '../../fixtures';
+import { regions, categories } from '../../fixtures';
 
 jest.mock('react-redux');
 
@@ -19,13 +19,20 @@ test('App', () => {
     region: {
       regions,
     },
+    category: {
+      categories,
+    },
   }));
 
-  const { getByText } = render(<App />);
+  const { queryByText } = render(<App />);
 
   expect(dispatch).toBeCalledTimes(1);
 
-  expect(getByText(/서울/)).not.toBeNull();
-  expect(getByText(/한식/)).not.toBeNull();
-  expect(getByText(/김초밥/)).not.toBeNull();
+  expect(queryByText(/서울/)).not.toBeNull();
+  expect(queryByText(/한식/)).not.toBeNull();
+  expect(queryByText(/김초밥/)).not.toBeNull();
+
+  expect(queryByText(/한식/)).not.toBeNull();
+  expect(queryByText(/중식/)).not.toBeNull();
+  expect(queryByText(/일식/)).not.toBeNull();
 });
