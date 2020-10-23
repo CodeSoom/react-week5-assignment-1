@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import regions from '../__fixtures__/regions';
 
@@ -11,6 +11,10 @@ import RegionsContainer from './RegionsContainer';
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     regions,
   }));
@@ -22,6 +26,16 @@ describe('RegionsContainer', () => {
 
     regions.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);
+    });
+  });
+
+  context('when buttion is clicked', () => {
+    it('dispatch selectedRegion', () => {
+      const { getByText } = renderRegionsContainer();
+
+      fireEvent.click(getByText(/서울/));
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
