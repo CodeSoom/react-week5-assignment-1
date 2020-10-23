@@ -14,9 +14,11 @@ describe('Regions', () => {
   );
 
   it('renders button', () => {
-    const { getByText } = renderRegions();
+    const { container } = renderRegions();
 
-    expect(getByText('서울')).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
   });
 
   context('when buttion is clicked', () => {
