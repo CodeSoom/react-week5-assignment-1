@@ -23,5 +23,7 @@ describe('App Component', () => {
     expect(getByText(/일식/)).not.toBeNull();
     expect(getByText(/양식/)).not.toBeNull();
     expect(getByText(/분식/)).not.toBeNull();
+
+    expect(getByText(/홍콩반점/)).not.toBeNull();
   });
 });

@@ -19,6 +19,9 @@ export default function App() {
         <li><button type="button">양식</button></li>
         <li><button type="button">분식</button></li>
       </ul>
+      <ul>
+        <li>홍콩반점</li>
+      </ul>
     </div>
   );
 }
