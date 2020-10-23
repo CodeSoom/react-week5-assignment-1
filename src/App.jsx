@@ -40,6 +40,41 @@ export default function App() {
           </button>
         </li>
       </ul>
+      <ul>
+        <li>
+          <button type="button" name="category">
+            한식
+          </button>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button type="button" name="category">
+            중식
+          </button>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button type="button" name="category">
+            일식
+          </button>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button type="button" name="category">
+            양식
+          </button>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button type="button" name="category">
+            분식
+          </button>
+        </li>
+      </ul>
     </div>
   );
 }
