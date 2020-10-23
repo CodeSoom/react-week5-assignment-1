@@ -11,7 +11,7 @@ describe('Item', () => {
     <Item onClick={handleClick} name={name} />
   ));
 
-  it('버튼 클릭 시 onClick 핸들러가 실행된다.', () => {
+  it('it listens click event', () => {
     const { getByText } = itemRender({ name: '한식' });
     const button = getByText(/한식/);
 
