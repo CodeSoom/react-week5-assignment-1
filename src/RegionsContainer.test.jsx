@@ -8,6 +8,8 @@ import regions from '../__fixtures__/regions';
 
 import RegionsContainer from './RegionsContainer';
 
+import { selectedRegion } from './actions';
+
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
@@ -33,9 +35,11 @@ describe('RegionsContainer', () => {
     it('dispatch selectedRegion', () => {
       const { getByText } = renderRegionsContainer();
 
-      fireEvent.click(getByText(/서울/));
+      regions.forEach(({ name }) => {
+        fireEvent.click(getByText(name));
 
-      expect(dispatch).toBeCalled();
+        expect(dispatch).toBeCalledWith(selectedRegion(name));
+      });
     });
   });
 });
