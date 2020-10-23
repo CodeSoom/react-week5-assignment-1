@@ -8,6 +8,11 @@ export const setSelectedButton = ({ type, value }) => ({
   payload: { type, value },
 });
 
+export const setRestaurants = (restaurants) => ({
+  type: 'setRestaurants',
+  payload: restaurants,
+})
+
 export const intializeSelectButtonsAsync = () => async (dispatch) => {
   const regions = await fetch('https://eatgo-customer-api.ahastudio.com/regions');
   const categories = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
