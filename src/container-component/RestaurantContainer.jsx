@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   loadRestaurants,
 } from '../actions';
+import Restaurants from '../presentational-component/Restaurants';
 
 export default function RestaurantContainer() {
   const dispatch = useDispatch();
@@ -24,14 +25,8 @@ export default function RestaurantContainer() {
   }, [selectedOption]);
 
   return (
-    <ul>
-      {
-        restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurant.name}
-          </li>
-        ))
-      }
-    </ul>
+    <Restaurants
+      restaurants={restaurants}
+    />
   );
 }
