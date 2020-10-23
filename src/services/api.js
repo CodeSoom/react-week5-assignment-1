@@ -7,7 +7,9 @@ export async function fetchRegions() {
 }
 
 export async function fetchCategories() {
-  return [];
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const response = await axios.get(url);
+  return response.data;
 }
 
 export async function fetchRestaurants() {
