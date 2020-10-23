@@ -8,6 +8,7 @@ import App from './App';
 
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
+import restaurants from '../__fixtures__/restaurants';
 
 jest.mock('react-redux');
 
@@ -19,6 +20,7 @@ test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
+    restaurants,
   }));
 
   const { getByText } = render((
@@ -30,6 +32,10 @@ test('App', () => {
   });
 
   categories.forEach(({ name }) => {
+    expect(getByText(name)).not.toBeNull();
+  });
+
+  restaurants.forEach(({ name }) => {
     expect(getByText(name)).not.toBeNull();
   });
 });
