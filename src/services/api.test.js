@@ -8,12 +8,12 @@ import {
   fetchRestaurants,
 } from './api';
 
-const mockFetch = (resolvedValue) => {
-  global.fetch = jest.fn(() => (
+const mockFetch = (data) => {
+  global.fetch = jest.fn().mockResolvedValue(
     Promise.resolve({
-      json: () => Promise.resolve(resolvedValue),
-    })
-  ));
+      json: () => Promise.resolve(data),
+    }),
+  );
 };
 
 describe('api', () => {
