@@ -40,16 +40,16 @@ describe('CategoriesContainer', () => {
   });
 
   context('click category button', () => {
-    it('dispatch setSelectedCategory action', () => {
+    it('dispatch selectCategory action', () => {
       const { getByText } = renderCategoriesContainer();
 
       fireEvent.click(getByText(categories[0].name));
 
       expect(dispatch).toBeCalledWith(
         {
-          type: 'setSelectedCategory',
+          type: 'selectCategory',
           payload: {
-            id: 1,
+            id: categories[0].id,
           },
         },
       );
