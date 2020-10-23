@@ -34,9 +34,11 @@ describe('Categories', () => {
 
       expect(handleClickCategories).not.toBeCalled();
 
-      fireEvent.click(getByText('한식'));
+      categories.forEach(({ name }) => {
+        fireEvent.click(getByText(name));
+      });
 
-      expect(handleClickCategories).toBeCalled();
+      expect(handleClickCategories).toBeCalledTimes(categories.length);
     });
   });
 });
