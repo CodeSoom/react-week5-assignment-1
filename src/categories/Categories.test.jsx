@@ -6,25 +6,33 @@ import Categories from './Categories';
 
 import categories from '../../fixtures/categories';
 
-describe('Categories', () => {
-  it('renders each, calls click handler on each', () => {
-    const handleClickSelectCategory = jest.fn();
+describe('Regions', () => {
+  const handleClickSelectCategory = jest.fn();
 
-    const { queryByText } = render((
-      <Categories
-        categories={categories}
-        onClickSelectCategory={handleClickSelectCategory}
-      />
-    ));
+  const renderCategory = () => render((
+    <Categories
+      categories={categories}
+      onClickSelectCategory={handleClickSelectCategory}
+    />
+  ));
 
-    categories.forEach(({ name }) => {
-      jest.clearAllMocks();
+  it('renders every category name', () => {
+    const { queryByText } = renderCategory();
 
-      expect(queryByText(new RegExp(name))).not.toBeNull();
+    categories.forEach(({ name: categoryName }) => {
+      expect(queryByText(categoryName)).not.toBeNull();
+    });
+  });
+
+  it('calls click handler when user clicks each region name', () => {
+    const { queryByText } = renderCategory();
+
+    categories.forEach(({ name: regionName }) => {
+      handleClickSelectCategory.mockClear();
 
       expect(handleClickSelectCategory).not.toBeCalled();
 
-      fireEvent.click(queryByText(new RegExp(name)));
+      fireEvent.click(queryByText(regionName));
 
       expect(handleClickSelectCategory).toBeCalled();
     });
