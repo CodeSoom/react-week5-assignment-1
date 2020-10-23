@@ -8,7 +8,7 @@ import {
   loadRestaurants,
 } from './actions';
 
-import { regions, categories } from '../fixtures/fixtures';
+import { regions, categories, restaurants } from '../fixtures/fixtures';
 
 jest.mock('./services/api');
 
@@ -96,6 +96,13 @@ describe('reducer', () => {
       await loadRestaurants()(dispatch);
 
       expect(dispatch).toBeCalled();
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('set restaurants', () => {
+      const state = reducer(undefined, setRestaurants(restaurants));
+      expect(state.restaurants).toBe(restaurants);
     });
   });
 });

@@ -1,5 +1,6 @@
+import { restaurants } from '../fixtures/fixtures';
 import {
-  fetchOptions,
+  fetchOptions, fetchRestaurants,
 } from './services/api';
 
 export function setOptions({ optionName, values }) {
@@ -36,6 +37,9 @@ export function selectOption(option, id) {
   };
 }
 
-export function loadRestaurants() {
-
+export function loadRestaurants({ region, categoryId }) {
+  return async (dispatch) => {
+    const restaurants = await fetchRestaurants({ region, categoryId });
+    dispatch(setRestaurants(restaurants));
+  };
 }
