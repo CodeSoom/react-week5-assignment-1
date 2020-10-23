@@ -18,7 +18,7 @@ describe('Buttons', () => {
       onClickSelect={handleClickSelect}
     />));
 
-  it('버튼을 클릭하면 handleClickSelect 함수가 출력됩니다.', () => {
+  it('버튼을 클릭하면 handleClickSelect 함수가 실행됩니다.', () => {
     const { getByText } = renderButtons();
     const button = getByText('서울');
 
