@@ -14,6 +14,7 @@ describe('RegionItem', () => {
       onClick={handleClick}
     />
   ));
+
   it('renders region\'s name and check-sign if selected', () => {
     const { queryByText } = renderRegionItem({
       regionName: '부산',

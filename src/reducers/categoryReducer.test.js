@@ -20,7 +20,7 @@ describe('categoryReducer', () => {
   });
 
   describe('updateCategoriesLoading', () => {
-    it('changes categories loading state', () => {
+    it('changes loading state of categories', () => {
       const state = categoryReducer({
         loading: false,
       }, updateCategoriesLoading(true));
@@ -30,7 +30,7 @@ describe('categoryReducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('changes selected category id', () => {
+    it('changes selected category-id', () => {
       const state = categoryReducer({
         selectedId: null,
       }, selectCategory(4));

@@ -19,7 +19,7 @@ describe('regionReducer', () => {
       });
     });
 
-    it('changes restaurants loading state', () => {
+    it('changes loading state of restaurants', () => {
       const state = restaurantReducer({
         loading: false,
       }, updateRestaurantsLoading(true));

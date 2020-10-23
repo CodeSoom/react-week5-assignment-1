@@ -20,7 +20,7 @@ describe('regionReducer', () => {
   });
 
   describe('updateRegionsLoading', () => {
-    it('changes Regions loading state', () => {
+    it('changes loading state of regions', () => {
       const state = regionReducer({
         loading: false,
       }, updateRegionsLoading(true));
@@ -30,7 +30,7 @@ describe('regionReducer', () => {
   });
 
   describe('selectRegion', () => {
-    it('changes selected region name', () => {
+    it('changes selected region-name', () => {
       const state = regionReducer({
         selectedName: '서울',
       }, selectRegion('부산'));
