@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import { intializeSelectButtons } from './actions';
 
-import ButtonsContainer from './ButtonsContainer';
+import RegionContainer from './RegionContainer';
+import CategoryContainer from './CategoryContainer';
 import ListContainer from './ListContainer';
 
 export default function App() {
@@ -16,8 +17,8 @@ export default function App() {
 
   return (
     <>
-      <ButtonsContainer type="location" />
-      <ButtonsContainer type="foodType" />
+      <RegionContainer />
+      <CategoryContainer />
       <ListContainer />
     </>
   );

@@ -13,7 +13,7 @@ describe('intializeSelectButtons', () => {
 describe('setSelectedButton', () => {
   it('setSelectedButton action이 반환합니다. ', () => {
     const selectedButton = {
-      type: 'lcation',
+      type: 'region',
       value: '서울',
     };
     const action = setSelectedButton(selectedButton);

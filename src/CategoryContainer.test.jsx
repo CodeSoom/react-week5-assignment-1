@@ -4,11 +4,11 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import ButtonsContainer from './ButtonsContainer';
+import CategoryContainer from './CategoryContainer';
 
 jest.mock('react-redux');
 
-describe('ButtonsContainer', () => {
+describe('CategoryContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -17,19 +17,17 @@ describe('ButtonsContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    locations: [{ id: 1, name: '서울' }, { id: 2, name: '대구' }],
-    foodTypes: [{ id: 1, name: '한식' }, { id: 2, name: '일식' }],
+    categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
     selectedButtons: {
-      location: '',
-      foodType: '',
+      category: '',
     },
   }));
 
   it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {
-    const type = 'location';
-    const value = '서울';
+    const type = 'category';
+    const value = '한식';
 
-    const { getByText } = render(<ButtonsContainer type={type} />);
+    const { getByText } = render(<CategoryContainer />);
     const button = getByText(value);
 
     fireEvent.click(button);

@@ -6,12 +6,13 @@ import { setSelectedButton } from './actions';
 
 import Buttons from './Buttons';
 
-export default function ButtonsContainer({ type }) {
+export default function RegionContainer() {
+
   const dispatch = useDispatch();
 
-  const { buttonNames, selectedButton } = useSelector((state) => ({
-    buttonNames: state[`${type}s`],
-    selectedButton: state.selectedButtons[type],
+  const { regions, selectedRegion } = useSelector((state) => ({
+    regions: state.regions,
+    selectedRegion: state.selectedButtons.region,
   }));
 
   function handleClickSelect(event) {
@@ -25,9 +26,9 @@ export default function ButtonsContainer({ type }) {
 
   return (
     <Buttons
-      type={type}
-      selectedButton={selectedButton}
-      buttonNames={buttonNames}
+      type="region"
+      selectedButton={selectedRegion}
+      buttonNames={regions}
       onClickSelect={handleClickSelect}
     />
   );
