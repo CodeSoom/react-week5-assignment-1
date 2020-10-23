@@ -15,16 +15,7 @@ describe('CategoryItem', () => {
     />
   ));
 
-  it('renders region\'s name if not selected', () => {
-    const { queryByText } = renderCategoryItem({
-      categoryName: '한식',
-      isSelected: false,
-    });
-
-    expect(queryByText(/한식/)).not.toBeNull();
-  });
-
-  it('renders region\'s name and check if selected', () => {
+  it('renders region and check-sign if selected', () => {
     const { queryByText } = renderCategoryItem({
       categoryName: '한식',
       isSelected: true,
@@ -33,10 +24,18 @@ describe('CategoryItem', () => {
     expect(queryByText(/한식\(V\)/)).not.toBeNull();
   });
 
-  it('calls click handler when clicked', () => {
-    const { getByText } = renderCategoryItem({
+  it('renders only region-name if not selected', () => {
+    const { queryByText } = renderCategoryItem({
       categoryName: '한식',
       isSelected: false,
+    });
+
+    expect(queryByText(/한식/)).not.toBeNull();
+  });
+
+  it('calls click handler', () => {
+    const { getByText } = renderCategoryItem({
+      categoryName: '한식',
     });
 
     expect(handleClick).not.toBeCalled();

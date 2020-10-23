@@ -14,17 +14,7 @@ describe('RegionItem', () => {
       onClick={handleClick}
     />
   ));
-
-  it('renders region\'s name if not selected', () => {
-    const { queryByText } = renderRegionItem({
-      regionName: '부산',
-      isSelected: false,
-    });
-
-    expect(queryByText(/부산/)).not.toBeNull();
-  });
-
-  it('renders region\'s name and check if selected', () => {
+  it('renders region\'s name and check-sign if selected', () => {
     const { queryByText } = renderRegionItem({
       regionName: '부산',
       isSelected: true,
@@ -33,10 +23,18 @@ describe('RegionItem', () => {
     expect(queryByText(/부산\(V\)/)).not.toBeNull();
   });
 
+  it('renders only region\'s name if not selected', () => {
+    const { queryByText } = renderRegionItem({
+      regionName: '부산',
+      isSelected: false,
+    });
+
+    expect(queryByText(/부산/)).not.toBeNull();
+  });
+
   it('calls click handler when clicked', () => {
     const { getByText } = renderRegionItem({
       regionName: '부산',
-      isSelected: false,
     });
 
     expect(handleClick).not.toBeCalled();
