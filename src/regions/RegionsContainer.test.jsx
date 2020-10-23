@@ -14,14 +14,11 @@ describe('RegionsContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  const setState = (selectedRegionName, selectedCategoryId) => {
+  const setState = ({ selectedRegion }) => {
     useSelector.mockImplementation((selector) => selector({
       region: {
         regions,
-        selectedName: selectedRegionName,
-      },
-      category: {
-        selectedId: selectedCategoryId,
+        selectedName: selectedRegion,
       },
     }));
   };
@@ -30,8 +27,8 @@ describe('RegionsContainer', () => {
     jest.clearAllMocks();
   });
 
-  test('renders region name, renders clicked name, calls dispatch', () => {
-    setState('부산', 2);
+  it('renders region, renders clicked region, calls dispatch if clicked', () => {
+    setState({ selectedRegion: '부산' });
 
     const { queryByText } = render(<RegionsContainer />);
 
@@ -49,9 +46,9 @@ describe('RegionsContainer', () => {
     });
   });
 
-  context('when clicked name is different with selected name', () => {
+  context('when user clicks not selected region', () => {
     beforeEach(() => {
-      setState('부산', 1);
+      setState({ selectedRegion: '부산' });
     });
 
     it('calls dispatch 2 times', () => {
@@ -63,14 +60,15 @@ describe('RegionsContainer', () => {
     });
   });
 
-  context('when clicked name is the same with selected name', () => {
+  context('when user clicks selected region', () => {
     beforeEach(() => {
-      setState('부산', 1);
+      setState({ selectedRegion: '부산' });
     });
+
     it('calls dispatch 1 time', () => {
       const { queryByText } = render(<RegionsContainer />);
 
-      fireEvent.click(queryByText(/부산/));
+      fireEvent.click(queryByText(/부산\(V\)/));
 
       expect(dispatch).toBeCalledTimes(1);
     });
