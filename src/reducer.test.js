@@ -16,6 +16,7 @@ describe('reducer', () => {
     categories: [],
     selectedRegion: [],
     selectedCategory: [],
+    restaurants: [],
   };
 
   describe('undefined action', () => {
