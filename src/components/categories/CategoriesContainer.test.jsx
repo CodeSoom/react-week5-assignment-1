@@ -29,12 +29,20 @@ describe('RegionsContainer', () => {
     jest.clearAllMocks();
   });
 
-  test('renders category, renders clicked category, calls dispatch', () => {
+  it('renders unselected category', () => {
     const { queryByText } = render(<CategoriesContainer />);
 
     expect(queryByText(unselectedCategory)).not.toBeNull();
+  });
 
-    expect(queryByText(selectedCategory.concat('(V)'))).not.toBeNull();
+  it('renders selected category', () => {
+    const { queryByText } = render(<CategoriesContainer />);
+
+    expect(queryByText(unselectedCategory)).not.toBeNull();
+  });
+
+  it('calls dispatch when clicked', () => {
+    const { queryByText } = render(<CategoriesContainer />);
 
     fireEvent.click(queryByText(selectedCategory.concat('(V)')));
 

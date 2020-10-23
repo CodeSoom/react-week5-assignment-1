@@ -28,12 +28,20 @@ describe('RegionsContainer', () => {
     jest.clearAllMocks();
   });
 
-  it('renders region, renders selected region, calls dispatch if clicked', () => {
+  it('renders unselected region', () => {
     const { queryByText } = render(<RegionsContainer />);
 
     expect(queryByText(unselectedRegion)).not.toBeNull();
+  });
+
+  it('renders selected region', () => {
+    const { queryByText } = render(<RegionsContainer />);
 
     expect(queryByText(selectedRegion.concat('(V)'))).not.toBeNull();
+  });
+
+  it('calls dispatch when clicked', () => {
+    const { queryByText } = render(<RegionsContainer />);
 
     fireEvent.click(queryByText(unselectedRegion));
 
