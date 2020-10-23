@@ -9,6 +9,8 @@ import restaurants from '../../fixtures/restaurants';
 import {
   loadRegions,
   loadCategories,
+  loadRestaurants,
+  searchRestaurants,
   updateCategoriesLoading,
   updateRegionsLoading,
   updateRestaurantsLoading,
@@ -16,7 +18,6 @@ import {
   setRegions,
   setRestaurants,
 } from './index';
-import { loadRestaurants, searchRestaurants } from './asyncActions';
 
 jest.mock('../services/api');
 
