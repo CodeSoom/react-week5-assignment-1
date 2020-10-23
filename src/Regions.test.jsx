@@ -9,6 +9,10 @@ import Regions from './Regions';
 describe('Regions', () => {
   const handleClickRegion = jest.fn();
 
+  beforeAll(() => {
+    jest.clearAllMocks();
+  });
+
   const renderRegions = (selectedRegion = '') => render(
     <Regions
       regions={regions}
