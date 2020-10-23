@@ -34,10 +34,8 @@ describe('actions', () => {
       const expectedActions = [
         updateCategoriesLoading(true),
         updateRegionsLoading(true),
-
         setCategories(categories),
         setRegions(regions),
-
         updateCategoriesLoading(false),
         updateRegionsLoading(false),
       ];
@@ -58,13 +56,9 @@ describe('actions', () => {
       it('update loading state and set restaurants', async () => {
         await store.dispatch(loadRestaurants());
 
-        const actions = store.getActions();
-
-        expect(actions).toEqual([
+        expect(store.getActions()).toEqual([
           updateRestaurantsLoading(true),
-
           setRestaurants(restaurants),
-
           updateRestaurantsLoading(false),
         ]);
       });
