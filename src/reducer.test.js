@@ -18,6 +18,14 @@ describe('reducer', () => {
     selectedCategory: [],
   };
 
+  describe('undefined action', () => {
+    it('changes nothing', () => {
+      const state = reducer();
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
   describe('setRegions', () => {
     it('changes regions', () => {
       const state = reducer(initialState, setRegions(regions));
