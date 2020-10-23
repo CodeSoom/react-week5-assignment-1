@@ -6,7 +6,7 @@ import Regions from './Regions';
 
 import regions from '../fixtures/regions';
 
-describe('Categories', () => {
+describe('Regions', () => {
   it('when rendering then show the list', () => {
     const { getByText } = render((
       <Regions

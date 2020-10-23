@@ -6,20 +6,32 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
-test('Categories', () => {
-  const handleClick = jest.fn();
+describe('Categories', () => {
+  it('when rendering then show the list', () => {
+    const { getByText } = render((
+      <Categories
+        categories={categories}
+      />
+    ));
+    expect(getByText(/한식/)).not.toBeNull();
+    expect(getByText(/중식/)).not.toBeNull();
+  });
+  it('Category button click', () => {
+    const handleClick = jest.fn();
 
-  const { getByText } = render((
-    <Categories
-      categories={categories}
-      onClick={handleClick}
-    />
-  ));
+    const categoryId = 1;
+    const { getByText } = render((
+      <Categories
+        categories={categories}
+        selectCategory={categoryId}
+        onClick={handleClick}
+      />
+    ));
 
-  fireEvent.click(getByText(/한식/));
+    fireEvent.click(getByText(/한식/));
 
-  expect(handleClick).toBeCalledWith(1);
+    expect(handleClick).toBeCalledWith(1);
 
-  expect(getByText(/한식/)).not.toBeNull();
-  expect(getByText(/중식/)).not.toBeNull();
+    expect(getByText('한식(V)')).not.toBeNull();
+  });
 });
