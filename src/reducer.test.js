@@ -1,11 +1,12 @@
 import reducer from './reducer';
 
 import {
-  setRegions, selectRegion, setCategories, selectCategory,
+  setRegions, selectRegion, setCategories, selectCategory, setRestaurants,
 } from './actions';
 
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
+import restaurants from '../__fixtures__/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -49,6 +50,17 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectCategory(1));
       expect(state.selectedCategoryId).toBe(1);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const initialState = {
+        categories: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+      expect(state.restaurants).toHaveLength(3);
     });
   });
 });
