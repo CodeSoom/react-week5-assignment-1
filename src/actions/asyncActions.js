@@ -48,9 +48,11 @@ export function loadRestaurants() {
     }
 
     dispatch(updateRestaurantsLoading(true));
+
     const restaurants = await fetchRestaurants(regionName, categoryId);
 
     dispatch(setRestaurants(restaurants));
+
     dispatch(updateRestaurantsLoading(false));
   };
 }
