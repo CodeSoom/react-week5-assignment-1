@@ -1,12 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export default function RegionsContainer() {
+  const { regions } = useSelector((state) => ({
+    regions: state.regions,
+  }));
+
   return (
     <ul>
-      <li>
-        <button type="button" name="서울">서울(V)</button>
-        <button type="button" name="대전">대전</button>
-      </li>
+      {
+        regions.map(({ id, name }) => (
+          <li key={id}>
+            <button
+              type="button"
+              name={name}
+            >
+              {name}
+            </button>
+          </li>
+        ))
+      }
     </ul>
   );
 }
