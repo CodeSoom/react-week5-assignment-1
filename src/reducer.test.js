@@ -8,6 +8,7 @@ import {
 } from './actions';
 
 import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
 
 jest.mock('./services/api');
 
@@ -62,6 +63,13 @@ describe('reducer', () => {
       }, selectCategory(1));
 
       expect(state.selectedCategory).toBe(1);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('set initial value of categories', () => {
+      const state = reducer(undefined, setCategories(categories));
+      expect(state.categories).toBe(categories);
     });
   });
 });

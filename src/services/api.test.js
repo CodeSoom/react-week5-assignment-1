@@ -10,7 +10,7 @@ describe('api', () => {
   }));
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    global.fetch.mockClear();
   });
 
   describe('fetchRegion', () => {
