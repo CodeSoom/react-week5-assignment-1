@@ -13,9 +13,9 @@ import {
 } from '../actions';
 
 export default function App() {
-  const { loading } = useSelector((({ category, region }) => ({
-    loading: category.loading && region.loading,
-  })));
+  const { loading } = useSelector(({ category, region }) => ({
+    loading: category.loading || region.loading,
+  }));
 
   const dispatch = useDispatch();
 

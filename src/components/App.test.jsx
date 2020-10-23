@@ -30,18 +30,9 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   context('when state has been loaded', () => {
-    const restaurant = {
-      loading: false,
-      restaurants,
-    };
-    const category = {
-      loading: false,
-      categories,
-    };
-    const region = {
-      loading: false,
-      regions,
-    };
+    const restaurant = { loading: false, restaurants };
+    const category = { loading: false, categories };
+    const region = { loading: false, regions };
 
     beforeEach(() => {
       setState({ restaurant, category, region });
@@ -61,12 +52,8 @@ describe('App', () => {
   context('when state is being loaded', () => {
     beforeEach(() => {
       setState({
-        category: {
-          loading: true,
-        },
-        region: {
-          loading: true,
-        },
+        category: { loading: true },
+        region: { loading: true },
       });
     });
 
