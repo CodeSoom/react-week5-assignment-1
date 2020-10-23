@@ -60,7 +60,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('with undefined action', () => {
+  describe('with not existed action', () => {
     it('returns previous state', () => {
       const { categories } = reducer(
         {
@@ -74,7 +74,7 @@ describe('reducer', () => {
       expect(categories).toHaveLength(1);
     });
 
-    it("don't returns previous state", () => {
+    it("doesn't returns previous state", () => {
       const { categories } = reducer(
         undefined,
         { type: 'undefined', payload: {} },
