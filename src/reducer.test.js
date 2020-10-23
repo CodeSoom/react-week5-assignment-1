@@ -36,25 +36,21 @@ describe('reducer', () => {
 
   describe('selectedRegion', () => {
     it('changes selectedRegion', () => {
-      const region = [
-        { id: 1, name: '서울' },
-      ];
+      const name = '서울';
 
-      const state = reducer(initialState, selectedRegion(region));
+      const state = reducer(initialState, selectedRegion(name));
 
-      expect(state.selectedRegion).toHaveLength(1);
+      expect(state.selectedRegion).toBe(name);
     });
   });
 
   describe('selectedCategory', () => {
     it('changes selectedCategory', () => {
-      const category = [
-        { id: 1, name: '한식' },
-      ];
+      const category = 1;
 
       const state = reducer(initialState, selectedCategory(category));
 
-      expect(state.selectedCategory).toHaveLength(1);
+      expect(state.selectedCategory).toBe(category);
     });
   });
 });
