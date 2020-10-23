@@ -9,13 +9,12 @@ import { fetchRestaurants, fetchRestaurantsName } from './services/api';
 
 jest.mock('./services/api');
 
-const middlewares = [thunk]; // NOTE: thunk 미들웨어 추가
+const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe('actions', () => {
   describe('loadRestaurants', () => {
     it('async "loadRestaurants" call test', async () => {
-      // NOTE: mockResolvedValue 비동기 테스트에서 비동기 함수를 모의하는 데 유용
       fetchRestaurants.mockResolvedValue(categoriesFixture);
 
       const store = mockStore({});
