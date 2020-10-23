@@ -17,13 +17,17 @@ export default function reducer(state = initialState, action) {
       restaurants: [{ id: 1, name: '양천주가' }, { id: 2, name: '밀면넘어져요' }],
     }),
 
-    setSelectedButton: () => ({
-      ...state,
-      selectedButtons: {
-        ...state.selectedButtons,
-        [action.payload.type]: action.payload.value,
-      },
-    }),
+    setSelectedButton: () => {
+      const { type, value } = action.payload;
+
+      return {
+        ...state,
+        selectedButtons: {
+          ...state.selectedButtons,
+          [type]: value,
+        },
+      };
+    },
   };
 
   return (router[action.type] || (() => state))();
