@@ -1,19 +1,16 @@
 import React from 'react';
 
 export default function Regions({ regions, onClick }) {
-  function handleClick(region) {
-    onClick(region);
-  }
   return (
     <>
       <ul>
-        {regions.map((region) => (
-          <li key={region.id}>
+        {regions.map(({ id, name }) => (
+          <li key={id}>
             <button
               type="button"
-              onClick={() => handleClick(region.name)}
+              onClick={() => onClick(name)}
             >
-              {region.name}
+              {name}
             </button>
           </li>
         ))}
