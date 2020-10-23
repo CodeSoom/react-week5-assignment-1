@@ -36,6 +36,15 @@ export function selectCategory(id) {
   };
 }
 
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
@@ -47,5 +56,12 @@ export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants(categoryId, regionName) {
+  return async (dispatch) => {
+    const restaurants = await fetchRestaurants(categoryId, regionName);
+    dispatch(setRestaurants(restaurants));
   };
 }
