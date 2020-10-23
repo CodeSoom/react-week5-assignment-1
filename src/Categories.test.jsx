@@ -33,7 +33,7 @@ describe('Categories', () => {
 
   context('with selectedCategory', () => {
     it('renders button text with "(V)"', () => {
-      const selectedCategory = '한식';
+      const selectedCategory = 1;
 
       const { container } = renderCategories(selectedCategory);
 
