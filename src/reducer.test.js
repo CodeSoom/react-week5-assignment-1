@@ -1,6 +1,7 @@
 import {
   intializeSelectButtons,
   setSelectedButton,
+  setRestaurants,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -61,5 +62,17 @@ describe('reducer', () => {
     );
 
     expect(category).toBe('한식');
+  });
+
+  describe('setRestaurants', () => {
+    it('restaurants의 value로 설정합니다.', () => {
+      const restaurants = ['김밥천국'];
+      const state = reducer(
+        initialState,
+        setRestaurants(restaurants),
+      );
+
+      expect(state.restaurants).toEqual(restaurants);
+    });
   });
 });
