@@ -8,7 +8,7 @@ import Restaurants from './Restaurants';
 
 describe('Restaurants', () => {
   const renderRestaurants = () => render(
-    <Restaurants />,
+    <Restaurants restaurants={restaurants} />,
   );
 
   it('renders Restaurants', () => {
