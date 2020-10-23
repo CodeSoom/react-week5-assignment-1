@@ -21,8 +21,13 @@ export function setCategories(categories) {
   };
 }
 
-export function setRestaurants() {
-
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
 }
 
 export function loadRegions() {
