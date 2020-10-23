@@ -3,6 +3,7 @@ const initialState = {
   categories: [],
   selectedCategoryId: 0,
   selectedRegionName: '',
+  restaurants: [],
 };
 
 const reducers = {
@@ -21,6 +22,10 @@ const reducers = {
   selectCategory: (state, { id }) => ({
     ...state,
     selectedCategoryId: id,
+  }),
+  setRestaurants: (state, { restaurants }) => ({
+    ...state,
+    restaurants,
   }),
 };
 
