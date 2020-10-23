@@ -11,9 +11,9 @@ import {
 export default function CategoryContainer() {
   const dispatch = useDispatch();
 
-  const { categories, selectedCategory } = useSelector((state) => ({
-    selectedCategory: state.selectedCategory,
-    categories: state.categories,
+  const { categories, selectedCategoryId } = useSelector((state) => ({
+    selectedCategoryId: state.selectedOption.category,
+    categories: state.option.categories,
   }));
 
   function handleClickCategory(id) {
@@ -24,7 +24,7 @@ export default function CategoryContainer() {
     <ButtonList
       labels={categories}
       onClick={handleClickCategory}
-      selectedId={selectedCategory}
+      selectedId={selectedCategoryId}
     />
   );
 }

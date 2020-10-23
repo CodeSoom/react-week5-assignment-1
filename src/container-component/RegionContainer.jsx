@@ -11,9 +11,9 @@ import {
 export default function RegionContainer() {
   const dispatch = useDispatch();
 
-  const { regions, selectedRegion } = useSelector((state) => ({
-    selectedRegion: state.selectedRegion,
-    regions: state.regions,
+  const { regions, selectedRegionId } = useSelector((state) => ({
+    selectedRegionId: state.selectedOption.region,
+    regions: state.option.regions,
   }));
 
   function handleClickRegion(id) {
@@ -24,7 +24,7 @@ export default function RegionContainer() {
     <ButtonList
       labels={regions}
       onClick={handleClickRegion}
-      selectedId={selectedRegion}
+      selectedId={selectedRegionId}
     />
   );
 }
