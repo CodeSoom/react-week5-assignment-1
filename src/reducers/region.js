@@ -1,6 +1,6 @@
 const initialState = {
   regions: [],
-  selectedIdx: -1,
+  selectedRegionName: '',
 };
 
 const region = (state = initialState, action) => {

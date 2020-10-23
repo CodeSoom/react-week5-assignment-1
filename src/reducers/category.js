@@ -1,6 +1,6 @@
 const initialState = {
   categories: [],
-  selectedIdx: -1,
+  selectedCategoryId: 0,
 };
 
 const category = (state = initialState, action) => {

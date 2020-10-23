@@ -11,7 +11,7 @@ describe('region reducer', () => {
     it('chage regions array', () => {
       const initialState = {
         regions: [],
-        selectedIdx: -1,
+        selectedRegionName: '',
       };
 
       const state = {
