@@ -1,17 +1,13 @@
 import React from 'react';
 
-import { regions, categories, restaurants } from '../../fixtures';
+import { categories, restaurants } from '../../fixtures';
+
+import RegionsContaioner from '../containers/RegionsContainer';
 
 export default function App() {
   return (
     <>
-      <ul>
-        {regions.map((region) => (
-          <li key={region.id}>
-            <button type="button">{region.name}</button>
-          </li>
-        ))}
-      </ul>
+      <RegionsContaioner />
       <ul>
         {categories.map((category) => (
           <li key={category.id}>
