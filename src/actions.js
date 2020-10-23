@@ -27,9 +27,9 @@ export function setCategories(categories) {
   };
 }
 
-export function setSelectedCategory(id) {
+export function selectCategory(id) {
   return {
-    type: 'setSelectedCategory',
+    type: 'selectCategory',
     payload: {
       id,
     },
