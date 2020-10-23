@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
 
-import regions from '../../fixtures/regions';
+import { regions } from '../../fixtures/fixtures';
 
 jest.mock('react-redux');
 

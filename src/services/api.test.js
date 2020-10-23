@@ -1,4 +1,4 @@
-import { fetchOptions } from './api';
+import { fetchOptions, fetchRestaurants } from './api';
 
 describe('api', () => {
   describe('fetchRegion', () => {

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CategoryContainer from './CategoryContainer';
 
-import categories from '../../fixtures/categories';
+import { categories } from '../../fixtures/fixtures';
 
 jest.mock('react-redux');
 

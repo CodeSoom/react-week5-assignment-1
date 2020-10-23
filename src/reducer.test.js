@@ -7,8 +7,7 @@ import {
   setOptions,
 } from './actions';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
+import { regions, categories } from '../fixtures/fixtures';
 
 jest.mock('./services/api');
 

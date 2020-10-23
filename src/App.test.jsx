@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
+import { regions, categories } from '../fixtures/fixtures';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
