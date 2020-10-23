@@ -8,12 +8,15 @@ import {
 } from './actions';
 
 describe('reducer', () => {
+  const initialState = {
+    regions: [],
+    categories: [],
+    selectedRegion: [],
+    selectedCategory: [],
+  };
+
   describe('setRegions', () => {
     it('changes regions', () => {
-      const initialState = {
-        regions: [],
-      };
-
       const regions = [
         { id: 1, name: '서울' },
       ];
@@ -26,10 +29,6 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('changes categories', () => {
-      const initialState = {
-        categories: [],
-      };
-
       const categories = [
         { id: 1, name: '한식' },
       ];
@@ -42,10 +41,6 @@ describe('reducer', () => {
 
   describe('selectedRegion', () => {
     it('changes selectedRegion', () => {
-      const initialState = {
-        selectedRegion: [],
-      };
-
       const region = [
         { id: 1, name: '서울' },
       ];
@@ -58,10 +53,6 @@ describe('reducer', () => {
 
   describe('selectedCategory', () => {
     it('changes selectedCategory', () => {
-      const initialState = {
-        selectedCategory: [],
-      };
-
       const category = [
         { id: 1, name: '한식' },
       ];
