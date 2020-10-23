@@ -9,8 +9,12 @@ import Regions from './Regions';
 describe('Regions', () => {
   const handleClickRegion = jest.fn();
 
-  const renderRegions = () => render(
-    <Regions regions={regions} onClick={handleClickRegion} />,
+  const renderRegions = (selectedRegion = '') => render(
+    <Regions
+      regions={regions}
+      selectedRegion={selectedRegion}
+      onClick={handleClickRegion}
+    />,
   );
 
   it('renders button', () => {
@@ -32,6 +36,19 @@ describe('Regions', () => {
       });
 
       expect(handleClickRegion).toBeCalledTimes(4);
+    });
+  });
+
+  context('with selectedRegion', () => {
+    it('render button text with "(V)"', () => {
+      const selectedRegion = '대전';
+
+      const { container } = renderRegions(selectedRegion);
+
+      regions.forEach(({ name }) => {
+        const buttonText = selectedRegion === name ? `${name} (V)` : name;
+        expect(container).toHaveTextContent(buttonText);
+      });
     });
   });
 });
