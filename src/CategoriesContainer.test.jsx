@@ -1,16 +1,22 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import categories from '../__fixtures__/categories';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import { selectedCategory } from './actions';
+
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     categories,
   }));
@@ -24,6 +30,18 @@ describe('CategoriesContainer', () => {
 
     categories.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);
+    });
+  });
+
+  context('when categories button is clicked', () => {
+    it('dispatches selectedCategory', () => {
+      const { getByText } = renderCategoriesContainer();
+
+      categories.forEach(({ id, name }) => {
+        fireEvent.click(getByText(name));
+
+        expect(dispatch).toBeCalledWith(selectedCategory(id));
+      });
     });
   });
 });
