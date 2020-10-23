@@ -17,11 +17,26 @@ describe('Regions', () => {
     />,
   );
 
-  it('renders button', () => {
-    const { container } = renderRegions();
+  context('without selectRegion', () => {
+    it('renders button text', () => {
+      const { container } = renderRegions();
 
-    regions.forEach(({ name }) => {
-      expect(container).toHaveTextContent(name);
+      regions.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
+    });
+  });
+
+  context('with selectedRegion', () => {
+    it('render button text with "(V)"', () => {
+      const selectedRegion = '대전';
+
+      const { container } = renderRegions(selectedRegion);
+
+      regions.forEach(({ name }) => {
+        const buttonText = selectedRegion === name ? `${name} (V)` : name;
+        expect(container).toHaveTextContent(buttonText);
+      });
     });
   });
 
@@ -36,19 +51,6 @@ describe('Regions', () => {
       });
 
       expect(handleClickRegion).toBeCalledTimes(regions.length);
-    });
-  });
-
-  context('with selectedRegion', () => {
-    it('render button text with "(V)"', () => {
-      const selectedRegion = '대전';
-
-      const { container } = renderRegions(selectedRegion);
-
-      regions.forEach(({ name }) => {
-        const buttonText = selectedRegion === name ? `${name} (V)` : name;
-        expect(container).toHaveTextContent(buttonText);
-      });
     });
   });
 });
