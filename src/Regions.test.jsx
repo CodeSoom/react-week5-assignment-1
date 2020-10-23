@@ -35,7 +35,7 @@ describe('Regions', () => {
         fireEvent.click(getByText(name));
       });
 
-      expect(handleClickRegion).toBeCalledTimes(4);
+      expect(handleClickRegion).toBeCalledTimes(regions.length);
     });
   });
 
