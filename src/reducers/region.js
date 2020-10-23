@@ -7,7 +7,7 @@ const region = (state = initialState, action) => {
   if (action.type === 'setRegions') {
     const { regions } = action.payload;
     return {
-      state,
+      ...state,
       regions,
     };
   }

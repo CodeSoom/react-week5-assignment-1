@@ -12,7 +12,7 @@ jest.mock('react-redux');
 
 test('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    regionStore: {
+    region: {
       regions,
     },
   }));

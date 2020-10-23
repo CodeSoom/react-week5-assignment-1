@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 export default function RegionsContainer() {
   const { regions } = useSelector((state) => ({
-    regions: state.regionStore.regions,
+    regions: state.region.regions,
   }));
 
   return (
