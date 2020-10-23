@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
-import { setSelectedCategory } from './actions';
+import { selectCategory } from './actions';
 
 export default function CategoriesContainer() {
   const { categories, selectedCategoryId } = useSelector((state) => ({
@@ -17,7 +17,7 @@ export default function CategoriesContainer() {
   function handleClick(event) {
     const categoryId = Number(event.target.id);
 
-    dispatch(setSelectedCategory(categoryId));
+    dispatch(selectCategory(categoryId));
   }
 
   return (
