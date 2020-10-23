@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  setRegions, setSelectedRegionName, setCategories, setSelectedCategory,
+  setRegions, setSelectedRegionName, setCategories, selectCategory,
 } from './actions';
 
 import regions from '../__fixtures__/regions';
@@ -41,13 +41,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('setSelectedCategory', () => {
+  describe('selectCategory', () => {
     it('changes selectedCategoryId', () => {
       const initialState = {
         selectedCategoryId: 0,
       };
 
-      const state = reducer(initialState, setSelectedCategory(1));
+      const state = reducer(initialState, selectCategory(1));
       expect(state.selectedCategoryId).toBe(1);
     });
   });
