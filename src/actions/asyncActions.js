@@ -5,12 +5,11 @@ import {
 } from '../services/api';
 
 import {
-  updateCategoriesLoading,
   setCategories,
 } from './categoryActions';
+import { updateInitialLoading } from './helperActions';
 
 import {
-  updateRegionsLoading,
   setRegions,
 } from './regionActions';
 
@@ -21,8 +20,7 @@ import {
 
 export function loadInitialState() {
   return async (dispatch) => {
-    dispatch(updateCategoriesLoading(true));
-    dispatch(updateRegionsLoading(true));
+    dispatch(updateInitialLoading(true));
 
     const [categories, regions] = await Promise.all([
       fetchCategories(),
@@ -32,8 +30,7 @@ export function loadInitialState() {
     dispatch(setCategories(categories));
     dispatch(setRegions(regions));
 
-    dispatch(updateCategoriesLoading(false));
-    dispatch(updateRegionsLoading(false));
+    dispatch(updateInitialLoading(false));
   };
 }
 
