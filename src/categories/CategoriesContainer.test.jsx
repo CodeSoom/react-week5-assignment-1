@@ -11,92 +11,56 @@ import categories from '../../fixtures/categories';
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
+  const selectedCategoryId = categories[0].id;
+  const selectedCategory = categories[0].name;
+  const unselectedCategory = categories[1].name;
+
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  const setState = (selectedCategoryId, selectedRegionName) => {
-    useSelector.mockImplementation((selector) => selector({
-      category: {
-        categories,
-        selectedId: selectedCategoryId,
-      },
-      region: {
-        selectedName: selectedRegionName,
-      },
-    }));
-  };
+  useSelector.mockImplementation((selector) => selector({
+    category: {
+      categories,
+      selectedId: selectedCategoryId,
+    },
+  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test('renders category name, renders clicked name, calls dispatch', () => {
-    setState(1, '서울');
-
+  test('renders category, renders clicked category, calls dispatch', () => {
     const { queryByText } = render(<CategoriesContainer />);
 
-    expect(queryByText(/양식/)).not.toBeNull();
+    expect(queryByText(unselectedCategory)).not.toBeNull();
 
-    expect(queryByText(/한식\(V\)/)).not.toBeNull();
+    expect(queryByText(selectedCategory.concat('(V)'))).not.toBeNull();
 
-    fireEvent.click(queryByText(/한식/));
+    fireEvent.click(queryByText(selectedCategory.concat('(V)')));
 
     expect(dispatch).toBeCalledWith({
       type: 'selectCategory',
       payload: {
-        categoryId: 1,
+        categoryId: selectedCategoryId,
       },
     });
   });
 
-  context('when clicked id is different with previous selected id and region has been selected', () => {
-    beforeEach(() => {
-      setState(1, 'selected');
-    });
-
+  context('when user clicks unselected category', () => {
     it('calls dispatch 2 times', () => {
       const { queryByText } = render(<CategoriesContainer />);
 
-      fireEvent.click(queryByText(/양식/));
+      fireEvent.click(queryByText(unselectedCategory));
 
       expect(dispatch).toBeCalledTimes(2);
     });
   });
 
-  context('when clicked id is the same with previous selected id', () => {
-    beforeEach(() => {
-      setState(1, 'selected');
-    });
+  context('when user clicks already selected category', () => {
     it('calls dispatch 1 time', () => {
       const { queryByText } = render(<CategoriesContainer />);
 
-      fireEvent.click(queryByText(/한식/));
-
-      expect(dispatch).toBeCalledTimes(1);
-    });
-  });
-
-  context('when category has not been selected', () => {
-    beforeEach(() => {
-      setState(null, null);
-    });
-    it('calls dispatch 1 time', () => {
-      const { queryByText } = render(<CategoriesContainer />);
-
-      fireEvent.click(queryByText(/한식/));
-
-      expect(dispatch).toBeCalledTimes(1);
-    });
-  });
-
-  context('when clicked id is the same with previous selected name and category has been selected', () => {
-    beforeEach(() => {
-      setState(1, '부산');
-    });
-    it('calls dispatch 1 time', () => {
-      const { queryByText } = render(<CategoriesContainer />);
-
-      fireEvent.click(queryByText(/한식/));
+      fireEvent.click(queryByText(selectedCategory.concat('(V)')));
 
       expect(dispatch).toBeCalledTimes(1);
     });

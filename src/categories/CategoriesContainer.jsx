@@ -12,19 +12,17 @@ import {
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const state = useSelector(({ category, region }) => ({
+  const { categories, selectedCategoryId } = useSelector(({ category }) => ({
     categories: category.categories,
     selectedCategoryId: category.selectedId,
-    selectedRegionName: region.selectedName,
   }));
 
-  const { categories, selectedCategoryId, selectedRegionName } = state;
-
   const handleClickSelectCategory = (categoryId) => {
-    if (selectedRegionName && (selectedCategoryId !== categoryId)) {
-      dispatch(loadRestaurants(selectedRegionName, categoryId));
-    }
     dispatch(selectCategory(categoryId));
+
+    if (selectedCategoryId !== categoryId) {
+      dispatch(loadRestaurants());
+    }
   };
 
   return (
