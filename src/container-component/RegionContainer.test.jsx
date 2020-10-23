@@ -17,7 +17,9 @@ describe('RegionContainer', () => {
     selectedOption: {
       region: null,
     },
-    regions,
+    option: {
+      regions,
+    },
   }));
 
   function renderRegionContainer() {

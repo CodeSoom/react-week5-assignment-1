@@ -17,8 +17,14 @@ test('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions,
-    categories,
+    selectedOption: {
+      region: null,
+      category: null,
+    },
+    option: {
+      regions,
+      categories,
+    },
   }));
 
   const { getByText } = render((

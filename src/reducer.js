@@ -7,7 +7,6 @@ const initialState = {
     regions: [],
     categories: [],
   },
-
   restaurants: [],
 };
 

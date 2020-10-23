@@ -17,7 +17,9 @@ describe('CategoryContainer', () => {
     selectedOption: {
       category: null,
     },
-    categories,
+    option: {
+      categories,
+    },
   }));
 
   function renderCategoryContainer() {
