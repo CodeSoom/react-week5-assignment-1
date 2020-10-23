@@ -21,7 +21,7 @@ export default function RegionsContainer() {
   const { regions, selectedRegionName, selectedCategoryId } = state;
 
   const handleClickSelectRegion = (regionName) => {
-    if (selectedCategoryId && (selectedRegionName !== regionName)) {
+    if (selectedRegionName !== regionName) {
       dispatch(loadRestaurants(regionName, selectedCategoryId));
     }
     dispatch(selectRegion(regionName));

@@ -49,7 +49,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  context('when clicked name is different with previous selected name and category has been selected', () => {
+  context('when clicked name is different with selected name', () => {
     beforeEach(() => {
       setState('부산', 1);
     });
@@ -63,35 +63,9 @@ describe('RegionsContainer', () => {
     });
   });
 
-  context('when clicked name is the same with previous selected name', () => {
+  context('when clicked name is the same with selected name', () => {
     beforeEach(() => {
       setState('부산', 1);
-    });
-    it('calls dispatch 1 time', () => {
-      const { queryByText } = render(<RegionsContainer />);
-
-      fireEvent.click(queryByText(/부산/));
-
-      expect(dispatch).toBeCalledTimes(1);
-    });
-  });
-
-  context('when region has not been selected', () => {
-    beforeEach(() => {
-      setState('서울', null);
-    });
-    it('calls dispatch 1 time', () => {
-      const { queryByText } = render(<RegionsContainer />);
-
-      fireEvent.click(queryByText(/부산/));
-
-      expect(dispatch).toBeCalledTimes(1);
-    });
-  });
-
-  context('when clicked name is the same with previous selected name and category has been selected', () => {
-    beforeEach(() => {
-      setState('부산', null);
     });
     it('calls dispatch 1 time', () => {
       const { queryByText } = render(<RegionsContainer />);
