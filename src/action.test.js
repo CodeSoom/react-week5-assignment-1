@@ -84,7 +84,7 @@ describe('async actions', () => {
 
       const regionName = '';
 
-      const stopLoad = 0;
+      const stopLoad = 1;
 
       await store.dispatch(loadRestaurants(categoryId, regionName, stopLoad));
 
