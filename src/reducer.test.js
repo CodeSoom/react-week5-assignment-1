@@ -1,6 +1,7 @@
 import {
   intializeSelectButtons,
   setSelectedButton,
+  setRestaurants,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -29,13 +30,13 @@ describe('reducer', () => {
   });
 
   describe('intializeSelectButtons', () => {
-    it('regions, categories, restaurants를 주어진 값으로 초기화합니다.', () => {
+    it('regions, categories 주어진 값으로 초기화합니다.', () => {
       const regions = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }, { id: 3, name: '대구' }, { id: 4, name: '부산' }, { id: 5, name: '광주' }, { id: 6, name: '강원도' }, { id: 7, name: '인천' }];
       const categories = [{ id: 1, name: '한식' }, { id: 2, name: '중식' }, { id: 3, name: '일식' }, { id: 4, name: '양식' }, { id: 5, name: '분식' }, { id: 6, name: '과자' }, { id: 7, name: '치킨' }];
 
       const state = reducer(
         initialState,
-        intializeSelectButtons({ type: 'intializeSelectButtons', payload: { regions, categories } }),
+        intializeSelectButtons({ regions, categories }),
       );
 
       expect(state.regions).toEqual(regions);
@@ -61,5 +62,17 @@ describe('reducer', () => {
     );
 
     expect(category).toBe('한식');
+  });
+
+  describe('setRestaurants', () => {
+    it('restaurants의 value로 설정합니다.', () => {
+      const restaurants = ['김밥천국'];
+      const state = reducer(
+        initialState,
+        setRestaurants(restaurants),
+      );
+
+      expect(state.restaurants).toEqual(restaurants);
+    });
   });
 });
