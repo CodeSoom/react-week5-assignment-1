@@ -27,6 +27,11 @@ export default function reducer(state = initialState, action) {
         },
       };
     },
+
+    setRestaurants: () => ({
+      ...state,
+      restaurants: action.payload,
+    }),
   };
 
   return (router[action.type] || (() => state))();
