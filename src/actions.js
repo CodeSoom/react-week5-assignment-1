@@ -35,3 +35,7 @@ export function selectOption(option, id) {
     },
   };
 }
+
+export function loadRestaurants() {
+
+}
