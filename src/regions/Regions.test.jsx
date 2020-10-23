@@ -7,21 +7,32 @@ import Regions from './Regions';
 import regions from '../../fixtures/regions';
 
 describe('Regions', () => {
-  it('renders each, calls click handler on each', () => {
-    const handleClickSelectRegion = jest.fn();
+  const handleClickSelectRegion = jest.fn();
 
-    const { queryByText } = render((
-      <Regions regions={regions} onClickSelectRegion={handleClickSelectRegion} />
-    ));
+  const renderRegion = () => render((
+    <Regions
+      regions={regions}
+      onClickSelectRegion={handleClickSelectRegion}
+    />
+  ));
 
-    regions.forEach(({ name }) => {
-      jest.clearAllMocks();
+  it('renders every region name', () => {
+    const { queryByText } = renderRegion();
 
-      expect(queryByText(new RegExp(name))).not.toBeNull();
+    regions.forEach(({ name: regionName }) => {
+      expect(queryByText(regionName)).not.toBeNull();
+    });
+  });
+
+  it('calls click handler when user clicks each region name', () => {
+    const { queryByText } = renderRegion();
+
+    regions.forEach(({ name: regionName }) => {
+      handleClickSelectRegion.mockClear();
 
       expect(handleClickSelectRegion).not.toBeCalled();
 
-      fireEvent.click(queryByText(new RegExp(name)));
+      fireEvent.click(queryByText(regionName));
 
       expect(handleClickSelectRegion).toBeCalled();
     });
