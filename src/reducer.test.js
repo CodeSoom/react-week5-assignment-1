@@ -1,5 +1,8 @@
 import reducer from './reducer';
 
+import regions from '../__fixtures__/regions';
+import categories from '../__fixtures__/categories';
+
 import {
   setRegions,
   setCategories,
@@ -17,25 +20,17 @@ describe('reducer', () => {
 
   describe('setRegions', () => {
     it('changes regions', () => {
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
-
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 
   describe('setCategories', () => {
     it('changes categories', () => {
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
-
       const state = reducer(initialState, setCategories(categories));
 
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(categories.length);
     });
   });
 
