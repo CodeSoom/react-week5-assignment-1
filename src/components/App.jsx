@@ -6,6 +6,7 @@ import { restaurants } from '../../fixtures';
 
 import RegionsContaioner from '../containers/RegionsContainer';
 import CategoriesContainer from '../containers/CategoriesContainer';
+import RestaurantsContainer from '../containers/RestaurantsContainer';
 
 import {
   loadRegions,
@@ -24,13 +25,7 @@ export default function App() {
     <>
       <RegionsContaioner />
       <CategoriesContainer />
-      <ul>
-        {restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurant.name}
-          </li>
-        ))}
-      </ul>
+      <RestaurantsContainer />
     </>
   );
 }
