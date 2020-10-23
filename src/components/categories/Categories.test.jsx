@@ -24,15 +24,15 @@ describe('Regions', () => {
     });
   });
 
-  it('calls click handler when user clicks each region name', () => {
+  it('calls click handler when user clicks each category name', () => {
     const { queryByText } = renderCategory();
 
-    categories.forEach(({ name: regionName }) => {
+    categories.forEach(({ name: categoryName }) => {
       handleClickSelectCategory.mockClear();
 
       expect(handleClickSelectCategory).not.toBeCalled();
 
-      fireEvent.click(queryByText(regionName));
+      fireEvent.click(queryByText(categoryName));
 
       expect(handleClickSelectCategory).toBeCalled();
     });

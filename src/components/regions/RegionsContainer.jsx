@@ -6,7 +6,7 @@ import Regions from './Regions';
 
 import {
   selectRegion,
-  loadRestaurants,
+  searchRestaurants,
 } from '../../actions';
 
 export default function RegionsContainer() {
@@ -21,7 +21,7 @@ export default function RegionsContainer() {
     dispatch(selectRegion(regionName));
 
     if (selectedRegionName !== regionName) {
-      dispatch(loadRestaurants());
+      dispatch(searchRestaurants());
     }
   };
 

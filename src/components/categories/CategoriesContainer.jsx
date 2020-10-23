@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Categories from './Categories';
 
 import {
-  loadRestaurants,
+  searchRestaurants,
   selectCategory,
 } from '../../actions';
 
@@ -21,7 +21,7 @@ export default function CategoriesContainer() {
     dispatch(selectCategory(categoryId));
 
     if (selectedCategoryId !== categoryId) {
-      dispatch(loadRestaurants());
+      dispatch(searchRestaurants());
     }
   };
 

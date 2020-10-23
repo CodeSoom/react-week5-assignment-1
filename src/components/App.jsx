@@ -9,7 +9,8 @@ import RestaurantsContainer from './restaurants/RestaurantsContainer';
 import Loading from './common/Loading';
 
 import {
-  loadInitialState,
+  loadRegions,
+  loadCategories,
 } from '../actions';
 
 export default function App() {
@@ -20,7 +21,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadInitialState());
+    dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   if (loading) {
