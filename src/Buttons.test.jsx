@@ -31,7 +31,7 @@ describe('Buttons', () => {
     const buttonNames = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
     const selectedButton = '서울';
 
-    it('해당 버튼 문구에 "(V)"가 추가됩니다.', () => {
+    it('선택된 버튼 문구에 "(V)"가 추가됩니다.', () => {
       const { container } = renderButtons(buttonNames, selectedButton);
 
       expect(container).toHaveTextContent(`${selectedButton}(V)`);
@@ -41,7 +41,7 @@ describe('Buttons', () => {
   context('buttonNames가 주어지면,', () => {
     const buttonNames = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
 
-    it('ButtonsNameList의 이름을 가진 버튼들이 출력됩니다.', () => {
+    it('ButtonNames 버튼들이 출력됩니다.', () => {
       const { container } = renderButtons(buttonNames);
 
       buttonNames.forEach(({ name }) => {
