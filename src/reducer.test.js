@@ -15,10 +15,14 @@ describe('reducer', () => {
   describe('undefined action ', () => {
     it('doesn\'work', () => {
       const previosState = {
-        selectedRegion: -1,
-        selectedCategory: -1,
-        regions: [],
-        categories: [],
+        selectedOption: {
+          region: null,
+          category: null,
+        },
+        option: {
+          regions: [],
+          categories: [],
+        },
         restaurants: [],
       };
       const state = reducer(previosState, {
@@ -43,7 +47,7 @@ describe('reducer', () => {
 
   describe('setRegions', () => {
     it('set initial value of regions', () => {
-      const state = reducer(undefined, setOptions('regions', regions));
+      const state = reducer(undefined, setOptions({ optionName: 'regions', values: regions }));
       expect(state.option.regions).toBe(regions);
     });
   });
@@ -71,8 +75,17 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('set initial value of categories', () => {
-      const state = reducer(undefined, setOptions('categories', categories));
+      const state = reducer(undefined, setOptions({ optionName: 'categories', values: categories }));
       expect(state.option.categories).toBe(categories);
+    });
+  });
+
+  describe('loadCategories', () => {
+    it('set categories from server', async () => {
+      const dispatch = jest.fn();
+      await loadCategories()(dispatch);
+
+      expect(dispatch).toBeCalled();
     });
   });
 });

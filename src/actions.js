@@ -1,6 +1,6 @@
 import { fetchRegions } from './services/api';
 
-export function setOptions(optionName, values) {
+export function setOptions({ optionName, values }) {
   return {
     type: 'setOptions',
     payload: {
@@ -13,7 +13,7 @@ export function setOptions(optionName, values) {
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
-    dispatch(setOptions('regions', regions));
+    dispatch(setOptions({ optionName: 'regions', values: regions }));
   };
 }
 
@@ -23,15 +23,6 @@ export function selectOption(option, id) {
     payload: {
       option,
       id,
-    },
-  };
-}
-
-export function setCategories(categories) {
-  return {
-    type: 'setCategories',
-    payload: {
-      categories,
     },
   };
 }
