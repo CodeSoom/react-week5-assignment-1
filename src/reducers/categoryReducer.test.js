@@ -6,7 +6,7 @@ import {
   selectCategory,
 } from '../actions';
 
-import categories from '../../../fixtures/categories';
+import categories from '../../fixtures/categories';
 
 describe('categoryReducer', () => {
   describe('setCategories', () => {

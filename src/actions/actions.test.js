@@ -2,9 +2,9 @@ import thunk from 'redux-thunk';
 
 import configureStore from 'redux-mock-store';
 
-import regions from '../../../fixtures/regions';
-import categories from '../../../fixtures/categories';
-import restaurants from '../../../fixtures/restaurants';
+import regions from '../../fixtures/regions';
+import categories from '../../fixtures/categories';
+import restaurants from '../../fixtures/restaurants';
 
 import {
   loadInitialState,
@@ -17,7 +17,7 @@ import {
   setRestaurants,
 } from './index';
 
-jest.mock('../../services/api');
+jest.mock('../services/api');
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);

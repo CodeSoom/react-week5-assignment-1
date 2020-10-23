@@ -2,7 +2,7 @@ import {
   fetchCategories,
   fetchRegions,
   fetchRestaurants,
-} from '../../services/api';
+} from '../services/api';
 
 import {
   updateCategoriesLoading,

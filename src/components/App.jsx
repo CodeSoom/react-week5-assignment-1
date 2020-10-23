@@ -6,11 +6,11 @@ import RegionsContainer from './regions/RegionsContainer';
 import CategoriesContainer from './categories/CategoriesContainer';
 import RestaurantsContainer from './restaurants/RestaurantsContainer';
 
-import Loading from './Loading';
+import Loading from './common/Loading';
 
 import {
   loadInitialState,
-} from './redux/actions';
+} from '../actions';
 
 export default function App() {
   const { loading } = useSelector((({ category, region }) => ({

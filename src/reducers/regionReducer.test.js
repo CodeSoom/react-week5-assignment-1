@@ -6,7 +6,7 @@ import {
   selectRegion,
 } from '../actions';
 
-import regions from '../../../fixtures/regions';
+import regions from '../../fixtures/regions';
 
 describe('regionReducer', () => {
   describe('setRegions', () => {

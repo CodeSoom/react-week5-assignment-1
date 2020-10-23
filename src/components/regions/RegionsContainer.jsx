@@ -7,7 +7,7 @@ import Regions from './Regions';
 import {
   selectRegion,
   loadRestaurants,
-} from '../redux/actions';
+} from '../../actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();

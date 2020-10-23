@@ -1,6 +1,6 @@
 import restaurantReducer from './restaurantReducer';
 
-import restaurants from '../../../fixtures/restaurants';
+import restaurants from '../../fixtures/restaurants';
 
 import {
   setRestaurants,
