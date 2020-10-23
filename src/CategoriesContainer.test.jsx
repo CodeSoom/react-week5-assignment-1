@@ -8,14 +8,20 @@ import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-test('CategoriesContainer', () => {
+describe('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories: [
       { id: 1, name: '한식' },
     ],
   }));
 
-  const { getByText } = render(<CategoriesContainer />);
+  const renderCategoriesContainer = () => render(
+    <CategoriesContainer />,
+  );
 
-  expect(getByText('한식')).not.toBeNull();
+  it('renders categories', () => {
+    const { getByText } = renderCategoriesContainer();
+
+    expect(getByText('한식')).not.toBeNull();
+  });
 });
