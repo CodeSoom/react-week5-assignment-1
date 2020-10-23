@@ -1,13 +1,15 @@
 import React from 'react';
 
-export default function CategoriesContainer() {
+import { useSelector } from 'react-redux';
+
+import Restaurants from './Restaurants';
+
+export default function RestaurantsContainer() {
+  const { restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants,
+  }));
+
   return (
-    <div>
-      <ul>
-        <li>양천주가</li>
-        <li>한국식 초밥</li>
-        <li>김초밥</li>
-      </ul>
-    </div>
+    <Restaurants restaurants={restaurants} />
   );
 }
