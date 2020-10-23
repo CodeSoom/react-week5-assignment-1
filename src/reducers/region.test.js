@@ -15,10 +15,10 @@ describe('region reducer', () => {
       };
 
       const state = {
-        regionStore: reducer(initialState, setRegions(regions)),
+        region: reducer(initialState, setRegions(regions)),
       };
 
-      expect(state.regionStore.regions).not.toHaveLength(0);
+      expect(state.region.regions).not.toHaveLength(0);
     });
   });
 });
