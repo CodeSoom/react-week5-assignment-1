@@ -1,4 +1,4 @@
-import { fetchRegions, fetchCategories } from './services/api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
 
 export function setRegions(regions) {
   return {
