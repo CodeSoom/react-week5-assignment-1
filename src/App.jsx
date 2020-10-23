@@ -8,22 +8,15 @@ import CategoriesContainer from './CategoriesContainer';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { setRegions, setCategories } from './actions';
+import { loadRegions, setCategories } from './actions';
 
 import categories from '../fixtures/categories';
-
-import { fetchRegions } from './services/api';
-
-async function loadRegions({ dispatch }) {
-  const regions = await fetchRegions();
-  dispatch(setRegions(regions));
-}
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRegions({ dispatch });
+    dispatch(loadRegions());
     dispatch(setCategories(categories));
   }, []);
 
