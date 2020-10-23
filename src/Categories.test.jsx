@@ -13,9 +13,10 @@ describe('Categories', () => {
     jest.clearAllMocks();
   });
 
-  const renderCategories = () => render(
+  const renderCategories = (selectedCategory = '') => render(
     <Categories
       categories={categories}
+      selectedCategory={selectedCategory}
       onClick={handleClickCategories}
     />,
   );
@@ -25,6 +26,19 @@ describe('Categories', () => {
 
     categories.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);
+    });
+  });
+
+  context('with selectedCategory', () => {
+    it('renders button text with "(V)"', () => {
+      const selectedCategory = '한식';
+
+      const { container } = renderCategories(selectedCategory);
+
+      categories.forEach(({ name }) => {
+        const buttonText = selectedCategory === name ? `${name} (V)` : name;
+        expect(container).toHaveTextContent(buttonText);
+      });
     });
   });
 
