@@ -21,11 +21,13 @@ describe('Categories', () => {
     />,
   );
 
-  it('renders buttons', () => {
-    const { container } = renderCategories();
+  context('without selectedCategory', () => {
+    it('renders buttons', () => {
+      const { container } = renderCategories();
 
-    categories.forEach(({ name }) => {
-      expect(container).toHaveTextContent(name);
+      categories.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
     });
   });
 
