@@ -28,6 +28,16 @@ export default function Categories() {
           분식
         </button>
       </li>
+      <li>
+        <button type="button" name="category">
+          과자
+        </button>
+      </li>
+      <li>
+        <button type="button" name="category">
+          치킨
+        </button>
+      </li>
     </ul>
   );
 }
