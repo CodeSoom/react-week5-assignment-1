@@ -6,7 +6,7 @@ import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { loadRegions, loadCategories } from './actions';
+import { loadRegions, loadCategories, loadRestaurants } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ export default function App() {
   useEffect(() => {
     dispatch(loadRegions());
     dispatch(loadCategories());
+    dispatch(loadRestaurants());
   }, []);
 
   return (
