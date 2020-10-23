@@ -1,6 +1,7 @@
 import reducer from './reducer';
 
 import {
+  loadRegions,
   selectCategory,
   selectRegion,
   setRegions,
@@ -8,7 +9,26 @@ import {
 
 import regions from '../fixtures/regions';
 
+jest.mock('./services/api');
+
 describe('reducer', () => {
+  describe('undefined action ', () => {
+    it('doesn\'work', () => {
+      const previosState = {
+        selectedRegion: -1,
+        selectedCategory: -1,
+        regions: [],
+        categories: [],
+        restaurants: [],
+      };
+      const state = reducer(previosState, {
+        type: 'aa',
+      });
+
+      expect(state).toBe(state);
+    });
+  });
+
   describe('selectRegion', () => {
     it('change selected Region', () => {
       const state = reducer({
@@ -23,6 +43,15 @@ describe('reducer', () => {
     it('set initial value of regions', () => {
       const state = reducer(undefined, setRegions(regions));
       expect(state.regions).toBe(regions);
+    });
+  });
+
+  describe('loadRegion', () => {
+    it('set regions from server', async () => {
+      const dispatch = jest.fn();
+      await loadRegions()(dispatch);
+
+      expect(dispatch).toBeCalled();
     });
   });
 
