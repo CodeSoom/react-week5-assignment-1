@@ -4,6 +4,10 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import regions from '../__fixtures__/regions';
+
+import categories from '../__fixtures__/categories';
+
 import App from './App';
 
 jest.mock('react-redux');
@@ -19,28 +23,29 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-
-    categories: [
-      { id: 1, name: '한식' },
-    ],
+    regions,
+    categories,
   }));
 
-  context('RegionsContainer', () => {
-    it('checks region', () => {
-      const { getByText } = render(<App />);
+  const renderApp = () => render(<App />);
 
-      expect(getByText('서울')).not.toBeNull();
+  describe('RegionsContainer', () => {
+    it('renders regions', () => {
+      const { container } = renderApp();
+
+      regions.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
     });
   });
 
-  context('Categories', () => {
-    it('checks categories', () => {
-      const { getByText } = render(<App />);
+  describe('CategoriesContainer', () => {
+    it('renders categories', () => {
+      const { container } = renderApp();
 
-      expect(getByText('한식')).not.toBeNull();
+      categories.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
     });
   });
 });
