@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
-import { selectCategory } from './actions';
+import { selectCategory, loadRestaurants } from './actions';
 
 export default function CategoriesContainer() {
   const { categories, selectedCategoryId } = useSelector((state) => ({
@@ -18,6 +18,7 @@ export default function CategoriesContainer() {
     const categoryId = Number(event.target.id);
 
     dispatch(selectCategory(categoryId));
+    dispatch(loadRestaurants());
   }
 
   return (

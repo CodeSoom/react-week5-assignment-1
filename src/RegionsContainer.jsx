@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Regions from './Regions';
 
-import { selectRegion } from './actions';
+import { selectRegion, loadRestaurants } from './actions';
 
 export default function RegionsContainer() {
   const { regions, selectedRegionName } = useSelector((state) => ({
@@ -18,6 +18,7 @@ export default function RegionsContainer() {
     const regionName = event.target.textContent;
 
     dispatch(selectRegion(regionName));
+    dispatch(loadRestaurants());
   }
   return (
     <Regions
