@@ -8,16 +8,14 @@ import CategoriesContainer from './CategoriesContainer';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { loadRegions, setCategories } from './actions';
-
-import categories from '../fixtures/categories';
+import { loadRegions, loadCategories } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
-    dispatch(setCategories(categories));
+    dispatch(loadCategories());
   }, []);
 
   return (
