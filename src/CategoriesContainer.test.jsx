@@ -4,15 +4,15 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import categories from '../__fixtures__/categories';
+
 import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    categories: [
-      { id: 1, name: '한식' },
-    ],
+    categories,
   }));
 
   const renderCategoriesContainer = () => render(
@@ -20,8 +20,10 @@ describe('CategoriesContainer', () => {
   );
 
   it('renders categories', () => {
-    const { getByText } = renderCategoriesContainer();
+    const { container } = renderCategoriesContainer();
 
-    expect(getByText('한식')).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
   });
 });
