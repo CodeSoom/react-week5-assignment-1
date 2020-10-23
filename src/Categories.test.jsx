@@ -37,8 +37,9 @@ describe('Categories', () => {
 
       const { container } = renderCategories(selectedCategory);
 
-      categories.forEach(({ name }) => {
-        const buttonText = selectedCategory === name ? `${name} (V)` : name;
+      categories.forEach(({ id, name }) => {
+        const buttonText = selectedCategory === id ? `${name} (V)` : name;
+
         expect(container).toHaveTextContent(buttonText);
       });
     });
