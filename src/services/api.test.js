@@ -7,7 +7,7 @@ import {
   fetchRestaurants,
 } from './api';
 
-function mockingFetch(jsonData) {
+function mockFetch(jsonData) {
   global.fetch = jest.fn(async () => ({
     json: async () => jsonData,
   }));
@@ -19,7 +19,7 @@ beforeEach(() => {
 
 describe('api', () => {
   it('fetchRegion', async () => {
-    mockingFetch(regionsFixture);
+    mockFetch(regionsFixture);
 
     const regions = await fetchRegions();
 
@@ -27,7 +27,7 @@ describe('api', () => {
   });
 
   it('fetchCategories', async () => {
-    mockingFetch(categoriesFixture);
+    mockFetch(categoriesFixture);
 
     const categories = await fetchCategories();
 
@@ -35,7 +35,7 @@ describe('api', () => {
   });
 
   it('fetchRestaurants', async () => {
-    mockingFetch(restaurantsFixture);
+    mockFetch(restaurantsFixture);
 
     const restaurants = await fetchRestaurants({ regionId: 1, categoryId: 1 });
 
