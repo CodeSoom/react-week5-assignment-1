@@ -14,7 +14,7 @@ import categories from '../fixtures/categories';
 
 describe('reducer', () => {
   describe('updateRegion', () => {
-    it('change region value', () => {
+    it('change region', () => {
       const initialState = {
         region: '',
       };
@@ -26,7 +26,7 @@ describe('reducer', () => {
   });
 
   describe('updateCategoryId', () => {
-    it('change categoryId value', () => {
+    it('change categoryId', () => {
       const initialState = {
         categoryId: '',
       };
