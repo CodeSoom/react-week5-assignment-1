@@ -28,11 +28,9 @@ describe('App', () => {
     },
   }));
 
-  it('컴포넌트가 생성되면 intializeSelectButtonsAsync action이 dispatch 됩니다.', () => {
+  it('컴포넌트가 생성되면 dispatch가 호출됩니다.', () => {
     render(<App />);
 
-    expect(dispatch).toBeCalledWith({
-      regions, categories,
-    });
+    expect(dispatch).toBeCalled();
   });
 });
