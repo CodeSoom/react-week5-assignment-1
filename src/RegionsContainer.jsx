@@ -12,23 +12,23 @@ import {
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions, regionName } = useSelector((state) => ({
+  const { regions, regionId } = useSelector((state) => ({
     regions: state.regions,
-    regionName: state.regionName,
+    regionId: state.selectedRegion.regionId,
   }));
 
   useEffect(() => {
     dispatch(loadRegions());
   }, []);
 
-  function handleClick({ name }) {
-    dispatch(selectRegion({ name }));
+  function handleClick({ name, id }) {
+    dispatch(selectRegion({ name, id }));
   }
 
   return (
     <Regions
       regions={regions}
-      regionName={regionName}
+      regionId={regionId}
       onClick={handleClick}
     />
   );

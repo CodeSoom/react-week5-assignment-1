@@ -24,12 +24,16 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regionName: '',
+        selectedRegion: {
+          regionName: '',
+          regionId: 0,
+        },
       };
 
-      const state = reducer(initialState, selectRegion({ name: '서울' }));
+      const state = reducer(initialState, selectRegion({ name: '서울', id: 1 }));
 
-      expect(state.regionName).toBe('서울');
+      expect(state.selectedRegion.regionName).toBe('서울');
+      expect(state.selectedRegion.regionId).toBe(1);
     });
   });
 

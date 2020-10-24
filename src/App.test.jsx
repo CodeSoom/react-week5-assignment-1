@@ -18,6 +18,9 @@ describe('App', () => {
     categories,
     regions,
     restaurants: [],
+    selectedRegion: {
+      regionName: '',
+    },
   }));
 
   useDispatch.mockImplementation(() => dispatch);

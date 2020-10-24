@@ -16,6 +16,9 @@ describe('RegionsContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions,
+      selectedRegion: {
+        regionId: 0,
+      },
     }));
 
     useDispatch.mockImplementation(() => dispatch);

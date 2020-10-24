@@ -37,10 +37,10 @@ export function selectCategory({ id }) {
   };
 }
 
-export function selectRegion({ name }) {
+export function selectRegion({ name, id }) {
   return {
     type: 'selectRegion',
-    payload: { name },
+    payload: { name, id },
   };
 }
 

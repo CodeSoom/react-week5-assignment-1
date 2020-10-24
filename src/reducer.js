@@ -2,7 +2,10 @@ const initialState = {
   categories: [],
   regions: [],
   categoryId: 0,
-  regionName: '',
+  selectedRegion: {
+    regionName: '',
+    regionId: 0,
+  },
   restaurants: [],
   stopFetch: 1,
 };
@@ -42,10 +45,13 @@ const reducers = {
     };
   },
   selectRegion: (state, action) => {
-    const { name } = action.payload;
+    const { name, id } = action.payload;
     return {
       ...state,
-      regionName: name,
+      selectedRegion: {
+        regionName: name,
+        regionId: id,
+      },
       restaurants: [],
       stopFetch: 1,
     };

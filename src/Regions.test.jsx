@@ -9,10 +9,10 @@ import regions from './fixtures/regions';
 describe('Regions', () => {
   const handleClick = jest.fn();
 
-  const renderRegions = (name = '') => render(
+  const renderRegions = (id = 0) => render(
     <Regions
       regions={regions}
-      regionName={name}
+      regionId={id}
       onClick={handleClick}
     />,
   );
@@ -39,7 +39,7 @@ describe('Regions', () => {
 
       fireEvent.click(getByText('서울'));
 
-      const { container } = renderRegions('서울');
+      const { container } = renderRegions(1);
 
       expect(container).toHaveTextContent('서울(V)');
     });

@@ -16,7 +16,7 @@ export default function RestaurantsContainer() {
   } = useSelector((state) => ({
     restaurants: state.restaurants,
     categoryId: state.categoryId,
-    regionName: state.regionName,
+    regionName: state.selectedRegion.regionName,
     stopFetch: state.stopFetch,
   }));
 

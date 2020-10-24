@@ -18,7 +18,9 @@ describe('RestaurantsContainer', () => {
         { id: 1, name: '새마을 식당' },
       ],
       categoryId: 1,
-      regionName: '서울',
+      selectedRegion: {
+        regionName: '서울',
+      },
     }));
 
     useDispatch.mockImplementation(() => dispatch);
