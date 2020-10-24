@@ -11,7 +11,7 @@ describe('CategoryList', () => {
   const categoryListRender = ({ categories, categoryId }) => render((
     <CategoryList
       categories={categories}
-      categoryId={categoryId}
+      selectedCategory={categoryId}
       onSelectCategoryClick={handleSelectClick}
     />
   ));
