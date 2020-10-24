@@ -1,21 +1,21 @@
 import React from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectCategory } from './actions';
+
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
-  const selectedCategoryId = 0;
-  const categories = [
-    { id: 1, name: '한식' },
-    { id: 2, name: '중식' },
-    { id: 3, name: '일식' },
-    { id: 4, name: '양식' },
-    { id: 5, name: '분식' },
-    { id: 6, name: '과자' },
-    { id: 7, name: '치킨' },
-  ];
+  const { selectedCategoryId, categories } = useSelector((state) => ({
+    selectedCategoryId: state.selectedCategoryId,
+    categories: state.categories,
+  }));
 
-  function handleClick() {
-    //
+  const dispatch = useDispatch();
+
+  function handleClick(id) {
+    dispatch(selectCategory(id));
   }
 
   return (
