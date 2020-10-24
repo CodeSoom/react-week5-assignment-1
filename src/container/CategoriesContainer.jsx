@@ -9,7 +9,7 @@ export default function CategoriesContainer() {
 
   const { categories, selected } = useSelector((state) => ({
     categories: state.categories,
-    selected: state.selected.region,
+    selected: state.selected.category,
   }));
 
   function handleClickCategories(category) {
@@ -18,7 +18,7 @@ export default function CategoriesContainer() {
 
   return (
     <Categories
-      regions={categories}
+      categories={categories}
       selected={selected}
       onClick={handleClickCategories}
     />

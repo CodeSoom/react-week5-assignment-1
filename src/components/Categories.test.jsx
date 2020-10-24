@@ -11,7 +11,7 @@ describe('Categories', () => {
   it('render', () => {
     render(
       <Categories
-        regions={categoriesFixture}
+        categories={categoriesFixture}
         selected="한식"
       />,
     );
@@ -22,7 +22,7 @@ describe('Categories', () => {
   it('click test', () => {
     render(
       <Categories
-        regions={categoriesFixture}
+        categories={categoriesFixture}
         onClick={handleClick}
       />,
     );

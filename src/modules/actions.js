@@ -27,7 +27,7 @@ function setRegions(regions) {
 function setCategories(categories) {
   return {
     type: 'setCategories',
-    payload: { regions: categories },
+    payload: { categories },
   };
 }
 
