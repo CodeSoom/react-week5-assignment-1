@@ -1,8 +1,6 @@
 import React from 'react';
 
-import categories from '../fixtures/categories';
-
-export default function Categories() {
+export default function Categories({ categories }) {
   return (
     <ul>
       {
