@@ -18,7 +18,9 @@ describe('App', () => {
     regions: [],
   }));
 
-  beforeEach(() => jest.clearAllMocks());
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('shows app name', () => {
     const { getByText } = render(<App />);
