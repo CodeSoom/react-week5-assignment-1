@@ -19,7 +19,7 @@ describe('RestaurantsContainer', () => {
     });
 
     context('with selections region and category', () => {
-      it('shows a title', () => {
+      it('render restaurants', () => {
         useSelector.mockImplementation((selector) => selector({
           selectedRegionId: 1,
           selectedCategoryId: 1,
@@ -28,20 +28,6 @@ describe('RestaurantsContainer', () => {
         const { getByText } = render(<RestaurantsContainer />);
 
         expect(getByText('레스토랑 목록')).not.toBeNull();
-      });
-    });
-  });
-
-  describe('list up restaurants', () => {
-    context('with restaurants', () => {
-      it('one or more restaurants', () => {
-        // TODO: Check API fetch correct properties of a restaurant
-      });
-    });
-
-    context('without restaurants', () => {
-      it('empty restaurants', () => {
-        // TODO: Check API fetch empty restaurants
       });
     });
   });

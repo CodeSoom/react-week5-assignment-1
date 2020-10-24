@@ -23,12 +23,6 @@ describe('RegionsContainer', () => {
     ],
   }));
 
-  it('shows a title', () => {
-    const { getByText } = render(<RegionsContainer />);
-
-    expect(getByText('지역')).not.toBeNull();
-  });
-
   describe('selects a region', () => {
     it('checks selected region', () => {
       const { getByText } = render(<RegionsContainer />);

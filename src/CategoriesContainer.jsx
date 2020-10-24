@@ -21,7 +21,6 @@ export default function CategoriesContainer() {
 
   return (
     <div>
-      <h4>분류</h4>
       <Categories
         selectedCategoryId={selectedCategoryId}
         categories={categories}

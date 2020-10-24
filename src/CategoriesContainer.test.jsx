@@ -19,12 +19,6 @@ describe('CategoriesContainer', () => {
     categories,
   }));
 
-  it('shows a title', () => {
-    const { getByText } = render(<CategoriesContainer />);
-
-    expect(getByText('분류')).not.toBeNull();
-  });
-
   describe('selects a category', () => {
     it('checks selected category', () => {
       const { getByText } = render(<CategoriesContainer />);
