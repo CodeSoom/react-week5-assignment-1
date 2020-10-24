@@ -26,7 +26,7 @@ const RegionsContainer = () => {
       <RegionList
         regions={regions}
         onSelectRegionClick={handleClickButton}
-        regionName={region}
+        selectedRegion={region}
       />
     </>
   );
