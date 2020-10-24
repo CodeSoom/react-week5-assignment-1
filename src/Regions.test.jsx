@@ -9,7 +9,9 @@ describe('Regions Component', () => {
 
   it('Page render', () => {
     const { getByText } = render((
-      <Regions />
+      <Regions
+        onClick={handleClick}
+      />
     ));
 
     expect(getByText(/서울/)).not.toBeNull();
@@ -22,12 +24,15 @@ describe('Regions Component', () => {
   });
 
   it('Click region', () => {
-    const { screen } = render((
-      <Regions />
+    const { getByText } = render((
+      <Regions
+        onClick={handleClick}
+      />
     ));
 
     expect(handleClick).not.toBeCalled();
-    fireEvent.click(screen.getByRole('button', { name: /서울/ }));
+
+    fireEvent.click(getByText(/서울/));
     expect(handleClick).toBeCalled();
   });
 });
