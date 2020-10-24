@@ -46,7 +46,7 @@ describe('RegionsContainer', () => {
       regions.forEach(({ id, name }) => {
         fireEvent.click(getByText(name));
 
-        expect(dispatch).toBeCalledWith(selectRegion({ id, name }));
+        expect(dispatch).toBeCalledWith(selectRegion(id));
       });
     });
   });
