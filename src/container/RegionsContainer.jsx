@@ -7,8 +7,9 @@ import { updateRegion } from '../modules/actions';
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => ({
+  const { regions, selected } = useSelector((state) => ({
     regions: state.regions,
+    selected: state.selected.region,
   }));
 
   function handleClickRegion(region) {
@@ -18,7 +19,7 @@ export default function RegionsContainer() {
   return (
     <Regions
       regions={regions}
-      selected="서울"
+      selected={selected}
       onClick={handleClickRegion}
     />
   );
