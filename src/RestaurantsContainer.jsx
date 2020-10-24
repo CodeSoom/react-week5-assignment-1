@@ -10,10 +10,8 @@ export default function RestaurantsContainer() {
   }));
 
   return (
-    <>
-      <Restaurants
-        restaurants={restaurants}
-      />
-    </>
+    <Restaurants
+      restaurants={restaurants}
+    />
   );
 }

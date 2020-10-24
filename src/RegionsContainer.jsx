@@ -19,12 +19,10 @@ export default function RestaurantsContainer() {
   }
 
   return (
-    <>
-      <Regions
-        regions={regions}
-        selectRegion={region}
-        onClick={handleClick}
-      />
-    </>
+    <Regions
+      regions={regions}
+      selectRegion={region}
+      onClick={handleClick}
+    />
   );
 }

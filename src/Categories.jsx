@@ -14,6 +14,5 @@ export default function Categories({ categories, selectCategory, onClick }) {
         </li>
       ))}
     </ul>
-
   );
 }

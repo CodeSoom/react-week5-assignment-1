@@ -19,12 +19,10 @@ export default function RestaurantsContainer() {
   }
 
   return (
-    <>
-      <Categories
-        categories={categories}
-        selectCategory={categoryId}
-        onClick={handleClick}
-      />
-    </>
+    <Categories
+      categories={categories}
+      selectCategory={categoryId}
+      onClick={handleClick}
+    />
   );
 }
