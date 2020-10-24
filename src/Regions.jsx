@@ -1,43 +1,26 @@
 import React from 'react';
 
 export default function Regions() {
+  const regions = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+    { id: 3, name: '대구' },
+    { id: 4, name: '부산' },
+    { id: 5, name: '광주' },
+    { id: 6, name: '강원도' },
+    { id: 7, name: '인천' },
+  ];
   return (
     <ul>
-      <li>
-        <button type="button" name="address">
-          서울
-        </button>
-      </li>
-      <li>
-        <button type="button" name="address">
-          대전
-        </button>
-      </li>
-      <li>
-        <button type="button" name="address">
-          대구
-        </button>
-      </li>
-      <li>
-        <button type="button" name="address">
-          부산
-        </button>
-      </li>
-      <li>
-        <button type="button" name="address">
-          광주
-        </button>
-      </li>
-      <li>
-        <button type="button" name="address">
-          강원도
-        </button>
-      </li>
-      <li>
-        <button type="button" name="address">
-          인천
-        </button>
-      </li>
+      {
+        regions.map(({ id, name }) => (
+          <li key={id}>
+            <button type="button">
+              {name}
+            </button>
+          </li>
+        ))
+      }
     </ul>
   );
 }
