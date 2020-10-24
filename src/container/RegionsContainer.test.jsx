@@ -13,11 +13,14 @@ test('RegionsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions,
+    selected: {
+      region: '서울',
+    },
   }));
 
   render(<RegionsContainer />);
 
-  expect(screen.getByRole('button', { name: /서울/ })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /서울(V)/ })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /대전/ })).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('button', { name: /서울/ }));
