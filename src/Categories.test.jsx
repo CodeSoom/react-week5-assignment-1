@@ -32,15 +32,5 @@ describe('Categories', () => {
 
       expect(handleClick).toBeCalled();
     });
-
-    it('be marked check', () => {
-      const { getByText } = renderCategories();
-
-      fireEvent.click(getByText('한식'));
-
-      const { container } = renderCategories(1);
-
-      expect(container).toHaveTextContent('한식(V)');
-    });
   });
 });
