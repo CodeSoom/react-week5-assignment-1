@@ -2,9 +2,13 @@ import React from 'react';
 
 export default function App() {
   return (
-    <>
-    <div>서울</div>
-    </>
+    <ul>
+      {regions.map((region) => (
+        <li>
+          <button>{region.name}</button>
+        </li>
+      ))}
+    </ul>
   );
 }
 
