@@ -18,4 +18,15 @@ describe('reducer', () => {
       expect(state.categories).not.toHaveLength(0);
     });
   });
+  context('undefined action', () => {
+    it("doesn't work", () => {
+      const initialState = {
+        categories: [],
+      };
+
+      const state = reducer(initialState, {});
+
+      expect(state.categories).toHaveLength(0);
+    });
+  });
 });

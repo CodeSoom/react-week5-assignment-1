@@ -10,14 +10,22 @@ const initialState = {
   ],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
+const reducers = {
+  setCategories: (state, payload) => {
+    const { categories } = payload;
     return {
       ...state,
       categories,
     };
+  },
+};
+
+export default function reducer(state = initialState, action) {
+  const { type, payload } = action;
+
+  if (!reducers[type]) {
+    return state;
   }
 
-  return state;
+  return reducers[type](state, payload);
 }
