@@ -1,13 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 export default function RestaurantsContainer() {
-  const restaurants = [{
-    id: 1,
-    categoryId: 1,
-    name: '양천주가',
-    address: '서울 강남구 123456',
-    information: '양천주가 in 서울 강남구 123456',
-  }];
+  const { restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants,
+  }));
 
   return (
     <ul>
