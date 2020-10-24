@@ -25,10 +25,10 @@ describe('CategoryContainer', () => {
 
   it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {
     const type = 'category';
-    const value = '한식';
+    const value = { id: 1, name: '한식' };
 
     const { getByText } = render(<CategoryContainer />);
-    const button = getByText(value);
+    const button = getByText('한식');
 
     fireEvent.click(button);
     expect(dispatch).toBeCalledWith({

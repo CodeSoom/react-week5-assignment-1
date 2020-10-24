@@ -10,15 +10,23 @@ export default function CategoryContainer() {
 
   const dispatch = useDispatch();
 
-  const { categories, selectedCategory } = useSelector((state) => ({
+  const { categories, selectedCategoryName } = useSelector((state) => ({
     categories: state.categories,
-    selectedCategory: state.selectedButtons.category,
+    selectedCategoryName: state.selectedButtons.category.name,
   }));
 
   function handleClickSelect(event) {
+    const buttonText = event.target.textContent;
+
+    if (buttonText.indexOf('(V)') !== -1) {
+      return;
+    }
+
+    const selectedCategory = categories.filter((category) => category.name === buttonText);
+
     const selectedButtonValue = {
-      type: event.target.name,
-      value: event.target.textContent,
+      type: 'category',
+      value: selectedCategory[0],
     };
 
     dispatch(setSelectedButton(selectedButtonValue));
@@ -26,8 +34,7 @@ export default function CategoryContainer() {
 
   return (
     <Buttons
-      type="category"
-      selectedButton={selectedCategory}
+      selectedButton={selectedCategoryName}
       buttonNames={categories}
       onClickSelect={handleClickSelect}
     />

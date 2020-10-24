@@ -25,10 +25,10 @@ describe('RegionContainer', () => {
 
   it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {
     const type = 'region';
-    const value = '서울';
+    const value = { id: 1, name: '서울' };
 
     const { getByText } = render(<RegionContainer />);
-    const button = getByText(value);
+    const button = getByText('서울');
 
     fireEvent.click(button);
     expect(dispatch).toBeCalledWith({

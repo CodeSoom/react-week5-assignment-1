@@ -10,15 +10,23 @@ export default function RegionContainer() {
 
   const dispatch = useDispatch();
 
-  const { regions, selectedRegion } = useSelector((state) => ({
+  const { regions, selectedRegionName } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegion: state.selectedButtons.region,
+    selectedRegionName: state.selectedButtons.region.name,
   }));
 
   function handleClickSelect(event) {
+    const buttonText = event.target.textContent;
+
+    if (buttonText.indexOf('(V)') !== -1) {
+      return;
+    }
+
+    const selectedRegion = regions.filter((region) => region.name === buttonText);
+
     const selectedButtonValue = {
-      type: event.target.name,
-      value: event.target.textContent,
+      type: 'region',
+      value: selectedRegion[0],
     };
 
     dispatch(setSelectedButton(selectedButtonValue));
@@ -26,8 +34,7 @@ export default function RegionContainer() {
 
   return (
     <Buttons
-      type="region"
-      selectedButton={selectedRegion}
+      selectedButton={selectedRegionName}
       buttonNames={regions}
       onClickSelect={handleClickSelect}
     />
