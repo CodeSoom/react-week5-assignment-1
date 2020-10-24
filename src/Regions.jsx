@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Regions() {
+export default function Regions({ regions }) {
   return (
     <ul>
       {regions.map((region) => (
