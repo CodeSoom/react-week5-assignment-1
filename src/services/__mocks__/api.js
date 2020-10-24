@@ -1,8 +1,5 @@
-export async function fetchRegions() {
-  return [];
-}
+export const fetchRegions = jest.fn();
 
-// TODO: delete this
-export function temp() {
-  //
-}
+export const fetchCategories = jest.fn();
+
+export const fetchRestaurants = jest.fn();
