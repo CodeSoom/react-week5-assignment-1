@@ -5,7 +5,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import Categories from './Categories';
 import categoriesFixture from '../../fixtures/categories';
 
-describe('Regions', () => {
+describe('Categories', () => {
   const handleClick = jest.fn();
 
   it('render', () => {
