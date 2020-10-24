@@ -40,9 +40,7 @@ export function selectCategory(id) {
   });
 }
 
-export function selectRegion(selectedRegion) {
-  const { id } = selectedRegion;
-
+export function selectRegion(id) {
   return ({
     type: 'selectRegion',
     payload: {
