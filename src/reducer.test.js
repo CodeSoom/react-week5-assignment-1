@@ -66,12 +66,12 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selectedRegion', () => {
       const selectedRegion = '';
-      const { id, name } = regions[0];
+      const { id } = regions[0];
 
       const state = reducer({
         regions,
         selectedRegion,
-      }, selectRegion({ id, name }));
+      }, selectRegion(id));
 
       expect(state.selectedRegion).toBe(regions[0].name);
     });
