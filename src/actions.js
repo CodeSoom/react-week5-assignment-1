@@ -7,11 +7,11 @@ import {
 /*
  * RegionsContainer
  */
-export function setRegions(categories) {
+export function setRegions(regions) {
   return {
     type: 'setRegions',
     payload: {
-      categories,
+      regions,
     },
   };
 }
@@ -27,8 +27,8 @@ export function selectRegion(id) {
 
 export function loadRegions() {
   return async (dispatch) => {
-    const categories = await fetchRegions();
-    dispatch(setRegions(categories));
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
   };
 }
 

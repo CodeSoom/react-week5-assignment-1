@@ -21,7 +21,7 @@ describe('App', () => {
   it('check the initial states are mounted', () => {
     render(<App />);
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalledTimes(2);
   });
 
   it('shows app name', () => {

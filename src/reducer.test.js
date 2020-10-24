@@ -34,7 +34,7 @@ describe('reducer', () => {
   });
 
   describe('RegionsContaioner', () => {
-    it('selectRegion', () => {
+    it('selects a region', () => {
       const selectedCategoryId = 1;
       const state = reducer(regions, selectRegion(selectedCategoryId));
 

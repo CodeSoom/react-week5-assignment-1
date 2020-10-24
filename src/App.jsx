@@ -7,6 +7,7 @@ import CategoriesContainer from './CategoriesContainer';
 
 import {
   loadRegions,
+  loadCategories,
 } from './actions';
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   return (
