@@ -20,7 +20,7 @@ test('RegionsContainer', () => {
 
   render(<RegionsContainer />);
 
-  expect(screen.getByRole('button', { name: /서울(V)/ })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: '서울(V)' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /대전/ })).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('button', { name: /서울/ }));

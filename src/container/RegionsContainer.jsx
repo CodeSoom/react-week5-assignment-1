@@ -18,6 +18,7 @@ export default function RegionsContainer() {
   return (
     <Regions
       regions={regions}
+      selected="서울"
       onClick={handleClickRegion}
     />
   );
