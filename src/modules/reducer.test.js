@@ -116,31 +116,56 @@ describe('reducer', () => {
     }]);
   });
 
-  it('loadRestaurants', async (done) => {
-    mockFetch(restaurants);
+  describe('loadRestaurants', () => {
+    context('with regionId and categoryId', () => {
+      it('can get restaurants', async (done) => {
+        mockFetch(restaurants);
 
-    const store = mockStore({
-      selected: {
-        region: 1,
-        category: 1,
-      },
+        const store = mockStore({
+          selected: {
+            region: 1,
+            category: 1,
+          },
+        });
+
+        await store.dispatch(loadRestaurants());
+
+        setTimeout(() => {
+          expect(store.getActions()).toStrictEqual([
+            {
+              type: 'setRestaurants',
+              payload: { restaurants: [] },
+            },
+            {
+              type: 'setRestaurants',
+              payload: { restaurants },
+            },
+          ]);
+
+          done();
+        }, 1000);
+      });
     });
 
-    await store.dispatch(loadRestaurants());
+    context('without regionId and categoryId', () => {
+      it('can not get restaurants', async (done) => {
+        const store = mockStore({
+          selected: {},
+        });
 
-    setTimeout(() => {
-      expect(store.getActions()).toStrictEqual([
-        {
-          type: 'setRestaurants',
-          payload: { restaurants: [] },
-        },
-        {
-          type: 'setRestaurants',
-          payload: { restaurants },
-        },
-      ]);
+        await store.dispatch(loadRestaurants());
 
-      done();
-    }, 1000);
+        setTimeout(() => {
+          expect(store.getActions()).toStrictEqual([
+            {
+              type: 'setRestaurants',
+              payload: { restaurants: [] },
+            },
+          ]);
+
+          done();
+        }, 1000);
+      });
+    });
   });
 });
