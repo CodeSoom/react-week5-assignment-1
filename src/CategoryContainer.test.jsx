@@ -23,7 +23,7 @@ describe('CategoryContainer', () => {
     },
   }));
 
-  it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {
+  it('버튼이 클릭되면 setSelectButton action이 dispatch 됩니다.', () => {
     const type = 'category';
     const value = { id: 1, name: '한식' };
 
