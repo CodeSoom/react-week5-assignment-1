@@ -19,34 +19,32 @@ describe('Categories', () => {
     ));
   }
 
-  describe('render buttons', () => {
-    it('show button text', () => {
-      const selectedCategory = 2;
+  it('renders regions name for buttons text.', () => {
+    const selectedCategory = 2;
 
-      const { container } = renderCategories(selectedCategory);
+    const { container } = renderCategories(selectedCategory);
 
-      categories.forEach(({ id, name }) => {
-        const buttonText = selectedCategory === id
-          ? `${name}(V)`
-          : name;
-        expect(container).toHaveTextContent(buttonText);
-      });
+    categories.forEach(({ id, name }) => {
+      const buttonText = selectedCategory === id
+        ? `${name}(V)`
+        : name;
+      expect(container).toHaveTextContent(buttonText);
     });
+  });
 
-    context('when the button clicked', () => {
-      it('run handleClickCategory function', () => {
-        const selectedCategory = '';
+  context('when the button clicked', () => {
+    it('run handleClickCategory function', () => {
+      const selectedCategory = '';
 
-        const { container, getByText } = renderCategories(selectedCategory);
+      const { container, getByText } = renderCategories(selectedCategory);
 
-        categories.forEach(({ name }) => {
-          expect(container).toHaveTextContent(name);
+      categories.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
 
-          fireEvent.click(getByText(name));
-        });
-
-        expect(handleClickCategory).toBeCalledTimes(categories.length);
+        fireEvent.click(getByText(name));
       });
+
+      expect(handleClickCategory).toBeCalledTimes(categories.length);
     });
   });
 });
