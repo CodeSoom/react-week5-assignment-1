@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function Buttons({
-  type,
   buttonNames,
   selectedButton,
   onClickSelect,
@@ -13,7 +12,6 @@ export default function Buttons({
           <li key={id}>
             <button
               type="button"
-              name={type}
               onClick={onClickSelect}
             >
               {name}

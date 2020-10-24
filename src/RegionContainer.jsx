@@ -7,7 +7,6 @@ import { setSelectedButton } from './actions';
 import Buttons from './Buttons';
 
 export default function RegionContainer() {
-
   const dispatch = useDispatch();
 
   const { regions, selectedRegionName } = useSelector((state) => ({

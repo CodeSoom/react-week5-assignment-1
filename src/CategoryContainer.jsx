@@ -7,7 +7,6 @@ import { setSelectedButton } from './actions';
 import Buttons from './Buttons';
 
 export default function CategoryContainer() {
-
   const dispatch = useDispatch();
 
   const { categories, selectedCategoryName } = useSelector((state) => ({

@@ -6,7 +6,6 @@ import { setRestaurantsAsync } from './actions';
 import List from './List';
 
 export default function ListContainer() {
-
   const dispatch = useDispatch();
 
   const { restaurants, selectedButtons } = useSelector((state) => ({
@@ -22,8 +21,6 @@ export default function ListContainer() {
     }
 
     dispatch(setRestaurantsAsync());
-    console.log(restaurants);
-
   }, [selectedButtons]);
 
   return (

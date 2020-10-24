@@ -1,7 +1,7 @@
 import {
   intializeSelectButtons,
   setSelectedButton,
-  setRestaurants
+  setRestaurants,
 } from './actions';
 
 describe('intializeSelectButtons', () => {
