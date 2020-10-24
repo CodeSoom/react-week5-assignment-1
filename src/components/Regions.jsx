@@ -8,7 +8,7 @@ export default function Regions({ regions, onClick }) {
           <li key={id}>
             <button
               type="button"
-              onClick={onClick}
+              onClick={() => onClick({ name })}
             >
               {name}
             </button>
