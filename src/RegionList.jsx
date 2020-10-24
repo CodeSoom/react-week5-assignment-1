@@ -12,7 +12,8 @@ const RegionList = ({ regions, onSelectRegionClick, regionName }) => {
       {regions.map(({ id, name }) => (
         <Item
           key={id}
-          name={name === regionName ? `${name}(V)` : name}
+          name={name}
+          check={name === regionName}
           onClick={() => onSelectRegionClick({ type: 'region', id: name })}
         />
       ))}

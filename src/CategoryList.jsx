@@ -12,7 +12,8 @@ const CategoryList = ({ categories, onSelectCategoryClick, categoryId }) => {
       {categories.map(({ id, name }) => (
         <Item
           key={id}
-          name={id === categoryId ? `${name}(V)` : name}
+          name={name}
+          check={id === categoryId}
           onClick={() => onSelectCategoryClick({ type: 'category', id })}
         />
       ))}
