@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoryContainer from './CategoryContainer';
 
+import { categories, selectedButtons } from '../fixtures/fixture';
+
 jest.mock('react-redux');
 
 describe('CategoryContainer', () => {
@@ -17,23 +19,18 @@ describe('CategoryContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
-    selectedButtons: {
-      category: '',
-    },
+    categories,
+    selectedButtons,
   }));
 
   it('버튼이 클릭되면 setSelectButton action이 dispatch 됩니다.', () => {
-    const type = 'category';
-    const value = { id: 1, name: '한식' };
-
     const { getByText } = render(<CategoryContainer />);
     const button = getByText('한식');
 
     fireEvent.click(button);
     expect(dispatch).toBeCalledWith({
       type: 'setSelectedButton',
-      payload: { type, value },
+      payload: { type: 'category', value: { id: 1, name: '한식' } },
     });
   });
 });

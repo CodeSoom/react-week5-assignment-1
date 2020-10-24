@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
 
+import { regions, selectedButtons } from '../fixtures/fixture';
+
 jest.mock('react-redux');
 
 describe('RegionContainer', () => {
@@ -17,23 +19,18 @@ describe('RegionContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions: [{ id: 1, name: '서울' }, { id: 2, name: '대구' }],
-    selectedButtons: {
-      region: '',
-    },
+    regions,
+    selectedButtons,
   }));
 
   it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {
-    const type = 'region';
-    const value = { id: 1, name: '서울' };
-
     const { getByText } = render(<RegionContainer />);
     const button = getByText('서울');
 
     fireEvent.click(button);
     expect(dispatch).toBeCalledWith({
       type: 'setSelectedButton',
-      payload: { type, value },
+      payload: { type: 'region', value: { id: 1, name: '서울' } },
     });
   });
 });
