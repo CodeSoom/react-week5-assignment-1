@@ -3,7 +3,12 @@ import reducer from './reducer';
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
 
-import { selectRegion, setRegions } from './actions';
+import {
+  selectRegion,
+  setRegions,
+  selectCategory,
+  setCategories,
+} from './actions';
 
 describe('reducer', () => {
   const initialState = {
@@ -44,7 +49,7 @@ describe('reducer', () => {
   });
 
   describe('CategoriesContaioner', () => {
-    it('selectCategory', () => {
+    it('selects a category', () => {
       const selectedCategoryId = 1;
       const state = reducer(categories, selectCategory(selectedCategoryId));
 
