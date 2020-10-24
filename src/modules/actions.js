@@ -5,6 +5,9 @@ export function updateRegion(region) {
   };
 }
 
-export function xxx() {
-
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: { regions },
+  };
 }

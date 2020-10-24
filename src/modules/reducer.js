@@ -20,6 +20,15 @@ export default function reducer(state = initialState, action) {
         },
       };
     },
+
+    setRegions: () => {
+      const { regions } = action.payload;
+
+      return {
+        ...state,
+        regions,
+      };
+    },
   };
 
   if (actions[action.type]) return actions[action.type]();
