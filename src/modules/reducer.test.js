@@ -116,7 +116,7 @@ describe('reducer', () => {
     }]);
   });
 
-  it('loadRestaurants', async () => {
+  it('loadRestaurants', async (done) => {
     mockFetch(restaurants);
 
     const store = mockStore({
@@ -128,9 +128,19 @@ describe('reducer', () => {
 
     await store.dispatch(loadRestaurants());
 
-    expect(store.getActions()).toStrictEqual([{
-      type: 'setRestaurants',
-      payload: { restaurants },
-    }]);
+    setTimeout(() => {
+      expect(store.getActions()).toStrictEqual([
+        {
+          type: 'setRestaurants',
+          payload: { restaurants: [] },
+        },
+        {
+          type: 'setRestaurants',
+          payload: { restaurants },
+        },
+      ]);
+
+      done();
+    }, 1000);
   });
 });

@@ -59,6 +59,8 @@ let debounce;
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
+    dispatch(setRestaurants([]));
+
     const { selected } = getState();
 
     if (selected.region && selected.category) {
