@@ -2,11 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Categories from './Categories';
+import Regions from './Regions';
 
-test('Categories', () => {
+test('Regions', () => {
   const { getByText } = render((
-    <Categories />
+    <Regions />
   ));
 
   expect(getByText('서울')).not.toBeNull();

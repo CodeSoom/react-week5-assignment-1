@@ -1,43 +1,27 @@
 import React from 'react';
 
 export default function Categories() {
+  const categories = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+    { id: 3, name: '일식' },
+    { id: 4, name: '양식' },
+    { id: 5, name: '분식' },
+    { id: 6, name: '과자' },
+    { id: 7, name: '치킨' },
+  ];
+
   return (
     <ul>
-      <li>
-        <button type="button" name="category">
-          한식
-        </button>
-      </li>
-      <li>
-        <button type="button" name="category">
-          중식
-        </button>
-      </li>
-      <li>
-        <button type="button" name="category">
-          일식
-        </button>
-      </li>
-      <li>
-        <button type="button" name="category">
-          양식
-        </button>
-      </li>
-      <li>
-        <button type="button" name="category">
-          분식
-        </button>
-      </li>
-      <li>
-        <button type="button" name="category">
-          과자
-        </button>
-      </li>
-      <li>
-        <button type="button" name="category">
-          치킨
-        </button>
-      </li>
+      {
+        categories.map(({ id, name }) => (
+          <li key={id}>
+            <button type="button">
+              {name}
+            </button>
+          </li>
+        ))
+      }
     </ul>
   );
 }
