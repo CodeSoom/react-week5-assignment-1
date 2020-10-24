@@ -14,7 +14,7 @@ test('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     selected: {
-      region: '서울',
+      region: 1,
     },
   }));
 

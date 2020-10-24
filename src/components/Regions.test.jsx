@@ -12,7 +12,7 @@ describe('Regions', () => {
     render(
       <Regions
         regions={regionsFixture}
-        selected="서울"
+        selected={1}
       />,
     );
 

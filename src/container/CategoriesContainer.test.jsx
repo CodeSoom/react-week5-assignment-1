@@ -14,7 +14,7 @@ test('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
     selected: {
-      category: '한식',
+      category: 1,
     },
   }));
 

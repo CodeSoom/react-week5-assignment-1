@@ -12,7 +12,7 @@ describe('Categories', () => {
     render(
       <Categories
         categories={categoriesFixture}
-        selected="한식"
+        selected={1}
       />,
     );
 

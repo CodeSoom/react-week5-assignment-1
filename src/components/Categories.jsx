@@ -8,9 +8,9 @@ export default function Categories({ categories, selected, onClick }) {
           <li key={id}>
             <button
               type="button"
-              onClick={() => onClick(name)}
+              onClick={() => onClick(id)}
             >
-              {name === selected ? `${name}(V)` : name}
+              {id === selected ? `${name}(V)` : name}
             </button>
           </li>
         ))
