@@ -14,8 +14,8 @@ export default function RegionsContainer() {
     selectedRegion: state.selectedRegion,
   }));
 
-  function handleClickRegion(region) {
-    dispatch(selectRegion(region));
+  function handleClickRegion(id) {
+    dispatch(selectRegion(id));
     dispatch(loadRestaurants());
   }
 
