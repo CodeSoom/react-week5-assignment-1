@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 
+const store = createStore(rootReducer)
+
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('app'),
 );
