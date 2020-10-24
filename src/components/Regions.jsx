@@ -10,7 +10,7 @@ export default function Regions({ regions, selected, onClick }) {
               type="button"
               onClick={() => onClick({ name })}
             >
-              {`${name}(V)`}
+              {name === selected ? `${name}(V)` : name}
             </button>
           </li>
         ))
