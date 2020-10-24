@@ -7,49 +7,51 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'updateRegion') {
-    const { region } = action.payload;
-    return {
-      ...state,
-      region,
-    };
-  }
+  const handler = {
+    updateRegion: () => {
+      const { region } = action.payload;
+      return {
+        ...state,
+        region,
+      };
+    },
 
-  if (action.type === 'updateCategoryId') {
-    const { categoryId } = action.payload;
+    updateCategoryId: () => {
+      const { categoryId } = action.payload;
 
-    return {
-      ...state,
-      categoryId,
-    };
-  }
+      return {
+        ...state,
+        categoryId,
+      };
+    },
 
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
+    setRegions: () => {
+      const { regions } = action.payload;
 
-    return {
-      ...state,
-      regions,
-    };
-  }
+      return {
+        ...state,
+        regions,
+      };
+    },
 
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
+    setCategories: () => {
+      const { categories } = action.payload;
 
-    return {
-      ...state,
-      categories,
-    };
-  }
+      return {
+        ...state,
+        categories,
+      };
+    },
 
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
+    setRestaurants: () => {
+      const { restaurants } = action.payload;
 
-    return {
-      ...state,
-      restaurants,
-    };
-  }
+      return {
+        ...state,
+        restaurants,
+      };
+    },
+  };
 
-  return state;
+  return (handler[action.type] || state)();
 }
