@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { render, screen } from '@testing-library/react';
 
 import App from './App';
@@ -8,6 +8,9 @@ import regions from '../fixtures/regions';
 jest.mock('react-redux');
 
 test('App', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions,
     selected: {},
