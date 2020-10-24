@@ -5,6 +5,7 @@ import {
   updateCategoryId,
   setRegions,
   setCategories,
+  setRestaurants,
 } from './actions';
 
 import regions from '../fixtures/regions';
@@ -57,6 +58,24 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(5);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('update Restaurants', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants({
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        information: '양천주가 in 서울 강남구 123456',
+      }));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
