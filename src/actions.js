@@ -53,7 +53,7 @@ export function setRestaurants(restaurants) {
 
 export function loadRestaurants({ categoryId, regionName, stopFetch }) {
   return async (dispatch) => {
-    if (categoryId !== 0 && regionName !== '' && stopFetch === 1) {
+    if (categoryId && regionName && stopFetch) {
       const restaurants = await fetchRestaurants({ categoryId, regionName });
 
       dispatch(setRestaurants(restaurants));
