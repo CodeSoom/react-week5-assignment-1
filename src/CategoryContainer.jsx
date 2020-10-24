@@ -21,14 +21,9 @@ export default function CategoryContainer() {
       return;
     }
 
-    const selectedCategory = categories.filter((category) => category.name === buttonText);
+    const selectedCategory = categories.filter((category) => category.name === buttonText)[0];
 
-    const selectedButtonValue = {
-      type: 'category',
-      value: selectedCategory[0],
-    };
-
-    dispatch(setSelectedButton(selectedButtonValue));
+    dispatch(setSelectedButton({ type: 'category', value: selectedCategory }));
   }
 
   return (

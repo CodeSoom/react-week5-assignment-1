@@ -21,14 +21,9 @@ export default function RegionContainer() {
       return;
     }
 
-    const selectedRegion = regions.filter((region) => region.name === buttonText);
+    const selectedRegion = regions.filter((region) => region.name === buttonText)[0];
 
-    const selectedButtonValue = {
-      type: 'region',
-      value: selectedRegion[0],
-    };
-
-    dispatch(setSelectedButton(selectedButtonValue));
+    dispatch(setSelectedButton({ type: 'region', value: selectedRegion }));
   }
 
   return (
