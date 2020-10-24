@@ -9,9 +9,14 @@ describe('Regions', () => {
   const handleClick = jest.fn();
 
   it('render', () => {
-    render(<Regions regions={regionsFixture} />);
+    render(
+      <Regions
+        regions={regionsFixture}
+        selected="서울"
+      />,
+    );
 
-    expect(screen.getByText(/서울/)).toBeInTheDocument();
+    expect(screen.getByText('서울(V)')).toBeInTheDocument();
   });
 
   it('click test', () => {
