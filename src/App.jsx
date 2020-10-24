@@ -1,10 +1,15 @@
 import React from 'react';
 
 export default function App() {
+  const regions = [
+    {
+      id: 1, name: '서울',
+    },
+  ];
   return (
     <ul>
       {regions.map((region) => (
-        <li>
+        <li key={region.id}>
           <button>{region.name}</button>
         </li>
       ))}
