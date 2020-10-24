@@ -33,11 +33,11 @@ describe('api', () => {
 
   describe('fetchRestaurants', () => {
     it('fetch restaurants data', async () => {
-      mockFetch([{ id: 1, name: '마법사주방' }]);
+      mockFetch([{ id: 1, name: '새마을 식당' }]);
 
       const restaurants = await fetchRestaurants({ categoryId: 1, regionName: '서울' });
 
-      expect(restaurants).toEqual([{ id: 1, name: '마법사주방' }]);
+      expect(restaurants).toEqual([{ id: 1, name: '새마을 식당' }]);
     });
   });
 });
