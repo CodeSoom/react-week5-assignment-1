@@ -16,6 +16,7 @@ describe('reducer', () => {
     regions: [],
     selectedCategoryId: 0,
     categories: [],
+    restaurants: [],
   };
 
   it('return state', () => {

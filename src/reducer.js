@@ -3,6 +3,7 @@ const initialState = {
   regions: [],
   selectedCategoryId: 0,
   categories: [],
+  restaurants: [],
 };
 
 const reducers = {

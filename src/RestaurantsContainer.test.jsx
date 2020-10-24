@@ -7,10 +7,22 @@ import RestaurantsContainer from './RestaurantsContainer';
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
-  it('shows a title', () => {
-    const { getByText } = render(<RestaurantsContainer />);
+  describe('render title', () => {
+    context('without selections', () => {
+      it('shows a message', () => {
+        const { getByText } = render(<RestaurantsContainer />);
 
-    expect(getByText('List up')).not.toBeNull();
+        expect(getByText(/지역과 분류를 선택해주세요/)).not.toBeNull();
+      });
+    });
+
+    context('with selections region and category', () => {
+      it('shows a title', () => {
+        const { getByText } = render(<RestaurantsContainer />);
+
+        expect(getByText('레스토랑 목록')).not.toBeNull();
+      });
+    });
   });
 
   describe('list up restaurants', () => {

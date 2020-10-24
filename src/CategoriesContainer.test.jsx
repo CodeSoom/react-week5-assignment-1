@@ -22,7 +22,7 @@ describe('CategoriesContainer', () => {
   it('shows a title', () => {
     const { getByText } = render(<CategoriesContainer />);
 
-    expect(getByText('Categories')).not.toBeNull();
+    expect(getByText('분류')).not.toBeNull();
   });
 
   describe('selects a category', () => {

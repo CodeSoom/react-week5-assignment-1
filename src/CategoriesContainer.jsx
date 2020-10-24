@@ -20,7 +20,7 @@ export default function CategoriesContainer() {
 
   return (
     <div>
-      <h2>Categories</h2>
+      <h4>분류</h4>
       <Categories
         selectedCategoryId={selectedCategoryId}
         categories={categories}

@@ -20,7 +20,7 @@ export default function RegionsContainer() {
 
   return (
     <div>
-      <h2>Regions</h2>
+      <h4>지역</h4>
       <Regions
         selectedRegionId={selectedRegionId}
         regions={regions}

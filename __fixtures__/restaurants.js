@@ -1,4 +1,4 @@
-const regions = [
+const restaurants = [
   {
     id: 1,
     categoryId: 1,
@@ -22,4 +22,4 @@ const regions = [
   },
 ];
 
-export default regions;
+export default restaurants;
