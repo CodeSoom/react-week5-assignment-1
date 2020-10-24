@@ -16,7 +16,7 @@ describe('reducer', () => {
       };
 
       const state = reducer(initialState, setRegions(regions));
-      expect(state.regions).toHaveLength(3);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 
@@ -38,7 +38,7 @@ describe('reducer', () => {
       };
 
       const state = reducer(initialState, setCategories(categories));
-      expect(state.categories).toHaveLength(3);
+      expect(state.categories).toHaveLength(categories.length);
     });
   });
 
@@ -60,7 +60,7 @@ describe('reducer', () => {
       };
 
       const state = reducer(initialState, setRestaurants(restaurants));
-      expect(state.restaurants).toHaveLength(3);
+      expect(state.restaurants).toHaveLength(restaurants.length);
     });
   });
 });
