@@ -1,5 +1,5 @@
 import reducer from './reducer';
-import { updateRegions } from './actions';
+import { updateRegion } from './actions';
 
 describe('reducer', () => {
   it('updateRegions', () => {
@@ -7,7 +7,7 @@ describe('reducer', () => {
       selected: {
         region: '',
       },
-    }, updateRegions('서울'));
+    }, updateRegion('서울'));
 
     expect(state.selected.region).toBe('서울');
   });
