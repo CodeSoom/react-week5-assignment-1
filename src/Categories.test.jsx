@@ -6,18 +6,48 @@ import Categories from './Categories';
 
 import categories from '../__fixtures__/categories';
 
-test('Categories', () => {
+describe('Categories', () => {
   const handleClick = jest.fn();
 
-  const { getByText } = render((
-    <Categories categories={categories} onClick={handleClick} />
-  ));
+  function renderCategories(selectedCategoryId) {
+    return render((
+      <Categories
+        categories={categories}
+        selectedCategoryId={selectedCategoryId}
+        onClick={handleClick}
+      />
+    ));
+  }
 
-  categories.forEach(({ name }) => {
-    expect(getByText(name)).not.toBeNull();
+  context('when category is selected', () => {
+    const selectedCategoryId = 1;
+
+    it("renders 'V' mark on the clicked button", () => {
+      const { getByText } = renderCategories(selectedCategoryId);
+
+      expect(getByText('한식(V)')).not.toBeNull();
+    });
   });
 
-  fireEvent.click(getByText(categories[0].name));
+  context('when category is not selected', () => {
+    const selectedCategoryId = 0;
 
-  expect(handleClick).toBeCalled();
+    it('renders buttons', () => {
+      const { getByText } = renderCategories(selectedCategoryId);
+
+      categories.forEach(({ name }) => {
+        expect(getByText(name)).not.toBeNull();
+      });
+    });
+  });
+
+  context('click category button', () => {
+    it('occurs onclick event', () => {
+      const { getByText } = renderCategories();
+
+      fireEvent.click(getByText(categories[0].name));
+
+      expect(handleClick).toBeCalled();
+    });
+  });
 });
