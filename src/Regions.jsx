@@ -1,5 +1,7 @@
 import React from 'react';
 
+import regions from '../fixtures/regions';
+
 export default function Regions({ regions }) {
   return (
     <ul>
