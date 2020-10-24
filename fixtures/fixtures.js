@@ -1,4 +1,4 @@
-export const regionsFixture = [
+export const regionsInfo = [
   { id: 1, name: '서울' },
   { id: 2, name: '대전' },
   { id: 3, name: '대구' },
@@ -8,7 +8,7 @@ export const regionsFixture = [
   { id: 7, name: '인천' },
 ];
 
-export const categoriesFixture = [
+export const categoriesInfo = [
   { id: 1, name: '한식' },
   { id: 2, name: '중식' },
   { id: 3, name: '일식' },
@@ -18,7 +18,7 @@ export const categoriesFixture = [
   { id: 7, name: '치킨' },
 ];
 
-export const restaurantFixture = [
+export const restaurantsInfo = [
   {
     id: 1,
     categoryId: 1,

@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import { setRestaurants, updateRestaurant, setRestaurantsName } from './actions';
-import { categoriesFixture, regionsFixture, restaurantFixture } from '../fixtures/fixtures';
+import { categoriesInfo, regionsInfo, restaurantsInfo } from '../fixtures/fixtures';
 
 describe('reducer', () => {
   describe('setRestaurants', () => {
@@ -13,13 +13,13 @@ describe('reducer', () => {
     it('초기 "Restaurant" 정보를 불러온다.', () => {
       const { categories } = reducer({
         initialState,
-      }, setRestaurants({ type: 'categories', info: categoriesFixture }));
+      }, setRestaurants({ type: 'categories', info: categoriesInfo }));
 
       expect(categories).not.toHaveLength(0);
 
       const { regions } = reducer({
         initialState,
-      }, setRestaurants({ type: 'regions', info: regionsFixture }));
+      }, setRestaurants({ type: 'regions', info: regionsInfo }));
 
       expect(regions).not.toHaveLength(0);
     });
@@ -54,7 +54,7 @@ describe('reducer', () => {
     it('load Restaurants name', () => {
       const { restaurants } = reducer({
         initialState,
-      }, setRestaurantsName(restaurantFixture));
+      }, setRestaurantsName(restaurantsInfo));
 
       expect(restaurants).toHaveLength(3);
     });

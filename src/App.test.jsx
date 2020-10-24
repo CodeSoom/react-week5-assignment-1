@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { regionsFixture, categoriesFixture, restaurantFixture } from '../fixtures/fixtures';
+import { regionsInfo, categoriesInfo, restaurantsInfo } from '../fixtures/fixtures';
 import App from './App';
 
 jest.mock('react-redux');
@@ -14,9 +14,9 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: regionsFixture,
-    categories: categoriesFixture,
-    restaurants: restaurantFixture,
+    regions: regionsInfo,
+    categories: categoriesInfo,
+    restaurants: restaurantsInfo,
     category: 1,
     region: '서울',
   }));
@@ -25,15 +25,15 @@ test('App', () => {
     <App />
   ));
 
-  regionsFixture.forEach(({ name }) => {
+  regionsInfo.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 
-  categoriesFixture.forEach(({ name }) => {
+  categoriesInfo.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 
-  restaurantFixture.forEach(({ name }) => {
+  restaurantsInfo.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 

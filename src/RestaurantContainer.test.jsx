@@ -3,14 +3,14 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
-import { restaurantFixture } from '../fixtures/fixtures';
+import { restaurantsInfo } from '../fixtures/fixtures';
 import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-redux');
 
 describe('RestaurantContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: restaurantFixture,
+    restaurants: restaurantsInfo,
   }));
 
   const restaurantContainerRender = () => render((
@@ -20,7 +20,7 @@ describe('RestaurantContainer', () => {
   it('renders restaurantName', () => {
     const { container } = restaurantContainerRender();
 
-    restaurantFixture.forEach(({ name }) => {
+    restaurantsInfo.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);
     });
   });

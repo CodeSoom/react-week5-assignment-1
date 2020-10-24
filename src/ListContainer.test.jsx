@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { categoriesFixture, regionsFixture } from '../fixtures/fixtures';
+import { categoriesInfo, regionsInfo } from '../fixtures/fixtures';
 import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
@@ -22,8 +22,8 @@ describe('ListContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       region: null,
       category: null,
-      categories: categoriesFixture,
-      regions: regionsFixture,
+      categories: categoriesInfo,
+      regions: regionsInfo,
     }));
   });
 
@@ -41,11 +41,11 @@ describe('ListContainer', () => {
   it('renders setting initial list', () => {
     const { getByText } = listContainerRender();
 
-    regionsFixture.forEach(({ name }) => {
+    regionsInfo.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
     });
 
-    categoriesFixture.forEach(({ name }) => {
+    categoriesInfo.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
     });
 

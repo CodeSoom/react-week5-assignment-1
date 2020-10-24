@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import RestaurantList from './RestaurantList';
-import { restaurantFixture } from '../fixtures/fixtures';
+import { restaurantsInfo } from '../fixtures/fixtures';
 
 describe('RestaurantList', () => {
   const restaurantListRender = (restaurants) => render((
@@ -14,9 +14,9 @@ describe('RestaurantList', () => {
 
   context('with restaurants', () => {
     it('see renders restaurants', () => {
-      const { container } = restaurantListRender(restaurantFixture);
+      const { container } = restaurantListRender(restaurantsInfo);
 
-      restaurantFixture.forEach(({ name }) => {
+      restaurantsInfo.forEach(({ name }) => {
         expect(container).toHaveTextContent(name);
       });
     });

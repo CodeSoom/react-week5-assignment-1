@@ -3,7 +3,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 
 import RegionList from './RegionList';
-import { regionsFixture } from '../fixtures/fixtures';
+import { regionsInfo } from '../fixtures/fixtures';
 
 describe('RegionList', () => {
   const handleSelectClick = jest.fn();
@@ -21,11 +21,11 @@ describe('RegionList', () => {
       const regionName = '서울';
 
       const { getByText } = regionListRender({
-        regions: regionsFixture,
+        regions: regionsInfo,
         regionName,
       });
 
-      regionsFixture.forEach(({ name }) => {
+      regionsInfo.forEach(({ name }) => {
         if (regionName === name) {
           expect(getByText(`${name}(V)`)).not.toBeNull();
           return;
@@ -37,11 +37,11 @@ describe('RegionList', () => {
 
     it('renders button to click a region', () => {
       const { getByText } = regionListRender({
-        regions: regionsFixture,
+        regions: regionsInfo,
         regionName: null,
       });
 
-      regionsFixture.forEach(({ name }) => {
+      regionsInfo.forEach(({ name }) => {
         fireEvent.click(getByText(name));
 
         expect(handleSelectClick).toBeCalledWith({
