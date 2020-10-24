@@ -19,20 +19,20 @@ describe('Regions', () => {
     ));
   }
 
-  context('equals selectedRegionName and button text content', () => {
+  context('when region is selected', () => {
     const selectedRegionName = '서울';
 
-    it("appends '(V)' button text content", () => {
+    it("renders 'V' mark on the clicked button", () => {
       const { getByText } = renderRegions(selectedRegionName);
 
       expect(getByText('서울(V)')).not.toBeNull();
     });
   });
 
-  context('not equals selectedRegionName and button text content', () => {
+  context('when region is not selected', () => {
     const selectedRegionName = '';
 
-    it("appends '(V)' button text content", () => {
+    it('renders buttons', () => {
       const { getByText } = renderRegions(selectedRegionName);
 
       regions.forEach(({ name }) => {
