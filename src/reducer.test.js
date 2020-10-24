@@ -6,5 +6,6 @@ import reducer from './reducer';
 
 jest.mock('react-redux');
 
-describe('reducer', () => {
+test('reducer', () => {
+  
 });
