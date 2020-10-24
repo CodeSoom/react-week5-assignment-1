@@ -28,14 +28,10 @@ const reducers = {
     ...state,
     selectedCategory: id,
   }),
-  selectRegion: (state, { id }) => {
-    const selectedRegion = state.regions.find((item) => item.id === id).name;
-
-    return ({
-      ...state,
-      selectedRegion,
-    });
-  },
+  selectRegion: (state, { name }) => ({
+    ...state,
+    selectedRegion: name,
+  }),
 };
 
 export default function reducer(state = initialState, action = initialAction) {

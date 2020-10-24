@@ -43,10 +43,10 @@ describe('RegionsContainer', () => {
     it('dispatches selectRegion action', () => {
       const { getByText } = renderRegionsContainer();
 
-      regions.forEach(({ id, name }) => {
+      regions.forEach(({ name }) => {
         fireEvent.click(getByText(name));
 
-        expect(dispatch).toBeCalledWith(selectRegion(id));
+        expect(dispatch).toBeCalledWith(selectRegion(name));
       });
     });
   });

@@ -40,11 +40,11 @@ export function selectCategory(id) {
   });
 }
 
-export function selectRegion(id) {
+export function selectRegion(name) {
   return ({
     type: 'selectRegion',
     payload: {
-      id,
+      name,
     },
   });
 }
