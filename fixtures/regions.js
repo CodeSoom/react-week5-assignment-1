@@ -10,4 +10,4 @@ const regions = [
   {id: 7, name: '인천'},
 ];
 
-export default Regions;
+export default regions;
