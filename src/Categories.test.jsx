@@ -7,26 +7,27 @@ import Categories from './Categories';
 import categories from '../fixtures/categories';
 
 describe('Categories', () => {
-  it('when rendering then show the list', () => {
-    const { getByText } = render((
-      <Categories
-        categories={categories}
-      />
-    ));
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/중식/)).not.toBeNull();
-  });
-  it('Category button click', () => {
-    const handleClick = jest.fn();
+  const handleClick = jest.fn();
 
-    const categoryId = 1;
-    const { getByText } = render((
+  function renderMaker(categories = {}, categoryId = '', handleClick = '') {
+    return render((
       <Categories
         categories={categories}
         selectCategory={categoryId}
         onClick={handleClick}
       />
     ));
+  }
+  it('when rendering then show the list', () => {
+    const { getByText } = renderMaker(categories);
+    expect(getByText(/한식/)).not.toBeNull();
+    expect(getByText(/중식/)).not.toBeNull();
+  });
+
+  it('Category button click', () => {
+    const categoryId = 1;
+
+    const { getByText } = renderMaker(categories, categoryId, handleClick);
 
     fireEvent.click(getByText(/한식/));
 
