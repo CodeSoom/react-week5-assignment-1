@@ -1,7 +1,6 @@
 import reducer from './reducer';
 import {
   updateRegion,
-  loadRegions,
 } from './actions';
 
 describe('reducer', () => {

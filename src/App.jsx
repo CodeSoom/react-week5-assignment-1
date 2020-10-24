@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './container/RegionsContainer';
+import { loadRegions } from './modules/actions';
 
 export default function App() {
   // TODO: 'https://eatgo-customer-api.ahastudio.com/regions' 에서 지역 리스트를 가져온다.
@@ -13,6 +15,11 @@ export default function App() {
   //       `https://eatgo-customer-api.ahastudio.com/restaurants?region=${region}&category=${category}`
   //       에서 음식점 리스트를 가져온다.
   // TODO: 음식점 리스트를 그린다.
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRegions());
+  }, []);
   return (
     <div>
       <RegionsContainer />
