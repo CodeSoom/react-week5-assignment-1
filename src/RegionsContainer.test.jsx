@@ -4,8 +4,6 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectRegion } from './actions';
-
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
