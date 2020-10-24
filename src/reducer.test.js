@@ -63,4 +63,20 @@ describe('reducer', () => {
       expect(state.restaurants).toHaveLength(restaurants.length);
     });
   });
+
+  context('with not existed action type', () => {
+    const action = () => ({
+      type: 'notExistedActionType',
+    });
+
+    it('returns initial state', () => {
+      const state = reducer(undefined, action());
+
+      expect(state.regions).toHaveLength(0);
+      expect(state.categories).toHaveLength(0);
+      expect(state.selectedCategoryId).toBe(0);
+      expect(state.selectedRegionName).toBe('');
+      expect(state.restaurants).toHaveLength(0);
+    });
+  });
 });
