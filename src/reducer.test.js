@@ -67,13 +67,13 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const state = reducer(initialState, setRestaurants({
+      const state = reducer(initialState, setRestaurants([{
         id: 1,
         categoryId: 1,
         name: '양천주가',
         address: '서울 강남구 123456',
         information: '양천주가 in 서울 강남구 123456',
-      }));
+      }]));
 
       expect(state.restaurants).toHaveLength(1);
     });
