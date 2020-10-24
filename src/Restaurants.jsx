@@ -7,7 +7,9 @@ export default function Restaurants() {
     <>
       <ul>
         {restaurants.map((restaurant) => (
-          <li>{restaurant}</li>
+          <li key={restaurant}>
+            {restaurant}
+          </li>
         ))}
       </ul>
     </>

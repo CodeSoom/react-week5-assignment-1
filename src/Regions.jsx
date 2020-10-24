@@ -7,7 +7,9 @@ export default function Resgions() {
     <>
       <ul>
         {resgions.map((resgion) => (
-          <li>{resgion}</li>
+          <li key={resgion}>
+            {resgion}
+          </li>
         ))}
       </ul>
     </>
