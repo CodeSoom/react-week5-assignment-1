@@ -31,8 +31,9 @@ async function loadRestaurants({ dispatch, regionName, categoryId }) {
 export default function App() {
   const dispatch = useDispatch();
 
-  const regionName = '서울';
-  const categoryId = 1;
+  const { filter: { regionName, categoryId } } = useSelector((state) => ({
+    filter: state.filter,
+  }));
 
   useEffect(() => {
     loadRegions({ dispatch });

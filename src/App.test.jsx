@@ -6,6 +6,10 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 jest.mock('react-redux');
 jest.mock('./services/api');
 
@@ -18,15 +22,13 @@ describe('App', () => {
     useDispatch.mockReturnValue(dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      restaurants: [
-        {
-          id: 1,
-          categoryId: 1,
-          name: '양천주가',
-          address: '서울 강남구 123456',
-          information: '양천주가 in 서울 강남구 123456',
-        },
-      ],
+      filter: {
+        regionName: '',
+        categoryId: 0,
+      },
+      regions,
+      categories,
+      restaurants,
     }));
   });
 

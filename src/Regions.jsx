@@ -7,7 +7,12 @@ export default function Regions({ regions }) {
     <ul>
       {
         regions && regions.map(({ id, name }) => (
-          <li key={id}><ButtonContainer name={name} /></li>
+          <li key={id}>
+            <ButtonContainer
+              name={name}
+              filterName="regionName"
+            />
+          </li>
         ))
       }
     </ul>

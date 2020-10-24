@@ -7,7 +7,13 @@ export default function Categories({ categories }) {
     <ul>
       {
         categories && categories.map(({ id, name }) => (
-          <li key={id}><ButtonContainer name={name} /></li>
+          <li key={id}>
+            <ButtonContainer
+              name={name}
+              id={id}
+              filterName="categoryId"
+            />
+          </li>
         ))
       }
     </ul>

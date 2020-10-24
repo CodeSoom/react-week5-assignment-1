@@ -12,34 +12,47 @@ describe('Button', () => {
   });
 
   const name = '서울';
-  const handleClick = jest.fn();
+  const onClick = jest.fn();
 
-  function renderButton() {
+  function renderButton({ selected }) {
     const { container, getByText } = render(
       <Button
         name={name}
-        onClick={handleClick}
+        selected={selected}
+        onClick={onClick}
       />,
     );
 
     return {
       container,
-      button: getByText('서울'),
+      button: getByText(/서울/),
     };
   }
 
-  it('renders', () => {
-    const { container } = renderButton();
+  context('while not selected', () => {
+    it('renders', () => {
+      const { container } = renderButton({ selected: false });
 
-    expect(container).not.toBeNull();
-    expect(container).toHaveTextContent('서울');
+      expect(container).not.toBeNull();
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('while selected', () => {
+    it('renders', () => {
+      const { container, button } = renderButton({ selected: true });
+
+      click(button);
+
+      expect(container).toHaveTextContent('서울(V)');
+    });
   });
 
   it('handles click', () => {
-    const { button } = renderButton();
+    const { button } = renderButton({ selected: false });
 
     click(button);
 
-    expect(handleClick).toBeCalled();
+    expect(onClick).toBeCalled();
   });
 });
