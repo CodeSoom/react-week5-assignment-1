@@ -32,5 +32,15 @@ describe('Categories', () => {
 
       expect(handleClick).toBeCalled();
     });
+
+    it('should be checked', () => {
+      const { getByText } = renderCategories();
+
+      fireEvent.click(getByText('한식'));
+
+      const { container } = renderCategories(1);
+
+      expect(container).toHaveTextContent('한식(V)');
+    });
   });
 });
