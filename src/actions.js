@@ -1,14 +1,17 @@
-import { fetchRegions } from './services/api';
+import {
+  fetchRegions,
+  fetchCategories,
+} from './services/api';
 
 // Action creators
 /*
  * RegionsContainer
  */
-export function setRegions(regions) {
+export function setRegions(categories) {
   return {
     type: 'setRegions',
     payload: {
-      regions,
+      categories,
     },
   };
 }
@@ -24,9 +27,8 @@ export function selectRegion(id) {
 
 export function loadRegions() {
   return async (dispatch) => {
-    // TODO
-    const regions = await fetchRegions();
-    dispatch(setRegions(regions));
+    const categories = await fetchRegions();
+    dispatch(setRegions(categories));
   };
 }
 
@@ -48,5 +50,12 @@ export function selectCategory(id) {
     payload: {
       id,
     },
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+    dispatch(setCategories(categories));
   };
 }
