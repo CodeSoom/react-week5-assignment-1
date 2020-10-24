@@ -21,7 +21,7 @@ describe('Regions', () => {
     ));
   }
 
-  it('show button text', () => {
+  it('renders regions name for buttons text', () => {
     const selectedRegion = '서울';
 
     const { container } = renderRegions(selectedRegion);
@@ -35,7 +35,7 @@ describe('Regions', () => {
   });
 
   context('when the button clicked', () => {
-    it('run onClick function', () => {
+    it('run handleClickRegion function', () => {
       const selectedRegion = '';
 
       const { container, getByText } = renderRegions(selectedRegion);
