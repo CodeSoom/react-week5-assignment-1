@@ -10,10 +10,14 @@ jest.mock('react-redux');
 
 import regions from '../fixtures/regions';
 
+import {
+  setRegions,
+} from './actions';
+
 test('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(()=> dispatch);
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions,
   }));
