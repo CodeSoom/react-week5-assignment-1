@@ -51,7 +51,8 @@ export default function reducer(state = initialState, action) {
         restaurants,
       };
     },
+    default: () => state,
   };
 
-  return (handler[action.type] || state)();
+  return (handler[action.type] || handler.default)();
 }

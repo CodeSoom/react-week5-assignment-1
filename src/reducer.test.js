@@ -45,7 +45,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(5);
+      expect(state.regions).not.toHaveLength(0);
     });
   });
 
@@ -57,7 +57,9 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setCategories(categories));
 
-      expect(state.categories).toHaveLength(5);
+      expect(state.categories).not.toHaveLength(0);
+      expect(state.categories[0].id).toEqual(1);
+      expect(state.categories[0].name).toEqual('한식');
     });
   });
 
