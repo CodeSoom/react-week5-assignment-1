@@ -31,6 +31,8 @@ test('CategoriesContainer', () => {
     },
   });
 
+  expect(dispatch).toBeCalledTimes(2);
+
   expect(getByText(/한식/)).not.toBeNull();
   expect(getByText(/중식/)).not.toBeNull();
 });
