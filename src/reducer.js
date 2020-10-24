@@ -3,6 +3,7 @@ const initialState = {
     region: '',
     categoryId: 0,
   },
+  restaurants: [],
 };
 
 const reducers = {
@@ -12,6 +13,10 @@ const reducers = {
       ...state.filter,
       ...filter,
     },
+  }),
+  setRestaurants: (state, { payload: { restaurants } }) => ({
+    ...state,
+    restaurants,
   }),
 };
 
