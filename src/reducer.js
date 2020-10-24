@@ -1,8 +1,10 @@
 const initialState = {
   filter: {
-    region: '',
+    regionName: '',
     categoryId: 0,
   },
+  regions: [],
+  categories: [],
   restaurants: [],
 };
 
@@ -14,6 +16,14 @@ const reducers = {
       ...filter,
     },
   }),
+  setRegions: (state, { payload: { regions } }) => ({
+    ...state,
+    regions,
+  }),
+  setCategories: (state, { payload: { categories } }) => ({
+    ...state,
+    categories,
+  }),
   setRestaurants: (state, { payload: { restaurants } }) => ({
     ...state,
     restaurants,
@@ -21,7 +31,7 @@ const reducers = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (!action) {
+  if (!action || action.type.indexOf('@@') > -1) {
     return state;
   }
 

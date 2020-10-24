@@ -1,14 +1,22 @@
 import reducer from './reducer';
 
-import { setRestaurants, updateFilter } from './actions';
+import {
+  setRegions, setCategories, setRestaurants, updateFilter,
+} from './actions';
+
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   context('without state nor action', () => {
     const initialState = {
       filter: {
-        region: '',
+        regionName: '',
         categoryId: 0,
       },
+      regions: [],
+      categories: [],
       restaurants: [],
     };
     it('returns state', () => {
@@ -21,7 +29,7 @@ describe('reducer', () => {
       it('updates filter', () => {
         const previousState = {
           filter: {
-            region: '서울',
+            regionName: '서울',
             categoryId: 1,
           },
         };
@@ -35,6 +43,40 @@ describe('reducer', () => {
       });
     });
 
+    describe('setRegions', () => {
+      it('sets regions', () => {
+        const previousState = {
+          regions: [],
+        };
+
+        const state = reducer(
+          previousState,
+          setRegions({
+            regions,
+          }),
+        );
+
+        expect(state.regions).toHaveLength(7);
+      });
+    });
+
+    describe('setCategories', () => {
+      it('sets categories', () => {
+        const previousState = {
+          categories: [],
+        };
+
+        const state = reducer(
+          previousState,
+          setCategories({
+            categories,
+          }),
+        );
+
+        expect(state.categories).toHaveLength(7);
+      });
+    });
+
     describe('setRestaurants', () => {
       it('sets restaurants', () => {
         const previousState = {
@@ -44,19 +86,11 @@ describe('reducer', () => {
         const state = reducer(
           previousState,
           setRestaurants({
-            restaurants: [
-              {
-                id: 1,
-                categoryId: 1,
-                name: '양천주가',
-                address: '서울 강남구 123456',
-                information: '양천주가 in 서울 강남구 123456',
-              },
-            ],
+            restaurants,
           }),
         );
 
-        expect(state.restaurants).toHaveLength(1);
+        expect(state.restaurants).toHaveLength(3);
       });
     });
   });

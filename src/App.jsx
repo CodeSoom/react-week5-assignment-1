@@ -1,15 +1,29 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { setRestaurants } from './actions';
+import { setRegions, setCategories, setRestaurants } from './actions';
 
-function loadRestaurants({ dispatch }) {
-  const restaurants = [];
+import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
+
+  dispatch(setRegions({ regions }));
+}
+
+async function loadCategories({ dispatch }) {
+  const categories = await fetchCategories();
+
+  dispatch(setCategories({ categories }));
+}
+
+async function loadRestaurants({ dispatch, regionName, categoryId }) {
+  const restaurants = await fetchRestaurants({ regionName, categoryId });
 
   dispatch(setRestaurants({ restaurants }));
 }
@@ -17,9 +31,14 @@ function loadRestaurants({ dispatch }) {
 export default function App() {
   const dispatch = useDispatch();
 
+  const regionName = '서울';
+  const categoryId = 1;
+
   useEffect(() => {
-    loadRestaurants({ dispatch });
-  }, []);
+    loadRegions({ dispatch });
+    loadCategories({ dispatch });
+    loadRestaurants({ dispatch, regionName, categoryId });
+  }, [regionName, categoryId]);
 
   return (
     <>
