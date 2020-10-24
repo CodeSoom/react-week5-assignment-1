@@ -6,6 +6,8 @@ import {
   updateRegion,
   updateCategory,
   loadRegions,
+  loadCategories,
+  loadRestaurants,
 } from './actions';
 import regions from '../../fixtures/regions';
 import categories from '../../fixtures/categories';
@@ -97,6 +99,32 @@ describe('reducer', () => {
       expect(store.getActions()).toStrictEqual([{
         type: 'setRegions',
         payload: { regions },
+      }]);
+    });
+  });
+
+  it('loadCategories', () => {
+    mockFetch(categories);
+
+    const store = mockStore({});
+
+    store.dispatch(loadCategories()).then(() => {
+      expect(store.getActions()).toStrictEqual([{
+        type: 'setCategories',
+        payload: { categories },
+      }]);
+    });
+  });
+
+  it('loadRestaurants', () => {
+    mockFetch(restaurants);
+
+    const store = mockStore({});
+
+    store.dispatch(loadRestaurants()).then(() => {
+      expect(store.getActions()).toStrictEqual([{
+        type: 'setRestaurants',
+        payload: { restaurants },
       }]);
     });
   });
