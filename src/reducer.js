@@ -23,6 +23,10 @@ const reducers = {
     ...state,
     selectedCategoryId: id,
   }),
+  setRestaurants: (state, { restaurants }) => ({
+    ...state,
+    restaurants,
+  }),
 };
 
 export default function reducer(state = initialState, action = {}) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
@@ -13,10 +13,6 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    regions: [],
-  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
