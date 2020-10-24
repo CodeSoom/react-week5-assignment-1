@@ -18,15 +18,15 @@ describe('App', () => {
     regions: [],
   }));
 
-  it('check the initial states are mounted', () => {
-    render(<App />);
-
-    expect(dispatch).toBeCalledTimes(2);
-  });
-
   it('shows app name', () => {
     const { getByText } = render(<App />);
 
     expect(getByText('Restaurants')).not.toBeNull();
+  });
+
+  it('check the initial states are mounted', () => {
+    render(<App />);
+
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
