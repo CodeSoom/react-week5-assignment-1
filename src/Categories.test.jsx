@@ -4,12 +4,12 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import categories from '../__fixtures__/categories';
+import intialCategories from '../__fixtures__/categories';
 
 describe('Categories', () => {
   const handleClick = jest.fn();
 
-  function renderCategories(selectedCategoryId) {
+  function renderCategories(selectedCategoryId, categories) {
     return render((
       <Categories
         selectedCategoryId={selectedCategoryId}
@@ -25,17 +25,17 @@ describe('Categories', () => {
 
   context('with categories', () => {
     it('show categories of food', () => {
-      const { getByText } = renderCategories(0, categories);
+      const { getByText } = renderCategories(0, intialCategories);
 
-      categories.forEach(({ name }) => {
+      intialCategories.forEach(({ name }) => {
         expect(getByText(name)).not.toBeNull();
       });
     });
 
     it('click category button', () => {
-      const { getByText } = renderCategories(0, categories);
+      const { getByText } = renderCategories(0, intialCategories);
 
-      categories.forEach(({ name }) => {
+      intialCategories.forEach(({ name }) => {
         const button = getByText(name);
 
         expect(button).not.toBeNull();
@@ -43,14 +43,14 @@ describe('Categories', () => {
         fireEvent.click(button);
       });
 
-      expect(handleClick).toBeCalledTimes(categories.length);
+      expect(handleClick).toBeCalledTimes(intialCategories.length);
     });
 
     it('shows a selected button', () => {
       const selectedCategoryId = 1;
-      const { getByText } = renderCategories(selectedCategoryId, categories);
+      const { getByText } = renderCategories(selectedCategoryId, intialCategories);
 
-      categories.forEach(({ id, name }) => {
+      intialCategories.forEach(({ id, name }) => {
         const buttonText = name + (id === selectedCategoryId ? '(V)' : '');
 
         expect(getByText(buttonText)).not.toBeNull();
@@ -60,7 +60,7 @@ describe('Categories', () => {
 
   context('without categories', () => {
     it('show nothing message', () => {
-      const { getByText } = renderCategories([]);
+      const { getByText } = renderCategories(0, []);
 
       expect(getByText(/음식 분류가 없습니다/)).not.toBeNull();
     });
