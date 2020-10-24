@@ -6,6 +6,10 @@ import { render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import categories from '../fixtures/categories';
+
+jest.mock('react-redux');
+
 test('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
