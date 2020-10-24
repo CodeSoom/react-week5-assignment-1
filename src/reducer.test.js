@@ -1,20 +1,20 @@
-import React from 'react';
-
-import { render } from '@testing-library/react';
-
 import reducer from './reducer';
 
 import {
   setRegions
 } from './actions';
 
+import regions from '../fixtures/regions';
+
 describe('reducer', () => {
   describe('setRegions', () => {
-   const initialState = {
-     regions: [],
-   };
-   const state = reducer(initialState, setRegions(regions)); 
-
-   expect(state).not.toHaveLength(0);
+    it('changes regions array', () => {
+      const initialState = {
+        regions: [],
+      };
+      const state = reducer(initialState, setRegions(regions)); 
+   
+      expect(state.regions).not.toHaveLength(0);
+    });
   });
 });
