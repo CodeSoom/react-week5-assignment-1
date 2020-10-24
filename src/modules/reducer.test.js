@@ -13,4 +13,14 @@ describe('reducer', () => {
 
     expect(state.selected.region).toBe('서울');
   });
+
+  it('updateCategory', () => {
+    const state = reducer({
+      selected: {
+        category: '',
+      },
+    }, updateCategory('한식'));
+
+    expect(state.selected.category).toBe('한식');
+  });
 });
