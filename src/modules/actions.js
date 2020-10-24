@@ -59,11 +59,11 @@ let debounce;
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    dispatch(setRestaurants([]));
-
     const { selected } = getState();
 
     if (selected.region && selected.category) {
+      dispatch(setRestaurants([{ id: 1, name: 'loading...' }]));
+
       clearTimeout(debounce);
 
       debounce = setTimeout(async () => {

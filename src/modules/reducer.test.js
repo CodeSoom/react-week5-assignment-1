@@ -134,7 +134,7 @@ describe('reducer', () => {
           expect(store.getActions()).toStrictEqual([
             {
               type: 'setRestaurants',
-              payload: { restaurants: [] },
+              payload: { restaurants: [{ id: 1, name: 'loading...' }] },
             },
             {
               type: 'setRestaurants',
@@ -159,7 +159,7 @@ describe('reducer', () => {
           expect(store.getActions()).toStrictEqual([
             {
               type: 'setRestaurants',
-              payload: { restaurants: [] },
+              payload: { restaurants: [{ id: 1, name: 'loading...' }] },
             },
           ]);
 
