@@ -31,6 +31,8 @@ test('RegionsContainer', () => {
     },
   });
 
+  expect(dispatch).toBeCalledTimes(2);
+
   expect(getByText(/서울/)).not.toBeNull();
   expect(getByText(/대전/)).not.toBeNull();
 });
