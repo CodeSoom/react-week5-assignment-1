@@ -90,42 +90,47 @@ describe('reducer', () => {
     });
   });
 
-  it('loadRegions', () => {
+  it('loadRegions', async () => {
     mockFetch(regions);
 
     const store = mockStore({});
 
-    store.dispatch(loadRegions()).then(() => {
-      expect(store.getActions()).toStrictEqual([{
-        type: 'setRegions',
-        payload: { regions },
-      }]);
-    });
+    await store.dispatch(loadRegions());
+
+    expect(store.getActions()).toStrictEqual([{
+      type: 'setRegions',
+      payload: { regions },
+    }]);
   });
 
-  it('loadCategories', () => {
+  it('loadCategories', async () => {
     mockFetch(categories);
 
     const store = mockStore({});
 
-    store.dispatch(loadCategories()).then(() => {
-      expect(store.getActions()).toStrictEqual([{
-        type: 'setCategories',
-        payload: { categories },
-      }]);
-    });
+    await store.dispatch(loadCategories());
+
+    expect(store.getActions()).toStrictEqual([{
+      type: 'setCategories',
+      payload: { categories },
+    }]);
   });
 
-  it('loadRestaurants', () => {
+  it('loadRestaurants', async () => {
     mockFetch(restaurants);
 
-    const store = mockStore({});
-
-    store.dispatch(loadRestaurants()).then(() => {
-      expect(store.getActions()).toStrictEqual([{
-        type: 'setRestaurants',
-        payload: { restaurants },
-      }]);
+    const store = mockStore({
+      selected: {
+        region: 1,
+        category: 1,
+      },
     });
+
+    await store.dispatch(loadRestaurants());
+
+    expect(store.getActions()).toStrictEqual([{
+      type: 'setRestaurants',
+      payload: { restaurants },
+    }]);
   });
 });
