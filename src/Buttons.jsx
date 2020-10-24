@@ -1,14 +1,14 @@
 import React from 'react';
 
 export default function Buttons({
-  buttonNames,
+  buttons,
   selectedButton,
   onClickSelect,
 }) {
   return (
     <ul>
       {
-        buttonNames.map(({ id, name }) => (
+        buttons.map(({ id, name }) => (
           <li key={id}>
             <button
               type="button"

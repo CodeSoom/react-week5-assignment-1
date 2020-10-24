@@ -11,9 +11,9 @@ describe('Buttons', () => {
 
   const handleClickSelect = jest.fn();
 
-  const renderButtons = (buttonNames = [{ id: 1, name: '서울' }], selectedButton = '') => (
+  const renderButtons = (buttons = [{ id: 1, name: '서울' }], selectedButton = '') => (
     render(<Buttons
-      buttonNames={buttonNames}
+      buttons={buttons}
       selectedButton={selectedButton}
       onClickSelect={handleClickSelect}
     />));
@@ -28,23 +28,23 @@ describe('Buttons', () => {
   });
 
   context('selectButton이 주어지면', () => {
-    const buttonNames = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
+    const buttons = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
     const selectedButton = '서울';
 
     it('선택된 버튼 문구에 "(V)"가 추가됩니다.', () => {
-      const { container } = renderButtons(buttonNames, selectedButton);
+      const { container } = renderButtons(buttons, selectedButton);
 
       expect(container).toHaveTextContent(`${selectedButton}(V)`);
     });
   });
 
-  context('buttonNames가 주어지면,', () => {
-    const buttonNames = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
+  context('buttons가 주어지면,', () => {
+    const buttons = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
 
-    it('ButtonNames 버튼들이 출력됩니다.', () => {
-      const { container } = renderButtons(buttonNames);
+    it('Buttons 버튼들이 출력됩니다.', () => {
+      const { container } = renderButtons(buttons);
 
-      buttonNames.forEach(({ name }) => {
+      buttons.forEach(({ name }) => {
         expect(container).toHaveTextContent(name);
       });
     });

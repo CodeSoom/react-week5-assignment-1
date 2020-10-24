@@ -34,7 +34,7 @@ export default function CategoryContainer() {
   return (
     <Buttons
       selectedButton={selectedCategoryName}
-      buttonNames={categories}
+      buttons={categories}
       onClickSelect={handleClickSelect}
     />
   );
