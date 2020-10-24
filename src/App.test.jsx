@@ -8,4 +8,6 @@ test('App', () => {
   const { getByText } = render((
     <App />
   ));
+
+  expect(getByText('서울')).not.toBeNull();
 });
