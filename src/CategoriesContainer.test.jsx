@@ -4,12 +4,12 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { categoriesInfo } from '../fixtures/fixtures';
-import CategoryContainer from './CategoryContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
 
-describe('CategoryContainer', () => {
+describe('CategoriesContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -25,12 +25,12 @@ describe('CategoryContainer', () => {
     }));
   });
 
-  const categoryContainerRender = () => render((
-    <CategoryContainer />
+  const categoriesContainerRender = () => render((
+    <CategoriesContainer />
   ));
 
   it('renders setting initial categories', () => {
-    const { getByText } = categoryContainerRender();
+    const { getByText } = categoriesContainerRender();
 
     categoriesInfo.forEach(({ name }) => {
       expect(getByText(name)).not.toBeNull();
@@ -40,7 +40,7 @@ describe('CategoryContainer', () => {
   });
 
   it('click category render button text status', () => {
-    const { getByText } = categoryContainerRender();
+    const { getByText } = categoriesContainerRender();
 
     const categoryButton = getByText(/한식/);
     expect(categoryButton).not.toBeNull();

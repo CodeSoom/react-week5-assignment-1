@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateRestaurant, loadRestaurants, loadRestaurantsName } from './actions';
 import CategoryList from './CategoryList';
 
-const CategoryContainer = () => {
+const CategoriesContainer = () => {
   const dispatch = useDispatch();
 
   const { categories, category } = useSelector((state) => ({
@@ -32,4 +32,4 @@ const CategoryContainer = () => {
   );
 };
 
-export default CategoryContainer;
+export default CategoriesContainer;
