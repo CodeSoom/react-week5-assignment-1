@@ -12,15 +12,15 @@ export default function RestaurantsContainer() {
   const dispatch = useDispatch();
 
   const {
-    restaurants, categoryId, regionName, stopLoad,
+    restaurants, categoryId, regionName, stopFetch,
   } = useSelector((state) => ({
     restaurants: state.restaurants,
     categoryId: state.categoryId,
     regionName: state.regionName,
-    stopLoad: state.stopLoad,
+    stopFetch: state.stopFetch,
   }));
 
-  dispatch(loadRestaurants(categoryId, regionName, stopLoad));
+  dispatch(loadRestaurants({ categoryId, regionName, stopFetch }));
 
   return (
     <Restaurants

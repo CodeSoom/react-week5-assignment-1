@@ -5,7 +5,7 @@ describe('fail to fetch restaurants data', () => {
     expect.assertions(1);
 
     try {
-      await fetchRestaurants();
+      await fetchRestaurants({});
     } catch (e) {
       expect(e).toEqual(e);
     }

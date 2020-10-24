@@ -66,27 +66,15 @@ describe('async actions', () => {
     });
 
     it('should fetch restaurants data', async () => {
-      const categoryId = 1;
+      await store.dispatch(loadRestaurants({ categoryId: 1, regionName: '서울', stopFetch: 1 }));
 
-      const regionName = '서울';
-
-      const stopLoad = 1;
-
-      await store.dispatch(loadRestaurants(categoryId, regionName, stopLoad));
-
-      const restaurants = await fetchRestaurants(categoryId, regionName);
+      const restaurants = await fetchRestaurants({ categoryId: 1, regionName: '서울' });
 
       expect(store.getActions()[2]).toEqual(setRestaurants(restaurants));
     });
 
     it('should not fetch restaurant data if conditions are not met', async () => {
-      const categoryId = 0;
-
-      const regionName = '';
-
-      const stopLoad = 1;
-
-      await store.dispatch(loadRestaurants(categoryId, regionName, stopLoad));
+      await store.dispatch(loadRestaurants({ categoryId: 0, regionName: '', stopFetch: 1 }));
 
       expect(store.getActions()[3]).toBeUndefined();
     });
