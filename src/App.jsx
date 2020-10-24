@@ -5,9 +5,14 @@ import Categories from './Categories';
 import Restaurants from './Restaurants';
 
 export default function App() {
+  function handleClick() {
+
+  }
   return (
     <div>
-      <Regions />
+      <Regions
+        onClick={handleClick}
+      />
       <Categories />
       <Restaurants />
     </div>
