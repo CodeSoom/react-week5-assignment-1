@@ -7,6 +7,13 @@ export function updateRegion(region) {
   };
 }
 
+export function updateCategory(category) {
+  return {
+    type: 'updateCategory',
+    payload: { category },
+  };
+}
+
 function setRegions(regions) {
   return {
     type: 'setRegions',

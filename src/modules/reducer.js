@@ -21,6 +21,18 @@ export default function reducer(state = initialState, action) {
       };
     },
 
+    updateCategory: () => {
+      const { category } = action.payload;
+
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          category,
+        },
+      };
+    },
+
     setRegions: () => {
       const { regions } = action.payload;
 

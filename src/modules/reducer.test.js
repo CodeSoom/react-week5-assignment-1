@@ -1,6 +1,7 @@
 import reducer from './reducer';
 import {
   updateRegion,
+  updateCategory,
 } from './actions';
 
 describe('reducer', () => {
