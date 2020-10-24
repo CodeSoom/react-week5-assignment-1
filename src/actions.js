@@ -49,3 +49,16 @@ export function loadCategories() {
     dispatch(setCategories(categories));
   };
 }
+
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { region, categoryId } = getState();
+
+    if (!region || !categoryId) {
+      return false;
+    }
+
+    const restaurants = await fetchRestaurants();
+    dispatch(setRestaurants(restaurants));
+  };
+}
