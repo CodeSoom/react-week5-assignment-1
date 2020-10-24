@@ -32,12 +32,10 @@ describe('CategoriesContainer', () => {
   }
 
   it('renders Categories with categories', () => {
-    const { container, getByText } = renderCategoriesContainer();
+    const { container } = renderCategoriesContainer();
 
     categories.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);
-
-      fireEvent.click(getByText(name));
     });
   });
 
