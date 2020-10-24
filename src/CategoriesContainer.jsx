@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
-import { updateCategoryId } from './actions';
+import { updateCategoryId, loadRestaurants } from './actions';
 
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ export default function RestaurantsContainer() {
 
   function handleClick(id) {
     dispatch(updateCategoryId(id));
+    dispatch(loadRestaurants());
   }
 
   return (
