@@ -148,7 +148,7 @@ describe('reducer', () => {
     });
 
     context('without regionId and categoryId', () => {
-      it('can not get restaurants', async (done) => {
+      it('can not get restaurants and not work loadRestautants()', async (done) => {
         const store = mockStore({
           selected: {},
         });
@@ -156,12 +156,7 @@ describe('reducer', () => {
         await store.dispatch(loadRestaurants());
 
         setTimeout(() => {
-          expect(store.getActions()).toStrictEqual([
-            {
-              type: 'setRestaurants',
-              payload: { restaurants: [{ id: 1, name: 'loading...' }] },
-            },
-          ]);
+          expect(store.getActions()).toStrictEqual([]);
 
           done();
         }, 1000);
