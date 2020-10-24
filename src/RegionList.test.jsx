@@ -11,7 +11,7 @@ describe('RegionList', () => {
   const regionListRender = ({ regions, regionName }) => render((
     <RegionList
       regions={regions}
-      regionName={regionName}
+      selectedRegion={regionName}
       onSelectRegionClick={handleSelectClick}
     />
   ));
