@@ -55,17 +55,23 @@ export function loadCategories() {
   };
 }
 
+let debounce;
+
 export function loadRestaurants() {
   return async (dispatch, getState) => {
     const { selected } = getState();
 
     if (selected.region && selected.category) {
-      const restaurants = await fetchRestaurants({
-        regionId: selected.region,
-        categoryId: selected.category,
-      });
+      clearTimeout(debounce);
 
-      dispatch(setRestaurants(restaurants));
+      debounce = setTimeout(async () => {
+        const restaurants = await fetchRestaurants({
+          regionId: selected.region,
+          categoryId: selected.category,
+        });
+
+        dispatch(setRestaurants(restaurants));
+      }, 1000);
     }
   };
 }
