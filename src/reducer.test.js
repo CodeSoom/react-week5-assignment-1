@@ -5,7 +5,7 @@ import regions from '../__fixtures__/regions';
 import { selectRegion, setRegions } from './actions';
 
 describe('reducer', () => {
-  context('with initial state', () => {
+  describe('with initial state', () => {
     const initialState = {
       selectedRegionId: 0,
       regions: [],
@@ -44,7 +44,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(7);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 });

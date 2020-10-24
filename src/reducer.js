@@ -4,18 +4,18 @@ const initialState = {
 };
 
 const reducers = {
-  setRegions: (state, payload) => ({
+  setRegions: (state, { regions }) => ({
     ...state,
-    regions: payload.regions,
+    regions,
   }),
-  selectRegion: (state, payload) => ({
+  selectRegion: (state, { id }) => ({
     ...state,
-    selectedRegionId: payload.id,
+    selectedRegionId: id,
   }),
 };
 
-export default function reducer(state = initialState, action) {
-  if (!action || !reducers[action.type]) {
+export default function reducer(state = initialState, action = {}) {
+  if (!reducers[action.type]) {
     return state;
   }
 
