@@ -24,14 +24,18 @@ const reducers = {
     ...state,
     restaurants,
   }),
-  selectCategory: (state, payload) => ({
+  selectCategory: (state, { id }) => ({
     ...state,
-    selectedCategory: payload.id,
+    selectedCategory: id,
   }),
-  selectRegion: (state, payload) => ({
-    ...state,
-    selectedRegion: payload.name,
-  }),
+  selectRegion: (state, { id }) => {
+    const selectedRegion = state.regions.find((item) => item.id === id).name;
+
+    return ({
+      ...state,
+      selectedRegion,
+    });
+  },
 };
 
 export default function reducer(state = initialState, action = initialAction) {

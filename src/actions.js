@@ -41,13 +41,12 @@ export function selectCategory(id) {
 }
 
 export function selectRegion(selectedRegion) {
-  const { id, name } = selectedRegion;
+  const { id } = selectedRegion;
 
   return ({
     type: 'selectRegion',
     payload: {
       id,
-      name,
     },
   });
 }
