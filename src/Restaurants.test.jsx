@@ -4,20 +4,20 @@ import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';
 
-import initialRestaurants from '../__fixtures__/restaurants';
+import restaurants from '../__fixtures__/restaurants';
 
 describe('Restaurants', () => {
-  function renderRestaurants(restaurants = []) {
+  function renderRestaurants(restaurantList = []) {
     return render((
-      <Restaurants restaurants={restaurants} />
+      <Restaurants restaurants={restaurantList} />
     ));
   }
 
   context('with restaurants', () => {
     it('show restaurants', () => {
-      const { getByText } = renderRestaurants(initialRestaurants);
+      const { getByText } = renderRestaurants(restaurants);
 
-      initialRestaurants.forEach(({ name }) => {
+      restaurants.forEach(({ name }) => {
         expect(getByText(name)).not.toBeNull();
       });
     });
