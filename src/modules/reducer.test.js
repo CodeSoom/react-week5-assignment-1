@@ -1,11 +1,28 @@
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+
 import reducer from './reducer';
 import {
   updateRegion,
   updateCategory,
+  loadRegions,
 } from './actions';
 import regions from '../../fixtures/regions';
 import categories from '../../fixtures/categories';
 import restaurants from '../../fixtures/restaurants';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+function mockFetch(jsonData) {
+  global.fetch = jest.fn(async () => ({
+    json: async () => jsonData,
+  }));
+}
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('reducer', () => {
   it('updateRegions', () => {
@@ -68,6 +85,19 @@ describe('reducer', () => {
       expect(state.regions).toStrictEqual([]);
       expect(state.categories).toStrictEqual([]);
       expect(state.restaurants).toStrictEqual([]);
+    });
+  });
+
+  it('loadRegions', () => {
+    mockFetch(regions);
+
+    const store = mockStore({});
+
+    store.dispatch(loadRegions()).then(() => {
+      expect(store.getActions()).toStrictEqual([{
+        type: 'setRegions',
+        payload: { regions },
+      }]);
     });
   });
 });
