@@ -18,6 +18,7 @@ export default function RegionsContainer() {
   return (
     <Regions
       regions={regions}
+      onClick={handleClickRegion}
     />
   );
 }

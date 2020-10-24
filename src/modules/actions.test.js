@@ -1,0 +1,5 @@
+describe('reducer', () => {
+  it('updateRegions', () => {
+
+  });
+});
