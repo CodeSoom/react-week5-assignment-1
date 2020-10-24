@@ -26,7 +26,7 @@ const CategoriesContainer = () => {
       <CategoryList
         categories={categories}
         onSelectCategoryClick={handleClickButton}
-        categoryId={category}
+        selectedCategory={category}
       />
     </>
   );

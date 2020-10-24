@@ -2,7 +2,7 @@ import React from 'react';
 
 import Item from './Item';
 
-const CategoryList = ({ categories, onSelectCategoryClick, categoryId }) => {
+const CategoryList = ({ categories, onSelectCategoryClick, selectedCategory }) => {
   if (categories.length === 0) {
     return null;
   }
@@ -13,7 +13,7 @@ const CategoryList = ({ categories, onSelectCategoryClick, categoryId }) => {
         <Item
           key={id}
           name={name}
-          check={id === categoryId}
+          check={id === selectedCategory}
           onClick={() => onSelectCategoryClick({ type: 'category', id })}
         />
       ))}
