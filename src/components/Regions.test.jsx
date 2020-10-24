@@ -29,7 +29,7 @@ describe('Regions', () => {
 
     expect(handleClick).not.toBeCalled();
 
-    fireEvent.click(screen.getByRole('button', { name: '서울' }));
+    fireEvent.click(screen.getByRole('button', { name: /서울/ }));
 
     expect(handleClick).toBeCalled();
   });
