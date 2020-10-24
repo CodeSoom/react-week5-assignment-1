@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCategory } from './actions';
+import { selectCategory, loadRestaurants } from './actions';
 
 import Categories from './Categories';
 
@@ -16,6 +16,7 @@ export default function CategoriesContainer() {
 
   function handleClick(id) {
     dispatch(selectCategory(id));
+    dispatch(loadRestaurants());
   }
 
   return (

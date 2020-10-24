@@ -37,7 +37,7 @@ describe('RegionsContainer', () => {
 
       fireEvent.click(getByText('서울'));
 
-      expect(dispatch).toBeCalledWith(selectRegion(1));
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 });

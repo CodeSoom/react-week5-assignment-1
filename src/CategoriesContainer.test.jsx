@@ -31,7 +31,7 @@ describe('CategoriesContainer', () => {
 
       fireEvent.click(getByText('한식'));
 
-      expect(dispatch).toBeCalledTimes(1);
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 });

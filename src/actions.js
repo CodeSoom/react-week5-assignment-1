@@ -70,9 +70,17 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function loadRestaurants(regionName, categoryId) {
-  return async (dispatch) => {
-    const restaurants = await fetchRestaurants(regionName, categoryId);
+export function loadRestaurants() {
+  return async (dispatch, getStore) => {
+    const { selectedRegionId, selectedCategoryId, regions } = getStore();
+
+    if (!selectedRegionId || !selectedCategoryId) {
+      return;
+    }
+
+    const { name } = regions.find(({ id }) => id === selectedRegionId);
+
+    const restaurants = await fetchRestaurants(name, selectedCategoryId);
     dispatch(setRestaurants(restaurants));
   };
 }
