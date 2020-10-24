@@ -5,6 +5,7 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
@@ -16,6 +17,7 @@ test('App', () => {
     regions,
     categories,
     selected: {},
+    restaurants,
   }));
   render(<App />);
 
@@ -26,5 +28,4 @@ test('App', () => {
   expect(getByRole('button', { name: /한식/ })).toBeInTheDocument();
   expect(getByRole('button', { name: /중식/ })).toBeInTheDocument();
   expect(getByText(/양천주가/)).toBeInTheDocument();
-  expect(getByText(/한국식 초밥/)).toBeInTheDocument();
 });
