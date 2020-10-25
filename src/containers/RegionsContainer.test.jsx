@@ -27,8 +27,6 @@ test('RegionsContainer', () => {
   expect(queryByText(/대전/)).not.toBeNull();
   expect(queryByText(/대구/)).not.toBeNull();
 
-  expect(queryByText(/서울(v)/)).toBeNull();
-
   fireEvent.click(queryByText(/서울/));
 
   expect(dispatch).toBeCalledWith({
