@@ -4,7 +4,7 @@ const initialState = {
 };
 
 const region = (state = initialState, action) => {
-  if (action.type === 'setRegions') {
+  if (action?.type === 'setRegions') {
     const { regions } = action.payload;
     return {
       ...state,
@@ -12,7 +12,7 @@ const region = (state = initialState, action) => {
     };
   }
 
-  if (action.type === 'updateSelectedRegionName') {
+  if (action?.type === 'updateSelectedRegionName') {
     const { regionName } = action.payload;
 
     return {
