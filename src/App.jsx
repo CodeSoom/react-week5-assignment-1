@@ -16,11 +16,6 @@ function loadFoods({ dispatch }){
 }
 
 export default function App() {
-  const foods = [
-    {
-      id: 1, name:'한식',
-    },
-  ];
   const dispatch = useDispatch();
 
   useEffect(() => {

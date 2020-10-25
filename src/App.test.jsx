@@ -22,6 +22,7 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions,
+    foods: [],
   }));
 
   const { getByText } = render((
