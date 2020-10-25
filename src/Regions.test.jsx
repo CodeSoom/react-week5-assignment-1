@@ -38,7 +38,7 @@ describe('Regions Component', () => {
       />
     ));
 
-    expect(getByText('서울 (V)')).not.toBeNull();
+    expect(getByText('서울(V)')).not.toBeNull();
   });
 
   it('Click region', () => {
