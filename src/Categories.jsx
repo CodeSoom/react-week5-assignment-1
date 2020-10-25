@@ -1,14 +1,14 @@
 import React from 'react';
 
-const categories = ['한식', '분식', '중식', '일식', '양식'];
-
-export default function Categories() {
+export default function Categories({ categories, selected, onClick }) {
   return (
     <>
       <ul>
-        {categories.map((category) => (
-          <li key={category}>
-            {category}
+        {categories.map(({ id, name }) => (
+          <li key={id}>
+            <button type="button" onClick={() => onClick(name)}>
+              {selected === name ? `${name} (V)` : name}
+            </button>
           </li>
         ))}
       </ul>
