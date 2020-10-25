@@ -22,7 +22,7 @@ describe('Regions', () => {
   );
 
   context('without selectRegion', () => {
-    it('renders button text', () => {
+    it('renders regions name', () => {
       const { container } = renderRegions();
 
       regions.forEach(({ name }) => {
@@ -32,7 +32,7 @@ describe('Regions', () => {
   });
 
   context('with selectedRegion', () => {
-    it('render button text with "(V)"', () => {
+    it('render regions name with "(V)"', () => {
       const selectedRegion = '대전';
 
       const { container } = renderRegions(selectedRegion);
@@ -45,7 +45,7 @@ describe('Regions', () => {
   });
 
   context('when buttion is clicked', () => {
-    it('called onClick', () => {
+    it('called handleClickRegion', () => {
       const { getByText } = renderRegions();
 
       expect(handleClickRegion).not.toBeCalled();

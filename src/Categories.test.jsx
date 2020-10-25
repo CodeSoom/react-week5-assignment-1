@@ -22,7 +22,7 @@ describe('Categories', () => {
   );
 
   context('without selectedCategory', () => {
-    it('renders buttons', () => {
+    it('renders categories', () => {
       const { container } = renderCategories();
 
       categories.forEach(({ name }) => {
@@ -32,7 +32,7 @@ describe('Categories', () => {
   });
 
   context('with selectedCategory', () => {
-    it('renders button text with "(V)"', () => {
+    it('renders categories with "(V)"', () => {
       const selectedCategory = 1;
 
       const { container } = renderCategories(selectedCategory);
