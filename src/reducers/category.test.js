@@ -11,7 +11,7 @@ describe('category reducer', () => {
     it('chage categories array', () => {
       const initialState = {
         categories: [],
-        selectedIdx: -1,
+        selectedCategoryId: 0,
       };
 
       const state = {
