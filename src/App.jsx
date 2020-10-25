@@ -10,11 +10,16 @@ import {
   setRegions
 } from './actions';
 
+function loadRegions({ dispatch }) {
+  const regions=[];
+  dispatch(setRegions(regions));
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRegions(regions));
+    loadRegions({ dispatch });
   }, []);
   
   return (
