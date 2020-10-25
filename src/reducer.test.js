@@ -8,6 +8,7 @@ import categories from '../fixtures/categories';
 
 describe('reducer', () => {
   const initialState = {
+    regions: [],
     categories: [],
   };
 
