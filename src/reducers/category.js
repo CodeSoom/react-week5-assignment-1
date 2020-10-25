@@ -11,6 +11,14 @@ const category = (state = initialState, action) => {
       categories,
     };
   }
+  if (action.type === 'updateSelectedCategoryId') {
+    const { categoryId } = action.payload;
+
+    return {
+      ...state,
+      selectedCategoryId: categoryId,
+    };
+  }
   return state;
 };
 
