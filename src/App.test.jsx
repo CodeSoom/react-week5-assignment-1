@@ -2,21 +2,34 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import regions from '../__fixtures__/regions';
+
 import App from './App';
 
+jest.mock('react-redux');
+jest.mock('./services/api');
+
 describe('App Component', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+    selected: {
+      region: '',
+    },
+  }));
   it('page render', () => {
-    const { getByText } = render((
+    const { container, getByText } = render((
       <App />
     ));
 
-    expect(getByText(/서울/)).not.toBeNull();
-    expect(getByText(/대전/)).not.toBeNull();
-    expect(getByText(/대구/)).not.toBeNull();
-    expect(getByText(/부산/)).not.toBeNull();
-    expect(getByText(/광주/)).not.toBeNull();
-    expect(getByText(/강원도/)).not.toBeNull();
-    expect(getByText(/인천/)).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
 
     expect(getByText(/한식/)).not.toBeNull();
     expect(getByText(/중식/)).not.toBeNull();
