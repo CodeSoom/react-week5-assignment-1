@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Category = ({ name, onClick }) => (
+const Category = ({ isSelected, name, onClick }) => (
   <li>
     <button
       type="button"
       onClick={onClick}
     >
-      {name}
+      {isSelected() ? `${name}(v)` : name}
     </button>
   </li>
 );
