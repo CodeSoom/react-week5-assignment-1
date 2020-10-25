@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import {
   fetchRegions,
   fetchCategories,
@@ -55,8 +57,6 @@ export function loadCategories() {
   };
 }
 
-let debounce;
-
 export function loadRestaurants() {
   return async (dispatch, getState) => {
     const { selected } = getState();
@@ -64,16 +64,14 @@ export function loadRestaurants() {
     if (selected.region && selected.category) {
       dispatch(setRestaurants([{ id: 1, name: 'loading...' }]));
 
-      clearTimeout(debounce);
-
-      debounce = setTimeout(async () => {
+      _.debounce(async () => {
         const restaurants = await fetchRestaurants({
           regionId: selected.region,
           categoryId: selected.category,
         });
 
         dispatch(setRestaurants(restaurants));
-      }, 1000);
+      }, 1000)();
     }
   };
 }
