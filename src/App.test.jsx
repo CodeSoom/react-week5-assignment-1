@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import regions from '../__fixtures__/regions';
 import categories from '../__fixtures__/categories';
+import restaurants from '../__fixtures__/restaurants';
 
 import App from './App';
 
@@ -20,6 +21,7 @@ describe('App Component', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
+    restaurants,
     selected: {
       region: '',
       category: '',
@@ -27,7 +29,7 @@ describe('App Component', () => {
   }));
 
   it('page render', () => {
-    const { container, getByText } = render((
+    const { container } = render((
       <App />
     ));
 
@@ -39,6 +41,8 @@ describe('App Component', () => {
       expect(container).toHaveTextContent(name);
     });
 
-    expect(getByText(/홍콩반점/)).not.toBeNull();
+    restaurants.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
   });
 });
