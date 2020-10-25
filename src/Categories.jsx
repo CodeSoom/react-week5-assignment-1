@@ -6,8 +6,8 @@ export default function Categories({ categories, selected, onClick }) {
       <ul>
         {categories.map(({ id, name }) => (
           <li key={id}>
-            <button type="button" onClick={() => onClick(name)}>
-              {selected === name ? `${name} (V)` : name}
+            <button type="button" onClick={() => onClick(id)}>
+              {selected === id ? `${name}(V)` : name}
             </button>
           </li>
         ))}
