@@ -10,11 +10,15 @@ import { setCategories } from './actions';
 
 import categories from '../fixtures/categories';
 
+function loadCategories({ dispatch }) {
+  dispatch(setCategories(categories));
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setCategories(categories));
+    loadCategories({ dispatch });
   }, []);
 
   return (
