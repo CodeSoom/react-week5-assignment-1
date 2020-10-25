@@ -1,7 +1,9 @@
 import reducer from './reducer';
 
 import {
-  setCategories, setRegions,
+  setCategories,
+  setRegions,
+  selectRegion,
 } from './actions';
 
 import categories from '../fixtures/categories';
