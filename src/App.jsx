@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import Restaurants from './Restaurants';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
-  getCategories,
   getRegions,
+  getCategories,
 } from './modules/actions';
 
 export default function App() {
@@ -23,7 +23,7 @@ export default function App() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
-      <Restaurants />
+      <RestaurantsContainer />
     </div>
   );
 }
