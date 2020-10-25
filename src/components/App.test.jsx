@@ -23,7 +23,7 @@ test('App', () => {
       categories,
     },
     restaurant: {
-      restaurants,
+      restaurants: [],
     },
   }));
 
@@ -33,12 +33,12 @@ test('App', () => {
 
   expect(queryByText(/서울/)).not.toBeNull();
   expect(queryByText(/한식/)).not.toBeNull();
-  expect(queryByText(/김초밥/)).not.toBeNull();
+  expect(queryByText(/중식/)).not.toBeNull();
 
   expect(queryByText(/한식/)).not.toBeNull();
   expect(queryByText(/중식/)).not.toBeNull();
   expect(queryByText(/일식/)).not.toBeNull();
 
-  expect(queryByText(/양천주가/)).not.toBeNull();
-  expect(queryByText(/김초밥/)).not.toBeNull();
+  expect(queryByText(/양천주가/)).toBeNull();
+  expect(queryByText(/김초밥/)).toBeNull();
 });
