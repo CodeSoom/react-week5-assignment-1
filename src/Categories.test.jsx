@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import categories from '../__fixtures__/categories';
+import { categories } from '../__fixtures__/fixtures';
 
 import Categories from './Categories';
 

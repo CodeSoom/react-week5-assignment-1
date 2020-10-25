@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import categories from '../__fixtures__/categories';
+import { categories } from '../__fixtures__/fixtures';
 
 import CategoriesContainer from './CategoriesContainer';
 

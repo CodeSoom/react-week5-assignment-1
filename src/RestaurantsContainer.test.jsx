@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import restaurants from '../__fixtures__/restaurants';
+import { restaurants } from '../__fixtures__/fixtures';
 
 import RestaurantsContainer from './RestaurantsContainer';
 

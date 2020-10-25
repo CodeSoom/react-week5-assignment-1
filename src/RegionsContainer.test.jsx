@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import regions from '../__fixtures__/regions';
+import { regions } from '../__fixtures__/fixtures';
 
 import RegionsContainer from './RegionsContainer';
 

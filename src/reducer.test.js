@@ -1,8 +1,6 @@
 import reducer from './reducer';
 
-import regions from '../__fixtures__/regions';
-import categories from '../__fixtures__/categories';
-import restaurants from '../__fixtures__/restaurants';
+import { regions, categories, restaurants } from '../__fixtures__/fixtures';
 
 import initialState from './initialState';
 
