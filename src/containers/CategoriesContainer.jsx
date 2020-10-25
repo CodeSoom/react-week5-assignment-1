@@ -1,16 +1,28 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Category from '../components/Category';
 
-export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
-    categories: state.category.categories,
-  }));
+import { updateSelectedCategoryId } from '../actions';
 
-  function handleClick() {
-    // TODO
+export default function CategoriesContainer() {
+  const dispatch = useDispatch();
+
+  const { categories, selectedCategoryId } = useSelector((state) => {
+    const { category } = state;
+    return {
+      categories: category.categories,
+      selectedCategoryId: category.category,
+    };
+  });
+
+  function handleClick(categoryId) {
+    dispatch(updateSelectedCategoryId(categoryId));
+  }
+
+  function isSelected(categoryId) {
+    return categoryId === selectedCategoryId;
   }
 
   return (
@@ -18,8 +30,9 @@ export default function CategoriesContainer() {
       {categories.map((category) => (
         <Category
           key={category.id}
+          isSelected={() => isSelected(category.id)}
           name={category.name}
-          onClick={handleClick}
+          onClick={() => handleClick(category.id)}
         />
       ))}
     </ul>
