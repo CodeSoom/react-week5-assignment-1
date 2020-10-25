@@ -20,4 +20,14 @@ describe('restaurant reducer', () => {
       expect(state.restaurant.restaurants).not.toHaveLength(0);
     });
   });
+
+  context('undefined action', () => {
+    it("doesn't work", () => {
+      const state = {
+        restaurant: reducer(),
+      };
+
+      expect(state.restaurant.restaurants).toHaveLength(0);
+    });
+  });
 });
