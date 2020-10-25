@@ -17,7 +17,7 @@ export default function CategoryContainer() {
   function handleClickSelect(event) {
     const buttonText = event.target.textContent;
 
-    if (buttonText.indexOf('(V)') !== -1) {
+    if (buttonText.includes('(V)') !== -1) {
       return;
     }
 
