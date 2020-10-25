@@ -28,7 +28,7 @@ describe('App', () => {
     },
   }));
 
-  it('컴포넌트가 생성되면 dispatch가 호출됩니다.', () => {
+  it('dispatch가 호출됩니다.', () => {
     render(<App />);
 
     expect(dispatch).toBeCalled();
