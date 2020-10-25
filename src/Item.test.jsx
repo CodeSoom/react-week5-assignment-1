@@ -29,7 +29,6 @@ describe('Item', () => {
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
-
   context('without selected', () => {
     it('it listens click event', () => {
       const { getByText } = itemRender({ name: '한식', check: false });
