@@ -18,9 +18,18 @@ describe('reducer', () => {
       expect(state.categories).not.toHaveLength(0);
     });
   });
+
   context('undefined action', () => {
     it("doesn't work", () => {
       const state = reducer(initialState, {});
+
+      expect(state.categories).toHaveLength(0);
+    });
+  });
+
+  context('in initial state', () => {
+    it('renders initial state', () => {
+      const state = reducer(undefined, {});
 
       expect(state.categories).toHaveLength(0);
     });
