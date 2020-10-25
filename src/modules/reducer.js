@@ -28,6 +28,25 @@ const reduce = {
       },
     };
   },
+  setCategories: (state, action) => {
+    const { categories } = action.payload;
+
+    return {
+      ...state,
+      categories,
+    };
+  },
+  selectCategory: (state, action) => {
+    const { category } = action.payload;
+
+    return {
+      ...state,
+      selected: {
+        ...state.selected,
+        category,
+      },
+    };
+  },
 };
 
 export default function reducer(state = initialState, action) {
