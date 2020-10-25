@@ -40,9 +40,9 @@ describe('CategoriesContainer Component', () => {
       <CategoriesContainer />
     ));
 
-    categories.forEach(({ name }) => {
+    categories.forEach(({ id, name }) => {
       fireEvent.click(getByText(name));
-      expect(dispatch).toBeCalledWith(selectCategory(name));
+      expect(dispatch).toBeCalledWith(selectCategory(id));
     });
   });
 });
