@@ -1,4 +1,5 @@
 const initialState = {
+  regions: [],
   categories: [],
 };
 

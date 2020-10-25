@@ -13,6 +13,7 @@ export function loadInitialData() {
   return async (dispatch) => {
     const categories = await fetchCategories();
 
+    // dispatch(setRegions(regions));
     dispatch(setCategories(categories));
   };
 }
