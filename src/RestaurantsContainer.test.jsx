@@ -6,15 +6,11 @@ import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+import restaurants from '../__fixtures__/restaurants';
+
 describe('<RestaurantsContainer />', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [{
-      id: 1,
-      categoryId: 1,
-      name: '양천주가',
-      address: '서울 강남구 123456',
-      information: '양천주가 in 서울 강남구 123456',
-    }],
+    restaurants,
   }));
 
   const renderRestaurantsContainer = () => render((
@@ -26,6 +22,6 @@ describe('<RestaurantsContainer />', () => {
     const { getByRole } = renderRestaurantsContainer();
 
     // Then
-    expect(getByRole('list')).toHaveTextContent('양천주가');
+    expect(getByRole('list')).toHaveTextContent('마법사주방');
   });
 });

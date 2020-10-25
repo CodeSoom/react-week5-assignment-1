@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
+import regions from '../__fixtures__/regions';
+
 describe('<RestaurantRegionsContainer />', () => {
   const dispatch = jest.fn();
 
@@ -15,7 +17,7 @@ describe('<RestaurantRegionsContainer />', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [{ id: 1, name: '서울' }],
+      regions,
       selectedRegion: { id: 1, name: '서울' },
     }));
   });

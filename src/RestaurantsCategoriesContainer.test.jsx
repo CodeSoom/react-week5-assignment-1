@@ -6,6 +6,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantsCategoriesContainer from './RestaurantsCategoriesContainer';
 
+import categories from '../__fixtures__/categories';
+
 describe('<RestaurantsCategoriesContainer />', () => {
   const dispatch = jest.fn();
 
@@ -15,7 +17,7 @@ describe('<RestaurantsCategoriesContainer />', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      categories: [{ id: 1, name: '한식' }],
+      categories,
       selectedCategory: { id: 1, name: '한식' },
     }));
   });
