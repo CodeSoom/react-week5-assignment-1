@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import Categories from './Categories';
 import Restaurants from './Restaurants';
 import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 import {
+  getCategories,
   getRegions,
 } from './modules/actions';
 
@@ -15,12 +16,13 @@ export default function App() {
 
   useEffect(() => {
     dispatch(getRegions());
+    dispatch(getCategories());
   }, []);
 
   return (
     <div>
       <RegionsContainer />
-      <Categories />
+      <CategoriesContainer />
       <Restaurants />
     </div>
   );
