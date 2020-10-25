@@ -8,7 +8,7 @@ import regions from '../fixtures/regions';
 
 test('Regions', () => {
   const { getByText } = render((
-    <Regions />
+    <Regions regions={regions} />
   ));
 
   regions.forEach(({ name }) => {
