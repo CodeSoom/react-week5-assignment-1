@@ -4,14 +4,14 @@ const initialState = {
 };
 
 const category = (state = initialState, action) => {
-  if (action.type === 'setCategories') {
+  if (action?.type === 'setCategories') {
     const { categories } = action.payload;
     return {
       ...state,
       categories,
     };
   }
-  if (action.type === 'updateSelectedCategoryId') {
+  if (action?.type === 'updateSelectedCategoryId') {
     const { categoryId } = action.payload;
 
     return {
