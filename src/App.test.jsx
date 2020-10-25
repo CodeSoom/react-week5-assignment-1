@@ -11,10 +11,6 @@ jest.mock('./services/api');
 
 import regions from '../fixtures/regions';
 
-import {
-  setRegions,
-} from './actions';
-
 test('App', () => {
   const dispatch = jest.fn();
 
@@ -30,4 +26,6 @@ test('App', () => {
   expect(getByText('서울')).not.toBeNull();
   expect(getByText('대구')).not.toBeNull();
   expect(getByText('강원도')).not.toBeNull();
+
+  expect(getByText('한식')).not.toBeNull();
 });

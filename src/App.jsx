@@ -13,7 +13,6 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadRegions());
-    // loadRegions({ dispatch });
   }, []);
   
   return (
