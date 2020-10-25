@@ -57,9 +57,14 @@ describe('reducer', () => {
 
   describe('undefined action', () => {
     it("doesn't work", () => {
+      const initialState = {
+        selectedRegion: null,
+        selectedCategory: null,
+      };
+
       const state = reducer(initialState, {});
 
-      expect(state.categories).toHaveLength(0);
+      expect(state.selectedRegion).toBe(null);
     });
   });
 
