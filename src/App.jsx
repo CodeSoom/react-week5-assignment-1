@@ -7,7 +7,13 @@ import FoodsContainer from './FoodsContainer';
 
 import {
   loadRegions,
+  setFoods,
 } from './actions';
+
+function loadFoods({ dispatch }){
+  const foods = [];
+  dispatch(setFoods(foods));
+}
 
 export default function App() {
   const foods = [
@@ -19,6 +25,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadRegions());
+    loadFoods(dispatch);
   }, []);
   
   return (

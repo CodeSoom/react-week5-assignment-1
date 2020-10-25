@@ -15,3 +15,12 @@ export function loadRegions () {
     dispatch(setRegions(regions));
   };
 }
+
+export function setFoods(foods) {
+  return {
+    type: 'setFoods',
+    payload: { 
+      foods 
+    },
+  };
+} 
