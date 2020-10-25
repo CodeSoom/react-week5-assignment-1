@@ -16,7 +16,7 @@ export default function ListContainer() {
   useEffect(() => {
     const { region, category } = selectedButtons;
 
-    if (region === '' || category === '') {
+    if (!region || !category) {
       return;
     }
 
