@@ -13,7 +13,7 @@ export default function CategoriesContainer() {
     const { category } = state;
     return {
       categories: category.categories,
-      selectedCategoryId: category.category,
+      selectedCategoryId: category.selectedCategoryId,
     };
   });
 
