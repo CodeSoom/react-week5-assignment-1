@@ -7,16 +7,16 @@ import {
 import categories from '../fixtures/categories';
 
 describe('reducer', () => {
-  const initialState = {
-    regions: [],
-    categories: [],
-  };
-
   describe('setRegions', () => {
     it('changes Regions', () => {
+      const initialState = {
+        regions: [],
+      };
+
       const regions = [
         { id: 1, name: '서울' },
       ];
+
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
@@ -25,9 +25,31 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('changes categories', () => {
+      const initialState = {
+        categories: [],
+      };
+
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).not.toHaveLength(0);
+    });
+  });
+
+  describe('selectRegion', () => {
+    it('select Region', () => {
+      const initialState = {
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        selectedRegion: null,
+      };
+
+      const state = reducer(initialState, selectRegion(1));
+
+      expect(state.selectedRegion).toEqual({
+        id: 1,
+        name: '서울',
+      });
     });
   });
 
