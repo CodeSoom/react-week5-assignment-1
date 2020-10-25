@@ -1,45 +1,35 @@
 import initialState from './initialState';
 
 const reducers = {
-  setRegions(state, action) {
-    const { regions } = action.payload;
-
+  setRegions(state, { payload: { regions } }) {
     return {
       ...state,
       regions,
     };
   },
 
-  selectedRegion(state, action) {
-    const { region } = action.payload;
-
+  selectedRegion(state, { payload: { region } }) {
     return {
       ...state,
       selectedRegion: region,
     };
   },
 
-  setCategories(state, action) {
-    const { categories } = action.payload;
-
+  setCategories(state, { payload: { categories } }) {
     return {
       ...state,
       categories,
     };
   },
 
-  selectedCategory(state, action) {
-    const { category } = action.payload;
-
+  selectedCategory(state, { payload: { category } }) {
     return {
       ...state,
       selectedCategory: category,
     };
   },
 
-  setRestaurants(state, action) {
-    const { restaurants } = action.payload;
-
+  setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
       restaurants,
