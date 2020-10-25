@@ -11,5 +11,13 @@ export default function  reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setFoods') {
+    const { foods } = action.payload;
+    return {
+      ...state,
+      foods,
+    };
+  }
+
   return state;
 }
