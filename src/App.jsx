@@ -7,18 +7,17 @@ import Regions from './Regions';
 import CategoriesContainer from './CategoriesContainer';
 
 import {
-  loadCategories,
+  loadInitialData,
 } from './actions';
 
 function RestaurantsContainer() {
   return null;
 }
-
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadCategories());
+    dispatch(loadInitialData());
   }, []);
 
   return (

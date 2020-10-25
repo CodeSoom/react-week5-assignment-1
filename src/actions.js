@@ -9,7 +9,7 @@ export function setCategories(categories) {
   };
 }
 
-export function loadCategories() {
+export function loadInitialData() {
   return async (dispatch) => {
     const categories = await fetchCategories();
 
