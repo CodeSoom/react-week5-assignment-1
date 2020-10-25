@@ -12,6 +12,11 @@ jest.mock('./services/api');
 import regions from '../fixtures/regions';
 
 test('App', () => {
+  const foods = [
+    {
+      id: 1, name:'한식',
+    },
+  ];
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -20,7 +25,7 @@ test('App', () => {
   }));
 
   const { getByText } = render((
-    <App />
+    <App foods={foods} />
   ));
 
   expect(getByText('서울')).not.toBeNull();

@@ -9,6 +9,11 @@ import {
 } from './actions';
 
 export default function App() {
+  const foods = [
+    {
+      id: 1, name:'한식',
+    },
+  ];
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +24,13 @@ export default function App() {
     <div>
       <RegionsContainer />
       <div />
-      한식
+      <ul>
+        {foods.map((food)=>(
+          <li key={food.id} style={{ listStyleType: "none" }}>
+            <button>{food.name}</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
