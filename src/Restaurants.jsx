@@ -1,14 +1,12 @@
 import React from 'react';
 
-const restaurants = ['홍콩반점'];
-
-export default function Restaurants() {
+export default function Restaurants({ restaurants }) {
   return (
     <>
       <ul>
-        {restaurants.map((restaurant) => (
-          <li key={restaurant}>
-            {restaurant}
+        {restaurants.map(({ id, name }) => (
+          <li key={id}>
+            {name}
           </li>
         ))}
       </ul>
