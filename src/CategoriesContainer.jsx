@@ -16,8 +16,8 @@ const CategoriesContainer = () => {
     dispatch(loadRestaurants('categories'));
   }, []);
 
-  const handleClickButton = (stateId) => {
-    dispatch(updateRestaurant(stateId));
+  const handleClickButton = (selectRestaurant) => {
+    dispatch(updateRestaurant(selectRestaurant));
     dispatch(loadRestaurantsName());
   };
 

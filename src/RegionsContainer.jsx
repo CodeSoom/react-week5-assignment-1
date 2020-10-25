@@ -16,8 +16,8 @@ const RegionsContainer = () => {
     dispatch(loadRestaurants('regions'));
   }, []);
 
-  const handleClickButton = (stateId) => {
-    dispatch(updateRestaurant(stateId));
+  const handleClickButton = (selectRestaurant) => {
+    dispatch(updateRestaurant(selectRestaurant));
     dispatch(loadRestaurantsName());
   };
 
