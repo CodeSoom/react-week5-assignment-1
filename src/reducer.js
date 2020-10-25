@@ -8,6 +8,14 @@ const initialAction = {
 };
 
 const reducers = {
+  setRegions: (state, payload) => {
+    const { regions } = payload;
+    return {
+      ...state,
+      regions,
+    };
+  },
+
   setCategories: (state, payload) => {
     const { categories } = payload;
     return {
