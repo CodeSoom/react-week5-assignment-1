@@ -11,6 +11,15 @@ const region = (state = initialState, action) => {
       regions,
     };
   }
+
+  if (action.type === 'updateSelectedRegionName') {
+    const { regionName } = action.payload;
+
+    return {
+      ...state,
+      selectedRegionName: regionName,
+    };
+  }
   return state;
 };
 
