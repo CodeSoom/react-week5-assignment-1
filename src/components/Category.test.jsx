@@ -4,22 +4,34 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Category from './Category';
 
-test('Regions', () => {
+describe('Category', () => {
   const clickHandler = jest.fn();
 
-  const { queryByText } = render((
-    <Category
-      isSelected={() => false}
-      name="한식"
-      onClick={clickHandler}
-    />
-  ));
+  function renderCategory({ isSelectedReturnValue }) {
+    return render(
+      <Category
+        isSelected={() => isSelectedReturnValue}
+        name="한식"
+        onClick={clickHandler}
+      />,
+    );
+  }
 
-  expect(queryByText(/한식/)).not.toBeNull();
+  it('is not existed selected region', () => {
+    const { queryByText } = renderCategory({ isSelectedReturnValue: false });
 
-  expect(clickHandler).not.toBeCalled();
+    expect(queryByText(/한식/)).not.toBeNull();
 
-  fireEvent.click(queryByText(/한식/));
+    expect(clickHandler).not.toBeCalled();
 
-  expect(clickHandler).toBeCalled();
+    fireEvent.click(queryByText(/한식/));
+
+    expect(clickHandler).toBeCalled();
+  });
+
+  it('is exist selected region', () => {
+    const { queryByText } = renderCategory({ isSelectedReturnValue: true });
+
+    expect(queryByText(/한식(v)/)).toBeNull();
+  });
 });
