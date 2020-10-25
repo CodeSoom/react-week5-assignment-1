@@ -9,6 +9,7 @@ test('Regions', () => {
 
   const { queryByText } = render((
     <Category
+      isSelected={() => false}
       name="한식"
       onClick={clickHandler}
     />
