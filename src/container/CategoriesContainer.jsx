@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Buttons from '../components/Buttons';
-import { updateCategory, loadRestaurants } from '../modules/actions';
+import { selectCategory, loadRestaurants } from '../modules/actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClickCategories(category) {
-    dispatch(updateCategory(category));
+    dispatch(selectCategory(category));
     dispatch(loadRestaurants());
   }
 

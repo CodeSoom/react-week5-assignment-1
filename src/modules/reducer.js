@@ -10,7 +10,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   const actions = {
-    updateRegion: () => {
+    selectRegion: () => {
       const { region } = action.payload;
 
       return {
@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
       };
     },
 
-    updateCategory: () => {
+    selectCategory: () => {
       const { category } = action.payload;
 
       return {

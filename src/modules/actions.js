@@ -4,16 +4,16 @@ import {
   fetchRestaurants,
 } from '../services/api';
 
-export function updateRegion(region) {
+export function selectRegion(region) {
   return {
-    type: 'updateRegion',
+    type: 'selectRegion',
     payload: { region },
   };
 }
 
-export function updateCategory(category) {
+export function selectCategory(category) {
   return {
-    type: 'updateCategory',
+    type: 'selectCategory',
     payload: { category },
   };
 }

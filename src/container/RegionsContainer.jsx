@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Buttons from '../components/Buttons';
-import { updateRegion, loadRestaurants } from '../modules/actions';
+import { selectRegion, loadRestaurants } from '../modules/actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function RegionsContainer() {
   }));
 
   function handleClickRegion(region) {
-    dispatch(updateRegion(region));
+    dispatch(selectRegion(region));
     dispatch(loadRestaurants());
   }
 

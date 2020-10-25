@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 
 import reducer from './reducer';
 import {
-  updateRegion,
-  updateCategory,
+  selectRegion,
+  selectCategory,
   loadRegions,
   loadCategories,
   loadRestaurants,
@@ -32,7 +32,7 @@ describe('reducer', () => {
       selected: {
         region: '',
       },
-    }, updateRegion('서울'));
+    }, selectRegion('서울'));
 
     expect(state.selected.region).toBe('서울');
   });
@@ -42,7 +42,7 @@ describe('reducer', () => {
       selected: {
         category: '',
       },
-    }, updateCategory('한식'));
+    }, selectCategory('한식'));
 
     expect(state.selected.category).toBe('한식');
   });
