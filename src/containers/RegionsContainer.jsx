@@ -1,16 +1,28 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Region from '../components/Region';
 
-export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
-    regions: state.region.regions,
-  }));
+import { updateSelectedRegionName } from '../actions';
 
-  function handleClick() {
-    // TODO
+export default function RegionsContainer() {
+  const dispatch = useDispatch();
+
+  const { regions, selectedRegionName } = useSelector((state) => {
+    const { region } = state;
+    return {
+      regions: region.regions,
+      selectedRegionName: region.selectedRegionName,
+    };
+  });
+
+  function handleClick(regionName) {
+    dispatch(updateSelectedRegionName(regionName));
+  }
+
+  function isSelected(regionName) {
+    return regionName === selectedRegionName;
   }
 
   return (
@@ -18,8 +30,9 @@ export default function RegionsContainer() {
       {regions.map((region) => (
         <Region
           key={region.id}
+          isSelected={() => isSelected(region.name)}
           name={region.name}
-          onClick={handleClick}
+          onClick={() => handleClick(region.name)}
         />
       ))}
     </ul>
