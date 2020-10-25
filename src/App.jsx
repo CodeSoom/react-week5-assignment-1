@@ -7,22 +7,15 @@ import FoodsContainer from './FoodsContainer';
 
 import {
   loadRegions,
-  setFoods,
+  loadFoods,
 } from './actions';
-
-import { fetchFoods } from './services/api';
-
-async function loadFoods({ dispatch }){
-  const foods = await fetchFoods();
-  dispatch(setFoods(foods));
-}
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
-    loadFoods(dispatch);
+    dispatch(loadFoods());
   }, []);
   
   return (
