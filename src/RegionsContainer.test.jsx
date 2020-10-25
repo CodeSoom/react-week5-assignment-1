@@ -7,6 +7,7 @@ import { fireEvent, render } from '@testing-library/react';
 import RegionsContainer from './RegionsContainer';
 
 import regions from '../fixtures/regions';
+import { selectRegion } from './actions';
 
 jest.mock('react-redux');
 
@@ -27,5 +28,5 @@ test('RegionsContainer', () => {
 
   fireEvent.click(getByText('서울'));
 
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledWith(selectRegion('서울'));
 });
