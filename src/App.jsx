@@ -6,21 +6,15 @@ import Regions from './Regions';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { setCategories } from './actions';
-
-import { fetchCategories } from './services/api';
-
-async function loadCategories({ dispatch }) {
-  const categories = await fetchCategories();
-
-  dispatch(setCategories(categories));
-}
+import {
+  loadCategories,
+} from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadCategories({ dispatch });
+    dispatch(loadCategories());
   }, []);
 
   return (
