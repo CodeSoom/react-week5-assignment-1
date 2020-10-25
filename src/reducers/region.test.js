@@ -37,4 +37,14 @@ describe('region reducer', () => {
       expect(state.region.selectedRegionName).toBe('서울');
     });
   });
+
+  context('undefined action', () => {
+    it("doesn't work", () => {
+      const state = {
+        region: reducer(),
+      };
+
+      expect(state.region.regions).toHaveLength(0);
+    });
+  });
 });
