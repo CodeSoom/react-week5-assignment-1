@@ -31,22 +31,6 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function loadRegions() {
-  return async (dispatch) => {
-    const regions = await fetchRegions();
-
-    dispatch(setRegions(regions));
-  };
-}
-
-export function loadCategories() {
-  return async (dispatch) => {
-    const categories = await fetchCategories();
-
-    dispatch(setCategories(categories));
-  };
-}
-
 export function updateSelectedRegionName(regionName) {
   return {
     type: 'updateSelectedRegionName',
@@ -62,6 +46,22 @@ export function updateSelectedCategoryId(categoryId) {
     payload: {
       categoryId,
     },
+  };
+}
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+
+    dispatch(setRegions(regions));
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
   };
 }
 
