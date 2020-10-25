@@ -18,6 +18,8 @@ export default function App() {
   return (
     <div>
       <RegionsContainer />
+      <div />
+      한식
     </div>
   );
 }
