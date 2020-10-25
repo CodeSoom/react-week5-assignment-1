@@ -31,10 +31,20 @@ describe('category reducer', () => {
       };
 
       const state = {
-        region: reducer(initialState, updateSelectedCategoryId(1)),
+        category: reducer(initialState, updateSelectedCategoryId(1)),
       };
 
-      expect(state.region.selectedCategoryId).toBe(1);
+      expect(state.category.selectedCategoryId).toBe(1);
+    });
+  });
+
+  context('undefined action', () => {
+    it("doesn't work", () => {
+      const state = {
+        category: reducer(),
+      };
+
+      expect(state.category.categories).toHaveLength(0);
     });
   });
 });
