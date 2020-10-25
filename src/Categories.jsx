@@ -6,7 +6,7 @@ export default function Categories({ categories }) {
   return (
     <ul>
       {
-        categories && categories.map(({ id, name }) => (
+        categories?.map(({ id, name }) => (
           <li key={id}>
             <ButtonContainer
               name={name}

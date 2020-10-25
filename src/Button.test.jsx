@@ -12,14 +12,14 @@ describe('Button', () => {
   });
 
   const name = '서울';
-  const onClick = jest.fn();
+  const handleClick = jest.fn();
 
   function renderButton({ selected }) {
     const { container, getByText } = render(
       <Button
         name={name}
         selected={selected}
-        onClick={onClick}
+        onClick={handleClick}
       />,
     );
 
@@ -29,7 +29,7 @@ describe('Button', () => {
     };
   }
 
-  context('while not selected', () => {
+  context('when not selected', () => {
     it('renders', () => {
       const { container } = renderButton({ selected: false });
 
@@ -38,7 +38,7 @@ describe('Button', () => {
     });
   });
 
-  context('while selected', () => {
+  context('when selected', () => {
     it('renders', () => {
       const { container, button } = renderButton({ selected: true });
 
@@ -53,6 +53,6 @@ describe('Button', () => {
 
     click(button);
 
-    expect(onClick).toBeCalled();
+    expect(handleClick).toBeCalled();
   });
 });

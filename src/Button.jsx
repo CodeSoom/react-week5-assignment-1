@@ -7,7 +7,7 @@ export default function Button({ name, selected, onClick }) {
       onClick={onClick}
     >
       {name}
-      {selected ? '(V)' : null}
+      {selected && '(V)'}
     </button>
   );
 }

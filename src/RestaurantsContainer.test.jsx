@@ -16,6 +16,7 @@ describe('RestaurantsContainer', () => {
       restaurants,
     }));
   });
+
   it('renders', () => {
     const { container, getByText } = render(<RestaurantsContainer />);
 

@@ -11,6 +11,8 @@ export default function ButtonContainer({ name, id, filterName }) {
 
   const { filter } = useSelector((state) => ({ filter: state.filter }));
 
+  const selected = filter && (name === filter.regionName || id === filter.categoryId);
+
   function handleClick() {
     dispatch(updateFilter({ filter: { [filterName]: id || name } }));
   }
@@ -18,7 +20,7 @@ export default function ButtonContainer({ name, id, filterName }) {
   return (
     <Button
       name={name}
-      selected={filter && (name === filter.regionName || id === filter.categoryId)}
+      selected={selected}
       onClick={handleClick}
     />
   );

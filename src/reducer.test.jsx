@@ -56,7 +56,7 @@ describe('reducer', () => {
           }),
         );
 
-        expect(state.regions).toHaveLength(7);
+        expect(state.regions).toEqual(regions);
       });
     });
 
@@ -73,7 +73,7 @@ describe('reducer', () => {
           }),
         );
 
-        expect(state.categories).toHaveLength(7);
+        expect(state.categories).toEqual(categories);
       });
     });
 
@@ -90,7 +90,7 @@ describe('reducer', () => {
           }),
         );
 
-        expect(state.restaurants).toHaveLength(3);
+        expect(state.restaurants).toEqual(restaurants);
       });
     });
   });
