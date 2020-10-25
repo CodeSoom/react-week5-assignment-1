@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import regions from '../__fixtures__/regions';
+import categories from '../__fixtures__/categories';
 
 import App from './App';
 
@@ -18,10 +19,13 @@ describe('App Component', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions,
+    categories,
     selected: {
       region: '',
+      category: '',
     },
   }));
+
   it('page render', () => {
     const { container, getByText } = render((
       <App />
@@ -31,11 +35,9 @@ describe('App Component', () => {
       expect(container).toHaveTextContent(name);
     });
 
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/중식/)).not.toBeNull();
-    expect(getByText(/일식/)).not.toBeNull();
-    expect(getByText(/양식/)).not.toBeNull();
-    expect(getByText(/분식/)).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
 
     expect(getByText(/홍콩반점/)).not.toBeNull();
   });
