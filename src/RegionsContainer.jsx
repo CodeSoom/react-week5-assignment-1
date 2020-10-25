@@ -9,9 +9,16 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
+  function handleClick() {
+    return null;
+  }
+
   return (
     <div>
-      <Regions regions={regions} />
+      <Regions
+        regions={regions}
+        onClick={handleClick}
+      />
     </div>
   );
 }
