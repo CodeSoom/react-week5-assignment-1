@@ -9,11 +9,6 @@ import FoodsContainer from './FoodsContainer';
 jest.mock('react-redux');
 
 test('FoodsContainer', () => {
-  const foods = [
-    {
-      id: 1, name:'한식',
-    },
-  ];
 
   const { getByText } = render((
     <FoodsContainer />

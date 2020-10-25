@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+import FoodsContainer from './FoodsContainer';
 
 import {
   loadRegions,
@@ -24,13 +25,7 @@ export default function App() {
     <div>
       <RegionsContainer />
       <div />
-      <ul>
-        {foods.map((food)=>(
-          <li key={food.id} style={{ listStyleType: "none" }}>
-            <button>{food.name}</button>
-          </li>
-        ))}
-      </ul>
+      <FoodsContainer />
     </div>
   );
 }
