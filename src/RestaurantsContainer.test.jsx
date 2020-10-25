@@ -11,7 +11,7 @@ jest.mock('react-redux');
 describe('RestaurantsContainer', () => {
   describe('render title', () => {
     context('without selections', () => {
-      it('shows a message', () => {
+      it('shows a message to select region and category', () => {
         const { getByText } = render(<RestaurantsContainer />);
 
         expect(getByText(/지역과 분류를 선택해주세요/)).not.toBeNull();

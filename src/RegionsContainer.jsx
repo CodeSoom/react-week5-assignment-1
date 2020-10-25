@@ -20,12 +20,10 @@ export default function RegionsContainer() {
   }
 
   return (
-    <div>
-      <Regions
-        selectedRegionId={selectedRegionId}
-        regions={regions}
-        onClick={handleClick}
-      />
-    </div>
+    <Regions
+      selectedRegionId={selectedRegionId}
+      regions={regions}
+      onClick={handleClick}
+    />
   );
 }

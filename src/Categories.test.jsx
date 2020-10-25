@@ -60,7 +60,8 @@ describe('Categories', () => {
 
   context('without categories', () => {
     it('show nothing message', () => {
-      const { getByText } = renderCategories(0, []);
+      const selectedCategoryId = 0;
+      const { getByText } = renderCategories(selectedCategoryId, []);
 
       expect(getByText(/음식 분류가 없습니다/)).not.toBeNull();
     });

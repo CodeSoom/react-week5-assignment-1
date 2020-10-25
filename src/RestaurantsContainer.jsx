@@ -11,14 +11,12 @@ export default function RestaurantsContainer() {
     restaurants: state.restaurants,
   }));
 
-  if (!selectedRegionId || !selectedCategoryId) {
-    return <p>지역과 분류를 선택해주세요!</p>;
-  }
-
-  return (
-    <div>
+  return (selectedRegionId && selectedCategoryId) ? (
+    <>
       <h4>레스토랑 목록</h4>
       <Restaurants restaurants={restaurants} />
-    </div>
+    </>
+  ) : (
+    <p>지역과 분류를 선택해주세요!</p>
   );
 }

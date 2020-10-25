@@ -20,12 +20,10 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <div>
-      <Categories
-        selectedCategoryId={selectedCategoryId}
-        categories={categories}
-        onClick={handleClick}
-      />
-    </div>
+    <Categories
+      selectedCategoryId={selectedCategoryId}
+      categories={categories}
+      onClick={handleClick}
+    />
   );
 }

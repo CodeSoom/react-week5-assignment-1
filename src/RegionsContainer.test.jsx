@@ -24,7 +24,7 @@ describe('RegionsContainer', () => {
   }));
 
   describe('selects a region', () => {
-    it('checks selected region', () => {
+    it('call dispatch by click', () => {
       const { getByText } = render(<RegionsContainer />);
 
       fireEvent.click(getByText('서울'));
