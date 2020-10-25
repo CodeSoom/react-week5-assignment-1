@@ -26,7 +26,7 @@ describe('Categories Component', () => {
   });
 
   it('Page render with selected', () => {
-    const selected = '한식';
+    const selected = 1;
 
     const { getByText } = render((
       <Categories
@@ -36,7 +36,7 @@ describe('Categories Component', () => {
       />
     ));
 
-    expect(getByText('한식 (V)')).not.toBeNull();
+    expect(getByText('한식(V)')).not.toBeNull();
   });
 
   it('Click category', () => {
