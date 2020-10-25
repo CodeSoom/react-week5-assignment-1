@@ -1,9 +1,7 @@
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 
-import {
-  loadRestaurants, setRestaurants, setRestaurantsName, loadRestaurantsName,
-} from './actions';
+import { loadRestaurants, loadRestaurantsName } from './actions';
 import { categoriesInfo, restaurantsInfo } from '../fixtures/fixtures';
 import { fetchRestaurants, fetchRestaurantsName } from './services/api';
 
@@ -23,7 +21,13 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurants({ type: 'categories', info: categoriesInfo }));
+      expect(actions).toEqual([{
+        type: 'setRestaurants',
+        payload: {
+          type: 'categories',
+          info: categoriesInfo,
+        },
+      }]);
     });
   });
 
@@ -38,7 +42,10 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurantsName(restaurantsInfo));
+        expect(actions).toEqual([{
+          type: 'setRestaurantsName',
+          payload: restaurantsInfo,
+        }]);
       });
     });
     context('without store', () => {
