@@ -64,3 +64,17 @@ export function setRestaurants(restaurants) {
     },
   };
 }
+
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { selectedRegion, selectedCategory } = getState();
+
+    if (selectedRegion.length === 0 || selectedCategory.length === 0) {
+      return;
+    }
+
+    const restaurants = await fetchRestaurants({ selectedRegion, selectedCategory });
+
+    dispatch(setRestaurants(restaurants));
+  };
+}
