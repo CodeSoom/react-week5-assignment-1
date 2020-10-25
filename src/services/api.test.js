@@ -27,11 +27,25 @@ describe('api', () => {
     expect(data).not.toHaveLength(0);
   });
 
-  it('fetchRestaurants', async () => {
-    const resp = { data: restaurants };
-    axios.get.mockResolvedValue(resp);
-    const data = await fetchRestaurants({ regionName: '서울', categoryId: '양천주가' });
+  describe('fetchRestaurants', () => {
+    context('exist regionName && categoryId', () => {
+      it('return restaurants', async () => {
+        const resp = { data: restaurants };
+        axios.get.mockResolvedValue(resp);
+        const data = await fetchRestaurants({ regionName: '서울', categoryId: 1 });
 
-    expect(data).not.toHaveLength(0);
+        expect(data).not.toHaveLength(0);
+      });
+    });
+
+    context('not exist regionName && categoryId', () => {
+      it('return empty data', async () => {
+        const resp = { data: [] };
+        axios.get.mockResolvedValue(resp);
+        const data = await fetchRestaurants({ regionName: '', categoryId: 0 });
+
+        expect(data).toHaveLength(0);
+      });
+    });
   });
 });
