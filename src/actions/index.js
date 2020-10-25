@@ -47,6 +47,15 @@ export function loadCategories() {
   };
 }
 
+export function updateSelectedRegionName(regionName) {
+  return {
+    type: 'updateSelectedRegionName',
+    payload: {
+      regionName,
+    },
+  };
+}
+
 export function loadRestaurants() {
   return async (dispatch, getState) => {
     const { region, category } = getState();
