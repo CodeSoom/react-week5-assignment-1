@@ -29,7 +29,7 @@ describe('reducer', () => {
 
   context('in initial state', () => {
     it('renders initial state', () => {
-      const state = reducer(undefined, {});
+      const state = reducer();
 
       expect(state.categories).toHaveLength(0);
     });

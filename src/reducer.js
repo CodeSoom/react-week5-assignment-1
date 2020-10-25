@@ -2,6 +2,10 @@ const initialState = {
   categories: [],
 };
 
+const initialAction = {
+  type: 'initialAction',
+};
+
 const reducers = {
   setCategories: (state, payload) => {
     const { categories } = payload;
@@ -12,7 +16,7 @@ const reducers = {
   },
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action = initialAction) {
   const { type, payload } = action;
 
   if (!reducers[type]) {
