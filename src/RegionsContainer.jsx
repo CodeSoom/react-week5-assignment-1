@@ -6,7 +6,7 @@ import Regions from './Regions';
 
 import {
   selectRegion,
-  getRegions,
+  getRestaurants,
 } from './modules/actions';
 
 export default function ResgionsContainer() {
@@ -17,9 +17,9 @@ export default function ResgionsContainer() {
     selected: state.selected.region,
   }));
 
-  function handleClick(region) {
+  function handleRegionClick(region) {
     dispatch(selectRegion(region));
-    dispatch(getRegions());
+    dispatch(getRestaurants());
   }
 
   return (
@@ -27,7 +27,7 @@ export default function ResgionsContainer() {
       <Regions
         regions={regions}
         selected={selected}
-        onClick={handleClick}
+        onClick={handleRegionClick}
       />
     </>
   );
