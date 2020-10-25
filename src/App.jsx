@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { intializeSelectButtonsAsync } from './actions';
+import { getRegionAndCategories } from './actions';
 
 import RegionContainer from './RegionContainer';
 import CategoryContainer from './CategoryContainer';
@@ -12,7 +12,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(intializeSelectButtonsAsync());
+    dispatch(getRegionAndCategories());
   }, []);
 
   return (

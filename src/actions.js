@@ -15,7 +15,7 @@ export const setRestaurants = (restaurants) => ({
   payload: restaurants,
 });
 
-export const intializeSelectButtonsAsync = () => async (dispatch) => {
+export const getRegionAndCategories = () => async (dispatch) => {
   const regions = await fetchRegions();
   const categories = await fetchCategories();
 
