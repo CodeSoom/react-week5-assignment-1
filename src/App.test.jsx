@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 import regions from '../fixtures/regions';
 
@@ -25,8 +26,6 @@ test('App', () => {
   const { getByText } = render((
     <App />
   ));
-
-  expect(dispatch).toBeCalled();
 
   expect(getByText('서울')).not.toBeNull();
   expect(getByText('대구')).not.toBeNull();
