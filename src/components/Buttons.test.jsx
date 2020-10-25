@@ -8,7 +8,7 @@ import categoriesFixture from '../../fixtures/categories';
 describe('Categories', () => {
   const handleClick = jest.fn();
 
-  it('render', () => {
+  it('renders buttons to check a restaurant', () => {
     render(
       <Buttons
         items={categoriesFixture}
@@ -19,7 +19,7 @@ describe('Categories', () => {
     expect(screen.getByText('한식(V)')).toBeInTheDocument();
   });
 
-  it('click test', () => {
+  it('click button to call onClick function', () => {
     render(
       <Buttons
         items={categoriesFixture}
