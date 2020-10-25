@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import {
-  setCategories,
+  setCategories, setRegions,
 } from './actions';
 
 import categories from '../fixtures/categories';
@@ -11,6 +11,16 @@ describe('reducer', () => {
     categories: [],
   };
 
+  describe('setRegions', () => {
+    it('changes Regions', () => {
+      const regions = [
+        { id: 1, name: '서울' },
+      ];
+      const state = reducer(initialState, setRegions(regions));
+
+      expect(state.regions).toHaveLength(1);
+    });
+  });
   context('setCategories', () => {
     it('changes categories', () => {
       const state = reducer(initialState, setCategories(categories));
