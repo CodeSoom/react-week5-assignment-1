@@ -23,14 +23,22 @@ describe('RegionContainer', () => {
     selectedButtons,
   }));
 
-  it('버튼이 클릭되면 setSelectInfo action이 dispatch 됩니다.', () => {
+  it('"(V)"가 없는 버튼이 클릭되면 setSelectInfo action이 dispatch 호출됩니다.', () => {
     const { getByText } = render(<RegionContainer />);
-    const button = getByText('서울');
+    const button = getByText('대구');
 
     fireEvent.click(button);
     expect(dispatch).toBeCalledWith({
       type: 'setSelectedButton',
-      payload: { type: 'region', value: { id: 1, name: '서울' } },
+      payload: { type: 'region', value: { id: 2, name: '대구' } },
     });
+  });
+
+  it('"(V)"가 있는 버튼이 클릭되면 dispatch가 호출되지 않습니다.', () => {
+    const { getByText } = render(<RegionContainer />);
+    const button = getByText('서울(V)');
+
+    fireEvent.click(button);
+    expect(dispatch).not.toBeCalled();
   });
 });
