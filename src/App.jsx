@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import Regions from './Regions';
+import { useDispatch } from 'react-redux';
+
 import Categories from './Categories';
 import Restaurants from './Restaurants';
+import RegionsContainer from './RegionsContainer';
+
+import {
+  getRegions,
+} from './modules/actions';
 
 export default function App() {
-  function handleClick() {
+  const dispatch = useDispatch();
 
-  }
+  useEffect(() => {
+    dispatch(getRegions());
+  }, []);
+
   return (
     <div>
-      <Regions
-        onClick={handleClick}
-      />
+      <RegionsContainer />
       <Categories />
       <Restaurants />
     </div>
