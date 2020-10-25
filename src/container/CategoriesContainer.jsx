@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from '../components/Categories';
+import Buttons from '../components/Buttons';
 import { updateCategory, loadRestaurants } from '../modules/actions';
 
 export default function CategoriesContainer() {
@@ -18,8 +18,8 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Categories
-      categories={categories}
+    <Buttons
+      items={categories}
       selected={selected}
       onClick={handleClickCategories}
     />

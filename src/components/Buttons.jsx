@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Regions({ regions, selected, onClick }) {
+export default function Buttons({ items, selected, onClick }) {
   return (
     <ul>
       {
-        regions.map(({ id, name }) => (
+        items.map(({ id, name }) => (
           <li key={id}>
             <button
               type="button"

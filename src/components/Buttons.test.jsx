@@ -2,34 +2,34 @@ import React from 'react';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import Regions from './Regions';
-import regionsFixture from '../../fixtures/regions';
+import Buttons from './Buttons';
+import categoriesFixture from '../../fixtures/categories';
 
-describe('Regions', () => {
+describe('Categories', () => {
   const handleClick = jest.fn();
 
   it('render', () => {
     render(
-      <Regions
-        regions={regionsFixture}
+      <Buttons
+        items={categoriesFixture}
         selected={1}
       />,
     );
 
-    expect(screen.getByText('서울(V)')).toBeInTheDocument();
+    expect(screen.getByText('한식(V)')).toBeInTheDocument();
   });
 
   it('click test', () => {
     render(
-      <Regions
-        regions={regionsFixture}
+      <Buttons
+        items={categoriesFixture}
         onClick={handleClick}
       />,
     );
 
     expect(handleClick).not.toBeCalled();
 
-    fireEvent.click(screen.getByRole('button', { name: /서울/ }));
+    fireEvent.click(screen.getByRole('button', { name: /한식/ }));
 
     expect(handleClick).toBeCalled();
   });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Regions from '../components/Regions';
+import Buttons from '../components/Buttons';
 import { updateRegion, loadRestaurants } from '../modules/actions';
 
 export default function RegionsContainer() {
@@ -18,8 +18,8 @@ export default function RegionsContainer() {
   }
 
   return (
-    <Regions
-      regions={regions}
+    <Buttons
+      items={regions}
       selected={selected}
       onClick={handleClickRegion}
     />
