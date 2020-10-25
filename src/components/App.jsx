@@ -19,7 +19,7 @@ export default function App() {
     dispatch(loadRegions());
     dispatch(loadCategories());
     dispatch(loadRestaurants());
-  });
+  }, []);
 
   return (
     <>

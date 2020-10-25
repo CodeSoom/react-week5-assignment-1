@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Region from '../components/Region';
 
-import { updateSelectedRegionName } from '../actions';
+import {
+  updateSelectedRegionName,
+  loadRestaurants,
+} from '../actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -19,6 +22,7 @@ export default function RegionsContainer() {
 
   function handleClick(regionName) {
     dispatch(updateSelectedRegionName(regionName));
+    dispatch(loadRestaurants());
   }
 
   function isSelected(regionName) {

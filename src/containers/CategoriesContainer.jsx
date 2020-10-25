@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Category from '../components/Category';
 
-import { updateSelectedCategoryId } from '../actions';
+import {
+  updateSelectedCategoryId,
+  loadRestaurants,
+} from '../actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -19,6 +22,7 @@ export default function CategoriesContainer() {
 
   function handleClick(categoryId) {
     dispatch(updateSelectedCategoryId(categoryId));
+    dispatch(loadRestaurants());
   }
 
   function isSelected(categoryId) {
