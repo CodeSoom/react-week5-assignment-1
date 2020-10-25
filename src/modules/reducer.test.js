@@ -27,7 +27,7 @@ beforeEach(() => {
 });
 
 describe('reducer', () => {
-  it('updateRegions', () => {
+  it('selectRegions', () => {
     const state = reducer({
       selected: {
         region: '',
@@ -37,7 +37,7 @@ describe('reducer', () => {
     expect(state.selected.region).toBe('서울');
   });
 
-  it('updateCategory', () => {
+  it('selectCategory', () => {
     const state = reducer({
       selected: {
         category: '',
