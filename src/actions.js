@@ -22,7 +22,7 @@ export function loadInitialData() {
     const regions = await fetchRegions();
     const categories = await fetchCategories();
 
-    // dispatch(setRegions(regions));
     dispatch(setCategories(categories));
+    dispatch(setRegions(regions));
   };
 }

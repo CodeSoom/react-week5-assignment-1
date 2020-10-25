@@ -22,7 +22,8 @@ describe('reducer', () => {
       expect(state.regions).toHaveLength(1);
     });
   });
-  context('setCategories', () => {
+
+  describe('setCategories', () => {
     it('changes categories', () => {
       const state = reducer(initialState, setCategories(categories));
 
@@ -30,7 +31,7 @@ describe('reducer', () => {
     });
   });
 
-  context('undefined action', () => {
+  describe('undefined action', () => {
     it("doesn't work", () => {
       const state = reducer(initialState, {});
 
@@ -38,7 +39,7 @@ describe('reducer', () => {
     });
   });
 
-  context('in initial state', () => {
+  describe('in initial state', () => {
     it('renders initial state', () => {
       const state = reducer();
 
