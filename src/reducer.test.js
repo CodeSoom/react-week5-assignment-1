@@ -1,7 +1,8 @@
 import reducer from './reducer';
 
 import {
-  setRegions
+  setRegions,
+  setFoods,
 } from './actions';
 
 import regions from '../fixtures/regions';

@@ -10,8 +10,10 @@ import {
   setFoods,
 } from './actions';
 
-function loadFoods({ dispatch }){
-  const foods = [];
+import { fetchFoods } from './services/api';
+
+async function loadFoods({ dispatch }){
+  const foods = await fetchFoods();
   dispatch(setFoods(foods));
 }
 
