@@ -56,6 +56,15 @@ export function updateSelectedRegionName(regionName) {
   };
 }
 
+export function updateSelectedCategoryId(categoryId) {
+  return {
+    type: 'updateSelectedCategoryId',
+    payload: {
+      categoryId,
+    },
+  };
+}
+
 export function loadRestaurants() {
   return async (dispatch, getState) => {
     const { region, category } = getState();
