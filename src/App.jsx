@@ -20,10 +20,10 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
-    </div>
+    </>
   );
 }
