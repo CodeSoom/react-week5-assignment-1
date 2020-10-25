@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Region = ({ name, onClick }) => (
+const Region = ({ isSelected, name, onClick }) => (
   <li>
     <button
       type="button"
       onClick={onClick}
     >
-      {name}
+      {isSelected() ? `${name}(v)` : name}
     </button>
   </li>
 );
