@@ -6,7 +6,7 @@ import Categories from './Categories';
 
 import {
   selectCategory,
-  getCategories,
+  getRestaurants,
 } from './modules/actions';
 
 export default function CategoriesContainer() {
@@ -17,9 +17,9 @@ export default function CategoriesContainer() {
     selected: state.selected.category,
   }));
 
-  function handleClick(category) {
+  function handleCategoryClick(category) {
     dispatch(selectCategory(category));
-    dispatch(getCategories());
+    dispatch(getRestaurants());
   }
 
   return (
@@ -27,7 +27,7 @@ export default function CategoriesContainer() {
       <Categories
         categories={categories}
         selected={selected}
-        onClick={handleClick}
+        onClick={handleCategoryClick}
       />
     </>
   );
