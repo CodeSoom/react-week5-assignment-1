@@ -8,9 +8,11 @@ import CategoriesContainer from './CategoriesContainer';
 
 import { setCategories } from './actions';
 
-import categories from '../fixtures/categories';
+import { fetchCategories } from './services/api';
 
-function loadCategories({ dispatch }) {
+async function loadCategories({ dispatch }) {
+  const categories = await fetchCategories();
+
   dispatch(setCategories(categories));
 }
 
