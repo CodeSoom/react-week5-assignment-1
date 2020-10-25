@@ -10,6 +10,10 @@ import {
   loadCategories,
 } from './actions';
 
+function RestaurantsContainer() {
+  return null;
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -21,6 +25,7 @@ export default function App() {
     <div>
       <Regions />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
