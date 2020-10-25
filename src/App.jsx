@@ -23,6 +23,8 @@ export default function App() {
       <RegionsContainer />
       <div />
       <FoodsContainer />
+      <div />
+      
     </div>
   );
 }
