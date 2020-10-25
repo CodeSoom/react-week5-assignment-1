@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ListContainer from './ListContainer';
 
-import { regions, categories, restaurants } from '../fixtures/fixture';
+import { restaurants } from '../fixtures/fixture';
 
 jest.mock('react-redux');
 

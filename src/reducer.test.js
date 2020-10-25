@@ -6,7 +6,7 @@ import {
 
 import reducer, { initialState } from './reducer';
 
-import { regions, categories, restaurants, selectedButtons } from '../fixtures/fixture';
+import { regions, categories, restaurants } from '../fixtures/fixture';
 
 describe('initialState', () => {
   it('초기 state가 초기화됩니다.', () => {
@@ -34,7 +34,6 @@ describe('reducer', () => {
 
   describe('intializeSelectButtons', () => {
     it('regions, categories 주어진 값으로 초기화합니다.', () => {
-
       const state = reducer(
         initialState,
         intializeSelectButtons({ regions, categories }),

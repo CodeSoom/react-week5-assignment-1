@@ -1,4 +1,6 @@
-import { regions, categories, restaurants, selectedButtons } from '../../fixtures/fixture';
+import {
+  regions, categories, restaurants, selectedButtons,
+} from '../../fixtures/fixture';
 import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 describe('api', () => {

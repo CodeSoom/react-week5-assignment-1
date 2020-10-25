@@ -3,13 +3,10 @@ import {
   setSelectedButton,
   setRestaurants,
   getRegionAndCategories,
-  setRestaurantsAsync,
 } from './actions';
 
-import { useSelector, useDispatch } from 'react-redux';
-
 import { regions, categories, restaurants } from '../fixtures/fixture';
-import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -36,5 +33,15 @@ describe('setRestaurants', () => {
   it('setRestaurants action을 반환합니다. ', () => {
     const action = setRestaurants(restaurants);
     expect(action).toEqual({ type: 'setRestaurants', payload: restaurants });
+  });
+});
+
+describe('getRegionAndCategories', () => {
+  it('setRestaurants action을 반환합니다. ', () => {
+    const dispatch = jest.fn();
+
+    getRegionAndCategories()(dispatch);
+    expect(fetchRegions).toBeCalled();
+    expect(fetchCategories).toBeCalled();
   });
 });
