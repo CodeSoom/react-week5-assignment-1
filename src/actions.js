@@ -69,7 +69,7 @@ export function loadRestaurants() {
   return async (dispatch, getState) => {
     const { selectedRegionName, selectedCategoryId } = getState();
 
-    if (selectedRegionName.length === 0 || selectedCategoryId.length === 0) {
+    if (!selectedRegionName || !selectedCategoryId) {
       return;
     }
 
