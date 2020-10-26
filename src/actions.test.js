@@ -1,15 +1,27 @@
+import thunk from 'redux-thunk';
+import configureStore from 'redux-mock-store';
+
 import {
   intializeSelectButtons,
   setSelectedButton,
   setRestaurants,
   getRegionAndCategories,
+  setRestaurantsAsync,
 } from './actions';
 
-import { regions, categories, restaurants } from '../fixtures/fixture';
-import { fetchRegions, fetchCategories } from './services/api';
+import {
+  regions, categories, restaurants, selectedButtons
+} from '../fixtures/fixture';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
 
-jest.mock('react-redux');
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
+
 jest.mock('./services/api');
+
+fetchRegions.mockResolvedValue(regions);
+fetchCategories.mockResolvedValue(categories);
+fetchRestaurants.mockResolvedValue(restaurants);
 
 describe('intializeSelectButtons', () => {
   it('intializeSelectButtons action이 반환합니다. ', () => {
@@ -37,11 +49,19 @@ describe('setRestaurants', () => {
 });
 
 describe('getRegionAndCategories', () => {
-  it('setRestaurants action을 반환합니다. ', () => {
-    const dispatch = jest.fn();
+  it('intializeSelectButtons action을 반환합니다. ', async () => {
+    const store = mockStore({});
 
-    getRegionAndCategories()(dispatch);
-    expect(fetchRegions).toBeCalled();
-    expect(fetchCategories).toBeCalled();
+    await store.dispatch(getRegionAndCategories());
+    expect(store.getActions()).toEqual([intializeSelectButtons({ regions, categories })]);
+  });
+});
+
+describe('setRestaurantsAsync', () => {
+  it('setRestaurants action을 반환합니다.', async () => {
+    const store = mockStore({ selectedButtons });
+
+    await store.dispatch(setRestaurantsAsync());
+    expect(store.getActions()).toEqual([setRestaurants(restaurants)]);
   });
 });
