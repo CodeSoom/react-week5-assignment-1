@@ -10,7 +10,7 @@ import {
 } from './actions';
 
 import {
-  regions, categories, restaurants, selectedButtons
+  regions, categories, restaurants, selectedButtons,
 } from '../fixtures/fixture';
 import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
 
