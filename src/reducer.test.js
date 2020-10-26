@@ -23,7 +23,7 @@ describe('initialState', () => {
 });
 
 describe('reducer', () => {
-  it('정의되어 있지 않은 action을 입력하면 현재 state이 반환합니다.', () => {
+  it('아무 값을 입력하지 않으면 initialState를 반환합니다.', () => {
     const state = reducer();
 
     expect(state).toEqual(initialState);
