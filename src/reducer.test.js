@@ -24,6 +24,12 @@ describe('initialState', () => {
 
 describe('reducer', () => {
   it('정의되어 있지 않은 action을 입력하면 현재 state이 반환합니다.', () => {
+    const state = reducer();
+
+    expect(state).toEqual(initialState);
+  });
+
+  it('정의되어 있지 않은 action을 입력하면 현재 state이 반환합니다.', () => {
     const state = reducer(
       initialState,
       { type: 'incorrectType', payload: { type: '', value: '' } },

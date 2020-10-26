@@ -9,6 +9,10 @@ export const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+  if (!action) {
+    return state;
+  }
+
   const router = {
     intializeSelectButtons: () => {
       const { regions, categories } = action.payload;
