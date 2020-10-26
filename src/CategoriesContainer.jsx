@@ -14,7 +14,7 @@ export default function CategoriesContainer() {
 
   const { categories, selectCategory } = useSelector((state) => ({
     categories: state.categories,
-    selectCategory: state.selectedCategory,
+    selectCategory: state.selectedCategoryId,
   }));
 
   const handleClickCategory = (id) => {

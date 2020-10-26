@@ -53,7 +53,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectedCategory(category));
 
-      expect(state.selectedCategory).toBe(category);
+      expect(state.selectedCategoryId).toBe(category);
     });
   });
 

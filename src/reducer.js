@@ -25,7 +25,7 @@ const reducers = {
   selectedCategory(state, { payload: { category } }) {
     return {
       ...state,
-      selectedCategory: category,
+      selectedCategoryId: category,
     };
   },
 

@@ -16,8 +16,8 @@ export async function fetchCategories() {
   return data;
 }
 
-export async function fetchRestaurants({ selectedRegion, selectedCategory }) {
-  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${selectedRegion}&category=${selectedCategory}`;
+export async function fetchRestaurants({ selectedRegion, selectedCategoryId }) {
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${selectedRegion}&category=${selectedCategoryId}`;
 
   const response = await fetch(url);
   const data = await response.json();
