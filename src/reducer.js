@@ -2,26 +2,26 @@ const initialState = {
   restaurants: [],
   regions: [],
   categories: [],
-  region: '',
-  categoryId: '',
+  selectRegion: '',
+  selectCategoryId: '',
 };
 
 export default function reducer(state = initialState, action) {
   const handler = {
     updateRegion: () => {
-      const { region } = action.payload;
+      const { region: selectRegion } = action.payload;
       return {
         ...state,
-        region,
+        selectRegion,
       };
     },
 
     updateCategoryId: () => {
-      const { categoryId } = action.payload;
+      const { categoryId: selectCategoryId } = action.payload;
 
       return {
         ...state,
-        categoryId,
+        selectCategoryId,
       };
     },
 

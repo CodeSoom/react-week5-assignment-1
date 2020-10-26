@@ -14,26 +14,26 @@ import categories from '../fixtures/categories';
 
 describe('reducer', () => {
   describe('updateRegion', () => {
-    it('change region', () => {
+    it('change selectRegion', () => {
       const initialState = {
-        region: '',
+        selectRegion: '',
       };
 
       const state = reducer(initialState, updateRegion('서울'));
 
-      expect(state.region).toEqual('서울');
+      expect(state.selectRegion).toEqual('서울');
     });
   });
 
   describe('updateCategoryId', () => {
-    it('change categoryId', () => {
+    it('change selectCategoryId', () => {
       const initialState = {
-        categoryId: '',
+        selectCategoryId: '',
       };
 
       const state = reducer(initialState, updateCategoryId(1));
 
-      expect(state.categoryId).toEqual(1);
+      expect(state.selectCategoryId).toEqual(1);
     });
   });
 

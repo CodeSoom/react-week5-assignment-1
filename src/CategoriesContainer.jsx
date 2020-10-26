@@ -8,9 +8,9 @@ import { updateCategoryId, loadRestaurants } from './actions';
 
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();
-  const { categories, categoryId } = useSelector((state) => ({
+  const { categories, selectCategoryId } = useSelector((state) => ({
     categories: state.categories,
-    categoryId: state.categoryId,
+    selectCategoryId: state.selectCategoryId,
   }));
 
   function handleClick(id) {
@@ -21,7 +21,7 @@ export default function RestaurantsContainer() {
   return (
     <Categories
       categories={categories}
-      selectCategory={categoryId}
+      selectCategory={selectCategoryId}
       onClick={handleClick}
     />
   );
