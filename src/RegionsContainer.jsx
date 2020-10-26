@@ -12,9 +12,9 @@ import {
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions, selectRegion } = useSelector((state) => ({
+  const { regions, regionName } = useSelector((state) => ({
     regions: state.regions,
-    selectRegion: state.selectedRegionName,
+    regionName: state.selectedRegionName,
   }));
 
   const handleClickRegion = (name) => {
@@ -25,7 +25,7 @@ export default function RegionsContainer() {
   return (
     <Regions
       regions={regions}
-      selectedRegion={selectRegion}
+      selectedRegion={regionName}
       onClick={handleClickRegion}
     />
   );
