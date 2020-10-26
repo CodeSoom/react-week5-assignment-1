@@ -11,7 +11,7 @@ const reducers = {
   selectedRegion(state, { payload: { region } }) {
     return {
       ...state,
-      selectedRegion: region,
+      selectedRegionName: region,
     };
   },
 

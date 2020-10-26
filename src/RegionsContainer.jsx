@@ -14,7 +14,7 @@ export default function RegionsContainer() {
 
   const { regions, selectRegion } = useSelector((state) => ({
     regions: state.regions,
-    selectRegion: state.selectedRegion,
+    selectRegion: state.selectedRegionName,
   }));
 
   const handleClickRegion = (name) => {

@@ -43,7 +43,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectedRegion(name));
 
-      expect(state.selectedRegion).toBe(name);
+      expect(state.selectedRegionName).toBe(name);
     });
   });
 
