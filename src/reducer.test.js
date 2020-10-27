@@ -1,11 +1,8 @@
 import reducer from './reducer';
 
 import {
-  loadRegions,
-  loadCategories,
   selectOption,
   setOptions,
-  loadRestaurants,
   setRestaurants,
 } from './actions';
 
@@ -14,8 +11,8 @@ import { regions, categories, restaurants } from '../fixtures/fixtures';
 jest.mock('./services/api');
 
 describe('reducer', () => {
-  describe('undefined action ', () => {
-    it('doesn\'work', () => {
+  context('when dispatch undefined action ', () => {
+    it('returns unchanged state', () => {
       const previosState = {
         selectedOption: {
           region: null,
@@ -54,15 +51,6 @@ describe('reducer', () => {
     });
   });
 
-  describe('loadRegion', () => {
-    it('set regions from server', async () => {
-      const dispatch = jest.fn();
-      await loadRegions()(dispatch);
-
-      expect(dispatch).toBeCalled();
-    });
-  });
-
   describe('selectCategory', () => {
     it('change selected Category', () => {
       const state = reducer({
@@ -79,24 +67,6 @@ describe('reducer', () => {
     it('set initial value of categories', () => {
       const state = reducer(undefined, setOptions({ optionName: 'categories', values: categories }));
       expect(state.option.categories).toBe(categories);
-    });
-  });
-
-  describe('loadCategories', () => {
-    it('set categories from server', async () => {
-      const dispatch = jest.fn();
-      await loadCategories()(dispatch);
-
-      expect(dispatch).toBeCalled();
-    });
-  });
-
-  describe('loadRestaurants', () => {
-    it('set restaurants from server', async () => {
-      const dispatch = jest.fn();
-      await loadRestaurants({ region: '서울', categoryId: 1 })(dispatch);
-
-      expect(dispatch).toBeCalled();
     });
   });
 

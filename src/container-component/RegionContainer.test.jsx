@@ -31,6 +31,7 @@ describe('RegionContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
   it('show region buttons', () => {
     const { getByText } = renderRegionContainer();
 

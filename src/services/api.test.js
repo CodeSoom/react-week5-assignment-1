@@ -9,10 +9,14 @@ describe('api', () => {
     global.fetch.mockClear();
   });
 
-  describe('fetchRegion', () => {
+  function mockFetch({ data }) {
     global.fetch.mockResolvedValue({
-      json: () => (regions),
+      json: () => (data),
     });
+  }
+
+  describe('fetchRegion', () => {
+    mockFetch({ data: regions });
 
     it('get regions from server', async () => {
       const datas = await fetchOptions({ optionName: 'regions' });
@@ -21,22 +25,18 @@ describe('api', () => {
   });
 
   describe('fetchCategories', () => {
-    global.fetch.mockResolvedValue({
-      json: () => (categories),
-    });
-
     it('get categories from server', async () => {
+      mockFetch({ data: categories });
+
       const datas = await fetchOptions({ optionName: 'categories' });
       expect(datas.length).toBeGreaterThan(1);
     });
   });
 
   describe('fetchRestaurants', () => {
-    global.fetch.mockResolvedValue({
-      json: () => (restaurants),
-    });
-
     it('get categories from server', async () => {
+      mockFetch({ data: restaurants });
+
       const datas = await fetchRestaurants({ region: '서울', categoryId: 1 });
       expect(datas.length).toBeGreaterThan(1);
     });

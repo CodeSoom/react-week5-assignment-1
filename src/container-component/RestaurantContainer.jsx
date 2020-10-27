@@ -18,8 +18,8 @@ export default function RestaurantContainer() {
   const { region, category } = selectedOption;
 
   useEffect(() => {
-    if (region > 0 && category > 0) {
-      const { name } = regions.find((r) => r.id === region);
+    if (region !== null && category !== null) {
+      const { name } = regions.find(({ id }) => id === region);
       dispatch(loadRestaurants({ region: name, categoryId: category }));
     }
   }, [selectedOption]);

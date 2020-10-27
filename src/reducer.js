@@ -32,10 +32,10 @@ function setOptions({ state, payload: { optionName, values } }) {
   };
 }
 
-function setRestaurants({ state, payload }) {
+function setRestaurants({ state, payload: { restaurants } }) {
   return {
     ...state,
-    restaurants: payload.restaurants,
+    restaurants,
   };
 }
 
