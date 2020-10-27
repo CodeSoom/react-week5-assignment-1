@@ -1,7 +1,3 @@
-export async function fetchRestaurants() {
-  return [];
-}
+export const fetchRestaurants = jest.fn(async () => ({}));
 
-export function fetchOptions() {
-  return [];
-}
+export const fetchOptions = jest.fn(async () => ({}));
