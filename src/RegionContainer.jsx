@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RegionList({ regions }) {
+export default function RegionList() {
   return (
     <li>
       { regions.map(({ id, name }) => (
