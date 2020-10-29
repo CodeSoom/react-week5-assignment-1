@@ -14,6 +14,12 @@ jest.mock('./services/api');
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
 
+  function renderRestaurantsContainer() {
+    const { container } = render(<RestaurantsContainer />);
+
+    return { container };
+  }
+
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -21,15 +27,15 @@ describe('RestaurantsContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       filter: {
-        regionName: null,
-        categoryId: null,
+        regionName: '서울',
+        categoryId: 1,
       },
       restaurants,
     }));
   });
 
   it('renders', () => {
-    const { container } = render(<RestaurantsContainer />);
+    const { container } = renderRestaurantsContainer();
 
     expect(container).not.toBeNull();
   });

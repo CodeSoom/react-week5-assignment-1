@@ -18,6 +18,8 @@ export default function RestaurantsContainer() {
   }));
 
   useEffect(() => {
+    if (!regionName || !categoryId) return;
+
     dispatch(loadRestaurants({ regionName, categoryId }));
   }, [regionName, categoryId]);
 
