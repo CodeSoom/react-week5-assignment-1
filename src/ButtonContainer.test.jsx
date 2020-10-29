@@ -22,8 +22,8 @@ describe('ButtonContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       filter: {
-        regionName: '',
-        categoryId: 0,
+        regionName: null,
+        categoryId: null,
       },
       regions,
       categories,
@@ -42,7 +42,7 @@ describe('ButtonContainer', () => {
 
     return {
       container,
-      button: getByText('서울'),
+      button: getByText(/서울/),
     };
   }
   it('renders', () => {

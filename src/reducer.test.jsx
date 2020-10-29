@@ -12,8 +12,8 @@ describe('reducer', () => {
   context('without state nor action', () => {
     const initialState = {
       filter: {
-        regionName: '',
-        categoryId: 0,
+        regionName: null,
+        categoryId: null,
       },
       regions: [],
       categories: [],

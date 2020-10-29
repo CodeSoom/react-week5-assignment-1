@@ -1,3 +1,9 @@
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
+
 export function updateFilter({ filter }) {
   return {
     type: 'updateFilter',
@@ -16,6 +22,14 @@ export function setRegions({ regions }) {
   };
 }
 
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+
+    dispatch(setRegions({ regions }));
+  };
+}
+
 export function setCategories({ categories }) {
   return {
     type: 'setCategories',
@@ -25,11 +39,28 @@ export function setCategories({ categories }) {
   };
 }
 
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories({ categories }));
+  };
+}
+
 export function setRestaurants({ restaurants }) {
   return {
     type: 'setRestaurants',
     payload: {
       restaurants,
     },
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { filter: { regionName, categoryId } } = getState();
+    const restaurants = await fetchRestaurants({ regionName, categoryId });
+
+    dispatch(setRestaurants({ restaurants }));
   };
 }
