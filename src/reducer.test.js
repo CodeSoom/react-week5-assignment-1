@@ -24,7 +24,16 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('set categories', () => {
+      const initialState = {
+        categories: [],
+      };
 
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+
+      const state = reducer(initialState, setCategories(categories));
+      expect(state.categories).toHaveLength(1);
     });
   });
 });
