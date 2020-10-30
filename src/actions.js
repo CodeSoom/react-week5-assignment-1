@@ -1,3 +1,8 @@
+import {
+  fetchRegions,
+  fetchCategories,
+} from './services/api';
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',
@@ -13,8 +18,11 @@ export function setCategories(categories) {
 }
 
 export function loadInitialData() {
-  return (dispatch) => {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
     dispatch(setRegions(regions));
+
+    const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
 }
