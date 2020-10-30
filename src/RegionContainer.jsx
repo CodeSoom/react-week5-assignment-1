@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function RegionList() {
+export default function RegionContainer() {
+  const regions = [];
+
   return (
     <li>
       { regions.map(({ id, name }) => (

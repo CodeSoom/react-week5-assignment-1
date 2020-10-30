@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import RegionList from './RegionList';
+import RegionContainer from './RegionContainer';
 
-test('RegionList', () => {
+test('RegionContainer', () => {
   const regions = [];
-  const { getByText } = render(<RegionList regions={regions} />);
+  const { getByText } = render(<RegionContainer regions={regions} />);
 
   regions.forEach(({ name }) => {
     expect(getByText(name)).not.toBeNull();

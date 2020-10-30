@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import CategoryList from './CategoryList';
+import CategoryContainer from './CategoryContainer';
 
-test('CategoryList', () => {
+test('CategoryContainer', () => {
   const categories = [];
-  const { getByText } = render(<CategoryList categories={categories} />);
+  const { getByText } = render(<CategoryContainer categories={categories} />);
 
   categories.forEach(({ name }) => {
     expect(getByText(name)).not.toBeNull();

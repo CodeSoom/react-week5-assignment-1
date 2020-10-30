@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function CategoryList({ categories }) {
+export default function CategoryContainer() {
+  const categories = [];
+
   return (
     <li>
       {categories.map(({ id, name }) => (
