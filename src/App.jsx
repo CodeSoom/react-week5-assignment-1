@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import CategoryContainer from './CategoryContainer';
+import RegionContainer from './RegionContainer';
+
+import {
+  loadInitialData,
+} from './actions';
+
+function RestaurantsContainer() {
+  return null;
+}
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadInitialData());
+  });
+
   return (
-    <>
-      <ul>
-        <li>서울</li>
-      </ul>
-      <ul>
-        <li>한식</li>
-      </ul>
-    </>
+    <div>
+      <CategoryContainer />
+      <RegionContainer />
+      <RestaurantsContainer />
+    </div>
   );
 }
