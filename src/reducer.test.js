@@ -13,6 +13,22 @@ import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
 
 describe('reducer', () => {
+  context('when previous state is undefined', () => {
+    const initialState = {
+      regions: [],
+      categories: [],
+      restaurants: [],
+      selectRegion: '',
+      selectCategoryId: '',
+    };
+
+    it('returns initialState', () => {
+      const state = reducer(undefined, { type: 'action' });
+
+      expect(state).toEqual(initialState);
+    });
+  });
+
   describe('updateRegion', () => {
     it('change selectRegion', () => {
       const initialState = {
@@ -46,6 +62,8 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).not.toHaveLength(0);
+      expect(state.regions[0].id).toEqual(1);
+      expect(state.regions[0].name).toEqual('서울');
     });
   });
 
