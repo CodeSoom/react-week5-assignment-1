@@ -13,11 +13,9 @@ export default function App() {
       </ul>
 
       <ul>
-        <ul>
-          {categories.map((category) => (
-            <li key={category.id}><button type="button">{category.name}</button></li>
-          ))}
-        </ul>
+        {categories.map((category) => (
+          <li key={category.id}><button type="button">{category.name}</button></li>
+        ))}
       </ul>
     </div>
   );
