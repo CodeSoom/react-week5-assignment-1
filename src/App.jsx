@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Regions from './Regions';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   const regions = [
@@ -33,7 +33,7 @@ export default function App() {
 
   return (
     <>
-      <Regions regions={regions} />
+      <RegionsContainer regions={regions} />
       <ul>
         {categories.map(({
           id, name,
