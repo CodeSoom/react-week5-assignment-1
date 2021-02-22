@@ -1,12 +1,12 @@
 import React from 'react';
 
-import RegionButtons from './RegionButtons';
+import Regions from './Regions';
 import Categories from './Categories';
 
 export default function App() {
   return (
     <div>
-      <RegionButtons />
+      <Regions />
       <Categories />
     </div>
   );
