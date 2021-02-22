@@ -1,8 +1,6 @@
 import React from 'react';
 
-import locations from '../fixtures/locations';
-
-export default function Location() {
+export default function Location({ locations }) {
   return (
     <div>
       <ul>
