@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Regions from './Regions';
+
 export default function App() {
   const regions = [
     { id: 1, name: '서울' },
@@ -31,18 +33,7 @@ export default function App() {
 
   return (
     <>
-      <ul>
-        {regions.map(({
-          id, name,
-        }) => (
-          <li key={id}>
-            <button type="button">
-              {name}
-            </button>
-          </li>
-        ))}
-      </ul>
-
+      <Regions regions={regions} />
       <ul>
         {categories.map(({
           id, name,
