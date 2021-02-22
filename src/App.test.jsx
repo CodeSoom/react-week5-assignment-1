@@ -9,9 +9,6 @@ test('App', () => {
 
   expect(queryByText('서울')).not.toBeNull();
   expect(queryByText('대전')).not.toBeNull();
-  expect(queryByText('대구')).not.toBeNull();
-  expect(queryByText('부산')).not.toBeNull();
-  expect(queryByText('광주')).not.toBeNull();
 
   expect(queryByText('한식')).not.toBeNull();
   expect(queryByText('중식')).not.toBeNull();

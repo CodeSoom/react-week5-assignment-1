@@ -13,3 +13,5 @@ export default function Regions({ regions }) {
     </div>
   );
 }
+
+// 추후 Button 세부 컴포넌트 추가

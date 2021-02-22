@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Regions from './Regions';
+import RegionsContainer from './RegionsContainer';
 import Categories from './Categories';
 
 export default function App() {
   return (
     <div>
-      <Regions />
+      <RegionsContainer />
       <Categories />
     </div>
   );
