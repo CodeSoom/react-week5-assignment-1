@@ -8,6 +8,8 @@ import {
   setRegions,
 } from './actions';
 
+import regions from '../fixtures/restaurants';
+
 export default function App() {
   const dispatch = useDispatch();
   // TODO: 초기실행

@@ -2,21 +2,31 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Regions from './Regions';
+import { useDispatch, useSelector } from 'react-redux';
+
+import App from './App';
 
 import regions from '../fixtures/restaurants';
 
 describe('App', () => {
-  function renderApp({ regions }) {
+  function renderApp() {
     return render((
       <>
-        <Regions regions={regions} />
+        <App />
       </>
     ));
   }
 
   it('button들을 보여준다.', () => {
-    const { queryByText } = renderApp({ regions });
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
+
+    const { queryByText } = renderApp();
 
     // const categories = [
     //   { id: 1, name: '한식' },
@@ -33,16 +43,10 @@ describe('App', () => {
     //   { id: 1231, name: '냉동' },
     // ];
 
-    regions.forEach((region) => {
-      const { name } = region;
-
-      expect(queryByText(name)).not.toBeNull();
-    });
-
     // categories.forEach((category) => {
     //   const { name } = category;
 
-    //   expect(queryByText(name)).not.toBeNull();
+    expect(dispatch).toBeCalled();
     // });
   });
 });
