@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Location({ locations }) {
+export default function Locations({ locations }) {
   return (
     <div>
       <ul>
