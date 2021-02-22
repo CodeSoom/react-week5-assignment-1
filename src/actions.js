@@ -1,4 +1,4 @@
-export function setRegions({ regions }) {
+export function setRegions(regions) {
   return {
     type: 'setRegions',
     payload: {
