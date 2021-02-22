@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import App from './App';
+import Location from './Location';
 
 import locations from '../fixtures/locations';
 
-describe('App', () => {
+describe('Location', () => {
   it('지역을 출력합니다.', () => {
-    const { queryByText } = render((<App />));
+    const { queryByText } = render((<Location />));
 
     locations.forEach((location) => {
       expect(queryByText(location.name)).not.toBeNull();
