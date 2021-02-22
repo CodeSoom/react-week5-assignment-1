@@ -8,12 +8,13 @@ import App from './App';
 
 import regions from '../fixtures/restaurants';
 
+jest.mock('react-redux');
+jest.mock('./services/api');
+
 describe('App', () => {
   function renderApp() {
     return render((
-      <>
-        <App />
-      </>
+      <App />
     ));
   }
 
@@ -27,6 +28,9 @@ describe('App', () => {
     }));
 
     const { queryByText } = renderApp();
+
+    expect(queryByText(/서울/)).not.toBeNull();
+    expect(dispatch).toBeCalled();
 
     // const categories = [
     //   { id: 1, name: '한식' },
@@ -46,7 +50,6 @@ describe('App', () => {
     // categories.forEach((category) => {
     //   const { name } = category;
 
-    expect(dispatch).toBeCalled();
     // });
   });
 });

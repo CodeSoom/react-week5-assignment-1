@@ -8,14 +8,19 @@ import {
   setRegions,
 } from './actions';
 
-import regions from '../fixtures/restaurants';
+// import regions from '../fixtures/restaurants';
+
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  dispatch(setRegions(await (await fetchRegions())));
+}
 
 export default function App() {
   const dispatch = useDispatch();
-  // TODO: 초기실행
-  // 데이터 넣기 => dispatch
+
   useEffect(() => {
-    dispatch(setRegions(regions));
+    loadRegions({ dispatch });
   }, []);
 
   const categories = [
