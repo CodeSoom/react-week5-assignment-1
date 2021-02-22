@@ -10,6 +10,7 @@ describe('RegionContainer', () => {
   const regions = [
     { id: 1, name: '서울' },
     { id: 2, name: '인천' },
+    { id: 3, name: '부산' },
   ];
   const regionID = 1;
 
@@ -21,8 +22,8 @@ describe('RegionContainer', () => {
         onClick={handleClick}
       />,
     );
-    expect(queryByText('서울')).toBeInTheDocument();
     expect(queryByText('인천')).toBeInTheDocument();
+    expect(queryByText('부산')).toBeInTheDocument();
   });
 
   it('지역을 클릭하면 handleClick함수가 실행된다.', () => {
@@ -33,7 +34,7 @@ describe('RegionContainer', () => {
         onClick={handleClick}
       />,
     );
-    fireEvent.click(queryByText('서울'));
+    fireEvent.click(queryByText('인천'));
     expect(handleClick).toBeCalled();
   });
 
