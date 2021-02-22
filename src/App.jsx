@@ -1,15 +1,15 @@
 import React from 'react';
 
-import Location from './Location';
+import Locations from './Locations';
+import Categories from './Categories';
 
 import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
-import Categories from './Categories';
 
 export default function App() {
   return (
     <div>
-      <Location locations={locations} />
+      <Locations locations={locations} />
       <Categories categories={categories} />
     </div>
   );
