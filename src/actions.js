@@ -1,3 +1,5 @@
+import fetchRegions from './services/api';
+
 export function changeSelectedRegion(id) {
   return (
     {
@@ -7,7 +9,18 @@ export function changeSelectedRegion(id) {
   );
 }
 
-// TODO : delete!!
-export function xxx() {
-  //
+export function setRegions(regions) {
+  return (
+    {
+      type: 'setRegions',
+      payload: { regions },
+    }
+  );
+}
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
+  };
 }

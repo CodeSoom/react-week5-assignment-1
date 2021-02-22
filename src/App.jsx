@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import loadRegions from './actions';
 
 import RegionListContainer from './RegionListContainer';
 
@@ -8,7 +10,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch();
+    dispatch()
+    // dispatch(loadRegions());
   }, [])
 
   return (

@@ -1,4 +1,4 @@
-import { changeSelectedRegion } from './actions';
+import { changeSelectedRegion, setRegions } from './actions';
 
 import reducer from './reducer';
 
@@ -11,5 +11,15 @@ describe('reducer', () => {
   it('지역버튼이 클릭되면 selectedRegionID가 바뀐다.', () => {
     const state = reducer(preveState, changeSelectedRegion(2));
     expect(state.selectedRegionID).toBe(2);
+  });
+
+  it('초기 실행시 regions data를 가져온다.', () => {
+    const data = [
+      { id: 1, name: '서울' },
+      { id: 2, name: '인천' },
+    ];
+    const state = reducer(preveState, setRegions(data));
+
+    expect(state.regions).toHaveLength(2);
   });
 });
