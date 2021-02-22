@@ -5,7 +5,11 @@ export default function RegionList({ regions, selectedRegionID, onClick }) {
     <ul>
       {regions.map(({ id, name }) => (
         <li key={id}>
-          <button type="button" onClick={onClick}>
+          <button
+            type="button"
+            name={id}
+            onClick={onClick}
+          >
             {id === selectedRegionID ? `${name}(V)` : name}
           </button>
         </li>
