@@ -28,4 +28,9 @@ describe('App', () => {
     expect(queryByText('인천')).toBeInTheDocument();
     expect(queryByText('부산')).toBeInTheDocument();
   })
+
+  it('App 시작시 초기값들을 가져온다.', () => {
+    render(<App />);
+    expect(dispatch).toBeCalled();
+  });
 })
