@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
+import {
+  setRegions,
+} from './actions';
+
 export default function App() {
+  const dispatch = useDispatch();
+  // TODO: 초기실행
+  // 데이터 넣기 => dispatch
+  useEffect(() => {
+    dispatch(setRegions(regions));
+  }, []);
+
   const categories = [
     { id: 1, name: '한식' },
     { id: 2, name: '중식' },
