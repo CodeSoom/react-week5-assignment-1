@@ -2,12 +2,30 @@ import React from 'react';
 
 import App from './App';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+        { id: 2, name: '인천' },
+        { id: 3, name: '부산' },
+      ],
+      selectedRegionID: 1,
+    }));
+  });
+
   it('지역들을 보여준다.', () => {
     const { queryByText } = render(<App />);
-    expect(queryByText('서울')).toBeInTheDocument();
+    expect(queryByText('인천')).toBeInTheDocument();
     expect(queryByText('부산')).toBeInTheDocument();
   })
 })
