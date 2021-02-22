@@ -7,9 +7,13 @@ import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
 
 export default function App() {
+  function handleClick() {
+    return 0;
+  }
+
   return (
     <div>
-      <Locations locations={locations} />
+      <Locations locations={locations} onClick={handleClick} />
       <Categories categories={categories} />
     </div>
   );
