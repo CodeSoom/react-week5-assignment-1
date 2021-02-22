@@ -1,13 +1,11 @@
 import React from 'react';
 
-import restaurants from '../fixtures/restaurants';
-
-import Restaurants from './Restaurants';
+import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
   return (
     <div>
-      <Restaurants restaurants={restaurants} />
+      <RestaurantsContainer />
     </div>
   );
 }
