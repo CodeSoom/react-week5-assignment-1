@@ -1,24 +1,23 @@
 import React from 'react';
 
+import locations from '../fixtures/locations';
+import categories from '../fixtures/categories';
+
 export default function App() {
   return (
     <div>
       <ul>
-        <li><button type="button">서울</button></li>
-        <li><button type="button">대전</button></li>
-        <li><button type="button">대구</button></li>
-        <li><button type="button">부산</button></li>
-        <li><button type="button">광주</button></li>
-        <li><button type="button">강원도</button></li>
-        <li><button type="button">인천</button></li>
+        {locations.map((location) => (
+          <li key={location.id}><button type="button">{location.name}</button></li>
+        ))}
       </ul>
 
       <ul>
-        <li><button type="button">한식</button></li>
-        <li><button type="button">중식</button></li>
-        <li><button type="button">일식</button></li>
-        <li><button type="button">양식</button></li>
-        <li><button type="button">분식</button></li>
+        <ul>
+          {categories.map((category) => (
+            <li key={category.id}><button type="button">{category.name}</button></li>
+          ))}
+        </ul>
       </ul>
     </div>
   );
