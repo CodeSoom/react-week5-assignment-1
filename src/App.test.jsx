@@ -3,11 +3,15 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import App from './App';
+import Regions from './Regions';
 
 describe('App', () => {
   function renderApp() {
     return render((
-      <App />
+      <>
+        <App />
+        <Regions />
+      </>
     ));
   }
 
