@@ -1,8 +1,4 @@
-import React from 'react';
-
-import { fireEvent, render } from '@testing-library/react';
-
-import changeSelectedRegion from './actions';
+import { changeSelectedRegion } from './actions';
 
 import reducer from './reducer';
 
