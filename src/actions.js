@@ -1,4 +1,4 @@
-import fetchRegions from './services/api';
+import { fetchRegions } from './services/api';
 
 export function changeSelectedRegion(id) {
   return (
