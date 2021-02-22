@@ -14,7 +14,7 @@ export default function RegionListContainer() {
   }));
 
   function handleClick(event) {
-    return dispatch(changeSelectedRegion(event.target.value));
+    return dispatch(changeSelectedRegion(Number(event.target.name)));
   }
 
   return (
