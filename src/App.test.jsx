@@ -16,4 +16,14 @@ describe('App', () => {
     expect(queryByText(/강원도/)).not.toBeNull();
     expect(queryByText(/인천/)).not.toBeNull();
   });
+
+  it('분류를 출력합니다.', () => {
+    const { queryByText } = render((<App />));
+
+    expect(queryByText(/한식/)).not.toBeNull();
+    expect(queryByText(/중식/)).not.toBeNull();
+    expect(queryByText(/일식/)).not.toBeNull();
+    expect(queryByText(/양식/)).not.toBeNull();
+    expect(queryByText(/분식/)).not.toBeNull();
+  });
 });
