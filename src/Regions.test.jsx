@@ -2,9 +2,9 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import RegionList from './RegionList';
+import Regions from './Regions';
 
-describe('RegionContainer', () => {
+describe('Regions', () => {
   const handleClick = jest.fn();
 
   const regions = [
@@ -16,7 +16,7 @@ describe('RegionContainer', () => {
 
   function renderList() {
     return render(
-      <RegionList
+      <Regions
         regions={regions}
         selectedRegionID={regionID}
         onClick={handleClick}

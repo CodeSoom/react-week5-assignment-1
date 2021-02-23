@@ -1,19 +1,20 @@
-function reducer(state, action) {
-  if (action.type === 'changeSelectedRegion') {
-    return ({
-      ...state,
-      selectedRegionID: action.payload.id,
-    });
-  }
+const initialState = {
+  selectedRegionID: 0,
+  regions: [],
+};
+const reducers = {
+  changeSelectedRegion: (state, { payload: { id } }) => ({
+    ...state,
+    selectedRegionID: id,
+  }),
+  setRegions: (state, { payload: { regions } }) => ({
+    ...state,
+    regions,
+  }),
+};
 
-  if (action.type === 'setRegions') {
-    return ({
-      ...state,
-      regions: action.payload.regions,
-    });
-  }
-
-  return state;
+function reducer(state = initialState, action) {
+  return reducers[action.type](state, action);
 }
 
 export default reducer;
