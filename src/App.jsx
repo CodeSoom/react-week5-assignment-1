@@ -10,6 +10,7 @@ import {
 } from './actions';
 
 import { fetchRegions, fetchCategories } from './services/api';
+import Categories from './Categories';
 
 function loadRegions() {
   return async (dispatch) => {
@@ -39,18 +40,7 @@ export default function App() {
   return (
     <>
       <RegionsContainer />
-      <ul>
-        {!!categories?.length && categories.map(({
-          id, name,
-        }) => (
-          <li key={id}>
-            <button type="button">
-              {name}
-            </button>
-          </li>
-        ))}
-      </ul>
-
+      <Categories categories={categories} />
     </>
   );
 }
