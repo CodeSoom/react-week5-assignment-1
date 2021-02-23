@@ -33,4 +33,21 @@ describe('App', () => {
     expect(queryByText('전주')).not.toBeNull();
     expect(queryByText('순천')).not.toBeNull();
   });
+
+  it('renders categories buttons', () => {
+    const { queryByText } = render(<App />);
+
+    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('중식')).not.toBeNull();
+    expect(queryByText('일식')).not.toBeNull();
+    expect(queryByText('양식')).not.toBeNull();
+    expect(queryByText('분식')).not.toBeNull();
+    expect(queryByText('과자')).not.toBeNull();
+    expect(queryByText('치킨')).not.toBeNull();
+    expect(queryByText('아시아식')).not.toBeNull();
+    expect(queryByText('중동')).not.toBeNull();
+    expect(queryByText('가정식')).not.toBeNull();
+    expect(queryByText('3분요리')).not.toBeNull();
+    expect(queryByText('냉동')).not.toBeNull();
+  });
 });
