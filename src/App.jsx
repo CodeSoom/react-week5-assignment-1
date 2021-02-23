@@ -14,7 +14,7 @@ export default function App() {
   return (
     <div>
       <Locations locations={locations} onClick={handleClick} />
-      <Categories categories={categories} />
+      <Categories categories={categories} onClick={handleClick} />
     </div>
   );
 }
