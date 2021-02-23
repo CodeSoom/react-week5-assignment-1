@@ -9,11 +9,12 @@ import locations from '../fixtures/locations';
 describe('Location', () => {
   const onClick = jest.fn();
 
-  function renderLocations() {
+  function renderLocations(selectedlocationname) {
     return render((
       <Locations
         locations={locations}
         onClick={onClick}
+        selectedlocationname={selectedlocationname}
       />));
   }
 
@@ -36,7 +37,8 @@ describe('Location', () => {
   });
 
   it('선택한 값은 V표기 합니다.', () => {
-    const { queryByText } = renderLocations();
+    const selectedlocationname = '서울';
+    const { queryByText } = renderLocations(selectedlocationname);
 
     expect(queryByText('서울(V)')).not.toBeNull();
   });
