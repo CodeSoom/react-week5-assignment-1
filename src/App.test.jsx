@@ -6,8 +6,19 @@ import App from './App';
 
 import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
+import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({ locations, categories }));
+  });
+
   it('지역을 출력합니다.', () => {
     const { queryByText } = render((<App />));
 
@@ -19,8 +30,8 @@ describe('App', () => {
   it('분류를 출력합니다.', () => {
     const { queryByText } = render((<App />));
 
-    categories.forEach((categorie) => {
-      expect(queryByText(categorie.name)).not.toBeNull();
+    categories.forEach((category) => {
+      expect(queryByText(category.name)).not.toBeNull();
     });
   });
 });
