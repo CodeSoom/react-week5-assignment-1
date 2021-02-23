@@ -1,6 +1,7 @@
 import React from 'react';
 
 import regions from './fixtures/regions';
+import categories from './fixtures/categories';
 
 export default function App() {
   return (
@@ -11,6 +12,15 @@ export default function App() {
           <li key={region.id}>
             <button type="button">
               {region.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {categories.map((category) => (
+          <li key={category.id}>
+            <button type="button">
+              {category.name}
             </button>
           </li>
         ))}
