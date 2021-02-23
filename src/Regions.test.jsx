@@ -7,14 +7,10 @@ import Regions from './Regions';
 import regions from '../fixtures/restaurants';
 
 describe('Regions', () => {
-  function renderRegions({ regions }) {
-    return render((
+  it('button들을 보여준다.', () => {
+    const { queryByText } = render((
       <Regions regions={regions} />
     ));
-  }
-
-  it('button들을 보여준다.', () => {
-    const { queryByText } = renderRegions({ regions });
 
     regions.forEach((region) => {
       const { name } = region;
