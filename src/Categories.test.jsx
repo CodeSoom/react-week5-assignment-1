@@ -9,11 +9,12 @@ import categories from '../fixtures/categories';
 describe('Categories', () => {
   const onClick = jest.fn();
 
-  function renderCategories() {
+  function renderCategories(selectedcategoryname) {
     return render((
       <Categories
         categories={categories}
         onClick={onClick}
+        selectedcategoryname={selectedcategoryname}
       />
     ));
   }
@@ -34,5 +35,12 @@ describe('Categories', () => {
     fireEvent.click(getByText(/한식/));
 
     expect(onClick).toBeCalled();
+  });
+
+  it('선택한 값은 V표기 합니다.', () => {
+    const selectedcategoryname = '한식';
+    const { queryByText } = renderCategories(selectedcategoryname);
+
+    expect(queryByText('한식(V)')).not.toBeNull();
   });
 });
