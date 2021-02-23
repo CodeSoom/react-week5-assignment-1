@@ -9,12 +9,10 @@ import restaurants from '../fixtures/restaurants';
 import App from './App';
 
 describe('App', () => {
-  const renderApp = () => render(<App />);
-
   useSelector.mockImplementation((selector) => selector({ restaurants }));
 
   it('renders restaurants', () => {
-    const { queryByText } = renderApp();
+    const { queryByText } = render(<App />);
 
     const restaurantData = restaurants.map((restaurant) => restaurant.name);
 

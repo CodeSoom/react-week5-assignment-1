@@ -11,8 +11,6 @@ import restaurants from '../fixtures/restaurants';
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
-  const renderRestaurantsContainer = () => render(<RestaurantsContainer />);
-
   const givenSelector = (data) => useSelector.mockImplementation((selector) => selector({
     restaurants: data,
   }));
@@ -20,7 +18,7 @@ describe('RestaurantsContainer', () => {
   it('renders restaurants', () => {
     given('restaurants', givenSelector(restaurants));
 
-    const { queryByText } = renderRestaurantsContainer();
+    const { queryByText } = render(<RestaurantsContainer />);
 
     const restaurantData = restaurants.map((restaurant) => restaurant.name);
 
@@ -32,7 +30,7 @@ describe('RestaurantsContainer', () => {
   it('renders the message that user has to click region and category buttons.', () => {
     given('message', givenSelector([]));
 
-    const { queryByText } = renderRestaurantsContainer();
+    const { queryByText } = render(<RestaurantsContainer />);
 
     expect(queryByText('지역과 카테고리를 클릭해주세요.')).not.toBeNull();
   });
