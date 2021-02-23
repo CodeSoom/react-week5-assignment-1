@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 import {
   setRegions,
@@ -10,7 +11,6 @@ import {
 } from './actions';
 
 import { fetchRegions, fetchCategories } from './services/api';
-import Categories from './Categories';
 
 function loadRegions() {
   return async (dispatch) => {
@@ -25,10 +25,6 @@ function loadCategories() {
 }
 
 export default function App() {
-  const { categories } = useSelector((state) => ({
-    categories: state.categories,
-  }));
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +36,7 @@ export default function App() {
   return (
     <>
       <RegionsContainer />
-      <Categories categories={categories} />
+      <CategoriesContainer />
     </>
   );
 }
