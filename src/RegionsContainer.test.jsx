@@ -14,6 +14,6 @@ describe('RegionsContainer', () => {
     useDispatch.mockImplementationOnce(() => dispatch);
 
     render(<RegionsContainer />);
-    expect(dispatch).toHaveBeenCalledWith({ type: 'GET_REGIONS' });
+    expect(dispatch).toHaveBeenCalled();
   });
 });
