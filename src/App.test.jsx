@@ -9,27 +9,18 @@ import App from './App';
 describe('App', () => {
   const dispatch = jest.fn();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-    useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-        { id: 2, name: '인천' },
-        { id: 3, name: '부산' },
-      ],
-      selectedRegionID: 1,
-    }));
-  });
+  beforeEach(() => { jest.clearAllMocks(); });
 
-  it('지역들을 보여준다.', () => {
-    const { queryByText } = render(<App />);
-    expect(queryByText('인천')).toBeInTheDocument();
-    expect(queryByText('부산')).toBeInTheDocument();
-  });
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions: [],
+    category: [],
+    selectedRegionID: 0,
+    selectedCategoryID: 0,
+  }));
 
   it('App 시작시 초기값들을 가져온다.', () => {
     render(<App />);
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
