@@ -1,6 +1,6 @@
 export default function updateSelectedLocation(locationName) {
   return {
-    type: 'undateSelectedLocation',
+    type: 'updateSelectedLocation',
     payload: { locationName },
   };
 }
