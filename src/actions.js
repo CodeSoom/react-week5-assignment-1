@@ -9,6 +9,15 @@ export function changeSelectedRegion(id) {
   );
 }
 
+export function changeSelectedCategory(id) {
+  return (
+    {
+      type: 'changeSelectedCategory',
+      payload: { id },
+    }
+  );
+}
+
 export function setRegions(regions) {
   return (
     {
