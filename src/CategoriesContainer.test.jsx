@@ -24,7 +24,7 @@ describe('CategoriesContainer', () => {
   });
 
   it('listens category button click event', () => {
-    const { getByText } = render(<CategoriesContainer />);
+    const { getByText, queryByText } = render(<CategoriesContainer />);
 
     fireEvent.click(getByText('한식'));
 
@@ -34,5 +34,10 @@ describe('CategoriesContainer', () => {
         id: 1,
       },
     });
+
+    // 클릭했을때 (V)가 붙는지를 확인하는 것은 해당컴포넌트의 관심사가 아닌가요???
+    // 컨테이너 컴포넌트는 리덕스와 연결되어 상태를 관리하기때문에 상태값에 따라 변화되는 것을
+    // 확인할 수 있는지 알았습니다...
+    expect(queryByText('한식(V)')).not.toBeNull();
   });
 });
