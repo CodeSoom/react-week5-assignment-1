@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { loadRegions } from './actions';
 
-import RegionListContainer from './RegionListContainer';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <>
-      <RegionListContainer />
+      <RegionsContainer />
     </>
   );
 }
