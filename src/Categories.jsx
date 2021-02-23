@@ -3,7 +3,7 @@ import React from 'react';
 export default function Categories({ categories }) {
   return (
     <ul>
-      {categories.map(({
+      {categories && categories.map(({
         id, name,
       }) => (
         <li key={id}>
