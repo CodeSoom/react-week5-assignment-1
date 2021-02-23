@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-// import { getRegions } from './services/api';
+import List from './List';
 
 function RegionsContainer() {
   const dispatch = useDispatch();
+  const regions = useSelector((state) => state.regions);
   useEffect(() => {
     dispatch({ type: 'GET_REGIONS' });
   }, []);
   return (
-    <div className="regions-container">RegionsContainer</div>
+    <div className="regions-container">
+      <List list={regions} />
+    </div>
   );
 }
 

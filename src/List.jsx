@@ -5,9 +5,9 @@ import Item from './Item';
 function List({ list }) {
   return (
     <ul>
-      {list.map((data, index) => (
-        <li key={`${index + 1}-${data}`}>
-          <Item text={data} />
+      {list.map((data) => (
+        <li key={data.id}>
+          <Item text={data.name} />
         </li>
       ))}
     </ul>
