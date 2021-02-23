@@ -1,17 +1,21 @@
 import React from 'react';
 
+import Regions from './Regions';
+
 export default function App() {
+  const regions = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+    { id: 3, name: '대구' },
+    { id: 4, name: '부산' },
+    { id: 5, name: '광주' },
+    { id: 6, name: '강원도' },
+    { id: 7, name: '인천' },
+  ]
+  
   return (
     <div>
-      <ul>
-        <li><button>서울</button></li>
-        <li><button>대전</button></li>
-        <li><button>대구</button></li>
-        <li><button>부산</button></li>
-        <li><button>광주</button></li>
-        <li><button>강원도</button></li>
-        <li><button>인천</button></li>
-      </ul>
+      <Regions regions={regions} />
       <ul>
         <li><button>한식</button></li>
         <li><button>중식</button></li>

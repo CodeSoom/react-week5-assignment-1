@@ -23,14 +23,17 @@ describe('Regions', () => {
   }
 
   it('renders regions', () => {
-    const { getByText } = renderRegions({ regions })
-
-    expect(getByText('서울')).not.toBeNull();
-    expect(getByText('대전')).not.toBeNull();
-    expect(getByText('대구')).not.toBeNull();
-    expect(getByText('부산')).not.toBeNull();
-    expect(getByText('광주')).not.toBeNull();
-    expect(getByText('강원도')).not.toBeNull();
-    expect(getByText('서울')).not.toBeNull();
+    const { queryByText } = renderRegions({ regions })
+    
+    regions.forEach((region) => {
+      expect(queryByText(region.name)).not.toBeNull();
+    })
+    //expect(queryByText(/서울/)).not.toBeNull();
+    //expect(queryByText(/대전/)).not.toBeNull();
+    //expect(queryByText(/대구/)).not.toBeNull();
+    //expect(queryByText(/부산/)).not.toBeNull();
+    //expect(queryByText(/광주/)).not.toBeNull();
+    //expect(queryByText(/강원도/)).not.toBeNull();
+    //expect(queryByText(/인천/)).not.toBeNull();
   })
 })
