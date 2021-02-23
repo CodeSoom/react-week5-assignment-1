@@ -3,7 +3,7 @@ export async function fetchRegions() {
   return fetch(url).then((response) => response.json());
 }
 
-export function name() {
-  // TODO: Lint 에러방지용 함수. 삭제하기
-  return '';
+export async function fetchCategories() {
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  return fetch(url).then((response) => response.json());
 }

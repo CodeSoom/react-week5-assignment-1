@@ -7,7 +7,11 @@ export function setRegions(regions) {
   };
 }
 
-export function xxx() {
-  // TODO: Lint 에러방지용 함수. 삭제하기
-  return null;
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
 }

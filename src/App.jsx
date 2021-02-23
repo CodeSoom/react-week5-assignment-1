@@ -6,13 +6,20 @@ import RegionsContainer from './RegionsContainer';
 
 import {
   setRegions,
+  setCategories,
 } from './actions';
 
-import { fetchRegions } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 
 function loadRegions() {
   return async (dispatch) => {
     dispatch(setRegions(await fetchRegions()));
+  };
+}
+
+function loadCategories() {
+  return async (dispatch) => {
+    dispatch(setCategories(await fetchCategories()));
   };
 }
 
@@ -21,6 +28,8 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadRegions());
+
+    dispatch(loadCategories());
   }, []);
 
   const categories = [
