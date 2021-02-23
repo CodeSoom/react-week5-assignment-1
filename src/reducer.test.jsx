@@ -4,7 +4,7 @@ import {
   setRegions,
 } from './actions';
 
-import regions from '../fixtures/restaurants';
+import { regions } from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {

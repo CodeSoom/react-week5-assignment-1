@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
-import regions from '../fixtures/restaurants';
+import { regions } from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
