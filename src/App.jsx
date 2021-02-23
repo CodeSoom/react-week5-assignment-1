@@ -12,15 +12,17 @@ import {
 
 import { fetchRegions } from './services/api';
 
-async function loadRegions({ dispatch }) {
-  dispatch(setRegions(await fetchRegions()));
+function loadRegions() {
+  return async (dispatch) => {
+    dispatch(setRegions(await fetchRegions()));
+  };
 }
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRegions({ dispatch });
+    dispatch(loadRegions());
   }, []);
 
   const categories = [
