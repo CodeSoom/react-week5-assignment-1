@@ -24,6 +24,7 @@ export default function LocationsContainer() {
     <Locations
       locations={locations}
       onCick={handleClickLocation}
+      value={selectedlocationname}
       selectedlocationname={selectedlocationname}
     />
   );

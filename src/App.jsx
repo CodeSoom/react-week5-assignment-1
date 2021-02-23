@@ -8,7 +8,6 @@ import LocationsContainer from './LocationsContainer';
 
 export default function App() {
   const [state, setState] = useState({
-    selectedlocationname: '',
     selectedcategoryname: '',
   });
 
@@ -17,7 +16,7 @@ export default function App() {
   function handleClickCategory(event) {
     setState({
       ...state,
-      selectedlocationname: event.target.value,
+      selectedcategoryname: event.target.value,
     });
   }
 
