@@ -12,8 +12,6 @@ jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
-
     useSelector.mockImplementation((selector) => selector({
       regions,
     }));
