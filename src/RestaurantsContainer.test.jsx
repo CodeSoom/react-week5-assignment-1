@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import given from 'given2';
+
 import restaurants from '../fixtures/restaurants';
 
 import RestaurantsContainer from './RestaurantsContainer';
@@ -11,13 +13,17 @@ import RestaurantsContainer from './RestaurantsContainer';
 describe('RestaurantsContainer', () => {
   const renderRestaurantsContainer = () => render(<RestaurantsContainer />);
 
+  const givenSelector = (data) => useSelector.mockImplementation((selector) => selector({
+    restaurants: data,
+  }));
+
   beforeEach(() => {
     jest.clearAllMocks();
-
-    useSelector.mockImplementation((selector) => selector({ restaurants }));
   });
 
   it('renders restaurants', () => {
+    given('restaurants', givenSelector(restaurants));
+
     const { queryByText } = renderRestaurantsContainer();
 
     const restaurantData = restaurants.map((restaurant) => restaurant.name);
@@ -28,7 +34,7 @@ describe('RestaurantsContainer', () => {
   });
 
   it('renders the message that user has to click region and category buttons.', () => {
-    useSelector.mockImplementation((selector) => selector({ restaurants: [] }));
+    given('message', givenSelector([]));
 
     const { queryByText } = renderRestaurantsContainer();
 
