@@ -11,3 +11,12 @@ export function setCategories(categories) {
     payload: { categories },
   };
 }
+
+export function clickCategory(id) {
+  return {
+    type: 'clickCategory',
+    payload: {
+      id,
+    },
+  };
+}
