@@ -1,13 +1,13 @@
 import React from 'react';
 
+import Item from './Item';
+
 function List({ list }) {
   return (
     <ul>
       {list.map((data, index) => (
         <li key={`${index + 1}-${data}`}>
-          <button type="button">
-            {data}
-          </button>
+          <Item text={data} />
         </li>
       ))}
     </ul>
