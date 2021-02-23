@@ -2,25 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import RegionsContainer from './RegionsContainer';
 
-import restaurants from '../fixtures/restaurants';
-
-import App from './App';
-
-describe('App', () => {
-  useSelector.mockImplementation((selector) => selector({ restaurants }));
-
-  it('renders restaurants', () => {
-    const { queryByText } = render(<App />);
-
-    expect(queryByText('양천주가')).not.toBeNull();
-    expect(queryByText('한국식 초밥')).not.toBeNull();
-    expect(queryByText('김초밥')).not.toBeNull();
-  });
-
+describe('RegionsContainer', () => {
   it('renders region buttons', () => {
-    const { queryByText } = render(<App />);
+    const { queryByText } = render(<RegionsContainer />);
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('대전')).not.toBeNull();
