@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import Locations from './Locations';
 import Categories from './Categories';
 
-import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
+
+import LocationsContainer from './LocationsContainer';
 
 export default function App() {
   const [state, setState] = useState({
@@ -12,14 +12,7 @@ export default function App() {
     selectedcategoryname: '',
   });
 
-  const { selectedlocationname, selectedcategoryname } = state;
-
-  function handleClickLocation(event) {
-    setState({
-      ...state,
-      selectedlocationname: event.target.value,
-    });
-  }
+  const { selectedcategoryname } = state;
 
   function handleClickCategory(event) {
     setState({
@@ -30,11 +23,7 @@ export default function App() {
 
   return (
     <div>
-      <Locations
-        locations={locations}
-        onClick={handleClickLocation}
-        selectedlocationname={selectedlocationname}
-      />
+      <LocationsContainer />
       <Categories
         categories={categories}
         onClick={handleClickCategory}
