@@ -13,7 +13,7 @@ import {
 import { fetchRegions } from './services/api';
 
 async function loadRegions({ dispatch }) {
-  dispatch(setRegions(await (await fetchRegions())));
+  dispatch(setRegions(await fetchRegions()));
 }
 
 export default function App() {
