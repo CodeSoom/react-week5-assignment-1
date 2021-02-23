@@ -2,16 +2,18 @@ const initialState = {
   regions: [],
 };
 
-function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
+const reducers = {
+  setRegions: ({ state, action }) => ({
+    ...state,
+    regions: action.payload.regions,
+  }),
+};
 
-    return {
-      ...state,
-      regions,
-    };
-  }
-  return state;
+function reducer(state = initialState, action) {
+  return (
+    reducers[action.type]
+      ? reducers[action.type]({ state, action })
+      : state);
 }
 
 export default reducer;
