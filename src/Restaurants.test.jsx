@@ -13,13 +13,11 @@ describe('Restaurants', () => {
     />
   ));
 
-  const restaurantData = restaurants.map((restaurant) => restaurant.name);
-
   it('renders Restaurants', () => {
     const { queryByText } = renderRestaurants();
 
-    restaurantData.forEach((restaurant) => {
-      expect(queryByText(restaurant)).not.toBeNull();
-    });
+    expect(queryByText('양천주가')).not.toBeNull();
+    expect(queryByText('한국식 초밥')).not.toBeNull();
+    expect(queryByText('김초밥')).not.toBeNull();
   });
 });

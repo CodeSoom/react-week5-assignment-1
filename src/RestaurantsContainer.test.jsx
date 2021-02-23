@@ -20,11 +20,9 @@ describe('RestaurantsContainer', () => {
 
     const { queryByText } = render(<RestaurantsContainer />);
 
-    const restaurantData = restaurants.map((restaurant) => restaurant.name);
-
-    restaurantData.forEach((name) => {
-      expect(queryByText(name)).not.toBeNull();
-    });
+    expect(queryByText('양천주가')).not.toBeNull();
+    expect(queryByText('한국식 초밥')).not.toBeNull();
+    expect(queryByText('김초밥')).not.toBeNull();
   });
 
   it('renders the message that user has to click region and category buttons.', () => {
