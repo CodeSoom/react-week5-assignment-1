@@ -6,6 +6,7 @@ import {
   setRegions,
 } from './actions';
 import { fetchRegions } from './services/api';
+import CategoriesContainer from './CategoriesContainer';
 
 function loadRegions() {
   return async (dispatch) => {
@@ -15,16 +16,21 @@ function loadRegions() {
   };
 }
 
+function loadCategories() {
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   return (
     <div>
       <RegionsContainer />
+      <CategoriesContainer />
     </div>
   );
 }
