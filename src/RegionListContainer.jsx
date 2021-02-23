@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { changeSelectedRegion } from './actions';
 
-import Regions from './Regions';
+import Buttons from './Buttons';
 
 export default function RegionListContainer() {
   const dispatch = useDispatch();
@@ -18,9 +18,9 @@ export default function RegionListContainer() {
   }
 
   return (
-    <Regions
-      regions={regions}
-      selectedRegionID={selectedRegionID}
+    <Buttons
+      list={regions}
+      selectedID={selectedRegionID}
       onClick={handleClick}
     />
   );

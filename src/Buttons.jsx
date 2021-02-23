@@ -1,15 +1,15 @@
 import React from 'react';
 
-export default function Regions({ regions, selectedRegionID, onClick }) {
+export default function Buttons({ list, selectedID, onClick }) {
   return (
     <ul>
-      {regions.map(({ id, name }) => (
+      {list.map(({ id, name }) => (
         <li key={id}>
           <button
             type="button"
             onClick={() => onClick(id)}
           >
-            {id === selectedRegionID ? `${name}(V)` : name}
+            {id === selectedID ? `${name}(V)` : name}
           </button>
         </li>
       ))}
