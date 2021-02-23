@@ -9,9 +9,10 @@ import categories from '../fixtures/categories';
 export default function App() {
   const [state, setState] = useState({
     selectedlocationname: '',
+    selectedcategoryname: '',
   });
 
-  const { selectedlocationname } = state;
+  const { selectedlocationname, selectedcategoryname } = state;
 
   function handleClickLocation(event) {
     setState({
@@ -20,8 +21,11 @@ export default function App() {
     });
   }
 
-  function handleClick() {
-    return 0;
+  function handleClickCategory(event) {
+    setState({
+      ...state,
+      selectedlocationname: event.target.value,
+    });
   }
 
   return (
@@ -31,7 +35,11 @@ export default function App() {
         onClick={handleClickLocation}
         selectedlocationname={selectedlocationname}
       />
-      <Categories categories={categories} onClick={handleClick} />
+      <Categories
+        categories={categories}
+        onClick={handleClickCategory}
+        selectedcategoryname={selectedcategoryname}
+      />
     </div>
   );
 }
