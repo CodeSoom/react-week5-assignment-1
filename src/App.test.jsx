@@ -12,8 +12,11 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    jest.resetAllMocks();
+
     useSelector.mockImplementation((selector) => selector({
       regions: [{ id: 1, name: '서울' }],
+      categories: [{ id: 1, name: '한식' }],
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -22,8 +25,16 @@ describe('App', () => {
   it('renders regions', () => {
     const { queryByText } = render(<App />);
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
 
     expect(queryByText('서울')).not.toBeNull();
+  });
+
+  it('renders categories', () => {
+    const { queryByText } = render(<App />);
+
+    expect(dispatch).toBeCalledTimes(2);
+
+    expect(queryByText('한식')).not.toBeNull();
   });
 });
