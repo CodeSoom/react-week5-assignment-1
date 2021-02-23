@@ -1,6 +1,8 @@
 import { GET_REGIONS, GET_REGIONS_SUCCESS, GET_REGIONS_FAILURE } from './actions';
 import reducer from './reducer';
 
+jest.mock('./services/__mocks__/api');
+
 describe('reducer', () => {
   const initialState = {
 
@@ -44,8 +46,8 @@ describe('reducer', () => {
   describe('GET_REGIONS', () => {
     context('GET_REGIONS_SUCCESS', () => {
       it('should update state with regions received from server', () => {
-        const changedState = reducer(initialState, { type: GET_REGIONS_SUCCESS });
         const mockRegions = ['서울', '인천', '대구', '부산', '울산', '광주'];
+        const changedState = reducer(initialState, { type: GET_REGIONS_SUCCESS, payload: mockRegions });
         const { regions } = changedState;
 
         expect(regions).toHaveLength(6);
