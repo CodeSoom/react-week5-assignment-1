@@ -8,7 +8,7 @@ import regions from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {
-    it('button들을 보여준다.', () => {
+    it('regions의 데이터를 받아서 상태를 업데이트한다.', () => {
       const initialState = {
         regions: [],
       };
