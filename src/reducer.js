@@ -7,9 +7,17 @@ const reducers = {
     ...state,
     selectedRegionID: id,
   }),
+  changeSelectedCategory: (state, { payload: { id } }) => ({
+    ...state,
+    selectedCategoryID: id,
+  }),
   setRegions: (state, { payload: { regions } }) => ({
     ...state,
     regions,
+  }),
+  setCategories: (state, { payload: { categories } }) => ({
+    ...state,
+    categories,
   }),
 };
 
