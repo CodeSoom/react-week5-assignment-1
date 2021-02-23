@@ -3,6 +3,14 @@ import reducer from './reducer';
 import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
+  it('returns default parameter, initial state', () => {
+    const state = reducer();
+
+    expect(state.regions).toHaveLength(0);
+    expect(state.categories).toHaveLength(0);
+    expect(state.restaurants).toHaveLength(0);
+  });
+
   it('returns state', () => {
     const state = reducer({ restaurants });
 
