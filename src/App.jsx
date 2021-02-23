@@ -4,8 +4,9 @@ import RegionsContainer from './RegionsContainer';
 
 import {
   setRegions,
+  setCategories,
 } from './actions';
-import { fetchRegions } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 import CategoriesContainer from './CategoriesContainer';
 
 function loadRegions() {
@@ -17,6 +18,11 @@ function loadRegions() {
 }
 
 function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
+  };
 }
 
 export default function App() {
