@@ -1,12 +1,25 @@
 import React from 'react';
 
+import { useDispatch, useSelector } from 'reat-redux';
+
 import Locations from './Locations';
 
-export default function LocationsContainer({ locations, onClick, selectedlocationname }) {
+import locations from '../fixtures/locations';
+
+export default function LocationsContainer() {
+  const dispatch = useDispatch();
+  const { selectedlocationname } = useSelector((state) => ({
+    selectedlocationname: state.selectedlocationname,
+  }));
+
+  function handleClickLocation() {
+    dispatch();
+  }
+
   return (
     <Locations
       locations={locations}
-      onCick={onClick}
+      onCick={handleClickLocation}
       selectedlocationname={selectedlocationname}
     />
   );
