@@ -17,10 +17,6 @@ describe('RestaurantsContainer', () => {
     restaurants: data,
   }));
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('renders restaurants', () => {
     given('restaurants', givenSelector(restaurants));
 

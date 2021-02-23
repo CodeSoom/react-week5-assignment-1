@@ -11,9 +11,7 @@ import App from './App';
 describe('App', () => {
   const renderApp = () => render(<App />);
 
-  beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({ restaurants }));
-  });
+  useSelector.mockImplementation((selector) => selector({ restaurants }));
 
   it('renders restaurants', () => {
     const { queryByText } = renderApp();
