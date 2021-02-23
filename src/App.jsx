@@ -40,7 +40,7 @@ export default function App() {
     <>
       <RegionsContainer />
       <ul>
-        {categories.map(({
+        {!!categories?.length && categories.map(({
           id, name,
         }) => (
           <li key={id}>
