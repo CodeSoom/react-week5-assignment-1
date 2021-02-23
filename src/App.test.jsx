@@ -14,7 +14,7 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions: [],
-    category: [],
+    categories: [],
     selectedRegionID: 0,
     selectedCategoryID: 0,
   }));

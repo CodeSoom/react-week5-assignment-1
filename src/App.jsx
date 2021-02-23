@@ -6,6 +6,8 @@ import { loadRegions, loadCategories } from './actions';
 
 import RegionsContainer from './RegionsContainer';
 
+import CategoriesContainer from './CategoriesContainer';
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -17,6 +19,7 @@ export default function App() {
   return (
     <>
       <RegionsContainer />
+      <CategoriesContainer />
     </>
   );
 }

@@ -1,8 +1,11 @@
 const initialState = {
   selectedRegionID: 0,
+  selectedCategoryID: 0,
   regions: [],
+  categories: [],
 };
-const reducers = {
+
+export const reducers = {
   changeSelectedRegion: (state, { payload: { id } }) => ({
     ...state,
     selectedRegionID: id,
@@ -21,8 +24,6 @@ const reducers = {
   }),
 };
 
-function reducer(state = initialState, action) {
-  return reducers[action.type](state, action);
+export default function reducer(state = initialState, action) {
+  return reducers[action.type] ? reducers[action.type](state, action) : state;
 }
-
-export default reducer;

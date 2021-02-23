@@ -6,7 +6,7 @@ import { changeSelectedCategory } from './actions';
 
 import Buttons from './Buttons';
 
-export default function RegionsContainer() {
+export default function CategoriesContainer() {
   const dispatch = useDispatch();
   const { categories, selectedCategoryID } = useSelector((state) => ({
     categories: state.categories,
