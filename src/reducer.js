@@ -10,7 +10,7 @@ const initialState = {
 const actionHandler = {
 
   [GET_REGIONS_SUCCESS](state, action) {
-    return { ...state, regions: ['서울', '인천', '대구', '부산', '울산', '광주'] };
+    return { ...state, regions: action.payload };
   },
 };
 
