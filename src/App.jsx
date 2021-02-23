@@ -8,8 +8,6 @@ import {
   setRegions,
 } from './actions';
 
-// import regions from '../fixtures/restaurants';
-
 import { fetchRegions } from './services/api';
 
 function loadRegions() {

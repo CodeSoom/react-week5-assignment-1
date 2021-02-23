@@ -12,12 +12,6 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('App', () => {
-  function renderApp() {
-    return render((
-      <App />
-    ));
-  }
-
   it('button들을 보여준다.', () => {
     const dispatch = jest.fn();
 
@@ -27,7 +21,9 @@ describe('App', () => {
       regions,
     }));
 
-    const { queryByText } = renderApp();
+    const { queryByText } = render((
+      <App />
+    ));
 
     expect(queryByText(/서울/)).not.toBeNull();
     expect(dispatch).toBeCalled();
