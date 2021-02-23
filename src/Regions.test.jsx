@@ -6,7 +6,7 @@ import Regions from './Regions';
 
 describe('Regions', () => {
   it('renders regions', () => {
-    const regions = [{ id: 1, title: '서울' }];
+    const regions = [{ id: 1, name: '서울' }];
 
     const { queryByText } = render(<Regions regions={regions} />);
 

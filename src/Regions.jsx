@@ -5,7 +5,7 @@ export default function Regions({ regions }) {
     <ul>
       {regions.map((region) => (
         <li key={region.id}>
-          {region.title}
+          {region.name}
         </li>
       ))}
     </ul>
