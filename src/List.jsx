@@ -4,7 +4,7 @@ import Item from './Item';
 
 function List({ list }) {
   return (
-    <ul>
+    <ul className="list-container">
       {list.map((data) => (
         <li key={data.id}>
           <Item text={data.name} />
