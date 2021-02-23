@@ -14,6 +14,13 @@ describe('Buttons', () => {
   ];
   const regionID = 1;
 
+  const categories = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+    { id: 3, name: '일식' },
+  ];
+  const categoryID = 2;
+
   function renderList(list, ID) {
     return render(
       <Buttons
@@ -39,5 +46,22 @@ describe('Buttons', () => {
   it('선택된 지역은 (V)를 같이 보여준다.', () => {
     const { queryByText } = renderList(regions, regionID);
     expect(queryByText('서울(V)')).toBeInTheDocument();
+  });
+
+  it('음식 카테고리들을 보여준다.', () => {
+    const { queryByText } = renderList(categories, categoryID);
+    expect(queryByText('한식')).toBeInTheDocument();
+    expect(queryByText('일식')).toBeInTheDocument();
+  });
+
+  it('카테고리를 클릭하면 handleClick함수가 실행된다.', () => {
+    const { queryByText } = renderList(categories, categoryID);
+    fireEvent.click(queryByText('한식'));
+    expect(handleClick).toBeCalled();
+  });
+
+  it('선택된 지역은 (V)를 같이 보여준다.', () => {
+    const { queryByText } = renderList(categories, categoryID);
+    expect(queryByText('중식(V)')).toBeInTheDocument();
   });
 });
