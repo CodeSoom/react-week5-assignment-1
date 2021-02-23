@@ -17,7 +17,11 @@ describe('Location', () => {
   });
 
   it('onClick함수가 실행합니다.', () => {
-    const { getByText } = render((<Locations onClick={onClick} />));
+    const { getByText } = render((
+      <Locations
+        locations={locations}
+        onClick={onClick}
+      />));
     expect(onClick).not.toBeCalled();
     fireEvent.click(getByText(/서울/));
     expect(onClick).toBeCalled();
