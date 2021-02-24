@@ -1,4 +1,4 @@
-import fetchRegions from './services/api';
+import { fetchRegions } from './services/api';
 
 export function setRegions(regions) {
   return {
@@ -7,6 +7,10 @@ export function setRegions(regions) {
       regions,
     },
   };
+}
+
+export function setCategories() {
+  return '';
 }
 
 export function loadRegions() {

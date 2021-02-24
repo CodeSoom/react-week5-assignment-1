@@ -1,8 +1,8 @@
 import reducer from './reducer';
 
-import { regions, restaurants } from '../fixtures';
+import { regions, categories, restaurants } from '../fixtures';
 
-import { setRegions } from './actions';
+import { setCategories, setRegions } from './actions';
 
 describe('reducer', () => {
   it('returns default parameter, initial state', () => {
@@ -27,5 +27,13 @@ describe('reducer', () => {
     expect(state.regions[0].name).toBe('서울');
     expect(state.regions[1].name).toBe('대전');
     expect(state.regions[2].name).toBe('대구');
+  });
+
+  it('changes categories', () => {
+    const state = reducer({ categories }, setCategories(categories));
+
+    expect(state.categories[0].name).toBe('한식');
+    expect(state.categories[1].name).toBe('중식');
+    expect(state.categories[2].name).toBe('일식');
   });
 });
