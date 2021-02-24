@@ -20,7 +20,7 @@ const actionHandler = {
       ? { ...region, clicked: true }
       : { ...region, clicked: false }));
 
-    return { ...state, regions, watching: { ...watching, regionName: '울산' } };
+    return { ...state, regions, watching: { ...watching, regionName } };
   },
 
   GET_CATEGORIES_SUCCESS(state, action) {
@@ -35,7 +35,7 @@ const actionHandler = {
       ? { ...category, clicked: true }
       : { ...category, clicked: false }));
 
-    return { ...state, categories, watching: { ...watching, categoryId: 1 } };
+    return { ...state, categories, watching: { ...watching, categoryId } };
   },
 };
 
