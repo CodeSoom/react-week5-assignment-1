@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const initialState = {
   regions: [],
+  regionClicked: '',
 };
 
 function reducer(state = initialState, action) {
@@ -9,6 +10,13 @@ function reducer(state = initialState, action) {
     return {
       ...state,
       regions: action.payload.regions,
+    };
+  }
+
+  if (action.type === 'regionClick') {
+    return {
+      ...state,
+      regionClicked: action.payload.id,
     };
   }
 

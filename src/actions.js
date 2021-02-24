@@ -7,6 +7,11 @@ export function setRegions(regions) {
   };
 }
 
-export function xxx() {
-
+export function regionClick(id) {
+  return {
+    type: 'regionClick',
+    payload: {
+      id,
+    },
+  };
 }
