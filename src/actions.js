@@ -1,3 +1,5 @@
+import { fetchCategories, fetchRegions } from './services/api';
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',
@@ -18,5 +20,30 @@ export function clickCategory(id) {
     payload: {
       id,
     },
+  };
+}
+
+export function clickRegion(id) {
+  return {
+    type: 'clickRegion',
+    payload: {
+      id,
+    },
+  };
+}
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+
+    dispatch(setRegions(regions));
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
   };
 }
