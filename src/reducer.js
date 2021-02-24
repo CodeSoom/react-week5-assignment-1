@@ -1,5 +1,3 @@
-import { GET_REGIONS_SUCCESS } from './actions';
-
 const initialState = {
   regions: [],
   categories: [],
@@ -10,7 +8,7 @@ const initialState = {
 
 const actionHandler = {
 
-  [GET_REGIONS_SUCCESS](state, action) {
+  GET_REGIONS_SUCCESS(state, action) {
     const regions = action.payload.map((region) => ({ ...region, clicked: false }));
     return { ...state, regions };
   },
