@@ -10,7 +10,11 @@ import App from './App';
 
 describe('App', () => {
   beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({ restaurants }));
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      categories,
+      restaurants,
+    }));
   });
 
   it('renders restaurants', () => {
