@@ -1,4 +1,6 @@
-import { GET_REGIONS, GET_REGIONS_SUCCESS, GET_REGIONS_FAILURE } from './actions';
+import {
+  GET_REGIONS_SUCCESS, WATCH_THE_REGION,
+} from './actions';
 import reducer from './reducer';
 import { regions as mockRegions } from './fixtures/mockData';
 
@@ -56,6 +58,18 @@ describe('reducer', () => {
           expect(regions[index]).toMatchObject(region);
         });
       });
+    });
+  });
+
+  describe('WATCH_THE_REGION', () => {
+    it('should update region state with region id', () => {
+      const id = 8;
+      const changedState = reducer({ ...initialState, regions: mockRegions }, { type: WATCH_THE_REGION, payload: id });
+      const { regions } = changedState;
+      const changedRegion = regions.find((region) => region.id === id);
+
+      expect(regions).toHaveLength(6);
+      expect(changedRegion.clicked).toBe(true);
     });
   });
 });
