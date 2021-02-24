@@ -2,16 +2,18 @@ import React from 'react';
 
 export default function Buttons({ buttons, handleClick }) {
   return (
-    <div>
+    <ul>
       {buttons.map(({ id, name }) => (
-        <button
-          key={id}
-          type="button"
-          onClick={handleClick}
-        >
-          {name}
-        </button>
+        <li key={id}>
+          <button
+            type="button"
+            onClick={handleClick}
+          >
+            {name}
+          </button>
+        </li>
       ))}
-    </div>
+    </ul>
+
   );
 }
