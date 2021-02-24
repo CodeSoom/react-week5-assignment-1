@@ -15,9 +15,8 @@ describe('reducer', () => {
     categories: [],
     restaurants: [],
     error: { regions: null, categories: null, restaurants: null },
-    watching: { region: null, category: null },
+    watching: { regionName: null, categoryId: null },
   };
-
   describe('default state', () => {
     context('if there is no action', () => {
       it('shold have default state', () => {
