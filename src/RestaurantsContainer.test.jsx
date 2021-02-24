@@ -29,4 +29,16 @@ describe('RestaurantsContainer', () => {
       expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
+
+  context('when region and category not selected', () => {
+    beforeEach(() => {
+      jest.clearAllMocks();
+      useSelector.mockImplementationOnce((selector) => selector(initialState));
+      useDispatch.mockImplementationOnce(() => dispatch);
+    });
+    it('should not get restaurants ', () => {
+      render(<RestaurantsContainer />);
+      expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
 });
