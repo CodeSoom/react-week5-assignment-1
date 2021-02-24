@@ -73,7 +73,7 @@ describe('reducer', () => {
 
       expect(regions).toHaveLength(6);
       expect(changedRegion.clicked).toBe(true);
-      expect(watching.region).toBe(regionName);
+      expect(watching.regionName).toBe(regionName);
     });
   });
 
@@ -104,7 +104,7 @@ describe('reducer', () => {
 
       expect(categories).toHaveLength(mockCategories.length);
       expect(changedCategory.clicked).toBe(true);
-      expect(watching.category).toBe(1);
+      expect(watching.categoryId).toBe(1);
     });
   });
 });
