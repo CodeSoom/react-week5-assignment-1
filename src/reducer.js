@@ -9,6 +9,10 @@ const reducers = {
     ...state,
     regions: { ...state.regions, ...regions },
   }),
+  setCategories: (state, { payload: { categories } }) => ({
+    ...state,
+    categories: { ...state.categories, ...categories },
+  }),
 };
 
 export default function reducer(state = initialState, action = { type: undefined }) {
