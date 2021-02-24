@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { getCateroriesThunk } from './actions';
 
 function CategoriesContainer() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch();
+    dispatch(getCateroriesThunk());
   }, []);
   return (
     <div className="categories-container">categories-container</div>
