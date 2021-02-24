@@ -12,7 +12,7 @@ function RegionsContainer() {
   }, []);
 
   function handleClick(region) {
-    dispatch(watchRegion('울산'));
+    dispatch(watchRegion(region));
   }
   return (
     <div className="regions-container">

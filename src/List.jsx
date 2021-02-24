@@ -8,7 +8,7 @@ function List({ list, onClick }) {
     <ul className="list-container">
       {list.map((data) => (
         <li key={data.id}>
-          <button type="button" onClick={() => { onClick(data.id); }}>
+          <button type="button" onClick={() => { onClick(data.name); }}>
             {data.clicked
               ? `${data.name}(v)`
               : `${data.name}`}
