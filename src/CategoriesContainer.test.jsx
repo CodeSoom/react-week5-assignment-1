@@ -15,7 +15,7 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementationOnce(() => dispatch);
   });
 
-  it('should dispatch when mounted', () => {
+  it('should get categories when mounted', () => {
     render(<CategoriesContainer />);
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
