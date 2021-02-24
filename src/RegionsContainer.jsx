@@ -1,13 +1,24 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Buttons from './Buttons';
 
 export default function RegionsContainer() {
+  const dispatch = useDispatch();
+
   const { regions } = useSelector((state) => ({
     regions: state.regions,
   }));
 
-  return <Buttons buttons={regions} />;
+  function setSelected() {
+    dispatch({});
+  }
+
+  return (
+    <Buttons
+      buttons={regions}
+      handleClick={setSelected}
+    />
+  );
 }

@@ -33,6 +33,7 @@ describe('RegionsContainer', () => {
 
   it('버튼을 클릭하면 dispatch를 호출한다.', () => {
     const { queryByText } = render(<RegionsContainer />);
+
     expect(queryByText(/서울/)).not.toBeNull();
 
     fireEvent.click(queryByText('서울'));
