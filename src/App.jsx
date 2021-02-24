@@ -21,6 +21,9 @@ export default function App() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
+      <ul>
+        <li>양천주가</li>
+      </ul>
     </div>
   );
 }
