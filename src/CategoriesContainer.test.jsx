@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 import { categories } from './fixtures/mockData';
+import { watchCategory } from './actions';
 
 jest.mock('react-redux');
 
@@ -28,5 +29,12 @@ describe('CategoriesContainer', () => {
     categories.forEach((category) => {
       expect(getByRole('list')).toHaveTextContent(category.name);
     });
+  });
+
+  it('should change category when clicked', () => {
+    const { getByText } = render(<CategoriesContainer />);
+
+    fireEvent.click(getByText('한식'));
+    expect(dispatch).toHaveBeenCalledWith(watchCategory(1));
   });
 });
