@@ -36,4 +36,20 @@ describe('Buttons', () => {
 
     expect(handleClick).toBeCalledTimes(items.length);
   });
+
+  it('선택된 버튼은 버튼명에 (V)가 보여진다.', () => {
+    const selected = 1;
+
+    const { queryByText } = render((
+      <Buttons
+        buttons={items}
+        handleClick={handleClick}
+        selected={selected}
+      />
+    ));
+
+    const { name } = items.find((item) => item.id === selected);
+
+    expect(queryByText(`${name}(V)`)).not.toBeNull();
+  });
 });
