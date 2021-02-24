@@ -8,6 +8,7 @@ export default function Categories({ categories, onClick, selectedcategoryname }
           <button
             type="button"
             onClick={onClick}
+            value={selectedcategoryname}
             selectedcategoryname={selectedcategoryname}
           >
             {category.name === selectedcategoryname ? `${selectedcategoryname}(V)` : category.name}

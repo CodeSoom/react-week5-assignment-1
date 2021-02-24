@@ -10,6 +10,13 @@ function reducer(state = initialState, action) {
     });
   }
 
+  if (action.type === 'updateSelectedCategory') {
+    return ({
+      ...state,
+      selectedcategoryname: action.payload.categoryName,
+    });
+  }
+
   return state;
 }
 
