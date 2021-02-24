@@ -15,8 +15,8 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
-    selectedRegionid: 0,
-    selectedCategoryid: 0,
+    selectedRegionId: 0,
+    selectedCategoryId: 0,
   }));
 
   it('App 시작시 초기값들을 가져온다.', () => {
