@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Buttons({ buttons = [], handleClick }) {
+export default function Buttons({ buttons = [], handleClick, selected }) {
   return (
     <ul>
       {buttons.map(({
@@ -12,6 +12,7 @@ export default function Buttons({ buttons = [], handleClick }) {
             onClick={handleClick}
           >
             {name}
+            {id === selected && '(V)'}
           </button>
         </li>
       ))}
