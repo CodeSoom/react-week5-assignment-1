@@ -3,15 +3,19 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
-import Categories from './Categories';
+import CategoriesContainer from './CategoriesContainer';
 
-import { fetchRegions } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 
-import { setRegions } from './actions';
+import { setRegions, setCategories } from './actions';
 
 async function loadRegions(dispatch) {
   const regions = await fetchRegions();
   dispatch(setRegions(regions));
+}
+async function loadCategories(dispatch) {
+  const categories = await fetchCategories();
+  dispatch(setCategories(categories));
 }
 
 export default function App() {
@@ -19,12 +23,13 @@ export default function App() {
 
   useEffect(() => {
     loadRegions(dispatch);
+    loadCategories(dispatch);
   }, []);
 
   return (
     <div>
       <RegionsContainer />
-      <Categories />
+      <CategoriesContainer />
     </div>
   );
 }

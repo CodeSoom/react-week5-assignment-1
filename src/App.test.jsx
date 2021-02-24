@@ -16,17 +16,17 @@ test('App', async () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions: [{ id: 1, name: '서울' }],
+    categories: [{ id: 1, name: '한식' }],
   }));
 
   const { queryByText } = render((<App />));
 
   await waitFor(() => queryByText('서울'));
+  await waitFor(() => queryByText('한식'));
 
   expect(queryByText('서울')).not.toBeNull();
 
   expect(queryByText('한식')).not.toBeNull();
-  expect(queryByText('중식')).not.toBeNull();
-  expect(queryByText('일식')).not.toBeNull();
 
   expect(dispatch).toBeCalled();
 });
