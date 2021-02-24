@@ -12,6 +12,14 @@ describe('App', () => {
   describe('정보를 가져오는 경우,', () => {
     const dispatch = jest.fn();
 
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [],
+      selectedlocationname: '',
+      selectedcategoryname: '',
+    }));
+
     it('Api에서 지역 정보를 가져옵니다.', () => {
       render(<App />);
 

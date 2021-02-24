@@ -11,3 +11,10 @@ export function updateSelectedCategory(categoryName) {
     payload: { categoryName },
   };
 }
+
+export function setLocations(locations) {
+  return {
+    type: 'setLocations',
+    payload: { locations },
+  };
+}
