@@ -7,7 +7,9 @@ function RestaurantsContainer() {
   const { regionName, categoryId } = useSelector((state) => state.watching);
 
   useEffect(() => {
-    dispatch();
+    if (regionName && categoryId) {
+      dispatch();
+    }
   }, [regionName && categoryId]);
   return (
     <div className="restaurants-container">restaurants-container</div>
