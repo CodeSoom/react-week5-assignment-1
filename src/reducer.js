@@ -3,7 +3,7 @@ const initialState = {
   categories: [],
   restaurants: [],
   error: { regions: null, categories: null, restaurants: null },
-  watching: { region: null, category: null },
+  watching: { regionName: null, categoryId: null },
 };
 
 const actionHandler = {
@@ -20,7 +20,7 @@ const actionHandler = {
       ? { ...region, clicked: true }
       : { ...region, clicked: false }));
 
-    return { ...state, regions, watching: { ...watching, region: regionName } };
+    return { ...state, regions, watching: { ...watching, regionName: '울산' } };
   },
 
   GET_CATEGORIES_SUCCESS(state, action) {
@@ -35,7 +35,7 @@ const actionHandler = {
       ? { ...category, clicked: true }
       : { ...category, clicked: false }));
 
-    return { ...state, categories, watching: { ...watching, category: categoryId } };
+    return { ...state, categories, watching: { ...watching, categoryId: 1 } };
   },
 };
 
