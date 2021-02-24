@@ -27,7 +27,7 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
-  it('renders regions and categories', () => {
+  it('renders regions and categories and restaurant', () => {
     const { queryByText } = render(<App />);
 
     expect(dispatch).toBeCalledTimes(2);
@@ -36,5 +36,6 @@ describe('App', () => {
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('양천주가')).not.toBeNull();
   });
 });
