@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 
 import { regions } from './fixtures/mockData';
-import { WATCH_THE_REGION } from './actions';
+import { watchRegion } from './actions';
 
 jest.mock('react-redux');
 
@@ -38,6 +38,6 @@ describe('RegionsContainer', () => {
     const region = regions.find((data) => data.id === id);
 
     fireEvent.click(getByText(region.name));
-    expect(dispatch).toHaveBeenCalledWith({ type: WATCH_THE_REGION, payload: id });
+    expect(dispatch).toHaveBeenCalledWith(watchRegion(id));
   });
 });
