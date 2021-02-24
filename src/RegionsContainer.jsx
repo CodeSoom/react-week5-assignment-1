@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const regions = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
+  const regions = useSelector((state) => state.regions);
 
   return (<Regions regions={regions} />);
 }

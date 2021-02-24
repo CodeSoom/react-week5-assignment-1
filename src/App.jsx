@@ -11,8 +11,6 @@ import { setRegions } from './actions';
 
 async function loadRegions({ dispatch }) {
   const regions = await fetchRegions();
-  console.log(regions);
-  // const regions = [];
   dispatch(setRegions(regions));
 }
 

@@ -5,7 +5,7 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  if (action === 'setRegions') {
+  if (action.type === 'setRegions') {
     return {
       ...state,
       regions: action.payload.regions,
