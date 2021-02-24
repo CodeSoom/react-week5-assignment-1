@@ -1,5 +1,7 @@
 const initialState = {
+  restaurants: [],
   selectedlocationname: '',
+  selectedcategoryname: '',
 };
 
 function reducer(state = initialState, action) {
