@@ -2,18 +2,18 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import Regions from './Regions';
+import Buttons from './Buttons';
 
 import { regions } from '../fixtures/restaurants';
 
-describe('Regions', () => {
+describe('Buttons', () => {
   it('button들을 보여준다.', () => {
     const { queryByText } = render((
-      <Regions regions={regions} />
+      <Buttons buttons={regions} />
     ));
 
-    regions.forEach((region) => {
-      const { name } = region;
+    regions.forEach((button) => {
+      const { name } = button;
 
       expect(queryByText(name)).not.toBeNull();
     });
