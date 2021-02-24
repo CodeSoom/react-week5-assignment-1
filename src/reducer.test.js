@@ -65,11 +65,11 @@ describe('reducer', () => {
 
   describe('WATCH_THE_REGION', () => {
     it('should update region state with region id', () => {
-      const id = 8;
+      const regionName = '울산';
       const changedState = reducer({ ...initialState, regions: mockRegions },
-        watchRegion(id));
+        watchRegion(regionName));
       const { regions } = changedState;
-      const changedRegion = regions.find((region) => region.id === id);
+      const changedRegion = regions.find((region) => region.name === regionName);
 
       expect(regions).toHaveLength(6);
       expect(changedRegion.clicked).toBe(true);
