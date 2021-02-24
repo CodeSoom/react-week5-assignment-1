@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import { regions, restaurants } from '../fixtures';
 
-import setRegions from './actions';
+import { setRegions } from './actions';
 
 describe('reducer', () => {
   it('returns default parameter, initial state', () => {
