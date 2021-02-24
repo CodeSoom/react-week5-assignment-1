@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 import App from './App';
@@ -25,13 +27,13 @@ describe('App', () => {
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('대전')).not.toBeNull();
     expect(queryByText('대구')).not.toBeNull();
-    expect(queryByText('부산')).not.toBeNull();
-    expect(queryByText('광주')).not.toBeNull();
-    expect(queryByText('강원도')).not.toBeNull();
-    expect(queryByText('인천')).not.toBeNull();
-    expect(queryByText('제주')).not.toBeNull();
-    expect(queryByText('전주')).not.toBeNull();
-    expect(queryByText('순천')).not.toBeNull();
+
+    // identical assertions on the rest of the regions
+    regions
+      .filter((region, index) => index > 2)
+      .forEach(({ name }) => {
+        expect(queryByText(name)).not.toBeNull();
+      });
   });
 
   it('renders categories buttons', () => {
@@ -40,14 +42,12 @@ describe('App', () => {
     expect(queryByText('한식')).not.toBeNull();
     expect(queryByText('중식')).not.toBeNull();
     expect(queryByText('일식')).not.toBeNull();
-    expect(queryByText('양식')).not.toBeNull();
-    expect(queryByText('분식')).not.toBeNull();
-    expect(queryByText('과자')).not.toBeNull();
-    expect(queryByText('치킨')).not.toBeNull();
-    expect(queryByText('아시아식')).not.toBeNull();
-    expect(queryByText('중동')).not.toBeNull();
-    expect(queryByText('가정식')).not.toBeNull();
-    expect(queryByText('3분요리')).not.toBeNull();
-    expect(queryByText('냉동')).not.toBeNull();
+
+    // identical assertions on the rest of the categories
+    categories
+      .filter((category, index) => index > 2)
+      .forEach(({ name }) => {
+        expect(queryByText(name)).not.toBeNull();
+      });
   });
 });

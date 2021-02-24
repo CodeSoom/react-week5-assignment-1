@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { regions } from '../fixtures';
+
 import RegionsContainer from './RegionsContainer';
 
 describe('RegionsContainer', () => {
@@ -11,12 +13,12 @@ describe('RegionsContainer', () => {
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('대전')).not.toBeNull();
     expect(queryByText('대구')).not.toBeNull();
-    expect(queryByText('부산')).not.toBeNull();
-    expect(queryByText('광주')).not.toBeNull();
-    expect(queryByText('강원도')).not.toBeNull();
-    expect(queryByText('인천')).not.toBeNull();
-    expect(queryByText('제주')).not.toBeNull();
-    expect(queryByText('전주')).not.toBeNull();
-    expect(queryByText('순천')).not.toBeNull();
+
+    // identical assertions on the rest of the regions
+    regions
+      .filter((region, index) => index > 2)
+      .forEach(({ name }) => {
+        expect(queryByText(name)).not.toBeNull();
+      });
   });
 });
