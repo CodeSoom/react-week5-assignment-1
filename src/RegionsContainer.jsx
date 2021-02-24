@@ -11,8 +11,8 @@ function RegionsContainer() {
     dispatch(getRegionsThunk());
   }, []);
 
-  function handleClick(id) {
-    dispatch(watchRegion(id));
+  function handleClick(region) {
+    dispatch(watchRegion('울산'));
   }
   return (
     <div className="regions-container">
