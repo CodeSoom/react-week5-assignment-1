@@ -19,6 +19,13 @@ function reducer(state = initialState, action) {
     });
   }
 
+  if (action.type === 'setLocations') {
+    return ({
+      ...state,
+      locations: action.payload.locations,
+    });
+  }
+
   return state;
 }
 
