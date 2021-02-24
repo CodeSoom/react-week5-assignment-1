@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import restaurants from '../fixtures/restaurants'
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
@@ -17,6 +17,6 @@ test('RestaurantsContainer', () => {
   const { getByText } = render((
     <RestaurantsContainer />
   ));
-  
+
   expect(getByText(/김밥제국/)).not.toBeNull();
 });

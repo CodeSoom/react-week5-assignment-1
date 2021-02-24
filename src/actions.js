@@ -1,4 +1,4 @@
-import { fetchCategories } from './services/api' 
+import { fetchCategories } from './services/api';
 
 export function setRestaurants(restaurants) {
   return {
@@ -6,13 +6,13 @@ export function setRestaurants(restaurants) {
     payload: {
       restaurants,
     },
-  }
+  };
 }
 
 export function addRestaurant() {
   return {
-    type: 'addRestaurant'
-  }
+    type: 'addRestaurant',
+  };
 }
 
 export function changeRestaurantField({ name, value }) {
@@ -20,18 +20,18 @@ export function changeRestaurantField({ name, value }) {
     type: 'changeRestaurantField',
     payload: {
       name,
-      value
+      value,
     },
-  }
+  };
 }
 
 export function setCategories(categories) {
   return {
     type: 'setCategories',
     payload: {
-      categories
-    }
-  }
+      categories,
+    },
+  };
 }
 
 export function loadCategories() {

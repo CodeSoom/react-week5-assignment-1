@@ -16,8 +16,8 @@ export default function reducer(state = intialState, action) {
     const { restaurants } = action.payload;
     return {
       ...state,
-      restaurants
-    }
+      restaurants,
+    };
   }
   if (action.type === 'changeRestaurantField') {
     const { name, value } = action.payload;
@@ -26,8 +26,8 @@ export default function reducer(state = intialState, action) {
       restaurant: {
         ...state.restaurant,
         [name]: value,
-      }
-    }
+      },
+    };
   }
   if (action.type === 'addRestaurant') {
     const { newId, restaurants, restaurant } = state;
@@ -35,8 +35,8 @@ export default function reducer(state = intialState, action) {
       ...state,
       newId: newId + 1,
       restaurants: [...restaurants, { ...restaurant, id: newId }],
-      restaurant: initialRestaurant
-    }
+      restaurant: initialRestaurant,
+    };
   }
 
   if (action.type === 'setCategories') {
@@ -44,7 +44,7 @@ export default function reducer(state = intialState, action) {
     return {
       ...state,
       categories,
-    }
+    };
   }
   return state;
 }

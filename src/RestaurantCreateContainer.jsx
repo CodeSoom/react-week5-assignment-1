@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantForm from './RestaurantForm'
+import RestaurantForm from './RestaurantForm';
 
 import {
   changeRestaurantField,
@@ -12,7 +12,7 @@ import {
 export default function RestaurantCreateContainer() {
   const dispatch = useDispatch();
 
-  const {restaurant} = useSelector(state => ({
+  const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
 
@@ -23,12 +23,12 @@ export default function RestaurantCreateContainer() {
   function handleChange({ name, value }) {
     dispatch(changeRestaurantField({ name, value }));
   }
-  
+
   return (
-      <RestaurantForm
+    <RestaurantForm
       restaurant={restaurant}
       onChange={handleChange}
       onClick={handleClick}
-      />
-  ); 
+    />
+  );
 }
