@@ -9,7 +9,22 @@ function CategoriesContainer() {
     dispatch(createThunk(GET_CATEGORIES, getCategories));
   }, []);
   return (
-    <div className="categories-container">categories-container</div>
+    <div className="categories-container">
+      <ul>
+        {[
+          { id: 1, name: '한식' },
+          { id: 2, name: '중식' },
+          { id: 3, name: '일식' },
+        ].map((data) => (
+          <li key={data.id}>
+            <button type="button">
+              {data.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+
+    </div>
   );
 }
 
