@@ -2,12 +2,12 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import Buttons from './Buttons';
 
 export default function CategoriesContainer() {
   const { categories } = useSelector((state) => ({
     categories: state.categories,
   }));
 
-  return <Categories categories={categories} />;
+  return <Buttons buttons={categories} />;
 }

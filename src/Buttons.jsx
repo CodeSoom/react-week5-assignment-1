@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Buttons({ buttons }) {
+export default function Buttons({ buttons = [] }) {
   return (
     <ul>
       {buttons.map(({
