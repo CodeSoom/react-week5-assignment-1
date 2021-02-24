@@ -1,4 +1,4 @@
-import { GET_REGIONS_SUCCESS } from './actions';
+import { GET_REGIONS_SUCCESS, WATCH_THE_REGION } from './actions';
 
 const initialState = {
   regions: [],
@@ -11,6 +11,12 @@ const actionHandler = {
 
   [GET_REGIONS_SUCCESS](state, action) {
     const regions = action.payload.map((region) => ({ ...region, clicked: false }));
+    return { ...state, regions };
+  },
+
+  [WATCH_THE_REGION](state, action) {
+    const id = action.payload;
+    const regions = state.regions.map((region) => (region.id === id ? { ...region, clicked: true } : { ...region, clicked: false }));
     return { ...state, regions };
   },
 };
