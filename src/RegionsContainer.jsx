@@ -2,12 +2,12 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import Regions from './Regions';
+import Buttons from './Buttons';
 
 export default function RegionsContainer() {
   const { regions } = useSelector((state) => ({
     regions: state.regions,
   }));
 
-  return <Regions regions={regions} />;
+  return <Buttons buttons={regions} />;
 }
