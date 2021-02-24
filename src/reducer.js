@@ -5,6 +5,7 @@ const initialState = {
   categories: [],
   restaurants: [],
   error: { regions: null, categories: null, restaurants: null },
+  watching: { region: null, category: null },
 };
 
 const actionHandler = {
@@ -15,11 +16,12 @@ const actionHandler = {
   },
 
   WATCH_THE_REGION(state, action) {
-    const id = action.payload;
-    const regions = state.regions.map((region) => (region.id === id
+    const { watching } = state;
+    const regions = state.regions.map((region) => (region.name === '울산'
       ? { ...region, clicked: true }
       : { ...region, clicked: false }));
-    return { ...state, regions };
+
+    return { ...state, regions, watching: { ...watching, region: '울산' } };
   },
 };
 
