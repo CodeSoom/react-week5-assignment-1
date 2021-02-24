@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Restaurants() {
+function Restaurants({ restaurants }) {
   return (
     <ul className="restaurant-list">
 
