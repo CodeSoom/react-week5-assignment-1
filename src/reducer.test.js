@@ -121,7 +121,7 @@ describe('reducer', () => {
 
         expect(restaurants).toHaveLength(mockRestaurants.length);
         mockRestaurants.forEach((restaurant, index) => {
-          expect(restaurant).toMatchObject(restaurants[index]);
+          expect(restaurants[index]).toMatchObject(restaurant);
         });
       });
     });
