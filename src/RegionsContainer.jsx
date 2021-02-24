@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import List from './List';
-import { clickRegion, getRegionsThunk } from './actions';
+import { watchRegion, getRegionsThunk } from './actions';
 
 function RegionsContainer() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function RegionsContainer() {
   }, []);
 
   function handleClick(id) {
-    dispatch(clickRegion(id));
+    dispatch(watchRegion(id));
   }
   return (
     <div className="regions-container">
