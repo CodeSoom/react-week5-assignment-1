@@ -1,4 +1,5 @@
 import {
+  watchCategory,
   watchRegion,
 } from './actions';
 import reducer from './reducer';
@@ -91,6 +92,19 @@ describe('reducer', () => {
           expect(categories[index]).toMatchObject(category);
         });
       });
+    });
+  });
+
+  describe('WATCH_THE_CATEGORY', () => {
+    it('should update category state with category id', () => {
+      const changedState = reducer({ ...initialState, categories: mockCategories },
+        watchCategory(1));
+      const { categories, watching } = changedState;
+      const changedCategory = categories.find((category) => category.id === 1);
+
+      expect(categories).toHaveLength(mockCategories.length);
+      expect(changedCategory.clicked).toBe(true);
+      expect(watching.category).toBe(1);
     });
   });
 });
