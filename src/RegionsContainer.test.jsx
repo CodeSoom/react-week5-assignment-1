@@ -21,12 +21,5 @@ describe('RegionsContainer', () => {
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('대전')).not.toBeNull();
     expect(queryByText('대구')).not.toBeNull();
-
-    // identical assertions on the rest of the regions
-    regions
-      .filter((region, index) => index > 2)
-      .forEach(({ name }) => {
-        expect(queryByText(name)).not.toBeNull();
-      });
   });
 });
