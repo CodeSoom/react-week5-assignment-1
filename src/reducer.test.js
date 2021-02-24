@@ -11,13 +11,13 @@ describe('reducer', () => {
   const preventState = {
     regions: [],
     categories: [],
-    selectedRegionID: 0,
-    selectedCategoryID: 0,
+    selectedRegionId: 0,
+    selectedCategoryId: 0,
   };
 
-  it('지역버튼이 클릭되면 selectedRegionID가 바뀐다.', () => {
+  it('지역버튼이 클릭되면 selectedRegionId가 바뀐다.', () => {
     const state = reducer(preventState, changeSelectedRegion(2));
-    expect(state.selectedRegionID).toBe(2);
+    expect(state.selectedRegionId).toBe(2);
   });
 
   it('초기 실행시 regions data를 가져온다.', () => {
@@ -30,9 +30,9 @@ describe('reducer', () => {
     expect(state.regions).toHaveLength(2);
   });
 
-  it('카테고리 버튼이 클릭되면 selectedCategoryID가 바뀐다.', () => {
+  it('카테고리 버튼이 클릭되면 selectedCategoryId가 바뀐다.', () => {
     const state = reducer(preventState, changeSelectedCategory(2));
-    expect(state.selectedCategoryID).toBe(2);
+    expect(state.selectedCategoryId).toBe(2);
   });
 
   it('초기 실행시 categories data를 가져온다.', () => {

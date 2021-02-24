@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Buttons({ list, selectedID, onClick }) {
+export default function Buttons({ list, selectedId, onClick }) {
   return (
     <ul>
       {list.map(({ id, name }) => (
@@ -9,7 +9,7 @@ export default function Buttons({ list, selectedID, onClick }) {
             type="button"
             onClick={() => onClick(id)}
           >
-            {id === selectedID ? `${name}(V)` : name}
+            {id === selectedId ? `${name}(V)` : name}
           </button>
         </li>
       ))}

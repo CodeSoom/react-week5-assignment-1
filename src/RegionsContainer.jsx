@@ -8,9 +8,9 @@ import Buttons from './Buttons';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
-  const { regions, selectedRegionID } = useSelector((state) => ({
+  const { regions, selectedRegionId } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegionID: state.selectedRegionID,
+    selectedRegionId: state.selectedRegionId,
   }));
 
   function handleClick(id) {
@@ -20,7 +20,7 @@ export default function RegionsContainer() {
   return (
     <Buttons
       list={regions}
-      selectedID={selectedRegionID}
+      selectedId={selectedRegionId}
       onClick={handleClick}
     />
   );

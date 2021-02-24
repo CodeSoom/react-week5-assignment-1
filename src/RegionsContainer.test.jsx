@@ -21,7 +21,7 @@ describe('RegionsContainer', () => {
         { id: 2, name: '인천' },
         { id: 3, name: '부산' },
       ],
-      selectedRegionID: 1,
+      selectedRegionId: 1,
     }));
   });
 

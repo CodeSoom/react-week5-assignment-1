@@ -9,14 +9,14 @@ import App from './App';
 describe('App', () => {
   const dispatch = jest.fn();
 
-  beforeEach(() => { jest.clearAllMocks(); });
+  beforeEach(() => jest.clearAllMocks());
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
-    selectedRegionID: 0,
-    selectedCategoryID: 0,
+    selectedRegionid: 0,
+    selectedCategoryid: 0,
   }));
 
   it('App 시작시 초기값들을 가져온다.', () => {
