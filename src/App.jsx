@@ -8,8 +8,10 @@ import LocationsContainer from './LocationsContainer';
 
 import setLocations from './actions';
 
-function loadLocations({ dispatch }) {
-  const locations = [];
+import fetchLocations from './services/api';
+
+async function loadLocations({ dispatch }) {
+  const locations = await fetchLocations();
   dispatch(setLocations(locations));
 }
 
