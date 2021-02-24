@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { createThunk } from './actions';
+import { getRestaurants } from './services/api';
+
 function RestaurantsContainer() {
   const dispatch = useDispatch();
 
@@ -8,7 +11,10 @@ function RestaurantsContainer() {
 
   useEffect(() => {
     if (regionName && categoryId) {
-      dispatch();
+      dispatch(
+        createThunk('GET_RESTAURANTS',
+          () => { getRestaurants({ regionName, categoryId }); }),
+      );
     }
   }, [regionName && categoryId]);
   return (
