@@ -4,6 +4,10 @@ export const GET_REGIONS = 'GET_REGIONS';
 export const GET_REGIONS_SUCCESS = 'GET_REGIONS_SUCCESS';
 export const GET_REGIONS_FAILURE = 'GET_REGIONS_FAILURE';
 
+export function clickRegion(id) {
+  return { type: 'WATCH_THE_REGION', payload: id };
+}
+
 export function getRegionsThunk() {
   return async (dispatch) => {
     dispatch({ type: GET_REGIONS });

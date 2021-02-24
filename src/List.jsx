@@ -1,8 +1,6 @@
 import React from 'react';
 
-import Item from './Item';
-
-function List({ list }) {
+function List({ list, onClick }) {
   if (!list) {
     return <></>;
   }
@@ -10,7 +8,11 @@ function List({ list }) {
     <ul className="list-container">
       {list.map((data) => (
         <li key={data.id}>
-          <Item text={data.name} />
+          <button type="button" onClick={() => { onClick(data.id); }}>
+            {data.clicked
+              ? `${data.name}(v)`
+              : `${data.name}`}
+          </button>
         </li>
       ))}
     </ul>
