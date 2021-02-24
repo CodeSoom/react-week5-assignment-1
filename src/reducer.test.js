@@ -53,9 +53,9 @@ describe('reducer', () => {
   });
 
   describe('clickRegion', () => {
-    it('changes selectCategoryId', () => {
+    it('changes selectRegionId', () => {
       const state = reducer({
-        selectCategoryId: null,
+        selectRegionId: null,
       }, clickRegion(1));
 
       expect(state.selectRegionId).toBe(1);
