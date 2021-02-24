@@ -13,8 +13,12 @@ function CategoriesContainer() {
   useEffect(() => {
     dispatch(createThunk(GET_CATEGORIES, getCategories));
   }, []);
+
+  function handleClick() {
+    dispatch({ type: 'WATCH_THE_CATEGORY', payload: 1 });
+  }
   return (
-    <div className="categories-container"><List list={categories} /></div>
+    <div className="categories-container"><List list={categories} onClick={handleClick} /></div>
   );
 }
 
