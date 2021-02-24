@@ -11,12 +11,13 @@ import restaurants from '../fixtures/restaurants';
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
-  const givenSelector = (data) => useSelector.mockImplementation((selector) => selector({
-    restaurants: data,
-  }));
+  given('restaurants', () => restaurants);
+  given('message', () => []);
 
   it('renders restaurants', () => {
-    given('restaurants', givenSelector(restaurants));
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: given.restaurants,
+    }));
 
     const { queryByText } = render(<RestaurantsContainer />);
 
@@ -26,7 +27,9 @@ describe('RestaurantsContainer', () => {
   });
 
   it('renders the message that user has to click region and category buttons.', () => {
-    given('message', givenSelector([]));
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: given.message,
+    }));
 
     const { queryByText } = render(<RestaurantsContainer />);
 
