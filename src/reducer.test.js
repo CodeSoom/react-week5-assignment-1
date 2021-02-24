@@ -1,5 +1,6 @@
 import {
-  GET_REGIONS_SUCCESS, WATCH_THE_REGION,
+  clickRegion,
+  GET_REGIONS_SUCCESS,
 } from './actions';
 import reducer from './reducer';
 import { regions as mockRegions } from './fixtures/mockData';
@@ -66,7 +67,7 @@ describe('reducer', () => {
     it('should update region state with region id', () => {
       const id = 8;
       const changedState = reducer({ ...initialState, regions: mockRegions },
-        { type: WATCH_THE_REGION, payload: id });
+        clickRegion(id));
       const { regions } = changedState;
       const changedRegion = regions.find((region) => region.id === id);
 
