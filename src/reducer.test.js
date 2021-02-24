@@ -1,6 +1,7 @@
 import {
   updateSelectedLocation,
   updateSelectedCategory,
+  setLocations,
 } from './actions';
 
 import reducer from './reducer';
@@ -16,5 +17,18 @@ describe('reducer', () => {
     const state = reducer({ selectedcategoryname: '' }, updateSelectedCategory('한식'));
 
     expect(state.selectedcategoryname).toBe('한식');
+  });
+  it('setLocations', () => {
+    const initialState = {
+      locations: [],
+    };
+
+    const locations = [
+      { id: 1, name: '서울' },
+    ];
+
+    const state = reducer(initialState, setLocations(locations));
+
+    expect(state.locations).toHaveLength(1);
   });
 });
