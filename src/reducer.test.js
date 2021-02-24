@@ -3,7 +3,11 @@ import {
   watchRegion,
 } from './actions';
 import reducer from './reducer';
-import { regions as mockRegions, categories as mockCategories } from './fixtures/mockData';
+import {
+  regions as mockRegions,
+  categories as mockCategories,
+  restaurants as mockRestaurants,
+} from './fixtures/mockData';
 
 describe('reducer', () => {
   const initialState = {
@@ -105,6 +109,21 @@ describe('reducer', () => {
       expect(categories).toHaveLength(mockCategories.length);
       expect(changedCategory.clicked).toBe(true);
       expect(watching.categoryId).toBe(1);
+    });
+  });
+
+  describe('GET_RESTAURANTS', () => {
+    context('GET_RESTAURANTS_SUCCESS', () => {
+      it('should update state with restaurants received from server', () => {
+        const changedState = reducer(initialState,
+          { type: 'GET_RESTAURANTS_SUCCESS', payload: mockRestaurants });
+        const { restaurants } = changedState;
+
+        expect(restaurants).toHaveLength(mockRestaurants.length);
+        mockRestaurants.forEach((restaurant, index) => {
+          expect(restaurant).toMatchObject(restaurants[index]);
+        });
+      });
     });
   });
 });
