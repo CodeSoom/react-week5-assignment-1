@@ -13,7 +13,7 @@ function RegionsContainer() {
   }, []);
 
   function handleClick(region) {
-    dispatch({ payload: '울산', type: 'WATCH_THE_REGION' });
+    dispatch(watchRegion(region.name));
   }
   return (
     <div className="regions-container">
