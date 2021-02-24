@@ -17,11 +17,12 @@ const actionHandler = {
 
   WATCH_THE_REGION(state, action) {
     const { watching } = state;
-    const regions = state.regions.map((region) => (region.name === '울산'
+    const regionName = action.payload;
+    const regions = state.regions.map((region) => (region.name === regionName
       ? { ...region, clicked: true }
       : { ...region, clicked: false }));
 
-    return { ...state, regions, watching: { ...watching, region: '울산' } };
+    return { ...state, regions, watching: { ...watching, region: regionName } };
   },
 };
 
