@@ -29,15 +29,13 @@ const actionHandler = {
   },
 
   WATCH_THE_CATEGORY(state, action) {
-    return {
-      ...state,
-      watching: { category: 1 },
-      categories: [
-        { id: 1, name: '한식', clicked: true },
-        { id: 2, name: '중식', clicked: false },
-        { id: 3, name: '일식', clicked: false },
-      ],
-    };
+    const { watching } = state;
+    const categoryId = action.payload;
+    const categories = state.categories.map((category) => (category.id === categoryId
+      ? { ...category, clicked: true }
+      : { ...category, clicked: false }));
+
+    return { ...state, categories, watching: { ...watching, category: categoryId } };
   },
 };
 
