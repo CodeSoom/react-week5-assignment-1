@@ -11,7 +11,9 @@ import restaurants from '../fixtures/restaurants';
 import App from './App';
 
 describe('App', () => {
-  useSelector.mockImplementation((selector) => selector({ restaurants }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({ restaurants }));
+  });
 
   it('renders restaurants', () => {
     const { queryByText } = render(<App />);
