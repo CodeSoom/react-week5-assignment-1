@@ -50,8 +50,10 @@ describe('reducer', () => {
 
         expect(regions).toHaveLength(6);
 
-        mockRegions.forEach((region) => {
-          expect(regions.includes(region)).toBe(true);
+        const changedRegions = mockRegions.map((region) => ({ ...region, clicked: false }));
+
+        changedRegions.forEach((region, index) => {
+          expect(regions[index]).toMatchObject(region);
         });
       });
     });
