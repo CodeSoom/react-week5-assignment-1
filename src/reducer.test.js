@@ -13,8 +13,8 @@ describe('reducer', () => {
   });
 
   it('분류를 선택하여 선택된 분류값을 업데이트합니다.', () => {
-    const state = reducer({ selectedcategoryname: '' }, updateSelectedLocation('한식'));
+    const state = reducer({ selectedcategoryname: '' }, updateSelectedCategory('한식'));
 
-    expect(state.selectedlocationname).toBe('한식');
+    expect(state.selectedcategoryname).toBe('한식');
   });
 });
