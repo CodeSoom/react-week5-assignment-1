@@ -1,21 +1,19 @@
-import { getRegions } from './services/api';
-
 export const GET_REGIONS = 'GET_REGIONS';
-export const GET_REGIONS_SUCCESS = 'GET_REGIONS_SUCCESS';
-export const GET_REGIONS_FAILURE = 'GET_REGIONS_FAILURE';
+
+export const GET_CATEGORIES = 'GET_CATEGORIES';
 
 export function watchRegion(id) {
   return { type: 'WATCH_THE_REGION', payload: id };
 }
 
-export function getRegionsThunk() {
+export function createThunk(actionType, api) {
   return async (dispatch) => {
-    dispatch({ type: GET_REGIONS });
+    dispatch({ type: actionType });
     try {
-      const regions = await getRegions();
-      dispatch({ type: GET_REGIONS_SUCCESS, payload: regions });
+      const data = await api();
+      dispatch({ type: `${actionType}_SUCCESS`, payload: data });
     } catch (error) {
-      dispatch({ type: GET_REGIONS_FAILURE, payload: error });
+      dispatch({ type: `${actionType}_FAILURE`, payload: error });
     }
   };
 }
