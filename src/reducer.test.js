@@ -1,5 +1,5 @@
 import {
-  clickRegion,
+  watchRegion,
   GET_REGIONS_SUCCESS,
 } from './actions';
 import reducer from './reducer';
@@ -67,7 +67,7 @@ describe('reducer', () => {
     it('should update region state with region id', () => {
       const id = 8;
       const changedState = reducer({ ...initialState, regions: mockRegions },
-        clickRegion(id));
+        watchRegion(id));
       const { regions } = changedState;
       const changedRegion = regions.find((region) => region.id === id);
 
