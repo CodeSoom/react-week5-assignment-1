@@ -2,17 +2,18 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import List from './List';
-import { watchRegion, getRegionsThunk } from './actions';
+import { watchRegion, createThunk, GET_REGIONS } from './actions';
+import { getRegions } from './services/api';
 
 function RegionsContainer() {
   const dispatch = useDispatch();
   const regions = useSelector((state) => state.regions);
   useEffect(() => {
-    dispatch(getRegionsThunk());
+    dispatch(createThunk(GET_REGIONS, getRegions));
   }, []);
 
   function handleClick(region) {
-    dispatch(watchRegion(region));
+    dispatch({ id: 8, name: '울산' });
   }
   return (
     <div className="regions-container">
