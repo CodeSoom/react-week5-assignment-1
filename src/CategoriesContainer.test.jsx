@@ -2,9 +2,10 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
+import { categories } from './fixtures/mockData';
 
 jest.mock('react-redux');
 
@@ -12,11 +13,20 @@ describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
   beforeEach(() => {
     jest.clearAllMocks();
+    useSelector.mockImplementationOnce((selector) => selector({ categories }));
     useDispatch.mockImplementationOnce(() => dispatch);
   });
 
   it('should get categories when mounted', () => {
     render(<CategoriesContainer />);
     expect(dispatch).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render categories', () => {
+    const { getByRole } = render(<CategoriesContainer />);
+
+    categories.forEach((category) => {
+      expect(getByRole('list')).toHaveTextContent(category.name);
+    });
   });
 });
