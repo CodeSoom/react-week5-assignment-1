@@ -17,6 +17,12 @@ describe('reducer', () => {
     selectedCategoryId: 0,
   };
 
+  it('state가 지정되지 않으면 기본값을 state로 적용한다.', () => {
+    const state = reducer();
+
+    expect(state).toStrictEqual(preventState);
+  });
+
   it('유효하지 않은 action에 대해서는 state가 변하지 않는다.', () => {
     const state = reducer(preventState, { type: '' });
     expect(preventState).toBe(state);
