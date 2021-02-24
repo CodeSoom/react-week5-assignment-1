@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { loadRestaurants } from './actions';
+
 import Restaurants from './Restaurants';
 
 export default function RestaurantsContainer() {
@@ -14,7 +16,7 @@ export default function RestaurantsContainer() {
 
   useEffect(() => {
     if (regionId && categoryId) {
-      dispatch();
+      dispatch(loadRestaurants(regionId, categoryId));
     }
   }, []);
 
