@@ -1,20 +1,13 @@
 import React from 'react';
 
+import Region from './Region';
+
 export default function Regions({ regions, onClick }) {
   return (
     <ul>
       {regions.map((region) => (
-        <li key={region.id}>
-          <button
-            type="button"
-            onClick={() => onClick(region.id)}
-          >
-            {region.name}
-          </button>
-        </li>
+        <Region key={region.id} region={region} onClick={onClick} />
       ))}
     </ul>
   );
 }
-
-// 추후 Button 세부 컴포넌트 추가
