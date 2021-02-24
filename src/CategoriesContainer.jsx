@@ -14,8 +14,8 @@ function CategoriesContainer() {
     dispatch(createThunk(GET_CATEGORIES, getCategories));
   }, []);
 
-  function handleClick() {
-    dispatch(watchCategory(1));
+  function handleClick(category) {
+    dispatch(watchCategory(category.id));
   }
   return (
     <div className="categories-container"><List list={categories} onClick={handleClick} /></div>
