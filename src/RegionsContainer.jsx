@@ -1,6 +1,6 @@
 import React from 'react';
 
-import regions from '../fixtures/regions';
+import { regions } from '../fixtures';
 
 import Buttons from './Buttons';
 

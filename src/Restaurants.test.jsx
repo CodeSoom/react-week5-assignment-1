@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import restaurants from '../fixtures/restaurants';
+import { restaurants } from '../fixtures';
 
 import Restaurants from './Restaurants';
 

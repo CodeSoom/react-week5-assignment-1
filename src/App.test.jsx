@@ -4,9 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
-import restaurants from '../fixtures/restaurants';
+import { regions, categories, restaurants } from '../fixtures';
 
 import App from './App';
 

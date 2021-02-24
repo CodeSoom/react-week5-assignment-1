@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import restaurants from '../fixtures/restaurants';
+import { restaurants } from '../fixtures';
 
 describe('reducer', () => {
   it('returns default parameter, initial state', () => {
