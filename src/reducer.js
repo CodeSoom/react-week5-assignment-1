@@ -16,7 +16,9 @@ const actionHandler = {
 
   [WATCH_THE_REGION](state, action) {
     const id = action.payload;
-    const regions = state.regions.map((region) => (region.id === id ? { ...region, clicked: true } : { ...region, clicked: false }));
+    const regions = state.regions.map((region) => (region.id === id
+      ? { ...region, clicked: true }
+      : { ...region, clicked: false }));
     return { ...state, regions };
   },
 };
