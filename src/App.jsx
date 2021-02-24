@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Regions from './Regions';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   const regions = [
@@ -12,10 +12,10 @@ export default function App() {
     { id: 6, name: '강원도' },
     { id: 7, name: '인천' },
   ]
-  
+
   return (
     <div>
-      <Regions regions={regions} />
+      <RegionsContainer regions={regions} />
       <ul>
         <li><button>한식</button></li>
         <li><button>중식</button></li>
