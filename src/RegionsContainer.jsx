@@ -7,12 +7,17 @@ import { getRegionsThunk } from './actions';
 function RegionsContainer() {
   const dispatch = useDispatch();
   const regions = useSelector((state) => state.regions);
+  console.log(regions);
   useEffect(() => {
     dispatch(getRegionsThunk());
   }, []);
+
+  function handleClick() {
+    dispatch({ type: 'WATCH_THE_REGION', payload: 8 });
+  }
   return (
     <div className="regions-container">
-      <List list={regions} />
+      <List list={regions} onClick={handleClick} />
     </div>
   );
 }
