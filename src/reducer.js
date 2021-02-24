@@ -27,6 +27,18 @@ const actionHandler = {
     const categories = action.payload.map((category) => ({ ...category, clicked: false }));
     return { ...state, categories };
   },
+
+  WATCH_THE_CATEGORY(state, action) {
+    return {
+      ...state,
+      watching: { category: 1 },
+      categories: [
+        { id: 1, name: '한식', clicked: true },
+        { id: 2, name: '중식', clicked: false },
+        { id: 3, name: '일식', clicked: false },
+      ],
+    };
+  },
 };
 
 export default function reducer(state = initialState, action = { type: undefined }) {
