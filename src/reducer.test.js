@@ -4,6 +4,8 @@ import {
   chooseRegions
 } from './actions';
 
+import regions from '../fixtures/regions'
+
 describe('reducer', () => {
   describe('chooseRegions', () => {
     it('chooses region buttons', () => {
@@ -12,8 +14,7 @@ describe('reducer', () => {
       }
       const state = reducer(initialState, chooseRegions(regions))
 
-      expect(state).not.toHaveLength(0);
+      expect(state.regions).not.toHaveLength(0);
     })
-    
   })
 })
