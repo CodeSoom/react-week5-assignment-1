@@ -9,7 +9,12 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
+  const handleClick = () => 'hi there';
+
   return (
-    <Buttons buttons={regions} />
+    <Buttons
+      buttons={regions}
+      handleClick={handleClick}
+    />
   );
 }

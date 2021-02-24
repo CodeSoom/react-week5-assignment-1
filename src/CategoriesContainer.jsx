@@ -9,7 +9,12 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
 
+  const handleClick = () => 'hi there';
+
   return (
-    <Buttons buttons={categories} />
+    <Buttons
+      buttons={categories}
+      handleClick={handleClick}
+    />
   );
 }
