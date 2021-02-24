@@ -1,4 +1,6 @@
-import { setRegions, setCategories, clickCategory } from './actions';
+import {
+  setRegions, setCategories, clickCategory, clickRegion,
+} from './actions';
 import reducer from './reducer';
 
 describe('reducer', () => {
@@ -47,6 +49,16 @@ describe('reducer', () => {
       }, clickCategory(1));
 
       expect(state.selectCategoryId).toBe(1);
+    });
+  });
+
+  describe('clickRegion', () => {
+    it('changes selectCategoryId', () => {
+      const state = reducer({
+        selectCategoryId: null,
+      }, clickRegion(1));
+
+      expect(state.selectRegionId).toBe(1);
     });
   });
 });
