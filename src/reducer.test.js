@@ -7,11 +7,11 @@ import { regions as mockRegions } from './fixtures/mockData';
 
 describe('reducer', () => {
   const initialState = {
-
     regions: [],
     categories: [],
     restaurants: [],
     error: { regions: null, categories: null, restaurants: null },
+    watching: { region: null, category: null },
   };
 
   describe('default state', () => {
@@ -68,11 +68,12 @@ describe('reducer', () => {
       const regionName = '울산';
       const changedState = reducer({ ...initialState, regions: mockRegions },
         watchRegion(regionName));
-      const { regions } = changedState;
+      const { regions, watching } = changedState;
       const changedRegion = regions.find((region) => region.name === regionName);
 
       expect(regions).toHaveLength(6);
       expect(changedRegion.clicked).toBe(true);
+      expect(watching.region).toBe(regionName);
     });
   });
 });
