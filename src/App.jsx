@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RegionsContainer from './RegionsContainer';
+import Regions from './Regions';
 
 export default function App() {
   const regions = [
@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <div>
-      <RegionsContainer regions={regions} />
+      <Regions regions={regions} />
       <ul>
         <li><button>한식</button></li>
         <li><button>중식</button></li>

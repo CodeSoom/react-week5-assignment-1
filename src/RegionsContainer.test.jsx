@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
+
+jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
   const regions = [
@@ -15,8 +19,12 @@ describe('RegionsContainer', () => {
     { id: 7, name: '인천' },
   ]
 
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }))
+
   it('renders category buttons', () => {
-    const { getByText } = render(<RegionsContainer regions={regions}/>)
+    const { getByText } = render((<RegionsContainer />))
     
     regions.forEach((region) => {
       expect(getByText(region.name)).not.toBeNull();
