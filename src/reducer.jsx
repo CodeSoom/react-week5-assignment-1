@@ -32,5 +32,14 @@ export default function reducer(state = initialState, action = { type: '' }) {
     };
   }
 
+  if (action.type === 'clickRegion') {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      selectRegionId: id,
+    };
+  }
+
   return state;
 }
