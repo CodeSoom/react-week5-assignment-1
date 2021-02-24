@@ -11,7 +11,7 @@ describe('Buttons', () => {
 
   const handleClick = jest.fn();
 
-  function renderbuttons({ buttons, selectId } = { selectId: null }) {
+  function renderButtons({ buttons, selectId } = { selectId: null }) {
     return render((
       <Buttons
         buttons={buttons}
@@ -24,7 +24,7 @@ describe('Buttons', () => {
   it('renders buttons', () => {
     const buttons = [{ id: 1, name: '한식' }];
 
-    const { queryByText } = renderbuttons({ buttons });
+    const { queryByText } = renderButtons({ buttons });
 
     expect(queryByText('한식')).not.toBeNull();
   });
@@ -32,7 +32,7 @@ describe('Buttons', () => {
   it('listens button click event', () => {
     const buttons = [{ id: 1, name: '한식' }];
 
-    const { queryByText } = renderbuttons({ buttons });
+    const { queryByText } = renderButtons({ buttons });
 
     fireEvent.click(queryByText('한식'));
 
@@ -43,7 +43,7 @@ describe('Buttons', () => {
     it('renders "button name" + "(V)"', () => {
       const buttons = [{ id: 1, name: '한식' }];
 
-      const { queryByText } = renderbuttons({ buttons, selectId: 1 });
+      const { queryByText } = renderButtons({ buttons, selectId: 1 });
 
       expect(queryByText('한식(V)')).not.toBeNull();
     });
@@ -53,7 +53,7 @@ describe('Buttons', () => {
     it('renders only "button name"', () => {
       const buttons = [{ id: 1, name: '한식' }];
 
-      const { queryByText } = renderbuttons({ buttons });
+      const { queryByText } = renderButtons({ buttons });
 
       expect(queryByText('한식(V)')).toBeNull();
     });
