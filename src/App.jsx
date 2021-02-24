@@ -4,21 +4,41 @@ export default function App() {
   return (
     <div>
       <ul>
-        <li>서울</li>
-        <li>대전</li>
-        <li>대구</li>
-        <li>부산</li>
-        <li>광주</li>
-        <li>강원도</li>
-        <li>인천</li>
-
+        <li>
+          <button type="button">서울</button>
+        </li>
+        <li>
+          <button type="button">대구</button>
+        </li>
+        <li>
+          <button type="button">부산</button>
+        </li>
+        <li>
+          <button type="button">광주</button>
+        </li>
+        <li>
+          <button type="button">강원도</button>
+        </li>
+        <li>
+          <button type="button">인천</button>
+        </li>
       </ul>
       <ul>
-        <li>한식</li>
-        <li>중식</li>
-        <li>일식</li>
-        <li>양식</li>
-        <li>분식</li>
+        <li>
+          <button type="button">한식</button>
+        </li>
+        <li>
+          <button type="button">중식</button>
+        </li>
+        <li>
+          <button type="button">일식</button>
+        </li>
+        <li>
+          <button type="button">양식</button>
+        </li>
+        <li>
+          <button type="button">분식</button>
+        </li>
       </ul>
     </div>
   );
