@@ -2,6 +2,6 @@ export async function fetchRegions() {
   return [];
 }
 
-export function xx() {
-
+export async function fetchCategories() {
+  return [];
 }

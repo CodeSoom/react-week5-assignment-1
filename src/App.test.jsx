@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
 import App from './App';
+import { loadCategories, loadRegions } from './actions';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
+jest.mock('./actions');
 
 describe('App', () => {
   const dispatch = jest.fn();
+  const asyncFunction = jest.fn();
 
   beforeEach(() => {
     jest.resetAllMocks();
@@ -18,22 +21,20 @@ describe('App', () => {
       categories: [{ id: 1, name: '한식' }],
     }));
 
+    loadRegions.mockImplementation(() => asyncFunction);
+    loadCategories.mockImplementation(() => asyncFunction);
+
     useDispatch.mockImplementation(() => dispatch);
   });
 
-  it('renders regions', () => {
+  it('renders regions and categories', () => {
     const { queryByText } = render(<App />);
 
     expect(dispatch).toBeCalledTimes(2);
+    expect(dispatch).toHaveBeenNthCalledWith(1, loadRegions());
+    expect(dispatch).toHaveBeenNthCalledWith(2, loadCategories());
 
     expect(queryByText('서울')).not.toBeNull();
-  });
-
-  it('renders categories', () => {
-    const { queryByText } = render(<App />);
-
-    expect(dispatch).toBeCalledTimes(2);
-
     expect(queryByText('한식')).not.toBeNull();
   });
 });
