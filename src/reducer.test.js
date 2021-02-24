@@ -1,5 +1,5 @@
 import {
-  setRegions, setCategories, clickCategory, clickRegion,
+  setRegions, setCategories, clickCategory, clickRegion, setRestaurants,
 } from './actions';
 import reducer from './reducer';
 
@@ -39,6 +39,21 @@ describe('reducer', () => {
       }, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const restaurants = [{
+        id: 1,
+        name: '양천주가',
+      }];
+
+      const state = reducer({
+        categories: [],
+      }, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 
