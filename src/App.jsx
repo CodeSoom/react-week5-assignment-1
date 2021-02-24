@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 import {
   setRegions,
   setCategories,
 } from './actions';
+
 import { fetchRegions, fetchCategories } from './services/api';
-import CategoriesContainer from './CategoriesContainer';
 
 function loadRegions() {
   return async (dispatch) => {
