@@ -2,11 +2,19 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import { categories } from '../fixtures';
 
 import CategoriesContainer from './CategoriesContainer';
 
 describe('CategoriesContainer', () => {
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+    }));
+  });
+
   it('renders categories buttons', () => {
     const { queryByText } = render(<CategoriesContainer />);
 
