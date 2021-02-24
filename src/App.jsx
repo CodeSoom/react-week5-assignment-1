@@ -6,20 +6,15 @@ import CategoriesContainer from './CategoriesContainer';
 
 import LocationsContainer from './LocationsContainer';
 
-import setLocations from './actions';
-
-import fetchLocations from './services/api';
-
-async function loadLocations({ dispatch }) {
-  const locations = await fetchLocations();
-  dispatch(setLocations(locations));
-}
+import {
+  loadLocations,
+} from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadLocations({ dispatch });
+    dispatch(loadLocations);
   }, []);
 
   return (
