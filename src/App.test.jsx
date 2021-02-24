@@ -9,29 +9,41 @@ import categories from '../fixtures/categories';
 import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
 describe('App', () => {
-  const dispatch = jest.fn();
+  describe('정보를 가져오는 경우,', () => {
+    const dispatch = jest.fn();
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+    it('Api에서 지역 정보를 가져옵니다.', () => {
+      render(<App />);
 
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({ locations, categories }));
-  });
-
-  it('지역을 출력합니다.', () => {
-    const { queryByText } = render((<App />));
-
-    locations.forEach((location) => {
-      expect(queryByText(location.name)).not.toBeNull();
+      expect(dispatch).toBeCalled();
     });
   });
 
-  it('분류를 출력합니다.', () => {
-    const { queryByText } = render((<App />));
+  describe('출력하는 경우,', () => {
+    const dispatch = jest.fn();
 
-    categories.forEach((category) => {
-      expect(queryByText(category.name)).not.toBeNull();
+    beforeEach(() => {
+      jest.clearAllMocks();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      useSelector.mockImplementation((selector) => selector({ locations, categories }));
+    });
+
+    it('지역을 출력합니다.', () => {
+      const { queryByText } = render(<App />);
+
+      locations.forEach((location) => {
+        expect(queryByText(location.name)).not.toBeNull();
+      });
+    });
+
+    it('분류를 출력합니다.', () => {
+      const { queryByText } = render(<App />);
+
+      categories.forEach((category) => {
+        expect(queryByText(category.name)).not.toBeNull();
+      });
     });
   });
 });
