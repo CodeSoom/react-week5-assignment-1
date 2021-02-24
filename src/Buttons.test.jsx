@@ -2,21 +2,21 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import ButtonTemplate from './ButtonTemplate';
+import Buttons from './Buttons';
 
 import regions from '../fixtures/regions';
 
 import categories from '../fixtures/categories';
 
-describe('ButtonTemplate', () => {
-  const renderButtonTemplate = (buttons) => render((
-    <ButtonTemplate
+describe('Buttons', () => {
+  const renderButtons = (buttons) => render((
+    <Buttons
       buttons={buttons}
     />
   ));
 
   it('render regions buttons', () => {
-    const { queryByText } = renderButtonTemplate(regions);
+    const { queryByText } = renderButtons(regions);
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('대전')).not.toBeNull();
@@ -31,7 +31,7 @@ describe('ButtonTemplate', () => {
   });
 
   it('renders categories buttons', () => {
-    const { queryByText } = renderButtonTemplate(categories);
+    const { queryByText } = renderButtons(categories);
 
     expect(queryByText('한식')).not.toBeNull();
     expect(queryByText('중식')).not.toBeNull();
