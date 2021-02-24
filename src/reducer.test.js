@@ -1,6 +1,5 @@
 import {
   watchRegion,
-  GET_REGIONS_SUCCESS,
 } from './actions';
 import reducer from './reducer';
 import { regions as mockRegions } from './fixtures/mockData';
@@ -49,7 +48,7 @@ describe('reducer', () => {
     context('GET_REGIONS_SUCCESS', () => {
       it('should update state with regions received from server', () => {
         const changedState = reducer(initialState,
-          { type: GET_REGIONS_SUCCESS, payload: mockRegions });
+          { type: 'GET_REGIONS_SUCCESS', payload: mockRegions });
         const { regions } = changedState;
 
         expect(regions).toHaveLength(6);
