@@ -6,15 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import { regions } from './fixtures/mockData';
+import { regions, categories, restaurants } from './fixtures/mockData';
 
 jest.mock('react-redux');
 
 describe('App', () => {
   it('should be there regions, categories, restaurants container', () => {
+    const initialState = {
+      regions,
+      categories,
+      restaurants,
+      error: { regions: null, categories: null, restaurants: null },
+      watching: { regionName: null, categoryId: null },
+    };
     const dispatch = jest.fn();
-    useDispatch.mockImplementationOnce(() => dispatch);
-    useSelector.mockImplementationOnce((selector) => selector({ regions }));
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector(initialState));
 
     const { container } = render(<App />);
 
