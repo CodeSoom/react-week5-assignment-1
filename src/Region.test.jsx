@@ -15,5 +15,4 @@ test('Region', () => {
   fireEvent.click(queryByText('서울'));
 
   expect(handleRegionClick).toBeCalledWith(1);
-  expect(queryByText('서울(V)')).not.toBeNull();
 });
