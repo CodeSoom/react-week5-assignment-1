@@ -15,4 +15,12 @@ describe('Restaurants', () => {
       });
     });
   });
+
+  context('If there is no restaurant list', () => {
+    it('should be nothing', () => {
+      const { queryByRole } = render(<Restaurants restaurants={null} />);
+
+      expect(queryByRole('list')).toBe(null);
+    });
+  });
 });
