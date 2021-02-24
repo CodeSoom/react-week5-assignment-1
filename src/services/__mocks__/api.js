@@ -1,4 +1,4 @@
-export default async function fetchRegions() {
+export async function fetchRegions() {
   return [];
 }
 
