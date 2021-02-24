@@ -2,19 +2,29 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { regions, categories, restaurants } from '../fixtures';
+import given from 'given2';
+
+import { categories, restaurants } from '../fixtures';
 
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  given('regions', () => ([]));
+
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useSelector.mockImplementation((selector) => selector({
-      regions,
+      regions: given.regions,
       categories,
       restaurants,
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders restaurants', () => {
@@ -25,19 +35,10 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
-  it('renders region buttons', () => {
-    const { queryByText } = render(<App />);
+  it('calls dispatch upon mounting', () => {
+    render(<App />);
 
-    expect(queryByText('서울')).not.toBeNull();
-    expect(queryByText('대전')).not.toBeNull();
-    expect(queryByText('대구')).not.toBeNull();
-
-    // identical assertions on the rest of the regions
-    regions
-      .filter((region, index) => index > 2)
-      .forEach(({ name }) => {
-        expect(queryByText(name)).not.toBeNull();
-      });
+    expect(dispatch).toBeCalledTimes(1);
   });
 
   it('renders categories buttons', () => {
