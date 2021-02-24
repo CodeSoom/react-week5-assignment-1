@@ -47,7 +47,8 @@ describe('reducer', () => {
   describe('GET_REGIONS', () => {
     context('GET_REGIONS_SUCCESS', () => {
       it('should update state with regions received from server', () => {
-        const changedState = reducer(initialState, { type: GET_REGIONS_SUCCESS, payload: mockRegions });
+        const changedState = reducer(initialState,
+          { type: GET_REGIONS_SUCCESS, payload: mockRegions });
         const { regions } = changedState;
 
         expect(regions).toHaveLength(6);
@@ -64,7 +65,8 @@ describe('reducer', () => {
   describe('WATCH_THE_REGION', () => {
     it('should update region state with region id', () => {
       const id = 8;
-      const changedState = reducer({ ...initialState, regions: mockRegions }, { type: WATCH_THE_REGION, payload: id });
+      const changedState = reducer({ ...initialState, regions: mockRegions },
+        { type: WATCH_THE_REGION, payload: id });
       const { regions } = changedState;
       const changedRegion = regions.find((region) => region.id === id);
 
