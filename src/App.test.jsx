@@ -1,10 +1,20 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+    }));
+  });
+
   it('renders title', () => {
     const { container } = render(<App />);
 
@@ -15,12 +25,6 @@ describe('App', () => {
     const { queryByText } = render(<App />);
 
     expect(queryByText('서울')).not.toBeNull();
-    expect(queryByText('대전')).not.toBeNull();
-    expect(queryByText('대구')).not.toBeNull();
-    expect(queryByText('부산')).not.toBeNull();
-    expect(queryByText('광주')).not.toBeNull();
-    expect(queryByText('강원도')).not.toBeNull();
-    expect(queryByText('인천')).not.toBeNull();
   });
 
   it('renders category buttons', () => {
