@@ -23,12 +23,16 @@ describe('App', () => {
     }));
   });
 
+  it('데이터를 불러오는 함수들을 호출한다.', () => {
+    render(<App />);
+
+    expect(dispatch).toBeCalledTimes(2);
+  });
+
   it('button들을 보여준다.', () => {
     const { queryByText } = render((
       <App />
     ));
-
-    expect(dispatch).toBeCalled();
 
     regions.forEach((region) => {
       const { name } = region;
