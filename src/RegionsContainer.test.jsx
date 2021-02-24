@@ -20,7 +20,7 @@ describe('RegionsContainer', () => {
 
   it('should dispatch when mounted', () => {
     render(<RegionsContainer />);
-    expect(dispatch).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
   it('should render regions', () => {
