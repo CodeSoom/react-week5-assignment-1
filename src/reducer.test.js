@@ -2,7 +2,7 @@ import {
   watchRegion,
 } from './actions';
 import reducer from './reducer';
-import { regions as mockRegions } from './fixtures/mockData';
+import { regions as mockRegions, categories as mockCategories } from './fixtures/mockData';
 
 describe('reducer', () => {
   const initialState = {
@@ -73,6 +73,24 @@ describe('reducer', () => {
       expect(regions).toHaveLength(6);
       expect(changedRegion.clicked).toBe(true);
       expect(watching.region).toBe(regionName);
+    });
+  });
+
+  describe('GET_CATEGORIES', () => {
+    context('GET_CATEGORIES_SUCCESS', () => {
+      it('should update state with categories received from server', () => {
+        const changedState = reducer(initialState,
+          { type: 'GET_CATEGORIES_SUCCESS', payload: mockCategories });
+        const { categories } = changedState;
+
+        const changedCategories = mockCategories.map(
+          (category) => ({ ...category, clicked: false }),
+        );
+
+        changedCategories.forEach((category, index) => {
+          expect(categories[index]).toMatchObject(category);
+        });
+      });
     });
   });
 });
