@@ -34,10 +34,9 @@ describe('RegionsContainer', () => {
 
   it('should change button text when clicked', () => {
     const { getByText } = render(<RegionsContainer />);
-    const id = 8;
-    const region = regions.find((data) => data.id === id);
+    const regionName = '울산';
 
-    fireEvent.click(getByText(region.name));
-    expect(dispatch).toHaveBeenCalledWith(watchRegion(id));
+    fireEvent.click(getByText(regionName));
+    expect(dispatch).toHaveBeenCalledWith(watchRegion(regionName));
   });
 });
