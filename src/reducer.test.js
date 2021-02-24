@@ -17,6 +17,11 @@ describe('reducer', () => {
     selectedCategoryId: 0,
   };
 
+  it('유효하지 않은 action에 대해서는 state가 변하지 않는다.', () => {
+    const state = reducer(preventState, { type: '' });
+    expect(preventState).toBe(state);
+  });
+
   it('지역버튼이 클릭되면 selectedRegionId가 바뀐다.', () => {
     const state = reducer(preventState, changeSelectedRegion(2));
     expect(state.selectedRegionId).toBe(2);
