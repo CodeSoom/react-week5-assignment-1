@@ -3,11 +3,11 @@ import React from 'react';
 export default function Regions({ regions }) {
   return (
     <ul>
-      {regions.map((region) => {
+      {regions.map((region) => (
         <li key={region.id}>
           <button>{region.name}</button>
         </li>
-      })}
+      ))}
     </ul>
   )
 }
