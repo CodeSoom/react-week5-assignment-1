@@ -2,10 +2,10 @@ import React from 'react';
 
 import categories from '../fixtures/categories';
 
-import ButtonTemplate from './ButtonTemplate';
+import Buttons from './Buttons';
 
 export default function CategoriesContainer() {
   return (
-    <ButtonTemplate buttons={categories} />
+    <Buttons buttons={categories} />
   );
 }

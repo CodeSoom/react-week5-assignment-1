@@ -2,10 +2,10 @@ import React from 'react';
 
 import regions from '../fixtures/regions';
 
-import ButtonTemplate from './ButtonTemplate';
+import Buttons from './Buttons';
 
 export default function RegionsContainer() {
   return (
-    <ButtonTemplate buttons={regions} />
+    <Buttons buttons={regions} />
   );
 }

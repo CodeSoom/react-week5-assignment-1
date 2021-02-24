@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ButtonTemplate({ buttons }) {
+export default function Buttons({ buttons }) {
   return (
     <div>
       {buttons.map(({ id, name }) => (
