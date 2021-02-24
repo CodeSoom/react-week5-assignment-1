@@ -4,6 +4,13 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  return state;
+const reducers = {
+  setRegions: (state, { payload: { regions } }) => ({
+    ...state,
+    regions: { ...state.regions, ...regions },
+  }),
+};
+
+export default function reducer(state = initialState, action = { type: undefined }) {
+  return reducers[action.type] ? reducers[action.type](state, action) : state;
 }

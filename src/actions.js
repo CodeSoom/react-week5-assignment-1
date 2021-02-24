@@ -1,3 +1,8 @@
-export default function setRegions() {
-  return '';
+export default function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
 }
