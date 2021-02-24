@@ -22,6 +22,17 @@ const actionHandler = {
 
     return { ...state, regions, watching: { ...watching, region: regionName } };
   },
+
+  GET_CATEGORIES_SUCCESS(state, action) {
+    return {
+      ...state,
+      categories: [
+        { id: 1, name: '한식', clicked: false },
+        { id: 2, name: '중식', clicked: false },
+        { id: 3, name: '일식', clicked: false },
+      ],
+    };
+  },
 };
 
 export default function reducer(state = initialState, action = { type: undefined }) {
