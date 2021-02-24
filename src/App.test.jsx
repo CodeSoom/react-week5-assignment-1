@@ -15,6 +15,7 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
+    restaurants: [],
     selectedRegionId: 0,
     selectedCategoryId: 0,
   }));

@@ -18,7 +18,7 @@ export default function RestaurantsContainer() {
     if (regionId && categoryId) {
       dispatch(loadRestaurants(regionId, categoryId));
     }
-  }, []);
+  }, [regionId, categoryId]);
 
   return (
     <Restaurants restaurants={restaurants} />
