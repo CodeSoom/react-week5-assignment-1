@@ -37,6 +37,6 @@ describe('RegionsContainer', () => {
     const regionName = '울산';
 
     fireEvent.click(getByText(regionName));
-    expect(dispatch).toHaveBeenCalledWith({ id: 8, name: '울산' });
+    expect(dispatch).toHaveBeenCalledWith(watchRegion(regionName));
   });
 });
