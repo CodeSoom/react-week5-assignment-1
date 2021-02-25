@@ -1,16 +1,16 @@
 import fetchLocations from './services/api';
 
-export function updateSelectedLocation(locationName) {
+export function updateSelectedLocation(selectedlocationname) {
   return {
     type: 'updateSelectedLocation',
-    payload: { locationName },
+    payload: { selectedlocationname },
   };
 }
 
-export function updateSelectedCategory(categoryName) {
+export function updateSelectedCategory(selectedcategoryname) {
   return {
     type: 'updateSelectedCategory',
-    payload: { categoryName },
+    payload: { selectedcategoryname },
   };
 }
 

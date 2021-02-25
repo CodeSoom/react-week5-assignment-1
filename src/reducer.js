@@ -7,23 +7,26 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   if (action.type === 'updateSelectedLocation') {
+    const { selectedlocationname } = action.payload;
     return ({
       ...state,
-      selectedlocationname: action.payload.locationName,
+      selectedlocationname,
     });
   }
 
   if (action.type === 'updateSelectedCategory') {
+    const { selectedcategoryname } = action.payload;
     return ({
       ...state,
-      selectedcategoryname: action.payload.categoryName,
+      selectedcategoryname,
     });
   }
 
   if (action.type === 'setLocations') {
+    const { locations } = action.payload;
     return ({
       ...state,
-      locations: action.payload.locations,
+      locations,
     });
   }
 

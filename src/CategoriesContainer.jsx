@@ -24,7 +24,6 @@ export default function CategoriesContainer() {
     <Categories
       categories={categories}
       onCick={handleClickCategory}
-      value={selectedcategoryname}
       selectedcategoryname={selectedcategoryname}
     />
   );
