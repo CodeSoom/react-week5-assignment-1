@@ -9,7 +9,7 @@ export default function fetchMaker(fetchData) {
 }
 
 describe('fetchRegions', () => {
-  it('load regions', async () => {
+  it('fetches regions', async () => {
     fetchMaker([{ id: 1, name: '서울' }]);
 
     const regions = await fetchRegions();
@@ -18,7 +18,7 @@ describe('fetchRegions', () => {
     expect(regions[0].name).toBe('서울');
   });
 
-  it('load categories', async () => {
+  it('fetches categories', async () => {
     fetchMaker([{ id: 1, name: '한국' }]);
     const categories = await fetchCategories();
 
@@ -26,7 +26,7 @@ describe('fetchRegions', () => {
     expect(categories[0].name).toBe('한국');
   });
 
-  it('load restarants', async () => {
+  it('fetches restarants', async () => {
     fetchMaker([{ id: 1, name: '마녀사냥' }]);
 
     const restarants = await fetchRestaurants(
