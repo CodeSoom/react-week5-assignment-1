@@ -11,7 +11,7 @@ import { regions, categories, restaurants } from './fixtures/mockData';
 jest.mock('react-redux');
 
 describe('App', () => {
-  it('render regions, categories, restaurants container', () => {
+  it('render regions, categories, restaurants', () => {
     const initialState = {
       regions,
       categories,
@@ -23,17 +23,10 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector(initialState));
 
-    const { container } = render(<App />);
+    const { getByText } = render(<App />);
 
-    /*
-    TODO : 클래스가 있어야할 이유가 크게 없다.
-
-    테스트를 위해서라면 text 등을 이용하는게 낫다.
-    */
-
-    expect(container.querySelector('.regions-container')).not.toBeNull();
-    expect(container.querySelector('.categories-container')).not.toBeNull();
-    expect(container.querySelector('.restaurants-container')).not.toBeNull();
-    expect(container.querySelector('.list-container')).not.toBeNull();
+    expect(getByText('서울')).toBeInTheDocument();
+    expect(getByText('한식')).toBeInTheDocument();
+    expect(getByText('양천주가')).toBeInTheDocument();
   });
 });
