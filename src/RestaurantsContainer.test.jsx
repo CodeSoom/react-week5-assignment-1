@@ -26,9 +26,13 @@ describe('RestaurantsContainer', () => {
         { ...initialState, watching: { regionName: '서울', categoryId: 1 } },
       ));
 
-      render(<RestaurantsContainer />);
+      const { getByRole } = render(<RestaurantsContainer />);
 
       expect(dispatch).toHaveBeenCalledTimes(1);
+
+      restaurants.forEach((restaurant) => {
+        expect(getByRole('list')).toHaveTextContent(restaurant.name);
+      });
     });
   });
 
