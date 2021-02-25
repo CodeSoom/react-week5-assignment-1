@@ -6,25 +6,14 @@ import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantContainer from './RestaurantContainer';
 
-import { fetchRegions, fetchCategories } from './services/api';
-
-import { setRegions, setCategories } from './actions';
-
-async function loadRegions(dispatch) {
-  const regions = await fetchRegions();
-  dispatch(setRegions(regions));
-}
-async function loadCategories(dispatch) {
-  const categories = await fetchCategories();
-  dispatch(setCategories(categories));
-}
+import { loadRegions, loadCategories } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRegions(dispatch);
-    loadCategories(dispatch);
+    dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
   return (

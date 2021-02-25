@@ -12,6 +12,7 @@ test('RestaurantContainer', async () => {
   useSelector.mockImplementation((selector) => selector({
     regionName: '서울',
     categoryId: 1,
+    restaurants: [{ id: 1, name: '양천주가' }],
   }));
 
   const { queryByText } = render(<RestaurantConatiner />);
