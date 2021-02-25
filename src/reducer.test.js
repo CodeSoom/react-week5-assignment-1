@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegion,
+  setCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -41,6 +42,18 @@ describe('reducer', () => {
 
           expect(state.currentRegion).toBe('서울');
         });
+      });
+    });
+
+    describe('setCategory', () => {
+      const initialState = {
+        currentCategory: '',
+      };
+
+      it('set category', () => {
+        const state = reducer(initialState, setCategory('한식'));
+
+        expect(state.currentCategory).toBe('한식');
       });
     });
   });
