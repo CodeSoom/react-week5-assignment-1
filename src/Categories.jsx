@@ -3,13 +3,13 @@ import React from 'react';
 export default function Categories({ categories, onClick, selectedCategoryName }) {
   return (
     <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
           <button
             type="button"
-            onClick={() => onClick(category.name)}
+            onClick={() => onClick(name)}
           >
-            {category.name === selectedCategoryName ? `${selectedCategoryName}(V)` : category.name}
+            {name === selectedCategoryName ? `${selectedCategoryName}(V)` : name}
           </button>
         </li>
       ))}
