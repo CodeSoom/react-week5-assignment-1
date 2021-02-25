@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import { regions, categories, restaurants } from '../fixtures';
 
-import { setCategories, setRegions } from './actions';
+import { setCategories, setRegions, setClicked } from './actions';
 
 describe('reducer', () => {
   it('returns default parameter, initial state', () => {
@@ -37,5 +37,27 @@ describe('reducer', () => {
     expect(state.categories[0].name).toBe('한식');
     expect(state.categories[1].name).toBe('중식');
     expect(state.categories[2].name).toBe('일식');
+  });
+
+  it('changes clicked', () => {
+    const clicked = {
+      region: {
+        id: 1,
+        name: '서울',
+      },
+      category: {
+        id: 1,
+        name: '한식',
+      },
+    };
+    const state = reducer({
+      clicked: {
+        region: '',
+        category: '',
+      },
+    }, setClicked(clicked));
+
+    expect(state.clicked.region.name).toBe('서울');
+    expect(state.clicked.category.name).toBe('한식');
   });
 });
