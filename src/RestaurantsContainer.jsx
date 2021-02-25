@@ -10,8 +10,8 @@ export default function RestaurantsContainer() {
   const dispatch = useDispatch();
 
   const { locationName, categoryName, restaurants } = useSelector((state) => ({
-    locationName: state.selectedlocationname,
-    categoryName: state.selectedcategoryname,
+    locationName: state.selectedLocationName,
+    categoryName: state.selectedCategoryName,
     restaurants: state.restaurants,
   }));
 
