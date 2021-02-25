@@ -10,7 +10,6 @@ import { setRestaurants } from './actions';
 
 async function loadRestaurants(dispatch, regionName, categoryId) {
   const restaurants = await fetchRestaurants(regionName, categoryId);
-  // console.log(restaurants);
   dispatch(setRestaurants(restaurants));
 }
 
