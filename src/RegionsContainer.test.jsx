@@ -19,12 +19,12 @@ describe('RegionsContainer', () => {
     useDispatch.mockImplementationOnce(() => dispatch);
   });
 
-  it('should dispatch when mounted', () => {
+  it('get regions when mounted', () => {
     render(<RegionsContainer />);
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
-  it('should render regions', () => {
+  it('render regions', () => {
     const { getByRole } = render(<RegionsContainer />);
 
     regions.forEach((region) => {
@@ -32,7 +32,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  it('should change button text when clicked', () => {
+  it('change button text when clicked', () => {
     const { getByText } = render(<RegionsContainer />);
     const regionName = '울산';
 
