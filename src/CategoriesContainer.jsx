@@ -14,8 +14,7 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
 
-  function handleClickCategory(event) {
-    const categoryName = event.target.value;
+  function handleClickCategory(categoryName) {
     dispatch(updateSelectedCategory(categoryName));
   }
 
