@@ -11,7 +11,7 @@ describe('reducer', () => {
     expect(state.regions).toHaveLength(0);
     expect(state.categories).toHaveLength(0);
     expect(state.restaurants).toHaveLength(0);
-    expect(state.clicked).toHaveLength(0);
+    expect(state.clicked instanceof Object).toBe(true);
   });
 
   it('returns state', () => {
