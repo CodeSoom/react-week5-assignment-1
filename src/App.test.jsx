@@ -24,10 +24,10 @@ describe('App', () => {
       selectedcategoryname: '',
     }));
 
-    it('Api에서 지역 및 분류 정보를 가져옵니다.', () => {
+    it('Api에서 지역, 분류, 식당목록 정보를 가져옵니다.', () => {
       render(<App />);
 
-      expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toBeCalledTimes(3);
     });
   });
 
