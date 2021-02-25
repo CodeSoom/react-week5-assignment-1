@@ -13,10 +13,27 @@ import RestaurantsContainer from './RestaurantsContainer';
 describe('RestaurantsContainer', () => {
   given('restaurants', () => restaurants);
 
+  given('clicked', () => ({
+    region: '',
+    category: '',
+  }));
+
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: given.restaurants,
+      clicked: given.clicked,
     }));
+  });
+
+  it('renders a message to let user click category', () => {
+    given('clicked', () => ({
+      region: '서울',
+      category: '',
+    }));
+
+    const { queryByText } = render(<RestaurantsContainer />);
+
+    expect(queryByText('카테고리 버튼도 클릭 해주세요')).not.toBeNull();
   });
 
   context('without restaurants', () => {
