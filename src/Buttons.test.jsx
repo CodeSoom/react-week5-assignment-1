@@ -8,18 +8,25 @@ import { regions } from '../fixtures/restaurants';
 
 describe('Buttons', () => {
   const handleClick = jest.fn();
-  const items = regions;
+
+  function renderButtons(items, id) {
+    return render((
+      <Buttons
+        buttons={items}
+        handleClick={handleClick}
+        selected={id}
+      />
+    ));
+  }
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('button들을 보여준다.', () => {
-    const { queryByText } = render((
-      <Buttons buttons={items} />
-    ));
+    const { queryByText } = renderButtons(regions);
 
-    items.forEach((button) => {
+    regions.forEach((button) => {
       const { name } = button;
 
       expect(queryByText(name)).not.toBeNull();
@@ -27,32 +34,21 @@ describe('Buttons', () => {
   });
 
   it('버튼을 클릭하면 handleClick함수가 실행된다.', () => {
-    const { queryByText } = render((
-      <Buttons
-        buttons={items}
-        handleClick={handleClick}
-      />
-    ));
+    const { queryByText } = renderButtons(regions);
 
-    items.forEach((item) => {
+    regions.forEach((item) => {
       fireEvent.click(queryByText(item.name));
     });
 
-    expect(handleClick).toBeCalledTimes(items.length);
+    expect(handleClick).toBeCalledTimes(regions.length);
   });
 
   it('선택된 버튼은 버튼명에 (V)가 보여진다.', () => {
     const selected = 1;
 
-    const { queryByText } = render((
-      <Buttons
-        buttons={items}
-        handleClick={handleClick}
-        selected={selected}
-      />
-    ));
+    const { queryByText } = renderButtons(regions, selected);
 
-    const { name } = items.find((item) => item.id === selected);
+    const { name } = regions.find((item) => item.id === selected);
 
     expect(queryByText(`${name}(V)`)).not.toBeNull();
   });
