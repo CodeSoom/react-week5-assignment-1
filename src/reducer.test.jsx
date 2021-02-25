@@ -36,9 +36,9 @@ describe('reducer', () => {
   it('changes categories', () => {
     const state = reducer({ categories }, setCategories(categories));
 
-    expect(state.categories[0].name).toBe('한식');
-    expect(state.categories[1].name).toBe('중식');
-    expect(state.categories[2].name).toBe('일식');
+    expect(state.categories[0].id).toBe(1);
+    expect(state.categories[1].id).toBe(2);
+    expect(state.categories[2].id).toBe(3);
   });
 
   it('changes restaurants', () => {
