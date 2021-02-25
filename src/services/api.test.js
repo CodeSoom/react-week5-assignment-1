@@ -16,4 +16,10 @@ describe('api', () => {
 
     expect(await getRegions()).toBe(regions);
   });
+
+  it('can get categories', async () => {
+    setFetchToMock(categories);
+
+    expect(await getCategories()).toBe(categories);
+  });
 });
