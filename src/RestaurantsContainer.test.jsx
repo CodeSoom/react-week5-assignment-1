@@ -12,13 +12,15 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
   given('restaurants', () => restaurants);
-  given('message', () => []);
 
-  it('renders restaurants', () => {
+  beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: given.restaurants,
     }));
+  });
 
+  it('renders restaurants', () => {
+    given('restaurants', () => restaurants);
     const { queryByText } = render(<RestaurantsContainer />);
 
     expect(queryByText('양천주가')).not.toBeNull();
@@ -27,9 +29,7 @@ describe('RestaurantsContainer', () => {
   });
 
   it('renders the message that user has to click region and category buttons.', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurants: given.message,
-    }));
+    given('restaurants', () => ([]));
 
     const { queryByText } = render(<RestaurantsContainer />);
 

@@ -4,8 +4,6 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import given from 'given2';
-
 import { restaurants } from '../fixtures';
 
 import App from './App';
@@ -13,15 +11,12 @@ import App from './App';
 describe('App', () => {
   const dispatch = jest.fn();
 
-  given('regions', () => ([]));
-  given('categories', () => []);
-
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
-      regions: given.regions,
-      categories: given.categories,
+      regions: [],
+      categories: [],
       restaurants,
     }));
 
