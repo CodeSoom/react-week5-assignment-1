@@ -7,7 +7,7 @@ describe('actions', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it('get regions', async () => {
+  it('can get regions', async () => {
     const thunk = getRegionsThunk();
 
     await thunk(dispatch);
