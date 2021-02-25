@@ -18,6 +18,10 @@ export function setCategories(categories) {
   };
 }
 
+export function setClicked() {
+  return '';
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions;
