@@ -4,18 +4,32 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RegionButtons from './RegionButtons';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('RegionButtons', () => {
+  const handleClick = jest.fn();
+
+  function renderRegionButtons() {
+    return render((
+      <RegionButtons
+        onClick={handleClick}
+        currentRegion=""
+      />
+    ));
+  }
   it('renders restaurant region buttons', () => {
-    const { getByText } = render(<RegionButtons />);
+    const { getByText } = renderRegionButtons();
 
     expect(getByText('서울')).not.toBeNull();
   });
 
   it('marks the clicked button', () => {
-    const { getByText } = render(<RegionButtons />);
+    const { getByText } = renderRegionButtons();
 
     fireEvent.click(getByText('서울'));
 
-    expect(getByText('서울V')).not.toBeNull();
+    expect(handleClick).toBeCalled();
   });
 });
