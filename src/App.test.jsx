@@ -18,15 +18,16 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
+      locations: [],
       restaurants: [],
       selectedlocationname: '',
       selectedcategoryname: '',
     }));
 
-    it('Api에서 지역 정보를 가져옵니다.', () => {
+    it('Api에서 지역 및 분류 정보를 가져옵니다.', () => {
       render(<App />);
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 
