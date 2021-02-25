@@ -10,7 +10,7 @@ function List({ list, onClick }) {
         <li key={data.id}>
           <button type="button" onClick={() => { onClick(data); }}>
             {data.clicked
-              ? `${data.name}(v)`
+              ? `${data.name}(V)`
               : `${data.name}`}
           </button>
         </li>
