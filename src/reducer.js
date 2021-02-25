@@ -1,5 +1,6 @@
 const initialState = {
   currentRegion: '',
+  currentCategory: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -9,6 +10,15 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       currentRegion,
+    };
+  }
+
+  if (action.type === 'setCategory') {
+    const { currentCategory } = action.payload;
+
+    return {
+      ...state,
+      currentCategory,
     };
   }
 

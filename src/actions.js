@@ -7,6 +7,11 @@ export function setRegion(currentRegion) {
   };
 }
 
-export function xxx() {
-
+export function setCategory(currentCategory) {
+  return {
+    type: 'setCategory',
+    payload: {
+      currentCategory,
+    },
+  };
 }
