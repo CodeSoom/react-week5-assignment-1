@@ -19,6 +19,5 @@ export default function Buttons({ buttons, handleClick }) {
         </li>
       ))}
     </ul>
-
   );
 }
