@@ -7,7 +7,7 @@ import { regions } from './fixtures/mockData';
 
 describe('List', () => {
   context('with list', () => {
-    it('should be there list with received prop', () => {
+    it('render list', () => {
       const { getByRole } = render(
         <List
           list={regions}
@@ -30,7 +30,7 @@ describe('List', () => {
       );
       expect(getByRole('list')).toHaveTextContent('멜버른(V)');
     });
-    it('should be able to click item', () => {
+    it('can click item', () => {
       const onClick = jest.fn();
       const { getByText } = render(
         <List
@@ -45,7 +45,7 @@ describe('List', () => {
   });
 
   context('without list', () => {
-    it('there should be nothing', () => {
+    it('render nothing', () => {
       const { queryByRole } = render(<List />);
 
       const list = queryByRole('list');
