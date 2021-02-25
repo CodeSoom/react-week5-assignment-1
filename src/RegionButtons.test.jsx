@@ -11,25 +11,40 @@ beforeEach(() => {
 describe('RegionButtons', () => {
   const handleClick = jest.fn();
 
-  function renderRegionButtons() {
+  function renderRegionButtons(currentRegion) {
     return render((
       <RegionButtons
         onClick={handleClick}
-        currentRegion=""
+        currentRegion={currentRegion}
       />
     ));
   }
-  it('renders restaurant region buttons', () => {
-    const { getByText } = renderRegionButtons();
 
-    expect(getByText('서울')).not.toBeNull();
+  context('without current region', () => {
+    const currentRegion = '';
+
+    it('renders restaurant region buttons', () => {
+      const { getByText } = renderRegionButtons(currentRegion);
+
+      expect(getByText('서울')).not.toBeNull();
+    });
+
+    it('marks the clicked button', () => {
+      const { getByText } = renderRegionButtons();
+
+      fireEvent.click(getByText('서울'));
+
+      expect(handleClick).toBeCalled();
+    });
   });
 
-  it('marks the clicked button', () => {
-    const { getByText } = renderRegionButtons();
+  context('with current region', () => {
+    const currentRegion = '서울';
 
-    fireEvent.click(getByText('서울'));
+    it('appends "V" mark into the button text', () => {
+      const { getByText } = renderRegionButtons(currentRegion);
 
-    expect(handleClick).toBeCalled();
+      expect(getByText('서울V')).not.toBeNull();
+    });
   });
 });
