@@ -18,12 +18,12 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementationOnce(() => dispatch);
   });
 
-  it('should get categories when mounted', () => {
+  it('get categories when mounted', () => {
     render(<CategoriesContainer />);
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
-  it('should render categories', () => {
+  it('render categories', () => {
     const { getByRole } = render(<CategoriesContainer />);
 
     categories.forEach((category) => {
@@ -31,7 +31,7 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  it('should change category when clicked', () => {
+  it('change category when clicked', () => {
     const { getByText } = render(<CategoriesContainer />);
 
     fireEvent.click(getByText('한식'));
