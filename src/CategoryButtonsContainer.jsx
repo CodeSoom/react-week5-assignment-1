@@ -8,6 +8,8 @@ import {
   setCategory,
 } from './actions';
 
+import categories from './__fixture__/categories';
+
 export default function CategoryButtonsContainer() {
   const dispatch = useDispatch();
 
@@ -18,8 +20,6 @@ export default function CategoryButtonsContainer() {
   function handleClick(category) {
     dispatch(setCategory(category));
   }
-
-  const categories = ['한식'];
 
   return (
     <CategoryButtons

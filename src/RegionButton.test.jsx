@@ -9,7 +9,7 @@ beforeEach(() => {
 });
 
 describe('RegionButton', () => {
-  it('renders "서울" button', () => {
+  it('renders region button', () => {
     const handleClick = jest.fn();
 
     const { getByText } = render((

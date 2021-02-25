@@ -4,13 +4,14 @@ import { render, fireEvent } from '@testing-library/react';
 
 import RegionButtons from './RegionButtons';
 
+import regions from './__fixture__/regions';
+
 beforeEach(() => {
   jest.clearAllMocks();
 });
 
 describe('RegionButtons', () => {
   const handleClick = jest.fn();
-  const regions = ['서울'];
 
   function renderRegionButtons(currentRegion) {
     return render((

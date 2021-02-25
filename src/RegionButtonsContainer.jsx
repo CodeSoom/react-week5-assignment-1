@@ -8,6 +8,8 @@ import {
   setRegion,
 } from './actions';
 
+import regions from './__fixture__/regions';
+
 export default function RegionButtonsContainer() {
   const dispatch = useDispatch();
 
@@ -18,8 +20,6 @@ export default function RegionButtonsContainer() {
   function handleClick(region) {
     dispatch(setRegion(region));
   }
-
-  const regions = ['서울'];
 
   return (
     <RegionButtons

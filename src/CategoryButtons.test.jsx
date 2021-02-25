@@ -4,13 +4,14 @@ import { render, fireEvent } from '@testing-library/react';
 
 import CategoryButtons from './CategoryButtons';
 
+import categories from './__fixture__/categories';
+
 beforeEach(() => {
   jest.clearAllMocks();
 });
 
 describe('CategoryButtons', () => {
   const handleClick = jest.fn();
-  const categories = ['한식'];
 
   function renderCategoryButtons(currentCategory) {
     return render((

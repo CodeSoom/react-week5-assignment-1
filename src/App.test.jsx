@@ -13,6 +13,7 @@ beforeEach(() => {
 
   useSelector.mockImplementation((selector) => selector({
     currentRegion: '',
+    currentCategory: '',
   }));
 });
 
