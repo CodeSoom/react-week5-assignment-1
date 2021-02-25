@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import Category from './Category';
 
 export default function Categories({ categories, onClick }) {
-  const categoryClicked = useSelector((state) => state.categoryClicked);
+  const categoryId = useSelector((state) => state.categoryId);
 
   return (
     <ul>
       {categories.map((category) => {
-        if (categoryClicked === category.id) {
+        if (categoryId === category.id) {
           return (
             <Category
               key={category.id}

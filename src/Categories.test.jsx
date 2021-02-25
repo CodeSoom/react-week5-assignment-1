@@ -11,7 +11,7 @@ jest.mock('react-redux');
 test('Categories', () => {
   const handleCategoryClick = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({ categoryClicked: 1 }));
+  useSelector.mockImplementation((selector) => selector({ categoryId: 1 }));
   const categories = [{ id: 1, name: '한식' }, { id: 2, name: '중식' }];
 
   const { queryByText } = render((

@@ -11,7 +11,7 @@ jest.mock('react-redux');
 test('Regions', () => {
   const handleRegionClick = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({ regionClicked: 1 }));
+  useSelector.mockImplementation((selector) => selector({ regionName: '서울' }));
   const regions = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
 
   const { queryByText } = render((<Regions regions={regions} onClick={handleRegionClick} />));

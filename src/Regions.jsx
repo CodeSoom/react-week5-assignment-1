@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import Region from './Region';
 
 export default function Regions({ regions, onClick }) {
-  const regionClicked = useSelector((state) => state.regionClicked);
+  const regionName = useSelector((state) => state.regionName);
 
   return (
     <ul>
       {regions.map((region) => {
-        if (regionClicked === region.id) {
+        if (regionName === region.name) {
           return (
             <Region
               key={region.id}
