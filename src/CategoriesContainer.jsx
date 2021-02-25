@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { clickCategory } from './actions';
+import { selectCategory } from './actions';
 
 import Buttons from './Buttons';
 
@@ -14,7 +14,7 @@ export default function CategoriesContainer() {
   }));
 
   function handleClick(id) {
-    dispatch(clickCategory(id));
+    dispatch(selectCategory(id));
   }
 
   return (

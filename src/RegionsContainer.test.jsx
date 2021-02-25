@@ -29,7 +29,7 @@ describe('RegionsContainer', () => {
     fireEvent.click(getByText('서울'));
 
     expect(dispatch).toBeCalledWith({
-      type: 'clickRegion',
+      type: 'selectRegion',
       payload: {
         id: 1,
       },

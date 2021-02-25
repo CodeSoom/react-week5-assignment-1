@@ -29,7 +29,7 @@ describe('CategoriesContainer', () => {
     fireEvent.click(getByText('한식'));
 
     expect(dispatch).toBeCalledWith({
-      type: 'clickCategory',
+      type: 'selectCategory',
       payload: {
         id: 1,
       },

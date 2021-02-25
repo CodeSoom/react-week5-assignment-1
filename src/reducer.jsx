@@ -30,7 +30,7 @@ const reducerState = {
       restaurants,
     };
   },
-  clickCategory: ({ state, action }) => {
+  selectCategory: ({ state, action }) => {
     const { id } = action.payload;
 
     return {
@@ -38,7 +38,7 @@ const reducerState = {
       selectCategoryId: id,
     };
   },
-  clickRegion: ({ state, action }) => {
+  selectRegion: ({ state, action }) => {
     const { id } = action.payload;
 
     return {

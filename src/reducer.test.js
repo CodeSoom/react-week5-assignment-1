@@ -1,5 +1,6 @@
 import {
-  setRegions, setCategories, clickCategory, clickRegion, setRestaurants,
+  setRegions, setCategories, setRestaurants,
+  selectCategory, selectRegion,
 } from './actions';
 import reducer from './reducer';
 
@@ -57,21 +58,21 @@ describe('reducer', () => {
     });
   });
 
-  describe('clickCategory', () => {
+  describe('selectCategory', () => {
     it('changes selectCategoryId', () => {
       const state = reducer({
         selectCategoryId: null,
-      }, clickCategory(1));
+      }, selectCategory(1));
 
       expect(state.selectCategoryId).toBe(1);
     });
   });
 
-  describe('clickRegion', () => {
+  describe('selectRegion', () => {
     it('changes selectRegionId', () => {
       const state = reducer({
         selectRegionId: null,
-      }, clickRegion(1));
+      }, selectRegion(1));
 
       expect(state.selectRegionId).toBe(1);
     });

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Buttons from './Buttons';
-import { clickRegion } from './actions';
+import { selectRegion } from './actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function RegionsContainer() {
   }));
 
   function handleClick(id) {
-    dispatch(clickRegion(id));
+    dispatch(selectRegion(id));
   }
 
   return (
