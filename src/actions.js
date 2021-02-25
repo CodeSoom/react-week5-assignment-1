@@ -38,14 +38,14 @@ export function setClicked(clicked) {
 
 export function loadRegions() {
   return async (dispatch) => {
-    const regions = await fetchRegions;
+    const regions = await fetchRegions();
     dispatch(setRegions(regions));
   };
 }
 
 export function loadCategories() {
   return async (dispatch) => {
-    const categories = await fetchCategories;
+    const categories = await fetchCategories();
     dispatch(setRegions(categories));
   };
 }
