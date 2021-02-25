@@ -16,6 +16,12 @@ export default function RestaurantsContainer() {
     );
   }
 
+  if (clicked.category && !clicked.region) {
+    return (
+      <p>지역 버튼도 클릭 해주세요</p>
+    );
+  }
+
   return (
     <Restaurants
       restaurants={restaurants}
