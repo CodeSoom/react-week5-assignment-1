@@ -1,15 +1,18 @@
 import { getCategoriesThunk, getRegionsThunk, getRestaurantsThunk } from './actions';
 import { categories, regions, restaurants } from './fixtures/mockData';
+import { getRegions, getCategories, getRestaurants } from './services/api';
 
 jest.mock('./services/api');
+
 describe('actions', () => {
   const dispatch = jest.fn();
   beforeEach(() => {
     jest.clearAllMocks();
   });
   it('can get regions', async () => {
-    const thunk = getRegionsThunk();
+    getRegions.mockImplementationOnce(() => Promise.resolve(regions));
 
+    const thunk = getRegionsThunk();
     await thunk(dispatch);
 
     expect(dispatch).toHaveBeenCalledTimes(2);
@@ -18,8 +21,9 @@ describe('actions', () => {
   });
 
   it('can get categories', async () => {
-    const thunk = getCategoriesThunk();
+    getCategories.mockImplementationOnce(() => Promise.resolve(categories));
 
+    const thunk = getCategoriesThunk();
     await thunk(dispatch);
 
     expect(dispatch).toHaveBeenCalledTimes(2);
@@ -28,8 +32,9 @@ describe('actions', () => {
   });
 
   it('can get restaurants', async () => {
-    const thunk = getRestaurantsThunk();
+    getRestaurants.mockImplementationOnce(() => Promise.resolve(restaurants));
 
+    const thunk = getRestaurantsThunk();
     await thunk(dispatch);
 
     expect(dispatch).toHaveBeenCalledTimes(2);
