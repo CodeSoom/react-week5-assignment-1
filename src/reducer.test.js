@@ -18,8 +18,8 @@ describe('reducer', () => {
     watching: { regionName: null, categoryId: null },
   };
   describe('default state', () => {
-    context('if there is no action', () => {
-      it('shold have default state', () => {
+    context('without action', () => {
+      it('have default state', () => {
         const {
           regions, categories, restaurants, error,
         } = reducer();
@@ -33,8 +33,8 @@ describe('reducer', () => {
       });
     });
 
-    context('if there is wrong action', () => {
-      it('shold have default state', () => {
+    context('with wrong action', () => {
+      it('have default state', () => {
         const {
           regions, categories, restaurants, error,
         } = reducer(undefined, { type: '@@INIT' });
@@ -50,7 +50,7 @@ describe('reducer', () => {
   });
   describe('GET_REGIONS', () => {
     context('GET_REGIONS_SUCCESS', () => {
-      it('should update state with regions received from server', () => {
+      it('update state with regions', () => {
         const changedState = reducer(initialState,
           { type: 'GET_REGIONS_SUCCESS', payload: mockRegions });
         const { regions } = changedState;
@@ -67,7 +67,7 @@ describe('reducer', () => {
   });
 
   describe('WATCH_THE_REGION', () => {
-    it('should update region state with region id', () => {
+    it('update region state with region id', () => {
       const regionName = '울산';
       const changedState = reducer({ ...initialState, regions: mockRegions },
         watchRegion(regionName));
@@ -82,7 +82,7 @@ describe('reducer', () => {
 
   describe('GET_CATEGORIES', () => {
     context('GET_CATEGORIES_SUCCESS', () => {
-      it('should update state with categories received from server', () => {
+      it('update state with categories', () => {
         const changedState = reducer(initialState,
           { type: 'GET_CATEGORIES_SUCCESS', payload: mockCategories });
         const { categories } = changedState;
@@ -99,7 +99,7 @@ describe('reducer', () => {
   });
 
   describe('WATCH_THE_CATEGORY', () => {
-    it('should update category state with category id', () => {
+    it('update category state with category id', () => {
       const changedState = reducer({ ...initialState, categories: mockCategories },
         watchCategory(1));
       const { categories, watching } = changedState;
@@ -113,7 +113,7 @@ describe('reducer', () => {
 
   describe('GET_RESTAURANTS', () => {
     context('GET_RESTAURANTS_SUCCESS', () => {
-      it('should update state with restaurants received from server', () => {
+      it('update state with restaurants', () => {
         const changedState = reducer(initialState,
           { type: 'GET_RESTAURANTS_SUCCESS', payload: mockRestaurants });
         const { restaurants } = changedState;
