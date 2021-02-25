@@ -1,6 +1,6 @@
 import { fetchCategories, fetchRegions, fetchRestaurants } from './api';
 
-export default function fetchMaker(fetchData) {
+function fetchMaker(fetchData) {
   global.fetch = jest.fn().mockImplementation(() => new Promise((resolve) => {
     resolve({
       json: () => (fetchData),
