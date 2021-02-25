@@ -3,13 +3,13 @@ import React from 'react';
 export default function Locations({ locations, onClick, selectedLocationName }) {
   return (
     <ul>
-      {locations.map((location) => (
-        <li key={location.id}>
+      {locations.map(({ id, name }) => (
+        <li key={id}>
           <button
             type="button"
-            onClick={() => onClick(location.name)}
+            onClick={() => onClick(name)}
           >
-            {location.name === selectedLocationName ? `${selectedLocationName}(V)` : location.name}
+            {name === selectedLocationName ? `${selectedLocationName}(V)` : name}
           </button>
         </li>
       ))}
