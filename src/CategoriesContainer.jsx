@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { createThunk, GET_CATEGORIES, watchCategory } from './actions';
+import { createThunk, GET_CATEGORIES, selectCategory } from './actions';
 import List from './List';
 import { getCategories } from './services/api';
 
@@ -15,7 +15,7 @@ function CategoriesContainer() {
   }, []);
 
   function handleClick(category) {
-    dispatch(watchCategory(category.id));
+    dispatch(selectCategory(category.id));
   }
   return (
     <div><List list={categories} onClick={handleClick} /></div>

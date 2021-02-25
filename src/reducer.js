@@ -8,12 +8,12 @@ const initialState = {
 
 const actionHandler = {
 
-  GET_REGIONS_SUCCESS(state, action) {
+  getRegionsSuccess(state, action) {
     const regions = action.payload.map((region) => ({ ...region, clicked: false }));
     return { ...state, regions };
   },
 
-  WATCH_THE_REGION(state, action) {
+  selectRegion(state, action) {
     const { watching } = state;
     const regionName = action.payload;
     const regions = state.regions.map((region) => (region.name === regionName
@@ -23,12 +23,12 @@ const actionHandler = {
     return { ...state, regions, watching: { ...watching, regionName } };
   },
 
-  GET_CATEGORIES_SUCCESS(state, action) {
+  getCategoriesSuccess(state, action) {
     const categories = action.payload.map((category) => ({ ...category, clicked: false }));
     return { ...state, categories };
   },
 
-  WATCH_THE_CATEGORY(state, action) {
+  selectCategory(state, action) {
     const { watching } = state;
     const categoryId = action.payload;
     const categories = state.categories.map((category) => (category.id === categoryId
@@ -38,7 +38,7 @@ const actionHandler = {
     return { ...state, categories, watching: { ...watching, categoryId } };
   },
 
-  GET_RESTAURANTS_SUCCESS(state, action) {
+  getRestaurantsSuccess(state, action) {
     return {
       ...state,
       restaurants: action.payload,

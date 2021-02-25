@@ -1,6 +1,6 @@
 import {
-  watchCategory,
-  watchRegion,
+  selectCategory,
+  selectRegion,
 } from './actions';
 import reducer from './reducer';
 import {
@@ -48,11 +48,11 @@ describe('reducer', () => {
       });
     });
   });
-  describe('GET_REGIONS', () => {
-    context('GET_REGIONS_SUCCESS', () => {
+  describe('getRegions', () => {
+    context('getRegionsSuccess', () => {
       it('update state with regions', () => {
         const changedState = reducer(initialState,
-          { type: 'GET_REGIONS_SUCCESS', payload: mockRegions });
+          { type: 'getRegionsSuccess', payload: mockRegions });
         const { regions } = changedState;
 
         expect(regions).toHaveLength(6);
@@ -66,11 +66,11 @@ describe('reducer', () => {
     });
   });
 
-  describe('WATCH_THE_REGION', () => {
+  describe('selectRegion', () => {
     it('update region state with region id', () => {
       const regionName = '울산';
       const changedState = reducer({ ...initialState, regions: mockRegions },
-        watchRegion(regionName));
+        selectRegion(regionName));
       const { regions, watching } = changedState;
       const changedRegion = regions.find((region) => region.name === regionName);
 
@@ -80,11 +80,11 @@ describe('reducer', () => {
     });
   });
 
-  describe('GET_CATEGORIES', () => {
-    context('GET_CATEGORIES_SUCCESS', () => {
+  describe('getCategories', () => {
+    context('getCategoriesSuccess', () => {
       it('update state with categories', () => {
         const changedState = reducer(initialState,
-          { type: 'GET_CATEGORIES_SUCCESS', payload: mockCategories });
+          { type: 'getCategoriesSuccess', payload: mockCategories });
         const { categories } = changedState;
 
         const changedCategories = mockCategories.map(
@@ -98,10 +98,10 @@ describe('reducer', () => {
     });
   });
 
-  describe('WATCH_THE_CATEGORY', () => {
+  describe('selectCategory', () => {
     it('update category state with category id', () => {
       const changedState = reducer({ ...initialState, categories: mockCategories },
-        watchCategory(1));
+        selectCategory(1));
       const { categories, watching } = changedState;
       const changedCategory = categories.find((category) => category.id === 1);
 
@@ -111,11 +111,11 @@ describe('reducer', () => {
     });
   });
 
-  describe('GET_RESTAURANTS', () => {
-    context('GET_RESTAURANTS_SUCCESS', () => {
+  describe('getRestaurants', () => {
+    context('getRestaurantsSuccess', () => {
       it('update state with restaurants', () => {
         const changedState = reducer(initialState,
-          { type: 'GET_RESTAURANTS_SUCCESS', payload: mockRestaurants });
+          { type: 'getRestaurantsSuccess', payload: mockRestaurants });
         const { restaurants } = changedState;
 
         expect(restaurants).toHaveLength(mockRestaurants.length);

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 import { categories } from './fixtures/mockData';
-import { watchCategory } from './actions';
+import { selectCategory } from './actions';
 
 jest.mock('react-redux');
 
@@ -35,6 +35,6 @@ describe('CategoriesContainer', () => {
     const { getByText } = render(<CategoriesContainer />);
 
     fireEvent.click(getByText('한식'));
-    expect(dispatch).toHaveBeenCalledWith(watchCategory(1));
+    expect(dispatch).toHaveBeenCalledWith(selectCategory(1));
   });
 });

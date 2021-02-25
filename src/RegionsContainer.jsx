@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import List from './List';
-import { watchRegion, createThunk, GET_REGIONS } from './actions';
+import { selectRegion, createThunk, GET_REGIONS } from './actions';
 import { getRegions } from './services/api';
 
 function RegionsContainer() {
@@ -22,7 +22,7 @@ watchRegion -> selectRegion 으로 변경할 것
 
 */
   function handleClick(region) {
-    dispatch(watchRegion(region.name));
+    dispatch(selectRegion(region.name));
   }
   return (
     <div>
