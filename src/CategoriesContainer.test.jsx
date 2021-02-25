@@ -27,6 +27,6 @@ test('CategoriesContainer', () => {
 
   expect(dispatch).toBeCalledWith({
     type: 'categoryClick',
-    payload: { id: 1 },
+    payload: { categoryId: 1 },
   });
 });

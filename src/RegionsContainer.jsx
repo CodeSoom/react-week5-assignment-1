@@ -11,8 +11,9 @@ export default function RegionsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleRegionClick(id) {
-    dispatch(regionClick(id));
+  function handleRegionClick(event) {
+    const regionName = event.target.name;
+    dispatch(regionClick(regionName));
   }
 
   return (<Regions regions={regions} onClick={handleRegionClick} />);

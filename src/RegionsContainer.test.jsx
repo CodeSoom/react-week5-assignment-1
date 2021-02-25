@@ -27,6 +27,6 @@ test('RegionsContainer', () => {
 
   expect(dispatch).toBeCalledWith({
     type: 'regionClick',
-    payload: { id: 1 },
+    payload: { regionName: '서울' },
   });
 });

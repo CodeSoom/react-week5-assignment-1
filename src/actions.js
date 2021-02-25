@@ -16,11 +16,11 @@ export function setCategories(categories) {
   };
 }
 
-export function regionClick(id) {
+export function regionClick(regionName) {
   return {
     type: 'regionClick',
     payload: {
-      id,
+      regionName,
     },
   };
 }
@@ -29,7 +29,7 @@ export function categoryClick(id) {
   return {
     type: 'categoryClick',
     payload: {
-      id,
+      categoryId: id,
     },
   };
 }

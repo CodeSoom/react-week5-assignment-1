@@ -3,8 +3,8 @@ import { createStore } from 'redux';
 const initialState = {
   regions: [],
   categories: [],
-  regionClicked: '',
-  categoryClicked: '',
+  regionName: '',
+  categoryId: '',
 };
 
 function reducer(state = initialState, action) {
@@ -25,14 +25,14 @@ function reducer(state = initialState, action) {
   if (action.type === 'regionClick') {
     return {
       ...state,
-      regionClicked: action.payload.id,
+      regionName: action.payload.regionName,
     };
   }
 
   if (action.type === 'categoryClick') {
     return {
       ...state,
-      categoryClicked: action.payload.id,
+      categoryId: action.payload.categoryId,
     };
   }
 
