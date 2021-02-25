@@ -32,11 +32,11 @@ export function getCategoriesThunk() {
   };
 }
 
-export function getRestaurantsThunk() {
+export function getRestaurantsThunk({ regionName, categoryId }) {
   return async (dispatch) => {
     dispatch({ type: 'getRestaurants' });
     try {
-      const data = await getRestaurants();
+      const data = await getRestaurants({ regionName, categoryId });
       dispatch({ type: 'getRestaurantsSuccess', payload: data });
     } catch (error) {
       dispatch({ type: 'getRestaurantsFailure', payload: error });
