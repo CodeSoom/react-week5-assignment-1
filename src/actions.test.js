@@ -36,26 +36,33 @@ describe('actions', () => {
       });
     });
   });
+  describe('get categories', () => {
+    context('when status is success', () => {
+      it('can get categories', async () => {
+        getCategories.mockImplementationOnce(() => Promise.resolve(categories));
 
-  it('can get categories', async () => {
-    getCategories.mockImplementationOnce(() => Promise.resolve(categories));
+        const thunk = getCategoriesThunk();
+        await thunk(dispatch);
 
-    const thunk = getCategoriesThunk();
-    await thunk(dispatch);
-
-    expect(dispatch).toHaveBeenCalledTimes(2);
-    expect(dispatch).toHaveBeenCalledWith({ type: 'getCategories' });
-    expect(dispatch).toHaveBeenCalledWith({ type: 'getCategoriesSuccess', payload: categories });
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getCategories' });
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getCategoriesSuccess', payload: categories });
+      });
+    });
   });
 
-  it('can get restaurants', async () => {
-    getRestaurants.mockImplementationOnce(() => Promise.resolve(restaurants));
+  describe('get restaurants', () => {
+    context('when status is success', () => {
+      it('can get restaurants', async () => {
+        getRestaurants.mockImplementationOnce(() => Promise.resolve(restaurants));
 
-    const thunk = getRestaurantsThunk();
-    await thunk(dispatch);
+        const thunk = getRestaurantsThunk();
+        await thunk(dispatch);
 
-    expect(dispatch).toHaveBeenCalledTimes(2);
-    expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurants' });
-    expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurantsSuccess', payload: restaurants });
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurants' });
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurantsSuccess', payload: restaurants });
+      });
+    });
   });
 });
