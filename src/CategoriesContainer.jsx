@@ -7,8 +7,9 @@ import { setClicked } from './actions';
 import Buttons from './Buttons';
 
 export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
+  const { categories, clicked } = useSelector((state) => ({
     categories: state.categories,
+    clicked: state.clicked,
   }));
 
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export default function CategoriesContainer() {
     <Buttons
       buttons={categories}
       handleClick={handleClick}
+      clickedName={clicked.category}
     />
   );
 }
