@@ -6,40 +6,45 @@ const initialState = {
   selectedcategoryname: '',
 };
 
-function reducer(state = initialState, action) {
-  if (action.type === 'updateSelectedLocation') {
-    const { selectedlocationname } = action.payload;
-    return ({
-      ...state,
-      selectedlocationname,
-    });
-  }
-
-  if (action.type === 'updateSelectedCategory') {
-    const { selectedcategoryname } = action.payload;
-    return ({
-      ...state,
-      selectedcategoryname,
-    });
-  }
-
-  if (action.type === 'setLocations') {
-    const { locations } = action.payload;
-    return ({
-      ...state,
-      locations,
-    });
-  }
-
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
-    return ({
-      ...state,
-      categories,
-    });
-  }
-
-  return state;
+function updateSelectdLocation(state, action) {
+  const { selectedlocationname } = action.payload;
+  return ({
+    ...state,
+    selectedlocationname,
+  });
 }
 
-export default reducer;
+function updateSelectedCategory(state, action) {
+  const { selectedcategoryname } = action.payload;
+  return ({
+    ...state,
+    selectedcategoryname,
+  });
+}
+
+function setLocations(state, action) {
+  const { locations } = action.payload;
+  return ({
+    ...state,
+    locations,
+  });
+}
+
+function setCategories(state, action) {
+  const { categories } = action.payload;
+  return ({
+    ...state,
+    categories,
+  });
+}
+
+export default function reducer(state = initialState, action) {
+  const reducers = {
+    updateSelectdLocation: updateSelectdLocation(state, action),
+    updateSelectedCategory: updateSelectedCategory(state, action),
+    setLocations: setLocations(state, action),
+    setCategories: setCategories(state, action),
+  };
+
+  return reducers[action.type] || state;
+}
