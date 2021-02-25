@@ -1,18 +1,22 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CategoryButtonsContainer from './CategoryButtonsContainer';
 
 jest.mock('react-redux');
 
+const dispatch = jest.fn();
+
 beforeEach(() => {
   jest.clearAllMocks();
 
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
-    category: '',
+    currentCategory: '',
   }));
 });
 
@@ -21,5 +25,18 @@ describe('CategoryButtonsContainer', () => {
     const { getByText } = render(<CategoryButtonsContainer />);
 
     expect(getByText('한식')).not.toBeNull();
+  });
+
+  it('marks the clicked button', () => {
+    const { getByText } = render(<CategoryButtonsContainer />);
+
+    fireEvent.click(getByText('한식'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'setCategory',
+      payload: {
+        currentCategory: '한식',
+      },
+    });
   });
 });

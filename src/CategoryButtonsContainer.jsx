@@ -8,7 +8,7 @@ import {
   setCategory,
 } from './actions';
 
-export default function RegionButtonsContainer() {
+export default function CategoryButtonsContainer() {
   const dispatch = useDispatch();
 
   const { currentCategory } = useSelector((state) => ({
