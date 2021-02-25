@@ -39,7 +39,7 @@ export function getRestaurantsThunk() {
       const data = await getRestaurants();
       dispatch({ type: 'getRestaurantsSuccess', payload: data });
     } catch (error) {
-
+      dispatch({ type: 'getRestaurantsFailure', payload: Error('getRestaurants') });
     }
   };
 }
