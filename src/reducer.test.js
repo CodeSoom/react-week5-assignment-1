@@ -13,8 +13,8 @@ describe('reducer', () => {
     regions: [],
     categories: [],
     restaurants: [],
-    selectedRegionId: 0,
-    selectedCategoryId: 0,
+    selectedRegion: null,
+    selectedCategory: null,
   };
 
   it('state가 지정되지 않으면 기본값을 state로 적용한다.', () => {
@@ -28,9 +28,10 @@ describe('reducer', () => {
     expect(preventState).toBe(state);
   });
 
-  it('지역버튼이 클릭되면 selectedRegionId가 바뀐다.', () => {
-    const state = reducer(preventState, changeSelectedRegion(2));
-    expect(state.selectedRegionId).toBe(2);
+  it('지역버튼이 클릭되면 selectedRegion가 바뀐다.', () => {
+    const state = reducer(preventState, changeSelectedRegion({ id: 1, name: '서울' }));
+
+    expect(state.selectedRegion).not.toBeNull();
   });
 
   it('초기 실행시 regions data를 가져온다.', () => {
@@ -43,9 +44,9 @@ describe('reducer', () => {
     expect(state.regions).toHaveLength(2);
   });
 
-  it('카테고리 버튼이 클릭되면 selectedCategoryId가 바뀐다.', () => {
-    const state = reducer(preventState, changeSelectedCategory(2));
-    expect(state.selectedCategoryId).toBe(2);
+  it('카테고리 버튼이 클릭되면 selectedCategory가 바뀐다.', () => {
+    const state = reducer(preventState, changeSelectedCategory({ id: 1, name: '한식' }));
+    expect(state.selectedCategory).not.toBeNull();
   });
 
   it('초기 실행시 categories data를 가져온다.', () => {

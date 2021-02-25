@@ -16,8 +16,8 @@ describe('RestaurantsContainer', () => {
   beforeEach(() => jest.clearAllMocks());
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    selectedRegionId: 1,
-    selectedCategoryId: given.selectedCategoryId,
+    selectedRegion: { id: 1, name: '서울' },
+    selectedCategory: given.selectedCategory,
     restaurants: [
       {
         id: 1,
@@ -42,16 +42,16 @@ describe('RestaurantsContainer', () => {
       },
     ],
   }));
-  context('지역과 category의 id가 유효할 때(0이 아닐 때)', () => {
-    given('selectedCategoryId', () => 2);
+  context('지역과 category가 유효할 때(null이 아닐 때)', () => {
+    given('selectedCategory', () => ({ id: 1, name: '한식' }));
     it('지역과 category에 맞는 정보를 보여주는 dispatch함수가 실행된다.', () => {
       render(<RestaurantsContainer />);
       expect(dispatch).toBeCalled();
     });
   });
 
-  context('지역과 category의 id가 유효하지 않을 때(0일 때)', () => {
-    given('selectedCategoryId', () => 0);
+  context('지역과 category가 유효하지 않을 때(null일 때)', () => {
+    given('selectedCategoryId', () => null);
     it('dispatch함수는 실행되지 않는다.', () => {
       render(<RestaurantsContainer />);
       expect(dispatch).not.toBeCalled();

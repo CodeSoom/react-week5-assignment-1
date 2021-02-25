@@ -31,6 +31,8 @@ describe('Buttons', () => {
     );
   }
 
+  beforeEach(() => jest.clearAllMocks());
+
   it('지역들을 보여준다.', () => {
     const { queryByText } = renderList(regions, regionId);
     expect(queryByText('인천')).toBeInTheDocument();

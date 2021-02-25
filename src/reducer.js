@@ -1,19 +1,19 @@
 const initialState = {
-  selectedRegionId: 0,
-  selectedCategoryId: 0,
+  selectedRegion: null,
+  selectedCategory: null,
   regions: [],
   categories: [],
   restaurants: [],
 };
 
 export const reducers = {
-  changeSelectedRegion: (state, { payload: { id } }) => ({
+  changeSelectedRegion: (state, { payload: { region } }) => ({
     ...state,
-    selectedRegionId: id,
+    selectedRegion: region,
   }),
-  changeSelectedCategory: (state, { payload: { id } }) => ({
+  changeSelectedCategory: (state, { payload: { category } }) => ({
     ...state,
-    selectedCategoryId: id,
+    selectedCategory: category,
   }),
   setRegions: (state, { payload: { regions } }) => ({
     ...state,

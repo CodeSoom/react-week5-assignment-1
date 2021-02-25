@@ -9,7 +9,8 @@ export default function Buttons({ list, selectedId, onClick }) {
             type="button"
             onClick={() => onClick(id)}
           >
-            {id === selectedId ? `${name}(V)` : name}
+            {name}
+            {id === selectedId ? '(V)' : ''}
           </button>
         </li>
       ))}

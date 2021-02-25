@@ -8,19 +8,21 @@ import Buttons from './Buttons';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
-  const { categories, selectedCategoryId } = useSelector((state) => ({
+  const { categories, selectedCategory } = useSelector((state) => ({
     categories: state.categories,
-    selectedCategoryId: state.selectedCategoryId,
+    selectedCategory: state.selectedCategory,
   }));
 
-  function handleClick(id) {
-    return dispatch(changeSelectedCategory(id));
+  function handleClick(categoryId) {
+    const category = categories.find(({ id }) => id === categoryId);
+
+    return dispatch(changeSelectedCategory(category));
   }
 
   return (
     <Buttons
       list={categories}
-      selectedId={selectedCategoryId}
+      selectedId={selectedCategory?.id}
       onClick={handleClick}
     />
   );
