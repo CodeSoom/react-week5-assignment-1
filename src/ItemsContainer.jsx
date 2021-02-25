@@ -13,8 +13,8 @@ export default function ItemsContainer() {
     category: state.category,
   }));
 
-  function handleClick() {
-    dispatch(getRestaurant());
+  function handleClick(item) {
+    dispatch(getRestaurant(item));
   }
 
   return (

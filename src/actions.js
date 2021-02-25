@@ -8,8 +8,11 @@ export function setItems(region, category) {
   };
 }
 
-export function getRestaurant() {
+export function getRestaurant(item) {
   return {
     type: 'getRestaurant',
+    payload: {
+      item,
+    },
   };
 }
