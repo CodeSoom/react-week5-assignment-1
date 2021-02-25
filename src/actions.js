@@ -18,8 +18,13 @@ export function setCategories(categories) {
   };
 }
 
-export function setClicked() {
-  return '';
+export function setClicked(clicked) {
+  return {
+    type: 'setClicked',
+    payload: {
+      clicked,
+    },
+  };
 }
 
 export function loadRegions() {

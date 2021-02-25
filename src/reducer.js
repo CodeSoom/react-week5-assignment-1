@@ -17,6 +17,13 @@ const reducers = {
     ...state,
     categories: { ...state.categories, ...categories },
   }),
+  setClicked: (state, { payload: { clicked } }) => ({
+    ...state,
+    clicked: {
+      region: { ...state.clicked.region, ...clicked.region },
+      category: { ...state.clicked.category, ...clicked.category },
+    },
+  }),
 };
 
 export default function reducer(state = initialState, action = { type: undefined }) {
