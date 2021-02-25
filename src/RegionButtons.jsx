@@ -1,17 +1,6 @@
 import React from 'react';
 
-function RegionButton({ name, onClick, currentRegion }) {
-  return (
-    <li>
-      <button
-        type="button"
-        onClick={() => onClick('서울')}
-      >
-        { currentRegion === { name } ? `${{ name }}V` : { name }}
-      </button>
-    </li>
-  );
-}
+import RegionButton from './RegionButton';
 
 export default function RegionButtons({ regions, onClick, currentRegion }) {
   return (

@@ -1,4 +1,8 @@
-export default function reducer(state, action) {
+const initialState = {
+  currentRegion: '',
+};
+
+export default function reducer(state = initialState, action) {
   if (action.type === 'setRegion') {
     const { currentRegion } = action.payload;
 
