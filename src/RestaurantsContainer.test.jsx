@@ -21,9 +21,10 @@ describe('RestaurantsContainer', () => {
     useSelector.mockImplementation((selector) => selector({ restaurants }));
   });
 
-  it('식당 목록을 api로부터 불러옵니다.', () => {
-    render((<Restaurants />));
+  it('식당 목록을 표시합니다.', () => {
+    const { queryByText } = render((<Restaurants restaurants={restaurants} />));
 
-    expect(dispatch).toBeCalled();
+    expect(queryByText(/호신각/)).not.toBeNull();
+    expect(queryByText(/홍콩반점/)).not.toBeNull();
   });
 });
