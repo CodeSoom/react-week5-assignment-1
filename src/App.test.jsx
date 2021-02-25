@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
+import given from 'given2';
 import App from './App';
 
 jest.mock('react-redux');
@@ -10,24 +11,21 @@ jest.mock('./services/api');
 describe('App', () => {
   const dispatch = jest.fn();
 
-  function useSelectorMockMaker(store) {
-    useSelector.mockImplementation((selector) => selector(store));
-  }
-
   beforeEach(() => {
     jest.resetAllMocks();
 
     useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+      categories: [{ id: 1, name: '한식' }],
+      restaurants: [{ id: 1, name: '양천주가' }],
+      selectRegionId: given.selectRegionId || null,
+      selectCategoryId: given.selectCategoryId || null,
+    }));
   });
 
   context('without selectCategoryId and selectRegionId', () => {
     it('renders regions and categories', async () => {
-      useSelectorMockMaker({
-        regions: [{ id: 1, name: '서울' }],
-        categories: [{ id: 1, name: '한식' }],
-        restaurants: [{ id: 1, name: '양천주가' }],
-      });
-
       const { queryByText } = render(<App />);
 
       expect(dispatch).toBeCalledTimes(2);
@@ -40,13 +38,8 @@ describe('App', () => {
 
   context('with selectCategoryId and selectRegionId', () => {
     it('renders regions and categories and restaurants', async () => {
-      useSelectorMockMaker({
-        regions: [{ id: 1, name: '서울' }],
-        categories: [{ id: 1, name: '한식' }],
-        restaurants: [],
-        selectRegionId: 1,
-        selectCategoryId: 1,
-      });
+      given('selectRegionId', () => 1);
+      given('selectCategoryId', () => 1);
 
       const { queryByText } = render(<App />);
 
