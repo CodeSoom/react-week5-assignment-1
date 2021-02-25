@@ -1,7 +1,9 @@
-export function test() {
+export function setItems(items) {
   return {
-    type: 'testType',
-    payload: {},
+    type: 'setItems',
+    payload: {
+      items,
+    },
   };
 }
 

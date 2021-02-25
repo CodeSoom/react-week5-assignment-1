@@ -8,7 +8,7 @@ import regions from '../fixtures/region';
 
 test('Items', () => {
   const { queryByText } = render((
-    <Items regions={regions} />
+    <Items items={regions} />
   ));
 
   expect(queryByText(/서울/)).not.toBeNull();
