@@ -15,9 +15,9 @@ function RestaurantsContainer() {
 
   useEffect(() => {
     if (regionName && categoryId) {
-      dispatch(getRestaurantsThunk());
+      dispatch(getRestaurantsThunk({ regionName, categoryId }));
     }
-  }, [regionName && categoryId]);
+  }, [regionName, categoryId]);
 
   return (
     <div>
