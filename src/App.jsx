@@ -14,13 +14,17 @@ import { fetchRegions, fetchCategories } from './services/api';
 
 function loadRegions() {
   return async (dispatch) => {
-    dispatch(setRegions(await fetchRegions()));
+    const regions = await fetchRegions();
+
+    dispatch(setRegions(regions));
   };
 }
 
 function loadCategories() {
   return async (dispatch) => {
-    dispatch(setCategories(await fetchCategories()));
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
   };
 }
 
