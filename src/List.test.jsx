@@ -8,7 +8,11 @@ import { regions } from './fixtures/mockData';
 describe('List', () => {
   context('if there is a list', () => {
     it('should be there list with received prop', () => {
-      const { getByRole } = render(<List list={regions} />);
+      const { getByRole } = render(<List
+        list={
+          [...regions, { id: 8, name: '울산', clicked: true }]
+        }
+      />);
 
       const list = getByRole('list');
 
