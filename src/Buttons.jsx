@@ -9,6 +9,7 @@ export default function Buttons({ buttons, handleClick }) {
         <li key={id}>
           <button
             key={uuid()}
+            id={id}
             name={name}
             type="button"
             onClick={handleClick}
