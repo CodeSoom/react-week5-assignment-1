@@ -19,20 +19,24 @@ describe('RestaurantsContainer', () => {
     }));
   });
 
-  it('renders restaurants', () => {
-    given('restaurants', () => restaurants);
-    const { queryByText } = render(<RestaurantsContainer />);
+  context('without restaurants', () => {
+    it('renders the message that user has to click region and category buttons.', () => {
+      given('restaurants', () => ([]));
 
-    expect(queryByText('양천주가')).not.toBeNull();
-    expect(queryByText('한국식 초밥')).not.toBeNull();
-    expect(queryByText('김초밥')).not.toBeNull();
+      const { queryByText } = render(<RestaurantsContainer />);
+
+      expect(queryByText('지역과 카테고리를 클릭해주세요.')).not.toBeNull();
+    });
   });
 
-  it('renders the message that user has to click region and category buttons.', () => {
-    given('restaurants', () => ([]));
+  context('with restaurants', () => {
+    it('renders restaurants', () => {
+      given('restaurants', () => restaurants);
+      const { queryByText } = render(<RestaurantsContainer />);
 
-    const { queryByText } = render(<RestaurantsContainer />);
-
-    expect(queryByText('지역과 카테고리를 클릭해주세요.')).not.toBeNull();
+      expect(queryByText('양천주가')).not.toBeNull();
+      expect(queryByText('한국식 초밥')).not.toBeNull();
+      expect(queryByText('김초밥')).not.toBeNull();
+    });
   });
 });
