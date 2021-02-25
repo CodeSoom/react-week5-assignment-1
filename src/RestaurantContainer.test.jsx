@@ -16,6 +16,6 @@ test('RestaurantContainer', async () => {
 
   const { queryByText } = render(<RestaurantConatiner />);
 
-  await waitFor(queryByText('양천주가'));
+  await waitFor(() => queryByText('양천주가'));
   expect(queryByText('양천주가')).not.toBeNull();
 });
