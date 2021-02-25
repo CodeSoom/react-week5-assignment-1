@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import category from '../fixture/category';
+
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
@@ -16,11 +18,7 @@ describe('CategoriesContainer', () => {
 
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      categories: [
-        { id: 1, name: '한식' },
-        { id: 2, name: '중식' },
-        { id: 3, name: '일식' },
-      ],
+      categories: category,
       selectedCategoryId: 1,
     }));
   });
