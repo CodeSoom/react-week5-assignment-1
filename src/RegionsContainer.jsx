@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setClicked } from './actions';
 
 import Buttons from './Buttons';
 
@@ -9,7 +11,11 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
-  const handleClick = () => 'hi there';
+  const dispatch = useDispatch();
+
+  const handleClick = (event) => {
+    dispatch(setClicked({ region: event.target.name }));
+  };
 
   return (
     <Buttons
