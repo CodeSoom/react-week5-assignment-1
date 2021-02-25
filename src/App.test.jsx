@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { render } from '@testing-library/react';
 
@@ -9,9 +9,17 @@ import App from './App';
 jest.mock('react-redux');
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
+    dispatch.mockClear();
+
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
-      regions: [{ id: 1, name: '서울' }],
+      regions: [
+        { id: 1, name: '서울' },
+      ],
     }));
   });
 
@@ -23,6 +31,8 @@ describe('App', () => {
 
   it('renders region buttons', () => {
     const { queryByText } = render(<App />);
+
+    expect(dispatch).toBeCalled();
 
     expect(queryByText('서울')).not.toBeNull();
   });
