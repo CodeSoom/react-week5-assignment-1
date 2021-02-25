@@ -8,21 +8,36 @@ import { regions } from './fixtures/mockData';
 describe('List', () => {
   context('if there is a list', () => {
     it('should be there list with received prop', () => {
-      const { getByRole } = render(<List
-        list={
-          [...regions, { id: 8, name: '울산', clicked: true }]
-        }
-      />);
-
+      const { getByRole } = render(
+        <List
+          list={regions}
+        />,
+      );
       const list = getByRole('list');
 
       regions.forEach((region) => {
         expect(list).toHaveTextContent(region.name);
       });
     });
+
+    it('when item clicked show "(V)"', () => {
+      const { getByRole } = render(
+        <List
+          list={
+            [{ id: 123, name: '멜버른', clicked: true }]
+          }
+        />,
+      );
+      expect(getByRole('list')).toHaveTextContent('멜버른(V)');
+    });
     it('should be able to click item', () => {
       const onClick = jest.fn();
-      const { getByText } = render(<List list={regions} onClick={onClick} />);
+      const { getByText } = render(
+        <List
+          list={regions}
+          onClick={onClick}
+        />,
+      );
 
       fireEvent.click(getByText(regions[0].name));
       expect(onClick).toHaveBeenCalledWith(regions[0]);
