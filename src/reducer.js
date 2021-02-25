@@ -17,6 +17,10 @@ const reducers = {
     ...state,
     categories: { ...state.categories, ...categories },
   }),
+  setRestaurants: (state, { payload: { restaurants } }) => ({
+    ...state,
+    restaurants: { ...state.restaurants, ...restaurants },
+  }),
   setClicked: (state, { payload: { clicked } }) => ({
     ...state,
     clicked: {

@@ -18,8 +18,13 @@ export function setCategories(categories) {
   };
 }
 
-export function setRestaurnats() {
-  return '';
+export function setRestaurnats(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
 }
 
 export function setClicked(clicked) {
