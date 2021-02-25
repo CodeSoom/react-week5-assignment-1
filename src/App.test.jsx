@@ -29,4 +29,12 @@ describe('App', () => {
 
     expect(getByText('한식')).not.toBeNull();
   });
+
+  context('without restaurants', () => {
+    it('renders restaurants', () => {
+      const { queryByText } = render(<App />);
+
+      expect(queryByText(/레스토랑 목록이 없습니다/)).not.toBeNull();
+    });
+  });
 });
