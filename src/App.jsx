@@ -25,11 +25,11 @@ export default function App() {
     dispatch(loadCategories());
   }, []);
 
-  useEffect(() => {
-    if (locationName && categoryName) {
+  if (locationName && categoryName) {
+    useEffect(() => {
       dispatch(loadRestaurants(locationName, categoryName));
-    }
-  }, [locationName, categoryName]);
+    }, [locationName, categoryName]);
+  }
 
   return (
     <div>
