@@ -27,7 +27,7 @@ export function getCategoriesThunk() {
       const data = await getCategories();
       dispatch({ type: 'getCategoriesSuccess', payload: data });
     } catch (error) {
-      dispatch({ type: 'getCategoriesFailure', payload: error });
+
     }
   };
 }
@@ -39,7 +39,7 @@ export function getRestaurantsThunk() {
       const data = await getRestaurants();
       dispatch({ type: 'getRestaurantsSuccess', payload: data });
     } catch (error) {
-      dispatch({ type: 'getRestaurantsFailure', payload: error });
+
     }
   };
 }
