@@ -2,6 +2,7 @@ import {
   updateSelectedLocation,
   updateSelectedCategory,
   setLocations,
+  setCategories,
 } from './actions';
 
 import reducer from './reducer';
@@ -18,7 +19,8 @@ describe('reducer', () => {
 
     expect(state.selectedcategoryname).toBe('한식');
   });
-  it('setLocations', () => {
+
+  it('지역을 설정합니다.', () => {
     const initialState = {
       locations: [],
     };
@@ -30,5 +32,19 @@ describe('reducer', () => {
     const state = reducer(initialState, setLocations(locations));
 
     expect(state.locations).toHaveLength(1);
+  });
+
+  it('분류를 설정합니다.', () => {
+    const initialState = {
+      categories: [],
+    };
+
+    const categories = [
+      { id: 1, name: '한식' },
+    ];
+
+    const state = reducer(initialState, setCategories(categories));
+
+    expect(state.categories).toHaveLength(1);
   });
 });
