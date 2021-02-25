@@ -7,7 +7,7 @@ import { restaurants } from './fixtures/mockData';
 
 describe('Restaurants', () => {
   context('with restaurants', () => {
-    it('render restaurants', () => {
+    it('renders restaurants', () => {
       const { getByRole } = render(<Restaurants restaurants={restaurants} />);
 
       restaurants.forEach((reataurant) => {
@@ -17,7 +17,7 @@ describe('Restaurants', () => {
   });
 
   context('without restaurants', () => {
-    it('render nothing', () => {
+    it('renders nothing', () => {
       const { queryByRole } = render(<Restaurants restaurants={null} />);
 
       expect(queryByRole('list')).toBe(null);

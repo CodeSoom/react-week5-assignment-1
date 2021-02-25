@@ -7,7 +7,7 @@ import { regions } from './fixtures/mockData';
 
 describe('List', () => {
   context('with list', () => {
-    it('render list', () => {
+    it('renders list', () => {
       const { getByRole } = render(
         <List
           list={regions}
@@ -45,7 +45,7 @@ describe('List', () => {
   });
 
   context('without list', () => {
-    it('render nothing', () => {
+    it('renders nothing', () => {
       const { queryByRole } = render(<List />);
 
       const list = queryByRole('list');

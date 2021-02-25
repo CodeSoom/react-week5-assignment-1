@@ -11,7 +11,7 @@ import { regions, categories, restaurants } from './fixtures/mockData';
 jest.mock('react-redux');
 
 describe('App', () => {
-  it('render regions, categories, restaurants', () => {
+  it('renders regions, categories, restaurants', () => {
     const initialState = {
       regions,
       categories,

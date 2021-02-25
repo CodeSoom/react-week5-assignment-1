@@ -19,7 +19,7 @@ describe('reducer', () => {
   };
   describe('default state', () => {
     context('without action', () => {
-      it('have default state', () => {
+      it('has default state', () => {
         const {
           regions, categories, restaurants, error,
         } = reducer();
@@ -34,7 +34,7 @@ describe('reducer', () => {
     });
 
     context('with wrong action', () => {
-      it('have default state', () => {
+      it('has default state', () => {
         const {
           regions, categories, restaurants, error,
         } = reducer(undefined, { type: '@@INIT' });
@@ -50,7 +50,7 @@ describe('reducer', () => {
   });
   describe('getRegions', () => {
     context('when getRegionsSuccess dispatched', () => {
-      it('update state with regions', () => {
+      it('updates state with regions', () => {
         const changedState = reducer(initialState,
           { type: 'getRegionsSuccess', payload: mockRegions });
         const { regions } = changedState;
@@ -65,7 +65,7 @@ describe('reducer', () => {
       });
     });
     context('when getRegionsFailure dispatched', () => {
-      it('update state with error', () => {
+      it('updates state with error', () => {
         const changedState = reducer(initialState,
           { type: 'getRegionsFailure', payload: new Error('getRegionsFailure') });
         const { regions } = changedState.error;
@@ -76,7 +76,7 @@ describe('reducer', () => {
   });
 
   describe('selectRegion', () => {
-    it('update region state with region id', () => {
+    it('updates region state with region id', () => {
       const regionName = '울산';
       const changedState = reducer({ ...initialState, regions: mockRegions },
         selectRegion(regionName));
@@ -91,7 +91,7 @@ describe('reducer', () => {
 
   describe('getCategories', () => {
     context('when getCategoriesSuccess dispatched', () => {
-      it('update state with categories', () => {
+      it('updates state with categories', () => {
         const changedState = reducer(initialState,
           { type: 'getCategoriesSuccess', payload: mockCategories });
         const { categories } = changedState;
@@ -108,7 +108,7 @@ describe('reducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('update category state with category id', () => {
+    it('updates category state with category id', () => {
       const changedState = reducer({ ...initialState, categories: mockCategories },
         selectCategory(1));
       const { categories, selected } = changedState;
@@ -122,7 +122,7 @@ describe('reducer', () => {
 
   describe('getRestaurants', () => {
     context('when getRestaurantsSuccess dispatched', () => {
-      it('update state with restaurants', () => {
+      it('updates state with restaurants', () => {
         const changedState = reducer(initialState,
           { type: 'getRestaurantsSuccess', payload: mockRestaurants });
         const { restaurants } = changedState;
