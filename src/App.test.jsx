@@ -14,6 +14,10 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   given('restaurants', () => ([]));
+  given('clicked', () => ({
+    region: '',
+    category: '',
+  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -22,10 +26,7 @@ describe('App', () => {
       regions: [],
       categories: [],
       restaurants: given.restaurants,
-      clicked: {
-        region: '',
-        category: '',
-      },
+      clicked: given.clicked,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -41,7 +42,18 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
+  it('doesnt load restaurant', () => {
+    render(<App />);
+
+    expect(dispatch).toBeCalledTimes(2);
+  });
+
   it('loads regions, categories, and restaurants', () => {
+    given('clicked', () => ({
+      region: '서울',
+      category: '한식',
+    }));
+
     render(<App />);
 
     expect(dispatch).toBeCalledTimes(3);
