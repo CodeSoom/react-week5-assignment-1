@@ -6,6 +6,8 @@ import CategoriesContainer from './CategoriesContainer';
 
 import LocationsContainer from './LocationsContainer';
 
+import RestaurantsContainer from './RestaurantsContainer';
+
 import {
   loadLocations,
   loadCategories,
@@ -35,6 +37,7 @@ export default function App() {
     <div>
       <LocationsContainer />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
