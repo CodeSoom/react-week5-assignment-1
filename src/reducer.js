@@ -13,6 +13,11 @@ const actionHandler = {
     return { ...state, regions };
   },
 
+  getRegionsFailure(state, action) {
+    const regions = action.payload;
+    return { ...state, error: { ...state.error, regions: new Error('getRegionsFailure') } };
+  },
+
   selectRegion(state, action) {
     const { watching } = state;
     const regionName = action.payload;
