@@ -6,7 +6,7 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
-import updateSelectedCategory from './actions';
+import { updateSelectedCategory } from './actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
