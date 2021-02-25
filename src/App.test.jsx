@@ -31,7 +31,7 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
-  it('calls dispatch upon mounting', () => {
+  it('loads regions and categories', () => {
     render(<App />);
 
     expect(dispatch).toBeCalledTimes(2);
