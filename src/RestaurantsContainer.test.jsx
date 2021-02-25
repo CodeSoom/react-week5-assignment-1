@@ -16,10 +16,7 @@ beforeEach(() => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      '홍콩반점',
-      '포방터 돈까스',
-    ],
+    restaurants: [],
   }));
 });
 
@@ -34,6 +31,13 @@ describe('RestaurantsContainer', () => {
 
   context('with restaurants', () => {
     it('renders restaurants', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [
+          '홍콩반점',
+          '포방터 돈까스',
+        ],
+      }));
+
       const { getByText } = render(<RestaurantsContainer />);
 
       expect(getByText('홍콩반점')).not.toBeNull();

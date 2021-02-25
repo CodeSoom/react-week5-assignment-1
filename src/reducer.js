@@ -1,6 +1,7 @@
 const initialState = {
   currentRegion: '',
   currentCategory: '',
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -19,6 +20,15 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       currentCategory,
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
     };
   }
 

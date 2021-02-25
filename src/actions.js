@@ -15,3 +15,18 @@ export function setCategory(currentCategory) {
     },
   };
 }
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch) => {
+    dispatch(setRestaurants());
+  };
+}
