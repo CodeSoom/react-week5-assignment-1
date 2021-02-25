@@ -10,6 +10,10 @@ describe('Buttons', () => {
   const handleClick = jest.fn();
   const items = regions;
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('button들을 보여준다.', () => {
     const { queryByText } = render((
       <Buttons buttons={items} />
