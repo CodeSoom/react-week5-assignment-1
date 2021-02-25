@@ -38,12 +38,21 @@ function setCategories(state, action) {
   });
 }
 
+function setRestaurants(state, action) {
+  const { restaurants } = action.payload;
+  return ({
+    ...state,
+    restaurants,
+  });
+}
+
 export default function reducer(state = initialState, action) {
   const reducers = {
     updateSelectdLocation: updateSelectdLocation(state, action),
     updateSelectedCategory: updateSelectedCategory(state, action),
     setLocations: setLocations(state, action),
     setCategories: setCategories(state, action),
+    setRestaurants: setRestaurants(state, action),
   };
 
   return reducers[action.type] || state;

@@ -5,3 +5,7 @@ export default async function fetchLocations() {
 export async function fetchCategories() {
   return [];
 }
+
+export async function fetchRestaurants() {
+  return [];
+}
