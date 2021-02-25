@@ -2,52 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 
 import thunk from 'redux-thunk';
 
-const initialState = {
-  regions: [],
-  categories: [],
-  regionName: '',
-  categoryId: '',
-  restaurants: [],
-};
-
-function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
-    return {
-      ...state,
-      regions: action.payload.regions,
-    };
-  }
-
-  if (action.type === 'setCategories') {
-    return {
-      ...state,
-      categories: action.payload.categories,
-    };
-  }
-
-  if (action.type === 'setRestaurants') {
-    return {
-      ...state,
-      restaurants: action.payload.restaurants,
-    };
-  }
-
-  if (action.type === 'regionSelect') {
-    return {
-      ...state,
-      regionName: action.payload.regionName,
-    };
-  }
-
-  if (action.type === 'categorySelect') {
-    return {
-      ...state,
-      categoryId: action.payload.categoryId,
-    };
-  }
-
-  return state;
-}
+import reducer from './reducer';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
