@@ -1,13 +1,17 @@
-export function chooseRegions(regions) {
+// export function chooseRegions(regions) {
+//   return {
+//     type: 'chooseRegions',
+//     payload: {
+//       regions,
+//     }
+//   }
+// }
+
+export function setRegions(regions) {
   return {
-    type: 'chooseRegions',
+    type: 'setRegions',
     payload: {
       regions,
     }
   }
-}
-
-//TODO : 삭제하기
-export function xxx() {
-  //
 }
