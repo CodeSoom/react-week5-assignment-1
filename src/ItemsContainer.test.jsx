@@ -15,9 +15,10 @@ test('ItemsContainer', () => {
     items: region,
   }));
 
-  const { getByText } = render((
+  const { queryByText } = render((
     <ItemsContainer />
   ));
 
-  expect(getByText(/서울/)).not.toBeNull();
+  expect(queryByText(/서울/)).not.toBeNull();
+  expect(queryByText(/한식/)).not.toBeNull();
 });
