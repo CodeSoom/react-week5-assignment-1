@@ -8,7 +8,7 @@ import categories from '../fixtures/categories';
 
 import updateSelectedCategory from './actions';
 
-export default function LocationsContainer() {
+export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
   const { selectedcategoryname } = useSelector((state) => ({
@@ -16,8 +16,8 @@ export default function LocationsContainer() {
   }));
 
   function handleClickCategory(event) {
-    const locationName = event.target.value;
-    dispatch(updateSelectedCategory(locationName));
+    const categoryName = event.target.value;
+    dispatch(updateSelectedCategory(categoryName));
   }
 
   return (
