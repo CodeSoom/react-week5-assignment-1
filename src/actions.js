@@ -1,4 +1,7 @@
-import fetchLocations from './services/api';
+import {
+  fetchLocations,
+  fetchCategories,
+} from './services/api';
 
 export function updateSelectedLocation(selectedlocationname) {
   return {
@@ -21,9 +24,23 @@ export function setLocations(locations) {
   };
 }
 
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: { categories },
+  };
+}
+
 export function loadLocations() {
   return async (dispatch) => {
     const locations = await fetchLocations();
     dispatch(setLocations(locations));
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+    dispatch(setLocations(categories));
   };
 }

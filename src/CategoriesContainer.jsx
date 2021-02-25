@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
-import categories from '../fixtures/categories';
-
 import { updateSelectedCategory } from './actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { selectedcategoryname } = useSelector((state) => ({
+  const { selectedcategoryname, categories } = useSelector((state) => ({
     selectedcategoryname: state.selectedcategoryname,
+    categories: state.categories,
   }));
 
   function handleClickCategory(event) {

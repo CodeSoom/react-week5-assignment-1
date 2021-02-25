@@ -8,13 +8,15 @@ import LocationsContainer from './LocationsContainer';
 
 import {
   loadLocations,
+  loadCategories,
 } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadLocations);
+    dispatch(loadLocations());
+    dispatch(loadCategories());
   }, []);
 
   return (

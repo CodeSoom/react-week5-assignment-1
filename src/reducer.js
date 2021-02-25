@@ -1,5 +1,6 @@
 const initialState = {
   locations: [],
+  categories: [],
   restaurants: [],
   selectedlocationname: '',
   selectedcategoryname: '',
@@ -27,6 +28,14 @@ function reducer(state = initialState, action) {
     return ({
       ...state,
       locations,
+    });
+  }
+
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+    return ({
+      ...state,
+      categories,
     });
   }
 
