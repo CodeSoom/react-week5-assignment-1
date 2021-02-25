@@ -44,7 +44,7 @@ describe('List', () => {
     });
   });
 
-  context('if there is no list', () => {
+  context('without list', () => {
     it('there should be nothing', () => {
       const { queryByRole } = render(<List />);
 
