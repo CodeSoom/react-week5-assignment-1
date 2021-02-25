@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantContainer from './RestaurantContainer';
 
 import { fetchRegions, fetchCategories } from './services/api';
 
@@ -27,9 +28,10 @@ export default function App() {
   }, []);
 
   return (
-    <div>
+    <div className="app_container">
       <RegionsContainer />
       <CategoriesContainer />
+      <RestaurantContainer />
     </div>
   );
 }
