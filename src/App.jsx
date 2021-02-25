@@ -23,10 +23,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    dispatch(loadRestaurnats({
-      region: clicked.region.name,
-      category: clicked.category.id,
-    }));
+    if (clicked.region && clicked.category) {
+      dispatch(loadRestaurnats({
+        region: clicked.region.name,
+        category: clicked.category.id,
+      }));
+    }
   }, [clicked]);
 
   return (
