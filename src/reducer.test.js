@@ -65,7 +65,7 @@ describe('reducer', () => {
       });
     });
     context('when getRegionsFailure dispatched', () => {
-      it('update state with regions', () => {
+      it('update state with error', () => {
         const changedState = reducer(initialState,
           { type: 'getRegionsFailure', payload: new Error('getRegionsFailure') });
         const { regions } = changedState.error;
