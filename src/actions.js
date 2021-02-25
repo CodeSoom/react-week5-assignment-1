@@ -18,6 +18,10 @@ export function setCategories(categories) {
   };
 }
 
+export function setRestaurnats() {
+  return '';
+}
+
 export function setClicked(clicked) {
   return {
     type: 'setClicked',
