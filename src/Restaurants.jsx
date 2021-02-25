@@ -1,8 +1,7 @@
 import React from 'react';
 
 export default function Restaurants({ restaurants }) {
-  // console.log(restaurants);
-  if (restaurants.length === 0) {
+  if (restaurants[0] === undefined) {
     return (<span />);
   }
   return (
