@@ -2,6 +2,7 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  clicked: [],
 };
 
 const reducers = {
