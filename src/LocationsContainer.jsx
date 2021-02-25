@@ -14,8 +14,7 @@ export default function LocationsContainer() {
     locations: state.locations,
   }));
 
-  function handleClickLocation(event) {
-    const locationName = event.target.value;
+  function handleClickLocation(locationName) {
     dispatch(updateSelectedLocation(locationName));
   }
 
