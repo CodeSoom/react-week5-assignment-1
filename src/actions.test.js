@@ -49,6 +49,18 @@ describe('actions', () => {
         expect(dispatch).toHaveBeenCalledWith({ type: 'getCategoriesSuccess', payload: categories });
       });
     });
+    context('when status is fail', () => {
+      it('can not get categories', async () => {
+        getCategories.mockImplementationOnce(() => Promise.reject(Error('getCategories')));
+
+        const thunk = getCategoriesThunk();
+        await thunk(dispatch);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getCategories' });
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getCategoriesFailure', payload: Error('getCategories') });
+      });
+    });
   });
 
   describe('get restaurants', () => {
