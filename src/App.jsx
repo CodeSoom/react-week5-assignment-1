@@ -1,9 +1,13 @@
 import React from 'react';
 
 import RegionButtonsContainer from './RegionButtonsContainer';
+import CategoryButtonsContainer from './CategoryButtonsContainer';
 
 export default function App() {
   return (
-    <RegionButtonsContainer />
+    <div>
+      <RegionButtonsContainer />
+      <CategoryButtonsContainer />
+    </div>
   );
 }
