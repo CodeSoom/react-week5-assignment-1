@@ -32,10 +32,8 @@ describe('RestaurantsContainer', () => {
   context('with restaurants', () => {
     it('renders restaurants', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurants: [
-          '홍콩반점',
-          '포방터 돈까스',
-        ],
+        currentRegion: '서울',
+        currentCategory: '한식',
       }));
 
       const { getByText } = render(<RestaurantsContainer />);
