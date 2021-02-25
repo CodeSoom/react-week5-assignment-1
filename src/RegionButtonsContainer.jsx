@@ -19,12 +19,13 @@ export default function RegionButtonsContainer() {
     dispatch(setRegion(region));
   }
 
+  const regions = ['서울'];
+
   return (
-    <ul>
-      <RegionButtons
-        onClick={handleClick}
-        currentRegion={currentRegion}
-      />
-    </ul>
+    <RegionButtons
+      regions={regions}
+      onClick={handleClick}
+      currentRegion={currentRegion}
+    />
   );
 }

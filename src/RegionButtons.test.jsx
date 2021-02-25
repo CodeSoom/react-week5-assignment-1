@@ -10,10 +10,12 @@ beforeEach(() => {
 
 describe('RegionButtons', () => {
   const handleClick = jest.fn();
+  const regions = ['서울'];
 
   function renderRegionButtons(currentRegion) {
     return render((
       <RegionButtons
+        regions={regions}
         onClick={handleClick}
         currentRegion={currentRegion}
       />
