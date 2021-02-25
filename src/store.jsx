@@ -1,10 +1,13 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+
+import thunk from 'redux-thunk';
 
 const initialState = {
   regions: [],
   categories: [],
   regionName: '',
   categoryId: '',
+  restaurants: [],
 };
 
 function reducer(state = initialState, action) {
@@ -19,6 +22,13 @@ function reducer(state = initialState, action) {
     return {
       ...state,
       categories: action.payload.categories,
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    return {
+      ...state,
+      restaurants: action.payload.restaurants,
     };
   }
 
@@ -39,6 +49,6 @@ function reducer(state = initialState, action) {
   return state;
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

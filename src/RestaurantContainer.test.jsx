@@ -10,8 +10,8 @@ jest.mock('react-redux');
 
 test('RestaurantContainer', async () => {
   useSelector.mockImplementation((selector) => selector({
-    regionClicked: '서울',
-    categoryClicked: '1',
+    regionName: '서울',
+    categoryId: 1,
   }));
 
   const { queryByText } = render(<RestaurantConatiner />);
