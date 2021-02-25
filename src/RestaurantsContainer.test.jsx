@@ -15,29 +15,29 @@ describe('RestaurantsContainer', () => {
     restaurants,
     watching: { regionName: null, categoryId: null },
   };
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
   context('when region and category selected', () => {
-    beforeEach(() => {
-      jest.clearAllMocks();
+    it('can get restaurants ', () => {
       useSelector.mockImplementationOnce((selector) => selector(
         { ...initialState, watching: { regionName: '서울', categoryId: 1 } },
       ));
-      useDispatch.mockImplementationOnce(() => dispatch);
-    });
-    it('should get restaurants ', () => {
+
       render(<RestaurantsContainer />);
+
       expect(dispatch).toHaveBeenCalledTimes(1);
     });
   });
 
   context('when region and category not selected', () => {
-    beforeEach(() => {
-      jest.clearAllMocks();
+    it('can not get restaurants ', () => {
       useSelector.mockImplementationOnce((selector) => selector(initialState));
-      useDispatch.mockImplementationOnce(() => dispatch);
-    });
-    it('should not get restaurants ', () => {
+
       render(<RestaurantsContainer />);
+
       expect(dispatch).not.toHaveBeenCalled();
     });
   });
