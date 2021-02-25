@@ -7,12 +7,14 @@ import { render } from '@testing-library/react';
 import ItemsContainer from './ItemsContainer';
 
 import region from '../fixtures/region';
+import category from '../fixtures/category';
 
 jest.mock('react-redux');
 
 test('ItemsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    items: region,
+    region,
+    category,
   }));
 
   const { queryByText } = render((

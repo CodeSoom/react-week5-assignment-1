@@ -1,9 +1,15 @@
 import React from 'react';
 
-export default function Items({ items }) {
+export default function Items({ region, category }) {
   return (
     <ul>
-      {items.map((item, index) => (
+      {region.map((item, index) => (
+        <li key={index}>
+          <input type="button" value={item} />
+        </li>
+      ))}
+      <br />
+      {category.map((item, index) => (
         <li key={index}>
           <input type="button" value={item} />
         </li>

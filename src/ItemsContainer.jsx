@@ -5,11 +5,15 @@ import { useSelector } from 'react-redux';
 import Items from './Items';
 
 export default function ItemsContainer() {
-  const { items } = useSelector((state) => ({
-    items: state.items,
+  const { region, category } = useSelector((state) => ({
+    region: state.region,
+    category: state.category,
   }));
 
   return (
-    <Items items={items} />
+    <Items
+      region={region}
+      category={category}
+    />
   );
 }

@@ -1,8 +1,9 @@
-export function setItems(items) {
+export function setItems(region, category) {
   return {
     type: 'setItems',
     payload: {
-      items,
+      region,
+      category,
     },
   };
 }

@@ -1,17 +1,18 @@
 import regions from '../fixtures/region';
-
-const initialItems = regions;
+import categories from '../fixtures/category';
 
 const initalState = {
-  items: initialItems,
+  region: regions,
+  category: categories,
 };
 
 export default function reducer(state = initalState, action = { type: '' }) {
   if (action.type === 'setItems') {
-    const { items } = action.payload;
+    const { region, category } = action.payload;
     return {
       ...state,
-      items,
+      region,
+      category,
     };
   }
 

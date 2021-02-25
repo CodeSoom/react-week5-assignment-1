@@ -4,11 +4,15 @@ import { render } from '@testing-library/react';
 
 import Items from './Items';
 
-import regions from '../fixtures/region';
+import region from '../fixtures/region';
+import category from '../fixtures/category';
 
 test('Items', () => {
   const { queryByText } = render((
-    <Items items={regions} />
+    <Items
+      region={region}
+      category={category}
+    />
   ));
 
   expect(queryByText(/서울/)).not.toBeNull();
