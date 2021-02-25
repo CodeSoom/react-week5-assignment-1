@@ -6,7 +6,7 @@ import List from './List';
 import { regions } from './fixtures/mockData';
 
 describe('List', () => {
-  context('if there is a list', () => {
+  context('with list', () => {
     it('should be there list with received prop', () => {
       const { getByRole } = render(
         <List

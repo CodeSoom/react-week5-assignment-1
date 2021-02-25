@@ -49,7 +49,7 @@ describe('reducer', () => {
     });
   });
   describe('getRegions', () => {
-    context('getRegionsSuccess', () => {
+    context('when getRegionsSuccess dispatched', () => {
       it('update state with regions', () => {
         const changedState = reducer(initialState,
           { type: 'getRegionsSuccess', payload: mockRegions });
@@ -81,7 +81,7 @@ describe('reducer', () => {
   });
 
   describe('getCategories', () => {
-    context('getCategoriesSuccess', () => {
+    context('when getCategoriesSuccess dispatched', () => {
       it('update state with categories', () => {
         const changedState = reducer(initialState,
           { type: 'getCategoriesSuccess', payload: mockCategories });
@@ -112,7 +112,7 @@ describe('reducer', () => {
   });
 
   describe('getRestaurants', () => {
-    context('getRestaurantsSuccess', () => {
+    context('when getRestaurantsSuccess dispatched', () => {
       it('update state with restaurants', () => {
         const changedState = reducer(initialState,
           { type: 'getRestaurantsSuccess', payload: mockRestaurants });
