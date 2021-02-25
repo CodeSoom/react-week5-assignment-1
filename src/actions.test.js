@@ -76,5 +76,18 @@ describe('actions', () => {
         expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurantsSuccess', payload: restaurants });
       });
     });
+
+    context('when status is fail', () => {
+      it('can not get restaurants', async () => {
+        getRestaurants.mockImplementationOnce(() => Promise.reject(Error('getRestaurants')));
+
+        const thunk = getRestaurantsThunk();
+        await thunk(dispatch);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurants' });
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurantsFailure', payload: Error('getRestaurants') });
+      });
+    });
   });
 });
