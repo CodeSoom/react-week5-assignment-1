@@ -16,5 +16,11 @@ export default function reducer(state = initalState, action = { type: '' }) {
     };
   }
 
+  if (action.type === 'getRestaurant') {
+    console.log('button pushed');
+    return {
+      ...state,
+    };
+  }
   return state;
 }
