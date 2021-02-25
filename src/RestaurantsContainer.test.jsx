@@ -36,6 +36,17 @@ describe('RestaurantsContainer', () => {
     expect(queryByText('카테고리 버튼도 클릭 해주세요')).not.toBeNull();
   });
 
+  it('renders a message to let user click region', () => {
+    given('clicked', () => ({
+      region: '',
+      category: '한식',
+    }));
+
+    const { queryByText } = render(<RestaurantsContainer />);
+
+    expect(queryByText('지역 버튼도 클릭 해주세요')).not.toBeNull();
+  });
+
   context('without restaurants', () => {
     it('renders the message that user has to click region and category buttons.', () => {
       given('restaurants', () => ([]));
