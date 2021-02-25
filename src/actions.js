@@ -20,19 +20,12 @@ export function getRegionsThunk() {
   };
 }
 
-export function getCategoreisThunk() {
+export function getCategoriesThunk() {
   return async (dispatch) => {
     dispatch({ type: 'getCategories' });
     try {
       const data = await getCategories();
-      dispatch({
-        type: 'getCategoriesSuccess',
-        payload: [
-          { id: 1, name: '한식' },
-          { id: 2, name: '중식' },
-          { id: 3, name: '일식' },
-        ],
-      });
+      dispatch({ type: 'getCategoriesSuccess', payload: data });
     } catch (error) {
       dispatch({ type: 'getCategoriesFailure', payload: error });
     }
