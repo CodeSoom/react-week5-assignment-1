@@ -9,15 +9,32 @@ describe('actions', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  it('can get regions', async () => {
-    getRegions.mockImplementationOnce(() => Promise.resolve(regions));
+  describe('get regions', () => {
+    context('when status is success', () => {
+      it('can get regions', async () => {
+        getRegions.mockImplementationOnce(() => Promise.resolve(regions));
 
-    const thunk = getRegionsThunk();
-    await thunk(dispatch);
+        const thunk = getRegionsThunk();
+        await thunk(dispatch);
 
-    expect(dispatch).toHaveBeenCalledTimes(2);
-    expect(dispatch).toHaveBeenCalledWith({ type: 'getRegions' });
-    expect(dispatch).toHaveBeenCalledWith({ type: 'getRegionsSuccess', payload: regions });
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRegions' });
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRegionsSuccess', payload: regions });
+      });
+    });
+
+    context('when status is fail', () => {
+      it('can not get regions', async () => {
+        getRegions.mockImplementationOnce(() => Promise.reject(Error('getRegions')));
+
+        const thunk = getRegionsThunk();
+        await thunk(dispatch);
+
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRegions' });
+        expect(dispatch).toHaveBeenCalledWith({ type: 'getRegionsFailure', payload: Error('getRegions') });
+      });
+    });
   });
 
   it('can get categories', async () => {
