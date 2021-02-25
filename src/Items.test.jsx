@@ -23,7 +23,9 @@ test('Items', () => {
 
   fireEvent.click(getByText(/서울/));
   expect(handleClick).toBeCalledWith('서울');
+  expect(getByText(/서울/)).toBe('서울(V)');
 
   fireEvent.click(getByText(/한식/));
   expect(handleClick).toBeCalledWith('한식');
+  expect(getByText(/한식/)).toBe('한식(V)');
 });
