@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  useSelector,
+  useDispatch,
+} from 'react-redux';
 
-import { loadCategories, loadRegions, loadRestaurnats } from './actions';
+import {
+  loadCategories,
+  loadRegions,
+  loadRestaurnats,
+} from './actions';
 
 import RegionsContainer from './RegionsContainer';
 
