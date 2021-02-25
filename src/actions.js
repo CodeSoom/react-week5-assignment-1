@@ -15,7 +15,7 @@ export function getRegionsThunk() {
       const data = await getRegions();
       dispatch({ type: 'getRegionsSuccess', payload: data });
     } catch (error) {
-      dispatch({ type: 'getRegionsFailure', payload: Error('getRegions') });
+      dispatch({ type: 'getRegionsFailure', payload: error });
     }
   };
 }
