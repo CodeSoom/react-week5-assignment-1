@@ -32,14 +32,14 @@ function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'regionClick') {
+  if (action.type === 'regionSelect') {
     return {
       ...state,
       regionName: action.payload.regionName,
     };
   }
 
-  if (action.type === 'categoryClick') {
+  if (action.type === 'categorySelect') {
     return {
       ...state,
       categoryId: action.payload.categoryId,

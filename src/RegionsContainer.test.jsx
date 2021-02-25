@@ -26,7 +26,7 @@ test('RegionsContainer', () => {
   fireEvent.click(queryByText('서울'));
 
   expect(dispatch).toBeCalledWith({
-    type: 'regionClick',
+    type: 'regionSelect',
     payload: { regionName: '서울' },
   });
 });

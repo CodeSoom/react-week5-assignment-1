@@ -27,18 +27,18 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function regionClick(regionName) {
+export function regionSelect(regionName) {
   return {
-    type: 'regionClick',
+    type: 'regionSelect',
     payload: {
       regionName,
     },
   };
 }
 
-export function categoryClick(id) {
+export function categorySelect(id) {
   return {
-    type: 'categoryClick',
+    type: 'categorySelect',
     payload: {
       categoryId: id,
     },

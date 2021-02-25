@@ -26,7 +26,7 @@ test('CategoriesContainer', () => {
   fireEvent.click(queryByText('한식'));
 
   expect(dispatch).toBeCalledWith({
-    type: 'categoryClick',
+    type: 'categorySelect',
     payload: { categoryId: 1 },
   });
 });
