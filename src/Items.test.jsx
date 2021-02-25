@@ -22,8 +22,8 @@ test('Items', () => {
   expect(queryByText(/한식/)).not.toBeNull();
 
   fireEvent.click(getByText(/서울/));
-  expect(handleClick).toBeCalled();
+  expect(handleClick).toBeCalledWith('서울');
 
   fireEvent.click(getByText(/한식/));
-  expect(handleClick).toBeCalled();
+  expect(handleClick).toBeCalledWith('한식');
 });
