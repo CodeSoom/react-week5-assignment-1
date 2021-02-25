@@ -9,7 +9,7 @@ describe('actions', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  describe('get regions', () => {
+  describe('getRegionsThunk', () => {
     context('when status is success', () => {
       it('can get regions', async () => {
         getRegions.mockImplementationOnce(() => Promise.resolve(regions));
@@ -36,7 +36,7 @@ describe('actions', () => {
       });
     });
   });
-  describe('get categories', () => {
+  describe('getCategoriesThunk', () => {
     context('when status is success', () => {
       it('can get categories', async () => {
         getCategories.mockImplementationOnce(() => Promise.resolve(categories));
@@ -63,7 +63,7 @@ describe('actions', () => {
     });
   });
 
-  describe('get restaurants', () => {
+  describe('getRestaurantsThunk', () => {
     context('when status is success', () => {
       it('can get restaurants', async () => {
         getRestaurants.mockImplementationOnce(() => Promise.resolve(restaurants));
