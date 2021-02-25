@@ -1,7 +1,3 @@
-export const GET_REGIONS = 'getRegions';
-export const GET_CATEGORIES = 'getCategories';
-export const GET_RESTAURANTS = 'getRestaurants';
-
 export function selectRegion(regionName) {
   return { type: 'selectRegion', payload: regionName };
 }
