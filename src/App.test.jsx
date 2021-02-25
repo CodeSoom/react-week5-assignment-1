@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import given from 'given2';
+
 import { restaurants } from '../fixtures';
 
 import App from './App';
@@ -11,19 +13,27 @@ import App from './App';
 describe('App', () => {
   const dispatch = jest.fn();
 
+  given('restaurants', () => ([]));
+
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
       regions: [],
       categories: [],
-      restaurants,
+      restaurants: given.restaurants,
+      clicked: {
+        region: '',
+        category: '',
+      },
     }));
 
     useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders restaurants', () => {
+    given('restaurants', () => restaurants);
+
     const { queryByText } = render(<App />);
 
     expect(queryByText('양천주가')).not.toBeNull();
@@ -31,9 +41,9 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
-  it('loads regions and categories', () => {
+  it('loads regions, categories, and restaurants', () => {
     render(<App />);
 
-    expect(dispatch).toBeCalledTimes(2);
+    expect(dispatch).toBeCalledTimes(3);
   });
 });
