@@ -17,18 +17,15 @@ describe('reducer', () => {
 
   describe('setRegions', () => {
     it('changes regions', () => {
-      const state = reducer({
-        rigions: [],
-      }, setRegions({
-        regions: [
-          {
-            id: 1,
-            name: '서울',
-          },
-        ],
-      }));
+      const regions = [
+        { id: 1, name: '서울' },
+      ];
 
-      expect(state.regions).not.toHaveLength(0);
+      const state = reducer({
+        regions: [],
+      }, setRegions(regions));
+
+      expect(state.regions).toHaveLength(1);
     });
   });
 });
