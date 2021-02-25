@@ -18,7 +18,7 @@ function CategoriesContainer() {
     dispatch(watchCategory(category.id));
   }
   return (
-    <div className="categories-container"><List list={categories} onClick={handleClick} /></div>
+    <div><List list={categories} onClick={handleClick} /></div>
   );
 }
 

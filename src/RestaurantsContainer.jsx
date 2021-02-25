@@ -18,7 +18,7 @@ function RestaurantsContainer() {
     }
   }, [regionName && categoryId]);
   return (
-    <div className="restaurants-container">restaurants-container</div>
+    <div>restaurants-container</div>
   );
 }
 /*

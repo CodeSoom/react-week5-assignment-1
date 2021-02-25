@@ -5,7 +5,7 @@ function Restaurants({ restaurants }) {
     return <></>;
   }
   return (
-    <ul className="restaurant-list">
+    <ul>
       {restaurants.map((restaurant) => <li key={restaurant.id}>{restaurant.name}</li>)}
     </ul>
   );

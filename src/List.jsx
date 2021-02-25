@@ -5,7 +5,7 @@ function List({ list, onClick }) {
     return <></>;
   }
   return (
-    <ul className="list-container">
+    <ul>
       {list.map((data) => (
         <li key={data.id}>
           <button type="button" onClick={() => { onClick(data); }}>
