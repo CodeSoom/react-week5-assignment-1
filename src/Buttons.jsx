@@ -2,7 +2,7 @@ import React from 'react';
 
 import uuid from 'react-uuid';
 
-export default function Buttons({ buttons, handleClick }) {
+export default function Buttons({ buttons, handleClick, clickedName }) {
   return (
     <ul>
       {buttons.map(({ id, name }) => (
@@ -15,6 +15,7 @@ export default function Buttons({ buttons, handleClick }) {
             onClick={handleClick}
           >
             {name}
+            {clickedName === name ? '(V)' : ''}
           </button>
         </li>
       ))}

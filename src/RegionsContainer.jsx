@@ -7,8 +7,9 @@ import { setClicked } from './actions';
 import Buttons from './Buttons';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const { regions, clicked } = useSelector((state) => ({
     regions: state.regions,
+    clicked: state.clicked,
   }));
 
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export default function RegionsContainer() {
     <Buttons
       buttons={regions}
       handleClick={handleClick}
+      clickedName={clicked.region}
     />
   );
 }
