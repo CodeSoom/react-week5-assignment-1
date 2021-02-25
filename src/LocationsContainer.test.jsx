@@ -21,12 +21,12 @@ describe('LocationContainer', () => {
     useSelector.mockImplementation((selector) => selector({ locations }));
   });
 
-  function renderLocationsContainer(selectedlocationname) {
+  function renderLocationsContainer(selectedLocationName) {
     return render((
       <Locations
         locations={locations}
         onClick={dispatch}
-        selectedlocationname={selectedlocationname}
+        selectedLocationName={selectedLocationName}
       />));
   }
 
@@ -41,8 +41,8 @@ describe('LocationContainer', () => {
   });
 
   it('선택한 값은 V표기 합니다.', () => {
-    const selectedlocationname = '서울';
-    const { queryByText } = renderLocationsContainer(selectedlocationname);
+    const selectedLocationName = '서울';
+    const { queryByText } = renderLocationsContainer(selectedLocationName);
 
     expect(queryByText('서울(V)')).not.toBeNull();
   });

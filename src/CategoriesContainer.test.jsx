@@ -21,12 +21,12 @@ describe('CategoriesContainer', () => {
     useSelector.mockImplementation((selector) => selector({ categories }));
   });
 
-  function renderCategories(selectedcategoryname) {
+  function renderCategories(selectedCategoryName) {
     return render((
       <Categories
         categories={categories}
         onClick={dispatch}
-        selectedcategoryname={selectedcategoryname}
+        selectedCategoryName={selectedCategoryName}
       />
     ));
   }
@@ -42,8 +42,8 @@ describe('CategoriesContainer', () => {
   });
 
   it('선택한 값은 V표기 합니다.', () => {
-    const selectedcategoryname = '한식';
-    const { queryByText } = renderCategories(selectedcategoryname);
+    const selectedCategoryName = '한식';
+    const { queryByText } = renderCategories(selectedCategoryName);
 
     expect(queryByText('한식(V)')).not.toBeNull();
   });

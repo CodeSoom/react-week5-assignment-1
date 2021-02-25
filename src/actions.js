@@ -4,17 +4,17 @@ import {
   fetchRestaurants,
 } from './services/api';
 
-export function updateSelectedLocation(selectedlocationname) {
+export function updateSelectedLocation(selectedLocationName) {
   return {
     type: 'updateSelectedLocation',
-    payload: { selectedlocationname },
+    payload: { selectedLocationName },
   };
 }
 
-export function updateSelectedCategory(selectedcategoryname) {
+export function updateSelectedCategory(selectedCategoryName) {
   return {
     type: 'updateSelectedCategory',
-    payload: { selectedcategoryname },
+    payload: { selectedCategoryName },
   };
 }
 

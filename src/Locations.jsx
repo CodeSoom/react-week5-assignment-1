@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Locations({ locations, onClick, selectedlocationname }) {
+export default function Locations({ locations, onClick, selectedLocationName }) {
   return (
     <ul>
       {locations.map((location) => (
@@ -9,7 +9,7 @@ export default function Locations({ locations, onClick, selectedlocationname }) 
             type="button"
             onClick={() => onClick(location.name)}
           >
-            {location.name === selectedlocationname ? `${selectedlocationname}(V)` : location.name}
+            {location.name === selectedLocationName ? `${selectedLocationName}(V)` : location.name}
           </button>
         </li>
       ))}

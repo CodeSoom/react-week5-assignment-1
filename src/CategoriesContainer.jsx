@@ -9,8 +9,8 @@ import { updateSelectedCategory } from './actions';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { selectedcategoryname, categories } = useSelector((state) => ({
-    selectedcategoryname: state.selectedcategoryname,
+  const { selectedCategoryName, categories } = useSelector((state) => ({
+    selectedCategoryName: state.selectedCategoryName,
     categories: state.categories,
   }));
 
@@ -23,7 +23,7 @@ export default function CategoriesContainer() {
     <Categories
       categories={categories}
       onCick={handleClickCategory}
-      selectedcategoryname={selectedcategoryname}
+      selectedcategoryname={selectedCategoryName}
     />
   );
 }

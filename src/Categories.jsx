@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Categories({ categories, onClick, selectedcategoryname }) {
+export default function Categories({ categories, onClick, selectedCategoryName }) {
   return (
     <ul>
       {categories.map((category) => (
@@ -9,7 +9,7 @@ export default function Categories({ categories, onClick, selectedcategoryname }
             type="button"
             onClick={() => onClick(category.name)}
           >
-            {category.name === selectedcategoryname ? `${selectedcategoryname}(V)` : category.name}
+            {category.name === selectedCategoryName ? `${selectedCategoryName}(V)` : category.name}
           </button>
         </li>
       ))}
