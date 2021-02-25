@@ -42,20 +42,24 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
-  it('doesnt load restaurant', () => {
-    render(<App />);
+  context('without clicked', () => {
+    it('doesnt load restaurant', () => {
+      render(<App />);
 
-    expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toBeCalledTimes(2);
+    });
   });
 
-  it('loads regions, categories, and restaurants', () => {
-    given('clicked', () => ({
-      region: '서울',
-      category: '한식',
-    }));
+  context('with clicked', () => {
+    it('loads regions, categories, and restaurants', () => {
+      given('clicked', () => ({
+        region: '서울',
+        category: '한식',
+      }));
 
-    render(<App />);
+      render(<App />);
 
-    expect(dispatch).toBeCalledTimes(3);
+      expect(dispatch).toBeCalledTimes(3);
+    });
   });
 });
