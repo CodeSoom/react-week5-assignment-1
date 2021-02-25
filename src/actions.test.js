@@ -1,4 +1,4 @@
-import { getCategoreisThunk, getRegionsThunk } from './actions';
+import { getCategoriesThunk, getRegionsThunk } from './actions';
 import { categories, regions } from './fixtures/mockData';
 
 jest.mock('./services/api');
@@ -18,7 +18,7 @@ describe('actions', () => {
   });
 
   it('can get categories', async () => {
-    const thunk = getCategoreisThunk();
+    const thunk = getCategoriesThunk();
 
     await thunk(dispatch);
 
