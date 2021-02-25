@@ -13,7 +13,7 @@ describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
   const initialState = {
     restaurants,
-    watching: { regionName: null, categoryId: null },
+    selected: { regionName: null, categoryId: null },
   };
   beforeEach(() => {
     jest.clearAllMocks();
@@ -23,7 +23,7 @@ describe('RestaurantsContainer', () => {
   context('when region and category selected', () => {
     it('can get restaurants ', () => {
       useSelector.mockImplementationOnce((selector) => selector(
-        { ...initialState, watching: { regionName: '서울', categoryId: 1 } },
+        { ...initialState, selected: { regionName: '서울', categoryId: 1 } },
       ));
 
       const { getByRole } = render(<RestaurantsContainer />);

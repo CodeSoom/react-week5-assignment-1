@@ -17,7 +17,7 @@ describe('App', () => {
       categories,
       restaurants,
       error: { regions: null, categories: null, restaurants: null },
-      watching: { regionName: null, categoryId: null },
+      selected: { regionName: null, categoryId: null },
     };
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);

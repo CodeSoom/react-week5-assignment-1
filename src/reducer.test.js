@@ -15,7 +15,7 @@ describe('reducer', () => {
     categories: [],
     restaurants: [],
     error: { regions: null, categories: null, restaurants: null },
-    watching: { regionName: null, categoryId: null },
+    selected: { regionName: null, categoryId: null },
   };
   describe('default state', () => {
     context('without action', () => {
@@ -80,12 +80,12 @@ describe('reducer', () => {
       const regionName = '울산';
       const changedState = reducer({ ...initialState, regions: mockRegions },
         selectRegion(regionName));
-      const { regions, watching } = changedState;
+      const { regions, selected } = changedState;
       const changedRegion = regions.find((region) => region.name === regionName);
 
       expect(regions).toHaveLength(6);
       expect(changedRegion.clicked).toBe(true);
-      expect(watching.regionName).toBe(regionName);
+      expect(selected.regionName).toBe(regionName);
     });
   });
 
@@ -111,12 +111,12 @@ describe('reducer', () => {
     it('update category state with category id', () => {
       const changedState = reducer({ ...initialState, categories: mockCategories },
         selectCategory(1));
-      const { categories, watching } = changedState;
+      const { categories, selected } = changedState;
       const changedCategory = categories.find((category) => category.id === 1);
 
       expect(categories).toHaveLength(mockCategories.length);
       expect(changedCategory.clicked).toBe(true);
-      expect(watching.categoryId).toBe(1);
+      expect(selected.categoryId).toBe(1);
     });
   });
 

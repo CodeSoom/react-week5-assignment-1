@@ -7,11 +7,11 @@ import Restaurants from './Restaurants';
 function RestaurantsContainer() {
   const dispatch = useDispatch();
 
-  const { watching, restaurants } = useSelector((state) => ({
-    restaurants: state.restaurants, watching: state.watching,
+  const { selected, restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants, selected: state.selected,
   }));
 
-  const { regionName, categoryId } = watching;
+  const { regionName, categoryId } = selected;
 
   useEffect(() => {
     if (regionName && categoryId) {

@@ -3,7 +3,7 @@ const initialState = {
   categories: [],
   restaurants: [],
   error: { regions: null, categories: null, restaurants: null },
-  watching: { regionName: null, categoryId: null },
+  selected: { regionName: null, categoryId: null },
 };
 
 const actionHandler = {
@@ -19,13 +19,13 @@ const actionHandler = {
   },
 
   selectRegion(state, action) {
-    const { watching } = state;
+    const { selected } = state;
     const regionName = action.payload;
     const regions = state.regions.map((region) => (region.name === regionName
       ? { ...region, clicked: true }
       : { ...region, clicked: false }));
 
-    return { ...state, regions, watching: { ...watching, regionName } };
+    return { ...state, regions, selected: { ...selected, regionName } };
   },
 
   getCategoriesSuccess(state, action) {
@@ -34,13 +34,13 @@ const actionHandler = {
   },
 
   selectCategory(state, action) {
-    const { watching } = state;
+    const { selected } = state;
     const categoryId = action.payload;
     const categories = state.categories.map((category) => (category.id === categoryId
       ? { ...category, clicked: true }
       : { ...category, clicked: false }));
 
-    return { ...state, categories, watching: { ...watching, categoryId } };
+    return { ...state, categories, selected: { ...selected, categoryId } };
   },
 
   getRestaurantsSuccess(state, action) {
