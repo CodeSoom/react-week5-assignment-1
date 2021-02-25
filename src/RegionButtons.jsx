@@ -5,7 +5,7 @@ export default function RegionButtons({ onClick, currentRegion }) {
     <li>
       <button
         type="button"
-        onClick={onClick}
+        onClick={() => onClick('서울')}
       >
         { currentRegion === '서울' ? '서울V' : '서울'}
       </button>

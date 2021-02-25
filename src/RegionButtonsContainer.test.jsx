@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,5 +25,18 @@ describe('RegionButtonsContainer', () => {
     const { getByText } = render(<RegionButtonsContainer />);
 
     expect(getByText('서울')).not.toBeNull();
+  });
+
+  it('marks the clicked button', () => {
+    const { getByText } = render(<RegionButtonsContainer />);
+
+    fireEvent.click(getByText('서울'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'setRegion',
+      payload: {
+        currentRegion: '서울',
+      },
+    });
   });
 });

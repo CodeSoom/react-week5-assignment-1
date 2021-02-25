@@ -15,8 +15,8 @@ export default function RegionButtonsContainer() {
     currentRegion: state.currentRegion,
   }));
 
-  function handleClick() {
-    dispatch(setRegion(currentRegion));
+  function handleClick(region) {
+    dispatch(setRegion(region));
   }
 
   return (
