@@ -15,7 +15,7 @@ const actionHandler = {
 
   getRegionsFailure(state, action) {
     const regions = action.payload;
-    return { ...state, error: { ...state.error, regions: new Error('getRegionsFailure') } };
+    return { ...state, error: { ...state.error, regions } };
   },
 
   selectRegion(state, action) {
