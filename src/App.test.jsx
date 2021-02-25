@@ -31,7 +31,6 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
-  // 좀 더 표현이 좋은 description이 생각나지가 않...
   it('calls dispatch upon mounting', () => {
     render(<App />);
 
