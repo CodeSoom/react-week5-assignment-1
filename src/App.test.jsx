@@ -2,11 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
-import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
