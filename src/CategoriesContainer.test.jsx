@@ -1,18 +1,26 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { categories } from '../fixtures';
+
+import {
+  setClicked,
+} from './actions';
 
 import CategoriesContainer from './CategoriesContainer';
 
 describe('CategoriesContainer', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       categories,
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders categories buttons', () => {
@@ -21,5 +29,13 @@ describe('CategoriesContainer', () => {
     expect(queryByText('한식')).not.toBeNull();
     expect(queryByText('중식')).not.toBeNull();
     expect(queryByText('일식')).not.toBeNull();
+  });
+
+  it('appends a new category into Clicked upon clicking region', () => {
+    const { queryByText } = render(<CategoriesContainer />);
+
+    fireEvent.click(queryByText('한식'));
+
+    expect(dispatch).toBeCalledWith(setClicked({ category: '1' }));
   });
 });
