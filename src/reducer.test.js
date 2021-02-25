@@ -64,6 +64,15 @@ describe('reducer', () => {
         });
       });
     });
+    context('when getRegionsFailure dispatched', () => {
+      it('update state with regions', () => {
+        const changedState = reducer(initialState,
+          { type: 'getRegionsFailure', payload: new Error('getRegionsFailure') });
+        const { regions } = changedState.error;
+
+        expect(regions).toMatchObject(new Error('getRegionsFailure'));
+      });
+    });
   });
 
   describe('selectRegion', () => {
