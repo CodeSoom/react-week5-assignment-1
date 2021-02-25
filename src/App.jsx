@@ -1,14 +1,6 @@
 import React from 'react';
 
-function RegionButtonsContainer() {
-  return (
-    <ul>
-      <li>
-        <button type="button">서울</button>
-      </li>
-    </ul>
-  );
-}
+import RegionButtonsContainer from './RegionButtonsContainer';
 
 export default function App() {
   return (
