@@ -22,4 +22,10 @@ describe('App', () => {
 
     expect(getByText('서울')).not.toBeNull();
   });
+
+  it('renders restaurant category buttons', () => {
+    const { getByText } = render(<App />);
+
+    expect(getByText('한식')).not.toBeNull();
+  });
 });
