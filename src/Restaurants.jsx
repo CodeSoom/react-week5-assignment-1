@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function Restaurants({ restaurants }) {
+import restaurants from '../fixtures/restaurants';
+
+export default function Restaurants() {
   return (
     <ul>
       {restaurants.map((restaurant) => (<li key={restaurant.id}>{restaurant.name}</li>))}
