@@ -68,7 +68,7 @@ describe('actions', () => {
       it('can get restaurants', async () => {
         getRestaurants.mockImplementationOnce(() => Promise.resolve(restaurants));
 
-        const thunk = getRestaurantsThunk();
+        const thunk = getRestaurantsThunk({ regionName: '서울', categoryId: 1 });
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
@@ -81,7 +81,7 @@ describe('actions', () => {
       it('can not get restaurants', async () => {
         getRestaurants.mockImplementationOnce(() => Promise.reject(Error('getRestaurants')));
 
-        const thunk = getRestaurantsThunk();
+        const thunk = getRestaurantsThunk({ regionName: '서울', categoryId: 1 });
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
