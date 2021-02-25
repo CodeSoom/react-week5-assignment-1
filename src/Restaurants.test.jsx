@@ -6,8 +6,8 @@ import Restaurants from './Restaurants';
 import { restaurants } from './fixtures/mockData';
 
 describe('Restaurants', () => {
-  context('if there are restaurants', () => {
-    it('should be there restaurants with received prop', () => {
+  context('with restaurants', () => {
+    it('render restaurants', () => {
       const { getByRole } = render(<Restaurants restaurants={restaurants} />);
 
       restaurants.forEach((reataurant) => {
@@ -16,8 +16,8 @@ describe('Restaurants', () => {
     });
   });
 
-  context('If there is no restaurant list', () => {
-    it('should be nothing', () => {
+  context('without restaurants', () => {
+    it('render nothing', () => {
       const { queryByRole } = render(<Restaurants restaurants={null} />);
 
       expect(queryByRole('list')).toBe(null);
