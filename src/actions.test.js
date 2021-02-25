@@ -1,5 +1,5 @@
-import { getCategoriesThunk, getRegionsThunk } from './actions';
-import { categories, regions } from './fixtures/mockData';
+import { getCategoriesThunk, getRegionsThunk, getRestaurantsThunk } from './actions';
+import { categories, regions, restaurants } from './fixtures/mockData';
 
 jest.mock('./services/api');
 describe('actions', () => {
@@ -25,5 +25,15 @@ describe('actions', () => {
     expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toHaveBeenCalledWith({ type: 'getCategories' });
     expect(dispatch).toHaveBeenCalledWith({ type: 'getCategoriesSuccess', payload: categories });
+  });
+
+  it('can get restaurants', async () => {
+    const thunk = getRestaurantsThunk();
+
+    await thunk(dispatch);
+
+    expect(dispatch).toHaveBeenCalledTimes(2);
+    expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurants' });
+    expect(dispatch).toHaveBeenCalledWith({ type: 'getRestaurantsSuccess', payload: restaurants });
   });
 });
