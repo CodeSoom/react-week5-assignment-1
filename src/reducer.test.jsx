@@ -1,9 +1,16 @@
 import reducer from './reducer';
 
-import { regions, categories, restaurants } from '../fixtures';
+import {
+  regions,
+  categories,
+  restaurants,
+} from '../fixtures';
 
 import {
-  setCategories, setRegions, setClicked, setRestaurnats,
+  setCategories,
+  setRegions,
+  setClicked,
+  setRestaurnats,
 } from './actions';
 
 describe('reducer', () => {
