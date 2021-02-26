@@ -7,8 +7,9 @@ import Buttons from './Buttons';
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
+    selectedRegion: state.selectedRegion,
   }));
 
   function setSelected() {
@@ -19,6 +20,7 @@ export default function RegionsContainer() {
     <Buttons
       buttons={regions}
       handleClick={setSelected}
+      selected={selectedRegion}
     />
   );
 }
