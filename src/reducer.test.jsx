@@ -104,7 +104,7 @@ describe('loadData', () => {
 
     fetchRegions.mockResolvedValue(regions[0]);
 
-    it('executes fetch region data', async () => {
+    it('executes fetching regions', async () => {
       await store.dispatch(loadRegions());
 
       const actions = store.getActions();
@@ -118,7 +118,7 @@ describe('loadData', () => {
 
     fetchCategories.mockResolvedValue(categories[0]);
 
-    it('executes fetch category data', async () => {
+    it('executes fetching categories', async () => {
       await store.dispatch(loadCategories());
 
       const actions = await store.getActions();
@@ -132,7 +132,7 @@ describe('loadData', () => {
 
     fetchRestaurants.mockResolvedValue(restaurants[0]);
 
-    it('executes fetch restaurants data', async () => {
+    it('executes fetching restaurants', async () => {
       await store.dispatch(loadRestaurnats({
         region: '서울',
         category: '한식',
