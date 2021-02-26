@@ -2,7 +2,7 @@ import React from 'react';
 
 function List({ list, onClick }) {
   if (!list) {
-    return <></>;
+    return <p>텅~</p>;
   }
   return (
     <ul>
