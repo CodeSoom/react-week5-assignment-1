@@ -24,39 +24,44 @@ describe('RestaurantsContainer', () => {
       selected: given.selected,
     }));
   });
+  context('with selected values', () => {
+    context('without selected category', () => {
+      it('renders a message to let user click category button', () => {
+        given('selected', () => ({
+          region: {
+            id: 1,
+            name: '서울',
+          },
+          category: {
+            name: '',
+            id: '',
+          },
+        }));
 
-  it('renders a message to let user click category', () => {
-    given('selected', () => ({
-      region: {
-        id: 1,
-        name: '서울',
-      },
-      category: {
-        name: '',
-        id: '',
-      },
-    }));
+        const { queryByText } = render(<RestaurantsContainer />);
 
-    const { queryByText } = render(<RestaurantsContainer />);
+        expect(queryByText('카테고리 버튼도 클릭 해주세요')).not.toBeNull();
+      });
+    });
 
-    expect(queryByText('카테고리 버튼도 클릭 해주세요')).not.toBeNull();
-  });
+    context('without selected region', () => {
+      it('renders a message to let user click region button', () => {
+        given('selected', () => ({
+          region: {
+            id: '',
+            name: '',
+          },
+          category: {
+            id: '1',
+            name: '한식',
+          },
+        }));
 
-  it('renders a message to let user click region', () => {
-    given('selected', () => ({
-      region: {
-        id: '',
-        name: '',
-      },
-      category: {
-        id: '1',
-        name: '한식',
-      },
-    }));
+        const { queryByText } = render(<RestaurantsContainer />);
 
-    const { queryByText } = render(<RestaurantsContainer />);
-
-    expect(queryByText('지역 버튼도 클릭 해주세요')).not.toBeNull();
+        expect(queryByText('지역 버튼도 클릭 해주세요')).not.toBeNull();
+      });
+    });
   });
 
   context('without restaurants', () => {
