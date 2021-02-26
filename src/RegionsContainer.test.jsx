@@ -20,6 +20,8 @@ describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useSelector.mockImplementation((selector) => selector({
       regions,
       selected: given.selected,
