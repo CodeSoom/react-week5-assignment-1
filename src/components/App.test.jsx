@@ -9,7 +9,7 @@ import locations from '../../fixtures/locations';
 import categories from '../../fixtures/categories';
 
 jest.mock('react-redux');
-jest.mock('./services/api');
+jest.mock('../services/api');
 
 describe('App', () => {
   describe('정보를 가져오는 경우,', () => {

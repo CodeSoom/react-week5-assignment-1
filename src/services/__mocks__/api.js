@@ -1,4 +1,4 @@
-export default async function fetchLocations() {
+export async function fetchLocations() {
   return [];
 }
 
