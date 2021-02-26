@@ -17,10 +17,11 @@ describe('Restaurants', () => {
   });
 
   context('without restaurants', () => {
-    it('renders nothing', () => {
-      const { queryByRole } = render(<Restaurants restaurants={null} />);
+    it('renders "텅~" ', () => {
+      const { queryByRole, getByText } = render(<Restaurants restaurants={null} />);
 
       expect(queryByRole('list')).toBe(null);
+      expect(getByText('텅~')).toBeInTheDocument();
     });
   });
 });
