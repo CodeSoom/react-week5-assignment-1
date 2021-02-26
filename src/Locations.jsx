@@ -9,8 +9,7 @@ export default function Locations({ locations, onClick, selectedLocationName }) 
             type="button"
             onClick={() => onClick(name)}
           >
-            {name}
-            {name === selectedLocationName ? '(V)' : ''}
+            {`${name}${name === selectedLocationName ? '(V)' : ''}`}
           </button>
         </li>
       ))}
