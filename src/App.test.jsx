@@ -23,7 +23,7 @@ describe('App', () => {
 
   it('renders category buttons', () => {
     const { queryByText } = render(<App />)
-    // expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
     expect(queryByText('한식')).not.toBeNull();
     expect(queryByText('중식')).not.toBeNull();
     expect(queryByText('일식')).not.toBeNull();

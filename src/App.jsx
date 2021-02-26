@@ -9,6 +9,7 @@ import RegionsContainer from './RegionsContainer';
 import {
   chooseRegions,
   loadRegions,
+  loadCategories,
 } from './actions';
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
   
   useEffect(() => {
     dispatch(loadRegions());
-    // loadRegions({ dispatch });
+    dispatch(loadCategories());
     // dispatch(chooseRegions(regions))
   }, []);
 
