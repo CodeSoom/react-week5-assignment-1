@@ -4,10 +4,10 @@ export default function Regions({ regions }) {
   return (
     <div>
       <ul>
-        {regions.map((region) => (
-          <li key={region.id}>
+        {regions.map(({ id, name }) => (
+          <li key={id}>
             <button type="button">
-              {region.name}
+              {name}
             </button>
           </li>
         ))}

@@ -10,8 +10,6 @@ export default function RegionsContianer() {
   }));
 
   return (
-    <div>
-      <Regions regions={regions} />
-    </div>
+    <Regions regions={regions} />
   );
 }
