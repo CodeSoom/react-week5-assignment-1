@@ -4,10 +4,14 @@ const initialState = {
   restaurants: [],
   error: { regions: null, categories: null, restaurants: null },
   selected: { regionName: null, categoryId: null },
+  loading: { regions: false, categories: false, restaurants: false },
 };
 
 const actionHandler = {
 
+  getRegions(state) {
+    return { ...state, loading: { regions: true } };
+  },
   getRegionsSuccess(state, action) {
     const regions = action.payload.map((region) => ({ ...region, clicked: false }));
     return { ...state, regions };
