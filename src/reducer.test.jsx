@@ -29,7 +29,7 @@ import {
 jest.mock('./services/api');
 
 describe('reducer', () => {
-  it('returns default parameter, initial state', () => {
+  it('returns state as a default parameter, initial state', () => {
     const state = reducer();
 
     expect(state.regions).toHaveLength(0);
@@ -39,58 +39,70 @@ describe('reducer', () => {
     expect(state.selected.category.id).toBe('');
   });
 
-  it('returns state', () => {
-    const state = reducer({ restaurants });
+  context('without actions', () => {
+    it('returns unmodified state', () => {
+      const state = reducer({ restaurants });
 
-    expect(state.restaurants[0].name).toBe('양천주가');
-    expect(state.restaurants[1].name).toBe('한국식 초밥');
-    expect(state.restaurants[2].name).toBe('김초밥');
+      expect(state.restaurants[0].name).toBe('양천주가');
+      expect(state.restaurants[1].name).toBe('한국식 초밥');
+      expect(state.restaurants[2].name).toBe('김초밥');
+    });
   });
 
-  it('changes regions', () => {
-    const state = reducer(undefined, setRegions(regions));
+  context('with actions', () => {
+    describe('setRegions', () => {
+      it('replaces regions', () => {
+        const state = reducer(undefined, setRegions(regions));
 
-    expect(state.regions[0].name).toBe('서울');
-    expect(state.regions[1].name).toBe('대전');
-    expect(state.regions[2].name).toBe('대구');
-  });
+        expect(state.regions[0].name).toBe('서울');
+        expect(state.regions[1].name).toBe('대전');
+        expect(state.regions[2].name).toBe('대구');
+      });
+    });
 
-  it('changes categories', () => {
-    const state = reducer(undefined, setCategories(categories));
+    describe('setCategories', () => {
+      it('replaces categories', () => {
+        const state = reducer(undefined, setCategories(categories));
 
-    expect(state.categories[0].id).toBe(1);
-    expect(state.categories[1].id).toBe(2);
-    expect(state.categories[2].id).toBe(3);
-  });
+        expect(state.categories[0].id).toBe(1);
+        expect(state.categories[1].id).toBe(2);
+        expect(state.categories[2].id).toBe(3);
+      });
+    });
 
-  it('changes restaurants', () => {
-    const state = reducer(undefined, setRestaurnats(restaurants));
+    describe('setRestaurants', () => {
+      it('replaces restaurants', () => {
+        const state = reducer(undefined, setRestaurnats(restaurants));
 
-    expect(state.restaurants[0].name).toBe('양천주가');
-    expect(state.restaurants[1].name).toBe('한국식 초밥');
-    expect(state.restaurants[2].name).toBe('김초밥');
-  });
+        expect(state.restaurants[0].name).toBe('양천주가');
+        expect(state.restaurants[1].name).toBe('한국식 초밥');
+        expect(state.restaurants[2].name).toBe('김초밥');
+      });
+    });
 
-  it('changes selected', () => {
-    const selected = {
-      region: {
-        id: 1,
-        name: '서울',
-      },
-      category: {
-        id: 1,
-        name: '한식',
-      },
-    };
-    const state = reducer({
-      selected: {
-        region: '',
-        category: '',
-      },
-    }, setSelected(selected));
+    describe('setSelected', () => {
+      it('replaces selected', () => {
+        const selected = {
+          region: {
+            id: 1,
+            name: '서울',
+          },
+          category: {
+            id: 1,
+            name: '한식',
+          },
+        };
+        const state = reducer({
+          selected: {
+            region: '',
+            category: '',
+          },
+        }, setSelected(selected));
 
-    expect(state.selected.region.name).toBe('서울');
-    expect(state.selected.category.name).toBe('한식');
+        expect(state.selected.region.name).toBe('서울');
+        expect(state.selected.category.name).toBe('한식');
+      });
+    });
   });
 });
 
