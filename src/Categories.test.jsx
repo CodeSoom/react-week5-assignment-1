@@ -8,12 +8,12 @@ import categories from '../fixtures/categories';
 
 describe('Categories', () => {
   it('renders categories', () => {
-    const { getByText } = render((
+    const { queryByText } = render((
       <Categories categories={categories} />
     ))
     
     categories.forEach((category) => {
-      expect(getByText(category.name)).not.toBeNull();
+      expect(queryByText(category.name)).not.toBeNull();
     })
   })
 })

@@ -16,10 +16,10 @@ describe('CategoriesContainer', () => {
   }))
 
   it('renders category buttons', () => {
-    const { getByText } = render((<CategoriesContainer />))
+    const { queryByText } = render((<CategoriesContainer />))
     
     categories.forEach((category) => {
-      expect(getByText(category.name)).not.toBeNull();
+      expect(queryByText(category.name)).not.toBeNull();
     })
   })
 })

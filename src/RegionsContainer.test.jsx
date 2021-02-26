@@ -15,11 +15,11 @@ describe('RegionsContainer', () => {
     regions,
   }))
 
-  it('renders category buttons', () => {
-    const { getByText } = render((<RegionsContainer />))
+  it('renders region buttons', () => {
+    const { queryByText } = render((<RegionsContainer />))
     
     regions.forEach((region) => {
-      expect(getByText(region.name)).not.toBeNull();
+      expect(queryByText(region.name)).not.toBeNull();
     })
   })
 })

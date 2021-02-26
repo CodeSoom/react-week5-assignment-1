@@ -8,12 +8,12 @@ import regions from '../fixtures/regions';
 
 describe('Regions', () => {
   it('renders regions', () => {
-    const { getByText } = render((
+    const { queryByText } = render((
       <Regions regions={regions} />
     ))
     
     regions.forEach((region) => {
-      expect(getByText(region.name)).not.toBeNull();
+      expect(queryByText(region.name)).not.toBeNull();
     })
   })
 })
