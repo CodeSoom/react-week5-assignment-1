@@ -9,9 +9,9 @@ function List({ list, onClick }) {
       {list.map((data) => (
         <li key={data.id}>
           <button type="button" onClick={() => { onClick(data); }}>
-            {data.clicked
-              ? `${data.name}(V)`
-              : `${data.name}`}
+            {
+              `${data.name}${data.clicked ? '(V)' : ''}`
+            }
           </button>
         </li>
       ))}
