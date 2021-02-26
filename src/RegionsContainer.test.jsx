@@ -12,9 +12,17 @@ jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
+
+  const initialState = {
+    regions,
+    error: { regions: null },
+    selected: { regionName: null },
+    loading: { regions: false },
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
-    useSelector.mockImplementationOnce((selector) => selector({ regions }));
+    useSelector.mockImplementationOnce((selector) => selector(initialState));
     useDispatch.mockImplementationOnce(() => dispatch);
   });
 

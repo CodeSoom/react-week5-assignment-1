@@ -11,10 +11,14 @@ jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
+
   const initialState = {
     restaurants,
+    error: { restaurants: null },
+    loading: { restaurants: false },
     selected: { regionName: null, categoryId: null },
   };
+
   beforeEach(() => {
     jest.clearAllMocks();
     useDispatch.mockImplementation(() => dispatch);

@@ -16,6 +16,7 @@ describe('reducer', () => {
     restaurants: [],
     error: { regions: null, categories: null, restaurants: null },
     selected: { regionName: null, categoryId: null },
+    loading: { regions: false, categories: false, restaurants: false },
   };
   describe('default state', () => {
     context('without action', () => {
