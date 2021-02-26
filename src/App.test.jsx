@@ -8,6 +8,8 @@ import App from './App';
 
 import regions from '../fixtures/regions';
 
+import categories from '../fixtures/categories';
+
 jest.mock('react-redux');
 jest.mock('./services/api');
 
@@ -19,15 +21,19 @@ describe('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions,
+    categories,
   }))
 
-  it('renders category buttons', () => {
+  it('renders buttons', () => {
     const { queryByText } = render(<App />)
     expect(dispatch).toBeCalledTimes(2);
-    expect(queryByText('한식')).not.toBeNull();
-    expect(queryByText('중식')).not.toBeNull();
-    expect(queryByText('일식')).not.toBeNull();
-    expect(queryByText('양식')).not.toBeNull();
-    expect(queryByText('분식')).not.toBeNull();
+
+    regions.forEach((region) => {
+      expect(queryByText(region.name)).not.toBeNull();
+    })
+
+    categories.forEach((category) => {
+      expect(queryByText(category.name)).not.toBeNull();
+    })
   })
 })
