@@ -2,7 +2,7 @@ import React from 'react';
 
 function Restaurants({ restaurants }) {
   if (!restaurants) {
-    return <></>;
+    return <p>텅~</p>;
   }
   return (
     <ul>
