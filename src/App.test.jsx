@@ -42,7 +42,7 @@ describe('App', () => {
     expect(queryByText('김초밥')).not.toBeNull();
   });
 
-  context('without clicked', () => {
+  context('without selected restaurant', () => {
     it('doesnt load restaurant', () => {
       render(<App />);
 
@@ -50,7 +50,7 @@ describe('App', () => {
     });
   });
 
-  context('with clicked', () => {
+  context('with selected restaurant', () => {
     it('loads regions, categories, and restaurants', () => {
       given('selected', () => ({
         region: {

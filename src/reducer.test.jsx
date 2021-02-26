@@ -71,7 +71,7 @@ describe('reducer', () => {
     expect(state.restaurants[2].name).toBe('김초밥');
   });
 
-  it('changes clicked', () => {
+  it('changes selected', () => {
     const selected = {
       region: {
         id: 1,

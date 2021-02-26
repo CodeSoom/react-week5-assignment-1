@@ -49,7 +49,7 @@ describe('RegionsContainer', () => {
     expect(queryByText('서울(V)')).not.toBeNull();
   });
 
-  it('appends a new region into Clicked upon clicking region', () => {
+  it('appends a new region into selected region upon clicking region', () => {
     const { queryByText } = render(<RegionsContainer />);
 
     fireEvent.click(queryByText('서울'));

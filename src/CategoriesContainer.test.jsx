@@ -49,7 +49,7 @@ describe('CategoriesContainer', () => {
     expect(queryByText('한식(V)')).not.toBeNull();
   });
 
-  it('appends a new category into Clicked upon clicking region', () => {
+  it('appends a new category into selected category upon clicking category button', () => {
     const { queryByText } = render(<CategoriesContainer />);
 
     fireEvent.click(queryByText('한식'));
