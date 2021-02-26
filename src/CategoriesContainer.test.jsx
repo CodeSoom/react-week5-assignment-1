@@ -20,6 +20,8 @@ describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useSelector.mockImplementation((selector) => selector({
       categories,
       selected: given.selected,
@@ -60,5 +62,20 @@ describe('CategoriesContainer', () => {
         name: '한식',
       },
     }));
+  });
+
+  it("doesn't append a new category into selected category", () => {
+    given('selected', () => ({
+      category: {
+        id: 1,
+        name: '한식',
+      },
+    }));
+
+    const { queryByText } = render(<CategoriesContainer />);
+
+    fireEvent.click(queryByText('한식(V)'));
+
+    expect(dispatch).not.toBeCalled();
   });
 });

@@ -63,4 +63,19 @@ describe('RegionsContainer', () => {
       },
     }));
   });
+
+  it("doesn't append a new region into selected region", () => {
+    given('selected', () => ({
+      region: {
+        id: 1,
+        name: '서울',
+      },
+    }));
+
+    const { queryByText } = render(<RegionsContainer />);
+
+    fireEvent.click(queryByText('서울(V)'));
+
+    expect(dispatch).not.toBeCalled();
+  });
 });
