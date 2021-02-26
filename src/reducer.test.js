@@ -49,6 +49,15 @@ describe('reducer', () => {
     });
   });
   describe('getRegions', () => {
+    context('when getRegions dispatched', () => {
+      it('updates loading state', () => {
+        const changedState = reducer(initialState, { type: 'getRegions' });
+        const { loading } = changedState;
+
+        expect(loading.regions).toBe(true);
+      });
+    });
+
     context('when getRegionsSuccess dispatched', () => {
       it('updates state with regions', () => {
         const changedState = reducer(initialState,
