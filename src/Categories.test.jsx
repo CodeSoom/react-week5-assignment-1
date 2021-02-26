@@ -9,21 +9,28 @@ import categories from '../fixtures/categories';
 describe('Categories', () => {
   const handleClick = jest.fn();
 
-  const { queryByText } = render((
-    <Categories categories={categories} onClick={handleClick} />
+  const renderCategories = () => render((
+    <Categories 
+      categories={categories} 
+      onClickCheck={handleClick} 
+    />
   ))
 
   it('renders categories', () => {
+    const { queryByText } = renderCategories();
+
     categories.forEach((category) => {
       expect(queryByText(category.name)).not.toBeNull();
     })
   })
 
-  it('clicks categories', () => {
+  it('clicks category buttons', () => {
+    const { queryByText } = renderCategories();
+
     categories.forEach((category) => {
-      expect(handleClick).not.toBeCalledWith(category.id);
-      fireEvent.click(queryByText(category.id));
-      expect(handleClick).toBeCalledWith(category.id);
-    })
+      fireEvent.click(queryByText(category.name));
+    })  
+
+    expect(handleClick).toBeCalledTimes(categories.length);
   })  
 })

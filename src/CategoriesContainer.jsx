@@ -9,7 +9,12 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
   
+  const onClickCheck = () => '';
+
   return (
-    <Categories categories={categories} />
+    <Categories
+      categories={categories}
+      onClickCheck={onClickCheck}
+    />
   );
 }
