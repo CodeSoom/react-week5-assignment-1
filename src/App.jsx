@@ -30,7 +30,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (clicked.region && clicked.category) {
+    if (clicked.region.name && clicked.category.id) {
       dispatch(loadRestaurnats({
         region: clicked.region.name,
         category: clicked.category.id,

@@ -15,14 +15,20 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
-    dispatch(setClicked({ category: event.target.id }));
+    dispatch(setClicked({
+      region: clicked.region,
+      category: {
+        id: event.target.id,
+        name: event.target.name,
+      },
+    }));
   };
 
   return (
     <Buttons
       buttons={categories}
       handleClick={handleClick}
-      clickedName={clicked.category}
+      clickedName={clicked.category.name}
     />
   );
 }

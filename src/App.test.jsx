@@ -53,8 +53,14 @@ describe('App', () => {
   context('with clicked', () => {
     it('loads regions, categories, and restaurants', () => {
       given('clicked', () => ({
-        region: '서울',
-        category: '한식',
+        region: {
+          id: 1,
+          name: '서울',
+        },
+        category: {
+          id: '1',
+          name: '한식',
+        },
       }));
 
       render(<App />);

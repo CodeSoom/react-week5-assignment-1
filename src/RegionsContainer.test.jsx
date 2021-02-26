@@ -38,7 +38,10 @@ describe('RegionsContainer', () => {
 
   it('renders (V) along the selected button', () => {
     given('clicked', () => ({
-      region: '서울',
+      region: {
+        id: 1,
+        name: '서울',
+      },
     }));
 
     const { queryByText } = render(<RegionsContainer />);
@@ -51,6 +54,11 @@ describe('RegionsContainer', () => {
 
     fireEvent.click(queryByText('서울'));
 
-    expect(dispatch).toBeCalledWith(setClicked({ region: '서울' }));
+    expect(dispatch).toBeCalledWith(setClicked({
+      region: {
+        id: '1',
+        name: '서울',
+      },
+    }));
   });
 });

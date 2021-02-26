@@ -38,7 +38,10 @@ describe('CategoriesContainer', () => {
 
   it('renders (V) along the selected button', () => {
     given('clicked', () => ({
-      category: '한식',
+      category: {
+        id: 1,
+        name: '한식',
+      },
     }));
 
     const { queryByText } = render(<CategoriesContainer />);
@@ -51,6 +54,11 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(queryByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setClicked({ category: '1' }));
+    expect(dispatch).toBeCalledWith(setClicked({
+      category: {
+        id: '1',
+        name: '한식',
+      },
+    }));
   });
 });

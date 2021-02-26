@@ -15,14 +15,20 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
-    dispatch(setClicked({ region: event.target.name }));
+    dispatch(setClicked({
+      region: {
+        id: event.target.id,
+        name: event.target.name,
+      },
+      category: clicked.category,
+    }));
   };
 
   return (
     <Buttons
       buttons={regions}
       handleClick={handleClick}
-      clickedName={clicked.region}
+      clickedName={clicked.region.name}
     />
   );
 }
