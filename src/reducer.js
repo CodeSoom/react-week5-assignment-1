@@ -3,29 +3,35 @@ const initialState = {
   categories: [],
   restaurants: [],
   clicked: {
-    region: '',
-    category: '',
+    region: {
+      id: '',
+      name: '',
+    },
+    category: {
+      id: '',
+      name: '',
+    },
   },
 };
 
 const reducers = {
   setRegions: (state, { payload: { regions } }) => ({
     ...state,
-    regions: { ...state.regions, ...regions },
+    regions: [...state.regions, ...regions],
   }),
   setCategories: (state, { payload: { categories } }) => ({
     ...state,
-    categories: { ...state.categories, ...categories },
+    categories: [...state.categories, ...categories],
   }),
   setRestaurants: (state, { payload: { restaurants } }) => ({
     ...state,
-    restaurants: { ...state.restaurants, ...restaurants },
+    restaurants: [...restaurants],
   }),
   setClicked: (state, { payload: { clicked } }) => ({
     ...state,
     clicked: {
-      region: { ...state.clicked.region, ...clicked.region },
-      category: { ...state.clicked.category, ...clicked.category },
+      region: clicked.region,
+      category: clicked.category,
     },
   }),
 };
