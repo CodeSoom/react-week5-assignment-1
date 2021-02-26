@@ -33,6 +33,11 @@ const actionHandler = {
     return { ...state, categories };
   },
 
+  getCategoriesFailure(state, action) {
+    // const categories = action.payload;
+    return { ...state, error: { ...state.error, categories: new Error('getCategoriesFailure') } };
+  },
+
   selectCategory(state, action) {
     const { selected } = state;
     const categoryId = action.payload;
