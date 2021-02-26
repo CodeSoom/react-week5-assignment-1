@@ -27,8 +27,14 @@ describe('RestaurantsContainer', () => {
 
   it('renders a message to let user click category', () => {
     given('selected', () => ({
-      region: '서울',
-      category: '',
+      region: {
+        id: 1,
+        name: '서울',
+      },
+      category: {
+        name: '',
+        id: '',
+      },
     }));
 
     const { queryByText } = render(<RestaurantsContainer />);
@@ -38,8 +44,14 @@ describe('RestaurantsContainer', () => {
 
   it('renders a message to let user click region', () => {
     given('selected', () => ({
-      region: '',
-      category: '한식',
+      region: {
+        id: '',
+        name: '',
+      },
+      category: {
+        id: '1',
+        name: '한식',
+      },
     }));
 
     const { queryByText } = render(<RestaurantsContainer />);
