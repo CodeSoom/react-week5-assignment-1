@@ -29,5 +29,5 @@ test('App', async () => {
 
   expect(queryByText('한식')).not.toBeNull();
 
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledTimes(2);
 });
