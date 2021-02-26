@@ -8,21 +8,15 @@ import RegionsContainer from './RegionsContainer';
 
 import {
   chooseRegions,
-  setRegions,
+  loadRegions,
 } from './actions';
-
-import { fetchRegions } from './services/api'
-
-async function loadRegions({ dispatch }) {
-  const regions = await fetchRegions();
-  dispatch(setRegions(regions));
-}
 
 export default function App() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    loadRegions({ dispatch });
+    dispatch(loadRegions());
+    // loadRegions({ dispatch });
     // dispatch(chooseRegions(regions))
   }, []);
 
