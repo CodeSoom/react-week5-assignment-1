@@ -2,8 +2,8 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  selectCategoryId: null,
-  selectRegionId: null,
+  selectedCategory: null,
+  selectedRegion: null,
 };
 
 const reducerState = {
@@ -31,19 +31,19 @@ const reducerState = {
     };
   },
   selectCategory: ({ state, action }) => {
-    const { id } = action.payload;
+    const { category } = action.payload;
 
     return {
       ...state,
-      selectCategoryId: id,
+      selectedCategory: category,
     };
   },
   selectRegion: ({ state, action }) => {
-    const { id } = action.payload;
+    const { region } = action.payload;
 
     return {
       ...state,
-      selectRegionId: id,
+      selectedRegion: region,
     };
   },
 };

@@ -59,22 +59,22 @@ describe('reducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('changes selectCategoryId', () => {
+    it('changes selectedCategory', () => {
       const state = reducer({
-        selectCategoryId: null,
-      }, selectCategory(1));
+        selectedCategory: null,
+      }, selectCategory({ id: 1, name: '한식' }));
 
-      expect(state.selectCategoryId).toBe(1);
+      expect(state.selectedCategory.id).toBe(1);
     });
   });
 
   describe('selectRegion', () => {
     it('changes selectRegionId', () => {
       const state = reducer({
-        selectRegionId: null,
-      }, selectRegion(1));
+        selectedRegion: null,
+      }, selectRegion({ id: 1, name: '서울' }));
 
-      expect(state.selectRegionId).toBe(1);
+      expect(state.selectedRegion.name).toBe('서울');
     });
   });
 });
