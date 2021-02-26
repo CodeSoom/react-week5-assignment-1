@@ -1,4 +1,4 @@
-import { getCategoriesThunk, getRegionsThunk, getRestaurantsThunk } from './actions';
+import { getRegions, getCategories, getRestaurants } from './actions';
 import { categories, regions, restaurants } from './fixtures/mockData';
 import { getRegionsApi, getCategoriesApi, getRestaurantsApi } from './services/api';
 
@@ -9,12 +9,12 @@ describe('actions', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
-  describe('getRegionsThunk', () => {
+  describe('getRegions', () => {
     context('when status is success', () => {
       it('can get regions', async () => {
         getRegionsApi.mockImplementationOnce(() => Promise.resolve(regions));
 
-        const thunk = getRegionsThunk();
+        const thunk = getRegions();
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
@@ -27,7 +27,7 @@ describe('actions', () => {
       it('can not get regions', async () => {
         getRegionsApi.mockImplementationOnce(() => Promise.reject(Error('getRegions')));
 
-        const thunk = getRegionsThunk();
+        const thunk = getRegions();
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
@@ -36,12 +36,12 @@ describe('actions', () => {
       });
     });
   });
-  describe('getCategoriesThunk', () => {
+  describe('getCategories', () => {
     context('when status is success', () => {
       it('can get categories', async () => {
         getCategoriesApi.mockImplementationOnce(() => Promise.resolve(categories));
 
-        const thunk = getCategoriesThunk();
+        const thunk = getCategories();
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
@@ -53,7 +53,7 @@ describe('actions', () => {
       it('can not get categories', async () => {
         getCategoriesApi.mockImplementationOnce(() => Promise.reject(Error('getCategories')));
 
-        const thunk = getCategoriesThunk();
+        const thunk = getCategories();
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
@@ -63,12 +63,12 @@ describe('actions', () => {
     });
   });
 
-  describe('getRestaurantsThunk', () => {
+  describe('getRestaurants', () => {
     context('when status is success', () => {
       it('can get restaurants', async () => {
         getRestaurantsApi.mockImplementationOnce(() => Promise.resolve(restaurants));
 
-        const thunk = getRestaurantsThunk({ regionName: '서울', categoryId: 1 });
+        const thunk = getRestaurants({ regionName: '서울', categoryId: 1 });
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);
@@ -81,7 +81,7 @@ describe('actions', () => {
       it('can not get restaurants', async () => {
         getRestaurantsApi.mockImplementationOnce(() => Promise.reject(Error('getRestaurants')));
 
-        const thunk = getRestaurantsThunk({ regionName: '서울', categoryId: 1 });
+        const thunk = getRestaurants({ regionName: '서울', categoryId: 1 });
         await thunk(dispatch);
 
         expect(dispatch).toHaveBeenCalledTimes(2);

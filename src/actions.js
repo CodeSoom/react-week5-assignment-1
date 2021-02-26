@@ -8,7 +8,7 @@ export function selectCategory(categoryId) {
   return { type: 'selectCategory', payload: categoryId };
 }
 
-export function getRegionsThunk() {
+export function getRegions() {
   return async (dispatch) => {
     dispatch({ type: 'getRegions' });
     try {
@@ -20,7 +20,7 @@ export function getRegionsThunk() {
   };
 }
 
-export function getCategoriesThunk() {
+export function getCategories() {
   return async (dispatch) => {
     dispatch({ type: 'getCategories' });
     try {
@@ -32,7 +32,7 @@ export function getCategoriesThunk() {
   };
 }
 
-export function getRestaurantsThunk({ regionName, categoryId }) {
+export function getRestaurants({ regionName, categoryId }) {
   return async (dispatch) => {
     dispatch({ type: 'getRestaurants' });
     try {

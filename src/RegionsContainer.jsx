@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import List from './List';
-import { getRegionsThunk, selectRegion } from './actions';
+import { getRegions, selectRegion } from './actions';
 
 function RegionsContainer() {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ function RegionsContainer() {
   const regions = useSelector((state) => state.regions);
 
   useEffect(() => {
-    dispatch(getRegionsThunk());
+    dispatch(getRegions());
   }, []);
 
   function handleClick(region) {

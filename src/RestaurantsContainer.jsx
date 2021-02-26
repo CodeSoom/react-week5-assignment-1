@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getRestaurantsThunk } from './actions';
+import { getRestaurants } from './actions';
 import Restaurants from './Restaurants';
 
 function RestaurantsContainer() {
@@ -15,7 +15,7 @@ function RestaurantsContainer() {
 
   useEffect(() => {
     if (regionName && categoryId) {
-      dispatch(getRestaurantsThunk({ regionName, categoryId }));
+      dispatch(getRestaurants({ regionName, categoryId }));
     }
   }, [regionName, categoryId]);
 

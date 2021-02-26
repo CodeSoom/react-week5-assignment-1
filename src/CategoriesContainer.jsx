@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getCategoriesThunk, selectCategory } from './actions';
+import { getCategories, selectCategory } from './actions';
 import List from './List';
 
 function CategoriesContainer() {
@@ -10,7 +10,7 @@ function CategoriesContainer() {
   const categories = useSelector((state) => state.categories);
 
   useEffect(() => {
-    dispatch(getCategoriesThunk());
+    dispatch(getCategories());
   }, []);
 
   function handleClick(category) {
