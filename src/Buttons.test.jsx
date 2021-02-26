@@ -11,12 +11,14 @@ describe('Buttons', () => {
 
   const handleClick = jest.fn();
 
-  function renderButtons({ buttons, selectId } = { selectId: null }) {
+  function renderButtons({ buttons, selectedButton } = {
+    selectButton: null,
+  }) {
     return render((
       <Buttons
         buttons={buttons}
         onClick={handleClick}
-        selectId={selectId}
+        selectedButton={selectedButton}
       />
     ));
   }
@@ -36,14 +38,22 @@ describe('Buttons', () => {
 
     fireEvent.click(queryByText('한식'));
 
-    expect(handleClick).toBeCalledWith(1);
+    expect(handleClick).toBeCalledWith({ id: 1, name: '한식' });
   });
 
   context('when selected button', () => {
     it('renders "button name" + "(V)"', () => {
       const buttons = [{ id: 1, name: '한식' }];
 
-      const { queryByText } = renderButtons({ buttons, selectId: 1 });
+      const { queryByText } = renderButtons((
+        {
+          buttons,
+          selectedButton: {
+            id: 1,
+            name: '한식',
+          },
+        }
+      ));
 
       expect(queryByText('한식(V)')).not.toBeNull();
     });
