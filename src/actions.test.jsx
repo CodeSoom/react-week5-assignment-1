@@ -4,9 +4,17 @@ import thunk from 'redux-thunk';
 
 import { categories, regions } from '../fixtures/restaurants';
 
-import { loadCategories, loadRegions, setCategories, setRegions } from './actions';
+import {
+  loadCategories,
+  loadRegions,
+  setCategories,
+  setRegions,
+} from './actions';
 
-import { fetchCategories, fetchRegions } from './services/api';
+import {
+  fetchCategories,
+  fetchRegions,
+} from './services/api';
 
 jest.mock('./services/api');
 

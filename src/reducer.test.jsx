@@ -6,7 +6,10 @@ import {
   selectRegion,
 } from './actions';
 
-import { regions, categories } from '../fixtures/restaurants';
+import {
+  regions,
+  categories,
+} from '../fixtures/restaurants';
 
 describe('reducer', () => {
   const initialState = {
@@ -41,7 +44,7 @@ describe('reducer', () => {
     it('클릭된 지역으로 selectedRegion 상태를 업데이트한다.', () => {
       const state = reducer(
         initialState,
-        selectRegion({id: 1, name: '서울' }),
+        selectRegion({ id: 1, name: '서울' }),
       );
 
       expect(state.selectedRegion).not.toBeNull();
