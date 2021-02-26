@@ -34,8 +34,8 @@ const actionHandler = {
   },
 
   getCategoriesFailure(state, action) {
-    // const categories = action.payload;
-    return { ...state, error: { ...state.error, categories: new Error('getCategoriesFailure') } };
+    const categories = action.payload;
+    return { ...state, error: { ...state.error, categories } };
   },
 
   selectCategory(state, action) {
