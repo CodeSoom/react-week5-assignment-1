@@ -48,7 +48,7 @@ describe('reducer', () => {
   });
 
   it('changes regions', () => {
-    const state = reducer({ regions }, setRegions(regions));
+    const state = reducer(undefined, setRegions(regions));
 
     expect(state.regions[0].name).toBe('서울');
     expect(state.regions[1].name).toBe('대전');
@@ -56,7 +56,7 @@ describe('reducer', () => {
   });
 
   it('changes categories', () => {
-    const state = reducer({ categories }, setCategories(categories));
+    const state = reducer(undefined, setCategories(categories));
 
     expect(state.categories[0].id).toBe(1);
     expect(state.categories[1].id).toBe(2);
@@ -64,7 +64,7 @@ describe('reducer', () => {
   });
 
   it('changes restaurants', () => {
-    const state = reducer({}, setRestaurnats(restaurants));
+    const state = reducer(undefined, setRestaurnats(restaurants));
 
     expect(state.restaurants[0].name).toBe('양천주가');
     expect(state.restaurants[1].name).toBe('한국식 초밥');
