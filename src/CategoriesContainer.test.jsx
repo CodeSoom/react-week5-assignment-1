@@ -14,7 +14,10 @@ import CategoriesContainer from './CategoriesContainer';
 
 describe('CategoriesContainer', () => {
   given('selected', () => ({
-    category: '',
+    category: {
+      id: '',
+      name: '',
+    },
   }));
 
   const dispatch = jest.fn();

@@ -14,8 +14,14 @@ describe('RestaurantsContainer', () => {
   given('restaurants', () => restaurants);
 
   given('selected', () => ({
-    region: '',
-    category: '',
+    region: {
+      id: '',
+      name: '',
+    },
+    category: {
+      id: '',
+      name: '',
+    },
   }));
 
   beforeEach(() => {

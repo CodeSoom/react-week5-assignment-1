@@ -15,8 +15,14 @@ describe('App', () => {
 
   given('restaurants', () => ([]));
   given('selected', () => ({
-    region: '',
-    category: '',
+    region: {
+      id: '',
+      name: '',
+    },
+    category: {
+      id: '',
+      name: '',
+    },
   }));
 
   beforeEach(() => {

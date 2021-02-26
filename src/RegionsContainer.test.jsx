@@ -14,7 +14,10 @@ import RegionsContainer from './RegionsContainer';
 
 describe('RegionsContainer', () => {
   given('selected', () => ({
-    region: '',
+    region: {
+      id: '',
+      name: '',
+    },
   }));
 
   const dispatch = jest.fn();
