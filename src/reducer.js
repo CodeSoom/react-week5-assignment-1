@@ -54,6 +54,10 @@ const actionHandler = {
       restaurants: action.payload,
     };
   },
+  getRestaurantsFailure(state, action) {
+    // const restaurants = action.payload;
+    return { ...state, error: { restaurants: new Error('getRestaurantsFailure') } };
+  },
 };
 
 export default function reducer(state = initialState, action = { type: undefined }) {
