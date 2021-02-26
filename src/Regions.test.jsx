@@ -27,7 +27,7 @@ describe('Regions', () => {
   it('clicks region buttons', () => {
     const { queryByText } = renderRegions();
 
-    categories.forEach((region) => {
+    regions.forEach((region) => {
       fireEvent.click(queryByText(region.name));
     })  
 

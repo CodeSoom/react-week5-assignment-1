@@ -8,8 +8,13 @@ export default function RegionsContainer() {
   const { regions } = useSelector((state) => ({
     regions: state.regions,
   }));
+
+  const onClickCheck = () => '';
   
   return (
-    <Regions regions={regions} />
+    <Regions 
+      regions={regions} 
+      onClickCheck={onClickCheck}
+    />
   );
 }
