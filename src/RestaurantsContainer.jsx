@@ -22,6 +22,12 @@ export default function RestaurantsContainer() {
     );
   }
 
+  if (selected.region.name && selected.category.name && !restaurants.length) {
+    return (
+      <p>해당 지역에 관련 분야 식당이 없습니다.</p>
+    );
+  }
+
   return (
     <Restaurants
       restaurants={restaurants}
