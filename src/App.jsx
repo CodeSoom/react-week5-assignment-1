@@ -5,28 +5,7 @@ import { useDispatch } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 
-import {
-  setRegions,
-  setCategories,
-} from './actions';
-
-import { fetchRegions, fetchCategories } from './services/api';
-
-function loadRegions() {
-  return async (dispatch) => {
-    const regions = await fetchRegions();
-
-    dispatch(setRegions(regions));
-  };
-}
-
-function loadCategories() {
-  return async (dispatch) => {
-    const categories = await fetchCategories();
-
-    dispatch(setCategories(categories));
-  };
-}
+import { loadRegions, loadCategories } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
