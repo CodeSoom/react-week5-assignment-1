@@ -52,7 +52,7 @@ export function loadCategories() {
 
 export function loadRestaurnats({ region, category }) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants(region, category);
+    const restaurants = await fetchRestaurants({ region, category });
     dispatch(setRestaurnats(restaurants));
   };
 }
