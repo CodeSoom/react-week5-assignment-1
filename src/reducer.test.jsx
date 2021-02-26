@@ -94,7 +94,7 @@ describe('reducer', () => {
   });
 });
 
-describe('api', () => {
+describe('loadData', () => {
   const middlewares = [thunk];
 
   const mockStore = configureStore(middlewares);
