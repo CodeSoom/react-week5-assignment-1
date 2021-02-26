@@ -1,3 +1,7 @@
+import configureStore from 'redux-mock-store';
+
+import thunk from 'redux-thunk';
+
 import reducer from './reducer';
 
 import {
@@ -11,7 +15,18 @@ import {
   setRegions,
   setClicked,
   setRestaurnats,
+  loadRegions,
+  loadCategories,
+  loadRestaurnats,
 } from './actions';
+
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
+
+jest.mock('./services/api');
 
 describe('reducer', () => {
   it('returns default parameter, initial state', () => {
@@ -76,5 +91,56 @@ describe('reducer', () => {
 
     expect(state.clicked.region.name).toBe('서울');
     expect(state.clicked.category.name).toBe('한식');
+  });
+});
+
+describe('api', () => {
+  const middlewares = [thunk];
+
+  const mockStore = configureStore(middlewares);
+
+  describe('loadRegions', () => {
+    const store = mockStore({});
+
+    fetchRegions.mockResolvedValue(regions[0]);
+
+    it('executes fetch region data', async () => {
+      await store.dispatch(loadRegions());
+
+      const actions = store.getActions();
+
+      expect(actions[0].payload.regions).toEqual(regions[0]);
+    });
+  });
+
+  describe('loadCategories', () => {
+    const store = mockStore({});
+
+    fetchCategories.mockResolvedValue(categories[0]);
+
+    it('executes fetch category data', async () => {
+      await store.dispatch(loadCategories());
+
+      const actions = await store.getActions();
+
+      expect(actions[0].payload.categories).toEqual(categories[0]);
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    const store = mockStore({});
+
+    fetchRestaurants.mockResolvedValue(restaurants[0]);
+
+    it('executes fetch restaurants data', async () => {
+      await store.dispatch(loadRestaurnats({
+        region: '서울',
+        category: '한식',
+      }));
+
+      const actions = store.getActions();
+
+      expect(actions[0].payload.restaurants).toEqual(restaurants[0]);
+    });
   });
 });
