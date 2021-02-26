@@ -2,13 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-
 import given from 'given2';
 import App from './App';
-
-export const mockStore = configureMockStore([thunk]);
 
 jest.mock('react-redux');
 jest.mock('./services/api');
