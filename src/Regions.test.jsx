@@ -9,10 +9,13 @@ import regions from '../fixtures/regions';
 describe('Regions', () => {
   const handleClick = jest.fn();
 
+  const checkedRegion = 1;
+
   const renderRegions = () => render((
     <Regions 
       regions={regions} 
       onClickCheck={handleClick} 
+      checkedRegion={checkedRegion}
     />
   ))
 
@@ -33,4 +36,12 @@ describe('Regions', () => {
 
     expect(handleClick).toBeCalledTimes(regions.length);
   })  
+
+  it('shows region buttons with (V)', () => {
+    const { queryByText } = renderRegions();
+    
+    expect(queryByText('서울')).not.toBeNull();
+    fireEvent.click(queryByText('서울'));
+    expect(queryByText('서울(V)')).not.toBeNull();
+  })
 })

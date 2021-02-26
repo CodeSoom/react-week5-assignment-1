@@ -10,11 +10,14 @@ export default function RegionsContainer() {
   }));
 
   const onClickCheck = () => '';
+
+  const checkedRegion = useSelector((state) => state.checkedRegion);
   
   return (
     <Regions 
       regions={regions} 
       onClickCheck={onClickCheck}
+      checkedRegion={checkedRegion}
     />
   );
 }
