@@ -14,8 +14,8 @@ const reducers = {
   }),
 };
 
-function reducer(state = initialState, action) {
-  return reducers[action?.type]
+function reducer(state = initialState, action = { type: '' }) {
+  return reducers[action.type]
     ? reducers[action.type]({ state, action })
     : state;
 }
