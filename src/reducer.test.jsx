@@ -35,8 +35,8 @@ describe('reducer', () => {
     expect(state.regions).toHaveLength(0);
     expect(state.categories).toHaveLength(0);
     expect(state.restaurants).toHaveLength(0);
-    expect(state.clicked.region).toBe('');
-    expect(state.clicked.category).toBe('');
+    expect(state.clicked.region.name).toBe('');
+    expect(state.clicked.category.id).toBe('');
   });
 
   it('returns state', () => {
@@ -48,7 +48,7 @@ describe('reducer', () => {
   });
 
   it('changes regions', () => {
-    const state = reducer({}, setRegions(regions));
+    const state = reducer({ regions }, setRegions(regions));
 
     expect(state.regions[0].name).toBe('서울');
     expect(state.regions[1].name).toBe('대전');
@@ -56,7 +56,7 @@ describe('reducer', () => {
   });
 
   it('changes categories', () => {
-    const state = reducer({}, setCategories(categories));
+    const state = reducer({ categories }, setCategories(categories));
 
     expect(state.categories[0].id).toBe(1);
     expect(state.categories[1].id).toBe(2);
