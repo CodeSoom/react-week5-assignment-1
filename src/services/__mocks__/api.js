@@ -1,7 +1,3 @@
-export function fetchRegions() {
-  return jest.fn();
-}
+export const fetchRegions = jest.fn();
 
-export function fetchCategories() {
-  return jest.fn();
-}
+export const fetchCategories = jest.fn();
