@@ -15,10 +15,9 @@ const reducers = {
 };
 
 function reducer(state = initialState, action) {
-  return (
-    reducers[action.type]
-      ? reducers[action.type]({ state, action })
-      : state);
+  return reducers[action?.type]
+    ? reducers[action.type]({ state, action })
+    : state;
 }
 
 export default reducer;

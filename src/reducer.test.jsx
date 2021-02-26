@@ -8,6 +8,17 @@ import {
 import { regions, categories } from '../fixtures/restaurants';
 
 describe('reducer', () => {
+  it('파라미터의 값이 없을 때는 initialState로 상태를 업데이트한다.', () => {
+    const initialState = {
+      regions: [],
+      categories: [],
+    };
+
+    const state = reducer();
+
+    expect(state).toEqual(initialState);
+  });
+
   describe('setRegions', () => {
     it('regions의 데이터를 받아서 상태를 업데이트한다.', () => {
       const initialState = {
