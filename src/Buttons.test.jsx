@@ -9,10 +9,11 @@ import { regions } from '../fixtures';
 describe('Buttons', () => {
   const handleClick = jest.fn();
 
-  const renderButtons = (buttons) => render((
+  const renderButtons = (buttons, name) => render((
     <Buttons
       buttons={buttons}
       handleClick={handleClick}
+      clickedName={name}
     />
   ));
 
@@ -24,5 +25,11 @@ describe('Buttons', () => {
     });
 
     expect(handleClick).toBeCalledTimes(regions.length);
+  });
+
+  it('renders (V) along the selected item', () => {
+    const { queryByText } = renderButtons(regions, '서울');
+
+    expect(queryByText('서울(V)')).not.toBeNull();
   });
 });
