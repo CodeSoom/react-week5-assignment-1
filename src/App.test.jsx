@@ -19,12 +19,12 @@ describe('App', () => {
       regions: [{ id: 1, name: '서울' }],
       categories: [{ id: 1, name: '한식' }],
       restaurants: [{ id: 1, name: '양천주가' }],
-      selectRegionId: given.selectRegionId || null,
-      selectCategoryId: given.selectCategoryId || null,
+      selectedRegion: given.selectedRegion || null,
+      selectedCategory: given.selectedCategory || null,
     }));
   });
 
-  context('without selectCategoryId and selectRegionId', () => {
+  context('without selectedCategory and selectedRegion', () => {
     it('renders regions and categories', async () => {
       const { queryByText } = render(<App />);
 
@@ -36,10 +36,15 @@ describe('App', () => {
     });
   });
 
-  context('with selectCategoryId and selectRegionId', () => {
+  context('with selectedCategory and selectedRegion', () => {
     it('renders regions and categories and restaurants', async () => {
-      given('selectRegionId', () => 1);
-      given('selectCategoryId', () => 1);
+      given('selectedRegion', () => (
+        { id: 1, name: '서울' }
+      ));
+
+      given('selectedCategory', () => (
+        { id: 1, name: '한식' }
+      ));
 
       const { queryByText } = render(<App />);
 
