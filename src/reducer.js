@@ -55,8 +55,8 @@ const actionHandler = {
     };
   },
   getRestaurantsFailure(state, action) {
-    // const restaurants = action.payload;
-    return { ...state, error: { restaurants: new Error('getRestaurantsFailure') } };
+    const restaurants = action.payload;
+    return { ...state, error: { ...state.error, restaurants } };
   },
 };
 
