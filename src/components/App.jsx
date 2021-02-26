@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import CategoriesContainer from './CategoriesContainer';
+import CategoriesContainer from '../containers/CategoriesContainer';
 
-import LocationsContainer from './LocationsContainer';
+import LocationsContainer from '../containers/LocationsContainer';
 
-import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantsContainer from '../containers/RestaurantsContainer';
 
 import {
   loadLocations,
   loadCategories,
   loadRestaurants,
-} from './actions';
+} from '../actions';
 
 export default function App() {
   const dispatch = useDispatch();

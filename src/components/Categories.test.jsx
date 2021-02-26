@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import categories from '../fixtures/categories';
+import categories from '../../fixtures/categories';
 
 describe('Categories', () => {
   const onClick = jest.fn();

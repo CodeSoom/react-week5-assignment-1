@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Locations from './Locations';
 
-import locations from '../fixtures/locations';
+import locations from '../../fixtures/locations';
 
 describe('Location', () => {
   const onClick = jest.fn();

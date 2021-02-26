@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Restaurants from './Restaurants';
+import Restaurants from '../components/Restaurants';
 
-import restaurants from '../fixtures/restaurants';
+import restaurants from '../../fixtures/restaurants';
 
 jest.mock('react-redux');
 

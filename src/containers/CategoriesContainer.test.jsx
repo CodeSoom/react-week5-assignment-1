@@ -4,9 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Categories from './Categories';
+import Categories from '../components/Categories';
 
-import categories from '../fixtures/categories';
+import categories from '../../fixtures/categories';
 
 jest.mock('react-redux');
 

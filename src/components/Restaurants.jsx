@@ -1,6 +1,6 @@
 import React from 'react';
 
-import restaurants from '../fixtures/restaurants';
+import restaurants from '../../fixtures/restaurants';
 
 export default function Restaurants() {
   return (

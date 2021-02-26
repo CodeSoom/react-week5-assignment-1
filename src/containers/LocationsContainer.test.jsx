@@ -4,9 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import Locations from './Locations';
+import Locations from '../components/Locations';
 
-import locations from '../fixtures/locations';
+import locations from '../../fixtures/locations';
 
 jest.mock('react-redux');
 
