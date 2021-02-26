@@ -2,13 +2,13 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setSelected } from './actions';
+import { setSelected } from '../actions';
 
-import Buttons from './Buttons';
+import Buttons from '../views/Buttons';
 
-export default function RegionsContainer() {
-  const { regions, selected: { category, region } } = useSelector((state) => ({
-    regions: state.regions,
+export default function CategoriesContainer() {
+  const { categories, selected: { category, region } } = useSelector((state) => ({
+    categories: state.categories,
     selected: state.selected,
   }));
 
@@ -17,22 +17,22 @@ export default function RegionsContainer() {
   const handleClick = (event) => {
     const { name, id } = event.target;
 
-    if (!(name === region.name)) {
+    if (!(name === category.name)) {
       dispatch(setSelected({
-        region: {
+        region,
+        category: {
           id,
           name,
         },
-        category,
       }));
     }
   };
 
   return (
     <Buttons
-      buttons={regions}
+      buttons={categories}
       handleClick={handleClick}
-      selectedName={region.name}
+      selectedName={category.name}
     />
   );
 }

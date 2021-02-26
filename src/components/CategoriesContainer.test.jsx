@@ -6,9 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import given from 'given2';
 
-import { categories } from '../fixtures';
+import { categories } from '../../fixtures';
 
-import { setSelected } from './actions';
+import { setSelected } from '../actions';
 
 import CategoriesContainer from './CategoriesContainer';
 

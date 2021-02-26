@@ -15,10 +15,13 @@ import {
   setRegions,
   setSelected,
   setRestaurnats,
+} from './actions';
+
+import {
   loadRegions,
   loadCategories,
   loadRestaurnats,
-} from './actions';
+} from './async_actions';
 
 import {
   fetchRegions,

@@ -9,13 +9,13 @@ import {
   loadCategories,
   loadRegions,
   loadRestaurnats,
-} from './actions';
+} from '../async_actions';
 
-import RegionsContainer from './RegionsContainer';
-
-import RestaurantsContainer from './RestaurantsContainer';
-
-import CategoriesContainer from './CategoriesContainer';
+import {
+  RegionsContainer,
+  CategoriesContainer,
+  RestaurantsContainer,
+} from '../components';
 
 export default function App() {
   const { selected } = useSelector((state) => ({

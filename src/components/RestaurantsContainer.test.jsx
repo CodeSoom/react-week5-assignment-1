@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import given from 'given2';
 
-import { restaurants } from '../fixtures';
+import { restaurants } from '../../fixtures';
 
 import RestaurantsContainer from './RestaurantsContainer';
 

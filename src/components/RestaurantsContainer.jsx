@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import Restaurants from './Restaurants';
+import Restaurants from '../views/Restaurants';
 
 export default function RestaurantsContainer() {
   const { restaurants, selected } = useSelector((state) => ({
