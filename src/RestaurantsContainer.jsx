@@ -10,13 +10,13 @@ export default function RestaurantsContainer() {
     selected: state.selected,
   }));
 
-  if (selected.region && !selected.category) {
+  if (selected.region.name && !selected.category.name) {
     return (
       <p>카테고리 버튼도 클릭 해주세요</p>
     );
   }
 
-  if (selected.category && !selected.region) {
+  if (selected.category.name && !selected.region.name) {
     return (
       <p>지역 버튼도 클릭 해주세요</p>
     );
