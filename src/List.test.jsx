@@ -46,11 +46,12 @@ describe('List', () => {
 
   context('without list', () => {
     it('renders nothing', () => {
-      const { queryByRole } = render(<List />);
+      const { queryByRole, getByText } = render(<List />);
 
       const list = queryByRole('list');
 
       expect(list).toBeNull();
+      expect(getByText('텅~')).toBeInTheDocument();
     });
   });
 });
