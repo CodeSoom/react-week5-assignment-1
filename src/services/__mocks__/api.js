@@ -1,5 +1,5 @@
-export const getRegions = jest.fn();
+export const getRegionsApi = jest.fn();
 
-export const getCategories = jest.fn();
+export const getCategoriesApi = jest.fn();
 
-export const getRestaurants = jest.fn();
+export const getRestaurantsApi = jest.fn();

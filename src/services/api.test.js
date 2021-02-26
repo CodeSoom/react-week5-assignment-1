@@ -1,4 +1,4 @@
-import { getRegions, getCategories, getRestaurants } from './api';
+import { getRegionsApi, getCategoriesApi, getRestaurantsApi } from './api';
 import { categories, regions, restaurants } from '../fixtures/mockData';
 
 describe('api', () => {
@@ -14,18 +14,18 @@ describe('api', () => {
   it('can get regions', async () => {
     setFetchToMock(regions);
 
-    expect(await getRegions()).toBe(regions);
+    expect(await getRegionsApi()).toBe(regions);
   });
 
   it('can get categories', async () => {
     setFetchToMock(categories);
 
-    expect(await getCategories()).toBe(categories);
+    expect(await getCategoriesApi()).toBe(categories);
   });
 
   it('can get restaurants', async () => {
     setFetchToMock(restaurants);
 
-    expect(await getRestaurants({ regionName: '서울', categoryId: 1 })).toBe(restaurants);
+    expect(await getRestaurantsApi({ regionName: '서울', categoryId: 1 })).toBe(restaurants);
   });
 });
