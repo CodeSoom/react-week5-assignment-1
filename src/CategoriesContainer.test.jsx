@@ -31,7 +31,10 @@ describe('CategoriesContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'selectCategory',
       payload: {
-        id: 1,
+        category: {
+          id: 1,
+          name: '한식',
+        },
       },
     });
   });
