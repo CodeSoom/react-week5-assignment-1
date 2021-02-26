@@ -2,10 +2,11 @@ import reducer from './reducer';
 
 import regions from '../fixtures/regions'
 
-import {
-  chooseRegions, setRegions,
-} from './actions';
 import categories from '../fixtures/categories';
+
+import {
+  chooseRegions, setRegions, setCategories,
+} from './actions';
 
 describe('reducer', () => {
   // describe('chooseRegions', () => {
@@ -35,7 +36,7 @@ describe('reducer', () => {
       const initialState = {
         categories: [],
       }
-      const state = reducer(initialState, setRegions(categories));
+      const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).not.toHaveLength(0);
     })
