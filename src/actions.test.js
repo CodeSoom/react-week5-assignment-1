@@ -5,6 +5,10 @@ import { loadCategories, loadRegions, loadRestaurants } from './actions';
 describe('actions', () => {
   const dispatch = jest.fn();
 
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
   describe('loadRegions', () => {
     it('loads region datas from api server and dispatches', async () => {
       fetchMock.getOnce('https://eatgo-customer-api.ahastudio.com/regions', {
@@ -14,8 +18,6 @@ describe('actions', () => {
 
       expect(typeof loadRegions()).toBe('function');
       expect(dispatch).toBeCalled();
-
-      fetchMock.restore();
     });
   });
 
@@ -28,8 +30,6 @@ describe('actions', () => {
 
       expect(typeof loadCategories()).toBe('function');
       expect(dispatch).toBeCalled();
-
-      fetchMock.restore();
     });
   });
 
@@ -46,10 +46,9 @@ describe('actions', () => {
 
         expect(typeof loadRestaurants()).toBe('function');
         expect(dispatch).toBeCalledTimes(3);
-
-        fetchMock.restore();
       });
     });
+
     context('with not response.ok', () => {
       it('returns empty array', async () => {
         fetchMock.getOnce(url, {
@@ -58,8 +57,6 @@ describe('actions', () => {
         await loadRestaurants('서울', 1)(dispatch);
         expect(typeof loadRestaurants()).toBe('function');
         expect(dispatch).toBeCalled();
-
-        fetchMock.restore();
       });
     });
   });

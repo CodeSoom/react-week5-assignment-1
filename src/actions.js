@@ -46,9 +46,9 @@ export function categorySelect(id) {
 }
 
 export function loadRegions() {
-  return async (a) => {
+  return async (dispatch) => {
     const regions = await fetchRegions();
-    a(setRegions(regions));
+    dispatch(setRegions(regions));
   };
 }
 
