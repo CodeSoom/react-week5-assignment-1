@@ -7,7 +7,7 @@ import { setSelected } from './actions';
 import Buttons from './Buttons';
 
 export default function RegionsContainer() {
-  const { regions, selected } = useSelector((state) => ({
+  const { regions, selected: { category, region } } = useSelector((state) => ({
     regions: state.regions,
     selected: state.selected,
   }));
@@ -15,13 +15,15 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
-    if (!(event.target.name === selected.region.name)) {
+    const { name, id } = event.target;
+
+    if (!(name === region.name)) {
       dispatch(setSelected({
         region: {
-          id: event.target.id,
-          name: event.target.name,
+          id,
+          name,
         },
-        category: selected.category,
+        category,
       }));
     }
   };
@@ -30,7 +32,7 @@ export default function RegionsContainer() {
     <Buttons
       buttons={regions}
       handleClick={handleClick}
-      selectedName={selected.region.name}
+      selectedName={region.name}
     />
   );
 }

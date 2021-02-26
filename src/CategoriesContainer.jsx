@@ -7,7 +7,7 @@ import { setSelected } from './actions';
 import Buttons from './Buttons';
 
 export default function CategoriesContainer() {
-  const { categories, selected } = useSelector((state) => ({
+  const { categories, selected: { category, region } } = useSelector((state) => ({
     categories: state.categories,
     selected: state.selected,
   }));
@@ -15,12 +15,14 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
-    if (!(event.target.name === selected.category.name)) {
+    const { name, id } = event.target;
+
+    if (!(name === category.name)) {
       dispatch(setSelected({
-        region: selected.region,
+        region,
         category: {
-          id: event.target.id,
-          name: event.target.name,
+          id,
+          name,
         },
       }));
     }
@@ -30,7 +32,7 @@ export default function CategoriesContainer() {
     <Buttons
       buttons={categories}
       handleClick={handleClick}
-      selectedName={selected.category.name}
+      selectedName={category.name}
     />
   );
 }
