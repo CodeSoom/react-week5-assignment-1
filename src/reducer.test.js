@@ -105,6 +105,16 @@ describe('reducer', () => {
         });
       });
     });
+
+    context('when getCategoriesFailure dispatched', () => {
+      it('updates state with error', () => {
+        const changedState = reducer(initialState,
+          { type: 'getCategoriesFailure', payload: new Error('getCategoriesFailure') });
+        const { categories } = changedState.error;
+
+        expect(categories).toMatchObject(new Error('getCategoriesFailure'));
+      });
+    });
   });
 
   describe('selectCategory', () => {
