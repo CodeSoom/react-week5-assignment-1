@@ -31,7 +31,7 @@ describe('RegionsContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'selectRegion',
       payload: {
-        id: 1,
+        region: { id: 1, name: '서울' },
       },
     });
   });

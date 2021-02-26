@@ -7,20 +7,20 @@ import { selectRegion } from './actions';
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions, selectRegionId } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
-    selectRegionId: state.selectRegionId,
+    selectedRegion: state.selectedRegion,
   }));
 
-  function handleClick(id) {
-    dispatch(selectRegion(id));
+  function handleClick(region) {
+    dispatch(selectRegion(region));
   }
 
   return (
     <Buttons
       buttons={regions}
       onClick={handleClick}
-      selectId={selectRegionId}
+      selectedButton={selectedRegion}
     />
   );
 }
