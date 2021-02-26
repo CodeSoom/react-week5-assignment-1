@@ -54,31 +54,35 @@ describe('RegionsContainer', () => {
     expect(queryByText('서울(V)')).not.toBeNull();
   });
 
-  it('appends a new region into selected region upon clicking region', () => {
-    const { queryByText } = render(<RegionsContainer />);
+  context('when not existed region', () => {
+    it('replaces a selected region upon clicking region', () => {
+      const { queryByText } = render(<RegionsContainer />);
 
-    fireEvent.click(queryByText('서울'));
+      fireEvent.click(queryByText('서울'));
 
-    expect(dispatch).toBeCalledWith(setSelected({
-      region: {
-        id: '1',
-        name: '서울',
-      },
-    }));
+      expect(dispatch).toBeCalledWith(setSelected({
+        region: {
+          id: '1',
+          name: '서울',
+        },
+      }));
+    });
   });
 
-  it("doesn't append a new region into selected region", () => {
-    given('selected', () => ({
-      region: {
-        id: 1,
-        name: '서울',
-      },
-    }));
+  context('when existed region', () => {
+    it("doesn't replace a selected region upon clicking region", () => {
+      given('selected', () => ({
+        region: {
+          id: 1,
+          name: '서울',
+        },
+      }));
 
-    const { queryByText } = render(<RegionsContainer />);
+      const { queryByText } = render(<RegionsContainer />);
 
-    fireEvent.click(queryByText('서울(V)'));
+      fireEvent.click(queryByText('서울(V)'));
 
-    expect(dispatch).not.toBeCalled();
+      expect(dispatch).not.toBeCalled();
+    });
   });
 });

@@ -54,31 +54,34 @@ describe('CategoriesContainer', () => {
     expect(queryByText('한식(V)')).not.toBeNull();
   });
 
-  it('appends a new category into selected category upon clicking category button', () => {
-    const { queryByText } = render(<CategoriesContainer />);
+  context('when not existed category', () => {
+    it('replaces a selected category upon clicking category', () => {
+      const { queryByText } = render(<CategoriesContainer />);
 
-    fireEvent.click(queryByText('한식'));
+      fireEvent.click(queryByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setSelected({
-      category: {
-        id: '1',
-        name: '한식',
-      },
-    }));
+      expect(dispatch).toBeCalledWith(setSelected({
+        category: {
+          id: '1',
+          name: '한식',
+        },
+      }));
+    });
   });
+  context('when existed category', () => {
+    it("doesn't replace a selected category upon clicking category", () => {
+      given('selected', () => ({
+        category: {
+          id: 1,
+          name: '한식',
+        },
+      }));
 
-  it("doesn't append a new category into selected category", () => {
-    given('selected', () => ({
-      category: {
-        id: 1,
-        name: '한식',
-      },
-    }));
+      const { queryByText } = render(<CategoriesContainer />);
 
-    const { queryByText } = render(<CategoriesContainer />);
+      fireEvent.click(queryByText('한식(V)'));
 
-    fireEvent.click(queryByText('한식(V)'));
-
-    expect(dispatch).not.toBeCalled();
+      expect(dispatch).not.toBeCalled();
+    });
   });
 });
