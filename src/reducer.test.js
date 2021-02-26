@@ -69,9 +69,13 @@ describe('reducer', () => {
 
         const changedRegions = mockRegions.map((region) => ({ ...region, clicked: false }));
 
-        changedRegions.forEach((region, index) => {
-          expect(regions[index]).toMatchObject(region);
-        });
+        expect(regions).toHaveLength(changedRegions.length);
+        expect(regions[0]).toMatchObject(changedRegions[0]);
+        expect(regions[1]).toMatchObject(changedRegions[1]);
+        expect(regions[2]).toMatchObject(changedRegions[2]);
+        expect(regions[3]).toMatchObject(changedRegions[3]);
+        expect(regions[4]).toMatchObject(changedRegions[4]);
+        expect(regions[5]).toMatchObject(changedRegions[5]);
       });
     });
     context('when getRegionsFailure dispatched', () => {
@@ -110,9 +114,10 @@ describe('reducer', () => {
           (category) => ({ ...category, clicked: false }),
         );
 
-        changedCategories.forEach((category, index) => {
-          expect(categories[index]).toMatchObject(category);
-        });
+        expect(categories).toHaveLength(changedCategories.length);
+        expect(categories[0]).toMatchObject(changedCategories[0]);
+        expect(categories[1]).toMatchObject(changedCategories[1]);
+        expect(categories[2]).toMatchObject(changedCategories[2]);
       });
     });
 
@@ -148,9 +153,9 @@ describe('reducer', () => {
         const { restaurants } = changedState;
 
         expect(restaurants).toHaveLength(mockRestaurants.length);
-        mockRestaurants.forEach((restaurant, index) => {
-          expect(restaurants[index]).toMatchObject(restaurant);
-        });
+        expect(restaurants[0]).toMatchObject(mockRestaurants[0]);
+        expect(restaurants[1]).toMatchObject(mockRestaurants[1]);
+        expect(restaurants[2]).toMatchObject(mockRestaurants[2]);
       });
     });
 
