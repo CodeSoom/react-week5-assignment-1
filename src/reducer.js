@@ -10,7 +10,7 @@ const initialState = {
 const actionHandler = {
 
   getRegions(state) {
-    return { ...state, loading: { regions: true } };
+    return { ...state, loading: { ...state.loading, regions: true } };
   },
   getRegionsSuccess(state, action) {
     const regions = action.payload.map((region) => ({ ...region, clicked: false }));
