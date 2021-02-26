@@ -27,11 +27,11 @@ export function setRestaurnats(restaurants) {
   };
 }
 
-export function setClicked(clicked) {
+export function setSelected(selected) {
   return {
-    type: 'setClicked',
+    type: 'setSelected',
     payload: {
-      clicked,
+      selected,
     },
   };
 }

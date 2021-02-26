@@ -8,12 +8,12 @@ import given from 'given2';
 
 import { categories } from '../fixtures';
 
-import { setClicked } from './actions';
+import { setSelected } from './actions';
 
 import CategoriesContainer from './CategoriesContainer';
 
 describe('CategoriesContainer', () => {
-  given('clicked', () => ({
+  given('selected', () => ({
     category: '',
   }));
 
@@ -22,7 +22,7 @@ describe('CategoriesContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       categories,
-      clicked: given.clicked,
+      selected: given.selected,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -37,7 +37,7 @@ describe('CategoriesContainer', () => {
   });
 
   it('renders (V) along the selected button', () => {
-    given('clicked', () => ({
+    given('selected', () => ({
       category: {
         id: 1,
         name: '한식',
@@ -54,7 +54,7 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(queryByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setClicked({
+    expect(dispatch).toBeCalledWith(setSelected({
       category: {
         id: '1',
         name: '한식',

@@ -18,8 +18,8 @@ import RestaurantsContainer from './RestaurantsContainer';
 import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
-  const { clicked } = useSelector((state) => ({
-    clicked: state.clicked,
+  const { selected } = useSelector((state) => ({
+    selected: state.selected,
   }));
 
   const dispatch = useDispatch();
@@ -30,13 +30,13 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (clicked.region.name && clicked.category.id) {
+    if (selected.region.name && selected.category.id) {
       dispatch(loadRestaurnats({
-        region: clicked.region.name,
-        category: clicked.category.id,
+        region: selected.region.name,
+        category: selected.category.id,
       }));
     }
-  }, [clicked]);
+  }, [selected]);
 
   return (
     <div>

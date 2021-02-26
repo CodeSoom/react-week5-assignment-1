@@ -2,7 +2,7 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  clicked: {
+  selected: {
     region: {
       id: '',
       name: '',
@@ -27,11 +27,11 @@ const reducers = {
     ...state,
     restaurants: [...restaurants],
   }),
-  setClicked: (state, { payload: { clicked } }) => ({
+  setSelected: (state, { payload: { selected } }) => ({
     ...state,
-    clicked: {
-      region: clicked.region,
-      category: clicked.category,
+    selected: {
+      region: selected.region,
+      category: selected.category,
     },
   }),
 };

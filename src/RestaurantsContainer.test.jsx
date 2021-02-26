@@ -13,7 +13,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 describe('RestaurantsContainer', () => {
   given('restaurants', () => restaurants);
 
-  given('clicked', () => ({
+  given('selected', () => ({
     region: '',
     category: '',
   }));
@@ -21,12 +21,12 @@ describe('RestaurantsContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: given.restaurants,
-      clicked: given.clicked,
+      selected: given.selected,
     }));
   });
 
   it('renders a message to let user click category', () => {
-    given('clicked', () => ({
+    given('selected', () => ({
       region: '서울',
       category: '',
     }));
@@ -37,7 +37,7 @@ describe('RestaurantsContainer', () => {
   });
 
   it('renders a message to let user click region', () => {
-    given('clicked', () => ({
+    given('selected', () => ({
       region: '',
       category: '한식',
     }));

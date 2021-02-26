@@ -13,7 +13,7 @@ import {
 import {
   setCategories,
   setRegions,
-  setClicked,
+  setSelected,
   setRestaurnats,
   loadRegions,
   loadCategories,
@@ -35,8 +35,8 @@ describe('reducer', () => {
     expect(state.regions).toHaveLength(0);
     expect(state.categories).toHaveLength(0);
     expect(state.restaurants).toHaveLength(0);
-    expect(state.clicked.region.name).toBe('');
-    expect(state.clicked.category.id).toBe('');
+    expect(state.selected.region.name).toBe('');
+    expect(state.selected.category.id).toBe('');
   });
 
   it('returns state', () => {
@@ -72,7 +72,7 @@ describe('reducer', () => {
   });
 
   it('changes clicked', () => {
-    const clicked = {
+    const selected = {
       region: {
         id: 1,
         name: '서울',
@@ -83,14 +83,14 @@ describe('reducer', () => {
       },
     };
     const state = reducer({
-      clicked: {
+      selected: {
         region: '',
         category: '',
       },
-    }, setClicked(clicked));
+    }, setSelected(selected));
 
-    expect(state.clicked.region.name).toBe('서울');
-    expect(state.clicked.category.name).toBe('한식');
+    expect(state.selected.region.name).toBe('서울');
+    expect(state.selected.category.name).toBe('한식');
   });
 });
 

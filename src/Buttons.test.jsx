@@ -13,7 +13,7 @@ describe('Buttons', () => {
     <Buttons
       buttons={buttons}
       handleClick={handleClick}
-      clickedName={name}
+      selectedName={name}
     />
   ));
 

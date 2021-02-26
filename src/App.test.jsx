@@ -14,7 +14,7 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   given('restaurants', () => ([]));
-  given('clicked', () => ({
+  given('selected', () => ({
     region: '',
     category: '',
   }));
@@ -26,7 +26,7 @@ describe('App', () => {
       regions: [],
       categories: [],
       restaurants: given.restaurants,
-      clicked: given.clicked,
+      selected: given.selected,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -52,7 +52,7 @@ describe('App', () => {
 
   context('with clicked', () => {
     it('loads regions, categories, and restaurants', () => {
-      given('clicked', () => ({
+      given('selected', () => ({
         region: {
           id: 1,
           name: '서울',

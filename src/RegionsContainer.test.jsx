@@ -8,12 +8,12 @@ import given from 'given2';
 
 import { regions } from '../fixtures';
 
-import { setClicked } from './actions';
+import { setSelected } from './actions';
 
 import RegionsContainer from './RegionsContainer';
 
 describe('RegionsContainer', () => {
-  given('clicked', () => ({
+  given('selected', () => ({
     region: '',
   }));
 
@@ -22,7 +22,7 @@ describe('RegionsContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions,
-      clicked: given.clicked,
+      selected: given.selected,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -37,7 +37,7 @@ describe('RegionsContainer', () => {
   });
 
   it('renders (V) along the selected button', () => {
-    given('clicked', () => ({
+    given('selected', () => ({
       region: {
         id: 1,
         name: '서울',
@@ -54,7 +54,7 @@ describe('RegionsContainer', () => {
 
     fireEvent.click(queryByText('서울'));
 
-    expect(dispatch).toBeCalledWith(setClicked({
+    expect(dispatch).toBeCalledWith(setSelected({
       region: {
         id: '1',
         name: '서울',
