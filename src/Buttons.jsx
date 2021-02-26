@@ -9,7 +9,7 @@ export default function Buttons({ buttons, handleClick, selected }) {
         <li key={id}>
           <button
             type="button"
-            onClick={handleClick}
+            onClick={() => handleClick(id)}
           >
             {name}
             {id === selected && '(V)'}
