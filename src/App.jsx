@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-// import regions from '../fixtures/regions'
-
 import {
   chooseRegions,
   loadRegions,
