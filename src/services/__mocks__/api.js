@@ -1,7 +1,7 @@
-export async function fetchRegions() {
-  return [];
+export function fetchRegions() {
+  return jest.fn();
 }
 
 export function fetchCategories() {
-  return [];
+  return jest.fn();
 }
