@@ -45,7 +45,7 @@ describe('List', () => {
   });
 
   context('without list', () => {
-    it('renders nothing', () => {
+    it('renders "텅~" ', () => {
       const { queryByRole, getByText } = render(<List />);
 
       const list = queryByRole('list');
