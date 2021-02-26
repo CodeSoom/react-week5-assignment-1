@@ -15,13 +15,15 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
-    dispatch(setSelected({
-      region: {
-        id: event.target.id,
-        name: event.target.name,
-      },
-      category: selected.category,
-    }));
+    if (!(event.target.name === selected.region.name)) {
+      dispatch(setSelected({
+        region: {
+          id: event.target.id,
+          name: event.target.name,
+        },
+        category: selected.category,
+      }));
+    }
   };
 
   return (

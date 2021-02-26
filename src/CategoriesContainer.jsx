@@ -15,13 +15,15 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
   const handleClick = (event) => {
-    dispatch(setSelected({
-      region: selected.region,
-      category: {
-        id: event.target.id,
-        name: event.target.name,
-      },
-    }));
+    if (!(event.target.name === selected.category.name)) {
+      dispatch(setSelected({
+        region: selected.region,
+        category: {
+          id: event.target.id,
+          name: event.target.name,
+        },
+      }));
+    }
   };
 
   return (
