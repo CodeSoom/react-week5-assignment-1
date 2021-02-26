@@ -143,5 +143,15 @@ describe('reducer', () => {
         });
       });
     });
+
+    context('when getRestaurantsFailure dispatched', () => {
+      it('updates state with error', () => {
+        const changedState = reducer(initialState,
+          { type: 'getRestaurantsFailure', payload: new Error('getRestaurantsFailure') });
+        const { restaurants } = changedState.error;
+
+        expect(restaurants).toMatchObject(new Error('getRestaurantsFailure'));
+      });
+    });
   });
 });
