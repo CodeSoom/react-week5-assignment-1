@@ -2,9 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getByText, render } from '@testing-library/react';
-
-import given from 'given2';
+import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
