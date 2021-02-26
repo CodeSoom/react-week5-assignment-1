@@ -27,7 +27,7 @@ describe('api', () => {
     expect(data).toBe(region);
   });
 
-  it('fetchCategory는 불러온 지역정보를 반환한다.', async () => {
+  it('fetchCategory는 불러온 카테고리정보를 반환한다.', async () => {
     fetchMock(category);
 
     const data = await fetchCategories();
@@ -35,7 +35,7 @@ describe('api', () => {
     expect(data).toBe(category);
   });
 
-  it('fetchRegion는 불러온 지역정보를 반환한다.', async () => {
+  it('fetchRestaurants는 불러온 레스토랑정보를 반환한다.', async () => {
     fetchMock(restaurants);
 
     const data = await fetchRestaurants();
