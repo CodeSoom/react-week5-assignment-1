@@ -29,7 +29,8 @@ export default function CategoriesContainer() {
     const region = regions.find((v) => v.id === selectedRegionId);
 
     if (region) {
-      dispatch(loadRestaurants(id, regions.find((v) => v.id === selectedRegionId).name));
+      dispatch(loadRestaurants(id, regions ?
+        regions.find((v) => v.id === selectedRegionId).name : ''));
     }
   }
 

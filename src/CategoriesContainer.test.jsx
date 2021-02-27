@@ -14,6 +14,7 @@ describe('CategoriesContainer', () => {
       categories: [
         { id: 1, name: '한식' },
       ],
+      regions:[],
       selectedCatId: 0,
     }));
 
@@ -33,6 +34,7 @@ describe('CategoriesContainer', () => {
           { id: 1, name: '한식' },
           { id: 2, name: '일식' },
         ],
+        regions:[],
         selectedCatId: 0,
       }));
 
