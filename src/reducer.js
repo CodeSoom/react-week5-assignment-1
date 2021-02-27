@@ -1,6 +1,8 @@
 const initialState = {
   regions: [],
+  categories: [],
   selectedRegion: null,
+  selectedCategorie: null,
 };
 
 const reducers = {

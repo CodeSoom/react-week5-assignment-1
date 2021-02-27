@@ -20,6 +20,9 @@ describe('App', () => {
       regions: [
         { id: 1, name: '서울' },
       ],
+      categoreis: [
+        { id: 1, nmae: '한식' },
+      ],
     }));
   });
 
@@ -40,10 +43,8 @@ describe('App', () => {
   it('renders category buttons', () => {
     const { queryByText } = render(<App />);
 
+    expect(dispatch).toBeCalled();
+
     expect(queryByText('한식')).not.toBeNull();
-    expect(queryByText('중식')).not.toBeNull();
-    expect(queryByText('일식')).not.toBeNull();
-    expect(queryByText('양식')).not.toBeNull();
-    expect(queryByText('분식')).not.toBeNull();
   });
 });
