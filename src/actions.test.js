@@ -4,17 +4,20 @@ import configureStore from 'redux-mock-store';
 
 import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 import {
   loadLocations,
   setCategories,
   loadCategories,
   setLocations,
+  loadRestaurants,
 } from './actions';
 
 import {
   fetchCategories,
   fetchLocations,
+  fetchRestaurants,
 } from './services/api';
 
 const middleWeares = [thunk];
@@ -45,5 +48,17 @@ describe('actions test', () => {
     const actions = store.getActions();
 
     expect(actions[0]).toEqual(setCategories(categories));
+  });
+
+  it('loadRestaurants test', async () => {
+    const store = mockStore({});
+
+    fetchRestaurants.mockResolvedValue(restaurants);
+
+    await store.dispatch(loadRestaurants());
+
+    const actions = store.getActions();
+
+    expect(actions[0]).toEqual(setCategories(restaurants));
   });
 });
