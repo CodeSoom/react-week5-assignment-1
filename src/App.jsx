@@ -23,7 +23,7 @@ export default function App() {
 
   useEffect(() => {
     if (region && category) {
-      dispatch(loadRestaurants(region.name, category.id));
+      dispatch(loadRestaurants());
     }
   }, [region, category]);
 

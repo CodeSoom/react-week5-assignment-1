@@ -47,7 +47,10 @@ describe('loadCategory', () => {
 
 describe('loadRestaurants', () => {
   it('음식점정보를 불러오고 dispatch를 실행하는 함수를 반환한다.', async () => {
-    const store = mockStore({});
+    const store = mockStore({
+      selectedRegion: { name: '서울' },
+      selectedCategory: { id: 1 },
+    });
     fetchRestaurants.mockResolvedValue(restaurants);
 
     await store.dispatch(loadRestaurants());

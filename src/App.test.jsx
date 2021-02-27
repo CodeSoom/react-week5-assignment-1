@@ -14,6 +14,7 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => jest.clearAllMocks());
+
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     regions: [],
@@ -25,11 +26,13 @@ describe('App', () => {
 
   it('App 시작시 초기값들을 가져온다.', () => {
     render(<App />);
+
     expect(dispatch).toBeCalledTimes(2);
   });
 
   context('지역과 category가 유효할 때(null이 아닐 때)', () => {
     given('selectedCategory', () => ({ id: 1, name: '한식' }));
+
     it('지역과 category에 맞는 정보를 보여주는 dispatch함수가 실행된다.', () => {
       render(<App />);
       expect(dispatch).toBeCalledTimes(3);
@@ -38,6 +41,7 @@ describe('App', () => {
 
   context('지역과 category가 유효하지 않을 때(null일 때)', () => {
     given('selectedCategoryId', () => null);
+
     it('dispatch함수는 실행되지 않는다.', () => {
       render(<App />);
       expect(dispatch).toBeCalledTimes(2);
