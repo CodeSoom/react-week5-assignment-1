@@ -1,15 +1,18 @@
 import React from 'react';
 
-export default function Categories({ categories, onClickCheck }) { 
+export default function Categories({ categories, onClickCheck, selectedCategoryName }) { 
   return (
     <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
+      {categories.map(({id, name}) => (
+        <li key={id}>
           <button 
+            id={id}
+            name={name}
             type="button" 
             onClick={onClickCheck}
           >
-            {category.name}
+            {name}
+            {name === selectedCategoryName ? '(V)' : ''}
           </button>
         </li>
       ))}
