@@ -6,6 +6,7 @@ import Categories from './Categories';
 
 import {
   selectCategory,
+  loadRestaurants,
 } from './actions';
 
 export default function CategoriesContianer() {
@@ -18,6 +19,7 @@ export default function CategoriesContianer() {
 
   const handleClickCategory = (category) => {
     dispatch(selectCategory(category));
+    dispatch(loadRestaurants());
   };
 
   return (

@@ -2,8 +2,9 @@ import reducer from './reducer';
 
 import {
   setRegions,
-  selectRegion,
   setCategories,
+  setRestaurants,
+  selectRegion,
   selectCategory,
 } from './actions';
 
@@ -43,6 +44,20 @@ describe('reducer', () => {
       }, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const restaurants = [
+        { id: 1, name: '라이브볼' },
+      ];
+
+      const state = reducer({
+        restaurants: [],
+      }, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 
