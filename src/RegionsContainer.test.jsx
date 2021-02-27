@@ -12,6 +12,8 @@ describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    dispatch.mockClear();
+
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
@@ -20,6 +22,12 @@ describe('RegionsContainer', () => {
   });
 
   it('renders region', () => {
+    const { queryByText } = render(<RegionsContainer />);
+
+    expect(queryByText('서울')).not.toBeNull();
+  });
+
+  it('listens click event', () => {
     const { getByText } = render(<RegionsContainer />);
 
     fireEvent.click(getByText('서울'));

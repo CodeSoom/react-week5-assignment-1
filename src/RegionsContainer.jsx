@@ -11,16 +11,13 @@ import {
 export default function RegionsContianer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
+    selectedRegion: state.selectedRegion,
   }));
 
-  const { selectRegion } = useSelector((state) => ({
-    selectRegion: state.selectRegion,
-  }));
-
-  const handleClickRegion = (regionId) => {
-    dispatch(selectRegion(regionId));
+  const handleClickRegion = (region) => {
+    dispatch(selectRegion(region));
   };
 
   return (

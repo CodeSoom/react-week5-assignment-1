@@ -1,5 +1,6 @@
 const initialState = {
   regions: [],
+  selectedRegion: null,
 };
 
 const reducers = {
@@ -7,6 +8,13 @@ const reducers = {
     return {
       ...state,
       regions,
+    };
+  },
+
+  selectRegion(state, { payload: { region } }) {
+    return {
+      ...state,
+      selectedRegion: region,
     };
   },
 };

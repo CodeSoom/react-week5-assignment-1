@@ -9,6 +9,13 @@ export function setRegions(regions) {
   };
 }
 
+export function selectRegion(region) {
+  return {
+    type: 'selectRegion',
+    payload: { region },
+  };
+}
+
 export function loadDefaultData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
