@@ -4,6 +4,7 @@ import {
   setRegions,
   selectRegion,
   setCategories,
+  selectCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -52,6 +53,16 @@ describe('reducer', () => {
       }, selectRegion({ id: 1, name: '서울' }));
 
       expect(state.selectedRegion.name).toBe('서울');
+    });
+  });
+
+  describe('selectCategory', () => {
+    it('changes selected category', () => {
+      const state = reducer({
+        selectedCategory: null,
+      }, selectCategory({ id: 1, name: '한식' }));
+
+      expect(state.selectedCategory.name).toBe('한식');
     });
   });
 });

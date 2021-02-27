@@ -20,8 +20,8 @@ describe('App', () => {
       regions: [
         { id: 1, name: '서울' },
       ],
-      categoreis: [
-        { id: 1, nmae: '한식' },
+      categories: [
+        { id: 1, name: '한식' },
       ],
     }));
   });

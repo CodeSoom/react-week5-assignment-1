@@ -5,26 +5,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import Categories from './Categories';
 
 import {
-  selectCategories,
+  selectCategory,
 } from './actions';
 
 export default function CategoriesContianer() {
   const dispatch = useDispatch();
 
-  const { categories, selectedCategories } = useSelector((state) => ({
+  const { categories, selectedCategory } = useSelector((state) => ({
     categories: state.categories,
-    selectedCategories: state.selectedCategories,
+    selectedCategory: state.selectedCategory,
   }));
 
-  const handleClickRegion = (region) => {
-    dispatch(selectCategories(region));
+  const handleClickCategory = (category) => {
+    dispatch(selectCategory(category));
   };
 
   return (
     <Categories
       categories={categories}
-      selectedCategories={selectedCategories}
-      onClick={handleClickRegion}
+      selectedCategory={selectedCategory}
+      onClick={handleClickCategory}
     />
   );
 }

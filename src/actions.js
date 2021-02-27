@@ -24,10 +24,10 @@ export function selectRegion(region) {
   };
 }
 
-export function selectCategories(categories) {
+export function selectCategory(category) {
   return {
-    type: 'selectCategories',
-    payload: { categories },
+    type: 'selectCategory',
+    payload: { category },
   };
 }
 
