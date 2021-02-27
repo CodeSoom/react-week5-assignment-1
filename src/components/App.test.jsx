@@ -19,10 +19,17 @@ describe('App', () => {
 
     useSelector.mockImplementation((selector) => selector({
       locations: [],
+      categories: [],
       restaurants: [],
-      selectedlocationname: '',
-      selectedcategoryname: '',
+      selectedLocatioNname: '',
+      selectedCategoryName: '',
     }));
+
+    it('시작시 지역과 분류 값들을 가져옵니다.', () => {
+      render(<App />);
+
+      expect(dispatch).toBeCalledTimes(2);
+    });
 
     it('Api에서 지역, 분류, 식당목록 정보를 가져옵니다.', () => {
       render(<App />);
