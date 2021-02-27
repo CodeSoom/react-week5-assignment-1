@@ -12,6 +12,7 @@ import {
   loadCategories,
   setLocations,
   loadRestaurants,
+  setRestaurants,
 } from './actions';
 
 import {
@@ -26,6 +27,10 @@ const mockStore = configureStore(middleWeares);
 jest.mock('./services/api');
 
 describe('actions test', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('loadLocations test', async () => {
     const store = mockStore({});
 
@@ -59,6 +64,6 @@ describe('actions test', () => {
 
     const actions = store.getActions();
 
-    expect(actions[0]).toEqual(setCategories(restaurants));
+    expect(actions[0]).toEqual(setRestaurants(restaurants));
   });
 });
