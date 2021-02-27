@@ -9,18 +9,16 @@ export default function Categories({ categories, onClick }) {
 
   return (
     <ul>
-      {categories.map((category) => {
-        if (categoryId === category.id) {
-          return (
-            <Category
-              key={category.id}
-              category={{ id: category.id, name: `${category.name}(V)` }}
-              onClick={onClick}
-            />
-          );
-        }
-        return (<Category key={category.id} category={category} onClick={onClick} />);
-      })}
+      {categories.map(({ id, name }) => (
+        <Category
+          key={id}
+          category={{
+            id,
+            name: (categoryId === id) ? `${name}(V)` : name,
+          }}
+          onClick={onClick}
+        />
+      ))}
     </ul>
   );
 }

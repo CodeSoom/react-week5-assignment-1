@@ -9,18 +9,16 @@ export default function Regions({ regions, onClick }) {
 
   return (
     <ul>
-      {regions.map((region) => {
-        if (regionName === region.name) {
-          return (
-            <Region
-              key={region.id}
-              region={{ id: region.id, name: `${region.name}(V)` }}
-              onClick={onClick}
-            />
-          );
-        }
-        return (<Region key={region.id} region={region} onClick={onClick} />);
-      })}
+      {regions.map(({ id, name }) => (
+        <Region
+          key={id}
+          region={{
+            id,
+            name: (regionName === name) ? `${name}(V)` : name,
+          }}
+          onClick={onClick}
+        />
+      ))}
     </ul>
   );
 }
