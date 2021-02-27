@@ -1,23 +1,37 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setSelected } from './actions';
 
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const { regions, selected } = useSelector((state) => ({
     regions: state.regions,
+    selected: state.selected,
   }));
 
-  const onClickCheck = () => '';
+  const dispatch = useDispatch();
 
-  const checkedRegion = useSelector((state) => state.checkedRegion);
-  
+  const onClickCheck = (event) => {
+    dispatch(setSelected({
+      region: {
+        id: event.target.id,
+        name: event.target.name,
+      },
+      category: {
+        id: selected.category.id,
+        name: selected.category.name,
+      },
+    }))
+  };
+
   return (
     <Regions 
       regions={regions} 
       onClickCheck={onClickCheck}
-      checkedRegion={checkedRegion}
+      selectedRegionName={selected.region.name}
     />
   );
 }
