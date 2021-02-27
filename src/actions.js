@@ -50,8 +50,19 @@ export function loadDefaultData() {
 }
 
 export function loadRestaurants() {
-  return async (dispatch) => {
-    const restaurants = await fetchRestaurants();
+  return async (dispatch, getState) => {
+    const {
+      selectedRegion: region,
+      selectedCategory: category,
+    } = getState();
+
+    if (!region || !category) {
+      return;
+    }
+    const restaurants = await fetchRestaurants({
+      regionName: region.name,
+      categoryId: category.id,
+    });
     dispatch(setRestaurants(restaurants));
   };
 }
