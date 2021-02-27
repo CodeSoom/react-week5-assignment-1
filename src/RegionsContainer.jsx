@@ -21,6 +21,10 @@ export default function RegionsContianer() {
   };
 
   return (
-    <Regions regions={regions} onClick={handleClickRegion} />
+    <Regions
+      regions={regions}
+      selectedRegion={selectedRegion}
+      onClick={handleClickRegion}
+    />
   );
 }
