@@ -16,6 +16,7 @@ describe('CategoriesContainer', () => {
       ],
       regions:[],
       selectedCatId: 0,
+      selectedRegionId: 0,
     }));
 
     const { getByText } = render((
@@ -36,6 +37,7 @@ describe('CategoriesContainer', () => {
         ],
         regions:[],
         selectedCatId: 0,
+        selectedRegionId: 0,
       }));
 
       const { getByText } = render((
