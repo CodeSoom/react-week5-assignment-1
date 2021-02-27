@@ -23,6 +23,9 @@ describe('App', () => {
       categories: [
         { id: 1, name: '한식' },
       ],
+      restaurants: [
+        { id: 1, name: '라이브볼' },
+      ],
     }));
   });
 
@@ -46,5 +49,11 @@ describe('App', () => {
     expect(dispatch).toBeCalled();
 
     expect(queryByText('한식')).not.toBeNull();
+  });
+
+  it('renders restaurants', () => {
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('라이브볼');
   });
 });
