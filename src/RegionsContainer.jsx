@@ -11,8 +11,7 @@ export default function RegionsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleRegionClick(event) {
-    const regionName = event.target.name;
+  function handleRegionClick(regionName) {
     dispatch(regionSelect(regionName));
     dispatch(loadRestaurants());
   }

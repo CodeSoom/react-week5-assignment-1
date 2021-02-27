@@ -6,7 +6,7 @@ export default function Region({ region: { id, name }, onClick }) {
       <button
         type="button"
         name={name}
-        onClick={onClick}
+        onClick={() => onClick(name)}
       >
         {name}
       </button>
