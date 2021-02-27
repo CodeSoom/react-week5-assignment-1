@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegions,
-  loadDefaultData,
+  selectRegion,
 } from './actions';
 
 describe('reducer', () => {
@@ -27,6 +27,22 @@ describe('reducer', () => {
       }, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
+    });
+  });
+
+  describe('selectRegion', () => {
+    it('changes selected region', () => {
+      const state = reducer({
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        selectedRegion: null,
+      }, selectRegion(1));
+
+      expect(state.selectRegion).toEqual({
+        id: 1,
+        name: '서울',
+      });
     });
   });
 });
