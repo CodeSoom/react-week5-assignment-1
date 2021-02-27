@@ -6,13 +6,18 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+})
+
 describe('Categories', () => {
   const handleClick = jest.fn();
 
-  const renderCategories = () => render((
+  const renderCategories = (selectedCategoryName) => render((
     <Categories 
       categories={categories} 
       onClickCheck={handleClick} 
+      checkedCategory={selectedCategoryName}
     />
   ))
 
@@ -29,8 +34,8 @@ describe('Categories', () => {
 
     categories.forEach((category) => {
       fireEvent.click(queryByText(category.name));
-    })  
 
-    expect(handleClick).toBeCalledTimes(categories.length);
+      expect(handleClick).toBeCalled();
+    })  
   })  
 })
