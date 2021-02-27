@@ -10,19 +10,27 @@ import regions from '../fixtures/regions';
 
 import categories from '../fixtures/categories';
 
-jest.mock('react-redux');
-jest.mock('./services/api');
-
 describe('App', () => {
-
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      categories,
+      selected: {
+        region: {
+          id: '',
+          name: '',
+        },
+        category: {
+          id: '',
+          name: '',
+        },
+      } 
+    }))
 
-  useSelector.mockImplementation((selector) => selector({
-    regions,
-    categories,
-  }))
+    useDispatch.mockImplementation(() => dispatch);
+  })
 
   it('renders buttons', () => {
     const { queryByText } = render(<App />)
