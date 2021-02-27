@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegions,
+  loadDefaultData,
 } from './actions';
 
 describe('reducer', () => {

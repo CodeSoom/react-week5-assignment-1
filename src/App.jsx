@@ -5,17 +5,16 @@ import { useDispatch } from 'react-redux';
 import RegionsContianer from './RegionsContainer';
 
 import {
-  setRegions,
+  loadDefaultData,
 } from './actions';
 
-import regions from './fixtures/regions';
 import categories from './fixtures/categories';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRegions(regions));
+    dispatch(loadDefaultData());
   }, []);
 
   return (
