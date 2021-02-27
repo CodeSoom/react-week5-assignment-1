@@ -11,9 +11,18 @@ import categories from '../fixtures/categories';
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }))
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+      selected: {
+        category: {
+          id: '',
+          name: '',
+        }
+      }
+    }))
+  })
+  
 
   it('renders category buttons', () => {
     const { queryByText } = render((<CategoriesContainer />))
@@ -22,4 +31,21 @@ describe('CategoriesContainer', () => {
       expect(queryByText(category.name)).not.toBeNull();
     })
   })
+  
+  it('shows category button with (V)', () => {
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+      selected: {
+        category: {
+          id: '1',
+          name: '한식',
+        }
+      },
+    }))
+
+    const { queryByText } = render((<CategoriesContainer />));
+    
+    expect(queryByText('한식(V)')).not.toBeNull();
+  })
+
 })
