@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import given from 'given2';
 import App from './App';
 
 import locations from '../../fixtures/locations';
@@ -21,7 +22,7 @@ describe('App', () => {
       locations: [],
       categories: [],
       restaurants: [],
-      selectedLocatioNname: '',
+      selectedLocationName: '',
       selectedCategoryName: '',
     }));
 
@@ -29,12 +30,6 @@ describe('App', () => {
       render(<App />);
 
       expect(dispatch).toBeCalledTimes(2);
-    });
-
-    it('Api에서 지역, 분류, 식당목록 정보를 가져옵니다.', () => {
-      render(<App />);
-
-      expect(dispatch).toBeCalledTimes(3);
     });
   });
 

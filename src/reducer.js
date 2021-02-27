@@ -2,15 +2,15 @@ const initialState = {
   locations: [],
   categories: [],
   restaurants: [],
-  selectedLocatioNname: '',
-  selectedCategoryName: '',
+  selectedLocationName: null,
+  selectedCategoryName: null,
 };
 
 function updateSelectdLocation(state, action) {
-  const { selectedLocatioNname } = action.payload;
+  const { selectedLocationName } = action.payload;
   return ({
     ...state,
-    selectedLocatioNname,
+    selectedLocationName,
   });
 }
 

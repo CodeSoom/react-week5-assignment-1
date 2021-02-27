@@ -13,7 +13,7 @@ describe('reducer', () => {
       locations: [],
       categories: [],
       restaurants: [],
-      selectedLocatioNname: '',
+      selectedLocationName: '',
       selectedCategoryName: '',
     };
 

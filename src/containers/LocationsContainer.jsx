@@ -9,8 +9,8 @@ import { updateSelectedLocation } from '../actions';
 export default function LocationsContainer() {
   const dispatch = useDispatch();
 
-  const { selectedLocatioNname, locations } = useSelector((state) => ({
-    selectedLocatioNname: state.selectedLocatioNname,
+  const { selectedLocationName, locations } = useSelector((state) => ({
+    selectedLocationName: state.selectedLocationName,
     locations: state.locations,
   }));
 
@@ -22,7 +22,7 @@ export default function LocationsContainer() {
     <Locations
       locations={locations}
       onCick={handleClickLocation}
-      value={selectedLocatioNname}
+      value={selectedLocationName}
     />
   );
 }
