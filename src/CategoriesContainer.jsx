@@ -7,16 +7,13 @@ import Categories from './Categories';
 import { categorySelect, loadRestaurants } from './actions';
 
 export default function CategoriesContainer() {
-  const { categories, regionName } = useSelector((state) => ({
-    categories: state.categories,
-    regionName: state.regionName,
-  }));
+  const categories = useSelector((state) => state.categories);
 
   const dispatch = useDispatch();
 
   function handleCategoryClick(id) {
     dispatch(categorySelect(id));
-    dispatch(loadRestaurants(regionName, id));
+    dispatch(loadRestaurants());
   }
 
   return (<Categories categories={categories} onClick={handleCategoryClick} />);

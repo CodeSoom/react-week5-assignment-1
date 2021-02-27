@@ -7,17 +7,14 @@ import Regions from './Regions';
 import { regionSelect, loadRestaurants } from './actions';
 
 export default function RegionsContainer() {
-  const { regions, categoryId } = useSelector((state) => ({
-    regions: state.regions,
-    categoryId: state.categoryId,
-  }));
+  const regions = useSelector((state) => state.regions);
 
   const dispatch = useDispatch();
 
   function handleRegionClick(event) {
     const regionName = event.target.name;
     dispatch(regionSelect(regionName));
-    dispatch(loadRestaurants(regionName, categoryId));
+    dispatch(loadRestaurants());
   }
 
   return (<Regions regions={regions} onClick={handleRegionClick} />);
