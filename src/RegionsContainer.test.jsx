@@ -4,45 +4,42 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import CategoriesContainer from './CategoriesContainer';
+import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-describe('CategoriesContainer', () => {
-  it('show all categories', () => {
+describe('RegionsContainer', () => {
+  it('show all regions', () => {
     useSelector.mockImplementation((selector) => selector({
-      categories: [
-        { id: 1, name: '한식' },
+      regions: [
+        { id: 1, name: '서울' },
       ],
-      selectedCatId: 0,
+      selectedRegionId: 0,
     }));
-
     const { getByText } = render((
-      <CategoriesContainer />
+      <RegionsContainer />
     ));
 
-    expect(getByText('한식')).not.toBeNull();
+    expect(getByText('서울')).not.toBeNull();
   });
-  describe('if click unselected category', () => {
-    it('append (v) after category name', () => {
+  describe('if click unselected region', () => {
+    it('append (v) after region name', () => {
       const dispatch = jest.fn();
-
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
-        categories: [
-          { id: 1, name: '한식' },
-          { id: 2, name: '일식' },
+        regions: [
+          { id: 1, name: '서울' },
+          { id: 2, name: '경기도' },
         ],
-        selectedCatId: 0,
+        selectedRegionId: 0,
       }));
-
       const { getByText } = render((
-        <CategoriesContainer />
+        <RegionsContainer />
       ));
-      fireEvent.click(getByText('일식'));
+      fireEvent.click(getByText('경기도'));
 
       expect(dispatch).toBeCalledWith({
-        type: 'setSelectedCatId',
+        type: 'setSelectedRegionId',
         payload: {
           id: 2,
         },

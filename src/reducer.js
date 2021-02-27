@@ -1,17 +1,18 @@
-const initialRestaurant = {
-  name: '',
-  category: '',
-  address: '',
-};
-
 const intialState = {
   newId: 100,
   restaurants: [],
-  restaurant: initialRestaurant,
+  restaurant: {
+    name: '',
+    category: '',
+    address: '',
+  },
   categories: [],
+  selectedCatId: 0,
+  regions: [],
+  selectedRegionId: 0,
 };
 
-export default function reducer(state = intialState, action) {
+export default function reducer(state = intialState, action = {}) {
   if (action.type === 'setRestaurants') {
     const { restaurants } = action.payload;
     return {
@@ -35,10 +36,13 @@ export default function reducer(state = intialState, action) {
       ...state,
       newId: newId + 1,
       restaurants: [...restaurants, { ...restaurant, id: newId }],
-      restaurant: initialRestaurant,
+      restaurant: {
+        name: '',
+        category: '',
+        address: '',
+      },
     };
   }
-
   if (action.type === 'setCategories') {
     const { categories } = action.payload;
     return {
@@ -46,5 +50,27 @@ export default function reducer(state = intialState, action) {
       categories,
     };
   }
+  if (action.type === 'setSelectedCatId') {
+    const { id } = action.payload;
+    return {
+      ...state,
+      selectedCatId: id,
+    };
+  }
+  if (action.type === 'setRegions') {
+    const { regions } = action.payload;
+    return {
+      ...state,
+      regions,
+    };
+  }
+  if (action.type === 'setSelectedRegionId') {
+    const { id } = action.payload;
+    return {
+      ...state,
+      selectedRegionId: id,
+    };
+  }
+
   return state;
 }

@@ -4,10 +4,11 @@ import { useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
+import RegionsContainer from './RegionsContainer';
 
 import {
-  loadRestaurants,
   loadCategories,
+  loadRegions,
 } from './actions';
 
 export default function App() {
@@ -15,13 +16,13 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadCategories());
-    dispatch(loadRestaurants());
+    dispatch(loadRegions());
   }, []);
   return (
     <div>
-      <h1>Restaurants</h1>
       <CategoriesContainer />
       <RestaurantsContainer />
+      <RegionsContainer />
     </div>
   );
 }
