@@ -37,8 +37,8 @@ describe('actions', () => {
     context('when region and category are selected', () => {
       it('updates restaurants data', async () => {
         const store = mockStore({
-          selectedRegion: '서울',
-          selectedCategory: 1,
+          selectedRegion: { name: '서울' },
+          selectedCategory: { id: 1 },
         });
 
         await store.dispatch(loadRestaurants());
@@ -52,15 +52,15 @@ describe('actions', () => {
     context('when region and category are not selected', () => {
       it('updates nothing', async () => {
         const store = mockStore({
-          selectedRegion: '',
-          selectedCategory: '',
+          selectedRegion: { name: '' },
+          selectedCategory: { id: '' },
         });
 
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
 
-        expect(actions).toHaveLength(0);
+        expect(actions[0].type).not.toBe('setRestaurants');
       });
     });
   });
