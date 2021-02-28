@@ -7,14 +7,14 @@ import CategoriesContianer from './CategoriesContainer';
 import RestaurantsContianer from './RestaurantsContainer';
 
 import {
-  loadDefaultData,
+  loadInitialData,
 } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadDefaultData());
+    dispatch(loadInitialData());
   }, []);
 
   return (

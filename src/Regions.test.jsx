@@ -15,11 +15,11 @@ describe('Regions', () => {
     handleClick.mockClear();
   });
 
-  function renderRegions(name) {
+  function renderRegions(id) {
     return render((
       <Regions
         regions={regions}
-        selectedRegion={name}
+        selectedRegion={id}
         onClick={handleClick}
       />
 
@@ -41,7 +41,7 @@ describe('Regions', () => {
   });
 
   it('renders selected button with "V" ', () => {
-    const { queryByText } = renderRegions('서울');
+    const { queryByText } = renderRegions(1);
 
     expect(queryByText('서울(V)')).not.toBeNull();
   });

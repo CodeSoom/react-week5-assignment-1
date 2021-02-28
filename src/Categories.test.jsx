@@ -15,11 +15,11 @@ describe('Categories', () => {
     handleClick.mockClear();
   });
 
-  function renderCategory(name) {
+  function renderCategory(id) {
     return render((
       <Categories
         categories={categories}
-        selectedCategory={name}
+        selectedCategory={id}
         onClick={handleClick}
       />
 
@@ -41,7 +41,7 @@ describe('Categories', () => {
   });
 
   it('renders selected button with "V" ', () => {
-    const { queryByText } = renderCategory('한식');
+    const { queryByText } = renderCategory(1);
 
     expect(queryByText('한식(V)')).not.toBeNull();
   });
