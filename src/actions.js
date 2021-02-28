@@ -51,16 +51,15 @@ export function loadInitialData() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const {
-      selectedRegion: { name },
-      selectedCategory: { id },
-    } = getState();
+    const { selectedRegion, selectedCategory } = getState();
 
-    // if (!selectedRegion || !selectedCategory) {
-    //   return;
-    // }
+    if (!selectedRegion || !selectedCategory) {
+      return;
+    }
 
-    const restaurants = await fetchRestaurants(name, id);
+    const restaurants = await fetchRestaurants(
+      { selectedRegion, selectedCategory },
+    );
 
     dispatch(setRestaurants(restaurants));
   };

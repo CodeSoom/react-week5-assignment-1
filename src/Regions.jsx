@@ -8,10 +8,10 @@ export default function Regions({ regions, selectedRegion, onClick }) {
           <li key={id}>
             <button
               type="button"
-              onClick={() => onClick(id)}
+              onClick={() => onClick(name)}
             >
               {name}
-              {selectedRegion === id ? '(V)' : ''}
+              {selectedRegion === name ? '(V)' : ''}
             </button>
           </li>
         ))}

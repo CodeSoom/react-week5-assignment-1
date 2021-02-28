@@ -50,8 +50,8 @@ describe('api', () => {
       });
 
       const data = await fetchRestaurants({
-        regionName: '서울',
-        categoryId: 1,
+        selectedRegion: '서울',
+        selectedCategory: 1,
       });
 
       expect(data).toEqual(restaurants);
