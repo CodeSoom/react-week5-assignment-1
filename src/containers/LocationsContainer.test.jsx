@@ -39,11 +39,4 @@ describe('LocationContainer', () => {
 
     expect(dispatch).toBeCalled();
   });
-
-  it('선택한 값은 V표기 합니다.', () => {
-    const selectedLocationName = '서울';
-    const { queryByText } = renderLocationsContainer(selectedLocationName);
-
-    expect(queryByText('서울(V)')).not.toBeNull();
-  });
 });

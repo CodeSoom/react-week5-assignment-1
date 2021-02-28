@@ -9,20 +9,21 @@ import { updateSelectedCategory } from '../actions';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { selectedCategoryName, categories } = useSelector((state) => ({
-    selectedCategoryName: state.selectedCategoryName,
+  const { selectedCategory, categories } = useSelector((state) => ({
+    selectedCategory: state.selectedCategory,
     categories: state.categories,
   }));
 
-  function handleClickCategory(categoryName) {
-    dispatch(updateSelectedCategory(categoryName));
+  function handleClickCategory(categoryId) {
+    const category = categories.find(({ id }) => id === categoryId);
+    return dispatch(updateSelectedCategory(category));
   }
 
   return (
     <Categories
       categories={categories}
-      onCick={handleClickCategory}
-      selectedcategoryname={selectedCategoryName}
+      onClick={handleClickCategory}
+      selectedId={selectedCategory.id}
     />
   );
 }

@@ -40,11 +40,4 @@ describe('CategoriesContainer', () => {
 
     expect(dispatch).toBeCalled();
   });
-
-  it('선택한 값은 V표기 합니다.', () => {
-    const selectedCategoryName = '한식';
-    const { queryByText } = renderCategories(selectedCategoryName);
-
-    expect(queryByText('한식(V)')).not.toBeNull();
-  });
 });

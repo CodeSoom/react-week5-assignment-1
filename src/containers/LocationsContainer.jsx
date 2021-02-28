@@ -9,20 +9,21 @@ import { updateSelectedLocation } from '../actions';
 export default function LocationsContainer() {
   const dispatch = useDispatch();
 
-  const { selectedLocationName, locations } = useSelector((state) => ({
-    selectedLocationName: state.selectedLocationName,
+  const { selectedLocation, locations } = useSelector((state) => ({
+    selectedLocation: state.selectedLocation,
     locations: state.locations,
   }));
 
-  function handleClickLocation(locationName) {
-    dispatch(updateSelectedLocation(locationName));
+  function handleClickLocation(locationId) {
+    const location = locations.find(({ id }) => id === locationId);
+    return dispatch(updateSelectedLocation(location));
   }
 
   return (
     <Locations
       locations={locations}
-      onCick={handleClickLocation}
-      value={selectedLocationName}
+      onClick={handleClickLocation}
+      selectedId={selectedLocation.id}
     />
   );
 }

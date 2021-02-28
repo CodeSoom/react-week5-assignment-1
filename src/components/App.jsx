@@ -17,9 +17,9 @@ import {
 export default function App() {
   const dispatch = useDispatch();
 
-  const { locationName, categoryName } = useSelector((state) => ({
-    locationName: state.selectedLocationName,
-    categoryName: state.selectedCategoryName,
+  const { location, category } = useSelector((state) => ({
+    location: state.selectedLocation,
+    category: state.selectedCategory,
   }));
 
   useEffect(() => {
@@ -28,10 +28,10 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (locationName && categoryName) {
-      dispatch(loadRestaurants(locationName, categoryName));
+    if (location.id !== '' && category.id !== '') {
+      dispatch(loadRestaurants(location.name, category.id));
     }
-  }, [locationName, categoryName]);
+  }, [location, category]);
 
   return (
     <div>

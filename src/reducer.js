@@ -2,58 +2,32 @@ const initialState = {
   locations: [],
   categories: [],
   restaurants: [],
-  selectedLocationName: null,
-  selectedCategoryName: null,
+  selectedLocation: { id: '', name: '' },
+  selectedCategory: { id: '', name: '' },
 };
 
-function updateSelectdLocation(state, action) {
-  const { selectedLocationName } = action.payload;
-  return ({
+export const reducers = {
+  updateSelectedLocation: (state, { payload: { location } }) => ({
     ...state,
-    selectedLocationName,
-  });
-}
-
-function updateSelectedCategory(state, action) {
-  const { selectedCategoryName } = action.payload;
-  return ({
+    selectedLocation: location,
+  }),
+  updateSelectedCategory: (state, { payload: { category } }) => ({
     ...state,
-    selectedCategoryName,
-  });
-}
-
-function setLocations(state, action) {
-  const { locations } = action.payload;
-  return ({
+    selectedCategory: category,
+  }),
+  setLocations: (state, { payload: { locations } }) => ({
     ...state,
     locations,
-  });
-}
-
-function setCategories(state, action) {
-  const { categories } = action.payload;
-  return ({
+  }),
+  setCategories: (state, { payload: { categories } }) => ({
     ...state,
     categories,
-  });
-}
-
-function setRestaurants(state, action) {
-  const { restaurants } = action.payload;
-  return ({
+  }),
+  setRestaurants: (state, { payload: { restaurants } }) => ({
     ...state,
     restaurants,
-  });
-}
-
+  }),
+};
 export default function reducer(state = initialState, action) {
-  const reducers = {
-    updateSelectdLocation: updateSelectdLocation(state, action),
-    updateSelectedCategory: updateSelectedCategory(state, action),
-    setLocations: setLocations(state, action),
-    setCategories: setCategories(state, action),
-    setRestaurants: setRestaurants(state, action),
-  };
-
-  return reducers[action.type] || state;
+  return reducers[action.type] ? reducers[action.type](state, action) : state;
 }

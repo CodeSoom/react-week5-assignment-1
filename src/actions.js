@@ -4,17 +4,17 @@ import {
   fetchRestaurants,
 } from './services/api';
 
-export function updateSelectedLocation(selectedLocationName) {
+export function updateSelectedLocation(location) {
   return {
     type: 'updateSelectedLocation',
-    payload: { selectedLocationName },
+    payload: { location },
   };
 }
 
-export function updateSelectedCategory(selectedCategoryName) {
+export function updateSelectedCategory(category) {
   return {
     type: 'updateSelectedCategory',
-    payload: { selectedCategoryName },
+    payload: { category },
   };
 }
 
@@ -53,9 +53,9 @@ export function loadCategories() {
   };
 }
 
-export function loadRestaurants() {
+export function loadRestaurants(name, id) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants();
+    const restaurants = await fetchRestaurants(name, id);
     dispatch(setRestaurants(restaurants));
   };
 }
