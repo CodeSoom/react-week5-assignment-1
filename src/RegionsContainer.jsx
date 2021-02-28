@@ -6,6 +6,7 @@ import Regions from './Regions';
 
 import {
   selectRegion,
+  loadRestaurants,
 } from './actions';
 
 export default function RegionsContianer() {
@@ -18,6 +19,7 @@ export default function RegionsContianer() {
 
   const handleClickRegion = (region) => {
     dispatch(selectRegion(region));
+    dispatch(loadRestaurants());
   };
 
   return (
