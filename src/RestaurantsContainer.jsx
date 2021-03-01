@@ -11,18 +11,15 @@ import {
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();
 
-  const { region, category } = useSelector((state) => ({
+  const { region, category, restaurants } = useSelector((state) => ({
     region: state.region,
     category: state.category,
+    restaurants: state.restaurants,
   }));
 
   useEffect(() => {
     dispatch(loadRestaurants(region, category));
   }, []);
-
-  const { restaurants } = useSelector((state) => ({
-    restaurants: state.restaurants,
-  }));
 
   return (
     <Restaurants
