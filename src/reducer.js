@@ -1,6 +1,7 @@
 const initialState = {
   currentRegion: '',
   currentCategory: '',
+  regions: [],
   categories: [],
   restaurants: [],
 };
@@ -12,6 +13,14 @@ const actionFunctions = {
     return {
       ...state,
       currentRegion,
+    };
+  },
+  setRegions: (state, action) => {
+    const { regions } = action.payload;
+
+    return {
+      ...state,
+      regions,
     };
   },
   setCategory: (state, action) => {

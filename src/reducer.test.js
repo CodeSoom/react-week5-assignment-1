@@ -116,7 +116,7 @@ describe('reducer', () => {
       it('set regions', () => {
         const state = reducer(initialState, setRegions(regions));
 
-        expect(state.categories).toHaveLength(2);
+        expect(state.regions).toHaveLength(2);
       });
     });
   });
