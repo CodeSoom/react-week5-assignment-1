@@ -32,7 +32,7 @@ describe('CategoryButtons', () => {
       expect(getByText('한식')).not.toBeNull();
     });
 
-    it('marks the clicked button', () => {
+    it('renders "V mark" to the clicked button', () => {
       const { getByText } = renderCategoryButtons();
 
       fireEvent.click(getByText('한식'));
