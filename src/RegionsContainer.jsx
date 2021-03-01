@@ -22,7 +22,7 @@ export default function RegionsContainer() {
     <Buttons
       buttons={regions}
       handleClick={setSelected}
-      selected={selectedRegion && selectedRegion.id}
+      selected={selectedRegion?.id}
     />
   );
 }
