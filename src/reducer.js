@@ -5,42 +5,43 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setRegion') {
+const actionFunctions = {
+  setRegion: (state, action) => {
     const { currentRegion } = action.payload;
 
     return {
       ...state,
       currentRegion,
     };
-  }
-
-  if (action.type === 'setCategory') {
+  },
+  setCategory: (state, action) => {
     const { currentCategory } = action.payload;
 
     return {
       ...state,
       currentCategory,
     };
-  }
-
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
-
-    return {
-      ...state,
-      restaurants,
-    };
-  }
-
-  if (action.type === 'setCategories') {
+  },
+  setCategories: (state, action) => {
     const { categories } = action.payload;
 
     return {
       ...state,
       categories,
     };
-  }
+  },
+  setRestaurants: (state, action) => {
+    const { restaurants } = action.payload;
 
-  return state;
+    return {
+      ...state,
+      restaurants,
+    };
+  },
+};
+
+const defaultFunction = (state) => state;
+
+export default function reducer(state = initialState, action) {
+  return (actionFunctions[action.type] || defaultFunction)(state, action);
 }
