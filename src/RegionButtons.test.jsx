@@ -6,11 +6,11 @@ import RegionButtons from './RegionButtons';
 
 import regions from './__fixture__/regions';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('RegionButtons', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const handleClick = jest.fn();
 
   function renderRegionButtons(currentRegion) {

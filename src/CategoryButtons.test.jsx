@@ -6,11 +6,11 @@ import CategoryButtons from './CategoryButtons';
 
 import categories from './__fixture__/categories';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('CategoryButtons', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const handleClick = jest.fn();
 
   function renderCategoryButtons(currentCategory) {

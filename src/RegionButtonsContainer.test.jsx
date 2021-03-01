@@ -6,21 +6,21 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionButtonsContainer from './RegionButtonsContainer';
 
-jest.mock('react-redux');
-
-const dispatch = jest.fn();
-
-beforeEach(() => {
-  jest.clearAllMocks();
-
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    currentRegion: '',
-  }));
-});
-
 describe('RegionButtonsContainer', () => {
+  jest.mock('react-redux');
+
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      currentRegion: '',
+    }));
+  });
+
   it('renders restaurant region buttons', () => {
     const { getByText } = render(<RegionButtonsContainer />);
 

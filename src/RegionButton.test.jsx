@@ -4,11 +4,11 @@ import { render } from '@testing-library/react';
 
 import RegionButton from './RegionButton';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('RegionButton', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders region button', () => {
     const handleClick = jest.fn();
 

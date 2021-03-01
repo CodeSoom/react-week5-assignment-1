@@ -4,11 +4,11 @@ import { render } from '@testing-library/react';
 
 import CategoryButton from './CategoryButton';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('CategoryButton', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders category button', () => {
     const handleClick = jest.fn();
 

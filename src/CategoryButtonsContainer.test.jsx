@@ -6,21 +6,21 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CategoryButtonsContainer from './CategoryButtonsContainer';
 
-jest.mock('react-redux');
-
-const dispatch = jest.fn();
-
-beforeEach(() => {
-  jest.clearAllMocks();
-
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    currentCategory: '',
-  }));
-});
-
 describe('CategoryButtonsContainer', () => {
+  jest.mock('react-redux');
+
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      currentCategory: '',
+    }));
+  });
+
   it('renders restaurant category buttons', () => {
     const { getByText } = render(<CategoryButtonsContainer />);
 

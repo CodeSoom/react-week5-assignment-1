@@ -6,23 +6,23 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-jest.mock('react-redux');
-
-const dispatch = jest.fn();
-
-beforeEach(() => {
-  jest.clearAllMocks();
-
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    currentRegion: '',
-    currentCategory: '',
-    restaurants: [],
-  }));
-});
-
 describe('App', () => {
+  jest.mock('react-redux');
+
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      currentRegion: '',
+      currentCategory: '',
+      restaurants: [],
+    }));
+  });
+
   it('renders restaurant region buttons', () => {
     const { getByText } = render(<App />);
 

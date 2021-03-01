@@ -6,21 +6,21 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-jest.mock('react-redux');
-
-const dispatch = jest.fn();
-
-beforeEach(() => {
-  jest.clearAllMocks();
-
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [],
-  }));
-});
-
 describe('RestaurantsContainer', () => {
+  jest.mock('react-redux');
+
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [],
+    }));
+  });
+
   context('without restaurants', () => {
     it('renders restaurants', () => {
       const { queryByText } = render(<RestaurantsContainer />);
