@@ -16,8 +16,10 @@ export async function fetchCategories() {
   return data;
 }
 
+const isEmptyString = (str) => (str === undefined || str === '');
+
 export async function fetchRestaurants(regionName, categoryId) {
-  if (regionName === undefined || categoryId === undefined) {
+  if (isEmptyString(regionName) || isEmptyString(categoryId)) {
     return [];
   }
 

@@ -11,15 +11,15 @@ import {
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();
 
-  const { currentRegionName, currentCategoryId, restaurants } = useSelector((state) => ({
-    curerntRegionName: state.currentRegionName,
+  const { currentRegion, currentCategoryId, restaurants } = useSelector((state) => ({
+    currentRegion: state.currentRegion,
     currentCategoryId: state.currentCategoryId,
     restaurants: state.restaurants,
   }));
 
   useEffect(() => {
-    dispatch(loadRestaurants(currentRegionName, currentCategoryId));
-  }, []);
+    dispatch(loadRestaurants(currentRegion, currentCategoryId));
+  }, [currentRegion, currentCategoryId]);
 
   return (
     <Restaurants

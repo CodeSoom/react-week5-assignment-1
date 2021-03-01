@@ -8,24 +8,23 @@ import {
   setCategory,
 } from './actions';
 
-import categories from './__fixture__/categories';
-
 export default function CategoryButtonsContainer() {
   const dispatch = useDispatch();
 
-  const { currentCategory } = useSelector((state) => ({
-    currentCategory: state.currentCategory,
+  const { currentCategoryId, categories } = useSelector((state) => ({
+    currentCategoryId: state.currentCategoryId,
+    categories: state.categories,
   }));
 
-  function handleClick(category) {
-    dispatch(setCategory(category));
+  function handleClick(categoryId) {
+    dispatch(setCategory(categoryId));
   }
 
   return (
     <CategoryButtons
       categories={categories}
       onClick={handleClick}
-      currentCategory={currentCategory}
+      currentCategoryId={currentCategoryId}
     />
   );
 }

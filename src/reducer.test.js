@@ -50,13 +50,13 @@ describe('reducer', () => {
 
     describe('setCategory', () => {
       const initialState = {
-        currentCategory: '',
+        currentCategoryId: '',
       };
 
       it('sets category', () => {
-        const state = reducer(initialState, setCategory('한식'));
+        const state = reducer(initialState, setCategory(1));
 
-        expect(state.currentCategory).toBe('한식');
+        expect(state.currentCategoryId).toBe(1);
       });
     });
 

@@ -30,11 +30,11 @@ export function loadRegions() {
   };
 }
 
-export function setCategory(currentCategory) {
+export function setCategory(currentCategoryId) {
   return {
     type: 'setCategory',
     payload: {
-      currentCategory,
+      currentCategoryId,
     },
   };
 }

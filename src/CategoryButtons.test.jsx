@@ -13,21 +13,21 @@ describe('CategoryButtons', () => {
 
   const handleClick = jest.fn();
 
-  function renderCategoryButtons(currentCategory) {
+  function renderCategoryButtons(currentCategoryId) {
     return render((
       <CategoryButtons
         categories={categories}
         onClick={handleClick}
-        currentCategory={currentCategory}
+        currentCategoryId={currentCategoryId}
       />
     ));
   }
 
   context('without current category', () => {
-    const currentCategory = '';
+    const currentCategoryId = '';
 
     it('renders restaurant category buttons', () => {
-      const { getByText } = renderCategoryButtons(currentCategory);
+      const { getByText } = renderCategoryButtons(currentCategoryId);
 
       expect(getByText('한식')).not.toBeNull();
     });
@@ -42,10 +42,10 @@ describe('CategoryButtons', () => {
   });
 
   context('with current category', () => {
-    const currentCategory = '한식';
+    const currentCategoryId = 1;
 
     it('appends "V" mark into the button text', () => {
-      const { getByText } = renderCategoryButtons(currentCategory);
+      const { getByText } = renderCategoryButtons(currentCategoryId);
 
       expect(getByText('한식V')).not.toBeNull();
     });

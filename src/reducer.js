@@ -24,11 +24,11 @@ const actionFunctions = {
     };
   },
   setCategory: (state, action) => {
-    const { currentCategory } = action.payload;
+    const { currentCategoryId } = action.payload;
 
     return {
       ...state,
-      currentCategory,
+      currentCategoryId,
     };
   },
   setCategories: (state, action) => {

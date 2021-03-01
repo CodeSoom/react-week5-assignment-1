@@ -16,7 +16,7 @@ describe('CategoryButton', () => {
       <CategoryButton
         name="한식"
         onClick={handleClick}
-        currentRegion=""
+        selected={false}
       />
     ));
 
