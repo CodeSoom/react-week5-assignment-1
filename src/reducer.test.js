@@ -26,7 +26,7 @@ describe('reducer', () => {
       context('without previous state', () => {
         const initialState = undefined;
 
-        it('set region using initial state', () => {
+        it('sets region using initial state', () => {
           const state = reducer(initialState, setRegion('서울'));
 
           expect(state.currentRegion).toBe('서울');
@@ -38,7 +38,7 @@ describe('reducer', () => {
           currentRegion: '',
         };
 
-        it('set region', () => {
+        it('sets region', () => {
           const state = reducer(initialState, setRegion('서울'));
 
           expect(state.currentRegion).toBe('서울');
@@ -51,7 +51,7 @@ describe('reducer', () => {
         currentCategory: '',
       };
 
-      it('set category', () => {
+      it('sets category', () => {
         const state = reducer(initialState, setCategory('한식'));
 
         expect(state.currentCategory).toBe('한식');
