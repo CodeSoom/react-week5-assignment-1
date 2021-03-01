@@ -5,10 +5,10 @@ import CategoryButton from './CategoryButton';
 export default function CategoryButtons({ categories, onClick, currentCategory }) {
   return (
     <ul>
-      { categories.map((category, index) => (
+      { categories.map((category) => (
         <CategoryButton
-          key={index.toString()}
-          name={category}
+          key={category.id}
+          name={category.name}
           onClick={onClick}
           currentCategory={currentCategory}
         />

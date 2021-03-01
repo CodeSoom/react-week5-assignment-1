@@ -1,5 +1,5 @@
-export async function fetchRestaurants(region, category) {
-  const url = 'https://eatgo-customer-api.ahastudio.com/restaurants';
+export async function fetchCategories() {
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
 
   const response = await fetch(url);
   const data = await response.json();
@@ -7,7 +7,16 @@ export async function fetchRestaurants(region, category) {
   return data;
 }
 
-// TODO: delete this
-export function xxx() {
+export async function fetchRestaurants(regionName, categoryId) {
+  if (regionName === undefined || categoryId === undefined) {
+    return [];
+  }
 
+  const url = 'https://eatgo-customer-api.ahastudio.com/restaurants';
+  const params = `?region=${regionName}&category=${categoryId}`;
+
+  const response = await fetch(`${url}${params}`);
+  const data = await response.json();
+
+  return data;
 }

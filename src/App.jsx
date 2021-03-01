@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useDisaptch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-imoprt {
-  loadCategories
-} from './action.js'
+import {
+  loadRegions,
+  loadCategories,
+} from './actions';
 
 import RegionButtonsContainer from './RegionButtonsContainer';
 import CategoryButtonsContainer from './CategoryButtonsContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(loadRegions());
     dispatch(loadCategories());
   });
 

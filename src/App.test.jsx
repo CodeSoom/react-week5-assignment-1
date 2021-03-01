@@ -8,6 +8,7 @@ import App from './App';
 
 describe('App', () => {
   jest.mock('react-redux');
+  jest.mock('api');
 
   const dispatch = jest.fn();
 
