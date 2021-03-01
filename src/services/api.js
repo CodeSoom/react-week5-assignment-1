@@ -7,6 +7,7 @@ export async function fetchRestaurants(region, category) {
   return data;
 }
 
+// TODO: delete this
 export function xxx() {
 
 }
