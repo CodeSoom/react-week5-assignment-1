@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionButtonsContainer from './RegionButtonsContainer';
 
+import regions from './__fixture__/regions';
+
 describe('RegionButtonsContainer', () => {
   jest.mock('react-redux');
 
@@ -18,6 +20,7 @@ describe('RegionButtonsContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       currentRegion: '',
+      regions,
     }));
   });
 

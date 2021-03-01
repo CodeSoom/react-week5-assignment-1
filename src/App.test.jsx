@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import regions from './__fixture__/regions';
+import categories from './__fixture__/categories';
+
 describe('App', () => {
   jest.mock('react-redux');
   jest.mock('api');
@@ -20,6 +23,8 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       currentRegion: '',
       currentCategory: '',
+      regions,
+      categories,
       restaurants: [],
     }));
   });

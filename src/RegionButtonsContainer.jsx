@@ -8,12 +8,11 @@ import {
   setRegion,
 } from './actions';
 
-import regions from './__fixture__/regions';
-
 export default function RegionButtonsContainer() {
   const dispatch = useDispatch();
 
-  const { currentRegion } = useSelector((state) => ({
+  const { regions, currentRegion } = useSelector((state) => ({
+    regions: state.regions,
     currentRegion: state.currentRegion,
   }));
 
