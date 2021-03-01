@@ -15,10 +15,10 @@ export default function Restaurants({ restaurants }) {
 
   return (
     <ul>
-      { restaurants.map((item, index) => (
+      { restaurants.map((restaurant) => (
         <Restaurant
-          key={index.toString()}
-          name={item}
+          key={restaurant.id}
+          name={restaurant.name}
         />
       ))}
     </ul>

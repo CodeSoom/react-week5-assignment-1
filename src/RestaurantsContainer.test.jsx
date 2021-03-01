@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+import restaurants from './__fixture__/restaurants';
+
 describe('RestaurantsContainer', () => {
   jest.mock('react-redux');
 
@@ -34,12 +36,13 @@ describe('RestaurantsContainer', () => {
       useSelector.mockImplementation((selector) => selector({
         currentRegion: '서울',
         currentCategory: '한식',
+        restaurants,
       }));
 
       const { getByText } = render(<RestaurantsContainer />);
 
-      expect(getByText('홍콩반점')).not.toBeNull();
-      expect(getByText('포방터 돈까스')).not.toBeNull();
+      expect(getByText('양천주가')).not.toBeNull();
+      expect(getByText('한국식 초밥')).not.toBeNull();
     });
   });
 });
