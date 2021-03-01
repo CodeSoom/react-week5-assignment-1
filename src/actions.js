@@ -18,6 +18,23 @@ export function setCategory(currentCategory) {
   };
 }
 
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = [];
+
+    dispatch(setCategories(categories));
+  };
+}
+
 export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',

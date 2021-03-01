@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setRegion,
   setCategory,
+  setCategories,
   setRestaurants,
 } from './actions';
 
@@ -64,14 +65,41 @@ describe('reducer', () => {
       };
 
       const restaurants = [
-        '홍콩반점',
-        '포방터 돈까스',
+        {
+          id: 1,
+          categoryId: 1,
+          name: '양천주가',
+          address: '서울 강남구 123456',
+          information: '양천주가 in 서울 강남구 123456',
+        }, {
+          id: 6,
+          categoryId: 1,
+          name: '한국식 초밥',
+          address: '서울 강남구',
+          information: '한국식 초밥 in 서울 강남구',
+        },
       ];
 
       it('set restaurants', () => {
         const state = reducer(initialState, setRestaurants(restaurants));
 
         expect(state.restaurants).toHaveLength(2);
+      });
+    });
+
+    describe('setCategories', () => {
+      const initialState = {
+        categories: [],
+      };
+
+      const categories = [
+        { id: 1, name: '한식' }, { id: 2, name: '중식' },
+      ];
+
+      it('set restaurants', () => {
+        const state = reducer(initialState, setCategories(categories));
+
+        expect(state.categories).toHaveLength(2);
       });
     });
   });
