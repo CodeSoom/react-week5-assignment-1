@@ -47,12 +47,15 @@ export default function App() {
     setSelectedRegion(name);
   };
 
-  const handleCategoryClick = (category) => {
-    const { name } = category;
+  const setSelectedCategory = (name) => {
     setState({
       ...state,
       selectedCategory: name,
     });
+  };
+
+  const handleCategoryClick = (name) => {
+    setSelectedCategory(name);
   };
 
   return (
