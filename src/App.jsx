@@ -12,7 +12,16 @@ export default function App() {
         name: '대전',
       },
     ],
-    categories: [],
+    categories: [
+      {
+        id: 1,
+        name: '한식',
+      },
+      {
+        id: 2,
+        name: '중식',
+      },
+    ],
   });
 
   const handleClick = () => {
@@ -31,16 +40,13 @@ export default function App() {
         ))}
       </ul>
       <ul>
-        <li>
-          <button type="button" onClick={handleClick}>
-            한식
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={handleClick}>
-            중식
-          </button>
-        </li>
+        {state.categories.map((category) => (
+          <li key={category.id}>
+            <button type="button" onClick={handleClick}>
+              {category.name}
+            </button>
+          </li>
+        ))}
       </ul>
     </>
   );
