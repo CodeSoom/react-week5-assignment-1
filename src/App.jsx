@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function App() {
+  const [state, setState] = useState({
+    regions: [
+      {
+        id: 1,
+        name: '서울',
+      },
+      {
+        id: 2,
+        name: '대전',
+      },
+    ],
+    categories: [],
+  });
+
   const handleClick = () => {
 
   };
@@ -8,16 +22,13 @@ export default function App() {
   return (
     <>
       <ul>
-        <li>
-          <button type="button" onClick={handleClick}>
-            서울
-          </button>
-        </li>
-        <li>
-          <button type="button" onClick={handleClick}>
-            대전
-          </button>
-        </li>
+        {state.regions.map((region) => (
+          <li key={region.id}>
+            <button type="button" onClick={handleClick}>
+              {region.name}
+            </button>
+          </li>
+        ))}
       </ul>
       <ul>
         <li>
