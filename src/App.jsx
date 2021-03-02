@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSelectedRegion } from './actions';
 
 export default function App() {
   const [state, setState] = useState({
@@ -36,15 +38,10 @@ export default function App() {
     ],
   });
 
-  const setSelectedRegion = (name) => {
-    setState({
-      ...state,
-      selectedRegion: name,
-    });
-  };
+  const dispatch = useDispatch;
 
   const handleRegionClick = (name) => {
-    setSelectedRegion(name);
+    dispatch(setSelectedRegion(name));
   };
 
   const setSelectedCategory = (name) => {
