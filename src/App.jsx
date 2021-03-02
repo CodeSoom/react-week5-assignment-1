@@ -22,10 +22,24 @@ export default function App() {
         name: '중식',
       },
     ],
+    selectedRegion: '',
+    selectedCategory: '',
   });
 
-  const handleClick = () => {
+  const handleRegionClick = (region) => {
+    const { name } = region;
+    setState({
+      ...state,
+      selectedRegion: name,
+    });
+  };
 
+  const handleCategoryClick = (category) => {
+    const { name } = category;
+    setState({
+      ...state,
+      selectedCategory: name,
+    });
   };
 
   return (
@@ -33,7 +47,7 @@ export default function App() {
       <ul>
         {state.regions.map((region) => (
           <li key={region.id}>
-            <button type="button" onClick={handleClick}>
+            <button type="button" onClick={() => handleRegionClick(region)}>
               {region.name}
             </button>
           </li>
@@ -42,7 +56,7 @@ export default function App() {
       <ul>
         {state.categories.map((category) => (
           <li key={category.id}>
-            <button type="button" onClick={handleClick}>
+            <button type="button" onClick={() => handleCategoryClick(category)}>
               {category.name}
             </button>
           </li>
