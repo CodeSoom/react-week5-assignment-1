@@ -1,44 +1,16 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSelectedCategory, setSelectedRegion } from './actions';
+import { get } from './utils';
 
 export default function App() {
-  const [state, setState] = useState({
-    regions: [
-      {
-        id: 1,
-        name: '서울',
-      },
-      {
-        id: 2,
-        name: '대전',
-      },
-    ],
-    categories: [
-      {
-        id: 1,
-        name: '한식',
-      },
-      {
-        id: 2,
-        name: '중식',
-      },
-    ],
-    selectedRegion: '',
-    selectedCategory: '',
-    restaurants: [
-      {
-        id: 1,
-        name: '양천주가',
-      },
-      {
-        id: 2,
-        name: '한국식 초밥',
-      },
-    ],
-  });
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch;
+  const regions = useSelector(get('regions'));
+  const selectedRegion = useSelector(get('selectedRegion'));
+  const categories = useSelector(get('categories'));
+  const selectedCategory = useSelector(get('selectedCategory'));
+  const restaurants = useSelector(get('restaurants'));
 
   const handleRegionClick = (name) => {
     dispatch(setSelectedRegion(name));
@@ -51,7 +23,7 @@ export default function App() {
   return (
     <>
       <ul>
-        {state.regions.map((region) => (
+        {regions.map((region) => (
           <li key={region.id}>
             <button type="button" onClick={() => handleRegionClick(region.name)}>
               {region.name}
@@ -60,7 +32,7 @@ export default function App() {
         ))}
       </ul>
       <ul>
-        {state.categories.map((category) => (
+        {categories.map((category) => (
           <li key={category.id}>
             <button type="button" onClick={() => handleCategoryClick(category)}>
               {category.name}
@@ -68,13 +40,14 @@ export default function App() {
           </li>
         ))}
       </ul>
-      {state.selectedCategory && state.selectedRegion
-        ? state.restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurant.name}
-          </li>
-        )) : null}
-      <ul />
+      <ul>
+        {selectedCategory && selectedRegion
+          ? restaurants.map((restaurant) => (
+            <li key={restaurant.id}>
+              {restaurant.name}
+            </li>
+          )) : null}
+      </ul>
     </>
   );
 }
