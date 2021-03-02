@@ -5,6 +5,9 @@ export function setSelectedRegion(name) {
   };
 }
 
-export function xxx() {
-  // TODO: delete this
+export function setSelectedCategory(name) {
+  return {
+    type: 'setSelectedCategory',
+    payload: { name },
+  };
 }
