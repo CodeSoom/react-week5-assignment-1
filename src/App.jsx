@@ -3,8 +3,22 @@ import React from 'react';
 export default function App() {
   return (
     <>
-      <p>서울</p>
-      <p>한식</p>
+      <ul>
+        <li>
+          서울
+        </li>
+        <li>
+          대전
+        </li>
+      </ul>
+      <ul>
+        <li>
+          한식
+        </li>
+        <li>
+          중식
+        </li>
+      </ul>
     </>
   );
 }
