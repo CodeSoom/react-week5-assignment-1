@@ -36,12 +36,15 @@ export default function App() {
     ],
   });
 
-  const handleRegionClick = (region) => {
-    const { name } = region;
+  const setSelectedRegion = (name) => {
     setState({
       ...state,
       selectedRegion: name,
     });
+  };
+
+  const handleRegionClick = (name) => {
+    setSelectedRegion(name);
   };
 
   const handleCategoryClick = (category) => {
@@ -57,7 +60,7 @@ export default function App() {
       <ul>
         {state.regions.map((region) => (
           <li key={region.id}>
-            <button type="button" onClick={() => handleRegionClick(region)}>
+            <button type="button" onClick={() => handleRegionClick(region.name)}>
               {region.name}
             </button>
           </li>
