@@ -24,6 +24,16 @@ export default function App() {
     ],
     selectedRegion: '',
     selectedCategory: '',
+    restaurants: [
+      {
+        id: 1,
+        name: '양천주가',
+      },
+      {
+        id: 2,
+        name: '한국식 초밥',
+      },
+    ],
   });
 
   const handleRegionClick = (region) => {
@@ -62,6 +72,13 @@ export default function App() {
           </li>
         ))}
       </ul>
+      {state.selectedCategory && state.selectedRegion
+        ? state.restaurants.map((restaurant) => (
+          <li key={restaurant.id}>
+            {restaurant.name}
+          </li>
+        )) : null}
+      <ul />
     </>
   );
 }
