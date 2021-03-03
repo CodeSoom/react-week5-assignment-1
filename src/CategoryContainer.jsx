@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import { get } from './utils';
-import { setSelectedCategory } from './actions';
+import { loadCategories, setSelectedCategory } from './actions';
 
 export default function CategoryContainer() {
   const dispatch = useDispatch();
@@ -13,6 +13,10 @@ export default function CategoryContainer() {
   const handleCategoryClick = (name) => {
     dispatch(setSelectedCategory(name));
   };
+
+  useEffect(() => {
+    dispatch(loadCategories());
+  });
 
   return (
     <>

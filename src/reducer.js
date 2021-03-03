@@ -9,16 +9,7 @@ const initialState = {
       name: '대전',
     },
   ],
-  categories: [
-    {
-      id: 1,
-      name: '한식',
-    },
-    {
-      id: 2,
-      name: '중식',
-    },
-  ],
+  categories: [],
   selectedRegion: '',
   selectedCategory: '',
   restaurants: [
@@ -50,7 +41,7 @@ export default function reducer(state = initialState, action) {
     });
   }
 
-  if (action.type === 'setCategoreis') {
+  if (action.type === 'setCategories') {
     const { categories } = action.payload;
     return ({
       ...state,
