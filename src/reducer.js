@@ -49,5 +49,14 @@ export default function reducer(state = initialState, action) {
       selectedCategory: name,
     });
   }
+
+  if (action.type === 'setCategoreis') {
+    const { categories } = action.payload;
+    return ({
+      ...state,
+      categories,
+    });
+  }
+
   return state;
 }

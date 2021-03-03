@@ -11,3 +11,10 @@ export function setSelectedCategory(name) {
     payload: { name },
   };
 }
+
+export function setCategoreis(categories) {
+  return {
+    type: 'setCategoreis',
+    payload: { categories },
+  };
+}
