@@ -7,7 +7,7 @@ export default function CategoryButton({ name, onClick, selected }) {
         type="button"
         onClick={onClick}
       >
-        { selected ? `${name}V` : name }
+        { selected ? `${name}(V)` : name }
       </button>
     </li>
   );

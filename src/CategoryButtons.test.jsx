@@ -47,7 +47,7 @@ describe('CategoryButtons', () => {
     it('appends "V" mark into the button text', () => {
       const { getByText } = renderCategoryButtons(currentCategoryId);
 
-      expect(getByText('한식V')).not.toBeNull();
+      expect(getByText('한식(V)')).not.toBeNull();
     });
   });
 });

@@ -47,7 +47,7 @@ describe('RegionButtons', () => {
     it('appends "V" mark into the button text', () => {
       const { getByText } = renderRegionButtons(currentRegion);
 
-      expect(getByText('서울V')).not.toBeNull();
+      expect(getByText('서울(V)')).not.toBeNull();
     });
   });
 });
