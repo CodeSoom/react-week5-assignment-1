@@ -7,6 +7,24 @@ import {
 
 describe('reducer', () => {
   describe('setSelectedRegion', () => {
+    it('none ', () => {
+      const initialState = {
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        selectedRegion: null,
+      };
+
+      const notExistAction = {
+        type: 'notExist',
+        payload: { },
+      };
+
+      const state = reducer(initialState, notExistAction);
+
+      expect(state).toBe(initialState);
+    });
+
     it('changes a selectedRegion', () => {
       const initialState = {
         regions: [
