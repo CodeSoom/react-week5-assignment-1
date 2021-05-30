@@ -3,7 +3,10 @@ export default function OptionList({ options }) {
     <ul>
       {options.map((option, i) => (
         <li key={i}>
-          {option}
+          <button type="button">
+            {option}
+          </button>
+
         </li>
       ))}
     </ul>
