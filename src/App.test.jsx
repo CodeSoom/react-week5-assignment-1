@@ -10,4 +10,12 @@ describe('App', () => {
       expect(container).toHaveTextContent(category);
     });
   });
+  it('renders regions', () => {
+    const regions = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+
+    const { container } = render(<App />);
+    regions.forEach((region) => {
+      expect(container).toHaveTextContent(region);
+    });
+  });
 });
