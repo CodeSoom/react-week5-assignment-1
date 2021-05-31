@@ -32,6 +32,7 @@ describe('OptionList', () => {
     ));
 
     expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
+    expect(getByRole('button', { name: '중식' })).toBeInTheDocument();
   });
 
   it('store selected category', () => {
