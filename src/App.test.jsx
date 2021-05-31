@@ -1,7 +1,20 @@
 import { render } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector([]));
+  });
+
   it('renders categories', () => {
     const categories = ['한식', '중식', '일식', '양식', '분식'];
 
