@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updateSelectedCategory,
   updateSelectedRegion,
-} from '../selectedSlice';
+} from '../redux_module/selectedSlice';
 
 export default function useSelected(mode) {
   const dispatch = useDispatch();

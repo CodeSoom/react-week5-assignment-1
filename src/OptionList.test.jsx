@@ -5,7 +5,7 @@ import OptionList from './OptionList';
 import {
   updateSelectedCategory,
   updateSelectedRegion,
-} from './selectedSlice';
+} from './redux_module/selectedSlice';
 
 jest.mock('react-redux');
 
