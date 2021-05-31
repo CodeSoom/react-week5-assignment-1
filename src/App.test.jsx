@@ -16,19 +16,18 @@ describe('App', () => {
   });
 
   it('renders categories', () => {
-    const categories = ['한식', '중식', '일식', '양식', '분식'];
-
     const { getByRole } = render(<App />);
-    categories.forEach((category) => {
-      expect(getByRole('button', { name: category }));
+
+    ['한식', '중식', '일식', '양식', '분식'].forEach((category) => {
+      expect(getByRole('button', { name: category })).toBeInTheDocument();
     });
   });
-  it('renders regions', () => {
-    const regions = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
 
+  it('renders regions', () => {
     const { getByRole } = render(<App />);
-    regions.forEach((region) => {
-      expect(getByRole('button', { name: region }));
+
+    ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'].forEach((region) => {
+      expect(getByRole('button', { name: region })).toBeInTheDocument();
     });
   });
 });
