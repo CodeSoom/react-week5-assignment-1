@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function OptionList({ options }) {
-  const [selected, setSelected] = useState('');
+import {
+  updateSelectedCategory,
+  updateSelectedRegion,
+} from './selectedSlice';
+
+export default function OptionList({ options, mode }) {
+  const dispatch = useDispatch();
+  const selected = useSelector((state) => state[mode]);
 
   return (
     <ul>
       {options.map((option) => {
         const name = (selected === option) ? `${option}(V)` : option;
-        const handleClick = () => setSelected(name);
+        const handleClick = (mode === 'region')
+          ? () => dispatch(updateSelectedRegion(name))
+          : () => dispatch(updateSelectedCategory(name));
 
         return (
           <li key={option}>
