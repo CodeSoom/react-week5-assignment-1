@@ -20,8 +20,8 @@ describe('selectSlice', () => {
 
   describe('reducer', () => {
     it('update selected category', () => {
-      const oldState = { category: '' };
-      const newState = { category: '한식' };
+      const oldState = { category: '', region: '' };
+      const newState = { category: '한식', region: '' };
 
       expect(reducer(
         oldState,
@@ -30,8 +30,8 @@ describe('selectSlice', () => {
     });
 
     it('update selected region', () => {
-      const oldState = { region: '' };
-      const newState = { region: '서울' };
+      const oldState = { category: '', region: '' };
+      const newState = { category: '', region: '서울' };
 
       expect(reducer(
         oldState,
