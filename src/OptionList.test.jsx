@@ -19,7 +19,7 @@ describe('OptionList', () => {
     useSelector.mockImplementation((selector) => selector([]));
   });
 
-  it('renders option that V for selected', () => {
+  it('renders name with (V) for selected option', () => {
     useSelector.mockImplementation((selector) => selector({ category: '한식' }));
 
     const options = ['한식', '중식', '일식', '양식', '분식'];
