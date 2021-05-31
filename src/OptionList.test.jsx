@@ -1,17 +1,65 @@
 import { fireEvent, render } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import OptionList from './OptionList';
+import {
+  updateSelectedCategory,
+  updateSelectedRegion,
+} from './selectedSlice';
+
+jest.mock('react-redux');
 
 describe('OptionList', () => {
-  it('renders option that listens to click event', () => {
-    const options = ['a', 'b', 'c', 'd', 'e'];
+  it('renders option that V for selected', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({ category: '한식' }));
 
-    const { getByRole, queryByRole } = render(<OptionList options={options} />);
+    const options = ['한식', '중식', '일식', '양식', '분식'];
 
-    fireEvent.click(getByRole('button', { name: 'a' }));
-    expect(getByRole('button', { name: 'a(V)' })).toBeInTheDocument();
+    const { getByRole } = render((
+      <OptionList
+        options={options}
+        mode="category"
+      />
+    ));
 
-    fireEvent.click(getByRole('button', { name: 'b' }));
-    expect(queryByRole('button', { name: 'a(V)' })).not.toBeInTheDocument();
-    expect(getByRole('button', { name: 'b(V)' })).toBeInTheDocument();
+    expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
+  });
+
+  it('store selected category', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector([]));
+
+    const options = ['한식', '중식', '일식', '양식', '분식'];
+
+    const { getByRole } = render((
+      <OptionList
+        options={options}
+        mode="category"
+      />
+    ));
+
+    fireEvent.click(getByRole('button', { name: '한식' }));
+    expect(dispatch).toBeCalledWith(updateSelectedCategory('한식'));
+  });
+
+  it('store selected region', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector([]));
+
+    const options = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
+
+    const { getByRole } = render((
+      <OptionList
+        options={options}
+        mode="region"
+      />
+    ));
+
+    fireEvent.click(getByRole('button', { name: '서울' }));
+    expect(dispatch).toBeCalledWith(updateSelectedRegion('서울'));
   });
 });
