@@ -10,9 +10,16 @@ import {
 jest.mock('react-redux');
 
 describe('OptionList', () => {
-  it('renders option that V for selected', () => {
-    const dispatch = jest.fn();
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+
     useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector([]));
+  });
+
+  it('renders option that V for selected', () => {
     useSelector.mockImplementation((selector) => selector({ category: '한식' }));
 
     const options = ['한식', '중식', '일식', '양식', '분식'];
@@ -28,10 +35,6 @@ describe('OptionList', () => {
   });
 
   it('store selected category', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector([]));
-
     const options = ['한식', '중식', '일식', '양식', '분식'];
 
     const { getByRole } = render((
@@ -46,10 +49,6 @@ describe('OptionList', () => {
   });
 
   it('store selected region', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector([]));
-
     const options = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
 
     const { getByRole } = render((
