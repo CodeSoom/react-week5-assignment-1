@@ -1,11 +1,11 @@
 import reducer from '.';
 
-import { setCategories, setRegions } from '../actions';
+import { changeRegion, setCategories, setRegions } from '../actions';
 
 describe('reducer', () => {
   describe('setRegions', () => {
     it('changes restaurant region', () => {
-      const state = reducer(
+      const { regions } = reducer(
         {
           regions: [],
         },
@@ -15,13 +15,13 @@ describe('reducer', () => {
         }]),
       );
 
-      expect(state.regions).toHaveLength(1);
+      expect(regions).toHaveLength(1);
     });
   });
 
   describe('setCategories', () => {
     it('changes restaurant categories', () => {
-      const state = reducer(
+      const { categories } = reducer(
         {
           categories: [],
         },
@@ -31,7 +31,22 @@ describe('reducer', () => {
         }]),
       );
 
-      expect(state.categories).toHaveLength(1);
+      expect(categories).toHaveLength(1);
+    });
+  });
+
+  describe('changeRegion', () => {
+    it('changes restaurant region', () => {
+      const { search: { region } } = reducer(
+        {
+          search: {
+            region: '부산',
+          },
+        },
+        changeRegion('서울'),
+      );
+
+      expect(region).toBe('서울');
     });
   });
 });
