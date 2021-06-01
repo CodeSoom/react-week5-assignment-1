@@ -12,7 +12,7 @@ describe('App', () => {
     dispatch.mockClear();
 
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector([]));
+    useSelector.mockImplementation((selector) => selector({ selected: {} }));
   });
 
   it('renders categories', () => {

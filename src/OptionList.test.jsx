@@ -18,8 +18,10 @@ describe('OptionList', () => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector(
       {
-        category: '한식',
-        region: '서울',
+        selected: {
+          category: '한식',
+          region: '서울',
+        },
       },
     ));
   });

@@ -18,7 +18,9 @@ describe('useSelectedOption', () => {
   });
 
   it('returns selected', () => {
-    useSelector.mockImplementation((selector) => selector({ category: '한식' }));
+    useSelector.mockImplementation((selector) => selector(
+      { selected: { category: '한식' } },
+    ));
     const { result } = renderHook(() => useSelectedOption('category'));
 
     expect(result.current.selected).toBe('한식');

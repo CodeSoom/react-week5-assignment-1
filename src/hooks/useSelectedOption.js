@@ -7,7 +7,7 @@ import {
 
 export default function useSelectedOption(optionType) {
   const dispatch = useDispatch();
-  const selected = useSelector((state) => state[optionType]);
+  const selected = useSelector((state) => state.selected[optionType]);
 
   const selectedSetter = {
     region: (name) => dispatch(updateSelectedRegion(name)),
