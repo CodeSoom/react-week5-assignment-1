@@ -4,10 +4,14 @@ import { useSelector } from 'react-redux';
 
 import App from './App';
 
+import regions from '../fixtures/regions';
+
 jest.mock('react-redux');
 
 test('App', () => {
-  useSelector.mockImplementation((selector) => selector({}));
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
 
   const { container } = render(<App />);
 

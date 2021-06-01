@@ -2,9 +2,11 @@ import { render } from '@testing-library/react';
 
 import Region from './Region';
 
-test('Region', () => {
-  const { getByText, getByRole } = render(<Region />);
+import regions from '../fixtures/regions';
 
-  expect(getByRole('listitem')).not.toBeNull();
-  expect(getByText('서울')).not.toBeNull();
+test('Region', () => {
+  const { getByText, getAllByRole } = render(<Region regions={regions} />);
+
+  expect(getAllByRole('listitem')).toHaveLength(regions.length);
+  expect(getByText(regions[1].name)).not.toBeNull();
 });

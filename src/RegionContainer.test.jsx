@@ -13,8 +13,8 @@ test('RegionContainer', () => {
     regions,
   }));
 
-  const { getByText, getByRole } = render(<RegionContainer />);
+  const { getByText, getAllByRole } = render(<RegionContainer />);
 
-  expect(getByRole('listitem')).not.toBeNull();
+  expect(getAllByRole('listitem')).not.toBeNull();
   expect(getByText(regions[1].name)).not.toBeNull();
 });
