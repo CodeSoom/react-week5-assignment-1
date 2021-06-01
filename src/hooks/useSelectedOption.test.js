@@ -26,17 +26,21 @@ describe('useSelectedOption', () => {
     expect(result.current.selected).toBe('한식');
   });
 
-  it('returns setSelected for category', () => {
-    const { result } = renderHook(() => useSelectedOption('category'));
+  context("when 'category' is given for optionType", () => {
+    it('returns setSelected for updating category', () => {
+      const { result } = renderHook(() => useSelectedOption('category'));
 
-    result.current.setSelected('양식');
-    expect(dispatch).toBeCalledWith(updateSelectedCategory('양식'));
+      result.current.setSelected('양식');
+      expect(dispatch).toBeCalledWith(updateSelectedCategory('양식'));
+    });
   });
 
-  it('returns setSelected for region', () => {
-    const { result } = renderHook(() => useSelectedOption('region'));
+  context("when 'region' is given for optionType", () => {
+    it('returns setSelected for updating region', () => {
+      const { result } = renderHook(() => useSelectedOption('region'));
 
-    result.current.setSelected('부산');
-    expect(dispatch).toBeCalledWith(updateSelectedRegion('부산'));
+      result.current.setSelected('부산');
+      expect(dispatch).toBeCalledWith(updateSelectedRegion('부산'));
+    });
   });
 });
