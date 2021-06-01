@@ -35,7 +35,7 @@ describe('OptionList', () => {
     expect(getByRole('button', { name: '중식' })).toBeInTheDocument();
   });
 
-  it('store selected category', () => {
+  it('stores selected category', () => {
     const options = ['한식', '중식', '일식', '양식', '분식'];
 
     const { getByRole } = render((
@@ -49,7 +49,7 @@ describe('OptionList', () => {
     expect(dispatch).toBeCalledWith(updateSelectedCategory('한식'));
   });
 
-  it('store selected region', () => {
+  it('stores selected region', () => {
     const options = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
 
     const { getByRole } = render((

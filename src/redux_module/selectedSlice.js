@@ -2,7 +2,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-const selectedSlice = createSlice({
+const { actions, reducer } = createSlice({
   name: 'selected',
 
   initialState: {
@@ -21,6 +21,9 @@ const selectedSlice = createSlice({
   },
 });
 
-export const { updateSelectedCategory, updateSelectedRegion } = selectedSlice.actions;
+export const {
+  updateSelectedCategory,
+  updateSelectedRegion,
+} = actions;
 
-export default selectedSlice.reducer;
+export default reducer;
