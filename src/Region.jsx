@@ -1,7 +1,7 @@
-export default function Rigion() {
+export default function Rigion({ regions }) {
   return (
     <ul>
-      <li>서울</li>
+      {regions.map((region) => <li key={region.id}>{region.name}</li>)}
     </ul>
   );
 }
