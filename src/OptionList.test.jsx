@@ -31,7 +31,7 @@ describe('OptionList', () => {
       const { getByRole, queryByRole } = render((
         <OptionList
           options={options}
-          mode="category"
+          optionType="category"
         />
       ));
 
@@ -62,7 +62,7 @@ describe('OptionList', () => {
     const { getByRole } = render((
       <OptionList
         options={options}
-        mode="category"
+        optionType="category"
       />
     ));
 
@@ -79,7 +79,7 @@ describe('OptionList', () => {
     const { getByRole } = render((
       <OptionList
         options={options}
-        mode="region"
+        optionType="region"
       />
     ));
 
