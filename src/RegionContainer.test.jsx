@@ -7,7 +7,11 @@ import RegionContainer from './RegionContainer';
 jest.mock('react-redux');
 
 test('RegionContainer', () => {
-  const regions = ['서울', '대전', '대구'];
+  const regions = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+    { id: 3, name: '대구' },
+  ];
 
   useSelector.mockImplementation((selector) => selector({
     regions,
@@ -16,5 +20,5 @@ test('RegionContainer', () => {
   const { getByText, getByRole } = render(<RegionContainer regions={regions} />);
 
   expect(getByRole('listitem')).not.toBeNull();
-  expect(getByText(regions[1])).not.toBeNull();
+  expect(getByText(regions[1].name)).not.toBeNull();
 });
