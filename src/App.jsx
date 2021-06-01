@@ -13,7 +13,7 @@ export default function App() {
 
       <OptionList
         options={regions}
-        optionType="regions"
+        optionType="region"
       />
     </>
   );
