@@ -5,9 +5,9 @@ import {
   updateSelectedRegion,
 } from '../redux_module/selectedSlice';
 
-export default function useSelected(mode) {
+export default function useSelected(optionType) {
   const dispatch = useDispatch();
-  const selected = useSelector((state) => state[mode]);
+  const selected = useSelector((state) => state[optionType]);
 
   const selectedSetter = {
     region: (name) => dispatch(updateSelectedRegion(name)),
@@ -16,6 +16,6 @@ export default function useSelected(mode) {
 
   return {
     selected,
-    setSelected: selectedSetter[mode],
+    setSelected: selectedSetter[optionType],
   };
 }

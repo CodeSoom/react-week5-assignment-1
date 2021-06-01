@@ -8,12 +8,12 @@ export default function App() {
     <>
       <OptionList
         options={categories}
-        mode="category"
+        optionType="category"
       />
 
       <OptionList
         options={regions}
-        mode="regions"
+        optionType="regions"
       />
     </>
   );
