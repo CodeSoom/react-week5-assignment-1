@@ -5,13 +5,13 @@ import reducer, {
 
 describe('selectSlice', () => {
   describe('action creator', () => {
-    it('create action to update category', () => {
+    it('creates action updating category', () => {
       expect(updateSelectedCategory('한식')).toEqual(
         { type: 'selected/updateSelectedCategory', payload: '한식' },
       );
     });
 
-    it('updates selected region', () => {
+    it('creates action updating region', () => {
       expect(updateSelectedRegion('서울')).toEqual(
         { type: 'selected/updateSelectedRegion', payload: '서울' },
       );
