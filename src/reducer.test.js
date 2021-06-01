@@ -1,10 +1,21 @@
-// import reducer from './reducer';
+import reducer from './reducer';
 
-// reducer 파일 연결 기본 상태 -> 테스트 코드 작성 예정
-// describe('reducer', () => {
-//  it('', () => {
-//    const state = reducer();
+import {
+  setRegions,
+} from './actions';
 
-//    expect(state).toBe();
-//  });
-// });
+describe('reducer', () => {
+  it('Regions이 보여진다', () => {
+    const regions = [
+      { id: 1, name: '서울' },
+    ];
+
+    const initialState = {
+      regions: [],
+    };
+
+    const state = reducer(initialState, setRegions(regions));
+
+    expect(state.regions).toHaveLength(1);
+  });
+});
