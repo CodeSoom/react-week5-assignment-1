@@ -32,3 +32,10 @@ export function loadCategories() {
     dispatch(setCategories(Categories));
   };
 }
+
+export function changeRegion(region) {
+  return {
+    type: 'changeRegion',
+    payload: { region },
+  };
+}
