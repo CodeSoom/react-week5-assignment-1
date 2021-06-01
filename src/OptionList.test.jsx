@@ -16,13 +16,18 @@ describe('OptionList', () => {
     dispatch.mockClear();
 
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector([]));
+    useSelector.mockImplementation((selector) => selector(
+      {
+        category: '한식',
+        region: '서울',
+      },
+    ));
   });
 
   context('when option is selected', () => {
     it('renders name with (V)', () => {
-      useSelector.mockImplementation((selector) => selector({ category: '한식' }));
       const options = ['한식', '중식', '일식', '양식', '분식'];
+
       const { getByRole, queryByRole } = render((
         <OptionList
           options={options}
@@ -37,8 +42,8 @@ describe('OptionList', () => {
 
   context('when option is not selected', () => {
     it('renders name without (V)', () => {
-      useSelector.mockImplementation((selector) => selector({ category: '한식' }));
       const options = ['한식', '중식', '일식', '양식', '분식'];
+
       const { getByRole, queryByRole } = render((
         <OptionList
           options={options}
@@ -61,8 +66,11 @@ describe('OptionList', () => {
       />
     ));
 
-    fireEvent.click(getByRole('button', { name: '한식' }));
+    fireEvent.click(getByRole('button', { name: '한식(V)' }));
     expect(dispatch).toBeCalledWith(updateSelectedCategory('한식'));
+
+    fireEvent.click(getByRole('button', { name: '중식' }));
+    expect(dispatch).toBeCalledWith(updateSelectedCategory('중식'));
   });
 
   it('renders buttons for updating region', () => {
@@ -75,7 +83,10 @@ describe('OptionList', () => {
       />
     ));
 
-    fireEvent.click(getByRole('button', { name: '서울' }));
+    fireEvent.click(getByRole('button', { name: '서울(V)' }));
     expect(dispatch).toBeCalledWith(updateSelectedRegion('서울'));
+
+    fireEvent.click(getByRole('button', { name: '부산' }));
+    expect(dispatch).toBeCalledWith(updateSelectedRegion('부산'));
   });
 });
