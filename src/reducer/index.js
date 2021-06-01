@@ -1,6 +1,10 @@
 const initialState = {
   regions: [],
   categories: [],
+  search: {
+    region: '',
+    category: '',
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -21,6 +25,19 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       categories,
+    };
+  }
+
+  if (type === 'changeRegion') {
+    const { region } = action.payload;
+    const { search } = state;
+
+    return {
+      ...state,
+      search: {
+        ...search,
+        region,
+      },
     };
   }
 
