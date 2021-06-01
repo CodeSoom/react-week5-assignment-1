@@ -1,24 +1,21 @@
 import reducer from '.';
 
-import {
-  setCategories,
-  setRegionNames,
-} from '../actions';
+import { setCategories, setRegions } from '../actions';
 
 describe('reducer', () => {
-  describe('setRegionNames', () => {
-    it('changes restaurant region names', () => {
+  describe('setRegions', () => {
+    it('changes restaurant region', () => {
       const state = reducer(
         {
-          regionNames: [],
+          regions: [],
         },
-        setRegionNames([{
+        setRegions([{
           id: 1,
           name: '부산',
         }]),
       );
 
-      expect(state.regionNames).toHaveLength(1);
+      expect(state.regions).toHaveLength(1);
     });
   });
 

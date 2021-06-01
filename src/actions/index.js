@@ -1,20 +1,20 @@
 import {
-  fetchRegionNames,
+  fetchRegions,
   fetchCategories,
 } from '../services/api';
 
-export function setRegionNames(regionNames) {
+export function setRegions(regions) {
   return {
-    type: 'setRegionNames',
-    payload: { regionNames },
+    type: 'setRegions',
+    payload: { regions },
   };
 }
 
-export function loadRegionNames() {
+export function loadRegions() {
   return async (dispatch) => {
-    const RegionNames = await fetchRegionNames();
+    const regions = await fetchRegions();
 
-    dispatch(setRegionNames(RegionNames));
+    dispatch(setRegions(regions));
   };
 }
 
