@@ -5,16 +5,16 @@ export default function App() {
   return (
     <div>
       <ul>
-        {regions.map((region) => (
-          <li key={region}>
-            <button type="button">{region}</button>
+        {regions.map(({ name, id }) => (
+          <li key={id}>
+            <button type="button">{name}</button>
           </li>
         ))}
       </ul>
       <ul>
-        {categories.map((category) => (
-          <li key={category}>
-            <button type="button">{category}</button>
+        {categories.map(({ name, id }) => (
+          <li key={id}>
+            <button type="button">{name}</button>
           </li>
         ))}
       </ul>

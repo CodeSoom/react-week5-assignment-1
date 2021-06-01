@@ -9,12 +9,12 @@ describe('App', () => {
   it('renders region, category, restaurants', () => {
     const { getByRole } = render(<App />);
 
-    regions.forEach((region) => {
-      getByRole('button', { name: region });
+    regions.forEach(({ name }) => {
+      getByRole('button', { name });
     });
 
-    categories.forEach((category) => {
-      getByRole('button', { name: category });
+    categories.forEach(({ name }) => {
+      getByRole('button', { name });
     });
   });
 });
