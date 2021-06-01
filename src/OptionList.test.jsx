@@ -19,23 +19,39 @@ describe('OptionList', () => {
     useSelector.mockImplementation((selector) => selector([]));
   });
 
-  it('renders name with (V) for selected option', () => {
-    useSelector.mockImplementation((selector) => selector({ category: '한식' }));
+  context('when option is selected', () => {
+    it('renders name with (V)', () => {
+      useSelector.mockImplementation((selector) => selector({ category: '한식' }));
+      const options = ['한식', '중식', '일식', '양식', '분식'];
+      const { getByRole, queryByRole } = render((
+        <OptionList
+          options={options}
+          mode="category"
+        />
+      ));
 
-    const options = ['한식', '중식', '일식', '양식', '분식'];
-
-    const { getByRole } = render((
-      <OptionList
-        options={options}
-        mode="category"
-      />
-    ));
-
-    expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
-    expect(getByRole('button', { name: '중식' })).toBeInTheDocument();
+      expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
+      expect(queryByRole('button', { name: '한식' })).not.toBeInTheDocument();
+    });
   });
 
-  it('stores selected category', () => {
+  context('when option is not selected', () => {
+    it('renders name without (V)', () => {
+      useSelector.mockImplementation((selector) => selector({ category: '한식' }));
+      const options = ['한식', '중식', '일식', '양식', '분식'];
+      const { getByRole, queryByRole } = render((
+        <OptionList
+          options={options}
+          mode="category"
+        />
+      ));
+
+      expect(queryByRole('button', { name: '중식(V)' })).not.toBeInTheDocument();
+      expect(getByRole('button', { name: '중식' })).toBeInTheDocument();
+    });
+  });
+
+  it('renders buttons for updating category', () => {
     const options = ['한식', '중식', '일식', '양식', '분식'];
 
     const { getByRole } = render((
@@ -49,7 +65,7 @@ describe('OptionList', () => {
     expect(dispatch).toBeCalledWith(updateSelectedCategory('한식'));
   });
 
-  it('stores selected region', () => {
+  it('renders buttons for updating region', () => {
     const options = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
 
     const { getByRole } = render((
