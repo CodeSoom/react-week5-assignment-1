@@ -4,20 +4,16 @@ import { useSelector } from 'react-redux';
 
 import RegionContainer from './RegionContainer';
 
+import regions from '../fixtures/regions';
+
 jest.mock('react-redux');
 
 test('RegionContainer', () => {
-  const regions = [
-    { id: 1, name: '서울' },
-    { id: 2, name: '대전' },
-    { id: 3, name: '대구' },
-  ];
-
   useSelector.mockImplementation((selector) => selector({
     regions,
   }));
 
-  const { getByText, getByRole } = render(<RegionContainer regions={regions} />);
+  const { getByText, getByRole } = render(<RegionContainer />);
 
   expect(getByRole('listitem')).not.toBeNull();
   expect(getByText(regions[1].name)).not.toBeNull();

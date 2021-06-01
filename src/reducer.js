@@ -1,5 +1,7 @@
+import regions from '../fixtures/regions';
+
 const initialState = {
-  regions: [],
+  regions,
 };
 
 export default function reducer(state = initialState, action) {
