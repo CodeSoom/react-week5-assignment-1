@@ -9,7 +9,7 @@ jest.mock('react-redux');
 test('Regions', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [
-      { id: 1, region: '서울' },
+      { id: 1, name: '서울' },
     ],
   }));
 

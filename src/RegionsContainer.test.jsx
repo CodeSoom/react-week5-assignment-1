@@ -10,7 +10,7 @@ describe('RegionsContainer', () => {
   it('레스토랑 지역 목록이 그려진다', () => {
     useSelector.mockImplementation((selector) => selector({
       regions: [
-        { id: 1, region: '서울' },
+        { id: 1, name: '서울' },
       ],
     }));
 
