@@ -15,7 +15,7 @@ function renderCategoryList() {
   return render((
     <OptionList
       options={options}
-      mode="category"
+      optionType="category"
     />
   ));
 }
