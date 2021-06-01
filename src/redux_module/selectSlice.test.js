@@ -19,7 +19,7 @@ describe('selectSlice', () => {
   });
 
   describe('reducer', () => {
-    it('update selected category', () => {
+    it('updates selected category', () => {
       const oldState = { category: '', region: '' };
       const newState = { category: '한식', region: '' };
 
@@ -29,7 +29,7 @@ describe('selectSlice', () => {
       )).toEqual(newState);
     });
 
-    it('update selected region', () => {
+    it('updates selected region', () => {
       const oldState = { category: '', region: '' };
       const newState = { category: '', region: '서울' };
 
