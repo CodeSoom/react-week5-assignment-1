@@ -10,7 +10,7 @@ export default function OptionList({ options, mode }) {
 
         return (
           <li key={option}>
-            <button type="button" onClick={() => setSelected(name)}>
+            <button type="button" onClick={() => setSelected(option)}>
               {name}
             </button>
           </li>
