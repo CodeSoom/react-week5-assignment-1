@@ -11,19 +11,19 @@ const { actions, reducer } = createSlice({
   },
 
   reducers: {
-    updateSelectedCategory: (state, action) => {
+    selectCategory: (state, action) => {
       state.category = action.payload;
     },
 
-    updateSelectedRegion: (state, action) => {
+    selectRegion: (state, action) => {
       state.region = action.payload;
     },
   },
 });
 
 export const {
-  updateSelectedCategory,
-  updateSelectedRegion,
+  selectCategory,
+  selectRegion,
 } = actions;
 
 export default reducer;

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  updateSelectedCategory,
-  updateSelectedRegion,
+  selectCategory,
+  selectRegion,
 } from '../redux_module/selectedSlice';
 
 export default function useSelectedOption(optionType) {
@@ -10,8 +10,8 @@ export default function useSelectedOption(optionType) {
   const selected = useSelector((state) => state.selected[optionType]);
 
   const selectedSetter = {
-    region: (name) => dispatch(updateSelectedRegion(name)),
-    category: (name) => dispatch(updateSelectedCategory(name)),
+    region: (name) => dispatch(selectRegion(name)),
+    category: (name) => dispatch(selectCategory(name)),
   };
 
   return {

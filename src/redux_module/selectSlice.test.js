@@ -1,19 +1,21 @@
 import reducer, {
-  updateSelectedCategory,
-  updateSelectedRegion,
+  selectCategory,
+  selectRegion,
 } from './selectedSlice';
 
 describe('selectSlice', () => {
-  describe('action creator', () => {
-    it('creates action updating category', () => {
-      expect(updateSelectedCategory('한식')).toEqual(
-        { type: 'selected/updateSelectedCategory', payload: '한식' },
+  describe('selectCategory', () => {
+    it('changes selected category', () => {
+      expect(selectCategory('한식')).toEqual(
+        { type: 'selected/selectCategory', payload: '한식' },
       );
     });
+  });
 
-    it('creates action updating region', () => {
-      expect(updateSelectedRegion('서울')).toEqual(
-        { type: 'selected/updateSelectedRegion', payload: '서울' },
+  describe('selectRegion', () => {
+    it('changes selected region', () => {
+      expect(selectRegion('서울')).toEqual(
+        { type: 'selected/selectRegion', payload: '서울' },
       );
     });
   });
@@ -25,7 +27,7 @@ describe('selectSlice', () => {
 
       expect(reducer(
         oldState,
-        updateSelectedCategory('한식'),
+        selectCategory('한식'),
       )).toEqual(newState);
     });
 
@@ -35,7 +37,7 @@ describe('selectSlice', () => {
 
       expect(reducer(
         oldState,
-        updateSelectedRegion('서울'),
+        selectRegion('서울'),
       )).toEqual(newState);
     });
   });

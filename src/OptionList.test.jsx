@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import OptionList from './OptionList';
 import {
-  updateSelectedCategory,
-  updateSelectedRegion,
+  selectCategory,
+  selectRegion,
 } from './redux_module/selectedSlice';
 
 jest.mock('react-redux');
@@ -70,19 +70,19 @@ describe('OptionList', () => {
     const { getByRole } = renderCategoryList();
 
     fireEvent.click(getByRole('button', { name: '한식(V)' }));
-    expect(dispatch).toBeCalledWith(updateSelectedCategory('한식'));
+    expect(dispatch).toBeCalledWith(selectCategory('한식'));
 
     fireEvent.click(getByRole('button', { name: '중식' }));
-    expect(dispatch).toBeCalledWith(updateSelectedCategory('중식'));
+    expect(dispatch).toBeCalledWith(selectCategory('중식'));
   });
 
   it('renders buttons for updating region', () => {
     const { getByRole } = renderRegionList();
 
     fireEvent.click(getByRole('button', { name: '서울(V)' }));
-    expect(dispatch).toBeCalledWith(updateSelectedRegion('서울'));
+    expect(dispatch).toBeCalledWith(selectRegion('서울'));
 
     fireEvent.click(getByRole('button', { name: '부산' }));
-    expect(dispatch).toBeCalledWith(updateSelectedRegion('부산'));
+    expect(dispatch).toBeCalledWith(selectRegion('부산'));
   });
 });

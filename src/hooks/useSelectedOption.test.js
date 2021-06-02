@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import useSelectedOption from './useSelectedOption';
 import {
-  updateSelectedCategory,
-  updateSelectedRegion,
+  selectCategory,
+  selectRegion,
 } from '../redux_module/selectedSlice';
 
 jest.mock('react-redux');
@@ -31,7 +31,7 @@ describe('useSelectedOption', () => {
       const { result } = renderHook(() => useSelectedOption('category'));
 
       result.current.setSelected('양식');
-      expect(dispatch).toBeCalledWith(updateSelectedCategory('양식'));
+      expect(dispatch).toBeCalledWith(selectCategory('양식'));
     });
   });
 
@@ -40,7 +40,7 @@ describe('useSelectedOption', () => {
       const { result } = renderHook(() => useSelectedOption('region'));
 
       result.current.setSelected('부산');
-      expect(dispatch).toBeCalledWith(updateSelectedRegion('부산'));
+      expect(dispatch).toBeCalledWith(selectRegion('부산'));
     });
   });
 });
