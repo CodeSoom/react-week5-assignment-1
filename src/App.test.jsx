@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   it('App화면에 목록과 카테고리가 그려진다', () => {
