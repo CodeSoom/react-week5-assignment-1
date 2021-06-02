@@ -8,6 +8,7 @@ export default function CategoryListContainer() {
 
   const names = useSelector((state) => state.groups.categories);
   const selected = useSelector((state) => state.selected.category);
+
   const handleClick = (value) => dispatch(selectCategory(value));
 
   return (

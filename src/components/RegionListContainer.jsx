@@ -8,6 +8,7 @@ export default function RegionListContainer() {
 
   const names = useSelector((state) => state.groups.regions);
   const selected = useSelector((state) => state.selected.region);
+
   const handleClick = (value) => dispatch(selectRegion(value));
 
   return (

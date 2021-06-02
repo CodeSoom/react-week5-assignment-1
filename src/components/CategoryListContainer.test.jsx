@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCategory } from '../redux_module/selectedSlice';
 
+import { selectCategory } from '../redux_module/selectedSlice';
 import CategoryListContainer from './CategoryListContainer';
 
 jest.mock('react-redux');
