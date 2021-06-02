@@ -24,9 +24,9 @@ describe('buttonList', () => {
 
   context('when something is selected', () => {
     it('renders buttons and adds (V) to selected one', () => {
-      const names = [1, 2, 3, 4];
+      const names = ['서울', '경기', '부산', '제주'];
       const handleClick = jest.fn();
-      const selected = 1;
+      const selected = '서울';
 
       const { getAllByRole, getByText } = render(
         <ButtonList
@@ -37,7 +37,7 @@ describe('buttonList', () => {
       );
 
       expect(getAllByRole('button')).toHaveLength(names.length);
-      expect(getByText(/(V)/)).toBeInTheDocument();
+      expect(getByText('서울(V)')).toBeInTheDocument();
     });
   });
 });
