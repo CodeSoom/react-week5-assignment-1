@@ -26,16 +26,6 @@ describe('selectSlice', () => {
       )).toEqual(newState);
     });
 
-    it('updates selected region', () => {
-      const oldState = { category: '', region: '' };
-      const newState = { category: '', region: '서울' };
-
-      expect(reducer(
-        oldState,
-        selectRegion('서울'),
-      )).toEqual(newState);
-    });
-
     it('updates matched restaurant', () => {
       const restaurantInfos = [{
         id: 5,
