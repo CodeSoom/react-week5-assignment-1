@@ -8,14 +8,19 @@ describe('Button', () => {
 
   const handleClick = jest.fn();
 
-  it('listens click event', () => {
-    const { getByRole } = render(
+  function renderButton(selected = '서울') {
+    return render(
       <Button
         name={name}
         onClick={handleClick}
         search={search}
+        selected={selected}
       />,
     );
+  }
+
+  it('listens click event', () => {
+    const { getByRole } = renderButton();
 
     fireEvent.click(getByRole('button', { name }));
 
@@ -25,19 +30,19 @@ describe('Button', () => {
     });
   });
 
-  context('when selected', () => {
-    it('renders button with (V)', () => {
-      const { getByRole } = render(<Button name={name} search={search} selected={name} />);
+  context('when not selected', () => {
+    it('renders button without (V)', () => {
+      const { getByRole } = renderButton();
 
-      expect(getByRole('button', { name: `${name}(V)` })).toBeInTheDocument();
+      expect(getByRole('button', { name })).toBeInTheDocument();
     });
   });
 
-  context('when not selected', () => {
-    it('renders button without (V)', () => {
-      const { getByRole } = render(<Button name={name} search={search} selected="서울" />);
+  context('when selected', () => {
+    it('renders button with (V)', () => {
+      const { getByRole } = renderButton('부산');
 
-      expect(getByRole('button', { name })).toBeInTheDocument();
+      expect(getByRole('button', { name: `${name}(V)` })).toBeInTheDocument();
     });
   });
 });
