@@ -5,8 +5,8 @@ import { regions } from '../../fixtures/regions';
 import Buttons from '.';
 
 describe('Buttons', () => {
-  it('renders region buttons', () => {
-    const { getByRole } = render(<Buttons regions={regions} />);
+  it('renders buttons', () => {
+    const { getByRole } = render(<Buttons options={regions} />);
 
     regions.forEach(({ name }) => {
       getByRole('button', { name });
