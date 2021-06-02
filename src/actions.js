@@ -5,6 +5,6 @@ export function setRegions(regions) {
   };
 }
 
-export function XXX() {
+export function setCategories() {
   return { };
 }
