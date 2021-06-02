@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
 import { loadRegions, loadCategories } from './actions';
 
 import Buttons from './Buttons';

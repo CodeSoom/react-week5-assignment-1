@@ -1,5 +1,4 @@
 import reducer from '.';
-
 import {
   setCategories,
   setRegions,
