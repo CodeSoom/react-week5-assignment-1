@@ -1,4 +1,4 @@
-import { fetchRegions, fetchCategories } from './api';
+import { fetchRegions, fetchCategories, fetchRestuarants } from './api';
 
 jest.mock('./api');
 
@@ -15,5 +15,19 @@ describe('fetchRegions', () => {
     const data = await fetchRegions();
 
     expect(data).toBeArrayOfObjectWith('id', 'name');
+  });
+});
+
+describe('fetchRestuarants', () => {
+  it('returns fetched restuarants', async () => {
+    const data = await fetchRestuarants();
+
+    expect(data).toBeArrayOfObjectWith(
+      'id',
+      'categoryId',
+      'name',
+      'address',
+      'information',
+    );
   });
 });
