@@ -12,7 +12,15 @@ describe('App', () => {
     dispatch.mockClear();
 
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({ selected: {} }));
+    useSelector.mockImplementation((selector) => selector(
+      {
+        selected: {},
+        groups: {
+          categories: ['한식', '중식', '일식', '양식', '분식'],
+          regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
+        },
+      },
+    ));
   });
 
   it('renders categories', () => {
