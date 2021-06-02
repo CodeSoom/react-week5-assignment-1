@@ -11,6 +11,8 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    dispatch.mockClear();
+
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
@@ -35,15 +37,9 @@ describe('App', () => {
     });
   });
 
-  it('requests regions', () => {
+  it('loads regions, categories', () => {
     render(<App />);
 
-    expect(dispatch).toBeCalled();
-  });
-
-  it('requests categories', () => {
-    render(<App />);
-
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
