@@ -28,15 +28,14 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (type === 'changeRegion') {
-    const { region } = action.payload;
-    const { search } = state;
+  if (type === 'changeSearch') {
+    const { search, value } = action.payload;
 
     return {
       ...state,
       search: {
-        ...search,
-        region,
+        ...state.search,
+        [search]: value,
       },
     };
   }
