@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRegion } from '../redux_module/selectedSlice';
 
-import RegionListContainer from './RegionContainer';
+import RegionListContainer from './RegionListContainer';
 
 jest.mock('react-redux');
 
