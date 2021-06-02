@@ -2,9 +2,9 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionContainer from '.';
+import ButtonContainer from '.';
 
-describe('RegionContainer', () => {
+describe('ButtonContainer', () => {
   const region = '부산';
 
   const dispatch = jest.fn();
@@ -15,7 +15,7 @@ describe('RegionContainer', () => {
 
   context('when not click region button', () => {
     it('renders region button', () => {
-      const { getByRole } = render(<RegionContainer region={region} />);
+      const { getByRole } = render(<ButtonContainer region={region} />);
 
       expect(getByRole('button', { name: region })).toBeInTheDocument();
     });
@@ -23,7 +23,7 @@ describe('RegionContainer', () => {
 
   context('when click region button', () => {
     it('passes "changeRegion" action when click region button', () => {
-      const { getByRole } = render(<RegionContainer region={region} />);
+      const { getByRole } = render(<ButtonContainer region={region} />);
 
       fireEvent.click(getByRole('button', { name: region }));
 
@@ -34,7 +34,7 @@ describe('RegionContainer', () => {
     });
 
     it('changes button content when click region button', () => {
-      const { getByRole } = render(<RegionContainer region={region} />);
+      const { getByRole } = render(<ButtonContainer region={region} />);
 
       fireEvent.click(getByRole('button'));
 

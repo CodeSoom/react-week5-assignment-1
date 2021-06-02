@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { regions } from '../../fixtures/regions';
 
-import RegionContainer from '.';
+import ButtonsContainer from '.';
 
-describe('RegionContainer', () => {
+describe('ButtonsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe('RegionContainer', () => {
   });
 
   it('renders region buttons', () => {
-    const { getByRole } = render(<RegionContainer />);
+    const { getByRole } = render(<ButtonsContainer />);
 
     regions.forEach(({ name }) => {
       getByRole('button', { name });

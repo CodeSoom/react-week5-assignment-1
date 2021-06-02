@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 
 import { regions } from '../../fixtures/regions';
 
-import Regions from '.';
+import Buttons from '.';
 
-describe('Regions', () => {
+describe('Buttons', () => {
   it('renders region buttons', () => {
-    const { getByRole } = render(<Regions regions={regions} />);
+    const { getByRole } = render(<Buttons regions={regions} />);
 
     regions.forEach(({ name }) => {
       getByRole('button', { name });
