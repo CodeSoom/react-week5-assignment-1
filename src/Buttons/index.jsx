@@ -1,12 +1,13 @@
 import ButtonContainer from '../ButtonContainer';
 
-export default function Regions({ regions }) {
+export default function Buttons({ options, search }) {
   return (
     <ul>
-      {regions.map(({ name, id }) => (
+      {options.map(({ id, name }) => (
         <ButtonContainer
           key={id}
-          region={name}
+          name={name}
+          search={search}
         />
       ))}
     </ul>
