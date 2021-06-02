@@ -1,6 +1,10 @@
 import reducer from '.';
 
-import { changeRegion, setCategories, setRegions } from '../actions';
+import {
+  setCategories,
+  setRegions,
+  changeSearch,
+} from '../actions';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -35,7 +39,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('changeRegion', () => {
+  describe('changeSearch', () => {
     it('changes restaurant region', () => {
       const { search: { region } } = reducer(
         {
@@ -43,7 +47,10 @@ describe('reducer', () => {
             region: '부산',
           },
         },
-        changeRegion('서울'),
+        changeSearch({
+          search: 'region',
+          value: '서울',
+        }),
       );
 
       expect(region).toBe('서울');
