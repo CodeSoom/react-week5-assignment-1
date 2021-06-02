@@ -1,19 +1,27 @@
-import { useDispatch } from 'react-redux';
-import { changeRegion } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeSearch } from '../actions';
 
 import Button from '../Button';
 
-export default function RegionContainer({ region }) {
+export default function ButtonContainer({ name, search }) {
   const dispatch = useDispatch();
 
-  function handleClickChangeRegion(changedRegion) {
-    dispatch(changeRegion(changedRegion));
+  function handleClick(payload) {
+    dispatch(changeSearch({
+      search: payload.search,
+      value: payload.value,
+    }));
   }
+
+  const selected = useSelector((state) => state.search[search]);
 
   return (
     <Button
-      content={region}
-      onClick={handleClickChangeRegion}
+      selected={selected}
+      name={name}
+      onClick={handleClick}
+      search={search}
     />
   );
 }
