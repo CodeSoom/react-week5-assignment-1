@@ -1,12 +1,17 @@
-export default function Button({ content, onClick }) {
+export default function Button({
+  search, name, onClick,
+  selected,
+}) {
   return (
     <li>
       <button
         type="button"
-        onClick={() => onClick(content)}
+        onClick={() => onClick({
+          search,
+          value: name,
+        })}
       >
-        {content}
-
+        {selected === name ? `${name}(V)` : name}
       </button>
     </li>
   );
