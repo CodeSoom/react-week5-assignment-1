@@ -7,7 +7,7 @@ import CategoryListContainer from './CategoryListContainer';
 jest.mock('react-redux');
 
 describe('CategoryListContainer', () => {
-  it('', () => {
+  beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       selected: {
         category: '한식',
@@ -16,7 +16,9 @@ describe('CategoryListContainer', () => {
         categories: ['한식', '중식'],
       },
     }));
+  });
 
+  it('renders buttons with (V) when selected', () => {
     const { getByRole, queryByRole } = render(<CategoryListContainer />);
 
     expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
@@ -25,17 +27,9 @@ describe('CategoryListContainer', () => {
     expect(getByRole('button', { name: '중식' })).toBeInTheDocument();
   });
 
-  it('', () => {
+  it('change category with button', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
-      selected: {
-        category: '한식',
-      },
-      groups: {
-        categories: ['한식', '중식'],
-      },
-    }));
 
     const { getByRole } = render(<CategoryListContainer />);
 
