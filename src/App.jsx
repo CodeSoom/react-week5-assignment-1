@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import OptionList from './OptionList';
+import OptionList from './components/OptionList';
 import { loadCategories, loadRegions } from './redux_module/asyncActions';
 
 export default function App() {

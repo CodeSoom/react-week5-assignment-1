@@ -1,4 +1,4 @@
-import useSelectedOption from './hooks/useSelectedOption';
+import useSelectedOption from '../hooks/useSelectedOption';
 
 export default function OptionList({ options, optionType }) {
   const { selected, setSelected } = useSelectedOption(optionType);
