@@ -1,5 +1,5 @@
 expect.extend({
-  toBeArrayOfObjectsWith(received, ...keys) {
+  toBeArrayOfObjectWith(received, ...keys) {
     const hasValidProperties = (object) => keys.reduce(
       (
         accumulator, current,
