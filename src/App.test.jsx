@@ -16,6 +16,10 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       regions,
       categories,
+      search: {
+        region: '',
+        category: '',
+      },
     }));
   });
 
