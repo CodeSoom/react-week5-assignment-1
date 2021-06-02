@@ -1,5 +1,3 @@
-/* eslint-disable no-prototype-builtins */
-
 import { fetchRegions, fetchCategories } from './api';
 
 jest.mock('./api');
