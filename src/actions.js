@@ -5,6 +5,9 @@ export function setRegions(regions) {
   };
 }
 
-export function setCategories() {
-  return { };
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: { categories },
+  };
 }

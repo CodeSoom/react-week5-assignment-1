@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function Categories() {
+export default function Categories({ categories }) {
   return (
     <ul>
-      <li>한식</li>
+      {categories.map((category) => (
+        <li key={category.id}>
+          {category.name}
+        </li>
+      ))}
     </ul>
   );
 }

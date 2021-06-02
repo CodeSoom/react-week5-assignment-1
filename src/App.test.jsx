@@ -7,20 +7,11 @@ import App from './App';
 jest.mock('react-redux');
 
 describe('App', () => {
-  it('레스토랑 지역 목록을 그린다', () => {
+  it('App화면에 목록과 카테고리가 그려진다', () => {
     useSelector.mockImplementation((selector) => selector({
       regions: [
         { id: 1, name: '서울' },
       ],
-    }));
-
-    const { getByText } = render(<App />);
-
-    expect(getByText(/서울/)).not.toBeNull();
-  });
-
-  it('레스토랑 분류 목록을 그린다', () => {
-    useSelector.mockImplementation((selector) => selector({
       categories: [
         { id: 1, name: '한식' },
       ],
@@ -28,6 +19,7 @@ describe('App', () => {
 
     const { getByText } = render(<App />);
 
+    expect(getByText(/서울/)).not.toBeNull();
     expect(getByText(/한식/)).not.toBeNull();
   });
 });
