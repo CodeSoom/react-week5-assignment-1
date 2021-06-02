@@ -8,6 +8,7 @@ const { actions, reducer } = createSlice({
   initialState: {
     category: '',
     region: '',
+    restaurants: [],
   },
 
   reducers: {
@@ -18,12 +19,17 @@ const { actions, reducer } = createSlice({
     selectRegion: (state, action) => {
       state.region = action.payload;
     },
+
+    updateRestaurants: (state, action) => {
+      state.restaurants = action.payload;
+    },
   },
 });
 
 export const {
   selectCategory,
   selectRegion,
+  updateRestaurants,
 } = actions;
 
 export default reducer;
