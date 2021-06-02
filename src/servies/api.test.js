@@ -20,7 +20,7 @@ describe('fetchRegions', () => {
 
 describe('fetchRestuarants', () => {
   it('returns fetched restuarants', async () => {
-    const data = await fetchRestuarants();
+    const data = await fetchRestuarants('서울', '1');
 
     expect(data).toBeArrayOfObjectWith(
       'id',

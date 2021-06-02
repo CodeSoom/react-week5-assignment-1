@@ -15,3 +15,13 @@ export const fetchCategories = async () => {
 
   return data.map((row) => row.name);
 };
+
+export const fetchRestuarants = async (regionName, categoryId) => {
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}
+  `;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data.map((row) => row.name);
+};
