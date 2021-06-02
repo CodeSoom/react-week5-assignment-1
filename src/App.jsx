@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadRegions, loadCategories } from './actions';
 
+import Buttons from './Buttons';
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -18,20 +20,14 @@ export default function App() {
 
   return (
     <div>
-      <ul>
-        {regions.map(({ name, id }) => (
-          <li key={id}>
-            <button type="button">{name}</button>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {categories.map(({ name, id }) => (
-          <li key={id}>
-            <button type="button">{name}</button>
-          </li>
-        ))}
-      </ul>
+      <Buttons
+        search="region"
+        options={regions}
+      />
+      <Buttons
+        search="category"
+        options={categories}
+      />
     </div>
   );
 }
