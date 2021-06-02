@@ -1,10 +1,16 @@
 import { useSelector } from 'react-redux';
 
 export default function List() {
-  const info = useSelector((state) => state.selected.restaurants);
+  const infos = useSelector((state) => state.selected.restaurants);
   return (
-    <p>
-      {info[0].name}
-    </p>
+    <ul>
+      {infos.map(
+        (info) => (
+          <li key={info.id}>
+            {info.name}
+          </li>
+        ),
+      )}
+    </ul>
   );
 }
