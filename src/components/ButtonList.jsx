@@ -1,4 +1,4 @@
-export default function ButtonList({ names, onClick }) {
+export default function ButtonList({ names, onClick, selected }) {
   return (
     <ul>
       {names.map((name) => (
@@ -7,7 +7,7 @@ export default function ButtonList({ names, onClick }) {
             type="button"
             onClick={onClick}
           >
-            {name}
+            {(selected === name) ? `${name}(V)` : name}
           </button>
         </li>
       ))}
