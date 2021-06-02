@@ -33,9 +33,12 @@ export function loadCategories() {
   };
 }
 
-export function changeRegion(region) {
+export function changeSearch({ search, value }) {
   return {
-    type: 'changeRegion',
-    payload: { region },
+    type: 'changeSearch',
+    payload: {
+      search,
+      value,
+    },
   };
 }
