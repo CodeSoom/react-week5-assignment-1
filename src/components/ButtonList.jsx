@@ -5,7 +5,7 @@ export default function ButtonList({ names, onClick, selected }) {
         <li key={name}>
           <button
             type="button"
-            onClick={onClick}
+            onClick={() => onClick(name)}
           >
             {(selected === name) ? `${name}(V)` : name}
           </button>
