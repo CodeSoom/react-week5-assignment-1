@@ -7,7 +7,12 @@ import CategoryListContainer from './CategoryListContainer';
 jest.mock('react-redux');
 
 describe('CategoryListContainer', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
       selected: {
         category: '한식',
@@ -28,9 +33,6 @@ describe('CategoryListContainer', () => {
   });
 
   it('change category with button', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-
     const { getByRole } = render(<CategoryListContainer />);
 
     fireEvent.click(getByRole('button', { name: '한식(V)' }));
