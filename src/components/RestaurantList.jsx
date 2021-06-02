@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-export default function List() {
+export default function RestaurantList() {
   const infos = useSelector((state) => state.selected.restaurants);
 
   return (
