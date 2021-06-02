@@ -7,14 +7,14 @@ import Button from '../Button';
 export default function ButtonContainer({ name, search }) {
   const dispatch = useDispatch();
 
+  const selected = useSelector((state) => state.search[search]);
+
   function handleClick(payload) {
     dispatch(changeSearch({
       search: payload.search,
       value: payload.value,
     }));
   }
-
-  const selected = useSelector((state) => state.search[search]);
 
   return (
     <Button
