@@ -1,44 +1,54 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ButtonContainer from '.';
 
 describe('ButtonContainer', () => {
-  const region = '부산';
+  const name = '부산';
+  const search = 'region';
 
   const dispatch = jest.fn();
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      search: {
+        region: '서울',
+      },
+    }));
   });
 
-  context('when not click region button', () => {
-    it('renders region button', () => {
-      const { getByRole } = render(<ButtonContainer region={region} />);
+  context('when selected', () => {
+    it('renders button with (V) when selected', () => {
+      const { getByRole } = render(<ButtonContainer name="서울" search={search} />);
 
-      expect(getByRole('button', { name: region })).toBeInTheDocument();
+      expect(getByRole('button', { name: '서울(V)' })).toBeInTheDocument();
     });
   });
 
-  context('when click region button', () => {
-    it('passes "changeRegion" action when click region button', () => {
-      const { getByRole } = render(<ButtonContainer region={region} />);
+  context('when not selected', () => {
+    it('renders button witout (V)', () => {
+      const { getByRole } = render(<ButtonContainer name={name} search={search} />);
 
-      fireEvent.click(getByRole('button', { name: region }));
-
-      expect(dispatch).toBeCalledWith({
-        type: 'changeRegion',
-        payload: { region },
-      });
+      expect(getByRole('button', { name })).toBeInTheDocument();
     });
+  });
 
-    it('changes button content when click region button', () => {
-      const { getByRole } = render(<ButtonContainer region={region} />);
+  it('passes "changeSearch" action', () => {
+    const { getByRole } = render(<ButtonContainer name={name} search={search} />);
 
-      fireEvent.click(getByRole('button'));
+    expect(dispatch).not.toBeCalled();
 
-      expect(getByRole('button', { name: `${region}(V)` })).toBeInTheDocument();
+    fireEvent.click(getByRole('button', { name }));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'changeSearch',
+      payload: {
+        search,
+        value: name,
+      },
     });
   });
 });
