@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
-import { setCategories, setRegions } from './redux_module/groupsSlice';
 
 jest.mock('react-redux');
 
@@ -27,8 +26,8 @@ describe('App', () => {
   it('fetches groups', () => {
     render(<App />);
 
-    expect(dispatch).toBeCalledWith(setCategories(['한식', '중식', '일식', '양식', '분식']));
-    expect(dispatch).toBeCalledWith(setRegions(['서울', '대전', '대구', '부산', '광주', '강원도', '인천']));
+    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
   });
 
   it('renders categories', () => {
