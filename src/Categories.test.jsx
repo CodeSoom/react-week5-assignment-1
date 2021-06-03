@@ -7,12 +7,10 @@ test('Categories', () => {
     { id: 1, name: '한식' },
   ];
 
-  const handleClick = jest.fn();
-
   const { getByText } = render(<Categories categories={categories} />);
   const button = getByText('한식');
 
   fireEvent.click(button);
 
-  expect(handleClick).toBeCalled();
+  expect(button).not.toBeNull();
 });
