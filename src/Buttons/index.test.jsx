@@ -6,7 +6,7 @@ import Buttons from '.';
 
 describe('Buttons', () => {
   it('renders buttons', () => {
-    const { getByRole } = render(<Buttons options={regions} />);
+    const { getByRole } = render(<Buttons values={regions} />);
 
     regions.forEach(({ name }) => {
       getByRole('button', { name });
