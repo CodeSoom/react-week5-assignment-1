@@ -19,9 +19,19 @@ describe('fetchRegions', () => {
 });
 
 describe('fetchRestuarants', () => {
-  it('returns fetched restuarants', async () => {
-    const data = await fetchRestaurants('서울', '1');
+  context('when both category and region is selected', () => {
+    it('returns fetched restuarants', async () => {
+      const data = await fetchRestaurants('서울', 1);
 
-    expect(Array.isArray(data)).toBe(true);
+      expect(Array.isArray(data)).toBe(true);
+    });
+  });
+
+  context('when something is unselected', () => {
+    it('returns empty restuarants array', async () => {
+      const data = await fetchRestaurants(null, 1);
+
+      expect(data).toEqual([]);
+    });
   });
 });
