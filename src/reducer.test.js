@@ -3,11 +3,12 @@ import reducer from './reducer';
 import {
   setRegions,
   setCategories,
+  selecteRegion,
 } from './actions';
 
 describe('reducer', () => {
   describe('setRegions', () => {
-    it('get regions obeject and changes regions', () => {
+    it('get regions object and changes regions', () => {
       const regions = [
         { id: 1, name: '서울' },
       ];
@@ -23,7 +24,7 @@ describe('reducer', () => {
   });
 
   describe('setCategories', () => {
-    it('get categories obeject and changes categories', () => {
+    it('get categories object and changes categories', () => {
       const categories = [
         { id: 1, name: '한식' },
       ];
@@ -35,6 +36,23 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('selecteRegion', () => {
+    it('get selecteRegion object', () => {
+      const selectedRegion = [
+        { id: 1, name: '서울' },
+      ];
+
+      const initialState = {
+        selectedRegion: {},
+      };
+
+      const state = reducer(initialState, selecteRegion(selectedRegion));
+
+      expect(state.selectedRegion.id).toBe(1);
+      expect(state.selectedRegion.name).toBe('서울');
     });
   });
 
