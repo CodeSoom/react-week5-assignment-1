@@ -1,13 +1,18 @@
-import ButtonContainer from '../ButtonContainer';
+import Button from '../Button';
 
-export default function Buttons({ values, search }) {
+export default function Buttons({
+  values,
+  selected,
+  onClickChangeSearch,
+}) {
   return (
     <ul>
       {values.map(({ id, name }) => (
-        <ButtonContainer
+        <Button
           key={id}
           name={name}
-          search={search}
+          onClick={onClickChangeSearch}
+          selected={selected}
         />
       ))}
     </ul>
