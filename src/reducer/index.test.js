@@ -1,8 +1,10 @@
 import reducer from '.';
+import { restaurants } from '../../fixtures/restaurants';
 import {
   setCategories,
   setRegions,
   changeSearch,
+  setRestaurants,
 } from '../actions';
 
 describe('reducer', () => {
@@ -35,6 +37,19 @@ describe('reducer', () => {
       );
 
       expect(categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const state = reducer(
+        {
+          restaurants: [],
+        },
+        setRestaurants(restaurants),
+      );
+
+      expect(state.restaurants).toBe(restaurants);
     });
   });
 
