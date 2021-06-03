@@ -4,7 +4,6 @@ import Button from '.';
 
 describe('Button', () => {
   const name = '부산';
-  const search = 'search';
 
   const handleClick = jest.fn();
 
@@ -13,7 +12,6 @@ describe('Button', () => {
       <Button
         name={name}
         onClick={handleClick}
-        search={search}
         selected={selected}
       />,
     );
@@ -25,7 +23,6 @@ describe('Button', () => {
     fireEvent.click(getByRole('button', { name }));
 
     expect(handleClick).toBeCalledWith({
-      search,
       value: name,
     });
   });
