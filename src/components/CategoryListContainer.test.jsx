@@ -5,6 +5,7 @@ import { selectCategory } from '../redux_module/selectedSlice';
 import CategoryListContainer from './CategoryListContainer';
 
 jest.mock('react-redux');
+jest.mock('../servies/api');
 
 describe('CategoryListContainer', () => {
   const dispatch = jest.fn();
@@ -40,5 +41,12 @@ describe('CategoryListContainer', () => {
 
     fireEvent.click(getByRole('button', { name: '중식' }));
     expect(dispatch).toBeCalledWith(selectCategory({ id: 2, name: '중식' }));
+  });
+
+  it('fetches restaurants with button', () => {
+    const { getByRole } = render(<CategoryListContainer />);
+
+    fireEvent.click(getByRole('button', { name: '중식' }));
+    expect(typeof dispatch.mock.calls[1][0]).toBe('function');
   });
 });
