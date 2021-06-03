@@ -1,4 +1,4 @@
-import { fetchRegions, fetchCategories, fetchRestuarants } from './api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 jest.mock('./api');
 
@@ -20,7 +20,7 @@ describe('fetchRegions', () => {
 
 describe('fetchRestuarants', () => {
   it('returns fetched restuarants', async () => {
-    const data = await fetchRestuarants('서울', '1');
+    const data = await fetchRestaurants('서울', '1');
 
     expect(Array.isArray(data)).toBe(true);
   });
