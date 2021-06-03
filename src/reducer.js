@@ -4,25 +4,23 @@ const initialState = {
   categories: [],
 };
 
-const actionTable = (state, action) => ({
-  setRegions: {
+const defaultAction = {
+  type: '',
+};
+
+const stateByActionType = {
+  setRegions: ({ state, action }) => ({
     ...state,
     regions: action.payload.regions,
-  },
-  setCategories: {
+  }),
+  setCategories: ({ state, action }) => ({
     ...state,
     categories: action.payload.categories,
-  },
-  Default: state,
-}[action.type] || 'Default');
+  }),
+};
 
-export default function reducer(state = initialState, action) {
-  if (action === undefined) {
-    return state;
-  }
-  if (action.payload === undefined) {
-    return state;
-  }
-
-  return actionTable(state, action);
+export default function reducer(state = initialState, action = defaultAction) {
+  return stateByActionType[action.type]
+    ? stateByActionType[action.type]({ state, action })
+    : state;
 }
