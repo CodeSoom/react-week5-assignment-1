@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Buttons from '.';
 
-import { categories } from '../../fixtures/categories';
+import { categories } from '../../../fixtures/categories';
 
 describe('Buttons', () => {
   const handleClickChangeSearch = jest.fn();

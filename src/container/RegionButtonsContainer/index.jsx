@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeSearch } from '../actions';
-import Buttons from '../Buttons';
+import { changeSearch } from '../../actions';
+import Buttons from '../../presentational/Buttons';
 
 export default function RegionButtonsContainer() {
   const dispatch = useDispatch();
