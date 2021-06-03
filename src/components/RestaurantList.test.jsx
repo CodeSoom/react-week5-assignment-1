@@ -9,11 +9,13 @@ describe('RestaurantList', () => {
   it('renders list of matched restaurants', () => {
     useSelector.mockImplementation((selector) => selector({
       selected: {
-        restaurants: ['원초밥'],
+        restaurants: ['원초밥', '한국식 초밥'],
       },
     }));
 
     const { container } = render(<RestaurantList />);
+
     expect(container).toHaveTextContent('원초밥');
+    expect(container).toHaveTextContent('한국식 초밥');
   });
 });
