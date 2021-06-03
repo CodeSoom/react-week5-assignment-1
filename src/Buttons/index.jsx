@@ -1,9 +1,9 @@
 import ButtonContainer from '../ButtonContainer';
 
-export default function Buttons({ options, search }) {
+export default function Buttons({ values, search }) {
   return (
     <ul>
-      {options.map(({ id, name }) => (
+      {values.map(({ id, name }) => (
         <ButtonContainer
           key={id}
           name={name}

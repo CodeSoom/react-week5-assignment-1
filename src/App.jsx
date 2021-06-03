@@ -22,11 +22,11 @@ export default function App() {
     <div>
       <Buttons
         search="region"
-        options={regions}
+        values={regions}
       />
       <Buttons
         search="category"
-        options={categories}
+        values={categories}
       />
     </div>
   );
