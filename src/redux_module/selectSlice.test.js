@@ -7,12 +7,12 @@ import reducer, {
 describe('selectSlice', () => {
   describe('reducer', () => {
     it('updates selected category', () => {
-      const oldState = { category: '', region: '' };
-      const newState = { category: '한식', region: '' };
+      const oldState = { category: { id: null, name: '' }, region: '' };
+      const newState = { category: { id: 1, name: '한식' }, region: '' };
 
       expect(reducer(
         oldState,
-        selectCategory('한식'),
+        selectCategory({ id: 1, name: '한식' }),
       )).toEqual(newState);
     });
 

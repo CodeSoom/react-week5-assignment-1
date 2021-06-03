@@ -15,10 +15,10 @@ describe('CategoryListContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       selected: {
-        category: '한식',
+        category: { id: 1, name: '한식' },
       },
       groups: {
-        categories: ['한식', '중식'],
+        categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
       },
     }));
   });
@@ -36,9 +36,9 @@ describe('CategoryListContainer', () => {
     const { getByRole } = render(<CategoryListContainer />);
 
     fireEvent.click(getByRole('button', { name: '한식(V)' }));
-    expect(dispatch).toBeCalledWith(selectCategory('한식'));
+    expect(dispatch).toBeCalledWith(selectCategory({ id: 1, name: '한식' }));
 
     fireEvent.click(getByRole('button', { name: '중식' }));
-    expect(dispatch).toBeCalledWith(selectCategory('중식'));
+    expect(dispatch).toBeCalledWith(selectCategory({ id: 2, name: '중식' }));
   });
 });
