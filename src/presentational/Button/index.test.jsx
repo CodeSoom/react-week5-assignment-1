@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Button from '.';
+import Button from './Button';
 
 describe('Button', () => {
   const name = '부산';

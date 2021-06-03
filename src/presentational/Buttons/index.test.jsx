@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Buttons from '.';
+import Buttons from './Buttons';
 
 import { categories } from '../../../fixtures/categories';
 
