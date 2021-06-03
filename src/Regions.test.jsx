@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Regions from './Regions';
 
@@ -8,6 +8,9 @@ test('Regions', () => {
   ];
 
   const { getByText } = render(<Regions regions={regions} />);
+  const button = getByText('서울');
 
-  expect(getByText(/서울/)).not.toBeNull();
+  fireEvent.click(button);
+
+  expect(button).not.toBeNull();
 });

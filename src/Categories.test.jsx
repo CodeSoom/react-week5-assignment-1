@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
