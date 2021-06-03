@@ -1,21 +1,15 @@
 import React from 'react';
 
-export default function Categories({ categories }) {
-  function handleClick() {
-    return {
-    };
-  }
+import Button from './Button';
 
+export default function Categories({ categories }) {
   return (
     <ul>
       {categories.map((category) => (
         <li key={category.id}>
-          <button
-            type="button"
-            onClick={handleClick}
-          >
-            {category.name}
-          </button>
+          <Button
+            item={category}
+          />
         </li>
       ))}
     </ul>
