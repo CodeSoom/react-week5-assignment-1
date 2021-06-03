@@ -33,7 +33,7 @@ describe('CategoryListContainer', () => {
     expect(getByRole('button', { name: '중식' })).toBeInTheDocument();
   });
 
-  it('change category with button', () => {
+  it('select category with button', () => {
     const { getByRole } = render(<CategoryListContainer />);
 
     fireEvent.click(getByRole('button', { name: '한식(V)' }));

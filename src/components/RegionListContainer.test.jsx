@@ -33,7 +33,7 @@ describe('RegionListContainer', () => {
     expect(getByRole('button', { name: '부산' })).toBeInTheDocument();
   });
 
-  it('change region with button', () => {
+  it('select region with button', () => {
     const { getByRole } = render(<RegionListContainer />);
 
     fireEvent.click(getByRole('button', { name: '서울(V)' }));
@@ -43,7 +43,7 @@ describe('RegionListContainer', () => {
     expect(dispatch).toBeCalledWith(selectRegion('부산'));
   });
 
-  it('fetches restaurants with button', () => {
+  it('fetches regions with button', () => {
     const { getByRole } = render(<RegionListContainer />);
 
     fireEvent.click(getByRole('button', { name: '부산' }));
