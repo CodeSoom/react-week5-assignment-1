@@ -1,8 +1,9 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { loadCategories, loadRegions } from './asyncActions';
+import { loadCategories, loadRegions, loadRestuarants } from './asyncActions';
 import { setCategories, setRegions } from './groupsSlice';
+import { updateRestaurants } from './selectedSlice';
 
 jest.mock('../servies/api');
 
@@ -31,12 +32,20 @@ describe('asyncActions', () => {
       .then(() => {
         const actions = store.getActions();
         expect(actions[0]).toEqual(setRegions([
-          { id: 1, name: '서울' },
-          { id: 2, name: '대전' },
-          { id: 3, name: '대구' },
-          { id: 4, name: '부산' },
-          { id: 5, name: '광주' },
-          { id: 6, name: '강원도' },
+          '서울', '대전', '대구', '부산', '광주', '강원도',
+        ]));
+      });
+  });
+
+  it('fetches restuarants when being dispatched', () => {
+    const store = mockStore({});
+    return store.dispatch(loadRestuarants())
+      .then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual(updateRestaurants([
+          '양천주가',
+          '한국식 초밥',
+          '김초밥',
         ]));
       });
   });
