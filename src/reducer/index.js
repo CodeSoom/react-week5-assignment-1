@@ -28,6 +28,15 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  function setRestaurants() {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
+    };
+  }
+
   function changeSearch() {
     const { search, value } = action.payload;
 
@@ -43,6 +52,7 @@ export default function reducer(state = initialState, action) {
   const actionType = {
     setRegions,
     setCategories,
+    setRestaurants,
     changeSearch,
   };
 
