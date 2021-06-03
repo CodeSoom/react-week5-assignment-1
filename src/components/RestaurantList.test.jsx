@@ -8,7 +8,7 @@ jest.mock('react-redux');
 describe('RestaurantList', () => {
   it('renders list of matched restaurants', () => {
     useSelector.mockImplementation((selector) => selector({
-      selected: {
+      restaurant: {
         restaurants: ['원초밥', '한국식 초밥'],
       },
     }));

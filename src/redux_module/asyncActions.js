@@ -1,6 +1,5 @@
-import { setCategories, setRegions } from './groupsSlice';
+import { setCategories, setRegions, setRestaurants } from './RestaurantSlice';
 import { fetchRegions, fetchCategories, fetchRestaurants } from '../servies/api';
-import { updateRestaurants } from './selectedSlice';
 
 export function loadCategories() {
   return async (dispatch) => {
@@ -19,6 +18,6 @@ export function loadRegions() {
 export function loadRestaurants(regionName, categoryId) {
   return async (dispatch) => {
     const restaurants = await fetchRestaurants(regionName, categoryId);
-    dispatch(updateRestaurants(restaurants));
+    dispatch(setRestaurants(restaurants));
   };
 }

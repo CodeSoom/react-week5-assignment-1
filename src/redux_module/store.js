@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import selectedReducer from './selectedSlice';
-import groupsReducer from './groupsSlice';
+import restaurantReducer from './RestaurantSlice';
 
 export default configureStore({
   reducer: {
-    selected: selectedReducer,
-    groups: groupsReducer,
+    restaurant: restaurantReducer,
   },
 });

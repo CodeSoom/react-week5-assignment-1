@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectCategory } from '../redux_module/selectedSlice';
+import { selectCategory } from '../redux_module/RestaurantSlice';
 import CategoryListContainer from './CategoryListContainer';
 
 jest.mock('react-redux');
@@ -15,11 +15,18 @@ describe('CategoryListContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      selected: {
-        category: { id: 1, name: '한식' },
-      },
-      groups: {
-        categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
+      restaurant: {
+        categories: [
+          { id: 1, name: '한식' },
+          { id: 2, name: '중식' },
+        ],
+
+        regions: ['서울', '부산'],
+
+        selected: {
+          category: { id: 1, name: '한식' },
+          region: '서울',
+        },
       },
     }));
   });

@@ -12,25 +12,24 @@ describe('App', () => {
     dispatch.mockClear();
 
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector(
-      {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: {
+        categories: [
+          { id: 1, name: '한식' },
+          { id: 2, name: '중식' },
+          { id: 3, name: '일식' },
+          { id: 4, name: '양식' },
+          { id: 5, name: '분식' },
+        ],
+        regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
+        restaurants: [],
+
         selected: {
           category: { id: null, name: null },
-          groups: { id: null, name: null },
-          restaurants: [],
-        },
-        groups: {
-          categories: [
-            { id: 1, name: '한식' },
-            { id: 2, name: '중식' },
-            { id: 3, name: '일식' },
-            { id: 4, name: '양식' },
-            { id: 5, name: '분식' },
-          ],
-          regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
+          region: null,
         },
       },
-    ));
+    }));
   });
 
   it('fetches groups', () => {

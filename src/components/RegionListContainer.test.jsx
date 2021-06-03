@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectRegion } from '../redux_module/selectedSlice';
+import { selectRegion } from '../redux_module/RestaurantSlice';
 import RegionListContainer from './RegionListContainer';
 
 jest.mock('react-redux');
@@ -14,12 +14,13 @@ describe('RegionListContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      selected: {
-        category: { id: 1, name: '한식' },
-        region: '서울',
-      },
-      groups: {
+      restaurant: {
         regions: ['서울', '부산'],
+
+        selected: {
+          category: { id: 1, name: '한식' },
+          region: '서울',
+        },
       },
     }));
   });
