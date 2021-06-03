@@ -16,9 +16,9 @@ export function loadRegions() {
   };
 }
 
-export function loadRestuarants() {
+export function loadRestaurants(regionName, categoryId) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants();
+    const restaurants = await fetchRestaurants(regionName, categoryId);
     dispatch(updateRestaurants(restaurants));
   };
 }

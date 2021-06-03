@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { loadCategories, loadRegions, loadRestuarants } from './asyncActions';
+import { loadCategories, loadRegions, loadRestaurants } from './asyncActions';
 import { setCategories, setRegions } from './groupsSlice';
 import { updateRestaurants } from './selectedSlice';
 
@@ -39,7 +39,7 @@ describe('asyncActions', () => {
 
   it('fetches restuarants when being dispatched', () => {
     const store = mockStore({});
-    return store.dispatch(loadRestuarants())
+    return store.dispatch(loadRestaurants('서울', 1))
       .then(() => {
         const actions = store.getActions();
         expect(actions[0]).toEqual(updateRestaurants([
