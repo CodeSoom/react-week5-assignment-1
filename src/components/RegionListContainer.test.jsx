@@ -7,9 +7,15 @@ import RegionListContainer from './RegionListContainer';
 jest.mock('react-redux');
 
 describe('RegionListContainer', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
       selected: {
+        category: { id: 1, name: '한식' },
         region: '서울',
       },
       groups: {
@@ -28,9 +34,6 @@ describe('RegionListContainer', () => {
   });
 
   it('change region with button', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-
     const { getByRole } = render(<RegionListContainer />);
 
     fireEvent.click(getByRole('button', { name: '서울(V)' }));
@@ -38,5 +41,12 @@ describe('RegionListContainer', () => {
 
     fireEvent.click(getByRole('button', { name: '부산' }));
     expect(dispatch).toBeCalledWith(selectRegion('부산'));
+  });
+
+  it('fetches restaurants with button', () => {
+    const { getByRole } = render(<RegionListContainer />);
+
+    fireEvent.click(getByRole('button', { name: '부산' }));
+    expect(typeof dispatch.mock.calls[1][0]).toBe('function');
   });
 });
