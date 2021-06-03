@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import Categories from './Categories';
 
@@ -10,6 +10,9 @@ test('Categories', () => {
   ];
 
   const { getByText } = render(<Categories categories={categories} />);
+  const button = getByText('한식');
 
-  expect(getByText(/한식/)).not.toBeNull();
+  fireEvent.click(button);
+
+  expect(button).toBeCalled();
 });
