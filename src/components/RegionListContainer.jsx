@@ -7,21 +7,25 @@ import ButtonList from './ButtonList';
 export default function RegionListContainer() {
   const dispatch = useDispatch();
 
-  const regions = useSelector((state) => state.restaurant.regions);
-  const category = useSelector((state) => state.restaurant.selected.category);
+  const {
+    regions,
 
-  const selectedRegionName = useSelector((state) => state.restaurant.selected.region);
+    selected: {
+      category,
+      region,
+    },
+  } = useSelector((state) => state.restaurant);
 
-  const handleClick = (region) => {
-    dispatch(selectRegion(region));
-    dispatch(loadRestaurants(region, category.id));
+  const handleClick = (newRegion) => {
+    dispatch(selectRegion(newRegion));
+    dispatch(loadRestaurants(newRegion, category.id));
   };
 
   return (
     <ButtonList
       names={regions}
       onClick={handleClick}
-      selected={selectedRegionName}
+      selected={region}
     />
   );
 }
