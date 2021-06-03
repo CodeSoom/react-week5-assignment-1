@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { loadRegions, loadCategories } from './actions';
-
-import Buttons from './Buttons';
+import CategoryButtonsContainer from './CategoryButtonsContainer';
+import RegionButtonsContainer from './RegionButtonsContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -13,21 +13,10 @@ export default function App() {
     dispatch(loadCategories());
   }, []);
 
-  const { regions, categories } = useSelector((state) => ({
-    regions: state.regions,
-    categories: state.categories,
-  }));
-
   return (
     <div>
-      <Buttons
-        search="region"
-        values={regions}
-      />
-      <Buttons
-        search="category"
-        values={categories}
-      />
+      <RegionButtonsContainer />
+      <CategoryButtonsContainer />
     </div>
   );
 }
