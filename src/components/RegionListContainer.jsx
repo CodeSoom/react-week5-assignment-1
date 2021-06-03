@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { loadRestaurants } from '../redux_module/asyncActions';
 
 import { selectRegion } from '../redux_module/selectedSlice';
 import ButtonList from './ButtonList';
@@ -6,16 +7,21 @@ import ButtonList from './ButtonList';
 export default function RegionListContainer() {
   const dispatch = useDispatch();
 
-  const names = useSelector((state) => state.groups.regions);
-  const selected = useSelector((state) => state.selected.region);
+  const regions = useSelector((state) => state.groups.regions);
+  const category = useSelector((state) => state.selected.category);
 
-  const handleClick = (value) => dispatch(selectRegion(value));
+  const selectedRegionName = useSelector((state) => state.selected.region);
+
+  const handleClick = (region) => {
+    dispatch(selectRegion(region));
+    dispatch(loadRestaurants(region, category.id));
+  };
 
   return (
     <ButtonList
-      names={names}
+      names={regions}
       onClick={handleClick}
-      selected={selected}
+      selected={selectedRegionName}
     />
   );
 }
