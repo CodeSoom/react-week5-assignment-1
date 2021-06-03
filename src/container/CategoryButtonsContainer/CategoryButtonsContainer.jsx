@@ -14,8 +14,8 @@ export default function CategoryButtonsContainer() {
 
   function handleClickChangeSearch({ value }) {
     dispatch(changeSearch({
-      search: 'category',
-      value,
+      search: 'categoryId',
+      value: categories.find((category) => category.name === value).id,
     }));
   }
 

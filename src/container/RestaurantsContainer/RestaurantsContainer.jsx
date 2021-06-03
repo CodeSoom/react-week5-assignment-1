@@ -7,7 +7,7 @@ export default function RestaurantsContainer() {
   const { restaurants, region, categoryId } = useSelector((state) => ({
     restaurants: state.restaurants,
     region: state.search.region,
-    categoryId: state.search.category,
+    categoryId: state.search.categoryId,
   }));
 
   useEffect(() => {

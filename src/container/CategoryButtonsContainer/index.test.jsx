@@ -18,7 +18,7 @@ describe('CategoryButtonsContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       categories,
       search: {
-        category: '',
+        categoryId: '',
       },
     }));
   });
@@ -40,8 +40,8 @@ describe('CategoryButtonsContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'changeSearch',
       payload: {
-        search: 'category',
-        value: '한식',
+        search: 'categoryId',
+        value: 1,
       },
     });
   });

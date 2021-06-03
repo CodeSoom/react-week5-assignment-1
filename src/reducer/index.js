@@ -3,7 +3,7 @@ const initialState = {
   categories: [],
   search: {
     region: '',
-    category: '',
+    categoryId: '',
   },
 };
 

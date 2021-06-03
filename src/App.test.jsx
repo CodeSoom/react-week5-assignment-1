@@ -20,7 +20,7 @@ describe('App', () => {
       categories,
       search: {
         region: '',
-        category: '',
+        categoryId: '',
       },
     }));
   });
