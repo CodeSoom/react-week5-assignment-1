@@ -6,22 +6,42 @@ import reducer, {
 describe('groupsSlice', () => {
   describe('reducer', () => {
     it('set categories', () => {
-      const oldState = { categories: [], regions: [] };
-      const newState = { categories: [1, 2, 3], regions: [] };
+      const oldState = {
+        categories: [],
+        regions: [],
+      };
+
+      const newState = {
+        categories: [
+          { id: 1, name: '한식' },
+          { id: 2, name: '중식' },
+        ],
+        regions: [],
+      };
 
       expect(reducer(
         oldState,
-        setCategories([1, 2, 3]),
+        setCategories([
+          { id: 1, name: '한식' },
+          { id: 2, name: '중식' },
+        ]),
       )).toEqual(newState);
     });
 
     it('set regions', () => {
-      const oldState = { categories: [], regions: [] };
-      const newState = { categories: [], regions: [1, 2, 3] };
+      const oldState = {
+        categories: [],
+        regions: [],
+      };
+
+      const newState = {
+        categories: [],
+        regions: ['서울', '부산'],
+      };
 
       expect(reducer(
         oldState,
-        setRegions([1, 2, 3]),
+        setRegions(['서울', '부산']),
       )).toEqual(newState);
     });
   });
