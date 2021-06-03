@@ -27,22 +27,14 @@ describe('selectSlice', () => {
     });
 
     it('updates matched restaurant', () => {
-      const restaurantInfos = [{
-        id: 5,
-        categoryId: 3,
-        name: '원초밥',
-        address: '서울 강남구',
-        information: '원초밥 in 서울 강남구',
-      }];
+      const restaurants = ['원초밥'];
 
       const oldState = { restaurants: [] };
-      const newState = {
-        restaurants: restaurantInfos,
-      };
+      const newState = { restaurants };
 
       expect(reducer(
         oldState,
-        updateRestaurants(restaurantInfos),
+        updateRestaurants(restaurants),
       )).toEqual(newState);
     });
   });

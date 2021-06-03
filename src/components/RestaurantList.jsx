@@ -7,8 +7,8 @@ export default function RestaurantList() {
     <ul>
       {infos.map(
         (info) => (
-          <li key={info.id}>
-            {info.name}
+          <li key={info}>
+            {info}
           </li>
         ),
       )}

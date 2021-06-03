@@ -9,13 +9,7 @@ describe('RestaurantList', () => {
   it('renders list of matched restaurants', () => {
     useSelector.mockImplementation((selector) => selector({
       selected: {
-        restaurants: [{
-          id: 5,
-          categoryId: 3,
-          name: '원초밥',
-          address: '서울 강남구',
-          information: '원초밥 in 서울 강남구',
-        }],
+        restaurants: ['원초밥'],
       },
     }));
 
