@@ -41,9 +41,7 @@ describe('reducer', () => {
 
   describe('selecteRegion', () => {
     it('get selecteRegion object', () => {
-      const selectedRegion = [
-        { id: 1, name: '서울' },
-      ];
+      const selectedRegion = { id: 1, name: '서울' };
 
       const initialState = {
         selectedRegion: {},

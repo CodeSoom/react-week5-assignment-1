@@ -2,6 +2,7 @@ const initialState = {
   newId: 100,
   regions: [],
   categories: [],
+  selectedRegion: {},
 };
 
 const defaultAction = {
@@ -16,6 +17,10 @@ const stateByActionType = {
   setCategories: ({ state, action }) => ({
     ...state,
     categories: action.payload.categories,
+  }),
+  selecteRegion: ({ state, action }) => ({
+    ...state,
+    selectedRegion: action.payload.item,
   }),
 };
 

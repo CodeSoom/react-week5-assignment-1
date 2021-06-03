@@ -11,3 +11,10 @@ export function setCategories(categories) {
     payload: { categories },
   };
 }
+
+export function selecteRegion(item) {
+  return {
+    type: 'selecteRegion',
+    payload: { item },
+  };
+}
