@@ -1,5 +1,6 @@
 export default function Button({
-  search, name, onClick,
+  name,
+  onClick,
   selected,
 }) {
   return (
@@ -7,7 +8,6 @@ export default function Button({
       <button
         type="button"
         onClick={() => onClick({
-          search,
           value: name,
         })}
       >
