@@ -2,6 +2,7 @@ import reducer, {
   setCategories,
   setRegions,
   setRestaurants,
+
   selectCategory,
   selectRegion,
 } from './RestaurantSlice';

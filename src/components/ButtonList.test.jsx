@@ -26,8 +26,9 @@ describe('buttonList', () => {
   context('when something is selected', () => {
     it('renders buttons and adds (V) to selected one', () => {
       const names = ['서울', '경기', '부산', '제주'];
-      const handleClick = jest.fn();
       const selected = '서울';
+
+      const handleClick = jest.fn();
 
       const { getAllByRole, getByText } = render(
         <ButtonList

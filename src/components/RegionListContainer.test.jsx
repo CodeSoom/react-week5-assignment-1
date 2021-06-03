@@ -34,7 +34,7 @@ describe('RegionListContainer', () => {
     expect(getByRole('button', { name: '부산' })).toBeInTheDocument();
   });
 
-  it('select region with button', () => {
+  it('selects region with button', () => {
     const { getByRole } = render(<RegionListContainer />);
 
     fireEvent.click(getByRole('button', { name: '서울(V)' }));

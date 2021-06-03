@@ -15,6 +15,7 @@ describe('asyncActions', () => {
     await store.dispatch(loadCategories());
 
     const actions = store.getActions();
+
     expect(actions[0]).toEqual(setCategories([
       { id: 1, name: '한식' },
       { id: 2, name: '중식' },
@@ -29,6 +30,7 @@ describe('asyncActions', () => {
     await store.dispatch(loadRegions());
 
     const actions = store.getActions();
+
     expect(actions[0]).toEqual(setRegions([
       '서울', '대전', '대구', '부산', '광주', '강원도',
     ]));
@@ -39,6 +41,7 @@ describe('asyncActions', () => {
     await store.dispatch(loadRestaurants('서울', 1));
 
     const actions = store.getActions();
+
     expect(actions[0]).toEqual(setRestaurants([
       '양천주가',
       '한국식 초밥',

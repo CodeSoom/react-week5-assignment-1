@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { loadRestaurants } from '../redux_module/asyncActions';
 
+import { loadRestaurants } from '../redux_module/asyncActions';
 import { selectRegion } from '../redux_module/RestaurantSlice';
 import ButtonList from './ButtonList';
 

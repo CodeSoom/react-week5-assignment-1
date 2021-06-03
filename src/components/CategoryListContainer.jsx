@@ -1,9 +1,9 @@
-import * as R from 'ramda';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadRestaurants } from '../redux_module/asyncActions';
+import * as R from 'ramda';
 
-import { selectCategory } from '../redux_module/RestaurantSlice';
 import ButtonList from './ButtonList';
+import { loadRestaurants } from '../redux_module/asyncActions';
+import { selectCategory } from '../redux_module/RestaurantSlice';
 
 export default function CategoryListContainer() {
   const dispatch = useDispatch();

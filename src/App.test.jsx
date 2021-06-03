@@ -32,7 +32,7 @@ describe('App', () => {
     }));
   });
 
-  it('fetches groups', () => {
+  it('fetches categories and regions', () => {
     render(<App />);
 
     expect(dispatch).toBeCalled();

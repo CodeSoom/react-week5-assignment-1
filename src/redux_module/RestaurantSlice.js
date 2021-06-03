@@ -46,6 +46,7 @@ export const {
   setCategories,
   setRegions,
   setRestaurants,
+
   selectCategory,
   selectRegion,
 } = actions;

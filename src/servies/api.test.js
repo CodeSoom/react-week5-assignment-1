@@ -28,7 +28,7 @@ describe('fetchRestuarants', () => {
   });
 
   context('when something is unselected', () => {
-    it('returns empty restuarants array', async () => {
+    it('returns empty array of restuarants ', async () => {
       const data = await fetchRestaurants(null, 1);
 
       expect(data).toEqual([]);
