@@ -14,7 +14,7 @@ describe('fetchRegions', () => {
   it('returns fetched regions', async () => {
     const data = await fetchRegions();
 
-    expect(data).toBeArrayOfObjectWith('id', 'name');
+    expect(Array.isArray(data)).toBe(true);
   });
 });
 
@@ -22,12 +22,6 @@ describe('fetchRestuarants', () => {
   it('returns fetched restuarants', async () => {
     const data = await fetchRestuarants('서울', '1');
 
-    expect(data).toBeArrayOfObjectWith(
-      'id',
-      'categoryId',
-      'name',
-      'address',
-      'information',
-    );
+    expect(Array.isArray(data)).toBe(true);
   });
 });
