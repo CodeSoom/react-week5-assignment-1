@@ -1,15 +1,39 @@
-import { render } from '@testing-library/react';
-
-import { regions } from '../../fixtures/regions';
+import { fireEvent, render } from '@testing-library/react';
 
 import Buttons from '.';
 
-describe('Buttons', () => {
-  it('renders buttons', () => {
-    const { getByRole } = render(<Buttons values={regions} />);
+import { categories } from '../../fixtures/categories';
 
-    regions.forEach(({ name }) => {
-      getByRole('button', { name });
+describe('Buttons', () => {
+  const handleClickChangeSearch = jest.fn();
+
+  it('renders Buttons', () => {
+    const { getByRole } = render(
+      <Buttons
+        values={categories}
+        onClickChangeSearch={handleClickChangeSearch}
+      />,
+    );
+
+    categories.forEach(({ name }) => {
+      expect(getByRole('button', { name })).toBeInTheDocument();
+    });
+  });
+
+  it('listens click event', () => {
+    const { getByRole } = render(
+      <Buttons
+        values={categories}
+        onClickChangeSearch={handleClickChangeSearch}
+      />,
+    );
+
+    expect(handleClickChangeSearch).not.toBeCalled();
+
+    categories.forEach(({ name }) => {
+      fireEvent.click(getByRole('button', { name }));
+
+      expect(handleClickChangeSearch).toBeCalled();
     });
   });
 });
