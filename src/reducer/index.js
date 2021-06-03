@@ -10,7 +10,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   const { type } = action;
 
-  if (type === 'setRegions') {
+  function setRegions() {
     const { regions } = action.payload;
 
     return {
@@ -19,7 +19,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (type === 'setCategories') {
+  function setCategories() {
     const { categories } = action.payload;
 
     return {
@@ -28,7 +28,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (type === 'changeSearch') {
+  function changeSearch() {
     const { search, value } = action.payload;
 
     return {
@@ -40,5 +40,11 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  return state;
+  const actionType = {
+    setRegions,
+    setCategories,
+    changeSearch,
+  };
+
+  return actionType[type]() || state;
 }
