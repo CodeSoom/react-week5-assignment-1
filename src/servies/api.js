@@ -21,6 +21,11 @@ export const fetchRestaurants = async (regionName, categoryId) => {
   `;
 
   const response = await fetch(url);
+
+  if (!response.ok) {
+    return [];
+  }
+
   const data = await response.json();
 
   return data.map((row) => row.name);

@@ -7,4 +7,9 @@ export const fetchCategories = async () => [
   { id: 4, name: '양식' },
   { id: 5, name: '분식' }];
 
-export const fetchRestaurants = async () => ['양천주가', '한국식 초밥', '김초밥'];
+export const fetchRestaurants = async (regionName, categoryId) => {
+  if ([regionName, categoryId].includes(null)) {
+    return [];
+  }
+  return ['양천주가', '한국식 초밥', '김초밥'];
+};
