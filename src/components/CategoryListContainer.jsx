@@ -6,10 +6,15 @@ import ButtonList from './ButtonList';
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
 
-  const names = useSelector((state) => state.groups.categories);
-  const selected = useSelector((state) => state.selected.category);
+  const categories = useSelector((state) => state.groups.categories);
 
-  const handleClick = (value) => dispatch(selectCategory(value));
+  const names = categories.map((category) => category.name);
+  const selected = useSelector((state) => state.selected.category.name);
+
+  const handleClick = (name) => {
+    const category = categories.find((element) => element.name === name);
+    dispatch(selectCategory(category));
+  };
 
   return (
     <ButtonList
