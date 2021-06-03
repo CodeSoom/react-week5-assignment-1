@@ -17,6 +17,7 @@ describe('App', () => {
         selected: {
           category: { id: null, name: null },
           groups: { id: null, name: null },
+          restaurants: [],
         },
         groups: {
           categories: [

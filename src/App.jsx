@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import CategoryListContainer from './components/CategoryListContainer';
 import RegionListContainer from './components/RegionListContainer';
+import RestaurantList from './components/RestaurantList';
 import { loadCategories, loadRegions } from './redux_module/asyncActions';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
     <>
       <CategoryListContainer />
       <RegionListContainer />
+      <RestaurantList />
     </>
   );
 }
