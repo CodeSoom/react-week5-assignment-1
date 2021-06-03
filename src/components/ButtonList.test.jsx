@@ -5,7 +5,7 @@ import ButtonList from './ButtonList';
 describe('buttonList', () => {
   context('when nothing is selected', () => {
     it('renders buttons with name', () => {
-      const names = [1, 2, 3, 4];
+      const names = ['서울', '경기', '부산', '제주'];
       const selected = null;
 
       const handleClick = jest.fn();
