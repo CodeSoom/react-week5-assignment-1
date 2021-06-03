@@ -60,7 +60,7 @@ describe('RestaurantSlice', () => {
       )).toEqual(newState);
     });
 
-    it('updates selected category', () => {
+    it('changes selected category', () => {
       const oldState = {
         selected: {
           category: { id: null, name: '' },
@@ -81,7 +81,7 @@ describe('RestaurantSlice', () => {
       )).toEqual(newState);
     });
 
-    it('updates selected region', () => {
+    it('changes selected region', () => {
       const oldState = {
         selected: {
           category: '',
