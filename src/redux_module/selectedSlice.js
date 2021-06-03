@@ -6,8 +6,8 @@ const { actions, reducer } = createSlice({
   name: 'selected',
 
   initialState: {
-    category: { id: null, name: '' },
-    region: '',
+    category: { id: null, name: null },
+    region: null,
     restaurants: [],
   },
 
