@@ -1,7 +1,7 @@
 import reducer, {
   setCategories,
   setRegions,
-  setRestaurants,
+  setSelectedRestaurants,
 
   selectCategory,
   selectRegion,
@@ -52,12 +52,12 @@ describe('RestaurantSlice', () => {
     it('sets restaurants', () => {
       const restaurants = ['원초밥'];
 
-      const oldState = { restaurants: [] };
-      const newState = { restaurants };
+      const oldState = { selectedRestaurants: [] };
+      const newState = { selectedRestaurants: restaurants };
 
       expect(reducer(
         oldState,
-        setRestaurants(restaurants),
+        setSelectedRestaurants(restaurants),
       )).toEqual(newState);
     });
 

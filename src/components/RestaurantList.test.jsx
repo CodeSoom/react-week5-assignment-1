@@ -9,7 +9,7 @@ describe('RestaurantList', () => {
   it('renders list of matched restaurants', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurant: {
-        restaurants: ['원초밥', '한국식 초밥'],
+        selectedRestaurants: ['원초밥', '한국식 초밥'],
       },
     }));
 

@@ -2,7 +2,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import { loadCategories, loadRegions, loadRestaurants } from './asyncActions';
-import { setCategories, setRegions, setRestaurants } from './RestaurantSlice';
+import { setCategories, setRegions, setSelectedRestaurants } from './RestaurantSlice';
 
 jest.mock('../servies/api');
 
@@ -42,7 +42,7 @@ describe('asyncActions', () => {
 
     const actions = store.getActions();
 
-    expect(actions[0]).toEqual(setRestaurants([
+    expect(actions[0]).toEqual(setSelectedRestaurants([
       '양천주가',
       '한국식 초밥',
       '김초밥',

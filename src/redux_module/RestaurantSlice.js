@@ -8,7 +8,7 @@ const { actions, reducer } = createSlice({
   initialState: {
     categories: [],
     regions: [],
-    restaurants: [],
+    selectedRestaurants: [],
 
     selected: {
       category: {
@@ -28,8 +28,8 @@ const { actions, reducer } = createSlice({
       state.regions = action.payload;
     },
 
-    setRestaurants: (state, action) => {
-      state.restaurants = action.payload;
+    setSelectedRestaurants: (state, action) => {
+      state.selectedRestaurants = action.payload;
     },
 
     selectCategory: (state, action) => {
@@ -45,7 +45,7 @@ const { actions, reducer } = createSlice({
 export const {
   setCategories,
   setRegions,
-  setRestaurants,
+  setSelectedRestaurants,
 
   selectCategory,
   selectRegion,

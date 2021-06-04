@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 export default function RestaurantList() {
-  const infos = useSelector((state) => state.restaurant.restaurants);
+  const infos = useSelector((state) => state.restaurant.selectedRestaurants);
 
   return (
     <ul>

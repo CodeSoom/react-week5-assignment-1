@@ -22,7 +22,7 @@ describe('App', () => {
           { id: 5, name: '분식' },
         ],
         regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
-        restaurants: [],
+        selectedRestaurants: [],
 
         selected: {
           category: { id: null, name: null },

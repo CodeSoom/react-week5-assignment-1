@@ -1,4 +1,4 @@
-import { setCategories, setRegions, setRestaurants } from './RestaurantSlice';
+import { setCategories, setRegions, setSelectedRestaurants } from './RestaurantSlice';
 import { fetchRegions, fetchCategories, fetchRestaurants } from '../servies/api';
 
 export function loadCategories() {
@@ -21,6 +21,6 @@ export function loadRestaurants(regionName, categoryId) {
   return async (dispatch) => {
     const restaurants = await fetchRestaurants(regionName, categoryId);
 
-    dispatch(setRestaurants(restaurants));
+    dispatch(setSelectedRestaurants(restaurants));
   };
 }
