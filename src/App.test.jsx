@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { restaurants } from '../fixtures/restaurants';
 import { categories } from '../fixtures/categories';
 import { regions } from '../fixtures/regions';
 
@@ -16,6 +17,7 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
+      restaurants,
       regions,
       categories,
       search: {
