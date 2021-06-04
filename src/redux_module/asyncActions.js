@@ -5,7 +5,7 @@ export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
 
-    dispatch(setCategories(categories));
+    return dispatch(setCategories(categories));
   };
 }
 
@@ -13,7 +13,7 @@ export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
 
-    dispatch(setRegions(regions));
+    return dispatch(setRegions(regions));
   };
 }
 
@@ -21,6 +21,6 @@ export function loadRestaurants(regionName, categoryId) {
   return async (dispatch) => {
     const restaurants = await fetchRestaurants(regionName, categoryId);
 
-    dispatch(setSelectedRestaurants(restaurants));
+    return dispatch(setSelectedRestaurants(restaurants));
   };
 }
