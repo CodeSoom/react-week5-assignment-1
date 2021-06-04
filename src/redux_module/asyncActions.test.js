@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 
 import { loadCategories, loadRegions, loadRestaurants } from './asyncActions';
 import { setCategories, setRegions, setSelectedRestaurants } from './RestaurantSlice';
@@ -7,8 +7,7 @@ import { setCategories, setRegions, setSelectedRestaurants } from './RestaurantS
 jest.mock('../servies/api');
 
 describe('asyncActions', () => {
-  const middlewares = [thunk];
-  const mockStore = configureStore(middlewares);
+  const mockStore = configureStore(getDefaultMiddleware());
 
   it('fetches categories when being dispatched', async () => {
     const store = mockStore({});
