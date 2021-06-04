@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import { restaurants } from '../fixtures/restaurants';
@@ -7,6 +6,8 @@ import { categories } from '../fixtures/categories';
 import { regions } from '../fixtures/regions';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 describe('App', () => {
   const dispatch = jest.fn();
