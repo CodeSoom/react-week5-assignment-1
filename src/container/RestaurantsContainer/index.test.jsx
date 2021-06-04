@@ -39,11 +39,25 @@ describe('RestaurantsContainer', () => {
   });
 
   context('when regions and categories doesn\'t exist', () => {
-    it('doesn\'t loads restaurants', () => {
+    it('doesn\'t loads restaurants without region', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants,
         search: {
           region: '',
+          categoryId: 1,
+        },
+      }));
+
+      render(<RestaurantsContainer />);
+
+      expect(dispatch).not.toBeCalled();
+    });
+
+    it('doesn\'t loads restaurants without category', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants,
+        search: {
+          region: '서울',
           categoryId: '',
         },
       }));
