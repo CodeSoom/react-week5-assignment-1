@@ -1,9 +1,9 @@
 module.exports = {
   setupFilesAfterEnv: [
+    'given2/setup',
     'jest-plugin-context/setup',
     './jest.setup',
   ],
-  setupTestFrameworkScriptFile: 'given2/setup',
   coverageThreshold: {
     global: {
       branches: 100,
