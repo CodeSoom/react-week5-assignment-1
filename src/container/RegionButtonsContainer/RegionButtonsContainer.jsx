@@ -6,11 +6,10 @@ import Buttons from '../../presentational/Buttons';
 export default function RegionButtonsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => ({
+  const { regions, selected } = useSelector((state) => ({
     regions: state.regions,
+    selected: state.search.region,
   }));
-
-  const selected = useSelector((state) => state.search.regions);
 
   function handleClickChangeSearch({ value }) {
     dispatch(changeSearch({
