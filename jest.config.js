@@ -3,6 +3,7 @@ module.exports = {
     'jest-plugin-context/setup',
     './jest.setup',
   ],
+  setupTestFrameworkScriptFile: 'given2/setup',
   coverageThreshold: {
     global: {
       branches: 100,
