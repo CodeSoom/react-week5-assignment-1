@@ -6,16 +6,15 @@ import Buttons from '../../presentational/Buttons';
 export default function CategoryButtonsContainer() {
   const dispatch = useDispatch();
 
-  const { categories } = useSelector((state) => ({
+  const { categories, selected } = useSelector((state) => ({
     categories: state.categories,
+    selected: state.categories.find((category) => category.id === state.search.categoryId)?.name,
   }));
-
-  const selected = useSelector((state) => state.search.category);
 
   function handleClickChangeSearch({ value }) {
     dispatch(changeSearch({
       search: 'categoryId',
-      value: categories.find((category) => category.name === value).id,
+      value: categories.find((category) => category.name === value)?.id,
     }));
   }
 
