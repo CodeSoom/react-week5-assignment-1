@@ -7,6 +7,7 @@ import RegionButtonsContainer from '.';
 import { regions } from '../../../fixtures/regions';
 
 jest.mock('react-redux');
+jest.mock('../../services/api');
 
 describe('RegionButtonsContainer', () => {
   const dispatch = jest.fn();

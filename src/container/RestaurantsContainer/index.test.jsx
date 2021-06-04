@@ -5,6 +5,9 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import { restaurants } from '../../../fixtures/restaurants';
 
+jest.mock('react-redux');
+jest.mock('../../services/api');
+
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
 

@@ -6,6 +6,7 @@ import CategoryButtonsContainer from './CategoryButtonsContainer';
 import { categories } from '../../../fixtures/categories';
 
 jest.mock('react-redux');
+jest.mock('../../services/api');
 
 describe('CategoryButtonsContainer', () => {
   const dispatch = jest.fn();
