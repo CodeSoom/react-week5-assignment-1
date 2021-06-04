@@ -17,7 +17,7 @@ describe('RestaurantsContainer', () => {
       restaurants,
       search: {
         region: '서울',
-        category: '1',
+        categoryId: 1,
       },
     }));
   });
@@ -30,9 +30,27 @@ describe('RestaurantsContainer', () => {
     });
   });
 
-  it('loads restaurants', () => {
-    render(<RestaurantsContainer />);
+  context('when regions and categories exist', () => {
+    it('loads restaurants', () => {
+      render(<RestaurantsContainer />);
 
-    expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalled();
+    });
+  });
+
+  context('when regions and categories doesn\'t exist', () => {
+    it('doesn\'t loads restaurants', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants,
+        search: {
+          region: '',
+          categoryId: '',
+        },
+      }));
+
+      render(<RestaurantsContainer />);
+
+      expect(dispatch).not.toBeCalled();
+    });
   });
 });

@@ -44,4 +44,30 @@ describe('App', () => {
 
     expect(dispatch).toBeCalledTimes(2);
   });
+
+  context('when regions and categories exist', () => {
+    it('loads restaurants', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants,
+        regions,
+        categories,
+        search: {
+          region: '서울',
+          categoryId: 1,
+        },
+      }));
+
+      render(<App />);
+
+      expect(dispatch).toBeCalledTimes(3);
+    });
+  });
+
+  context('when regions and categories doesn\'t exist', () => {
+    it('doesn\'t loads restaurants', () => {
+      render(<App />);
+
+      expect(dispatch).toBeCalledTimes(2);
+    });
+  });
 });
