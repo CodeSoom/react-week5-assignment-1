@@ -12,9 +12,16 @@ export function setCategories(categories) {
   };
 }
 
-export function selecteRegion(item) {
+export function selecteRegion(region) {
   return {
     type: 'selecteRegion',
-    payload: { item },
+    payload: { region },
+  };
+}
+
+export function selecteCategory(category) {
+  return {
+    type: 'selecteCategory',
+    payload: { category },
   };
 }

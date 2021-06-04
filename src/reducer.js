@@ -3,6 +3,7 @@ const initialState = {
   regions: [],
   categories: [],
   selectedRegion: {},
+  selecteCategory: {},
 };
 
 const defaultAction = {
@@ -20,7 +21,11 @@ const stateByActionType = {
   }),
   selecteRegion: ({ state, action }) => ({
     ...state,
-    selectedRegion: action.payload.item,
+    selectedRegion: action.payload.region,
+  }),
+  selecteCategory: ({ state, action }) => ({
+    ...state,
+    selectedCategory: action.payload.category,
   }),
 };
 
