@@ -5,7 +5,6 @@ import { selectCategory } from '../redux_module/RestaurantSlice';
 import CategoryListContainer from './CategoryListContainer';
 
 jest.mock('react-redux');
-jest.mock('../servies/api');
 
 describe('CategoryListContainer', () => {
   const dispatch = jest.fn();
@@ -21,11 +20,8 @@ describe('CategoryListContainer', () => {
           { id: 2, name: '중식' },
         ],
 
-        regions: ['서울', '부산'],
-
         selected: {
           category: { id: 1, name: '한식' },
-          region: '서울',
         },
       },
     }));

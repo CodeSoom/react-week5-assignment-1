@@ -22,11 +22,10 @@ describe('App', () => {
           { id: 5, name: '분식' },
         ],
         regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
-        selectedRestaurants: [],
+        selectedRestaurants: ['원초밥'],
 
         selected: {
-          category: { id: null, name: null },
-          region: null,
+          category: { id: null },
         },
       },
     }));
@@ -53,5 +52,10 @@ describe('App', () => {
     ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'].forEach((region) => {
       expect(getByRole('button', { name: region })).toBeInTheDocument();
     });
+  });
+
+  it('renders selectedRestaurants', () => {
+    const { container } = render(<App />);
+    expect(container).toHaveTextContent('원초밥');
   });
 });

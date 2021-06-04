@@ -12,7 +12,6 @@ describe('RestaurantSlice', () => {
     it('sets categories', () => {
       const oldState = {
         categories: [],
-        regions: [],
       };
 
       const newState = {
@@ -20,7 +19,6 @@ describe('RestaurantSlice', () => {
           { id: 1, name: '한식' },
           { id: 2, name: '중식' },
         ],
-        regions: [],
       };
 
       expect(reducer(
@@ -34,12 +32,10 @@ describe('RestaurantSlice', () => {
 
     it('sets regions', () => {
       const oldState = {
-        categories: [],
         regions: [],
       };
 
       const newState = {
-        categories: [],
         regions: ['서울', '부산'],
       };
 
@@ -65,14 +61,12 @@ describe('RestaurantSlice', () => {
       const oldState = {
         selected: {
           category: { id: null, name: '' },
-          region: '',
         },
       };
 
       const newState = {
         selected: {
           category: { id: 1, name: '한식' },
-          region: '',
         },
       };
 
@@ -85,14 +79,11 @@ describe('RestaurantSlice', () => {
     it('changes selected region', () => {
       const oldState = {
         selected: {
-          category: '',
           region: '',
         },
       };
       const newState = {
-        selected:
-        {
-          category: '',
+        selected: {
           region: '서울',
         },
       };
