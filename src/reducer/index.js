@@ -1,4 +1,5 @@
 const initialState = {
+  restaurants: [],
   regions: [],
   categories: [],
   search: {
@@ -56,5 +57,9 @@ export default function reducer(state = initialState, action) {
     changeSearch,
   };
 
-  return actionType[type]() || state;
+  if (!actionType[type]) {
+    return state;
+  }
+
+  return actionType[type]();
 }
