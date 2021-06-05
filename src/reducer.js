@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   categories: [],
+  restaurants: [],
 };
 
 function getRestaurantInfosIncludeClickedItem(infos, selectedId) {
