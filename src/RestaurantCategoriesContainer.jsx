@@ -10,6 +10,9 @@ export default function RestaurantCategoriesContainer() {
   }));
 
   return (
-    <RestaurantCategories categories={categories} />
+    <RestaurantCategories
+      categories={categories}
+      onClickCategory={() => null}
+    />
   );
 }
