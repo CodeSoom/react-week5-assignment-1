@@ -22,7 +22,7 @@ describe('App', () => {
       restaurants,
       regions,
       categories,
-      search: {
+      selected: {
         region: '',
         categoryId: '',
       },

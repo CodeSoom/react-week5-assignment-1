@@ -40,7 +40,7 @@ describe('actions', () => {
     context('with region, categoryId', () => {
       it('passes "setRestaurants" action', async () => {
         const getState = jest.fn(() => ({
-          search: {
+          selected: {
             region: '부산',
             categoryId: '1',
           },
@@ -55,7 +55,7 @@ describe('actions', () => {
     context('without region', () => {
       it('doesn\'t passes "setRestaurants" action', async () => {
         const getState = jest.fn(() => ({
-          search: {
+          selected: {
             region: '',
             categoryId: '1',
           },
@@ -70,7 +70,7 @@ describe('actions', () => {
     context('without categoryId', () => {
       it('doesn\'t passes "setRestaurants" action', async () => {
         const getState = jest.fn(() => ({
-          search: {
+          selected: {
             region: '부산',
             categoryId: '',
           },

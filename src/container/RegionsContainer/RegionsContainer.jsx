@@ -8,7 +8,7 @@ export default function RegionsContainer() {
 
   const { regions, selected } = useSelector((state) => ({
     regions: state.regions,
-    selected: state.search.region,
+    selected: state.selected.region,
   }));
 
   function handleClickChangeSearch({ value }) {

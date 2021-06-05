@@ -14,7 +14,7 @@ describe('reducer', () => {
         restaurants: [],
         categories: [],
         regions: [],
-        search: {
+        selected: {
           region: '',
           categoryId: '',
         },
@@ -79,10 +79,11 @@ describe('reducer', () => {
 
     describe('changeSearch', () => {
       it('changes restaurant region', () => {
-        const { search: { region } } = reducer(
+        const { selected: { region, categoryId } } = reducer(
           {
-            search: {
+            selected: {
               region: '부산',
+              categoryId: '2',
             },
           },
           changeSearch({
@@ -92,6 +93,7 @@ describe('reducer', () => {
         );
 
         expect(region).toBe('서울');
+        expect(categoryId).toBe('2'); // NOTE: 예전 selected값이 잘 넣어져 있는 지 확인하기 위해 추가
       });
     });
   });

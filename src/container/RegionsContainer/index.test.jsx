@@ -19,7 +19,7 @@ describe('RegionsContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       regions,
-      search: {
+      selected: {
         region: '',
       },
     }));

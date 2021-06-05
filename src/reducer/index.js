@@ -2,7 +2,7 @@ const initialState = {
   restaurants: [],
   regions: [],
   categories: [],
-  search: {
+  selected: {
     region: '',
     categoryId: '',
   },
@@ -40,8 +40,8 @@ function changeSearch(state, action) {
 
   return {
     ...state,
-    search: {
-      ...state.search,
+    selected: {
+      ...state.selected,
       [search]: value,
     },
   };

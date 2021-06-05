@@ -8,7 +8,7 @@ export default function CategoriesContainer() {
 
   const { categories, selected } = useSelector((state) => ({
     categories: state.categories,
-    selected: state.categories.find((category) => category.id === state.search.categoryId)?.name,
+    selected: state.categories.find((category) => category.id === state.selected.categoryId)?.name,
   }));
 
   function handleClickChangeSearch({ value }) {
