@@ -17,6 +17,13 @@ export function setCategories(categories) {
   };
 }
 
+export function selectRegion(regionId) {
+  return {
+    type: 'selectRegion',
+    payload: { regionId },
+  };
+}
+
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
@@ -25,8 +32,4 @@ export function loadInitialData() {
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
-}
-
-export function xxx() {
-  return {};
 }

@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
+
+import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 import {
   loadInitialData,
 } from './actions';
-
-function RegionsContainer() {
-  return null;
-}
-
-function CategoriesContainer() {
-  return null;
-}
 
 function RestaurantsContainer() {
   return null;
@@ -27,7 +23,7 @@ export default function App() {
   return (
     <div>
       <RegionsContainer />
-      <CategoriesContainer />
+      <  />
       <RestaurantsContainer />
     </div>
   );
