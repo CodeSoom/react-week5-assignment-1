@@ -1,6 +1,9 @@
 import reducer from './reducer';
 
-import { checkRegion } from './actions';
+import {
+  checkRegion,
+  checkCategory,
+} from './actions';
 
 describe('reducer', () => {
   it('checkRegion', () => {
@@ -11,5 +14,15 @@ describe('reducer', () => {
     }, checkRegion(1));
 
     expect(state.regions[0].name).toBe('서울(V)');
+  });
+
+  it('checkCategory', () => {
+    const state = reducer({
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+    }, checkCategory(1));
+
+    expect(state.categories[0].name).toBe('한식(V)');
   });
 });
