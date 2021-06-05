@@ -48,27 +48,41 @@ describe('reducer', () => {
   });
 
   describe('checkCategory', () => {
-    context('with V sign', () => {
-      it('removes V sign', () => {
+    describe('click same region', () => {
+      context('with V sign', () => {
+        it('removes V sign', () => {
+          const state = reducer({
+            categories: [
+              { id: 1, name: '한식(V)' },
+            ],
+          }, checkCategory(1));
+
+          expect(state.categories[0].name).toBe('한식');
+        });
+      });
+      context('without V sign', () => {
+        it('adds V sign', () => {
+          const state = reducer({
+            categories: [
+              { id: 1, name: '한식' },
+            ],
+          }, checkCategory(1));
+
+          expect(state.categories[0].name).toBe('한식(V)');
+        });
+      });
+    });
+    describe('click different category', () => {
+      it('removes V sign and adds V sign', () => {
         const state = reducer({
           categories: [
             { id: 1, name: '한식(V)' },
+            { id: 2, name: '중식' },
           ],
-        }, checkCategory(1));
+        }, checkCategory(2));
 
         expect(state.categories[0].name).toBe('한식');
-      });
-    });
-
-    context('without V sign', () => {
-      it('adds V sign', () => {
-        const state = reducer({
-          categories: [
-            { id: 1, name: '한식' },
-          ],
-        }, checkCategory(1));
-
-      expect(state.categories[0].name).toBe('한식(V)');
+        expect(state.categories[1].name).toBe('중식(V)');
       });
     });
   });
