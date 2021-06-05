@@ -1,7 +1,5 @@
-import regions from '../fixtures/regions';
-
 const initialState = {
-  regions,
+  regions: [],
   categories: [],
 };
 
@@ -13,5 +11,14 @@ export default function reducer(state = initialState, action) {
       regions,
     };
   }
+
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+    return {
+      ...state,
+      categories,
+    };
+  }
+
   return state;
 }
