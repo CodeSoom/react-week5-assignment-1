@@ -7,24 +7,23 @@ import {
 
 describe('reducer', () => {
   describe('checkRegion', () => {
-    context('with V sign', () => {
-      const state = reducer({
-        regionId: 1,
+    function getReducerByRegionId(regionId) {
+      return reducer({
+        regionId,
         regions: [
           { id: 1, name: '서울' },
         ],
       }, checkRegion(1));
+    }
+
+    context('with V sign', () => {
+      const state = getReducerByRegionId(1);
 
       expect(state.regions[0].name).toBe('서울');
     });
 
     context('without V sign', () => {
-      const state = reducer({
-        regionId: 0,
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-      }, checkRegion(1));
+      const state = getReducerByRegionId(0);
 
       expect(state.regions[0].name).toBe('서울(V)');
     });
