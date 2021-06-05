@@ -1,11 +1,9 @@
 import React from 'react';
 
+import RestaurantRegionsContainer from './RestaurantRegionsContainer';
+
 export default function App() {
   return (
-    <ul>
-      <li>
-        서울
-      </li>
-    </ul>
+    <RestaurantRegionsContainer />
   );
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import RestaurantRegions from './RestaurantRegions';
-import {useSelector} from "react-redux";
 
 export default function RestaurantRegionsContainer() {
   const { regions } = useSelector((state) => ({
