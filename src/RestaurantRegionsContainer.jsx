@@ -10,6 +10,9 @@ export default function RestaurantRegionsContainer() {
   }));
 
   return (
-    <RestaurantRegions regions={regions} />
+    <RestaurantRegions
+      regions={regions}
+      onClickRegion={() => null}
+    />
   );
 }

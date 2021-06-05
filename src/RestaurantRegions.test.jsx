@@ -5,13 +5,13 @@ import { render, fireEvent } from '@testing-library/react';
 import RestaurantRegions from './RestaurantRegions';
 
 describe('RestaurantRegions', () => {
-  const regions = [
-    { id: 1, name: '서울' },
-  ];
-
-  const handleClickRegion = jest.fn();
-
   it('render', () => {
+    const regions = [
+      { id: 1, name: '서울' },
+    ];
+
+    const handleClickRegion = jest.fn();
+
     const { getByText } = render((
       <RestaurantRegions
         regions={regions}
