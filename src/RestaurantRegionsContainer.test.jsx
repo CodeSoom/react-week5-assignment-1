@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
@@ -21,5 +21,9 @@ describe('RestaurantRegionsContainer', () => {
     ));
 
     expect(getByText('서울')).not.toBeNull();
+
+    fireEvent.click(getByText('서울'));
+
+    expect(dispatch).toBeCalled();
   });
 });
