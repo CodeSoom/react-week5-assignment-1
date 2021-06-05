@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRegions,
+  setCategories,
 } from './actions';
 
 describe('reducer', () => {
@@ -18,6 +19,20 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
+    });
+
+    it('changes categories', () => {
+      const initialState = {
+        categories: [],
+      };
+
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).toHaveLength(1);
     });
   });
 });
