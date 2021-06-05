@@ -54,9 +54,9 @@ export function setCategories(categories) {
 
 export function loadCategories() {
   return async (dispatch) => {
-    const Categories = await fetchCategories();
+    const categories = await fetchCategories();
 
-    dispatch(setCategories(Categories));
+    dispatch(setCategories(categories));
   };
 }
 
