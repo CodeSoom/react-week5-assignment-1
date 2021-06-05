@@ -7,35 +7,54 @@ import {
 
 describe('reducer', () => {
   describe('checkRegion', () => {
-    function getReducerByRegionId(regionId) {
-      return reducer({
-        regionId,
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-      }, checkRegion(1));
-    }
-
     context('with V sign', () => {
-      const state = getReducerByRegionId(1);
+      it('remove V sign', () => {
+        const state = reducer({
+          regions: [
+            { id: 1, name: '서울(V)' },
+          ],
+        }, checkRegion(1));
 
-      expect(state.regions[0].name).toBe('서울');
+        expect(state.regions[0].name).toBe('서울');
+      });
     });
 
     context('without V sign', () => {
-      const state = getReducerByRegionId(0);
+      it('add V sign', () => {
+        const state = reducer({
+          regions: [
+            { id: 1, name: '서울' },
+          ],
+        }, checkRegion(1));
 
-      expect(state.regions[0].name).toBe('서울(V)');
+        expect(state.regions[0].name).toBe('서울(V)');
+      });
     });
   });
 
-  it('checkCategory', () => {
-    const state = reducer({
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-    }, checkCategory(1));
+  describe('checkCategory', () => {
+    context('with V sign', () => {
+      it('remove V sign', () => {
+        const state = reducer({
+          categories: [
+            { id: 1, name: '한식(V)' },
+          ],
+        }, checkCategory(1));
 
-    expect(state.categories[0].name).toBe('한식(V)');
+        expect(state.categories[0].name).toBe('한식');
+      });
+    });
+
+    context('without V sign', () => {
+      it('add V sign', () => {
+        const state = reducer({
+          categories: [
+            { id: 1, name: '한식' },
+          ],
+        }, checkCategory(1));
+
+      expect(state.categories[0].name).toBe('한식(V)');
+      });
+    });
   });
 });
