@@ -86,4 +86,14 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('loadRestaurants', () => {
+    it('loads restaurants', () => {
+      const state = reducer({
+        restaurants: [],
+      }, loadRestaurants());
+
+      expect(state.restaurants).not.toHaveLength(0);
+    });
+  });
 });
