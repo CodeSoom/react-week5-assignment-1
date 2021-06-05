@@ -5,37 +5,55 @@ import Button from './Button';
 describe('Button', () => {
   it('renders button', () => {
     const item = { id: 1, name: '서울' };
-
+    const beforeSelectedItem = { id: 0, name: '' };
     const handleClick = jest.fn();
 
     const { queryByText } = render(
       <Button
         item={item}
         onclick={handleClick}
+        selectedButton={beforeSelectedItem}
       />,
     );
-    const button = queryByText('서울');
 
-    fireEvent.click(queryByText('서울'));
-
-    expect(button).not.toBeNull();
+    expect(queryByText('서울')).not.toBeNull();
   });
 
-  it('clicks button and changes button name', () => {
-    const selectedItem = { id: 1, name: '서울' };
+  describe('clicks button event', () => {
+    it('clicks button and dispatches selectedRegion', () => {
+      const item = { id: 1, name: '서울' };
+      const selectedItem = { id: 1, name: '서울' };
+      const handleClick = jest.fn();
 
-    const handleClick = jest.fn();
+      const { queryByText } = render(
+        <Button
+          item={item}
+          onclick={handleClick}
+          selectedButton={selectedItem}
+        />,
+      );
 
-    const { queryByText } = render(
-      <Button
-        item={selectedItem}
-        onclick={handleClick}
-      />,
-    );
+      fireEvent.click(queryByText('서울(V)'));
 
-    fireEvent.click(queryByText('서울'));
+      expect(handleClick).toBeCalledWith({ id: 1, name: '서울' });
+    });
 
-    expect(handleClick).toBeCalledWith({ id: 1, name: '서울' });
-    expect(queryByText('서울(V)')).not.toBeNull();
+    it('clicks button and changes button name', () => {
+      const item = { id: 1, name: '서울' };
+      const selectedItem = { id: 1, name: '서울' };
+      const handleClick = jest.fn();
+
+      const { queryByText } = render(
+        <Button
+          item={item}
+          onclick={handleClick}
+          selectedButton={selectedItem}
+        />,
+      );
+
+      fireEvent.click(queryByText('서울(V)'));
+
+      expect(queryByText('서울(V)')).not.toBeNull();
+    });
   });
 });
