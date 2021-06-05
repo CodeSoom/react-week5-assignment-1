@@ -1,21 +1,14 @@
 import reducer from './reducer';
 
+import { checkRegion } from './actions';
+
 describe('reducer', () => {
   it('checkRegion', () => {
-    const previousState = {
+    const state = reducer({
       regions: [
         { id: 1, name: '서울' },
       ],
-    };
-
-    const action = {
-      type: 'checkRegion',
-      payload: {
-        id: 1,
-      },
-    };
-
-    const state = reducer(previousState, action);
+    }, checkRegion(1));
 
     expect(state.regions[0].name).toBe('서울(V)');
   });
