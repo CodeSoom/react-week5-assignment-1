@@ -16,44 +16,48 @@ describe('asyncActions', () => {
   });
 
   describe('loadCategories', () => {
-    it('fetches categories when being dispatched', async () => {
-      const categories = [
+    beforeEach(() => {
+      fetchCategories.mockImplementation(async () => [
         { id: 1, name: '한식' },
         { id: 2, name: '중식' },
-        { id: 3, name: '일식' },
-        { id: 4, name: '양식' },
-        { id: 5, name: '분식' },
-      ];
+      ]);
+    });
 
-      fetchCategories.mockImplementation(async () => categories);
-
+    it('fetches categories when being dispatched', async () => {
       await store.dispatch(loadCategories());
 
       const actions = store.getActions();
-      expect(actions[0]).toEqual(setCategories(categories));
+      expect(actions[0]).toEqual(setCategories([
+        { id: 1, name: '한식' },
+        { id: 2, name: '중식' },
+      ]));
     });
   });
 
   describe('loadRegions', () => {
-    it('fetches regions when being dispatched', async () => {
+    beforeEach(() => {
       fetchRegions.mockImplementation(
-        async () => ['서울', '대전', '대구', '부산', '광주', '강원도'],
+        async () => ['서울', '대전'],
       );
+    });
 
+    it('fetches regions when being dispatched', async () => {
       await store.dispatch(loadRegions());
 
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setRegions([
-        '서울', '대전', '대구', '부산', '광주', '강원도',
+        '서울', '대전',
       ]));
     });
   });
 
   describe('loadRestaurants', () => {
-    it('fetches restuarants when being dispatched', async () => {
-      fetchRestaurants.mockImplementation(async () => ['양천주가', '한국식 초밥', '김초밥']);
+    beforeEach(() => {
+      fetchRestaurants.mockImplementation(async () => ['양천주가', '한국식 초밥']);
+    });
 
+    it('fetches restuarants when being dispatched', async () => {
       await store.dispatch(loadRestaurants('서울', 1));
 
       const actions = store.getActions();
@@ -61,7 +65,6 @@ describe('asyncActions', () => {
       expect(actions[0]).toEqual(setSelectedRestaurants([
         '양천주가',
         '한국식 초밥',
-        '김초밥',
       ]));
     });
   });
