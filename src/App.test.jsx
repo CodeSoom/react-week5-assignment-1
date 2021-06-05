@@ -1,30 +1,21 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
 import { render } from '@testing-library/react';
 
-import App from './App';
+import { useDispatch } from 'react-redux';
 
-jest.mock('react-redux');
-jest.mock('./services/api');
+import App from './App';
 
 test('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [],
-    restaurant: {},
-    categories: [],
-  }));
-
   const { queryByText } = render((
     <App />
   ));
 
-  expect(dispatch).toBeCalledTimes(2);
+  expect(dispatch).toBeCalled();
 
-  expect(queryByText(/김밥제국/)).toBeNull();
+  // expect(queryByText(/Hello/)).toBeNull();
 });
