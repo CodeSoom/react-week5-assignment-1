@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default function RestaurantRegions() {
+export default function RestaurantRegions({ regions }) {
   return (
     <ul>
-      <li>
-        서울
-      </li>
+      {regions.map(({ id, name }) => (
+        <li key={id}>
+          {name}
+        </li>
+      ))}
     </ul>
   );
 }
