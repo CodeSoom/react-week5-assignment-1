@@ -8,18 +8,11 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
-      regions: regions.map(({ id, name }) => {
-        if (id === action.payload.id) {
-          return {
-            id,
-            name: `${name}(V)`,
-          };
-        }
-        return {
-          id,
-          name,
-        };
-      }),
+      regions: regions.map(({ id, name }) => (
+        (id === action.payload.id)
+          ? { id, name: `${name}(V)`}
+          : { id, name }
+      )),
     };
   }
 
