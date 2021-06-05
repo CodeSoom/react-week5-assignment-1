@@ -1,7 +1,10 @@
-export function checkRegion() {
+export function checkRegion(id) {
   return {
     type: 'checkRegion',
-  }
+    payload: {
+      id,
+    },
+  };
 }
 
 // delete this

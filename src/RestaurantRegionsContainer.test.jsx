@@ -29,7 +29,10 @@ describe('RestaurantRegionsContainer', () => {
     fireEvent.click(getByText('서울'));
 
     expect(dispatch).toBeCalledWith({
-      type: 'checkRegion'
+      type: 'checkRegion',
+      payload: {
+        id: 1,
+      }
     });
   });
 });
