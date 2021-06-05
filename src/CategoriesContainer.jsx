@@ -3,19 +3,19 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-// selectCategory,
+  selectCategory,
 } from './actions';
+
+import { get } from './utils';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories, selectedCategory } = useSelector((state) => ({
-    categories: state.categories,
-    selectedCategory: state.selectedCategory,
-  }));
+  const categories = useSelector(get('categories'));
+  const selectedCategory = useSelector(get('selectedCategory'));
 
   function handleClick(categoryId) {
-    // dispatch(selectCategory(categoryId));
+    dispatch(selectCategory(categoryId));
   }
 
   return (
@@ -27,6 +27,11 @@ export default function CategoriesContainer() {
             onClick={() => handleClick(category.id)}
           >
             {category.name}
+            {selectedCategory ? (
+              <>
+                {category.id === selectedCategory.id ? '(V)' : null}
+              </>
+            ) : null}
           </button>
         </li>
       ))}

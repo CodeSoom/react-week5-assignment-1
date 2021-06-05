@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   selectRegion,
+  selectCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -52,6 +53,22 @@ describe('reducer', () => {
     expect(state.selectedRegion).toEqual({
       id: 1,
       name: '서울',
+    });
+  });
+
+  describe('selectCategory', () => {
+    const initialState = {
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      selectedCategory: null,
+    };
+
+    const state = reducer(initialState, selectCategory(1));
+
+    expect(state.selectedCategory).toEqual({
+      id: 1,
+      name: '한식',
     });
   });
 });

@@ -23,7 +23,7 @@ test('CategoriesContainer', () => {
 
   expect(container).toHaveTextContent('한식');
 
-  // fireEvent.click(getByText('한식'));
+  fireEvent.click(getByText('한식'));
 
-  // expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalled();
 });
