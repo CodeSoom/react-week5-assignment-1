@@ -4,14 +4,11 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitialData,
 } from './actions';
-
-function RestaurantsContainer() {
-  return null;
-}
 
 export default function App() {
   const dispatch = useDispatch();

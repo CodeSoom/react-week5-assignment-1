@@ -18,6 +18,9 @@ test('App', () => {
     categories: [
       { id: 1, name: '한식' },
     ],
+    restaurants: [
+      { id: 1, name: '마법사주방' },
+    ],
   }));
 
   const { queryByText } = render((
