@@ -4,7 +4,7 @@ export default function RestaurantCategories({ categories, onClickCategory }) {
   return (
     <ul>
       {categories.map(({ id, name }) => (
-        <li key={id} onClick={onClickCategory}>
+        <li key={id} onClick={() => onClickCategory(id)}>
           {name}
         </li>
       ))}

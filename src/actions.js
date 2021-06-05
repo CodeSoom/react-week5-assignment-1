@@ -7,7 +7,11 @@ export function checkRegion(id) {
   };
 }
 
-// delete this
-export function xxx() {
-  //
+export function checkCategory(id) {
+  return {
+    type: 'checkCategory',
+    payload: {
+      id,
+    },
+  };
 }
