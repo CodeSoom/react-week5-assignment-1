@@ -1,4 +1,5 @@
 const initialState = {
+  regionId: 0,
   regions: [],
   categories: [],
   restaurants: [],
@@ -14,11 +15,13 @@ function getRestaurantInfosIncludeClickedItem(infos, selectedId) {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'checkRegion') {
-    const { regions } = state;
+    const { regionId, regions } = state;
+    const { id } = action.payload;
 
     return {
       ...state,
-      regions: getRestaurantInfosIncludeClickedItem(regions, action.payload.id),
+      regions: regionId === id ? regions : getRestaurantInfosIncludeClickedItem(regions, id),
+      regionId: id,
     };
   }
 

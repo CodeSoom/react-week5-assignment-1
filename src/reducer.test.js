@@ -9,6 +9,7 @@ describe('reducer', () => {
   describe('checkRegion', () => {
     context('with V sign', () => {
       const state = reducer({
+        regionId: 1,
         regions: [
           { id: 1, name: '서울' },
         ],
@@ -19,6 +20,7 @@ describe('reducer', () => {
 
     context('without V sign', () => {
       const state = reducer({
+        regionId: 0,
         regions: [
           { id: 1, name: '서울' },
         ],
