@@ -31,7 +31,7 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  it('passes "changeSearch" action', () => {
+  it('passes "changeSearch" action and passes "loadRestaurants" action', () => {
     const { getByRole } = render(<CategoriesContainer values={categories} />);
 
     expect(dispatch).not.toBeCalled();
@@ -45,5 +45,8 @@ describe('CategoriesContainer', () => {
         value: 1,
       },
     });
+
+    // NOTE: loadRestaurants는 이렇게 테스트해보는게 맞을까?
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

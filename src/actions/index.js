@@ -26,8 +26,19 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function loadRestaurants({ region, categoryId }) {
-  return async (dispatch) => {
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { search: { region, categoryId } } = getState();
+
+    if (!region) {
+      return;
+    }
+
+    // NOTE: id가 0이 있을 수도 있으므로 ''로 지정
+    if (categoryId === '') {
+      return;
+    }
+
     const restaurants = await fetchRestaurants({ region, categoryId });
 
     dispatch(setRestaurants(restaurants));

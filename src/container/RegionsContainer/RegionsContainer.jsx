@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeSearch } from '../../actions';
+import { changeSearch, loadRestaurants } from '../../actions';
 import Buttons from '../../presentational/Buttons';
 
 export default function RegionsContainer() {
@@ -16,6 +16,8 @@ export default function RegionsContainer() {
       search: 'region',
       value,
     }));
+
+    dispatch(loadRestaurants());
   }
 
   return (

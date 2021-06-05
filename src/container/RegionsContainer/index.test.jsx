@@ -33,7 +33,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  it('passes "changeSearch" action', () => {
+  it('passes "changeSearch" action and passes "loadRestaurants" action', () => {
     const { getByRole } = render(<RegionsContainer values={regions} />);
 
     expect(dispatch).not.toBeCalled();
@@ -47,5 +47,8 @@ describe('RegionsContainer', () => {
         value: '부산',
       },
     });
+
+    // NOTE: loadRestaurants는 이렇게 테스트해보는게 맞을까?
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

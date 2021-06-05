@@ -37,13 +37,49 @@ describe('actions', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('passes "setRestaurants" action', async () => {
-      await loadRestaurants({
-        region: '서울',
-        categoryId: '1',
-      })(dispatch);
+    context('with region, categoryId', () => {
+      it('passes "setRestaurants" action', async () => {
+        const getState = jest.fn(() => ({
+          search: {
+            region: '부산',
+            categoryId: '1',
+          },
+        }));
 
-      expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
+      });
+    });
+
+    context('without region', () => {
+      it('doesn\'t passes "setRestaurants" action', async () => {
+        const getState = jest.fn(() => ({
+          search: {
+            region: '',
+            categoryId: '1',
+          },
+        }));
+
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
+
+    context('without categoryId', () => {
+      it('doesn\'t passes "setRestaurants" action', async () => {
+        const getState = jest.fn(() => ({
+          search: {
+            region: '부산',
+            categoryId: '',
+          },
+        }));
+
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).not.toBeCalled();
+      });
     });
   });
 });

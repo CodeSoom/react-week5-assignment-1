@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeSearch } from '../../actions';
+import { changeSearch, loadRestaurants } from '../../actions';
 import Buttons from '../../presentational/Buttons';
 
 export default function CategoriesContainer() {
@@ -16,6 +16,8 @@ export default function CategoriesContainer() {
       search: 'categoryId',
       value: categories.find((category) => category.name === value)?.id,
     }));
+
+    dispatch(loadRestaurants());
   }
 
   return (
