@@ -7,11 +7,17 @@ import Restaurants from './Restaurants';
 describe('Restaurants', () => {
   it('render', () => {
     const restaurants = [
-      { id: 1, name: '한국식 초밥' },
+      {
+        "id": 6,
+        "categoryId": 1,
+        "name": "한국식 초밥",
+        "address": "서울 강남구",
+        "information": "한국식 초밥 in 서울 강남구"
+      },
     ];
 
     const { getByText } = render((
-      <Restaurants restaurant={restaurants} />
+      <Restaurants restaurants={restaurants} />
     ));
 
     expect(getByText('한국식 초밥')).not.toBeNull();
