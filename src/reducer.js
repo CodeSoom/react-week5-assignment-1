@@ -2,8 +2,8 @@ const initialState = {
   newId: 100,
   regions: [],
   categories: [],
-  selectedRegion: {},
-  selecteCategory: {},
+  selectedRegion: { id: 0, name: '' },
+  selectedCategory: { id: 0, name: '' },
 };
 
 const defaultAction = {

@@ -1,18 +1,15 @@
 import React from 'react';
 
-export default function Button({ item }) {
-  function handleClick() {
-    return {
-    };
-  }
-
+export default function Button({ item, onclick, selectedButton }) {
   return (
     <div>
       <button
         type="button"
-        onClick={handleClick}
+        onClick={() => onclick(item)}
       >
-        {item.name}
+        { selectedButton === item
+          ? `${item.name}${'(v)'}`
+          : `${item.name}`}
       </button>
     </div>
   );
