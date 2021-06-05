@@ -1,6 +1,6 @@
 import Button from './Button';
 
-export default function Rigion({ regions }) {
+export default function Region({ regions }) {
   return (
     <ul>
       {regions.map((region) => (

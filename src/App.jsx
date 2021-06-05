@@ -6,7 +6,7 @@ import {
   loadInitialData,
 } from './actions';
 
-import RigionContainer from './RegionContainer';
+import RegionContainer from './RegionContainer';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <div>
-      <RigionContainer />
+      <RegionContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
     </div>
