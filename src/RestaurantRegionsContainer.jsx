@@ -1,10 +1,18 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantRegions from './RestaurantRegions';
 
+import { checkRegion } from './actions';
+
 export default function RestaurantRegionsContainer() {
+  const dispatch = useDispatch();
+
+  const handleClickRegion = () => {
+    dispatch(checkRegion());
+  };
+
   const { regions } = useSelector((state) => ({
     regions: state.regions,
   }));
@@ -12,7 +20,7 @@ export default function RestaurantRegionsContainer() {
   return (
     <RestaurantRegions
       regions={regions}
-      onClickRegion={() => null}
+      onClickRegion={handleClickRegion}
     />
   );
 }

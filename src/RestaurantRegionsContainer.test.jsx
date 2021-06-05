@@ -2,20 +2,24 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 
 jest.mock('react-redux');
 
 describe('RestaurantRegionsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-  }));
-
   it('render', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+    }));
+
     const { getByText } = render((
       <RestaurantRegionsContainer />
     ));
@@ -24,6 +28,8 @@ describe('RestaurantRegionsContainer', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledWith({
+      type: 'checkRegion'
+    });
   });
 });
