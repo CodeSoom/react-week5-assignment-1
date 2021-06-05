@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantCategories from './RestaurantCategories';
-
 import { checkCategory } from './actions';
+
+import RestaurantCategories from './RestaurantCategories';
 
 export default function RestaurantCategoriesContainer() {
   const dispatch = useDispatch();

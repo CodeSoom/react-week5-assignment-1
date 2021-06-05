@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantRegions from './RestaurantRegions';
-
 import { checkRegion } from './actions';
+
+import RestaurantRegions from './RestaurantRegions';
 
 export default function RestaurantRegionsContainer() {
   const dispatch = useDispatch();

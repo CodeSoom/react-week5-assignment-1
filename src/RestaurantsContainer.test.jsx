@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { render } from '@testing-library/react';
-
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
