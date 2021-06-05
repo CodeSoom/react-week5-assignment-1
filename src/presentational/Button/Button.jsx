@@ -11,7 +11,8 @@ export default function Button({
           value: name,
         })}
       >
-        {selected === name ? `${name}(V)` : name}
+        {name}
+        {selected === name ? '(V)' : null}
       </button>
     </li>
   );
