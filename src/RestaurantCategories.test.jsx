@@ -4,10 +4,14 @@ import { render } from '@testing-library/react';
 
 import RestaurantCategories from './RestaurantCategories';
 
-describe('RestaurantCategoriesContainer', () => {
+describe('RestaurantCategories', () => {
+  const categories = [
+    { id: 1, name: '한식' },
+  ];
+
   it('render', () => {
     const { getByText } = render((
-      <RestaurantCategories />
+      <RestaurantCategories categories={categories} />
     ));
 
     expect(getByText('한식')).not.toBeNull();
