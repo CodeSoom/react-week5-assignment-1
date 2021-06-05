@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeSearch } from '../../actions';
 import Buttons from '../../presentational/Buttons';
 
-export default function CategoryButtonsContainer() {
+export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
   const { categories, selected } = useSelector((state) => ({

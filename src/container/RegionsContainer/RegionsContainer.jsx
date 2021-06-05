@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeSearch } from '../../actions';
 import Buttons from '../../presentational/Buttons';
 
-export default function RegionButtonsContainer() {
+export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   const { regions, selected } = useSelector((state) => ({

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { loadRegions, loadCategories } from './actions';
-import CategoryButtonsContainer from './container/CategoryButtonsContainer';
-import RegionButtonsContainer from './container/RegionButtonsContainer';
+import RegionsContainer from './container/RegionsContainer';
+import CategoriesContainer from './container/CategoriesContainer';
 import RestaurantsContainer from './container/RestaurantsContainer/RestaurantsContainer';
 
 export default function App() {
@@ -16,8 +16,8 @@ export default function App() {
 
   return (
     <div>
-      <RegionButtonsContainer />
-      <CategoryButtonsContainer />
+      <RegionsContainer />
+      <CategoriesContainer />
       <RestaurantsContainer />
     </div>
   );

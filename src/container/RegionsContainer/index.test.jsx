@@ -1,14 +1,15 @@
 import { fireEvent, render } from '@testing-library/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
-import CategoryButtonsContainer from './CategoryButtonsContainer';
+import RegionsContainer from './RegionsContainer';
 
-import { categories } from '../../../fixtures/categories';
+import { regions } from '../../../fixtures/regions';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
 
-describe('CategoryButtonsContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -17,32 +18,33 @@ describe('CategoryButtonsContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      categories,
+      regions,
       search: {
-        categoryId: '',
+        region: '',
       },
     }));
   });
-  it('renders CategoryButtonsContainer', () => {
-    const { getByRole } = render(<CategoryButtonsContainer values={categories} />);
 
-    categories.forEach(({ name }) => {
+  it('renders RegionsContainer', () => {
+    const { getByRole } = render(<RegionsContainer values={regions} />);
+
+    regions.forEach(({ name }) => {
       getByRole('button', { name });
     });
   });
 
   it('passes "changeSearch" action', () => {
-    const { getByRole } = render(<CategoryButtonsContainer values={categories} />);
+    const { getByRole } = render(<RegionsContainer values={regions} />);
 
     expect(dispatch).not.toBeCalled();
 
-    fireEvent.click(getByRole('button', { name: '한식' }));
+    fireEvent.click(getByRole('button', { name: '부산' }));
 
     expect(dispatch).toBeCalledWith({
       type: 'changeSearch',
       payload: {
-        search: 'categoryId',
-        value: 1,
+        search: 'region',
+        value: '부산',
       },
     });
   });
