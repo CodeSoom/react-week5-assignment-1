@@ -12,7 +12,9 @@ function getRestaurantInfosIncludeClickedItem(infos, selectedId) {
         : { id, name: `${name}(V)` }
     }
 
-    return { id, name };
+    return name.endsWith('(V)')
+      ? { id, name: name.split('(V)')[0] }
+      : { id, name }
   });
 }
 

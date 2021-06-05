@@ -42,7 +42,7 @@ describe('reducer', () => {
         }, checkRegion(2));
 
         expect(state.regions[0].name).toBe('서울');
-        expect(state.regions[0].name).toBe('대전(V)');
+        expect(state.regions[1].name).toBe('대전(V)');
       });
     });
   });
