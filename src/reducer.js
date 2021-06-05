@@ -4,16 +4,16 @@ const initialState = {
 };
 
 function getRestaurantInfosIncludeClickedItem(infos, selectedId) {
-  return infos.map(({id, name}) => (
+  return infos.map(({ id, name }) => (
     (id === selectedId)
-      ? {id, name: `${name}(V)`}
-      : {id, name}
+      ? { id, name: `${name}(V)` }
+      : { id, name }
   ));
 }
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'checkRegion') {
-    const {regions} = state;
+    const { regions } = state;
 
     return {
       ...state,
@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'checkCategory') {
-    const {categories} = state;
+    const { categories } = state;
 
     return {
       ...state,

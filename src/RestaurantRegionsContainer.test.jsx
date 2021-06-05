@@ -32,7 +32,7 @@ describe('RestaurantRegionsContainer', () => {
       type: 'checkRegion',
       payload: {
         id: 1,
-      }
+      },
     });
   });
 });

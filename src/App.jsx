@@ -1,7 +1,7 @@
 import React from 'react';
 
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
-import RestaurantCategoriesContainer from "./RestaurantCategoriesContainer";
+import RestaurantCategoriesContainer from './RestaurantCategoriesContainer';
 
 export default function App() {
   return (
