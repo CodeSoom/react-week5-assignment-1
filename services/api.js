@@ -4,7 +4,8 @@ export async function fetchRestaurantRegions() {
   return response.json();
 }
 
-// TODO : delete this
-export function xxx() {
-  //
+export async function fetchRestaurantCategories() {
+  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const response = await fetch(url);
+  return response.json();
 }
