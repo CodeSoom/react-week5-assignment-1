@@ -39,5 +39,14 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setRestaurantRegions') {
+    const { regions } = action.payload;
+
+    return {
+      ...state,
+      regions,
+    };
+  }
+
   return state;
 }

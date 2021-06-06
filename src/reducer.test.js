@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   checkRegion,
   checkCategory,
+  setRestaurantRegions,
 } from './actions';
 
 describe('reducer', () => {
@@ -87,13 +88,17 @@ describe('reducer', () => {
     });
   });
 
-  describe('loadRestaurants', () => {
-    it('loads restaurants', () => {
-      const state = reducer({
-        restaurants: [],
-      }, loadRestaurants());
+  describe('setRestaurantRegions', () => {
+    it('fill restaurant regions', () => {
+      const regions = [
+        { id: 1, name: '서울' }
+      ];
 
-      expect(state.restaurants).not.toHaveLength(0);
+      const state = reducer({
+        regions: [],
+      }, setRestaurantRegions(regions));
+
+      expect(state.regions).not.toHaveLength(0);
     });
   });
 });
