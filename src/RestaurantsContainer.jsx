@@ -1,10 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
 export default function RestaurantsContainer() {
-  const dispatch = useDispatch();
-
   const restaurants = useSelector(get('restaurants'));
 
   return (
