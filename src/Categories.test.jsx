@@ -40,6 +40,7 @@ describe('Categories', () => {
         categories={categories}
       />,
     );
+
     fireEvent.click(queryByText('한식'));
 
     expect(dispatch).toBeCalledWith({

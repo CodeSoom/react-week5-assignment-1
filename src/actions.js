@@ -48,12 +48,17 @@ export function loadDate() {
     dispatch(setCategories(categories));
   };
 }
-export function loadRestaurants(regionName, categoryId) {
-  return async (dispatch) => {
-    if (regionName === undefined || categoryId === undefined) {
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { selectedRegion, selectedCategory } = getState();
+
+    if (!selectedRegion.name || !selectedCategory.id) {
       return;
     }
-    const restaurants = await fetchRestaurants(regionName, categoryId);
+    const restaurants = await fetchRestaurants(
+      selectedRegion.name,
+      selectedCategory.id,
+    );
     dispatch(getRestaurants(restaurants));
   };
 }

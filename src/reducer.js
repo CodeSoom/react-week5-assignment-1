@@ -16,18 +16,22 @@ const stateByActionType = {
     ...state,
     regions: action.payload.regions,
   }),
+
   setCategories: ({ state, action }) => ({
     ...state,
     categories: action.payload.categories,
   }),
+
   selecteRegion: ({ state, action }) => ({
     ...state,
     selectedRegion: action.payload.region,
   }),
+
   selecteCategory: ({ state, action }) => ({
     ...state,
     selectedCategory: action.payload.category,
   }),
+
   getRestaurants: ({ state, action }) => ({
     ...state,
     restaurants: action.payload.restaurants,

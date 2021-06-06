@@ -1,10 +1,14 @@
 import { render, fireEvent } from '@testing-library/react';
 
+import { useDispatch } from 'react-redux';
+
 import Button from './Button';
 
 describe('Button', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
-    jest.resetAllMocks();
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders button', () => {

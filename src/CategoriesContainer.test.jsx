@@ -15,6 +15,7 @@ describe('CategoriesContainer', () => {
       selectedCategory: { category: { id: 1, name: '한식' } },
     }));
   });
+
   it('renders CategoriesContainer', () => {
     const { queryByText } = render(<CategoriesContainer />);
 
