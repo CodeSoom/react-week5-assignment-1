@@ -10,7 +10,7 @@ describe('RestaurantsContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
-        { categoryId: 1, name: '양천주가' },
+        { id: 1, categoryId: 1, name: '양천주가' },
       ],
     }));
   });
