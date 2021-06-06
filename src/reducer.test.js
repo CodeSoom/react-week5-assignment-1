@@ -5,6 +5,7 @@ import {
   setCategories,
   selecteRegion,
   selecteCategory,
+  getRestaurants,
 } from './actions';
 
 describe('reducer', () => {
@@ -67,6 +68,23 @@ describe('reducer', () => {
 
       expect(state.selectedCategory.id).toBe(1);
       expect(state.selectedCategory.name).toBe('한식');
+    });
+  });
+
+  describe('getRestaurants', () => {
+    it('gets Restaurants object', () => {
+      const restaurants = [
+        { categoryId: 1, name: '양천주가' },
+      ];
+
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, getRestaurants(restaurants));
+
+      expect(state.restaurants.categoryId).toBe(1);
+      expect(state.restaurants.name).toBe('양천주가');
     });
   });
 
