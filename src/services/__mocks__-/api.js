@@ -3,5 +3,5 @@ export async function fetchRegions() {
 }
 
 export async function fetchCategories() {
-  // 지울예정!
+  return [];
 }

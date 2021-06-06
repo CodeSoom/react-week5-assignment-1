@@ -3,6 +3,10 @@ import { render, fireEvent } from '@testing-library/react';
 import Button from './Button';
 
 describe('Button', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   it('renders button', () => {
     const item = { id: 1, name: '서울' };
     const beforeSelectedItem = { id: 0, name: '' };

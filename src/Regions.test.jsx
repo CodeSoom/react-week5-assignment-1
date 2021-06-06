@@ -2,30 +2,42 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
+import Regions from './Regions';
 
 jest.mock('react-redux');
 
-describe('RegionsContainer', () => {
-  const dispatch = useDispatch();
+describe('Regions', () => {
+  const regions =[
+    { id: 1, name: '서울' },
+  ];
+
+  const dispatch = jest.fn();
 
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions: [
         { id: 1, name: '서울' },
       ],
-      selectedRegion: { Region: { id: 1, name: '서울' } },
+      selectedRegion: { region: { id: 1, name: '서울' } },
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders regions list', () => {
-    const { queryByText } = render(<RegionsContainer />);
+    const { queryByText } = render(
+    <Regions
+      regions={regions}
+    />);
 
     expect(queryByText('서울')).not.toBeNull();
   });
 
-  it('handleClick event and dispatches regionsContainer', () => {
-    const { queryByText } = render(<RegionsContainer />);
+  it('handleClick event and dispatches selecteRegion', () => {
+    const { queryByText } = render(
+    <Regions
+      regions={regions}
+    />);
 
     fireEvent.click(queryByText('서울'));
 
