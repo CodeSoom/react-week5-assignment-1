@@ -9,14 +9,14 @@ const initialState = {
 };
 
 const reducers = {
-  setRegion(state, { payload: { regions } }) {
+  setRegions(state, { payload: { regions } }) {
     return {
       ...state,
       regions,
     };
   },
 
-  setCategorie(state, { payload: { categories } }) {
+  setCategories(state, { payload: { categories } }) {
     return {
       ...state,
       categories,

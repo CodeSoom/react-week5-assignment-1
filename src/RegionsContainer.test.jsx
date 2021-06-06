@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
+jest.mock('react-redux');
+
 test('RegionsContainer', () => {
   const dispatch = jest.fn();
 

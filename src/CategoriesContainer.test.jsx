@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
+jest.mock('react-redux');
+
 test('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
