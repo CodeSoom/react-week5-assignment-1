@@ -11,10 +11,6 @@ export default function CategoriesContainer() {
 
   const categories = useSelector(get('categories'));
   const selectedCategory = useSelector(get('selectedCategory'));
-  // const { categories, selectedCategory } = useSelector((state) => ({
-  //   categories: state.categories,
-  //   selectedCategory: state.selectedCategory,
-  // }));
 
   function handleClick(categoryId) {
     dispatch(selectCategory(categoryId));
