@@ -5,6 +5,7 @@ import {
   checkCategory,
   setRestaurantRegions,
   setRestaurantCategories,
+  setRestaurants,
 } from './actions';
 
 describe('reducer', () => {

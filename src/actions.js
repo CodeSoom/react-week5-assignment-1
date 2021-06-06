@@ -52,3 +52,12 @@ export function loadRestaurantCategories() {
     dispatch(setRestaurantCategories(categories));
   };
 }
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
