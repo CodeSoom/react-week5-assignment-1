@@ -4,6 +4,7 @@ import {
   checkRegion,
   checkCategory,
   setRestaurantRegions,
+  setRestaurantCategories,
 } from './actions';
 
 describe('reducer', () => {
@@ -99,6 +100,20 @@ describe('reducer', () => {
       }, setRestaurantRegions(regions));
 
       expect(state.regions).not.toHaveLength(0);
+    });
+  });
+
+  describe('setRestaurantCategories', () => {
+    it('fill restaurant categories', () => {
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+
+      const state = reducer({
+        categories: [],
+      }, setRestaurantCategories(categories));
+
+      expect(state.categories).not.toHaveLength(0);
     });
   });
 });
