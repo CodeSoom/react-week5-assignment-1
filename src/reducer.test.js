@@ -116,4 +116,18 @@ describe('reducer', () => {
       expect(state.categories).not.toHaveLength(0);
     });
   });
+
+  describe('setRestaurants', () => {
+    it('fill restaurants', () => {
+      const restaurants = [
+        { id: 1, name: '한국식 초밥' },
+      ];
+
+      const state = reducer({
+        restaurants: [],
+      }, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
+    });
+  });
 });
