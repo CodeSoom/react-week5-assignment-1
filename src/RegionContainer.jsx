@@ -7,5 +7,9 @@ export default function RegionContainer() {
     regions: state.regions,
   }));
 
-  return <Region regions={regions} />;
+  function handleClick() {
+
+  }
+
+  return <Region regions={regions} onClick={handleClick} />;
 }
