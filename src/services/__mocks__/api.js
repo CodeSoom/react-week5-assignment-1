@@ -1,11 +1,3 @@
-export async function fetchRegions() {
-  return [];
-}
-
-export async function fetchCategories() {
-  return [];
-}
-
-export async function fetchRestaurants() {
-  return [];
-}
+export const fetchCategories = jest.fn();
+export const fetchRegions = jest.fn();
+export const fetchRestaurants = jest.fn();

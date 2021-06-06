@@ -15,7 +15,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadDate());
-  });
+  }, []);
 
   return (
     <div>
