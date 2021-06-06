@@ -17,6 +17,7 @@ test('App', () => {
     categories: [
       { id: 1, name: '한식' },
     ],
+    restaurants: [],
   }));
 
   const { container } = render(<App />);
