@@ -1,5 +1,5 @@
-import reducer from '.';
-import { restaurants } from '../../fixtures/restaurants';
+import reducer, { initialState } from '.';
+
 import {
   setCategories,
   setRegions,
@@ -7,21 +7,13 @@ import {
   setRestaurants,
 } from '../actions';
 
+import { restaurants } from '../../fixtures/restaurants';
+
 describe('reducer', () => {
   context('when type is invalid', () => {
     it('returns previous state', () => {
-      const initialState = {
-        restaurants: [],
-        categories: [],
-        regions: [],
-        selected: {
-          region: '',
-          categoryId: '',
-        },
-      };
-
       const state = reducer(
-        initialState,
+        undefined,
         {
           type: '11',
         },

@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
   restaurants: [],
   regions: [],
   categories: [],
@@ -62,5 +62,5 @@ const actionType = {
 export default function reducer(state = initialState, action) {
   const { type } = action;
 
-  return (actionType[type] || defaultAction)(state, action);
+  return (actionType[type] || actionType.defaultAction)(state, action);
 }
