@@ -42,13 +42,13 @@ export function setRestaurantCategories(categories) {
     type: 'setRestaurantCategories',
     payload: {
       categories,
-    }
-  }
+    },
+  };
 }
 
 export function loadRestaurantCategories() {
   return async (dispatch) => {
     const categories = await fetchRestaurantCategories();
     dispatch(setRestaurantCategories(categories));
-  }
+  };
 }
