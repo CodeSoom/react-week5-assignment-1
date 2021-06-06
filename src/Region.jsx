@@ -1,4 +1,4 @@
-export default function Region({ regions, onClick }) {
+export default function Region({ regions, onClick, selectedRegion }) {
   return (
     <ul>
       {regions.map(({ id, name }) => (
@@ -8,6 +8,7 @@ export default function Region({ regions, onClick }) {
             onClick={() => onClick(id)}
           >
             {name}
+            {selectedRegion && id === selectedRegion.id ? '(V)' : null}
           </button>
         </li>
       ))}
