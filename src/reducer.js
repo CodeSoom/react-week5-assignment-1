@@ -1,6 +1,7 @@
 const initialState = {
   regions: [],
   categories: [],
+  selectedRegion: null,
 };
 
 const reducers = {
@@ -14,6 +15,13 @@ const reducers = {
     return {
       ...state,
       categories,
+    };
+  },
+  selectRegion(state, { payload: { regionId } }) {
+    const { regions } = state;
+    return {
+      ...state,
+      selectedRegion: regions.find((region) => region.id === regionId),
     };
   },
 };
