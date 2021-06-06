@@ -36,6 +36,6 @@ describe('App', () => {
 
     expect(getByText('서울')).not.toBeNull();
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

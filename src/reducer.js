@@ -1,4 +1,6 @@
 const initialState = {
+  regionName: '',
+  categoryId: 0,
   regions: [],
   categories: [],
   restaurants: [],
@@ -25,6 +27,7 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
+      regionName: regions.find((region) => region.id === id).name,
       regions: getRestaurantInfosIncludeClickedItem(regions, id),
     };
   }
@@ -35,6 +38,7 @@ export default function reducer(state = initialState, action) {
 
     return {
       ...state,
+      categoryId: id,
       categories: getRestaurantInfosIncludeClickedItem(categories, id),
     };
   }
@@ -63,6 +67,8 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       restaurants,
+      regionName: '',
+      categoryId: 0,
     };
   }
 
