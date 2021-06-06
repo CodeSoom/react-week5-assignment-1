@@ -20,6 +20,9 @@ describe('App', () => {
       ],
       selectedRegion: { id: 0, name: '' },
       selectedCategory: { id: 0, name: '' },
+      restaurants: [
+        { id: 1, categoryId: 1, name: '양천주가' },
+      ],
     }));
 
     useDispatch.mockImplementation(() => dispatch);
@@ -31,5 +34,6 @@ describe('App', () => {
     expect(dispatch).toBeCalled();
     expect(getByText(/서울/)).not.toBeNull();
     expect(getByText(/한식/)).not.toBeNull();
+    expect(getByText(/양천주가/)).not.toBeNull();
   });
 });
