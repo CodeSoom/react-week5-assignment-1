@@ -91,7 +91,7 @@ describe('reducer', () => {
   describe('setRestaurantRegions', () => {
     it('fill restaurant regions', () => {
       const regions = [
-        { id: 1, name: '서울' }
+        { id: 1, name: '서울' },
       ];
 
       const state = reducer({

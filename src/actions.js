@@ -1,4 +1,4 @@
-import { fetchRestaurantRegions } from "../services/api";
+import { fetchRestaurantRegions } from '../services/api';
 
 export function checkRegion(id) {
   return {
