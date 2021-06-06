@@ -9,6 +9,10 @@ import {
   loadDate,
 } from './actions';
 
+function RestaurantsContainer() {
+  // Todo: 레스토랑 목록 보기
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -20,6 +24,7 @@ export default function App() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
