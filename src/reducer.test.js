@@ -83,8 +83,8 @@ describe('reducer', () => {
 
       const state = reducer(initialState, getRestaurants(restaurants));
 
-      expect(state.restaurants.categoryId).toBe(1);
-      expect(state.restaurants.name).toBe('양천주가');
+      expect(state.restaurants[0].categoryId).toBe(1);
+      expect(state.restaurants[0].name).toBe('양천주가');
     });
   });
 

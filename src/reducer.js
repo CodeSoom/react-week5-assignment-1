@@ -4,6 +4,7 @@ const initialState = {
   categories: [],
   selectedRegion: { id: 0, name: '' },
   selectedCategory: { id: 0, name: '' },
+  restaurants: [],
 };
 
 const defaultAction = {
@@ -26,6 +27,10 @@ const stateByActionType = {
   selecteCategory: ({ state, action }) => ({
     ...state,
     selectedCategory: action.payload.category,
+  }),
+  getRestaurants: ({ state, action }) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
   }),
 };
 

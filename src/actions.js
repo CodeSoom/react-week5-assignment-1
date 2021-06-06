@@ -31,6 +31,13 @@ export function selecteCategory(category) {
   };
 }
 
+export function getRestaurants(restaurants) {
+  return {
+    type: 'getRestaurants',
+    payload: { restaurants },
+  };
+}
+
 export function loadDate() {
   return async (dispatch) => {
     const regions = await fetchRegions();
