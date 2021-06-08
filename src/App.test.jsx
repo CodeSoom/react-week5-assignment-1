@@ -29,11 +29,11 @@ describe('App', () => {
   });
 
   it('renders App', () => {
-    const { getByText } = render(<App />);
+    const { queryByText } = render(<App />);
 
     expect(dispatch).toBeCalled();
-    expect(getByText(/서울/)).not.toBeNull();
-    expect(getByText(/한식/)).not.toBeNull();
-    expect(getByText(/양천주가/)).not.toBeNull();
+    expect(queryByText(/서울/)).not.toBeNull();
+    expect(queryByText(/한식/)).not.toBeNull();
+    expect(queryByText(/양천주가/)).not.toBeNull();
   });
 });

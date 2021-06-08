@@ -14,6 +14,7 @@ describe('Button', () => {
   it('renders button', () => {
     const item = { id: 1, name: '서울' };
     const beforeSelectedItem = { id: 0, name: '' };
+
     const handleClick = jest.fn();
 
     const { queryByText } = render(
@@ -28,12 +29,13 @@ describe('Button', () => {
   });
 
   describe('clicks button event', () => {
-    it('clicks button and dispatches selectedRegion', () => {
-      const item = { id: 1, name: '서울' };
-      const selectedItem = { id: 1, name: '서울' };
-      const handleClick = jest.fn();
+    const item = { id: 1, name: '서울' };
+    const selectedItem = { id: 1, name: '서울' };
 
-      const { queryByText } = render(
+    const handleClick = jest.fn();
+
+    it('clicks button and dispatches selectedRegion', () => {
+      const { getByText } = render(
         <Button
           item={item}
           onclick={handleClick}
@@ -41,16 +43,12 @@ describe('Button', () => {
         />,
       );
 
-      fireEvent.click(queryByText('서울(V)'));
+      fireEvent.click(getByText('서울(V)'));
 
       expect(handleClick).toBeCalledWith({ id: 1, name: '서울' });
     });
 
     it('clicks button and changes button name', () => {
-      const item = { id: 1, name: '서울' };
-      const selectedItem = { id: 1, name: '서울' };
-      const handleClick = jest.fn();
-
       const { queryByText } = render(
         <Button
           item={item}

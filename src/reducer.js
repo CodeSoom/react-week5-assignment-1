@@ -11,7 +11,7 @@ const defaultAction = {
   type: '',
 };
 
-const stateByActionType = {
+const reducers = {
   setRegions: ({ state, action }) => ({
     ...state,
     regions: action.payload.regions,
@@ -39,7 +39,7 @@ const stateByActionType = {
 };
 
 export default function reducer(state = initialState, action = defaultAction) {
-  return stateByActionType[action.type]
-    ? stateByActionType[action.type]({ state, action })
+  return reducers[action.type]
+    ? reducers[action.type]({ state, action })
     : state;
 }

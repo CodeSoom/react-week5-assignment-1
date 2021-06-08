@@ -35,13 +35,13 @@ describe('Categories', () => {
   });
 
   it('handleClick event and dispatches selecteCategory ', () => {
-    const { queryByText } = render(
+    const { getByText } = render(
       <Categories
         categories={categories}
       />,
     );
 
-    fireEvent.click(queryByText('한식'));
+    fireEvent.click(getByText('한식'));
 
     expect(dispatch).toBeCalledWith({
       type: 'selecteCategory',

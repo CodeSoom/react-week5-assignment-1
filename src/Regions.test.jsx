@@ -7,7 +7,7 @@ import Regions from './Regions';
 jest.mock('react-redux');
 
 describe('Regions', () => {
-  const regions =[
+  const regions = [
     { id: 1, name: '서울' },
   ];
 
@@ -26,20 +26,22 @@ describe('Regions', () => {
 
   it('renders regions list', () => {
     const { queryByText } = render(
-    <Regions
-      regions={regions}
-    />);
+      <Regions
+        regions={regions}
+      />,
+    );
 
     expect(queryByText('서울')).not.toBeNull();
   });
 
   it('handleClick event and dispatches selecteRegion', () => {
-    const { queryByText } = render(
-    <Regions
-      regions={regions}
-    />);
+    const { getByText } = render(
+      <Regions
+        regions={regions}
+      />,
+    );
 
-    fireEvent.click(queryByText('서울'));
+    fireEvent.click(getByText('서울'));
 
     expect(dispatch).toBeCalledWith({
       type: 'selecteRegion',
