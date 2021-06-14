@@ -1,7 +1,5 @@
 import { render } from '@testing-library/react';
-import { useSelector, useDispatch } from 'react-redux';
-import { initialState } from './reducer';
-import restaurants from '../fixtures/restaurants';
+import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
@@ -10,19 +8,14 @@ jest.mock('./services/api.js');
 
 describe('App', () => {
   it('renders categories', () => {
-    // const dispatch = jest.fn();
-    // useDispatch.mockImplementation(() => dispatch);
-    // useSelector.mockImplementation((selector) => selector({
-    //   ...initialState,
-    //   restaurants,
-    //   categories: [],
-    // }));
-    // const { container, getByText } = render(<App />);
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
 
-    // expect(container).toHaveTextContent('Restaurants');
-    // expect(container).toHaveTextContent('등록');
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+    }));
+    const { getByText } = render(<App />);
 
-    // expect(dispatch).toBeCalledTimes(2);
-    // expect(getByText(/마녀주방/)).not.toBeNull();
+    expect(dispatch).toBeCalledTimes(1);
   });
 });
