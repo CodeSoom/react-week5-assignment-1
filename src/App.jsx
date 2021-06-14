@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
-  loadRestaurants,
-  loadCategories,
+
 } from './actions';
 
 // 목표
@@ -11,15 +10,30 @@ import {
 // 1. 지역 선택
 // 2. 분류 선택
 // 3. 식당 목록
+
+function RegionsContainer() {
+  return null;
+}
+
+function CategoriesContainer() {
+  return null;
+}
+
+function RestaurantsContainer() {
+  return null;
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurants());
-    dispatch(loadCategories());
   }, []);
 
   return (
-    <div />
+    <div>
+      <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
+    </div>
   );
 }
