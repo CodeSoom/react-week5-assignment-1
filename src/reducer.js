@@ -3,6 +3,7 @@ export const initialState = {
   restaurantCategory: '',
   restaurantAddress: '',
   restaurants: [],
+  categories: [],
 };
 export default function reducer(state = initialState, action) {
   if (action.type === 'addRestaurant') {
@@ -50,5 +51,14 @@ export default function reducer(state = initialState, action) {
       restaurants,
     };
   }
+
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+    return {
+      ...state,
+      categories,
+    };
+  }
+
   return state;
 }

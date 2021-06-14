@@ -1,9 +1,10 @@
 import reducer, { initialState } from './reducer';
 
 import {
-  setRestaurants, addRestaurant, updateRestaurantInput,
+  setRestaurants, addRestaurant, updateRestaurantInput, setCategories,
 } from './actions';
 import restaurants from '../fixtures/restaurants';
+import categories from '../fixtures/categories';
 
 describe('reducer', () => {
   describe('setRestaurants', () => {
@@ -102,6 +103,13 @@ describe('reducer', () => {
       };
       const state = reducer(undefined, undefinedAction);
       expect(state === initialState);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('changes categories', () => {
+      const state = reducer(initialState, setCategories(categories));
+      expect(state.categories).toHaveLength(1);
     });
   });
 });
