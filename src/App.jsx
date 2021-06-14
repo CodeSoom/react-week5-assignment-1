@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-
-} from './actions';
+import { loadInitialData } from './actions';
 
 // 목표
 // 0. 지역, 분류 목록을 얻기
@@ -27,6 +25,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loadInitialData());
   }, []);
 
   return (
