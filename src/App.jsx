@@ -6,17 +6,11 @@ import {
   loadCategories,
 } from './actions';
 
-import RestaurantsCreatorContainer from './RestaurantsCreatorContainer';
-import RestaurantsContainer from './RestaurantsContainer';
-import CategoriesContainer from './CategoriesContainer';
-
-// function loadRestaurants({ dispatch }) {
-//   // todo load restaurants
-//   // api server -> fetch data
-//   const restaurants = [];
-//   dispatch(setRestaurants(restaurants));
-// }
-
+// 목표
+// 0. 지역, 분류 목록을 얻기
+// 1. 지역 선택
+// 2. 분류 선택
+// 3. 식당 목록
 export default function App() {
   const dispatch = useDispatch();
 
@@ -26,11 +20,6 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Restaurants</h1>
-      <CategoriesContainer />
-      <RestaurantsContainer />
-      <RestaurantsCreatorContainer />
-    </div>
+    <div />
   );
 }
