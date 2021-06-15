@@ -1,4 +1,8 @@
-import { fetchCategories, fetchRegions } from './services/api';
+import {
+  fetchCategories,
+  fetchRegions,
+  fetchRestaurants,
+} from './services/api';
 
 export function setRegions(regions) {
   return {
@@ -32,6 +36,12 @@ export function selectRegion(regionId) {
     payload: { regionId },
   };
 }
+export function selectCategory(categoryId) {
+  return {
+    type: 'selectCategory',
+    payload: { categoryId },
+  };
+}
 export function loadCategories() {
   // 질문할 것 : dispatch는 어디서 받아오는 값인가?
   // (loadCategories 함수를 호출하는 dispatch를 그대로 가져오는데 어떻게 가능한가?)
@@ -43,9 +53,11 @@ export function loadCategories() {
 }
 
 export function loadRestaurants() {
-  // TODO : fetch 구현
-  return async (dispatch) => {
-    const restaurants = [];
+  return async (dispatch, getState) => {
+    const { selectedRegion: region, selectedCategory: category } = getState();
+
+    if (!region || !category) { return; }
+    const restaurants = await fetchRestaurants(region.name, category.id);
     dispatch(setRestaurants(restaurants));
   };
 }

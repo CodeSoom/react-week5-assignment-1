@@ -5,3 +5,6 @@ export async function fetchCategories() {
 export async function fetchResions() {
   return [];
 }
+export async function fetchRestaurants() {
+  return [];
+}
