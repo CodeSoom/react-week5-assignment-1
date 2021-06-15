@@ -10,12 +10,6 @@ export default function RegionsContainer() {
   const regions = useSelector(get('regions'));
   const selectedRegion = useSelector(get('selectedRegion'));
 
-  // 리팩토링 전 방식 (utill 추가전)
-  // const { regions, selectedRegion } = useSelector((state) => ({
-  //   regions: state.regions,
-  //   selectedRegion: state.selectedRegion,
-  // }));
-
   function handleclick(regionId) {
     dispatch(selectRegion(regionId));
     dispatch(loadRestaurants());

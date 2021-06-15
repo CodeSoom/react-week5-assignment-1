@@ -78,4 +78,31 @@ describe('reducer', () => {
       });
     });
   });
+
+  context('undefined action type', () => {
+    it('returns previousState', () => {
+      const previousState = {
+        restaurants: [],
+      };
+      const undefinedAction = {
+        type: 'no ation',
+      };
+      const state = reducer(previousState, undefinedAction);
+
+      expect(state === previousState);
+    });
+  });
+
+  context('when previousState is undefined', () => {
+    it('returns initialState', () => {
+      const initialState = {
+        restaurants: [],
+      };
+      const undefinedAction = {
+        type: 'no ation',
+      };
+      const state = reducer(undefined, undefinedAction);
+      expect(state === initialState);
+    });
+  });
 });

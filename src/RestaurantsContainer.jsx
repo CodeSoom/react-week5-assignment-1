@@ -13,9 +13,6 @@ export default function RestaurantsContainer() {
           <li key={restaurant.id}>
             <p>
               {restaurant.name}
-              {/* {selectedRestaurant ? (
-                <>{restaurant.id === selectedRestaurant.id ? '(V)' : null}</>
-              ) : null} */}
             </p>
           </li>
         ))}
