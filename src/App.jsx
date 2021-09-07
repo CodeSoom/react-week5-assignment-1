@@ -1,11 +1,22 @@
+import { useSelector } from 'react-redux';
+
 export default function App() {
+  const { categories, regions } = useSelector((state) => ({
+    categories: state.categories,
+    regions: state.regions,
+  }));
+
   return (
     <>
       <ul>
-        <li>한식</li>
+        {categories.map(({ id, name }) => (
+          <li key={id}>{name}</li>
+        ))}
       </ul>
       <ul>
-        <li>서울</li>
+        {regions.map(({ id, name }) => (
+          <li key={id}>{name}</li>
+        ))}
       </ul>
     </>
   );
