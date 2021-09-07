@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 
-import { loadCategories, loadRegions } from './services/api';
+import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
 export default function App() {
   const [regions, setRegions] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState({});
+  const [restaurants, setRestaurants] = useState([]);
 
-  const handleClick = (name, setSelected) => {
-    setSelected(name);
+  const handleClick = ({ id, name, setSelected }) => {
+    setSelected({ id, name });
   };
+
+  const isEmpty = (param) => Object.keys(param).length === 0;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +27,23 @@ export default function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (isEmpty(selectedRegion) || isEmpty(selectedCategory)) {
+      return;
+    }
+
+    const fetchData = async () => {
+      const data = await loadRestaurants({
+        regionName: selectedRegion.name,
+        categoryId: selectedCategory.id,
+      });
+
+      setRestaurants(data);
+    };
+
+    fetchData();
+  }, [selectedRegion, selectedCategory]);
+
   return (
     <>
       <ul>
@@ -31,9 +51,9 @@ export default function App() {
           <li key={id}>
             <button
               type="button"
-              onClick={() => handleClick(name, setSelectedRegion)}
+              onClick={() => handleClick({ id, name, setSelected: setSelectedRegion })}
             >
-              {name === selectedRegion ? `${name}(V)` : name}
+              {id === selectedRegion.id ? `${name}(V)` : name}
             </button>
           </li>
         ))}
@@ -43,10 +63,17 @@ export default function App() {
           <li key={id}>
             <button
               type="button"
-              onClick={() => handleClick(name, setSelectedCategory)}
+              onClick={() => handleClick({ id, name, setSelected: setSelectedCategory })}
             >
-              {name === selectedCategory ? `${name}(V)` : name}
+              {id === selectedCategory.id ? `${name}(V)` : name}
             </button>
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {restaurants.map(({ id, name }) => (
+          <li key={id}>
+            {name}
           </li>
         ))}
       </ul>
