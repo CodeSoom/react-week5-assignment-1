@@ -1,16 +1,16 @@
-export const loadCategories = async () => [
+export const loadCategories = jest.fn(() => [
   { id: 1, name: '한식' },
   { id: 2, name: '중식' },
   { id: 3, name: '일식' },
-];
+]);
 
-export const loadRegions = async () => [
+export const loadRegions = jest.fn(() => [
   { id: 1, name: '서울' },
   { id: 2, name: '대전' },
   { id: 3, name: '대구' },
-];
+]);
 
-export const loadRestaurants = async () => [
+export const loadRestaurants = jest.fn(() => [
   {
     id: 1,
     categoryId: 1,
@@ -25,4 +25,4 @@ export const loadRestaurants = async () => [
     address: '서울 강남구',
     information: '한국식 초밥 in 서울 강남구',
   },
-];
+]);
