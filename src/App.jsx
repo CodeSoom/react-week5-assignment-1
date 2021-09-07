@@ -2,6 +2,8 @@ import { useReducer, useEffect } from 'react';
 
 import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
+import RegionList from './RegionList';
+
 const initialState = {
   regions: [],
   categories: [],
@@ -97,18 +99,11 @@ export default function App() {
 
   return (
     <>
-      <ul>
-        {regions.map(({ id, name }) => (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => handleClick({ id, name })}
-            >
-              {id === selectedRegion.id ? `${name}(V)` : name}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <RegionList
+        regions={regions}
+        onClick={handleClick}
+        selectedRegion={selectedRegion}
+      />
       <ul>
         {categories.map(({ id, name }) => (
           <li key={id}>
