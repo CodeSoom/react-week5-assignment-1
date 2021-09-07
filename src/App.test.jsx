@@ -1,4 +1,6 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import {
+  render, screen, fireEvent, waitFor,
+} from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
 import App from './App';
@@ -30,33 +32,41 @@ describe('App', () => {
 
       fireEvent.click(screen.getByText('한식'));
 
-      expect(screen.getByText('한식(V)')).toBeInTheDocument();
-      expect(screen.getByText('중식')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('한식(V)')).toBeInTheDocument();
+        expect(screen.getByText('중식')).toBeInTheDocument();
+      });
 
       fireEvent.click(screen.getByText('중식'));
 
-      expect(screen.getByText('한식')).toBeInTheDocument();
-      expect(screen.getByText('중식(V)')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('한식')).toBeInTheDocument();
+        expect(screen.getByText('중식(V)')).toBeInTheDocument();
+      });
 
       fireEvent.click(screen.getByText('서울'));
 
-      expect(screen.getByText('서울(V)')).toBeInTheDocument();
-      expect(screen.getByText('대전')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('서울(V)')).toBeInTheDocument();
+        expect(screen.getByText('대전')).toBeInTheDocument();
+      });
 
       fireEvent.click(screen.getByText('대전'));
 
-      expect(screen.getByText('서울')).toBeInTheDocument();
-      expect(screen.getByText('대전(V)')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('서울')).toBeInTheDocument();
+        expect(screen.getByText('대전(V)')).toBeInTheDocument();
+      });
     });
 
     it('renders result restaurants', async () => {
       await act(async () => render(<App />));
 
-      fireEvent.click(screen.getByText('한식'));
       fireEvent.click(screen.getByText('서울'));
+      fireEvent.click(screen.getByText('한식'));
 
-      expect(screen.getByText('양천주가')).toBeInTheDocument();
-      expect(screen.getByText('한국식초밥')).toBeInTheDocument();
+      await waitFor(() => expect(screen.getByText('양천주가')).toBeInTheDocument());
+      await waitFor(() => expect(screen.getByText('한국식초밥')).toBeInTheDocument());
     });
   });
 });
