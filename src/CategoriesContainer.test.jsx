@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from '../__mocks__/react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { setCategories } from './actions';
+jest.mock('react-redux');
 
 test('CategoriesContainer', () => {
   const dispatch = jest.fn();
@@ -19,8 +19,4 @@ test('CategoriesContainer', () => {
   const { getByText } = render(<CategoriesContainer />);
 
   expect(getByText('한식')).not.toBeUndefined();
-
-  expect(dispatch).toBeCalledWith(setCategories());
-
-  expect(getByText('중식')).not.toBeUndefined();
 });

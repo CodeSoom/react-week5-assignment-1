@@ -25,11 +25,13 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('categories를 업데이트 한다.', () => {
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+
       const state = reducer({
         categories: [],
-      }, setCategories([
-        { id: 1, name: '한식' },
-      ]));
+      }, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
     });
