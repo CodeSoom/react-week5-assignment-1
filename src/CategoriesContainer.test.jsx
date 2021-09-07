@@ -20,4 +20,6 @@ test('CategoriesContainer', () => {
   const { getByText } = render(<CategoriesContainer />);
 
   expect(getByText('한식')).not.toBeUndefined();
+
+  expect(dispatch).toBeCalledTimes(1);
 });

@@ -1,5 +1,7 @@
 export function fetchCategories() {
-  return [];
+  return [
+    { id: 1, name: '중식' },
+  ];
 }
 
 // todo: delete !

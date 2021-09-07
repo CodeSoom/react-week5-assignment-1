@@ -7,7 +7,11 @@ test('Categories', () => {
     { id: 1, name: '한식' },
   ];
 
-  const { getByText } = render(<Categories categories={categories} />);
+  const { getByText } = render((
+    <Categories
+      categories={categories}
+    />
+  ));
 
   expect(getByText('한식')).not.toBeUndefined();
 });
