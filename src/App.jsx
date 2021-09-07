@@ -4,6 +4,7 @@ import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
 import RegionList from './RegionList';
 import CategoryList from './CategoryList';
+import RestaurantList from './RestaurantList';
 
 const initialState = {
   regions: [],
@@ -105,13 +106,9 @@ export default function App() {
         onClick={handleClick}
         selectedCategory={selectedCategory}
       />
-      <ul>
-        {restaurants.map(({ id, name }) => (
-          <li key={id}>
-            {name}
-          </li>
-        ))}
-      </ul>
+      <RestaurantList
+        restaurants={restaurants}
+      />
     </>
   );
 }
