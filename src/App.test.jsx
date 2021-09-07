@@ -1,13 +1,16 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 
 import App from './App';
 
-describe('App', () => {
-  it('renders categories', () => {
-    const { container } = render(<App />);
+jest.mock('./services/api');
 
-    expect(container).toHaveTextContent('한식');
-    expect(container).toHaveTextContent('중식');
-    expect(container).toHaveTextContent('일식');
+describe('App', () => {
+  it('renders categories', async () => {
+    await act(async () => render(<App />));
+
+    expect(screen.getByText('한식')).toBeInTheDocument();
+    expect(screen.getByText('중식')).toBeInTheDocument();
+    expect(screen.getByText('일식')).toBeInTheDocument();
   });
 });
