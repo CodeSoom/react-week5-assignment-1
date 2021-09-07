@@ -21,13 +21,7 @@ const reducers = {
   }),
 };
 
-const reducer = (state, action) => {
-  try {
-    return reducers[action.type](state, action);
-  } catch (error) {
-    return state;
-  }
-};
+const reducer = (state, action) => reducers[action.type](state, action);
 
 export default function App() {
   const [{
