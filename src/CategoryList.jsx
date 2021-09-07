@@ -5,7 +5,10 @@ export default function CategoryList({ categories, onClick, selectedCategory }) 
         <li key={id}>
           <button
             type="button"
-            onClick={() => onClick({ id, name })}
+            onClick={() => onClick({
+              field: 'selectedCategory',
+              value: { id, name },
+            })}
           >
             {id === selectedCategory.id ? `${name}(V)` : name}
           </button>

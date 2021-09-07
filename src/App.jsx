@@ -3,6 +3,7 @@ import { useReducer, useEffect } from 'react';
 import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
 import RegionList from './RegionList';
+import CategoryList from './CategoryList';
 
 const initialState = {
   regions: [],
@@ -13,25 +14,9 @@ const initialState = {
 };
 
 const reducers = {
-  SET_CATEGORIES: (state, action) => ({
+  UPDATE_FIELD: (state, action) => ({
     ...state,
-    categories: action.payload,
-  }),
-  SET_REGIONS: (state, action) => ({
-    ...state,
-    regions: action.payload,
-  }),
-  SET_SELECTED_REGION: (state, action) => ({
-    ...state,
-    selectedRegion: action.payload,
-  }),
-  SET_SELECTED_CATEGORY: (state, action) => ({
-    ...state,
-    selectedCategory: action.payload,
-  }),
-  SET_RESTAURANTS: (state, action) => ({
-    ...state,
-    restaurants: action.payload,
+    [action.payload.field]: action.payload.value,
   }),
 };
 
@@ -52,18 +37,11 @@ export default function App() {
     restaurants,
   }, dispatch] = useReducer(reducer, initialState);
 
-  const handleClick = ({ id, name }) => {
-    const isRegion = regions.find((region) => region.name === name);
-    const isCategory = categories.find((category) => category.name === name);
-
-    if (isRegion) {
-      dispatch({ type: 'SET_SELECTED_REGION', payload: { id, name } });
-      return;
-    }
-
-    if (isCategory) {
-      dispatch({ type: 'SET_SELECTED_CATEGORY', payload: { id, name } });
-    }
+  const handleClick = ({ field, value }) => {
+    dispatch({
+      type: 'UPDATE_FIELD',
+      payload: { field, value },
+    });
   };
 
   const isEmpty = (param) => Object.keys(param).length === 0;
@@ -73,8 +51,20 @@ export default function App() {
       const categoriesData = await loadCategories();
       const regionsData = await loadRegions();
 
-      dispatch({ type: 'SET_CATEGORIES', payload: categoriesData });
-      dispatch({ type: 'SET_REGIONS', payload: regionsData });
+      dispatch({
+        type: 'UPDATE_FIELD',
+        payload: {
+          field: 'categories',
+          value: categoriesData,
+        },
+      });
+      dispatch({
+        type: 'UPDATE_FIELD',
+        payload: {
+          field: 'regions',
+          value: regionsData,
+        },
+      });
     };
 
     fetchData();
@@ -91,7 +81,13 @@ export default function App() {
         categoryId: selectedCategory.id,
       });
 
-      dispatch({ type: 'SET_RESTAURANTS', payload: data });
+      dispatch({
+        type: 'UPDATE_FIELD',
+        payload: {
+          field: 'restaurants',
+          value: data,
+        },
+      });
     };
 
     fetchData();
@@ -104,18 +100,11 @@ export default function App() {
         onClick={handleClick}
         selectedRegion={selectedRegion}
       />
-      <ul>
-        {categories.map(({ id, name }) => (
-          <li key={id}>
-            <button
-              type="button"
-              onClick={() => handleClick({ id, name })}
-            >
-              {id === selectedCategory.id ? `${name}(V)` : name}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <CategoryList
+        categories={categories}
+        onClick={handleClick}
+        selectedCategory={selectedCategory}
+      />
       <ul>
         {restaurants.map(({ id, name }) => (
           <li key={id}>
