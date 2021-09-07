@@ -3,8 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setCategories } from './actions';
 
-function loadCategories({ dispatch }) {
-  const categories = [];
+import { fetchCategories } from './services/api';
+
+import Categories from './Categories';
+
+async function loadCategories({ dispatch }) {
+  const categories = await fetchCategories();
   dispatch(setCategories(categories));
 }
 
@@ -20,10 +24,6 @@ export default function CategoriesContainer() {
   }));
 
   return (
-    <ul>
-      {categories.map(({ id, name }) => (
-        <li key={id}>{name}</li>
-      ))}
-    </ul>
+    <Categories categories={categories} />
   );
 }
