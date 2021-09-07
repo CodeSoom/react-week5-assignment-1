@@ -48,5 +48,15 @@ describe('App', () => {
       expect(screen.getByText('서울')).toBeInTheDocument();
       expect(screen.getByText('대전(V)')).toBeInTheDocument();
     });
+
+    it('renders result restaurants', async () => {
+      await act(async () => render(<App />));
+
+      fireEvent.click(screen.getByText('한식'));
+      fireEvent.click(screen.getByText('서울'));
+
+      expect(screen.getByText('양천주가')).toBeInTheDocument();
+      expect(screen.getByText('한국식초밥')).toBeInTheDocument();
+    });
   });
 });
