@@ -24,13 +24,17 @@ export default function App() {
     loadInitialData();
   }, []);
 
+  function handleClick(e) {
+    console.log(e.target);
+  }
+
   return (
     <div>
       <ul>
-        {regions.map((region) => (<li><button type="button">{region.name}</button></li>))}
+        {regions.map((region) => (<li><button type="button" onClick={handleClick}>{region.name}</button></li>))}
       </ul>
       <ul>
-        {categories.map((category) => (<li><button type="button">{category.name}</button></li>))}
+        {categories.map((category) => (<li><button type="button" onClick={handleClick}>{category.name}</button></li>))}
       </ul>
       <ul>
         results...
