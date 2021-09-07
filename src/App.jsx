@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 
-import loadCategories from './services/api';
+import { loadCategories, loadRegions } from './services/api';
 
 export default function App() {
+  const [regions, setRegions] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await loadCategories();
-      setCategories(data);
+      const categoriesData = await loadCategories();
+      const regionsData = await loadRegions();
+
+      setCategories(categoriesData);
+      setRegions(regionsData);
     };
 
     fetchData();
@@ -16,6 +20,13 @@ export default function App() {
 
   return (
     <>
+      <ul>
+        {regions.map(({ id, name }) => (
+          <li key={id}>
+            {name}
+          </li>
+        ))}
+      </ul>
       <ul>
         {categories.map(({ id, name }) => (
           <li key={id}>
