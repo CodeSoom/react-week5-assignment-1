@@ -2,6 +2,10 @@ import { useReducer, useEffect } from 'react';
 
 import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
+import updateField from './actions';
+
+import reducer from './reducer';
+
 import RegionList from './RegionList';
 import CategoryList from './CategoryList';
 import RestaurantList from './RestaurantList';
@@ -14,15 +18,6 @@ const initialState = {
   restaurants: [],
 };
 
-const reducers = {
-  UPDATE_FIELD: (state, action) => ({
-    ...state,
-    [action.payload.field]: action.payload.value,
-  }),
-};
-
-const reducer = (state, action) => reducers[action.type](state, action);
-
 export default function App() {
   const [{
     regions,
@@ -33,10 +28,7 @@ export default function App() {
   }, dispatch] = useReducer(reducer, initialState);
 
   const handleClick = ({ field, value }) => {
-    dispatch({
-      type: 'UPDATE_FIELD',
-      payload: { field, value },
-    });
+    dispatch(updateField({ field, value }));
   };
 
   const isEmpty = (param) => Object.keys(param).length === 0;
@@ -46,22 +38,9 @@ export default function App() {
       const categoriesData = await loadCategories();
       const regionsData = await loadRegions();
 
-      dispatch({
-        type: 'UPDATE_FIELD',
-        payload: {
-          field: 'categories',
-          value: categoriesData,
-        },
-      });
-      dispatch({
-        type: 'UPDATE_FIELD',
-        payload: {
-          field: 'regions',
-          value: regionsData,
-        },
-      });
+      dispatch(updateField({ field: 'categories', value: categoriesData }));
+      dispatch(updateField({ field: 'regions', value: regionsData }));
     };
-
     fetchData();
   }, []);
 
@@ -76,13 +55,7 @@ export default function App() {
         categoryId: selectedCategory.id,
       });
 
-      dispatch({
-        type: 'UPDATE_FIELD',
-        payload: {
-          field: 'restaurants',
-          value: data,
-        },
-      });
+      dispatch(updateField({ field: 'restaurants', value: data }));
     };
 
     fetchData();
