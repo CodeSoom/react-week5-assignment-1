@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import PlacesContainer from './containers/PlacesContainer';
+import RestaurantsContainer from './containers/RestaurantsContainer';
 
 import {
   setPlaces,
@@ -21,6 +22,7 @@ export default function App() {
     <div>
       <h1>Location && Restaurants</h1>
       <PlacesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
