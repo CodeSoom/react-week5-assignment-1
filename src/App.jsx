@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
 export default function App() {
+  const [clickedRegionId, setClickedRegionId] = useState(null);
+  const [clickedCategoryId, setClickedCategoryId] = useState(null);
   const [regions, setRegions] = useState([]);
   const [categories, setCategories] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
@@ -19,13 +21,24 @@ export default function App() {
     ]);
   }, []);
 
+  function handleClickRegion(id) {
+    setClickedRegionId(id);
+  }
+
+  function handleClickCategory(id) {
+    setClickedCategoryId(id);
+  }
+
   return (
     <>
       <ul>
         {
           regions.map(({ id, name }) => (
             <li key={id}>
-              <button type="button">{name}</button>
+              <button type="button" onClick={() => handleClickRegion(id)}>
+                {name}
+                {clickedRegionId === id ? '(V)' : ''}
+              </button>
             </li>
           ))
         }
@@ -34,7 +47,10 @@ export default function App() {
         {
           categories.map(({ id, name }) => (
             <li key={id}>
-              <button type="button">{name}</button>
+              <button type="button" onClick={() => handleClickCategory(id)}>
+                {name}
+                {clickedCategoryId === id ? '(V)' : ''}
+              </button>
             </li>
           ))
         }
