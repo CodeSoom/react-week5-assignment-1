@@ -7,4 +7,5 @@ test('App', () => {
 
   expect(getByText('서울')).not.toBeUndefined();
   expect(getByText('한식')).not.toBeUndefined();
+  expect(getByText('원초밥')).not.toBeUndefined();
 });

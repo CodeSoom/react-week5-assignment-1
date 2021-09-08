@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 export default function App() {
   const [regions, setRegions] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
     setRegions([
@@ -11,6 +12,10 @@ export default function App() {
 
     setCategories([
       { id: 1, name: '서울' },
+    ]);
+
+    setRestaurants([
+      { id: 1, name: '원초밥' },
     ]);
   }, []);
 
@@ -30,6 +35,15 @@ export default function App() {
           categories.map(({ id, name }) => (
             <li key={id}>
               <button type="button">{name}</button>
+            </li>
+          ))
+        }
+      </ul>
+      <ul>
+        {
+          restaurants.map(({ id, name }) => (
+            <li key={id}>
+              {name}
             </li>
           ))
         }
