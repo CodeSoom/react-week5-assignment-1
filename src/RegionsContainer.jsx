@@ -1,9 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
-    regions: state.regions,
-  }));
+  const [regions, setRegions] = useState({
+    categoreis: [],
+  });
+
+  useEffect(() => {
+    setRegions([
+      { id: 1, name: '서울' },
+    ]);
+  }, []);
 
   return (
     <ul>
