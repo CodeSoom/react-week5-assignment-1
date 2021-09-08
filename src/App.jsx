@@ -43,17 +43,8 @@ export default function App() {
     }
   }, []);
 
-  function makeCategoryList() {
-    const result = categories.map((element) => (
-      <li key={element.id}>
-        <button type="button">{element.name}</button>
-      </li>
-    ));
-    return result;
-  }
-
-  function makeRegionList() {
-    const result = regions.map((element) => (
+  function makeLiElements(value) {
+    const result = value.map((element) => (
       <li key={element.id}>
         <button type="button">{element.name}</button>
       </li>
@@ -69,10 +60,10 @@ export default function App() {
   return (
     <>
       <ul>
-        {makeRegionList()}
+        {makeLiElements(categories)}
       </ul>
       <ul>
-        {makeCategoryList()}
+        {makeLiElements(regions)}
       </ul>
     </>
   );
