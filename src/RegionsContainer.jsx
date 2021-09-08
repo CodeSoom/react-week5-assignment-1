@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import Regions from './Regions';
+
 export default function RegionsContainer() {
   const [regions, setRegions] = useState({
     categoreis: [],
@@ -12,10 +14,6 @@ export default function RegionsContainer() {
   }, []);
 
   return (
-    <ul>
-      {regions.map(({ id, name }) => (
-        <li key={id}>{name}</li>
-      ))}
-    </ul>
+    <Regions regions={regions} />
   );
 }
