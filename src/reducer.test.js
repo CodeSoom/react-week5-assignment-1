@@ -1,7 +1,5 @@
 import reducer from './reducer';
 
-import { setCategories } from './actions';
-
 describe('reducer', () => {
   it('정의되어 있지 않은 action이 들어오면 state를 그대로 반환한다.', () => {
     const previousState = {
