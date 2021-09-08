@@ -1,43 +1,46 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 
 import App from './App';
 
-describe('App', () => {
-  it('지역 목록을 보여준다', async () => {
-    const regions = ['서울', '대전', '대구', '부산', '광주'];
-    const { findByText } = render(
-      <App regions={regions} />,
-    );
+jest.mock('./services/api');
 
-    await expect(findByText('서울')).not.toBeNull();
-    await expect(findByText('대구')).not.toBeNull();
-    await expect(findByText('부산')).not.toBeNull();
-    await expect(findByText('대전')).not.toBeNull();
-    await expect(findByText('광주')).not.toBeNull();
+describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('지역 목록을 보여준다', async () => {
+    await act(async () => render(<App />));
+
+    expect(screen.getByText('서울')).toBeInTheDocument();
+    expect(screen.getByText('대구')).toBeInTheDocument();
+    expect(screen.getByText('부산')).toBeInTheDocument();
   });
 
   it('카테고리 목록을 보여준다', async () => {
-    const { findByText } = render(
-      <App />,
-    );
+    await act(async () => render(<App />));
 
-    await expect(findByText('한식')).not.toBeNull();
-    await expect(findByText('중식')).not.toBeNull();
-    await expect(findByText('일식')).not.toBeNull();
-    await expect(findByText('양식')).not.toBeNull();
-    await expect(findByText('분식')).not.toBeNull();
+    expect(screen.getByText('한식')).toBeInTheDocument();
+    expect(screen.getByText('중식')).toBeInTheDocument();
+    expect(screen.getByText('일식')).toBeInTheDocument();
   });
 
   it('목록이 클릭되면 체크를 표시한다.', async () => {
     const handleClick = jest.fn();
 
-    const { findByText } = render(
-      <App onclick={handleClick} />,
-    );
+    await act(async () => render(<App onClick={handleClick} />));
 
-    fireEvent.click(findByText('한식'));
+    fireEvent.click(screen.getByText('한식'));
 
-    await expect(findByText('한식')).toBeNull();
-    await expect(findByText('한식(V)')).not.toBeNull();
+    expect(screen.getByText('한식(V)')).toBeInTheDocument();
+    expect(screen.queryByText('한식')).not.toBeInTheDocument();
+
+    // expect(handleClick).toBeCalled();
+    // 여기서 이벤트가 콜이 안되는 이유는?
+  });
+
+  it('레스토랑 목록을 출력한다.', async () => {
+    // 분리 하면서 테스트 하기
   });
 });

@@ -1,22 +1,42 @@
 import { useState, useEffect } from 'react';
 
+import { fetchCategories, fetchRegions, fetchRestaurants } from './services/api';
+
 export default function App() {
   const [initialData, setInitialData] = useState({
+    checkedRegionText: '',
+    checkedCategoryId: 0,
     regions: [],
     categories: [],
+    restaurants: [],
   });
 
-  const { regions, categories } = initialData;
+  const {
+    checkedRegionText,
+    checkedCategoryId,
+    regions,
+    categories,
+    restaurants,
+  } = initialData;
 
   async function loadInitialData() {
-    const regionsData = await fetch('https://eatgo-customer-api.ahastudio.com/regions');
-    const regionsList = await regionsData.json();
-    const categoriesData = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
-    const categoriesList = await categoriesData.json();
+    const regionsData = await fetchRegions();
+    const categoriesData = await fetchCategories();
     setInitialData({
       ...initialData,
-      regions: [...regions, ...regionsList],
-      categories: [...categories, ...categoriesList],
+      regions: regionsData,
+      categories: categoriesData,
+    });
+  }
+
+  async function loadRestaurants() {
+    if (checkedRegionText === '' || checkedCategoryId === 0) {
+      return;
+    }
+    const restaurantsData = await fetchRestaurants(checkedRegionText, checkedCategoryId);
+    setInitialData({
+      ...initialData,
+      restaurants: [...restaurantsData],
     });
   }
 
@@ -24,20 +44,39 @@ export default function App() {
     loadInitialData();
   }, []);
 
-  function handleClick(e) {
-    console.log(e.target);
+  useEffect(() => {
+    loadRestaurants();
+  }, [checkedRegionText, checkedCategoryId]);
+
+  function handleClickRegion(e) {
+    const { innerText } = e.target;
+    setInitialData({
+      ...initialData,
+      checkedRegionText: innerText.split('(')[0],
+    });
+  }
+
+  function handleClickCategory(e) {
+    const { dataset: { id } } = e.target;
+    setInitialData({
+      ...initialData,
+      checkedCategoryId: parseInt(id, 10),
+    });
   }
 
   return (
     <div>
       <ul>
-        {regions.map((region) => (<li><button type="button" onClick={handleClick}>{region.name}</button></li>))}
+        {regions
+        && regions.map((region) => (<li key={region.id}><button type="button" onClick={handleClickRegion}>{checkedRegionText === region.name ? `${region.name}(V)` : region.name}</button></li>))}
       </ul>
       <ul>
-        {categories.map((category) => (<li><button type="button" onClick={handleClick}>{category.name}</button></li>))}
+        {categories
+        && categories.map((category) => (<li key={category.id}><button type="button" data-id={category.id} onClick={handleClickCategory}>{checkedCategoryId === category.id ? `${category.name}(V)` : category.name}</button></li>))}
       </ul>
       <ul>
-        results...
+        {restaurants
+        && restaurants.map((restaurant) => (<li key={restaurant.id}>{restaurant.name}</li>))}
       </ul>
     </div>
   );
