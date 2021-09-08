@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 import places from '../fixtures/places';
+import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
@@ -18,6 +19,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     places,
+    categories,
     restaurants,
   }));
 
@@ -26,6 +28,10 @@ test('App', () => {
   ));
 
   places.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
+  });
+
+  categories.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);
   });
 

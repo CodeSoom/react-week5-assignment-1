@@ -4,9 +4,11 @@ import places from '../../fixtures/places';
 import restaurants from '../../fixtures/restaurants';
 
 import {
+  setCategories,
   setPlaces,
   setRestaurants,
 } from './actions';
+import categories from '../../fixtures/categories';
 
 describe('reducer', () => {
   describe('setPlaces', () => {
@@ -18,6 +20,17 @@ describe('reducer', () => {
       const state = reducer(initialState, setPlaces(places));
 
       expect(state.places).not.toHaveLength(0);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('changes categories array', () => {
+      const initialState = {
+        categories: [],
+      };
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).not.toHaveLength(0);
     });
   });
 
