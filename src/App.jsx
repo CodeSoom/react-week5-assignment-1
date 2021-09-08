@@ -7,21 +7,26 @@ import RestaurantsContainer from './containers/RestaurantsContainer';
 
 import {
   setPlaces,
+  setRestaurants,
 } from './modules/actions';
 
 import places from '../fixtures/places';
+import restaurants from '../fixtures/restaurants';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setPlaces(places));
+    dispatch(setRestaurants(restaurants));
   }, []);
 
   return (
     <div>
-      <h1>Location && Restaurants</h1>
+      <div>Locations</div>
       <PlacesContainer />
+
+      <div>Restaurants</div>
       <RestaurantsContainer />
     </div>
   );

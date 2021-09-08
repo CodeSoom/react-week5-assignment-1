@@ -7,6 +7,11 @@ export function setPlaces(places) {
   };
 }
 
-export function xxx() {
-
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
 }

@@ -1,5 +1,6 @@
 const initialState = {
   places: [],
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -9,6 +10,15 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       places,
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
     };
   }
   return state;

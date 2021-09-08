@@ -4,8 +4,6 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import Restaurants from '../components/Restaurants';
-
 import restaurants from '../../fixtures/restaurants';
 
 import RestaurantsContainer from './RestaurantsContainer';
@@ -17,7 +15,10 @@ test('RestaurantsContainer', () => {
     restaurants,
   }));
 
-  const { container } = render((
+  const { getByText } = render((
     <RestaurantsContainer />
   ));
+
+  expect(getByText(/감성타코/)).not.toBeNull();
+  expect(getByText(/이자카야/)).not.toBeNull();
 });

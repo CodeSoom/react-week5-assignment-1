@@ -1,10 +1,12 @@
 import reducer from './reducer';
 
+import places from '../../fixtures/places';
+import restaurants from '../../fixtures/restaurants';
+
 import {
   setPlaces,
+  setRestaurants,
 } from './actions';
-
-import places from '../../fixtures/places';
 
 describe('reducer', () => {
   describe('setPlaces', () => {
@@ -16,6 +18,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setPlaces(places));
 
       expect(state.places).not.toHaveLength(0);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants array', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(3);
     });
   });
 });

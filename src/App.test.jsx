@@ -7,6 +7,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 import places from '../fixtures/places';
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
@@ -17,17 +18,18 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     places,
+    restaurants,
   }));
 
-  const { getByText } = render((
+  const { container } = render((
     <App />
   ));
 
-  expect(getByText(/Location && Restaurants/)).not.toBeNull();
-  expect(getByText(/서울/)).not.toBeNull();
+  places.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
+  });
 
-  expect(dispatch).toBeCalledWith({
-    type: 'setPlaces',
-    payload: { places },
+  restaurants.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
   });
 });
