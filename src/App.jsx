@@ -1,15 +1,38 @@
+import { useEffect, useState } from 'react';
+
 export default function App() {
+  const [regions, setRegions] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    setRegions([
+      { id: 1, name: '한식' },
+    ]);
+
+    setCategories([
+      { id: 1, name: '서울' },
+    ]);
+  }, []);
+
   return (
     <>
       <ul>
-        <li>
-          <button type="button">서울</button>
-        </li>
+        {
+          regions.map(({ id, name }) => (
+            <li key={id}>
+              <button type="button">{name}</button>
+            </li>
+          ))
+        }
       </ul>
       <ul>
-        <li>
-          <button type="button">한식</button>
-        </li>
+        {
+          categories.map(({ id, name }) => (
+            <li key={id}>
+              <button type="button">{name}</button>
+            </li>
+          ))
+        }
       </ul>
     </>
   );
