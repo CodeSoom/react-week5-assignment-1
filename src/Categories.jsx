@@ -1,14 +1,13 @@
 import React from 'react';
 
-export default function Categories() {
+export default function Categories({ categories }) {
   return (
-    <div>
-      <ul>
-        <li>한식</li>
-      </ul>
-      <ul>
-        <li>중식</li>
-      </ul>
-    </div>
+    <ul>
+      {categories.map((category) => (
+        <li key={category.id}>
+          {category.name}
+        </li>
+      ))}
+    </ul>
   );
 }

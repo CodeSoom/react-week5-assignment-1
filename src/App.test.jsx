@@ -9,7 +9,5 @@ describe('App', () => {
     const { queryByText } = render(<App />);
 
     expect(queryByText('한식')).not.toBeNull();
-    expect(queryByText('중식')).not.toBeNull();
-
   });
 });

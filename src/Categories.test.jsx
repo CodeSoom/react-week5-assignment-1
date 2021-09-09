@@ -2,13 +2,15 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import App from './App';
+import Categories from './Categories';
 
-describe('App', () => {
-  it('renders categories', () => {
-    const { queryByText } = render(<App />);
+test('Categories', () => {
+  const categories = [
+    { id: 1, name: '한식' },
+  ];
+  const { getByText } = render((
+    <Categories categories={categories} />
+  ));
 
-    expect(queryByText('한식')).not.toBeNull();
-    expect(queryByText('중식')).not.toBeNull();
-  });
+  expect(getByText('한식')).not.toBeNull();
 });
