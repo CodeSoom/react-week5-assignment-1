@@ -2,36 +2,39 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  updateCategories,
-  updateCheckedCategory,
-  updateCheckedRegion,
-  updateRegions,
-  updateRestaurants,
-} from './actions';
-
 import Categories from './Categories';
 import Regions from './Regions';
 import Restaurants from './Restaurants';
 
-import { fetchCategories, fetchRegions, fetchRestaurants } from './services/api';
+import {
+  updateCategories,
+  updateCheckedElement,
+  updateRegions,
+  updateRestaurants,
+} from './actions';
+
+import {
+  fetchCategories,
+  fetchRegions,
+  fetchRestaurants,
+} from './services/api';
 
 export default function App() {
+  const dispatch = useDispatch();
+
   const {
-    checkedRegionText,
-    checkedCategoryId,
+    checkedRegion,
+    checkedCategory,
     regions,
     categories,
     restaurants,
   } = useSelector((state) => ({
-    checkedRegionText: state.checkedRegionText,
-    checkedCategoryId: state.checkedCategoryId,
+    checkedRegion: state.checkedRegion,
+    checkedCategory: state.checkedCategory,
     regions: state.regions,
     categories: state.categories,
     restaurants: state.restaurants,
   }));
-
-  const dispatch = useDispatch();
 
   async function loadInitialData() {
     const regionsData = await fetchRegions();
@@ -41,10 +44,13 @@ export default function App() {
   }
 
   async function loadRestaurants() {
-    if (checkedRegionText === '' || checkedCategoryId === 0) {
+    if (Object.keys(checkedCategory).length === 0
+     || Object.keys(checkedRegion).length === 0) {
       return;
     }
-    const restaurantsData = await fetchRestaurants(checkedRegionText, checkedCategoryId);
+    const { id } = checkedCategory;
+    const { text } = checkedRegion;
+    const restaurantsData = await fetchRestaurants(text, id);
     dispatch(updateRestaurants(restaurantsData));
   }
 
@@ -54,31 +60,23 @@ export default function App() {
 
   useEffect(() => {
     loadRestaurants();
-  }, [checkedRegionText, checkedCategoryId]);
+  }, [checkedRegion, checkedCategory]);
 
-  function handleClickRegion(e) {
-    const { innerText } = e.target;
-    const checkedRegion = innerText.split('(')[0];
-    dispatch(updateCheckedRegion(checkedRegion));
-  }
-
-  function handleClickCategory(e) {
-    const { dataset: { id } } = e.target;
-    const checkedCategory = parseInt(id, 10);
-    dispatch(updateCheckedCategory(checkedCategory));
+  function handleClickList(name, value) {
+    dispatch(updateCheckedElement(name, value));
   }
 
   return (
     <div>
       <Regions
         regions={regions}
-        onClickRegion={handleClickRegion}
-        checkedRegionText={checkedRegionText}
+        handleClickRegion={handleClickList}
+        checkedElement={checkedRegion}
       />
       <Categories
         categories={categories}
-        onClickCategory={handleClickCategory}
-        checkedCategoryId={checkedCategoryId}
+        handleClickCategory={handleClickList}
+        checkedElement={checkedCategory}
       />
       <Restaurants restaurants={restaurants} />
     </div>

@@ -1,8 +1,17 @@
-export default function Regions({ regions, onClickRegion, checkedRegionText }) {
+import Item from './Item';
+
+export default function Regions({ regions, handleClickRegion, checkedElement }) {
   return (
     <ul>
-      {regions
-        && regions.map((region) => (<li key={region.id}><button type="button" onClick={onClickRegion}>{checkedRegionText === region.name ? `${region.name}(V)` : region.name}</button></li>))}
+      {regions.map((region) => (
+        <Item
+          key={region.id}
+          name="region"
+          data={region}
+          handleClick={handleClickRegion}
+          checkedElement={checkedElement}
+        />
+      ))}
     </ul>
   );
 }

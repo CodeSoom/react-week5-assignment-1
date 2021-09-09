@@ -1,6 +1,6 @@
 const initialState = {
-  checkedRegionText: '',
-  checkedCategoryId: 0,
+  checkedRegion: {},
+  checkedCategory: {},
   regions: [],
   categories: [],
   restaurants: [],
@@ -31,14 +31,14 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'updateCheckedRegion') {
     return {
       ...state,
-      checkedRegionText: action.payload.checkedRegionText,
+      checkedRegion: action.payload.checkedRegion,
     };
   }
 
   if (action.type === 'updateCheckedCategory') {
     return {
       ...state,
-      checkedCategoryId: action.payload.checkedCategoryId,
+      checkedCategory: action.payload.checkedCategory,
     };
   }
 

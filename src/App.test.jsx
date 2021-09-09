@@ -17,6 +17,8 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
+    checkedRegion: {},
+    checkedCategory: {},
     regions: [
       { id: 1, name: '서울' },
       { id: 2, name: '대구' },

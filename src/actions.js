@@ -25,20 +25,19 @@ export function updateRestaurants(data) {
   };
 }
 
-export function updateCheckedRegion(text) {
-  return {
-    type: 'updateCheckedRegion',
-    payload: {
-      checkedRegionText: text,
-    },
-  };
-}
-
-export function updateCheckedCategory(id) {
+export function updateCheckedElement(name, value) {
+  if (name === 'region') {
+    return {
+      type: 'updateCheckedRegion',
+      payload: {
+        checkedRegion: value,
+      },
+    };
+  }
   return {
     type: 'updateCheckedCategory',
     payload: {
-      checkedCategoryId: id,
+      checkedCategory: value,
     },
   };
 }
