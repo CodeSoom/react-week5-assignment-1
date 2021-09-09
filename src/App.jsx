@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 import Regions from './Regions';
-import Restaurants from './Restaurants';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   updateCategories,
@@ -27,13 +27,11 @@ export default function App() {
     checkedCategory,
     regions,
     categories,
-    restaurants,
   } = useSelector((state) => ({
     checkedRegion: state.checkedRegion,
     checkedCategory: state.checkedCategory,
     regions: state.regions,
     categories: state.categories,
-    restaurants: state.restaurants,
   }));
 
   async function loadInitialData() {
@@ -78,7 +76,7 @@ export default function App() {
         handleClickCategory={handleClickList}
         checkedElement={checkedCategory}
       />
-      <Restaurants restaurants={restaurants} />
+      <RestaurantsContainer />
     </div>
   );
 }
