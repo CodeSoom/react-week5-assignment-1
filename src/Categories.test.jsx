@@ -27,7 +27,7 @@ describe('Categories', () => {
     );
   }
 
-  it('지역 목록을 보여준다', () => {
+  it('카테고리 목록을 보여준다', () => {
     const { getByText } = renderCategories();
 
     expect(getByText('한식')).toBeInTheDocument();

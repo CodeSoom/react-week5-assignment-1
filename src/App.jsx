@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Categories from './Categories';
 import Regions from './Regions';
+import Restaurants from './Restaurants';
 
 import { fetchCategories, fetchRegions, fetchRestaurants } from './services/api';
 
@@ -78,10 +79,7 @@ export default function App() {
         onClickCategory={handleClickCategory}
         checkedCategoryId={checkedCategoryId}
       />
-      <ul>
-        {restaurants
-        && restaurants.map((restaurant) => (<li key={restaurant.id}>{restaurant.name}</li>))}
-      </ul>
+      <Restaurants restaurants={restaurants} />
     </div>
   );
 }
