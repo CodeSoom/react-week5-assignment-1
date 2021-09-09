@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import updateField from './actions';
+import { updateField } from './actions';
 
 describe('reducer', () => {
   describe('updateField', () => {

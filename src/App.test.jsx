@@ -64,8 +64,6 @@ describe('App', () => {
   it('dispatches selectedCategory', () => {
     const { getByText } = render(<App />);
 
-    expect(dispatch).not.toBeCalled();
-
     fireEvent.click(getByText('한식'));
 
     expect(dispatch).toBeCalledWith({
@@ -82,8 +80,6 @@ describe('App', () => {
 
   it('dispatches selectedRegion', () => {
     const { getByText } = render(<App />);
-
-    expect(dispatch).not.toBeCalled();
 
     fireEvent.click(getByText('서울'));
 
