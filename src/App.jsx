@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantsContainer from './RestaurantsContainer';
-import RegionsContainer from './RegionsContainer';
+import RestaurantsContainer from './container/RestaurantsContainer';
+import CategoriesContainer from './container/CategoriesContainer';
+import RegionsContainer from './container/RegionsContainer';
 
 import {
   updateCategories,
@@ -16,7 +17,6 @@ import {
   fetchRegions,
   fetchRestaurants,
 } from './services/api';
-import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();

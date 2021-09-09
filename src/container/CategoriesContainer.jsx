@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import Categories from '../presentational/Categories';
 
-import { updateCheckedElement } from './actions';
+import { updateCheckedElement } from '../actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Regions from './Regions';
+import Regions from '../presentational/Regions';
 
-import { updateCheckedElement } from './actions';
+import { updateCheckedElement } from '../actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
