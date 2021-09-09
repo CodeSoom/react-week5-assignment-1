@@ -24,3 +24,12 @@ export function setRestaurants(restaurants) {
     },
   };
 }
+
+export function clickPlace(name) {
+  return {
+    type: 'clickPlace',
+    payload: {
+      name,
+    },
+  };
+}

@@ -1,11 +1,21 @@
 import React from 'react';
 
-export default function Places({ places }) {
+export default function Places({
+  places,
+  clickedPlace,
+  onClick,
+}) {
   return (
     <ul>
-      {places.map((place) => (
-        <li key={place.id}>
-          {place.name}
+      { places.map(({ id, name }) => (
+        <li key={id}>
+          <button
+            type="button"
+            onClick={() => onClick(name)}
+          >
+            {name}
+            {clickedPlace === name ? '(V)' : '' }
+          </button>
         </li>
       ))}
     </ul>

@@ -2,13 +2,14 @@ import reducer from './reducer';
 
 import places from '../../fixtures/places';
 import restaurants from '../../fixtures/restaurants';
+import categories from '../../fixtures/categories';
 
 import {
   setCategories,
   setPlaces,
   setRestaurants,
+  clickPlace,
 } from './actions';
-import categories from '../../fixtures/categories';
 
 describe('reducer', () => {
   describe('setPlaces', () => {
@@ -43,6 +44,20 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(3);
+    });
+  });
+
+  describe('clickPlace', () => {
+    it('shows button click action', () => {
+      const clickedPlace = '';
+      const { name } = places[0];
+
+      const state = reducer({
+        places,
+        clickedPlace,
+      }, clickPlace(name));
+
+      expect(state.clickedPlace).toBe(places[0].name);
     });
   });
 });
