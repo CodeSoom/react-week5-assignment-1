@@ -1,7 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 jest.mock('./services/api');
 
@@ -10,37 +13,54 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
-  it('지역 목록을 보여준다', async () => {
-    await act(async () => render(<App />));
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
 
-    expect(screen.getByText('서울')).toBeInTheDocument();
-    expect(screen.getByText('대구')).toBeInTheDocument();
-    expect(screen.getByText('부산')).toBeInTheDocument();
+  useSelector.mockImplementation((selector) => selector({
+    regions: [
+      { id: 1, name: '서울' },
+      { id: 2, name: '대구' },
+      { id: 3, name: '부산' },
+    ],
+    categories: [
+      { id: 1, name: '한식' },
+      { id: 2, name: '중식' },
+      { id: 3, name: '일식' },
+    ],
+    restaurants: [
+      { id: 1, name: '김말천국' },
+      { id: 2, name: '뚝배기리조또' },
+      { id: 3, name: '민트불고기' },
+    ],
+  }));
+
+  it('지역 목록을 보여준다', () => {
+    const { getByText } = render((
+      <App />
+    ));
+
+    expect(getByText('서울')).toBeInTheDocument();
+    expect(getByText('대구')).toBeInTheDocument();
+    expect(getByText('부산')).toBeInTheDocument();
   });
 
-  it('카테고리 목록을 보여준다', async () => {
-    await act(async () => render(<App />));
+  it('카테고리 목록을 보여준다', () => {
+    const { getByText } = render((
+      <App />
+    ));
 
-    expect(screen.getByText('한식')).toBeInTheDocument();
-    expect(screen.getByText('중식')).toBeInTheDocument();
-    expect(screen.getByText('일식')).toBeInTheDocument();
+    expect(getByText('한식')).toBeInTheDocument();
+    expect(getByText('중식')).toBeInTheDocument();
+    expect(getByText('일식')).toBeInTheDocument();
   });
 
-  it('목록이 클릭되면 체크를 표시한다.', async () => {
-    const handleClick = jest.fn();
+  it('식당 목록을 보여준다', () => {
+    const { getByText } = render((
+      <App />
+    ));
 
-    await act(async () => render(<App onClick={handleClick} />));
-
-    fireEvent.click(screen.getByText('한식'));
-
-    expect(screen.getByText('한식(V)')).toBeInTheDocument();
-    expect(screen.queryByText('한식')).not.toBeInTheDocument();
-
-    // expect(handleClick).toBeCalled();
-    // 여기서 이벤트가 콜이 안되는 이유는?
-  });
-
-  it('레스토랑 목록을 출력한다.', async () => {
-    // 분리 하면서 테스트 하기
+    expect(getByText('김말천국')).toBeInTheDocument();
+    expect(getByText('뚝배기리조또')).toBeInTheDocument();
+    expect(getByText('민트불고기')).toBeInTheDocument();
   });
 });

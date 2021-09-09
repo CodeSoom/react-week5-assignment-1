@@ -18,13 +18,6 @@ describe('Restaurants', () => {
       address: '서울시 서대문구',
       information: '홍콩반점 in 서울시 서대문구',
     },
-    {
-      id: 11,
-      categoryId: 2,
-      name: '몰라몰라',
-      address: '서울이다',
-      information: '몰라몰라 in 서울이다',
-    },
   ];
 
   function renderRestaurants() {
@@ -38,6 +31,5 @@ describe('Restaurants', () => {
 
     expect(getByText('호신각')).toBeInTheDocument();
     expect(getByText('홍콩반점')).toBeInTheDocument();
-    expect(getByText('몰라몰라')).toBeInTheDocument();
   });
 });
