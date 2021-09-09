@@ -1,68 +1,70 @@
-import {
-  render, screen, fireEvent, waitFor,
-} from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { render, fireEvent } from '@testing-library/react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 jest.mock('./services/api');
 
 describe('App', () => {
-  it('renders categories', async () => {
-    await act(async () => render(<App />));
+  const dispatch = jest.fn();
 
-    expect(screen.getByText('한식')).toBeInTheDocument();
-    expect(screen.getByText('중식')).toBeInTheDocument();
-    expect(screen.getByText('일식')).toBeInTheDocument();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions: [],
+    categories: [],
+    selectedRegion: {},
+    selectedCategory: {},
+    restaurants: [],
+  }));
+
+  it('renders categories', () => {
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('한식');
+    expect(container).toHaveTextContent('중식');
   });
 
-  it('renders regions', async () => {
-    await act(async () => render(<App />));
+  it('renders regions', () => {
+    const { container } = render(<App />);
 
-    expect(screen.getByText('서울')).toBeInTheDocument();
-    expect(screen.getByText('대전')).toBeInTheDocument();
-    expect(screen.getByText('대구')).toBeInTheDocument();
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('대전');
   });
 
-  it('renders item with (v)', async () => {
-    await act(async () => render(<App />));
+  it('renders item with (v)', () => {
+    const { container, getByText } = render(<App />);
 
-    fireEvent.click(screen.getByText('한식'));
+    fireEvent.click(getByText('한식'));
 
-    await waitFor(() => {
-      expect(screen.getByText('한식(V)')).toBeInTheDocument();
-      expect(screen.getByText('중식')).toBeInTheDocument();
-    });
+    expect(container).toHaveTextContent('한식(V)');
+    expect(container).toHaveTextContent('중식');
 
-    fireEvent.click(screen.getByText('중식'));
+    fireEvent.click(getByText('중식'));
 
-    await waitFor(() => {
-      expect(screen.getByText('한식')).toBeInTheDocument();
-      expect(screen.getByText('중식(V)')).toBeInTheDocument();
-    });
+    expect(container).toHaveTextContent('한식');
+    expect(container).toHaveTextContent('중식(V)');
 
-    fireEvent.click(screen.getByText('서울'));
+    fireEvent.click(getByText('서울'));
 
-    await waitFor(() => {
-      expect(screen.getByText('서울(V)')).toBeInTheDocument();
-      expect(screen.getByText('대전')).toBeInTheDocument();
-    });
+    expect(container).toHaveTextContent('서울(V)');
+    expect(container).toHaveTextContent('대전');
 
-    fireEvent.click(screen.getByText('대전'));
+    fireEvent.click(getByText('대전'));
 
-    await waitFor(() => {
-      expect(screen.getByText('서울')).toBeInTheDocument();
-      expect(screen.getByText('대전(V)')).toBeInTheDocument();
-    });
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('대전(V)');
   });
 
-  it('renders result restaurants', async () => {
-    await act(async () => render(<App />));
+  it('renders result restaurants', () => {
+    const { container, getByText } = render(<App />);
 
-    fireEvent.click(screen.getByText('서울'));
-    fireEvent.click(screen.getByText('한식'));
+    fireEvent.click(getByText('서울'));
+    fireEvent.click(getByText('한식'));
 
-    await waitFor(() => expect(screen.getByText('양천주가')).toBeInTheDocument());
-    await waitFor(() => expect(screen.getByText('한국식초밥')).toBeInTheDocument());
+    expect(container).toHaveTextContent('양천주가');
+    expect(container).toHaveTextContent('한국식초밥');
   });
 });
