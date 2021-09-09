@@ -1,3 +1,11 @@
+const initialState = {
+  regions: [],
+  categories: [],
+  selectedRegion: {},
+  selectedCategory: {},
+  restaurants: [],
+};
+
 const reducers = {
   UPDATE_FIELD: (state, action) => ({
     ...state,
@@ -5,6 +13,6 @@ const reducers = {
   }),
 };
 
-const reducer = (state, action) => reducers[action.type](state, action);
+const reducer = (state = initialState, action) => reducers[action.type](state, action);
 
 export default reducer;
