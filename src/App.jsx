@@ -2,13 +2,11 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from './Categories';
-import Regions from './Regions';
 import RestaurantsContainer from './RestaurantsContainer';
+import RegionsContainer from './RegionsContainer';
 
 import {
   updateCategories,
-  updateCheckedElement,
   updateRegions,
   updateRestaurants,
 } from './actions';
@@ -18,6 +16,7 @@ import {
   fetchRegions,
   fetchRestaurants,
 } from './services/api';
+import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -25,13 +24,9 @@ export default function App() {
   const {
     checkedRegion,
     checkedCategory,
-    regions,
-    categories,
   } = useSelector((state) => ({
     checkedRegion: state.checkedRegion,
     checkedCategory: state.checkedCategory,
-    regions: state.regions,
-    categories: state.categories,
   }));
 
   async function loadInitialData() {
@@ -60,22 +55,10 @@ export default function App() {
     loadRestaurants();
   }, [checkedRegion, checkedCategory]);
 
-  function handleClickList(name, value) {
-    dispatch(updateCheckedElement(name, value));
-  }
-
   return (
     <div>
-      <Regions
-        regions={regions}
-        handleClickRegion={handleClickList}
-        checkedElement={checkedRegion}
-      />
-      <Categories
-        categories={categories}
-        handleClickCategory={handleClickList}
-        checkedElement={checkedCategory}
-      />
+      <RegionsContainer />
+      <CategoriesContainer />
       <RestaurantsContainer />
     </div>
   );
