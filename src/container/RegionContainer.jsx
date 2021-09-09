@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateField } from '../store/actions';
+import { updateField, loadRegions } from '../store/actions';
 
 import RegionList from '../presentational/RegionList';
 
@@ -12,6 +14,10 @@ export default function RegionContainer() {
   const handleClick = ({ field, value }) => {
     dispatch(updateField({ field, value }));
   };
+
+  useEffect(() => {
+    dispatch(loadRegions());
+  }, []);
 
   return (
     <RegionList

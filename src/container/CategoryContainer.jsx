@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateField } from '../store/actions';
+import { updateField, loadCategories } from '../store/actions';
 
 import CategoryList from '../presentational/CategoryList';
 
@@ -12,6 +14,10 @@ export default function CategoryContainer() {
   const handleClick = ({ field, value }) => {
     dispatch(updateField({ field, value }));
   };
+
+  useEffect(() => {
+    dispatch(loadCategories());
+  }, []);
 
   return (
     <CategoryList
