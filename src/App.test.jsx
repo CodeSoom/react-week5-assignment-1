@@ -13,12 +13,39 @@ describe('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions: [],
-    categories: [],
+    regions: [
+      { id: 1, name: '서울' },
+      { id: 2, name: '대전' },
+      { id: 3, name: '대구' },
+    ],
+    categories: [
+      { id: 1, name: '한식' },
+      { id: 2, name: '중식' },
+      { id: 3, name: '일식' },
+    ],
     selectedRegion: {},
     selectedCategory: {},
-    restaurants: [],
+    restaurants: [
+      {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        information: '양천주가 in 서울 강남구 123456',
+      },
+      {
+        id: 6,
+        categoryId: 1,
+        name: '한국식초밥',
+        address: '서울 강남구',
+        information: '한국식 초밥 in 서울 강남구',
+      },
+    ],
   }));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('renders categories', () => {
     const { container } = render(<App />);
@@ -34,35 +61,46 @@ describe('App', () => {
     expect(container).toHaveTextContent('대전');
   });
 
-  it('renders item with (v)', () => {
-    const { container, getByText } = render(<App />);
+  it('dispatches selectedCategory', () => {
+    const { getByText } = render(<App />);
+
+    expect(dispatch).not.toBeCalled();
 
     fireEvent.click(getByText('한식'));
 
-    expect(container).toHaveTextContent('한식(V)');
-    expect(container).toHaveTextContent('중식');
+    expect(dispatch).toBeCalledWith({
+      payload: {
+        field: 'selectedCategory',
+        value: {
+          id: 1,
+          name: '한식',
+        },
+      },
+      type: 'UPDATE_FIELD',
+    });
+  });
 
-    fireEvent.click(getByText('중식'));
+  it('dispatches selectedRegion', () => {
+    const { getByText } = render(<App />);
 
-    expect(container).toHaveTextContent('한식');
-    expect(container).toHaveTextContent('중식(V)');
+    expect(dispatch).not.toBeCalled();
 
     fireEvent.click(getByText('서울'));
 
-    expect(container).toHaveTextContent('서울(V)');
-    expect(container).toHaveTextContent('대전');
-
-    fireEvent.click(getByText('대전'));
-
-    expect(container).toHaveTextContent('서울');
-    expect(container).toHaveTextContent('대전(V)');
+    expect(dispatch).toBeCalledWith({
+      payload: {
+        field: 'selectedRegion',
+        value: {
+          id: 1,
+          name: '서울',
+        },
+      },
+      type: 'UPDATE_FIELD',
+    });
   });
 
   it('renders result restaurants', () => {
-    const { container, getByText } = render(<App />);
-
-    fireEvent.click(getByText('서울'));
-    fireEvent.click(getByText('한식'));
+    const { container } = render(<App />);
 
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('한국식초밥');
