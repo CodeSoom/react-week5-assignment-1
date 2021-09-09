@@ -9,13 +9,15 @@ describe('CategoryList', () => {
 
   given('selectedCategory', () => ({}));
 
+  const categories = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+    { id: 3, name: '일식' },
+  ];
+
   const renderCategoryList = () => render((
     <CategoryList
-      categories={[
-        { id: 1, name: '한식' },
-        { id: 2, name: '중식' },
-        { id: 3, name: '일식' },
-      ]}
+      categories={categories}
       onClick={handleClick}
       selectedCategory={given.selectedCategory}
     />
