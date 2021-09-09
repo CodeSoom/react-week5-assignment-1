@@ -1,16 +1,16 @@
-export const loadCategories = jest.fn(() => [
+export const fetchCategories = jest.fn(() => [
   { id: 1, name: '한식' },
   { id: 2, name: '중식' },
   { id: 3, name: '일식' },
 ]);
 
-export const loadRegions = jest.fn(() => [
+export const fetchRegions = jest.fn(() => [
   { id: 1, name: '서울' },
   { id: 2, name: '대전' },
   { id: 3, name: '대구' },
 ]);
 
-export const loadRestaurants = jest.fn(() => [
+export const fetchRestaurants = jest.fn(() => [
   {
     id: 1,
     categoryId: 1,
