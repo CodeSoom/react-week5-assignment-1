@@ -38,7 +38,7 @@ describe('PlacesContainer', () => {
   });
 
   context('when buttons clicked', () => {
-    it('initiate clickPlace function', () => {
+    it('initiates clickPlace function', () => {
       const { getByText } = renderPlaces();
 
       places.forEach(({ name }) => {

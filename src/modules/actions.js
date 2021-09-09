@@ -33,3 +33,12 @@ export function clickPlace(name) {
     },
   };
 }
+
+export function clickCategory(id) {
+  return {
+    type: 'clickCategory',
+    payload: {
+      id,
+    },
+  };
+}

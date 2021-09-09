@@ -3,6 +3,7 @@ const initialState = {
   categories: [],
   restaurants: [],
   clickedPlace: '',
+  clickedCategory: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -39,6 +40,15 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       clickedPlace: name,
+    };
+  }
+
+  if (action.type === 'clickCategory') {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      clickedCategory: id,
     };
   }
   return state;

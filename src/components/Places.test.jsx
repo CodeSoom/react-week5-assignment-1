@@ -32,8 +32,8 @@ describe('Places', () => {
     });
   });
 
-  context('when buttons clicked', () => {
-    it('shows handleClickPlace function', () => {
+  context('when place buttons clicked', () => {
+    it('renders handleClickPlace function', () => {
       const clickedPlace = '';
 
       const { container, getByText } = renderPlaces(clickedPlace);
