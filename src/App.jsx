@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadCategories, loadRegions, loadRestaurants } from './services/api';
-
-import updateField from './store/actions';
+import {
+  updateField, loadCategories, loadRegions, loadRestaurants,
+} from './store/actions';
 
 import RegionList from './RegionList';
 import CategoryList from './CategoryList';
@@ -26,14 +26,8 @@ export default function App() {
   const isEmpty = (param) => Object.keys(param).length === 0;
 
   useEffect(() => {
-    const fetchData = async () => {
-      const categoriesData = await loadCategories();
-      const regionsData = await loadRegions();
-
-      dispatch(updateField({ field: 'categories', value: categoriesData }));
-      dispatch(updateField({ field: 'regions', value: regionsData }));
-    };
-    fetchData();
+    dispatch(loadCategories());
+    dispatch(loadRegions());
   }, []);
 
   useEffect(() => {
@@ -41,16 +35,10 @@ export default function App() {
       return;
     }
 
-    const fetchData = async () => {
-      const data = await loadRestaurants({
-        regionName: selectedRegion.name,
-        categoryId: selectedCategory.id,
-      });
-
-      dispatch(updateField({ field: 'restaurants', value: data }));
-    };
-
-    fetchData();
+    dispatch(loadRestaurants({
+      regionName: selectedRegion.name,
+      categoryId: selectedCategory.id,
+    }));
   }, [selectedRegion, selectedCategory]);
 
   return (

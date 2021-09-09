@@ -1,4 +1,4 @@
-export const loadCategories = async () => {
+export const fetchCategories = async () => {
   try {
     const url = 'https://eatgo-customer-api.ahastudio.com/categories';
     const response = await fetch(url);
@@ -9,7 +9,7 @@ export const loadCategories = async () => {
   }
 };
 
-export const loadRegions = async () => {
+export const fetchRegions = async () => {
   try {
     const url = 'https://eatgo-customer-api.ahastudio.com/regions';
     const response = await fetch(url);
@@ -20,7 +20,7 @@ export const loadRegions = async () => {
   }
 };
 
-export const loadRestaurants = async ({ regionName, categoryId }) => {
+export const fetchRestaurants = async ({ regionName, categoryId }) => {
   try {
     const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
     const response = await fetch(url);
