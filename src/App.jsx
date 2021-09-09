@@ -5,9 +5,9 @@ import {
   updateField, loadCategories, loadRegions, loadRestaurants,
 } from './store/actions';
 
-import RegionList from './RegionList';
-import CategoryList from './CategoryList';
-import RestaurantList from './RestaurantList';
+import RegionList from './presentational/RegionList';
+import CategoryList from './presentational/CategoryList';
+import RestaurantList from './presentational/RestaurantList';
 
 export default function App() {
   const dispatch = useDispatch();
