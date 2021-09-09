@@ -2,6 +2,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { updateField } from '../store/actions';
+
 import CategoryContainer from './CategoryContainer';
 
 jest.mock('react-redux');
@@ -28,7 +30,12 @@ describe('CategoryContainer', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalled();
+    expect(typeof dispatch.mock.calls[0][0]).toBe('function');
+
+    expect(dispatch.mock.calls[1][0]).toEqual(updateField({
+      field: 'selectedCategory',
+      value: { id: 1, name: '한식' },
+    }));
   });
 
   it('renders categories', () => {
