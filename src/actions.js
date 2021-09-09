@@ -1,3 +1,5 @@
+import { fetchCategories } from './services/api';
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',
@@ -7,6 +9,9 @@ export function setCategories(categories) {
   };
 }
 
-export function xxx() {
-
+export function loadCategories() {
+  return async (dispatch) => {
+    const categoris = await fetchCategories();
+    dispatch(setCategories(categoris));
+  };
 }

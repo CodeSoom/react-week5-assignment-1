@@ -5,16 +5,14 @@ import { useDispatch } from 'react-redux';
 import CategoriesContainer from './CategoriesContainer';
 
 import {
-  setCategories,
+  loadCategories,
 } from './actions';
-
-import categories from '../fixtures/categories';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setCategories(categories));
+    dispatch(loadCategories());
   });
   return (
     <div>
