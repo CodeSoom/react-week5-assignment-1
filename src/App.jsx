@@ -2,9 +2,9 @@ import { useReducer, useEffect } from 'react';
 
 import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
-import updateField from './actions';
+import updateField from './store/actions';
 
-import reducer from './reducer';
+import reducer from './store/reducer';
 
 import RegionList from './RegionList';
 import CategoryList from './CategoryList';
