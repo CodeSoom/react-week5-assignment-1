@@ -1,31 +1,23 @@
-import { useReducer, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { loadCategories, loadRegions, loadRestaurants } from './services/api';
 
 import updateField from './store/actions';
 
-import reducer from './store/reducer';
-
 import RegionList from './RegionList';
 import CategoryList from './CategoryList';
 import RestaurantList from './RestaurantList';
 
-const initialState = {
-  regions: [],
-  categories: [],
-  selectedRegion: {},
-  selectedCategory: {},
-  restaurants: [],
-};
-
 export default function App() {
-  const [{
+  const dispatch = useDispatch();
+  const {
     regions,
     categories,
     selectedRegion,
     selectedCategory,
     restaurants,
-  }, dispatch] = useReducer(reducer, initialState);
+  } = useSelector((state) => state);
 
   const handleClick = ({ field, value }) => {
     dispatch(updateField({ field, value }));
