@@ -2,6 +2,10 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import given from 'given2';
+
+import { updateField } from './store/actions';
+
 import App from './App';
 
 jest.mock('react-redux');
@@ -10,6 +14,9 @@ jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
+
+  given('selectedRegion', () => ({}));
+  given('selectedCategory', () => ({}));
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
@@ -23,8 +30,8 @@ describe('App', () => {
       { id: 2, name: '중식' },
       { id: 3, name: '일식' },
     ],
-    selectedRegion: {},
-    selectedCategory: {},
+    selectedRegion: given.selectedRegion,
+    selectedCategory: given.selectedCategory,
     restaurants: [
       {
         id: 1,
@@ -66,16 +73,13 @@ describe('App', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalledWith({
-      payload: {
-        field: 'selectedCategory',
-        value: {
-          id: 1,
-          name: '한식',
-        },
+    expect(dispatch).toBeCalledWith(updateField({
+      field: 'selectedCategory',
+      value: {
+        id: 1,
+        name: '한식',
       },
-      type: 'UPDATE_FIELD',
-    });
+    }));
   });
 
   it('dispatches selectedRegion', () => {
@@ -83,16 +87,22 @@ describe('App', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(dispatch).toBeCalledWith({
-      payload: {
-        field: 'selectedRegion',
-        value: {
-          id: 1,
-          name: '서울',
-        },
+    expect(dispatch).toBeCalledWith(updateField({
+      field: 'selectedRegion',
+      value: {
+        id: 1,
+        name: '서울',
       },
-      type: 'UPDATE_FIELD',
-    });
+    }));
+  });
+
+  it('dispatches loadRestaurants', () => {
+    given('selectedRegion', () => ({ id: 1, name: '서울' }));
+    given('selectedCategory', () => ({ id: 1, name: '한식' }));
+
+    render(<App />);
+
+    expect(dispatch).toBeCalledTimes(3);
   });
 
   it('renders result restaurants', () => {
