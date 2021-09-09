@@ -5,14 +5,13 @@ import {
   updateField, loadCategories, loadRegions, loadRestaurants,
 } from './store/actions';
 
-import RegionList from './presentational/RegionList';
+import RegionContainer from './container/RegionContainer';
 import CategoryList from './presentational/CategoryList';
 import RestaurantList from './presentational/RestaurantList';
 
 export default function App() {
   const dispatch = useDispatch();
   const {
-    regions,
     categories,
     selectedRegion,
     selectedCategory,
@@ -43,11 +42,7 @@ export default function App() {
 
   return (
     <>
-      <RegionList
-        regions={regions}
-        onClick={handleClick}
-        selectedRegion={selectedRegion}
-      />
+      <RegionContainer />
       <CategoryList
         categories={categories}
         onClick={handleClick}
