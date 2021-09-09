@@ -10,14 +10,7 @@ import categories from '../../fixtures/categories';
 
 jest.mock('react-redux');
 
-test('CategoriesContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }));
-
-  const { getByText } = render((
-    <CategoriesContainer />
-  ));
-
-  expect(getByText(/한식/)).not.toBeNull();
-});
+describe('CategoriesContainer', () => {
+    // Todo 카테코리 버튼 클릭 테스트 구현
+    
+})
