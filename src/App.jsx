@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Regions from './Regions';
 
 import { fetchCategories, fetchRegions, fetchRestaurants } from './services/api';
 
@@ -66,10 +67,11 @@ export default function App() {
 
   return (
     <div>
-      <ul>
-        {regions
-        && regions.map((region) => (<li key={region.id}><button type="button" onClick={handleClickRegion}>{checkedRegionText === region.name ? `${region.name}(V)` : region.name}</button></li>))}
-      </ul>
+      <Regions
+        regions={regions}
+        onClickRegion={handleClickRegion}
+        checkedRegionText={checkedRegionText}
+      />
       <ul>
         {categories
         && categories.map((category) => (<li key={category.id}><button type="button" data-id={category.id} onClick={handleClickCategory}>{checkedCategoryId === category.id ? `${category.name}(V)` : category.name}</button></li>))}
