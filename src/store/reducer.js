@@ -13,6 +13,12 @@ const reducers = {
   }),
 };
 
-const reducer = (state = initialState, action) => reducers[action.type](state, action);
+const reducer = (state = initialState, action) => {
+  try {
+    return reducers[action.type](state, action);
+  } catch (error) {
+    return state;
+  }
+};
 
 export default reducer;
