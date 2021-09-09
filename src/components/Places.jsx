@@ -14,7 +14,7 @@ export default function Places({
             onClick={() => onClick(name)}
           >
             {name}
-            {clickedPlace === name ? '(V)' : '' }
+            {clickedPlace === name ? '(v)' : '' }
           </button>
         </li>
       ))}

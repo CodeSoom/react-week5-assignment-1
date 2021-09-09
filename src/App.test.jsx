@@ -15,12 +15,19 @@ jest.mock('react-redux');
 test('App', () => {
   const dispatch = jest.fn();
 
+  // Todo - category, restaurant 연결하기
+
+  const clickedCategory = 1;
+  const clickedPlace = '서울';
+
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     places,
     categories,
     restaurants,
+    clickedCategory,
+    clickedPlace,
   }));
 
   const { container } = render((

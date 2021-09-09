@@ -10,15 +10,18 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants,
-  }));
+describe('RestaurantContainer', () => {
+  it('shows matched category and place', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurants,
+    }));
 
-  const { getByText } = render((
-    <RestaurantsContainer />
-  ));
+    const { container } = render((
+      <RestaurantsContainer />
+    ));
 
-  expect(getByText(/감성타코/)).not.toBeNull();
-  expect(getByText(/이자카야/)).not.toBeNull();
+    restaurants.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
+  });
 });

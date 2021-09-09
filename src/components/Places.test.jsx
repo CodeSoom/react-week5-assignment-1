@@ -26,7 +26,7 @@ describe('Places', () => {
 
     places.forEach(({ name }) => {
       const button = clickedPlace === name
-        ? `${name}(V)`
+        ? `${name}(v)`
         : name;
       expect(container).toHaveTextContent(button);
     });

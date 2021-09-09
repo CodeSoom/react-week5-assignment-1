@@ -23,5 +23,15 @@ describe('Restaurants', () => {
     });
   });
 
-  // todo: without list test case
+  context('without restaurants', () => {
+    it('shows empty restaurants list', () => {
+      const empty = [];
+
+      const { container } = renderRestaurants(empty);
+
+      restaurants.forEach(({ name }) => {
+        expect(container).not.toHaveTextContent(name);
+      });
+    });
+  });
 });
