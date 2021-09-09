@@ -4,10 +4,9 @@ import { render } from '@testing-library/react';
 
 import Categories from './Categories';
 
+import categories from '../fixtures/categories';
+
 test('Categories', () => {
-  const categories = [
-    { id: 1, name: '한식' },
-  ];
   const { getByText } = render((
     <Categories categories={categories} />
   ));
