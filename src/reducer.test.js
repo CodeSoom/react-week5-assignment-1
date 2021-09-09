@@ -8,12 +8,14 @@ import categories from '../fixtures/categories';
 
 describe('reducer', () => {
   describe('setCategories', () => {
-    const initailState = {
-      categories: [],
-    };
+    it('changes categories array', () => {
+      const initailState = {
+        categories: [],
+      };
 
-    const state = reducer(initailState, setCategories(categories));
+      const state = reducer(initailState, setCategories(categories));
 
-    expect(state).not.toHaveLength(0);
+      expect(state.categories).not.toHaveLength(0);
+    });
   });
 });
