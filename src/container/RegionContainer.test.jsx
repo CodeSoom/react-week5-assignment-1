@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -16,6 +16,7 @@ describe('RegionContainer', () => {
       { id: 2, name: '대전' },
       { id: 3, name: '대구' },
     ],
+    selectedRegion: {},
   }));
 
   beforeEach(() => {
@@ -23,7 +24,9 @@ describe('RegionContainer', () => {
   });
 
   it('dispatches loadRegions', () => {
-    render(<RegionContainer />);
+    const { getByText } = render(<RegionContainer />);
+
+    fireEvent.click(getByText('서울'));
 
     expect(dispatch).toBeCalled();
   });
