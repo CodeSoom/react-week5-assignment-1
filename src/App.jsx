@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
+import Regions from './Regions';
 
 import {
   loadCategories,
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <div>
       <CategoriesContainer />
+      <Regions />
     </div>
   );
 }
