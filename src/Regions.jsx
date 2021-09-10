@@ -1,14 +1,13 @@
 import React from 'react';
 
-export default function Regions() {
+export default function Regions({ regions }) {
   return (
-    <div>
-      <ul>
-        <li>서울</li>
-      </ul>
-      <ul>
-        <li>대전</li>
-      </ul>
-    </div>
+    <ul>
+      {regions.map((region) => (
+        <li key={region.id}>
+          {region.name}
+        </li>
+      ))}
+    </ul>
   );
 }

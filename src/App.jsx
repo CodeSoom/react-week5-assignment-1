@@ -11,6 +11,10 @@ import {
 
 export default function App() {
   const dispatch = useDispatch();
+  const regions = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+  ];
 
   useEffect(() => {
     dispatch(loadCategories());
@@ -18,7 +22,7 @@ export default function App() {
   return (
     <div>
       <CategoriesContainer />
-      <Regions />
+      <Regions regions={regions} />
     </div>
   );
 }
