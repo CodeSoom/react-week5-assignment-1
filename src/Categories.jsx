@@ -1,13 +1,15 @@
 import React from 'react';
 
-export default function Categories({ categories, handleInputText }) {
+export default function Categories({ categories }) {
+  function handleInputText() {
+
+  }
   return (
     <ul>
       {categories.map((category) => (
-        <li key={category.id}>
-          <button key={category.id} type="button" onClick={handleInputText}>
-            {category.name}
-          </button>
+        <li>
+          <input key={category.id} type="radio" onClick={handleInputText} name="categories" />
+          <label htmlFor={category.id}>{category.name}</label>
         </li>
       ))}
     </ul>
