@@ -3,8 +3,6 @@ import { render, fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  const handleClick = jest.fn();
-
   it('renders cateogries', () => {
     const { getByText } = render(<App />);
 
@@ -23,10 +21,12 @@ describe('App', () => {
     const { getByText } = render(<App />);
 
     expect(getByText('한식')).not.toBeNull();
+    expect(getByText('서울')).not.toBeNull();
 
     fireEvent.click(getByText('한식'));
+    fireEvent.click(getByText('서울'));
 
-    expect(handleClick).toBeCalled();
     expect(getByText('한식(V)')).not.toBeNull();
+    expect(getByText('서울(V)')).not.toBeNull();
   });
 });
