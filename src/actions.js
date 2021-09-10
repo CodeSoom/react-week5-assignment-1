@@ -15,3 +15,12 @@ export function loadCategories() {
     dispatch(setCategories(categoris));
   };
 }
+
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
+}

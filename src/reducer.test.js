@@ -20,6 +20,7 @@ describe('reducer', () => {
       expect(state.categories).toHaveLength(1);
     });
   });
+
   describe('setRegions', () => {
     it('changes Regions', () => {
       const initailState = {
@@ -28,7 +29,7 @@ describe('reducer', () => {
 
       const state = reducer(initailState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(2);
     });
   });
 });
