@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateField } from '../store/actions';
+import { updateField } from '../store/reducer';
 
 import CategoryContainer from './CategoryContainer';
 

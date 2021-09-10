@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateField, loadCategories } from '../store/actions';
+import { updateField, loadCategories } from '../store/reducer';
 
 import CategoryList from '../presentational/CategoryList';
 

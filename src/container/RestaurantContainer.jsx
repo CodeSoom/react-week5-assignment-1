@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadRestaurants } from '../store/actions';
+import { loadRestaurants } from '../store/reducer';
 
 import RestaurantList from '../presentational/RestaurantList';
 

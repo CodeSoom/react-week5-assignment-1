@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import given from 'given2';
 
-import { updateField } from './store/actions';
+import { updateField } from './store/reducer';
 
 import App from './App';
 

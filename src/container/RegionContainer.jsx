@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateField, loadRegions } from '../store/actions';
+import { updateField, loadRegions } from '../store/reducer';
 
 import RegionList from '../presentational/RegionList';
 
