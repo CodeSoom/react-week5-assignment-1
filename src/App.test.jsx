@@ -15,6 +15,7 @@ describe('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     categories: [],
+    regions: [],
   }));
   it('renders categories', () => {
     const { queryByText } = render(<App />);
