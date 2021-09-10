@@ -11,11 +11,10 @@ import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 test('App', () => {
   const dispatch = jest.fn();
-
-  // Todo - category, restaurant 연결하기
 
   const clickedCategory = 1;
   const clickedPlace = '서울';

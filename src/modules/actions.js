@@ -1,3 +1,9 @@
+import {
+  fetchPlaces,
+  fetchCategories,
+  fetchRestaurants,
+} from '../services/api';
+
 export function setPlaces(places) {
   return {
     type: 'setPlaces',
@@ -40,5 +46,31 @@ export function clickCategory(id) {
     payload: {
       id,
     },
+  };
+}
+
+export function loadPlaces() {
+  return async (dispatch) => {
+    const places = await fetchPlaces();
+
+    dispatch(setPlaces(places));
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch, matchedRestaurants) => {
+    const { clickedCategory, clickedPlace } = matchedRestaurants();
+
+    const restaurants = await fetchRestaurants({ clickedCategory, clickedPlace });
+
+    dispatch(setRestaurants(restaurants));
   };
 }

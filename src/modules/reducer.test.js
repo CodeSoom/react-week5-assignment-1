@@ -9,6 +9,7 @@ import {
   setPlaces,
   setRestaurants,
   clickPlace,
+  clickCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -58,6 +59,19 @@ describe('reducer', () => {
       }, clickPlace(name));
 
       expect(state.clickedPlace).toBe(places[0].name);
+    });
+  });
+
+  describe('clickCategories', () => {
+    it('shows category button action', () => {
+      const clickedCategory = '';
+
+      const state = reducer({
+        categories,
+        clickedCategory,
+      }, clickCategory(categories[0].id));
+
+      expect(state.clickedCategory).toBe(categories[0].id);
     });
   });
 });

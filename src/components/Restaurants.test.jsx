@@ -7,9 +7,9 @@ import restaurants from '../../fixtures/restaurants';
 import Restaurants from './Restaurants';
 
 describe('Restaurants', () => {
-  function renderRestaurants() {
+  function renderRestaurants(restaurantTitle) {
     return render((
-      <Restaurants restaurants={restaurants} />
+      <Restaurants restaurants={restaurantTitle} />
     ));
   }
 
@@ -25,9 +25,9 @@ describe('Restaurants', () => {
 
   context('without restaurants', () => {
     it('shows empty restaurants list', () => {
-      const empty = [];
+      const emptyRestaurants = [];
 
-      const { container } = renderRestaurants(empty);
+      const { container } = renderRestaurants(emptyRestaurants);
 
       restaurants.forEach(({ name }) => {
         expect(container).not.toHaveTextContent(name);
