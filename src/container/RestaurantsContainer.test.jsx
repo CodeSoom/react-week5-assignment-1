@@ -1,19 +1,22 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
-
-jest.mock('./services/api');
 
 describe('RestaurantsContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
+    checkedRegion: { id: 1, text: '서울' },
+    checkedCategory: { id: 1, text: '한식' },
     restaurants: [
       { id: 1, name: '김말천국' },
       { id: 2, name: '뚝배기리조또' },
@@ -25,6 +28,7 @@ describe('RestaurantsContainer', () => {
     const { getByText } = render((
       <RestaurantsContainer />
     ));
+    expect(dispatch).toBeCalled();
 
     expect(getByText('김말천국')).toBeInTheDocument();
     expect(getByText('뚝배기리조또')).toBeInTheDocument();

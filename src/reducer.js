@@ -8,37 +8,42 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'updateRegions') {
+    const { regions } = action.payload;
     return {
       ...state,
-      regions: action.payload.regions,
+      regions,
     };
   }
 
   if (action.type === 'updateCategories') {
+    const { categories } = action.payload;
     return {
       ...state,
-      categories: action.payload.categories,
+      categories,
     };
   }
 
   if (action.type === 'updateRestaurants') {
+    const { restaurants } = action.payload;
     return {
       ...state,
-      restaurants: action.payload.restaurants,
+      restaurants,
     };
   }
 
   if (action.type === 'updateCheckedRegion') {
+    const { checkedRegion } = action.payload;
     return {
       ...state,
-      checkedRegion: action.payload.checkedRegion,
+      checkedRegion,
     };
   }
 
   if (action.type === 'updateCheckedCategory') {
+    const { checkedCategory } = action.payload;
     return {
       ...state,
-      checkedCategory: action.payload.checkedCategory,
+      checkedCategory,
     };
   }
 

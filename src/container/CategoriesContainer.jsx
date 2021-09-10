@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from '../presentational/Categories';
 
-import { updateCheckedElement } from '../actions';
+import { loadCategories, updateCheckedElement } from '../actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -11,6 +13,10 @@ export default function CategoriesContainer() {
     checkedCategory: state.checkedCategory,
     categories: state.categories,
   }));
+
+  useEffect(() => {
+    dispatch(loadCategories());
+  }, []);
 
   function handleClickCategory(name, value) {
     dispatch(updateCheckedElement(name, value));

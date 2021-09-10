@@ -1,16 +1,23 @@
 import reducer from './reducer';
 
 import {
+  loadCategories,
+  loadRegions,
+  loadRestaurants,
   updateCategories,
   updateCheckedElement,
   updateRegions,
   updateRestaurants,
 } from './actions';
 
+jest.mock('./services/api');
+
 describe('reducer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
+
+  const dispatch = jest.fn();
 
   context('action이 없다면,', () => {
     const notExistedAction = jest.fn();
@@ -83,7 +90,7 @@ describe('reducer', () => {
       });
     });
 
-    describe('updateCheckedRegion', () => {
+    describe('updateCheckedElement', () => {
       it('선택된 지역을 저장한다', () => {
         const region = {
           id: 1,
@@ -114,6 +121,85 @@ describe('reducer', () => {
           id: 1,
           text: '일식',
         });
+      });
+    });
+
+    describe('loadRegions', () => {
+      it('API를 통해 지역 목록을 가져온다', async () => {
+        await loadRegions()(dispatch);
+
+        expect(dispatch).toBeCalledWith(
+          {
+            payload:
+            {
+              regions:
+              [
+                { id: 1, name: '서울' },
+                { id: 2, name: '대구' },
+                { id: 3, name: '부산' },
+              ],
+            },
+            type: 'updateRegions',
+          },
+        );
+      });
+    });
+    describe('updateCategories', () => {
+      it('API를 통해 카테고리 목록을 가져온다', async () => {
+        await loadCategories()(dispatch);
+
+        expect(dispatch).toBeCalledWith(
+          {
+            payload:
+            {
+              categories:
+              [
+                { id: 1, name: '한식' },
+                { id: 2, name: '중식' },
+                { id: 3, name: '일식' },
+              ],
+            },
+            type: 'updateCategories',
+          },
+        );
+      });
+    });
+    describe('updateCategories', () => {
+      it('API를 통해 식당 목록을 가져온다', async () => {
+        await loadRestaurants()(dispatch);
+
+        expect(dispatch).toBeCalledWith(
+          {
+            payload:
+            {
+              restaurants:
+              [
+                {
+                  id: 9,
+                  categoryId: 2,
+                  name: '호신각',
+                  address: '서울 강남구',
+                  information: '호신각 in 서울 강남구',
+                },
+                {
+                  id: 10,
+                  categoryId: 2,
+                  name: '홍콩반점',
+                  address: '서울시 서대문구',
+                  information: '홍콩반점 in 서울시 서대문구',
+                },
+                {
+                  id: 11,
+                  categoryId: 2,
+                  name: '몰라몰라',
+                  address: '서울이다',
+                  information: '몰라몰라 in 서울이다',
+                },
+              ],
+            },
+            type: 'updateRestaurants',
+          },
+        );
       });
     });
   });

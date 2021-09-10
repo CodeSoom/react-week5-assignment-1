@@ -6,8 +6,6 @@ import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-jest.mock('./services/api');
-
 describe('CategoriesContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
