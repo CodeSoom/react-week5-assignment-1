@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 export default function App() {
-  // TODO: 중복 제거
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [state, setState] = useState({
+    selectedRegion: '',
+    selectedCategory: '',
+  });
 
   const regions = [
     {
@@ -96,39 +97,45 @@ export default function App() {
   ];
 
   function handleClickRegion(id) {
-    setSelectedRegion(id);
+    setState({
+      ...state,
+      selectedRegion: id,
+    });
   }
 
   function handleClickCategory(id) {
-    setSelectedCategory(id);
+    setState({
+      ...state,
+      selectedCategory: id,
+    });
   }
 
   return (
     <div>
       <ul>
-        {regions.map((region) => (
-          <li key={region.id}>
+        {regions.map(({ id, name }) => (
+          <li key={id}>
             <button
               type="button"
               onClick={() => {
-                handleClickRegion(region.id);
+                handleClickRegion(id);
               }}
             >
-              {region.id === selectedRegion ? `${region.name}(V)` : region.name}
+              {id === state.selectedRegion ? `${name}(V)` : name}
             </button>
           </li>
         ))}
       </ul>
       <ul>
-        {categories.map((category) => (
-          <li key={category.name}>
+        {categories.map(({ id, name }) => (
+          <li key={name}>
             <button
               type="button"
               onClick={() => {
-                handleClickCategory(category.id);
+                handleClickCategory(id);
               }}
             >
-              {category.id === selectedCategory ? `${category.name}(V)` : category.name}
+              {id === state.selectedCategory ? `${name}(V)` : name}
             </button>
           </li>
         ))}
