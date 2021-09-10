@@ -4,12 +4,9 @@ import { render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-test('Categories', () => {
-  const regions = [
-    { id: 1, name: '서울' },
-    { id: 2, name: '대전' },
-  ];
+import regions from '../fixtures/regions';
 
+test('Categories', () => {
   const { getByText } = render((
     <Regions regions={regions} />
   ));
