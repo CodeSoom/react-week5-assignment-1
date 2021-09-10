@@ -1,4 +1,10 @@
+import { useState } from 'react';
+
 export default function App() {
+  // TODO: 중복 제거
+  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+
   const regions = [
     {
       id: 1,
@@ -89,19 +95,41 @@ export default function App() {
     },
   ];
 
+  function handleClickRegion(id) {
+    setSelectedRegion(id);
+  }
+
+  function handleClickCategory(id) {
+    setSelectedCategory(id);
+  }
+
   return (
     <div>
       <ul>
         {regions.map((region) => (
-          <li key={region.key}>
-            {region.name}
+          <li key={region.id}>
+            <button
+              type="button"
+              onClick={() => {
+                handleClickRegion(region.id);
+              }}
+            >
+              {region.id === selectedRegion ? `${region.name}(V)` : region.name}
+            </button>
           </li>
         ))}
       </ul>
       <ul>
         {categories.map((category) => (
-          <li key={category.id}>
-            {category.name}
+          <li key={category.name}>
+            <button
+              type="button"
+              onClick={() => {
+                handleClickCategory(category.id);
+              }}
+            >
+              {category.id === selectedCategory ? `${category.name}(V)` : category.name}
+            </button>
           </li>
         ))}
       </ul>
