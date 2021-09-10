@@ -69,7 +69,7 @@ export function loadRestaurants() {
   return async (dispatch, matchedRestaurants) => {
     const { clickedCategory, clickedPlace } = matchedRestaurants();
 
-    const restaurants = await fetchRestaurants({ clickedCategory, clickedPlace });
+    const restaurants = await fetchRestaurants({ clickedPlace, clickedCategory });
 
     dispatch(setRestaurants(restaurants));
   };

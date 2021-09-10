@@ -1,7 +1,7 @@
 const restaurants = [
-  { id: 1, name: '감성타코' },
-  { id: 2, name: '강식당' },
-  { id: 3, name: '이자카야' },
+  { id: 1, name: '양천주가' },
+  { id: 2, name: '한국식 초밥' },
+  { id: 3, name: '김초밥' },
 ];
 
 export default restaurants;
