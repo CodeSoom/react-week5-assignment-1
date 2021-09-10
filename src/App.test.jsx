@@ -4,9 +4,9 @@ import App from './App';
 
 describe('App', () => {
   it('renders cateogries', () => {
-    const { getBytext } = render(<App />);
+    const { getByText } = render(<App />);
 
-    expect(getBytext('한식')).not.toBeNull();
-    expect(getBytext('중식')).not.toBeNull();
+    expect(getByText('한식')).not.toBeNull();
+    expect(getByText('중식')).not.toBeNull();
   });
 });
