@@ -6,46 +6,44 @@ const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'updateRegions') {
-    const { regions } = action.payload;
+const reducers = {
+  updateRegions(state, { payload: { regions } }) {
     return {
       ...state,
       regions,
     };
-  }
-
-  if (action.type === 'updateCategories') {
-    const { categories } = action.payload;
+  },
+  updateCategories(state, { payload: { categories } }) {
     return {
       ...state,
       categories,
     };
-  }
-
-  if (action.type === 'updateRestaurants') {
-    const { restaurants } = action.payload;
+  },
+  updateRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
       restaurants,
     };
-  }
-
-  if (action.type === 'updateCheckedRegion') {
-    const { checkedRegion } = action.payload;
+  },
+  updateCheckedRegion(state, { payload: { checkedRegion } }) {
     return {
       ...state,
       checkedRegion,
     };
-  }
+  },
 
-  if (action.type === 'updateCheckedCategory') {
-    const { checkedCategory } = action.payload;
+  updateCheckedCategory(state, { payload: { checkedCategory } }) {
     return {
       ...state,
       checkedCategory,
     };
-  }
+  },
+};
 
+function defualtReducer(state) {
   return state;
+}
+
+export default function reducer(state = initialState, action) {
+  return (reducers[action.type] || defualtReducer)(state, action);
 }

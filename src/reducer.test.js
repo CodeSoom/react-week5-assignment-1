@@ -39,7 +39,7 @@ describe('reducer', () => {
 
   context('정의된 Action-type이 있다면', () => {
     describe('updateRegions', () => {
-      it('지역 목록을 갱신한다', () => {
+      it('지역 목록을 보여준다', () => {
         const regions = [
           { id: 1, name: '서울' },
           { id: 2, name: '대구' },
@@ -55,7 +55,7 @@ describe('reducer', () => {
     });
 
     describe('updateCategories', () => {
-      it('카테고리 목록을 갱신한다', () => {
+      it('카테고리 목록을 보여준다', () => {
         const categories = [
           { id: 1, name: '한식' },
           { id: 2, name: '중식' },
