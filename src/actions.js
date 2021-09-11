@@ -22,11 +22,11 @@ export function updateCategories(categories) {
   };
 }
 
-export function updateRestaurants(data) {
+export function updateRestaurants(restaurants) {
   return {
     type: 'updateRestaurants',
     payload: {
-      restaurants: data,
+      restaurants,
     },
   };
 }
