@@ -1,9 +1,15 @@
-export default function Item({ children, onClick }) {
+export default function Item({
+  children, onClick, field, value,
+}) {
+  const handleClick = () => {
+    onClick({ field, value });
+  };
+
   return (
     <li>
       <button
         type="button"
-        onClick={onClick}
+        onClick={handleClick}
       >
         {children}
       </button>
