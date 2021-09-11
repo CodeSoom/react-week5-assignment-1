@@ -22,10 +22,7 @@ export default function RestaurantContainer() {
       return;
     }
 
-    dispatch(loadRestaurants({
-      regionName: selectedRegion.name,
-      categoryId: selectedCategory.id,
-    }));
+    dispatch(loadRestaurants());
   }, [selectedRegion, selectedCategory]);
 
   return (
