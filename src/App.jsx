@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+
+import List from './List';
+
 import { regions, categories, restaurants } from '../fixtures';
 
 export default function App() {
@@ -30,29 +33,13 @@ export default function App() {
 
   return (
     <div>
-      <ul>
-        {regions.map((_region) => (
-          <li key={_region.name}>
-            <button type="button" onClick={handleClick('region', _region)}>
-              {`${_region.name}${_region.name === region.name ? '(V)' : ''}`}
-            </button>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {categories.map((_category) => (
-          <li key={_category.name}>
-            <button type="button" onClick={handleClick('category', _category)}>
-              {`${_category.name}${_category.name === category.name ? '(V)' : ''}`}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <List type='region' items={regions} chosenItem={region} onClick={handleClick} />
+      <List type='category' items={categories} chosenItem={category} onClick={handleClick} />
       <ul>
         {queriedRestaurants.map((restaurant) => (
           <li key={restaurant.name}>{restaurant.name}</li>
         ))}
       </ul>
-    </div>
+    </div >
   );
 }
