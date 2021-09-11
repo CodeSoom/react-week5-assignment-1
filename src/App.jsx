@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import ButtonList from './ButtonList';
+import TextList from './TextList';
 
 import { regions, categories, restaurants } from '../fixtures';
 
@@ -35,11 +36,7 @@ export default function App() {
     <div>
       <ButtonList type="region" items={regions} chosenItem={region} handleClick={handleClick} />
       <ButtonList type="category" items={categories} chosenItem={category} handleClick={handleClick} />
-      <ul>
-        {queriedRestaurants.map((restaurant) => (
-          <li key={restaurant.name}>{restaurant.name}</li>
-        ))}
-      </ul>
+      <TextList items={queriedRestaurants.map(({ name }) => name)} />
     </div>
   );
 }
