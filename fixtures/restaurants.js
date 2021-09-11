@@ -68,6 +68,15 @@ const restaurants = {
   ],
   '대구 2': [],
   '대구 3': [],
+  '부산 1': [
+    {
+      id: 4,
+      categoryId: 1,
+      name: '밀면넘어져요',
+      address: '부산 해운대구 좌동순환로 27',
+      information: '밀면넘어져요 in 부산 해운대구 좌동순환로 27',
+    },
+  ],
 };
 
 export default restaurants;
