@@ -1,5 +1,3 @@
-import reducer from './reducer';
-
 import {
   loadCategories,
   loadRegions,
