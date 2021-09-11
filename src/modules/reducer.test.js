@@ -3,9 +3,7 @@ import reducer from './reducer';
 import {
   setRegions,
   setCategories,
-  setRestaurants,
   selectRegion,
-  selectCategory,
 } from './actions';
 
 describe('reducer', () => {
@@ -41,22 +39,6 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRestaurants', () => {
-    it('shows restaurants button click action', () => {
-      const initialState = {
-        restaurants: [],
-      };
-
-      const restaurants = [
-        { id: 1, name: '마법사 주방' },
-      ];
-
-      const state = reducer(initialState, setRestaurants(restaurants));
-
-      expect(state.restaurants).toHaveLength(1);
-    });
-  });
-
   describe('selectRegions', () => {
     it('shows regions button click action', () => {
       const initialState = {
@@ -71,24 +53,6 @@ describe('reducer', () => {
       expect(state.selectedRegion).toEqual({
         id: 1,
         name: '서울',
-      });
-    });
-  });
-
-  describe('selectCategories', () => {
-    it('shows categories button click action', () => {
-      const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
-        selectedCategory: null,
-      };
-
-      const state = reducer(initialState, selectCategory(1));
-
-      expect(state.selectedCategory).toEqual({
-        id: 1,
-        name: '한식',
       });
     });
   });

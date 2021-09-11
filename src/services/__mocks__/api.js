@@ -5,7 +5,3 @@ export async function fetchRegions() {
 export async function fetchCategories() {
   return [];
 }
-
-export async function fetchRestaurants() {
-  return [];
-}
