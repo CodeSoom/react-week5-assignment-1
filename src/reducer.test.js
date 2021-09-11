@@ -1,9 +1,6 @@
 import reducer from './reducer';
 
 import {
-  loadCategories,
-  loadRegions,
-  loadRestaurants,
   updateCategories,
   updateCheckedItem,
   updateRegions,
@@ -17,17 +14,9 @@ describe('reducer', () => {
     jest.clearAllMocks();
   });
 
-  const dispatch = jest.fn();
-
   context('정의된 Action-type이 없다면,', () => {
-    const notExistedAction = jest.fn();
-
-    notExistedAction.mockImplementation(() => ({
-      type: 'notExistedAction',
-    }));
-
     it('아무 것도 변경하지 않는다', () => {
-      const state = reducer(undefined, notExistedAction());
+      const state = reducer(undefined, { type: 'notExistedAction' });
 
       expect(state.checkedRegion).toBeNull();
       expect(state.checkedCategory).toBeNull();
@@ -121,98 +110,6 @@ describe('reducer', () => {
           id: 1,
           text: '일식',
         });
-      });
-    });
-
-    describe('loadRegions', () => {
-      it('API를 통해 지역 목록을 가져온다', async () => {
-        await loadRegions()(dispatch);
-
-        expect(dispatch).toBeCalledWith(
-          {
-            payload:
-            {
-              regions:
-              [
-                { id: 1, name: '서울' },
-                { id: 2, name: '대구' },
-                { id: 3, name: '부산' },
-              ],
-            },
-            type: 'updateRegions',
-          },
-        );
-      });
-    });
-
-    describe('loadCategories', () => {
-      it('API를 통해 카테고리 목록을 가져온다', async () => {
-        await loadCategories()(dispatch);
-
-        expect(dispatch).toBeCalledWith(
-          {
-            payload:
-            {
-              categories:
-              [
-                { id: 1, name: '한식' },
-                { id: 2, name: '중식' },
-                { id: 3, name: '일식' },
-              ],
-            },
-            type: 'updateCategories',
-          },
-        );
-      });
-    });
-
-    describe('loadRestaurants', () => {
-      const getState = jest.fn(() => ({
-        checkedRegion: {
-          id: 1,
-          text: '서울',
-        },
-        checkedCategory: {
-          id: 2,
-          text: '중식',
-        },
-      }));
-
-      it('API를 통해 식당 목록을 가져온다', async () => {
-        await loadRestaurants()(dispatch, getState);
-
-        expect(dispatch).toBeCalledWith(
-          {
-            payload:
-            {
-              restaurants:
-              [
-                {
-                  id: 9,
-                  categoryId: 2,
-                  name: '호신각',
-                  address: '서울 강남구',
-                  information: '호신각 in 서울 강남구',
-                },
-                {
-                  id: 10,
-                  categoryId: 2,
-                  name: '홍콩반점',
-                  address: '서울시 서대문구',
-                  information: '홍콩반점 in 서울시 서대문구',
-                },
-                {
-                  id: 11,
-                  categoryId: 2,
-                  name: '몰라몰라',
-                  address: '서울이다',
-                  information: '몰라몰라 in 서울이다',
-                },
-              ],
-            },
-            type: 'updateRestaurants',
-          },
-        );
       });
     });
   });
