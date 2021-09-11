@@ -1,40 +1,58 @@
-import { useState } from 'react';
-import { regions, categories } from '../fixtures';
+import { useEffect, useState } from 'react';
+import { regions, categories, restaurants } from '../fixtures';
 
 export default function App() {
-  console.log(regions);
   const [state, setState] = useState({
-    region: '',
-    category: ''
+    region: { id: 0, name: '' },
+    category: { id: 0, name: '' },
+    queriedRestaurants: [],
   })
 
-  const { region, category } = state;
+  const { region, category, queriedRestaurants } = state;
 
-  const handleClick = (type, name) => () => {
+  const handleClick = (type, item) => () => {
     setState({
       ...state,
-      [type]: name
+      [type]: item
     })
+  };
+
+  const getRestarants = (regionName, categoryId) => {
+    return restaurants[`${regionName} ${categoryId}`];
   }
+
+  useEffect(() => {
+    if (region.name && category.id) {
+      setState({
+        ...state,
+        queriedRestaurants: getRestarants(region.name, category.id)
+      });
+    }
+  }, [region, category]);
 
   return (
     <div>
       <ul>
-        {regions.map(({ name }) => (
-          <li key={name} onClick={handleClick('region', name)}>
+        {regions.map((_region) => (
+          <li key={_region.name} onClick={handleClick('region', _region)}>
             <button type="button">
-              {`${name}${region === name ? '(V)' : ''}`}
+              {`${_region.name}${_region.name === region.name ? '(V)' : ''}`}
             </button>
           </li>
         ))}
       </ul>
       <ul>
-        {categories.map(({ name }) => (
-          <li key={name} onClick={handleClick('category', name)}>
+        {categories.map((_category) => (
+          <li key={_category.name} onClick={handleClick('category', _category)}>
             <button type="button">
-              {`${name}${category === name ? '(V)' : ''}`}
+              {`${_category.name}${_category.name === category.name ? '(V)' : ''}`}
             </button>
           </li>
+        ))}
+      </ul>
+      <ul>
+        {queriedRestaurants.map((restaurant) => (
+          <li key={restaurant.name}>{restaurant.name}</li>
         ))}
       </ul>
     </div>
