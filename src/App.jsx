@@ -1,32 +1,40 @@
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [clickedRegionId, setClickedRegionId] = useState(null);
-  const [clickedCategoryId, setClickedCategoryId] = useState(null);
-  const [regions, setRegions] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [restaurants, setRestaurants] = useState([]);
+  const [state, setState] = useState({
+    category: null,
+    region: null,
+    regions: [],
+    categories: [],
+    restaurants: [],
+  });
+
+  const {
+    categoryId, regionId, regions, categories, restaurants,
+  } = state;
 
   useEffect(() => {
-    setRegions([
-      { id: 1, name: '한식' },
-    ]);
-
-    setCategories([
-      { id: 1, name: '서울' },
-    ]);
-
-    setRestaurants([
-      { id: 1, name: '원초밥' },
-    ]);
+    setState({
+      ...state,
+      regions: [
+        { id: 1, name: '한식' },
+        { id: 2, name: '중식' },
+      ],
+      categories: [
+        { id: 1, name: '서울' },
+        { id: 2, name: '대전' },
+      ],
+      restaurants: [
+        { id: 1, name: '원초밥' },
+      ],
+    });
   }, []);
 
-  function handleClickRegion(id) {
-    setClickedRegionId(id);
-  }
-
-  function handleClickCategory(id) {
-    setClickedCategoryId(id);
+  function handleClickButton({ name, id }) {
+    setState({
+      ...state,
+      [`${name}Id`]: id,
+    });
   }
 
   return (
@@ -35,9 +43,13 @@ export default function App() {
         {
           regions.map(({ id, name }) => (
             <li key={id}>
-              <button type="button" onClick={() => handleClickRegion(id)}>
+              <button
+                type="button"
+                name="region"
+                onClick={(e) => handleClickButton({ name: e.target.name, id })}
+              >
                 {name}
-                {clickedRegionId === id ? '(V)' : ''}
+                {regionId === id ? '(V)' : ''}
               </button>
             </li>
           ))
@@ -47,9 +59,13 @@ export default function App() {
         {
           categories.map(({ id, name }) => (
             <li key={id}>
-              <button type="button" onClick={() => handleClickCategory(id)}>
+              <button
+                type="button"
+                name="category"
+                onClick={(e) => handleClickButton({ name: e.target.name, id })}
+              >
                 {name}
-                {clickedCategoryId === id ? '(V)' : ''}
+                {categoryId === id ? '(V)' : ''}
               </button>
             </li>
           ))
