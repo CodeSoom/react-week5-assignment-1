@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react';
 
-import List from './List';
+import ButtonList from './ButtonList';
 
 import { regions } from '../fixtures';
 
-describe('List', () => {
+describe('ButtonList', () => {
   const handleClick = jest.fn();
 
   it('shows items', () => {
     const { getByText } = render((
-      <List
+      <ButtonList
         type="region"
         items={regions}
         chosenItem={{}}

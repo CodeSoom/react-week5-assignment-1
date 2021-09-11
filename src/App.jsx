@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import List from './List';
+import ButtonList from './ButtonList';
 
 import { regions, categories, restaurants } from '../fixtures';
 
@@ -33,8 +33,8 @@ export default function App() {
 
   return (
     <div>
-      <List type="region" items={regions} chosenItem={region} handleClick={handleClick} />
-      <List type="category" items={categories} chosenItem={category} handleClick={handleClick} />
+      <ButtonList type="region" items={regions} chosenItem={region} handleClick={handleClick} />
+      <ButtonList type="category" items={categories} chosenItem={category} handleClick={handleClick} />
       <ul>
         {queriedRestaurants.map((restaurant) => (
           <li key={restaurant.name}>{restaurant.name}</li>
