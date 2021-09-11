@@ -23,13 +23,13 @@ describe('Item', () => {
   }
 
   it('목록을 보여준다', () => {
-    const { getByText } = renderItem({});
+    const { getByText } = renderItem(null);
 
     expect(getByText('서울')).toBeInTheDocument();
   });
 
   it('목록이 클릭되면 이벤트가 호출된다.', () => {
-    const { getByText } = renderItem({});
+    const { getByText } = renderItem(null);
 
     fireEvent.click(getByText('서울'));
 
