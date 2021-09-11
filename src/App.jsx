@@ -33,13 +33,13 @@ export default function App() {
 
   return (
     <div>
-      <List type='region' items={regions} chosenItem={region} onClick={handleClick} />
-      <List type='category' items={categories} chosenItem={category} onClick={handleClick} />
+      <List type="region" items={regions} chosenItem={region} handleClick={handleClick} />
+      <List type="category" items={categories} chosenItem={category} handleClick={handleClick} />
       <ul>
         {queriedRestaurants.map((restaurant) => (
           <li key={restaurant.name}>{restaurant.name}</li>
         ))}
       </ul>
-    </div >
+    </div>
   );
 }
