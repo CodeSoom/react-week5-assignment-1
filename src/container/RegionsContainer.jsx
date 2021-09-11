@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Regions from '../presentational/Regions';
 
-import { loadRegions, updateCheckedElement } from '../actions';
+import { loadRegions, updateCheckedItem } from '../actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -19,14 +19,14 @@ export default function RegionsContainer() {
   }, []);
 
   function handleClickRegion(name, value) {
-    dispatch(updateCheckedElement(name, value));
+    dispatch(updateCheckedItem(name, value));
   }
 
   return (
     <Regions
       regions={regions}
       handleClickRegion={handleClickRegion}
-      checkedElement={checkedRegion}
+      checkedRegion={checkedRegion}
     />
   );
 }

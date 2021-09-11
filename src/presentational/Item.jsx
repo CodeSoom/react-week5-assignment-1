@@ -1,8 +1,8 @@
 export default function Item({
-  data, name, handleClick, checkedElement,
+  item, name, handleClick, checkedItem,
 }) {
   function onClickButton() {
-    const { name: text, id } = data;
+    const { name: text, id } = item;
     const value = {
       id,
       text,
@@ -12,8 +12,9 @@ export default function Item({
 
   return (
     <li>
-      <button name={name} type="button" onClick={onClickButton}>
-        {checkedElement.id === data.id ? `${data.name}(V)` : data.name}
+      <button type="button" name={name} onClick={onClickButton}>
+        {item.name}
+        {checkedItem && checkedItem.id === item.id ? '(V)' : null}
       </button>
     </li>
   );

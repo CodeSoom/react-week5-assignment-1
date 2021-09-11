@@ -16,13 +16,10 @@ export default function RestaurantsContainer() {
   }));
 
   useEffect(() => {
-    if (Object.keys(checkedCategory).length === 0
-      || Object.keys(checkedRegion).length === 0) {
+    if (!checkedCategory || !checkedRegion) {
       return;
     }
-    const { text } = checkedRegion;
-    const { id } = checkedCategory;
-    dispatch(loadRestaurants(text, id));
+    dispatch(loadRestaurants());
   }, [checkedRegion, checkedCategory]);
 
   return (

@@ -1,15 +1,15 @@
 import Item from './Item';
 
-export default function Regions({ regions, handleClickRegion, checkedElement }) {
+export default function Regions({ regions, handleClickRegion, checkedRegion }) {
   return (
     <ul>
       {regions.map((region) => (
         <Item
           key={region.id}
           name="region"
-          data={region}
+          item={region}
           handleClick={handleClickRegion}
-          checkedElement={checkedElement}
+          checkedItem={checkedRegion}
         />
       ))}
     </ul>

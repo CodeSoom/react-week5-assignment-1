@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from '../presentational/Categories';
 
-import { loadCategories, updateCheckedElement } from '../actions';
+import { loadCategories, updateCheckedItem } from '../actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -19,14 +19,14 @@ export default function CategoriesContainer() {
   }, []);
 
   function handleClickCategory(name, value) {
-    dispatch(updateCheckedElement(name, value));
+    dispatch(updateCheckedItem(name, value));
   }
 
   return (
     <Categories
       categories={categories}
       handleClickCategory={handleClickCategory}
-      checkedElement={checkedCategory}
+      checkedCategory={checkedCategory}
     />
   );
 }

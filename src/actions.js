@@ -45,14 +45,15 @@ export function loadCategories() {
   };
 }
 
-export function loadRestaurants(text, id) {
-  return async (dispatch) => {
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { checkedRegion: { text }, checkedCategory: { id } } = getState();
     const restaurants = await fetchRestaurants(text, id);
     dispatch(updateRestaurants(restaurants));
   };
 }
 
-export function updateCheckedElement(name, value) {
+export function updateCheckedItem(name, value) {
   if (name === 'region') {
     return {
       type: 'updateCheckedRegion',

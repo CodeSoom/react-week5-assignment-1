@@ -1,15 +1,15 @@
 import Item from './Item';
 
-export default function Categories({ categories, handleClickCategory, checkedElement }) {
+export default function Categories({ categories, handleClickCategory, checkedCategory }) {
   return (
     <ul>
       {categories.map((category) => (
         <Item
           key={category.id}
           name="category"
-          data={category}
+          item={category}
           handleClick={handleClickCategory}
-          checkedElement={checkedElement}
+          checkedItem={checkedCategory}
         />
       ))}
     </ul>

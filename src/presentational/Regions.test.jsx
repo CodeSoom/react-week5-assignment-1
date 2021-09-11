@@ -20,7 +20,7 @@ describe('Regions', () => {
       render(<Regions
         regions={regions}
         handleClickRegion={handleClickRegion}
-        checkedElement={checkedRegion}
+        checkedRegion={checkedRegion}
       />)
     );
   }

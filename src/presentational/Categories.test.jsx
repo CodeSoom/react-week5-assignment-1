@@ -20,7 +20,7 @@ describe('Categories', () => {
       render(<Categories
         categories={categories}
         onClickCategory={handleClickCategory}
-        checkedElement={checkedCategory}
+        checkedCategory={checkedCategory}
       />)
     );
   }

@@ -11,13 +11,13 @@ describe('Item', () => {
 
   const region = { id: 1, name: '서울' };
 
-  function renderItem(checkedElement) {
+  function renderItem(checkedItem) {
     return (
       render(<Item
-        btnName="region"
-        data={region}
+        name="region"
+        item={region}
         handleClick={handleClick}
-        checkedElement={checkedElement}
+        checkedItem={checkedItem}
       />)
     );
   }

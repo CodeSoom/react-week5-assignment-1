@@ -1,6 +1,6 @@
 const initialState = {
-  checkedRegion: {},
-  checkedCategory: {},
+  checkedRegion: null,
+  checkedCategory: null,
   regions: [],
   categories: [],
   restaurants: [],

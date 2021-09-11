@@ -5,7 +5,7 @@ import {
   loadRegions,
   loadRestaurants,
   updateCategories,
-  updateCheckedElement,
+  updateCheckedItem,
   updateRegions,
   updateRestaurants,
 } from './actions';
@@ -19,7 +19,7 @@ describe('reducer', () => {
 
   const dispatch = jest.fn();
 
-  context('action이 없다면,', () => {
+  context('정의된 Action-type이 없다면,', () => {
     const notExistedAction = jest.fn();
 
     notExistedAction.mockImplementation(() => ({
@@ -29,15 +29,15 @@ describe('reducer', () => {
     it('아무 것도 변경하지 않는다', () => {
       const state = reducer(undefined, notExistedAction());
 
-      expect(state.checkedRegion).toMatchObject({});
-      expect(state.checkedCategory).toMatchObject({});
+      expect(state.checkedRegion).toBeNull();
+      expect(state.checkedCategory).toBeNull();
       expect(state.regions).toHaveLength(0);
       expect(state.categories).toHaveLength(0);
       expect(state.restaurants).toHaveLength(0);
     });
   });
 
-  context('action이 있다면', () => {
+  context('정의된 Action-type이 있다면', () => {
     describe('updateRegions', () => {
       it('지역 목록을 갱신한다', () => {
         const regions = [
@@ -55,7 +55,7 @@ describe('reducer', () => {
     });
 
     describe('updateCategories', () => {
-      it('지역 목록을 갱신한다', () => {
+      it('카테고리 목록을 갱신한다', () => {
         const categories = [
           { id: 1, name: '한식' },
           { id: 2, name: '중식' },
@@ -99,7 +99,7 @@ describe('reducer', () => {
 
         const state = reducer({
           checkedRegion: {},
-        }, updateCheckedElement('region', region));
+        }, updateCheckedItem('region', region));
 
         expect(state.checkedRegion).toMatchObject({
           id: 1,
@@ -115,7 +115,7 @@ describe('reducer', () => {
 
         const state = reducer({
           checkedCategory: {},
-        }, updateCheckedElement('category', category));
+        }, updateCheckedItem('category', category));
 
         expect(state.checkedCategory).toMatchObject({
           id: 1,
@@ -144,7 +144,8 @@ describe('reducer', () => {
         );
       });
     });
-    describe('updateCategories', () => {
+
+    describe('loadCategories', () => {
       it('API를 통해 카테고리 목록을 가져온다', async () => {
         await loadCategories()(dispatch);
 
@@ -164,9 +165,21 @@ describe('reducer', () => {
         );
       });
     });
-    describe('updateCategories', () => {
+
+    describe('loadRestaurants', () => {
+      const getState = jest.fn(() => ({
+        checkedRegion: {
+          id: 1,
+          text: '서울',
+        },
+        checkedCategory: {
+          id: 2,
+          text: '중식',
+        },
+      }));
+
       it('API를 통해 식당 목록을 가져온다', async () => {
-        await loadRestaurants()(dispatch);
+        await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).toBeCalledWith(
           {
