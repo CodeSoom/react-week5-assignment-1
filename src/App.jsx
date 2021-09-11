@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './containers/RegionsContainer';
+import CategoriesContainer from './containers/CategoriesContainer';
+import RestaurantsContainer from './containers/RestaurantsContainer';
 
 import {
   loadInitialData,
@@ -19,8 +21,8 @@ export default function App() {
     <div>
       Restaurants
       <RegionsContainer />
-      {/* <CategoriesContainer />
-      <RestaurantsContainer /> */}
+      <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
