@@ -106,6 +106,8 @@ describe('reducer', () => {
       })];
 
       const store = mockStore({
+        selectedCategory: { id: 1, name: '한식' },
+        selectedRegion: { id: 1, name: '서울' },
         restaurants: [{
           id: 1,
           categoryId: 1,
@@ -122,7 +124,7 @@ describe('reducer', () => {
         }],
       });
 
-      await store.dispatch(loadRestaurants({ regionName: '서울', categoryId: 1 }));
+      await store.dispatch(loadRestaurants());
 
       expect(store.getActions()).toEqual(expectedAction);
     });
