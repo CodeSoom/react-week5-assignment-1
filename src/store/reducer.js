@@ -35,8 +35,14 @@ export const loadRegions = () => async (dispatch) => {
   dispatch(updateField({ field: 'regions', value: regions }));
 };
 
-export const loadRestaurants = ({ regionName, categoryId }) => async (dispatch) => {
-  const restaurants = await fetchRestaurants({ regionName, categoryId });
+export const loadRestaurants = () => async (dispatch, getState) => {
+  const { selectedRegion, selectedCategory } = getState();
+
+  const restaurants = await fetchRestaurants({
+    regionName: selectedRegion.name,
+    categoryId: selectedCategory.id,
+  });
+
   dispatch(updateField({ field: 'restaurants', value: restaurants }));
 };
 
