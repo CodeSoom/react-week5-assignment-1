@@ -1,59 +1,79 @@
 import reducer from './reducer';
 
+import regions from '../../fixtures/regions';
+import categories from '../../fixtures/categories';
+import restaurants from '../../fixtures/restaurants';
+
 import {
   setRegions,
   setCategories,
+  setRestaurants,
+  selectCategory,
   selectRegion,
 } from './actions';
 
 describe('reducer', () => {
+  const initialState = {
+    regions: [],
+    categories: [],
+  };
+
+  describe('undefined action', () => {
+    it('changes nothing', () => {
+      const state = reducer();
+
+      expect(state.regions).toStrictEqual(initialState.regions);
+    });
+  });
+
   describe('setRegions', () => {
     it('changes regions', () => {
-      const initialState = {
-        regions: [],
-      };
-
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
-
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 
   describe('setCategories', () => {
     it('changes categories', () => {
-      const initialState = {
-        categories: [],
-      };
-
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
-
       const state = reducer(initialState, setCategories(categories));
 
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(categories.length);
     });
   });
 
-  describe('selectRegions', () => {
-    it('shows regions button click action', () => {
-      const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        selectedRegion: null,
-      };
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const state = reducer(initialState, setRestaurants(restaurants));
 
-      const state = reducer(initialState, selectRegion(1));
+      expect(state.restaurants).toHaveLength(restaurants.length);
+    });
+  });
 
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
-      });
+  describe('selectCategory', () => {
+    it('changes selectedCategory', () => {
+      const selectedCategory = '';
+
+      const state = reducer({
+        categories,
+        selectedCategory,
+      }, selectCategory(categories[0].id));
+
+      expect(state.selectedCategory).toBe(categories[0].id);
+    });
+  });
+
+  describe('selectRegion', () => {
+    it('changes selectedRegion', () => {
+      const selectedRegion = '';
+      const { name } = regions[0];
+
+      const state = reducer({
+        regions,
+        selectedRegion,
+      }, selectRegion(name));
+
+      expect(state.selectedRegion).toBe(regions[0].name);
     });
   });
 });

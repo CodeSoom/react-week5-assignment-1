@@ -2,8 +2,11 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import Regions from '../components/Regions';
+
 import {
   selectRegion,
+  loadRestaurants,
 } from '../modules/actions';
 
 export default function RegionsContainer() {
@@ -14,23 +17,16 @@ export default function RegionsContainer() {
     selectedRegion: state.selectedRegion,
   }));
 
-  function handleClick(regionId) {
-    dispatch(selectRegion(regionId));
+  function handleClickRegion(name) {
+    dispatch(selectRegion(name));
+    dispatch(loadRestaurants());
   }
 
   return (
-    <ul>
-      {regions.map((region) => (
-        <li key={region.id}>
-          <button
-            type="button"
-            onClick={() => handleClick(region.id)}
-          >
-            {region.name}
-            {selectedRegion && region.id === selectedRegion.id ? '(V)' : null}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <Regions
+      regions={regions}
+      selectedRegion={selectedRegion}
+      onClick={handleClickRegion}
+    />
   );
 }

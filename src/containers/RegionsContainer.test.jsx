@@ -4,26 +4,46 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
+import regions from '../../fixtures/regions';
+
+import {
+  selectRegion,
+} from '../modules/actions';
+
 jest.mock('react-redux');
 
-test('RegionsContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
+    regions,
+    selected: {
+      regions: '',
+    },
   }));
 
-  const { container, getByText } = render((
-    <RegionsContainer />
-  ));
+  it('shows regions list', () => {
+    const { container } = render((
+      <RegionsContainer />
+    ));
 
-  expect(container).toHaveTextContent('서울');
+    regions.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
+  });
 
-  fireEvent.click(getByText('서울'));
+  context('when region button clicked', () => {
+    it('changes regions', () => {
+      const { getByText } = render((
+        <RegionsContainer />
+      ));
 
-  expect(dispatch).toBeCalled();
+      regions.forEach(({ name }) => {
+        fireEvent.click(getByText(name));
+        expect(dispatch).toBeCalledWith(selectRegion(name));
+      });
+    });
+  });
 });

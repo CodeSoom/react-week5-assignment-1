@@ -1,38 +1,45 @@
 const initialState = {
   regions: [],
   categories: [],
-  selectedRegion: null,
+  restaurants: [],
+  selectedRegion: '',
+  selectedCategory: '',
+};
+
+const initialAction = {
+  type: 'initialAction',
 };
 
 const reducers = {
-  setRegions(state, { payload: { regions } }) {
-    return {
-      ...state,
-      regions,
-    };
-  },
+  setRegions: (state, { regions }) => ({
+    ...state,
+    regions,
+  }),
+  setCategories: (state, { categories }) => ({
+    ...state,
+    categories,
+  }),
 
-  setCategories(state, { payload: { categories } }) {
-    return {
-      ...state,
-      categories,
-    };
-  },
-
-  selectRegion(state, { payload: { regionId } }) {
-    const { regions } = state;
-
-    return {
-      ...state,
-      selectedRegion: regions.find((region) => region.id === regionId),
-    };
-  },
+  setRestaurants: (state, { restaurants }) => ({
+    ...state,
+    restaurants,
+  }),
+  selectCategory: (state, { id }) => ({
+    ...state,
+    selectedCategory: id,
+  }),
+  selectRegion: (state, { name }) => ({
+    ...state,
+    selectedRegion: name,
+  }),
 };
 
-function defaultReducer(state) {
-  return state;
-}
+export default function reducer(state = initialState, action = initialAction) {
+  const { type, payload } = action;
 
-export default function render(state = initialState, action) {
-  return (reducers[action.type] || defaultReducer)(state, action);
+  if (!reducers[type]) {
+    return state;
+  }
+
+  return reducers[type](state, payload);
 }

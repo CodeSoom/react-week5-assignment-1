@@ -3,24 +3,28 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './containers/RegionsContainer';
+import CategoriesContainer from './containers/CategoriesContainer';
+import RestaurantsContainer from './containers/RestaurantsContainer';
 
 import {
-  loadInitialData,
+  loadRegions,
+  loadCategories,
 } from './modules/actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadInitialData());
-  });
+    dispatch(loadRegions());
+    dispatch(loadCategories());
+  }, []);
 
   return (
     <div>
-      Restaurants
+      <h1>Restaurants</h1>
       <RegionsContainer />
-      {/* <CategoriesContainer />
-      <RestaurantsContainer /> */}
+      <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
