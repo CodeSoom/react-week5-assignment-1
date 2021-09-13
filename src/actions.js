@@ -1,4 +1,17 @@
-import { fetchCategories } from './services/api';
+import {
+  fetchCategories,
+  fetchRegions,
+  fetchRestaurants,
+} from './services/api';
+
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
+}
 
 export function setCategories(categories) {
   return {
@@ -9,18 +22,57 @@ export function setCategories(categories) {
   };
 }
 
-export function loadCategories() {
-  return async (dispatch) => {
-    const categoris = await fetchCategories();
-    dispatch(setCategories(categoris));
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
   };
 }
 
-export function setRegions(regions) {
+export function selectRegion(regionId) {
   return {
-    type: 'setRegions',
+    type: 'selectRegion',
     payload: {
-      regions,
+      regionId,
     },
+  };
+}
+
+export function selectCategory(categoryId) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      categoryId,
+    },
+  };
+}
+
+export function loadInitialDate() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
+
+    const categories = await fetchCategories();
+    dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const {
+      selectedRegion: region,
+      selectedCategory: category,
+    } = getState();
+
+    if (!region || !category) {
+      return;
+    }
+    const restaurants = await fetchRestaurants({
+      regionName: region.name,
+      categoryId: category.id,
+    });
+    dispatch(setRestaurants(restaurants));
   };
 }

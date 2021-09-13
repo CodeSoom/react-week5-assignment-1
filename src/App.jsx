@@ -4,21 +4,23 @@ import { useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 import RegionsContainer from './RegionsContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
-  loadCategories,
+  loadInitialDate,
 } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadCategories());
+    dispatch(loadInitialDate());
   });
   return (
     <div>
-      <CategoriesContainer />
       <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
