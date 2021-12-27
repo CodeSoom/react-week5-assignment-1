@@ -1,3 +1,5 @@
+import { fetchCategories } from './services/api';
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',
@@ -7,5 +9,8 @@ export function setCategories(categories) {
   };
 }
 
-// TODO: delete..
-export function temp() {}
+export const loadCategories = () => async (dispatch) => {
+  const categories = await fetchCategories();
+
+  dispatch(setCategories(categories));
+};
