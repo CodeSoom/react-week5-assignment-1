@@ -1,6 +1,7 @@
+import { GET_CATEGORIES } from '../urls';
+
 export async function fetchCategories() {
-  const URL = 'https://eatgo-customer-api.ahastudio.com/categories';
-  const response = await fetch(URL);
+  const response = await fetch(GET_CATEGORIES);
   return response.json();
 }
 
