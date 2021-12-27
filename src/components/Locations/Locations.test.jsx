@@ -25,6 +25,6 @@ describe('Locations', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(onClick).toBeCalledWith(locations);
+    expect(onClick).toBeCalledWith({ id: 1, name: '서울' });
   });
 });
