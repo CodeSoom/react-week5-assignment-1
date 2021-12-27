@@ -6,9 +6,11 @@ export default function CategoriesContainer() {
   return (
     <ul>
       {categories.map((category) => (
-        <button key={category.id} type="button">
-          {category.name}
-        </button>
+        <li key={category.id}>
+          <button type="button">
+            {category.name}
+          </button>
+        </li>
       ))}
     </ul>
   );
