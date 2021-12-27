@@ -35,7 +35,16 @@ module.exports = {
     'keyword-spacing': ['error', { before: true, after: true }],
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'always-multiline'],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        objects: 'always-multiline',
+        imports: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'never',
+      },
+    ],
     'space-in-parens': ['error', 'never'],
     'block-spacing': 'error',
     'array-bracket-spacing': ['error', 'never'],
@@ -44,7 +53,6 @@ module.exports = {
     'arrow-spacing': ['error', { before: true, after: true }],
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
     'linebreak-style': 'off',
-    "comma-dangle": ["error", "never"],
 
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
