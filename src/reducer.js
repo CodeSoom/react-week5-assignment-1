@@ -1,4 +1,6 @@
-const initialState = {};
+const initialState = {
+  categories: [],
+};
 
 const defaultReducer = (state) => state;
 
