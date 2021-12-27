@@ -2,8 +2,12 @@ import { render } from '@testing-library/react';
 
 import Categories from './Categories';
 
+import { CATEGORIES } from './fixtures';
+
 describe('Categories', () => {
   it('render', () => {
-    render(<Categories />);
+    const { container } = render(<Categories categories={CATEGORIES} />);
+
+    expect(container).toHaveTextContent('한식');
   });
 });
