@@ -4,7 +4,7 @@ import {
   setCategories,
 } from './actions';
 
-import { categories } from '../__fixture__/categories';
+import { categories } from '../__fixtures__/categories';
 
 describe('redcuer', () => {
   describe('setCategories', () => {
