@@ -1,3 +1,5 @@
+import Categories from './Categories';
+
 export default function App() {
-  return <></>;
+  return <Categories />;
 }
