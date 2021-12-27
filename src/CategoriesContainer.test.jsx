@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
@@ -9,8 +9,6 @@ import { categories } from '../__fixtures__/categories';
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     categories,
   }));
