@@ -24,15 +24,4 @@ describe('CategoriesContainer', () => {
       getByRole('button', { name: category.name });
     });
   });
-
-  it('calls dispatch after loading', () => {
-    render(
-      <CategoriesContainer />,
-    );
-
-    expect(dispatch).toBeCalled();
-    expect(dispatch).toBeCalledWith({
-      type: 'setCategories',
-    });
-  });
 });
