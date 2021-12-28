@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { changeRegion } from './store/actions';
+import Item from './Item';
 
 export default function RegionListContainer() {
   const dispatch = useDispatch();
@@ -14,12 +15,13 @@ export default function RegionListContainer() {
 
   return (
     <ul>
-      {regions.map(({ id, name }) => (
-        <li key={id}>
-          <button type="button" id={id} onClick={() => handleClick(id)}>
-            {`${name}${id === selectedRegionId ? '(V)' : ''}`}
-          </button>
-        </li>
+      {regions.map((region) => (
+        <Item
+          key={region.id}
+          item={region}
+          onClick={() => handleClick(region.id)}
+          selectedId={selectedRegionId}
+        />
       ))}
     </ul>
   );
