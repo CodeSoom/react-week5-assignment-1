@@ -1,13 +1,22 @@
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import App from './App';
 
+jest.mock('react-redux');
+
 describe('App', () => {
+  useSelector.mockImplementation((selector) => selector({
+    locations: [],
+  }));
+
   it('renders location list', () => {
-    const { getByText } = render((
+    const { queryByText } = render((
       <App />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
+    expect(queryByText('지역')).not.toBeNull();
+    expect(queryByText('서울')).toBeNull();
   });
 });

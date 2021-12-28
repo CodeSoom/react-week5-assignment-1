@@ -1,8 +1,12 @@
+import { useSelector } from 'react-redux';
+
 import Locations from './Locations';
 
-import locations from '../fixtures/locations';
-
 export default function LocationContainer() {
+  const { locations } = useSelector((state) => ({
+    locations: state.locations,
+  }));
+
   return (
     <Locations locations={locations} />
   );

@@ -11,5 +11,6 @@ describe('Locations', () => {
     ));
 
     expect(getByText('서울')).not.toBeNull();
+    expect(getByText('대구')).not.toBeNull();
   });
 });
