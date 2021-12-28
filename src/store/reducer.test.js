@@ -1,4 +1,4 @@
-import { changeRegion } from './actions';
+import { changeCategory, changeRegion } from './actions';
 import reducer from './reducer';
 
 describe('reducer', () => {
@@ -21,9 +21,6 @@ describe('reducer', () => {
   });
 
   it('changeCategory', () => {
-    const changeCategory = () => {
-    };
-
     const prevState = {
       selected: {
         categoryId: null,

@@ -1,4 +1,4 @@
-import { CHANGE_REGION } from './actions';
+import { CHANGE_CATEGORY, CHANGE_REGION } from './actions';
 import { identity } from '../lib';
 
 const initialState = {
@@ -102,6 +102,13 @@ const reducers = {
     selected: {
       ...state.selected,
       regionId: action.payload.regionId,
+    },
+  }),
+  [CHANGE_CATEGORY]: (state, action) => ({
+    ...state,
+    selected: {
+      ...state.selected,
+      categoryId: action.payload.categoryId,
     },
   }),
 };
