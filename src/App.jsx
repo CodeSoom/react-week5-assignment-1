@@ -1,11 +1,9 @@
-import regions from '../fixtures/regions';
-
-import Regions from './Regions';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   return (
     <>
-      <Regions regions={regions} />
+      <RegionsContainer />
     </>
   );
 }
