@@ -3,20 +3,13 @@ import { useEffect } from 'react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { setCategories } from './actions';
-
-import { fetchCategories } from './services/api';
+import { loadCategories } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
-  const loadCategories = async () => {
-    const response = await fetchCategories();
-    dispatch(setCategories(response));
-  };
-
   useEffect(() => {
-    loadCategories();
+    dispatch(loadCategories());
   }, []);
 
   return (
