@@ -31,9 +31,9 @@ describe('Input test', () => {
     expect(getByText('등록')).toBeInTheDocument();
   });
 
-  context('when changes value of Input', () => {
+  context('when changes value of input', () => {
     it('calls onChange handler', () => {
-      const value = '';
+      const value = '이모저모';
       const { getByPlaceholderText } = renderInput(value);
 
       fireEvent.change(getByPlaceholderText('이름'), {
@@ -50,7 +50,7 @@ describe('Input test', () => {
     });
   });
 
-  context('when keeps value of Input', () => {
+  context('when keeps value of input', () => {
     it('not call onChange handler', () => {
       const value = '';
       const { getByPlaceholderText } = renderInput(value);

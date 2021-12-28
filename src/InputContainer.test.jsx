@@ -2,13 +2,11 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import App from './App';
+import InputContainer from './InputContainer';
 
 jest.mock('react-redux');
 
-// App 구성요소 렌더링
-
-describe('App test', () => {
+describe('InputContainer test', () => {
   // 동작원리?
   const dispatch = useDispatch(() => dispatch);
 
@@ -28,19 +26,10 @@ describe('App test', () => {
     ],
   }));
 
-  const renderApp = () => render(<App />);
-
-  it('renders text of List', () => {
-    const { container } = renderApp();
-
-    expect(container).toHaveTextContent('Restaurants');
-    expect(container).toHaveTextContent('모토쿠라시');
-    expect(container).toHaveTextContent('일식');
-    expect(container).toHaveTextContent('서울 송파구');
-  });
+  const renderInputContainer = () => render(<InputContainer />);
 
   it('renders Input', () => {
-    const { getByPlaceholderText, getByText } = renderApp();
+    const { getByPlaceholderText, getByText } = renderInputContainer();
 
     expect(getByPlaceholderText(/이름/)).toBeInTheDocument();
     expect(getByPlaceholderText(/분류/)).toBeInTheDocument();
