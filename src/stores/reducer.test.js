@@ -1,7 +1,7 @@
 import reducer from './reducer';
 
 import { setCategories, setRegions, setRegion, setCategory } from './actions';
-import { CATEGORIES, REGIONS } from './fixtures';
+import { CATEGORIES, REGIONS } from '../lib/fixtures';
 
 describe('reducer', () => {
   describe('setCategories', () => {

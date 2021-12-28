@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setRegion } from './actions';
+import { setRegion } from '../../stores/actions';
 
 import Regions from './Regions';
 

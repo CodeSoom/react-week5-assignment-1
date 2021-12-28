@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import { CATEGORIES } from './fixtures';
+import { CATEGORIES } from '../../lib/fixtures';
 
 const updateSelectedCategory = jest.fn();
 

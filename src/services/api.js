@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, GET_REGIONS, GET_RESTAURANTS } from '../urls';
+import { GET_CATEGORIES, GET_REGIONS, GET_RESTAURANTS } from '../lib/urls';
 
 export async function fetchCategories() {
   const categories = await fetch(GET_CATEGORIES);

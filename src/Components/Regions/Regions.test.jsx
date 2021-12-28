@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import { REGIONS } from './fixtures';
+import { REGIONS } from '../../lib/fixtures';
 
 const updateSelectedRegion = jest.fn();
 

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import { REGIONS } from './fixtures';
+import { REGIONS } from '../../lib/fixtures';
 
 jest.mock('react-redux');
 

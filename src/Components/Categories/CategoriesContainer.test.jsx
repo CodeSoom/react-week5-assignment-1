@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { CATEGORIES } from './fixtures';
+import { CATEGORIES } from '../../lib/fixtures';
 
 jest.mock('react-redux');
 

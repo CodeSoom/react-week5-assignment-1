@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { RESTAURANTS } from './fixtures';
+import { RESTAURANTS } from '../../lib/fixtures';
 
 import Restaurants from './Restaurants';
 

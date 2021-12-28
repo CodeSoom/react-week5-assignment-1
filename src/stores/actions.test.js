@@ -7,11 +7,11 @@ import {
   fetchCategories,
   fetchRegions,
   fetchRestaurants,
-} from './services/api';
+} from '../services/api';
 
-import { CATEGORIES, REGIONS, RESTAURANTS } from './fixtures';
+import { CATEGORIES, REGIONS, RESTAURANTS } from '../lib/fixtures';
 
-jest.mock('./services/api');
+jest.mock('../services/api');
 
 const mockStore = configureStore([thunk]);
 

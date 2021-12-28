@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-import CategoriesContainer from './CategoriesContainer';
-import RegionsContainer from './RegionsContainer';
-import RestaurantsContainer from './RestaurantsContainer';
+import CategoriesContainer from './Components/Categories/CategoriesContainer';
+import RegionsContainer from './Components/Regions/RegionsContainer';
+import RestaurantsContainer from './Components/Restaurants/RestaurantsContainer';
 
-import { loadCategories, loadRegions } from './actions';
+import { loadCategories, loadRegions } from './stores/actions';
 
 export default function App() {
   const dispatch = useDispatch();

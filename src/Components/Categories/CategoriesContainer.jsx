@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setCategory } from './actions';
+import { setCategory } from '../../stores/actions';
 
 import Categories from './Categories';
 

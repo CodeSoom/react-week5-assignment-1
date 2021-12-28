@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadRestaurants } from './actions';
+import { loadRestaurants } from '../../stores/actions';
 
 import Restaurants from './Restaurants';
 
