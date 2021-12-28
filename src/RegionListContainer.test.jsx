@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionListContainer from './RegionListContainer';
 import { changeRegion } from './store/actions';
@@ -65,6 +65,7 @@ describe('RegionListContainer', () => {
         },
       ],
     }));
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('RegionListContainer 렌더링', () => {
@@ -81,9 +82,9 @@ describe('RegionListContainer', () => {
   });
 
   it('버튼 클릭 시, changeRegion 이 dispatch 된다.', () => {
-    const { getAllByRole } = renderComponent();
+    const { getByRole } = renderComponent();
 
-    const button = getAllByRole('button')[0];
+    const button = getByRole('button', { name: /서울/ });
     fireEvent.click(button);
 
     expect(dispatch).toBeCalledWith(changeRegion(1));
