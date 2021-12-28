@@ -1,6 +1,6 @@
 export function setLocation(location) {
   return {
-    type: 'setLoaction',
+    type: 'setLocation',
     payload: {
       location,
     },

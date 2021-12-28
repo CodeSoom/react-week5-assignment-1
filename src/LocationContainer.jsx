@@ -13,8 +13,10 @@ export default function LocationContainer() {
     locations: state.locations,
   }));
 
-  function handleClick({ location }) {
-    dispatch(setLocation({ location }));
+  function handleClick(e) {
+    console.log(e);
+    const location = '서울';
+    dispatch(setLocation(location));
   }
 
   return (
