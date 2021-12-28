@@ -15,7 +15,13 @@ export default function AddressListContainer() {
 
   return (
     <ul>
-      {addresses.map(({ id, name }) => (<li key={id}>{name}</li>))}
+      {addresses.map(({ id, name }) => (
+        <li key={id}>
+          <button type="button">
+            {name}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }
