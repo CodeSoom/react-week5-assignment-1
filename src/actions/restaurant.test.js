@@ -1,6 +1,6 @@
-import { loadRegions, TYPES } from './restaurant';
-import { fetchRestaurantRegions } from '../api/restaurant';
-import { regions } from '../../fixtures/restaurant';
+import { loadCategories, loadRegions, TYPES } from './restaurant';
+import { fetchRestaurantCategories, fetchRestaurantRegions } from '../api/restaurant';
+import { categories, regions } from '../../fixtures/restaurant';
 
 jest.mock('../api/restaurant');
 
@@ -17,6 +17,21 @@ describe('restaurant actions', () => {
     expect(mockDispatch).toBeCalledWith(expect.objectContaining({
       type: TYPES.SET_REGIONS,
       payload: { regions },
+    }));
+  });
+
+  it('loadCategories는 categories를 가져오는 api를 호출하고 결과값을 dispatch 한다.', async () => {
+    const mockDispatch = jest.fn();
+    const thunk = loadCategories();
+
+    fetchRestaurantCategories.mockImplementation(() => categories);
+
+    await thunk(mockDispatch);
+
+    expect(fetchRestaurantRegions).toBeCalled();
+    expect(mockDispatch).toBeCalledWith(expect.objectContaining({
+      type: TYPES.SET_CATEGORIES,
+      payload: { categories },
     }));
   });
 });
