@@ -17,4 +17,13 @@ export const CATEGORIES = [
   },
 ];
 
-export default {};
+export const REGIONS = [
+  {
+    id: 1,
+    name: '서울',
+  },
+  {
+    id: 2,
+    name: '수원',
+  },
+];
