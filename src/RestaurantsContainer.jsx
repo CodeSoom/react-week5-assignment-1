@@ -7,15 +7,15 @@ import Restaurants from './Restaurants';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
-  const { region, category, restaurants } = useSelector((state) => ({
+  const { region, categoryId, restaurants } = useSelector((state) => ({
     region: state.region,
-    category: state.category,
+    categoryId: state.categoryId,
     restaurants: state.restaurants,
   }));
 
   useEffect(() => {
-    dispatch(loadRestaurants(region, category));
-  }, [region, category]);
+    dispatch(loadRestaurants(region, categoryId));
+  }, [region, categoryId]);
 
   return <Restaurants restaurants={restaurants} />;
 }

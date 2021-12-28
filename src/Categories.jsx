@@ -1,10 +1,10 @@
 export default function Categories({
   categories,
-  selectedCategory,
+  selectedCategoryId,
   updateSelectedCategory,
 }) {
-  const handleClickButton = ({ target: { name } }) => {
-    updateSelectedCategory(name);
+  const handleClickButton = (id) => {
+    updateSelectedCategory(id);
   };
 
   if (!categories || categories.length === 0) {
@@ -15,8 +15,12 @@ export default function Categories({
     <ul>
       {categories.map(({ id, name }) => (
         <li key={id}>
-          <button type="button" name={name} onClick={handleClickButton}>
-            {`${name}${selectedCategory === name ? '(V)' : ''}`}
+          <button
+            type="button"
+            name={name}
+            onClick={() => handleClickButton(id)}
+          >
+            {`${name}${selectedCategoryId === id ? '(V)' : ''}`}
           </button>
         </li>
       ))}

@@ -5,20 +5,20 @@ import Categories from './Categories';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
-  const { categories, selectedCategory } = useSelector((state) => ({
+  const { categories, selectedCategoryId } = useSelector((state) => ({
     categories: state.categories,
-    selectedCategory: state.category,
+    selectedCategoryId: state.categoryId,
   }));
 
-  const updateSelectedCategory = (category) => {
-    dispatch(setCategory(category));
+  const updateSelectedCategory = (categoryId) => {
+    dispatch(setCategory(categoryId));
   };
 
   return (
     <Categories
       categories={categories}
       updateSelectedCategory={updateSelectedCategory}
-      selectedCategory={selectedCategory}
+      selectedCategoryId={selectedCategoryId}
     />
   );
 }

@@ -30,13 +30,13 @@ describe('reducer', () => {
 
   describe('setCategory', () => {
     const previousSate = {
-      category: '',
+      categoryId: 0,
     };
 
     it('선택된 카테고리를 저장한다', () => {
-      const { category } = reducer(previousSate, setCategory('양식'));
+      const { categoryId } = reducer(previousSate, setCategory(1));
 
-      expect(category).toBe('양식');
+      expect(categoryId).toBe(1);
     });
   });
 
