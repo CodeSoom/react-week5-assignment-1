@@ -1,4 +1,5 @@
 import { CHANGE_REGION } from './actions';
+import { identity } from '../lib';
 
 const initialState = {
   selected: {
@@ -96,13 +97,17 @@ const initialState = {
 };
 
 const reducers = {
-  [CHANGE_REGION]: (state, action) => {
-
-  },
+  [CHANGE_REGION]: (state, action) => ({
+    ...state,
+    selected: {
+      ...state.selected,
+      regionId: action.payload.regionId,
+    },
+  }),
 };
 
 function reducer(state = initialState, action) {
-  return state;
+  return (reducers[action.type] || identity)(state, action);
 }
 
 export default reducer;
