@@ -16,8 +16,8 @@ export default function App() {
 
   return (
     <>
-      <CategoriesContainer />
       <RegionsContainer />
+      <CategoriesContainer />
     </>
   );
 }

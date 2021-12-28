@@ -15,6 +15,11 @@ const reducers = {
     ...state,
     regions,
   }),
+
+  setCategory: (state, { payload: { category } }) => ({
+    ...state,
+    category,
+  }),
 };
 
 export default function reducer(state = initialState, action) {

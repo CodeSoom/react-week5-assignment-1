@@ -1,11 +1,24 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory } from './actions';
 
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { categories, selectedCategory } = useSelector((state) => ({
     categories: state.categories,
+    selectedCategory: state.category,
   }));
 
-  return <Categories categories={categories} />;
+  const updateSelectedCategory = (category) => {
+    dispatch(setCategory(category));
+  };
+
+  return (
+    <Categories
+      categories={categories}
+      updateSelectedCategory={updateSelectedCategory}
+      selectedCategory={selectedCategory}
+    />
+  );
 }

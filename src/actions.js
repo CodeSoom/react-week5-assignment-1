@@ -1,5 +1,14 @@
 import { fetchCategories, fetchRegions } from './services/api';
 
+export function setCategory(category) {
+  return {
+    type: 'setCategory',
+    payload: {
+      category,
+    },
+  };
+}
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',

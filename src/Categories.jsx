@@ -1,10 +1,10 @@
-import { useState } from 'react';
-
-export default function Categories({ categories }) {
-  const [selected, setSelected] = useState();
-
+export default function Categories({
+  categories,
+  selectedCategory,
+  updateSelectedCategory,
+}) {
   const handleClickButton = ({ target: { name } }) => {
-    setSelected(name);
+    updateSelectedCategory(name);
   };
 
   if (!categories || categories.length === 0) {
@@ -16,7 +16,7 @@ export default function Categories({ categories }) {
       {categories.map(({ id, name }) => (
         <li key={id}>
           <button type="button" name={name} onClick={handleClickButton}>
-            {`${name}${selected === name ? '(V)' : ''}`}
+            {`${name}${selectedCategory === name ? '(V)' : ''}`}
           </button>
         </li>
       ))}
