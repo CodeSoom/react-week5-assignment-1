@@ -1,8 +1,8 @@
 import SearchService from '../services/api';
 
-export function setCategories(locations) {
+export function setLocations(locations) {
   return {
-    type: 'setCategories',
+    type: 'setLocations',
     payload: { locations },
   };
 }
@@ -10,6 +10,6 @@ export function setCategories(locations) {
 export function fetchCategories() {
   return async (dispatch) => {
     const categories = await SearchService.getCategories();
-    dispatch(setCategories(categories));
+    dispatch(setLocations(categories));
   };
 }

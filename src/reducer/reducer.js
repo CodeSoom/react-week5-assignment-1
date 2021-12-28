@@ -1,11 +1,11 @@
 const initialState = {
-  categories: [],
+  locations: [],
 };
 
 const reducers = {
-  setCategories: (state, payload) => ({
+  setLocations: (state, payload) => ({
     ...state,
-    categories: payload.categories,
+    locations: payload.locations,
   }),
 };
 
