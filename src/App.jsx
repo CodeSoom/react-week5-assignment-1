@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import CategoriesContainer from './CategoriesContainer';
 
 import { loadCategories, loadRegions } from './actions';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export default function App() {
     <>
       <h1>TITLE</h1>
       <CategoriesContainer />
+      <RegionsContainer />
     </>
   );
 }
