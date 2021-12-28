@@ -1,11 +1,15 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { loadCategories, loadRegions } from './actions';
+import { loadCategories, loadRegions, loadRestaurants } from './actions';
 
-import { fetchCategories, fetchRegions } from './services/api';
+import {
+  fetchCategories,
+  fetchRegions,
+  fetchRestaurants,
+} from './services/api';
 
-import { CATEGORIES, REGIONS } from './fixtures';
+import { CATEGORIES, REGIONS, RESTAURANTS } from './fixtures';
 
 jest.mock('./services/api');
 
@@ -13,6 +17,7 @@ const mockStore = configureStore([thunk]);
 
 fetchCategories.mockResolvedValue(CATEGORIES);
 fetchRegions.mockResolvedValue(REGIONS);
+fetchRestaurants.mockResolvedValue(RESTAURANTS);
 
 describe('actions', () => {
   describe('loadCategories', () => {
@@ -34,6 +39,17 @@ describe('actions', () => {
       const actions = store.getActions();
 
       expect(actions[0].payload.regions).toEqual(REGIONS);
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    it('setRestaurants를 호출한다', async () => {
+      const store = mockStore({});
+      await store.dispatch(loadRestaurants());
+
+      const actions = store.getActions();
+
+      expect(actions[0].payload.regions).toEqual(RESTAURANTS);
     });
   });
 });

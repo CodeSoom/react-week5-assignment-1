@@ -27,3 +27,10 @@ export const REGIONS = [
     name: '수원',
   },
 ];
+
+export const RESTAURANTS = [
+  {
+    id: 1,
+    name: '도산분식',
+  },
+];
