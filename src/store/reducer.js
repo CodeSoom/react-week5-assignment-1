@@ -1,4 +1,10 @@
+import { CHANGE_REGION } from './actions';
+
 const initialState = {
+  selected: {
+    regionId: null,
+    categoryId: null,
+  },
   regions: [
     {
       id: 1,
@@ -87,6 +93,12 @@ const initialState = {
       name: '사탕',
     },
   ],
+};
+
+const reducers = {
+  [CHANGE_REGION]: (state, action) => {
+
+  },
 };
 
 function reducer(state = initialState, action) {
