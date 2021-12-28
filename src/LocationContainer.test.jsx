@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
@@ -19,5 +19,16 @@ describe('LocationContainer', () => {
     ));
 
     expect(getByText('서울')).not.toBeNull();
+  });
+
+  it('changes state by clicking the location button', () => {
+    const handleClick = jest.fn();
+    const { getByText } = render((
+      <LocationContainer />
+    ));
+
+    fireEvent.click(getByText('서울'));
+
+    expect(handleClick).toBeCalled();
   });
 });
