@@ -7,8 +7,9 @@ export default function Regions({ regions }) {
     setSelected(name);
   };
 
-  if (!regions || regions.length === 0)
+  if (!regions || regions.length === 0) {
     return <h2>지역이 존재하지 않습니다</h2>;
+  }
 
   return (
     <ul>
