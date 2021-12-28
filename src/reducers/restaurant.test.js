@@ -1,3 +1,4 @@
+import { setRegions } from '../actions/restaurant';
 import restaurantReducer, { initialState } from './restaurant';
 
 describe('restaurantReducer', () => {
@@ -11,5 +12,12 @@ describe('restaurantReducer', () => {
     const state = restaurantReducer(initialState);
 
     expect(state).toEqual(initialState);
+  });
+
+  it('setRegions 액션은 상태의 regions를 설정합니다.', () => {
+    const regions = [{ id: 1, name: 'foo' }];
+    const state = restaurantReducer(initialState, setRegions(regions));
+
+    expect(state.regions).toEqual(regions);
   });
 });
