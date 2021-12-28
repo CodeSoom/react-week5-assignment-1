@@ -12,6 +12,10 @@ describe('App', () => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
+      selected: {
+        regionId: null,
+        categoryId: null,
+      },
       regions: [
         {
           id: 1,

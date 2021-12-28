@@ -1,17 +1,23 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
 import RegionListContainer from './RegionListContainer';
+import { changeRegion } from './store/actions';
 
 jest.mock('react-redux');
 
 describe('RegionListContainer', () => {
+  const dispatch = jest.fn();
+
   const renderComponent = () => render(<RegionListContainer />);
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
+      selected: {
+        regionId: null,
+      },
       regions: [
         {
           id: 1,
@@ -72,5 +78,14 @@ describe('RegionListContainer', () => {
 
     expect(container).toHaveTextContent('서울');
     expect(container).toHaveTextContent('대전');
+  });
+
+  it('버튼 클릭 시, changeRegion 이 dispatch 된다.', () => {
+    const { getAllByRole } = renderComponent();
+
+    const button = getAllByRole('button')[0];
+    fireEvent.click(button);
+
+    expect(dispatch).toBeCalledWith(changeRegion(1));
   });
 });
