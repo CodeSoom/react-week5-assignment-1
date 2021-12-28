@@ -1,7 +1,13 @@
+import locations from '../fixtures/locations';
+
 export default function LocationContainer() {
   return (
-    <div>
-      <p>서울</p>
-    </div>
+    <ul>
+      {locations.map((location) => (
+        <li key={location.id}>
+          {location.location}
+        </li>
+      ))}
+    </ul>
   );
 }
