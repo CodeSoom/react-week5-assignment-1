@@ -2,6 +2,7 @@ import { TYPES } from '../actions/restaurant';
 
 export const initialState = {
   regions: [],
+  categories: [],
 };
 
 export default function restaurantReducer(state = initialState, { type, payload } = {}) {
@@ -9,6 +10,13 @@ export default function restaurantReducer(state = initialState, { type, payload 
     return {
       ...state,
       regions: payload.regions,
+    };
+  }
+
+  if (type === TYPES.SET_CATEGORIES) {
+    return {
+      ...state,
+      categories: payload.categories,
     };
   }
 

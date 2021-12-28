@@ -1,6 +1,6 @@
-import { setRegions } from '../actions/restaurant';
+import { setCategories, setRegions } from '../actions/restaurant';
 import restaurantReducer, { initialState } from './restaurant';
-import { regions } from '../../fixtures/restaurant';
+import { categories, regions } from '../../fixtures/restaurant';
 
 describe('restaurantReducer', () => {
   it('인자 없이 호출하면 기본 상태를 반환합니다.', () => {
@@ -19,5 +19,11 @@ describe('restaurantReducer', () => {
     const state = restaurantReducer(initialState, setRegions(regions));
 
     expect(state.regions).toEqual(regions);
+  });
+
+  it('setCategories 액션은 상태의 categories를 설정합니다.', () => {
+    const state = restaurantReducer(initialState, setCategories(categories));
+
+    expect(state.categories).toEqual(categories);
   });
 });

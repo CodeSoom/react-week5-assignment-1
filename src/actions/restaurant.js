@@ -2,6 +2,7 @@ import { fetchRestaurantRegions } from '../api/restaurant';
 
 export const TYPES = {
   SET_REGIONS: 'SET_REGIONS',
+  SET_CATEGORIES: 'SET_CATEGORIES',
 };
 
 export function setRegions(regions) {
@@ -16,5 +17,12 @@ export function loadRegions() {
     const regions = await fetchRestaurantRegions();
 
     dispatch(setRegions(regions));
+  };
+}
+
+export function setCategories(categories) {
+  return {
+    type: TYPES.SET_CATEGORIES,
+    payload: { categories },
   };
 }
