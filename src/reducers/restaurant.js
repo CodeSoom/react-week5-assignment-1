@@ -5,7 +5,7 @@ export const initialState = {
 };
 
 export default function restaurantReducer(state = initialState, { type, payload } = {}) {
-  if (type === TYPES.LOAD_REGIONS) {
+  if (type === TYPES.SET_REGIONS) {
     return {
       ...state,
       regions: payload.regions,
