@@ -16,7 +16,6 @@ export default function App() {
 
   return (
     <>
-      <h1>TITLE</h1>
       <CategoriesContainer />
       <RegionsContainer />
     </>

@@ -9,5 +9,3 @@ export async function fetchRegions() {
   const regions = await fetch(GET_REGIONS);
   return regions.json();
 }
-
-export default {};
