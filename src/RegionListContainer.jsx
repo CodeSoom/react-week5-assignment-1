@@ -1,5 +1,5 @@
-export default function AddressListContainer() {
-  const addresses = [
+export default function RegionListContainer() {
+  const regions = [
     {
       id: 'eaebe552-ae57-4ac8-8c3c-1cb3d9dd9e54',
       name: '서울',
@@ -15,7 +15,7 @@ export default function AddressListContainer() {
 
   return (
     <ul>
-      {addresses.map(({ id, name }) => (
+      {regions.map(({ id, name }) => (
         <li key={id}>
           <button type="button">
             {name}

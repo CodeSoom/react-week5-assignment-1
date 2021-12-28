@@ -1,10 +1,10 @@
-import AddressListContainer from './AddressListContainer';
+import RegionListContainer from './RegionListContainer';
 import CategoryListContainer from './CategoryListContainer';
 
 export default function App() {
   return (
     <>
-      <AddressListContainer />
+      <RegionListContainer />
       <CategoryListContainer />
     </>
   );
