@@ -1,5 +1,8 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 
-const store = createStore(() => ({ regions: [] }));
+import reducer from './reducer';
+
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

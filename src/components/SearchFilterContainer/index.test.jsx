@@ -32,7 +32,7 @@ describe('SearchFilterContainer', () => {
   context('when the component did mounted', () => {
     it('initialize options', () => {
       render(<SearchFilterContainer />);
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(2);
     });
   });
 });
