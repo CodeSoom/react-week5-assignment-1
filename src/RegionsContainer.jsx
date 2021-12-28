@@ -1,12 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import { setRegion } from './actions';
+
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const dispatch = useDispatch();
+  const { selectedRegion, regions } = useSelector((state) => ({
     regions: state.regions,
+    selectedRegion: state.region,
   }));
 
-  return <Regions regions={regions} />;
+  const updateSelectedRegion = (region) => {
+    dispatch(setRegion(region));
+  };
+
+  return (
+    <Regions
+      selectedRegion={selectedRegion}
+      regions={regions}
+      updateSelectedRegion={updateSelectedRegion}
+    />
+  );
 }
