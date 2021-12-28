@@ -19,4 +19,25 @@ describe('reducer', () => {
       },
     });
   });
+
+  it('changeCategory', () => {
+    const changeCategory = () => {
+    };
+
+    const prevState = {
+      selected: {
+        categoryId: null,
+      },
+    };
+
+    const action = changeCategory(1);
+
+    const state = reducer(prevState, action);
+
+    expect(state).toEqual({
+      selected: {
+        categoryId: 1,
+      },
+    });
+  });
 });
