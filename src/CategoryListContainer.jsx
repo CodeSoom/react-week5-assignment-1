@@ -1,16 +1,27 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Item from './Item';
+import { changeCategory } from './store/actions';
 
 export default function CategoryListContainer() {
-  const { categories } = useSelector((state) => ({ categories: state.categories }));
+  const dispatch = useDispatch();
+  const { categories, selectedRegionId } = useSelector((state) => ({
+    categories: state.categories,
+    selectedRegionId: state.selected.categoryId,
+  }));
+
+  function handleClick(id) {
+    dispatch(changeCategory(id));
+  }
 
   return (
     <ul>
-      {categories.map(({ id, name }) => (
-        <li key={id}>
-          <button type="button">
-            {name}
-          </button>
-        </li>
+      {categories.map((category) => (
+        <Item
+          key={category.id}
+          item={category}
+          onClick={() => handleClick(category.id)}
+          selectedId={selectedRegionId}
+        />
       ))}
     </ul>
   );

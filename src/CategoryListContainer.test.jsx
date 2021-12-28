@@ -1,17 +1,23 @@
-import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { fireEvent, render } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CategoryListContainer from './CategoryListContainer';
+import { changeCategory } from './store/actions';
 
 jest.mock('react-redux');
 
 describe('CategoryListContainer', () => {
+  const dispatch = jest.fn();
+
   const renderComponent = () => render(<CategoryListContainer />);
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
+      selected: {
+        categoryId: null,
+      },
       categories: [
         {
           id: 1,
@@ -55,6 +61,7 @@ describe('CategoryListContainer', () => {
         },
       ],
     }));
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('CategoryListContainer 렌더링', () => {
@@ -68,5 +75,14 @@ describe('CategoryListContainer', () => {
 
     expect(container).toHaveTextContent('한식');
     expect(container).toHaveTextContent('중식');
+  });
+
+  it('버튼 클릭 시, changeCategory 가 dispatch 된다.', () => {
+    const { getByRole } = renderComponent();
+
+    const button = getByRole('button', { name: /한식/ });
+    fireEvent.click(button);
+
+    expect(dispatch).toBeCalledWith(changeCategory(1));
   });
 });
