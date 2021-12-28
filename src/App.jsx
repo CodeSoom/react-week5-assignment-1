@@ -3,13 +3,14 @@ import { useEffect } from 'react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import { loadCategories } from './actions';
+import { loadCategories, loadRegions } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadCategories());
+    dispatch(loadRegions());
   }, []);
 
   return (
