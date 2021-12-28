@@ -49,7 +49,7 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0].payload.regions).toEqual(RESTAURANTS);
+      expect(actions[0].payload.restaurants).toEqual(RESTAURANTS);
     });
   });
 });
