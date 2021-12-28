@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
@@ -8,6 +8,9 @@ import { RESTAURANTS } from './fixtures';
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) =>
     selector({
       category: '양식',
@@ -15,6 +18,7 @@ describe('RestaurantsContainer', () => {
       restaurants: RESTAURANTS,
     })
   );
+
   it('식당 목록을 보여준다', () => {
     const { container } = render(<RestaurantsContainer />);
 
