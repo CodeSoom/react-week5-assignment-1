@@ -44,6 +44,15 @@ const reducers = {
       selectedRegion: name,
     };
   },
+
+  setRestaurants: (state, action) => {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action) {
