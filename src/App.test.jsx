@@ -15,8 +15,8 @@ describe('App', () => {
     selector({
       categories: CATEGORIES,
       regions: REGIONS,
-      categoryId: 0,
-      region: '',
+      category: { id: 0, name: '' },
+      region: { id: 0, name: '' },
       restaurants: [],
     })
   );

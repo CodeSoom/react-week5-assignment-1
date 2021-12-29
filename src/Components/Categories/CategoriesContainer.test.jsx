@@ -11,6 +11,7 @@ describe('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) =>
     selector({
       categories: CATEGORIES,
+      category: { id: 1, name: '한식' },
     })
   );
 

@@ -30,25 +30,31 @@ describe('reducer', () => {
 
   describe('setCategory', () => {
     const previousSate = {
-      categoryId: 0,
+      category: {
+        id: 0,
+        name: '',
+      },
     };
 
     it('선택된 카테고리를 저장한다', () => {
-      const { categoryId } = reducer(previousSate, setCategory(1));
+      const { category } = reducer(previousSate, setCategory(CATEGORIES[0]));
 
-      expect(categoryId).toBe(1);
+      expect(category).toEqual(CATEGORIES[0]);
     });
   });
 
   describe('setRegion', () => {
     const previousSate = {
-      region: '',
+      region: {
+        id: 0,
+        name: '',
+      },
     };
 
     it('선택된 지역을 저장한다', () => {
-      const { region } = reducer(previousSate, setRegion('서울'));
+      const { region } = reducer(previousSate, setRegion(REGIONS[0]));
 
-      expect(region).toBe('서울');
+      expect(region).toEqual(REGIONS[0]);
     });
   });
 });

@@ -13,8 +13,8 @@ describe('RestaurantsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) =>
     selector({
-      categoryId: 1,
-      region: '수원',
+      category: { id: 1, name: '카페' },
+      region: { id: 1, name: '수원' },
       restaurants: RESTAURANTS,
     })
   );

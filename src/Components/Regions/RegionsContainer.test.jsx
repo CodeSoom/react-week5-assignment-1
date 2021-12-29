@@ -11,7 +11,7 @@ describe('RegionsContainer', () => {
   useSelector.mockImplementation((selector) =>
     selector({
       regions: REGIONS,
-      region: '수원',
+      region: { id: 2, name: '수원' },
     })
   );
 
