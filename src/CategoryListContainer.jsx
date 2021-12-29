@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Item from './Item';
-import { changeCategory, loadRestaurants } from './store/actions';
+import { changeCategory } from './store/actions';
+import { loadRestaurants } from './store/asyncActions';
 
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
