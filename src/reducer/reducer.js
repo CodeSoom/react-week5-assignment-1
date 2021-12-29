@@ -1,11 +1,16 @@
-const initialState = {
+export const initialState = {
   locations: [],
+  categories: null,
 };
 
 const reducers = {
   setLocations: (state, payload) => ({
     ...state,
     locations: payload.locations,
+  }),
+  setCategory: (state, payload) => ({
+    ...state,
+    categories: payload.categories,
   }),
 };
 
