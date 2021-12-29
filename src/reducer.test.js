@@ -4,6 +4,7 @@ import {
   setCategories,
   setRegions,
   setSelectedRegion,
+  setSelectedCategory,
 } from './actions';
 
 import { categories } from '../__fixtures__/categories';
@@ -14,6 +15,7 @@ describe('redcuer', () => {
     categories: [],
     regions: [],
     selectedRegion: '',
+    selectedCategory: '',
   };
 
   describe('setCategories', () => {
@@ -21,6 +23,14 @@ describe('redcuer', () => {
       const state = reducer(previousState, setCategories(categories));
 
       expect(state.categories).toEqual(categories);
+    });
+  });
+
+  describe('set selectedCategory', () => {
+    it('changes selectedCategory', () => {
+      const state = reducer(previousState, setSelectedCategory('한식'));
+
+      expect(state.selectedCategory).toBe('한식');
     });
   });
 
