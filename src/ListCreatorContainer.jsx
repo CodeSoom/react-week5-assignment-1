@@ -7,5 +7,9 @@ export default function ListCreatorContainer() {
 
   }));
 
-  return null;
+  return (
+    <div>
+      등록
+    </div>
+  );
 }
