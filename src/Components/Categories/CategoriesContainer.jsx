@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../../stores/actions';
 
-import Categories from './Categories';
+import Options from '../common/Options';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -15,10 +15,10 @@ export default function CategoriesContainer() {
   };
 
   return (
-    <Categories
-      categories={categories}
-      updateSelectedCategory={updateSelectedCategory}
-      selectedCategoryId={selectedCategoryId}
+    <Options
+      options={categories}
+      updateSelectedOption={updateSelectedCategory}
+      selectedId={selectedCategoryId}
     />
   );
 }

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { setRegion } from '../../stores/actions';
 
-import Regions from './Regions';
+import Options from '../common/Options';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ export default function RegionsContainer() {
   };
 
   return (
-    <Regions
-      selectedRegion={selectedRegion}
-      regions={regions}
-      updateSelectedRegion={updateSelectedRegion}
+    <Options
+      selectedId={selectedRegion}
+      options={regions}
+      updateSelectedOption={updateSelectedRegion}
     />
   );
 }
