@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import LocalList from './LocalList';
 
 describe('LocalList', () => {
-  it('지역명(버튼)들을 보여준다.', () => {
+  it('지역명(버튼)들을 리스트로 보여준다.', () => {
     const locals = [
       { id: 1, name: '서울' },
       { id: 2, name: '대전' },
