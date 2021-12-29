@@ -5,7 +5,7 @@ export default function Locations({ locations, onClick }) {
     <ButtonGroup
       onClick={(item) => onClick(item)}
       items={locations}
-      keyOfItem="id"
+      key={(item) => item.id}
       render={(item) => item.name}
     />
   );

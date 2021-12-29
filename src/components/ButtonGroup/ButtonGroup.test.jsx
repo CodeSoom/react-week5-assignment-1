@@ -8,7 +8,7 @@ describe('ButtonGroup', () => {
         { id: 1, text: '버튼1' },
       ]}
       render={(item) => item.text}
-      keyOfItem="id"
+      keyOfItem={(item) => item.id}
     />);
 
     expect(getByText('버튼1')).not.toBeNull();
@@ -21,7 +21,7 @@ describe('ButtonGroup', () => {
         { id: 1, text: '버튼1' },
       ]}
       render={(item) => item.text}
-      keyOfItem="id"
+      keyOfItem={(item) => item.id}
       onClick={onClick}
     />);
 
