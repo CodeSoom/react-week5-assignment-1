@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 
 import {
   setCategories,
@@ -58,6 +58,20 @@ describe('redcuer', () => {
       const state = reducer(previousState, setRestaurants(restaurants));
 
       expect(state.restaurants).toBe(restaurants);
+    });
+  });
+
+  describe('reducer', () => {
+    it('doens\'t given state, set initialState', () => {
+      const state = reducer(undefined, {});
+
+      expect(state).toEqual(initialState);
+    });
+
+    it('reqeust not defined action type, return previous state', () => {
+      const state = reducer(previousState, { type: 'invalid type' });
+
+      expect(state).toEqual(previousState);
     });
   });
 });
