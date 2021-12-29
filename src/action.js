@@ -1,8 +1,8 @@
-export function dd(dd) {
+export function setRestaurants(restaurant) {
   return {
-    type: 'dd',
+    type: 'setRestaurants',
     payload: {
-      dd,
+      restaurant,
     },
   };
 }
