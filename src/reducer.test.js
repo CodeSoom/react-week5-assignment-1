@@ -6,10 +6,12 @@ import { setRestaurants } from './action';
 
 describe('reducer test', () => {
   it('updates state', () => {
-    const initialState = [];
+    const initialState = {
+      restaurants: [],
+    };
 
     const state = reducer(initialState, setRestaurants(restaurants));
 
-    expect(state.initialState).toHaveLength(1);
+    expect(state.restaurants).toHaveLength(1);
   });
 });

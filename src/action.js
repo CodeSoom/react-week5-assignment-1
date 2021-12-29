@@ -1,8 +1,8 @@
-export function setRestaurants(restaurant) {
+export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
     payload: {
-      restaurant,
+      restaurants,
     },
   };
 }
