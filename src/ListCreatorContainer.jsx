@@ -1,15 +1,23 @@
 // Container Components:
-// 추가되는 레스토랑 목록을 스토어에서 가져와서 ListCreator컴포넌트에 넘겨줌
-import { useSelector } from 'react-redux';
+// 추가되는 레스토랑 목록을 가져오는 액션을 ListCreator컴포넌트에 넘겨줌
+import { useDispatch } from 'react-redux';
 
 import ListCreator from './ListCreator';
 
-export default function ListCreatorContainer() {
-  const xx = useSelector((state) => ({
+import {
+  addRestaurants,
+} from './action';
 
-  }));
+export default function ListCreatorContainer() {
+  const dispatch = useDispatch();
+
+  function handleClick() {
+    dispatch(addRestaurants());
+  }
 
   return (
-    <ListCreator />
+    <ListCreator
+      onClick={handleClick}
+    />
   );
 }
