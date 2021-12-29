@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantRegionsContainer from './RestaurantRegionsContainer';
 import { regions } from '../../fixtures/restaurant';
@@ -9,7 +9,7 @@ describe('RestaurantRegionsContainer', () => {
   it('컴포넌트가 랜더링 된 후 지역을 가져옵니다.', () => {
     const mockDispatch = jest.fn();
     useDispatch.mockImplementation(() => mockDispatch);
-    useSelector.mockImplementation(() => ({ regions }));
+    useSelector.mockImplementation(() => ({ regions, selected: {} }));
 
     render(<RestaurantRegionsContainer />);
 
@@ -18,13 +18,14 @@ describe('RestaurantRegionsContainer', () => {
 
   it('지역을 선택하면 버튼에 선택 표시가 됩니다.', () => {
     const mockDispatch = jest.fn();
+    const { name } = regions[0];
     useDispatch.mockImplementation(() => mockDispatch);
-    useSelector.mockImplementation(() => ({ regions }));
+    useSelector.mockImplementation(() => ({
+      regions,
+      selected: { regionName: name },
+    }));
     const { getByRole } = render(<RestaurantRegionsContainer />);
-    const button = getByRole('button', { name: regions[0].name });
 
-    fireEvent.click(button);
-
-    expect(button).toHaveTextContent(/V/);
+    expect(getByRole('button', { name: new RegExp(name) })).toHaveTextContent(/V/);
   });
 });
