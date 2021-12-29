@@ -1,13 +1,26 @@
-export function anyAction() {
+export function setRegions(regions) {
   return {
-    type: 'anyAction',
-    payload: '',
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
   };
 }
 
-export function anyAction2() {
+export function setCategories(categories) {
   return {
-    type: 'anyAction2',
-    payload: '',
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
   };
 }
