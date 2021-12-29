@@ -36,9 +36,9 @@ describe('Item', () => {
     expect(handleClick).toBeCalledWith(value);
   });
 
-  it('selected button, render button with name and V', () => {
+  it('selected button, render button with name and (V)', () => {
     const { getByRole } = renderComponent(true);
 
-    expect(getByRole('button', { name: `${value.name} V` })).toBeInTheDocument();
+    expect(getByRole('button', { name: `${value.name}(V)` })).toBeInTheDocument();
   });
 });

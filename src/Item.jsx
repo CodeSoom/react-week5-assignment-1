@@ -7,8 +7,7 @@ export default function Item({ value, selected, onClick }) {
       onClick={() => onClick(value)}
     >
       {name}
-      {' '}
-      {selected && 'V'}
+      {selected && '(V)'}
     </button>
   );
 }
