@@ -1,13 +1,11 @@
 import { render } from "@testing-library/react";
 
-import App from './App';
+import Button from './Button';
 
-describe('App', () => {
-  // 1. 지역목록을 보여준다!
-  // 2. 지역목록을 누를 수 있는 버튼으로 보여준다!
-  test('show region button list', () => {
+describe('Button', () => {
+  test('show button with onClickFunction', () => {
     const { getByText, getByDisplayValue } = render((
-      <App />
+      <Button value={} onClick={}/>
     ));
 
     expect(getByText(/대전/)).not.toBeNull();

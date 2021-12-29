@@ -7,7 +7,7 @@ export default function App() {
           서울
         </li>
         <li>
-          대전
+          <input type='button' value='대전' />
         </li>
         <li>
           부산
