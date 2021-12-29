@@ -2,7 +2,7 @@ const initialState = {
   categories: [],
   regions: [],
   // restaurants: []
-  // selectedCategory: '' || categoryName,
+  selectedCategory: '',
   selectedRegion: '',
 };
 

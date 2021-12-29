@@ -39,3 +39,10 @@ export const setSelectedRegion = (name) => ({
     name,
   },
 });
+
+export const setSelectedCategory = (name) => ({
+  type: 'setSelectedCategory',
+  payload: {
+    name,
+  },
+});
