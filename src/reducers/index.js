@@ -1,36 +1,11 @@
-const initialState = {
-  regions: [],
-  categories: [],
-  restaurants: [],
-};
+import { combineReducers } from 'redux';
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
+import regions from './regions';
+import categories from './categories';
+import restaurants from './restaurants';
 
-    return {
-      ...state,
-      regions,
-    };
-  }
-
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
-
-    return {
-      ...state,
-      categories,
-    };
-  }
-
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
-
-    return {
-      ...state,
-      restaurants,
-    };
-  }
-
-  return state;
-}
+export default combineReducers({
+  regions,
+  categories,
+  restaurants,
+});
