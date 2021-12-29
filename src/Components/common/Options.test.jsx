@@ -4,7 +4,7 @@ import Options from './Options';
 
 import { CATEGORIES } from '../../lib/fixtures';
 
-const updateSelectedCategory = jest.fn();
+const updateSelectedOption = jest.fn();
 
 describe('Categories', () => {
   const renderComponent = (categories, selectedCategoryId) =>
@@ -12,7 +12,7 @@ describe('Categories', () => {
       <Options
         selectedId={selectedCategoryId}
         options={categories}
-        updateSelectedOption={updateSelectedCategory}
+        updateSelectedOption={updateSelectedOption}
       />
     );
 
@@ -23,16 +23,16 @@ describe('Categories', () => {
   });
 
   context('카테고리가 있을 때', () => {
-    it('카테고리를 클릭하면 updateSelectedCategory가 호출된다', () => {
+    it('카테고리를 클릭하면 updateSelectedOption가 호출된다', () => {
       const { getByRole } = renderComponent(CATEGORIES, '');
 
       const button = getByRole('button', { name: '한식' });
       fireEvent.click(button);
 
-      expect(updateSelectedCategory).toBeCalled();
+      expect(updateSelectedOption).toBeCalled();
     });
 
-    it('선택된 카테고리에는 V표시가 붙는다', () => {
+    it('선택된 카테고리임을 표시한다', () => {
       const { container } = renderComponent(CATEGORIES, 1);
 
       expect(container).toHaveTextContent('한식(V)');
