@@ -1,6 +1,6 @@
 import { ACTION_TYPES } from './actions';
 
-const initialState = {
+export const initialState = {
   regions: [],
   categories: [],
   filter: {
