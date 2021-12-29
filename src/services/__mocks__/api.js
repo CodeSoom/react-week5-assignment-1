@@ -3,7 +3,11 @@ export async function getRestaurant({ region, category }) {
 }
 
 export async function getRegions() {
-  return [];
+  const response = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+  ];
+  return response;
 }
 
 export async function getCategories() {
