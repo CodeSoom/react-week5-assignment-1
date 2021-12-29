@@ -1,10 +1,18 @@
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import RestaurantsContainer from './RestaurantsContainer';
+
+import { restaurants } from '../fixtures/fixture';
 
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurants,
+  }));
+
   const renderRestaurantsContainer = () => render((<RestaurantsContainer />));
 
   it('sets restaurants', () => {
