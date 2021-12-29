@@ -4,6 +4,8 @@ import Regions from './Regions';
 
 import { regions } from '../__fixtures__/regions';
 
+jest.mock('react-redux');
+
 describe('Regions', () => {
   context('with regions', () => {
     it('render "region" buttons', () => {

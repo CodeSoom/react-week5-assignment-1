@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 
 import Categories from './Categories';
 
+jest.mock('react-redux');
+
 describe('Categories', () => {
   context('with categories', () => {
     it('render "category" buttons', () => {
@@ -19,6 +21,11 @@ describe('Categories', () => {
         expect(getByRole('button', { name: category.name })).toBeInTheDocument();
       });
     });
+
+    // TODO: Click 버튼
+    // 특정 버튼을 클릭할 수 있다?
+    // 특정 버튼을 클릭하면, 해당 버튼에 V 버튼이 추가된다?
+    // it('clicks the button,  ');
   });
 
   context('without categories', () => {
