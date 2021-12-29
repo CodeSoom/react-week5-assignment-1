@@ -7,8 +7,13 @@ import { TYPES } from '../actions/restaurant';
 jest.mock('react-redux');
 
 describe('RestaurantCategoriesContainer', () => {
+  const mockDispatch = jest.fn();
+
+  beforeEach(() => {
+    mockDispatch.mockClear();
+  });
+
   it('컴포넌트가 랜더링 된 후 분류를 가져옵니다.', () => {
-    const mockDispatch = jest.fn();
     useDispatch.mockImplementation(() => mockDispatch);
     useSelector.mockImplementation(() => ({ categories, selected: {} }));
 
@@ -19,7 +24,6 @@ describe('RestaurantCategoriesContainer', () => {
 
   describe('분류를 선택하면 버튼에 선택 표시가 됩니다.', () => {
     it('버튼을 선택하면 setSelectedItem이 호출됩니다.', () => {
-      const mockDispatch = jest.fn();
       const { id, name } = categories[0];
       useDispatch.mockImplementation(() => mockDispatch);
       useSelector.mockImplementation(() => ({ categories, selected: {} }));
@@ -34,7 +38,6 @@ describe('RestaurantCategoriesContainer', () => {
     });
 
     it('선택한 분류가 있다면 버튼에 선택 표시가 됩니다.', () => {
-      const mockDispatch = jest.fn();
       const { id, name } = categories[0];
       useDispatch.mockImplementation(() => mockDispatch);
       useSelector.mockImplementation(() => ({

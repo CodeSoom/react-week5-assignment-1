@@ -18,8 +18,13 @@ import {
 jest.mock('../api/restaurant');
 
 describe('restaurant actions', () => {
+  const mockDispatch = jest.fn();
+
+  beforeEach(() => {
+    mockDispatch.mockClear();
+  });
+
   it('loadRegions는 regions를 가져오는 api를 호출하고 결과값을 dispatch 한다.', async () => {
-    const mockDispatch = jest.fn();
     const thunk = loadRegions();
 
     fetchRestaurantRegions.mockImplementation(() => regions);
@@ -34,7 +39,6 @@ describe('restaurant actions', () => {
   });
 
   it('loadCategories는 categories를 가져오는 api를 호출하고 결과값을 dispatch 한다.', async () => {
-    const mockDispatch = jest.fn();
     const thunk = loadCategories();
 
     fetchRestaurantCategories.mockImplementation(() => categories);
@@ -49,7 +53,6 @@ describe('restaurant actions', () => {
   });
 
   it('loadRestaurants는 restaurants를 가져오는 api를 호출하고 결과값을 dispatch 한다.', async () => {
-    const mockDispatch = jest.fn();
     const thunk = loadRestaurants({});
 
     fetchRestaurants.mockImplementation(() => restaurants);
