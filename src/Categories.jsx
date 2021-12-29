@@ -4,12 +4,12 @@ export default function Categories({ categories }) {
   }
 
   return (
-    <ul>
-      {categories.map((category) => (
-        <button key={category.id} type="button">
-          {category.name}
+    <>
+      {categories.map(({ id, name }) => (
+        <button key={id} type="button">
+          {name}
         </button>
       ))}
-    </ul>
+    </>
   );
 }

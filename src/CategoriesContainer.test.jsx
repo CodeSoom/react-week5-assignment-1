@@ -13,7 +13,7 @@ describe('CategoriesContainer', () => {
     categories,
   }));
 
-  it('get categories', () => {
+  it('get categories, when load', () => {
     const { getByRole } = render(
       <CategoriesContainer />,
     );

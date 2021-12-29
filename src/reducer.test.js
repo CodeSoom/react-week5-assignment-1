@@ -15,7 +15,6 @@ describe('redcuer', () => {
 
       const state = reducer(previousState, setCategories(categories));
 
-      expect(state.categories).toHaveLength(categories.length);
       expect(state.categories).toEqual(categories);
     });
   });

@@ -27,7 +27,7 @@ describe('Categories', () => {
         <Categories categories={[]} />,
       );
 
-      expect(container.firstChild).not.toBeInTheDocument();
+      expect(container).toBeEmptyDOMElement();
     });
   });
 });
