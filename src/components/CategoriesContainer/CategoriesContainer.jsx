@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from '../Categories/Categories';
-import { setCategories, fetchCategories } from '../../reducer/actions';
+import { setCategory, fetchCategories } from '../../reducer/actions';
 
 export default function CategoriesContainer() {
   const categories = useSelector((store) => store.categories);
   const dispatch = useDispatch();
-  const handleLocation = (location) => {
-    dispatch(setCategories(location));
+  const handleCategory = (location) => {
+    dispatch(setCategory(location));
   };
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function CategoriesContainer() {
   return (
     <Categories
       categories={categories}
-      onClick={handleLocation}
+      onClick={handleCategory}
     />
   );
 }
