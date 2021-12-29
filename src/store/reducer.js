@@ -3,7 +3,7 @@ import {
 } from './actions';
 import { identity } from '../lib';
 
-const initialState = {
+export const initialState = {
   selected: {
     regionName: null,
     categoryId: null,
@@ -37,7 +37,7 @@ const reducers = {
   }),
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action = {}) {
   return (reducers[action.type] || identity)(state, action);
 }
 

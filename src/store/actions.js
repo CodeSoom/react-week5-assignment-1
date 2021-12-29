@@ -14,26 +14,32 @@ export function changeRegion(regionName) {
   };
 }
 
-export const changeCategory = (categoryId) => ({
-  type: CHANGE_CATEGORY,
-  payload: {
-    categoryId,
-  },
-});
+export function changeCategory(categoryId) {
+  return {
+    type: CHANGE_CATEGORY,
+    payload: {
+      categoryId,
+    },
+  };
+}
 
-export const setRegions = (regions) => ({
-  type: SET_REGIONS,
-  payload: {
-    regions,
-  },
-});
+export function setRegions(regions) {
+  return {
+    type: SET_REGIONS,
+    payload: {
+      regions,
+    },
+  };
+}
 
-export const setCategories = (categories) => ({
-  type: SET_CATEGORIES,
-  payload: {
-    categories,
-  },
-});
+export function setCategories(categories) {
+  return {
+    type: SET_CATEGORIES,
+    payload: {
+      categories,
+    },
+  };
+}
 
 export function loadRegions() {
   return async (dispatch) => {

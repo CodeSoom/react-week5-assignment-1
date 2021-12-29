@@ -1,9 +1,21 @@
 import {
   changeCategory, changeRegion, setCategories, setRegions,
 } from './actions';
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 
 describe('reducer', () => {
+  it('action 이 없다면, 초기 state 가 리턴된다.', () => {
+    const state = reducer(initialState);
+
+    expect(state).toEqual(initialState);
+  });
+
+  it('일치하는 action type 이 없다면, 기존 state 가 반환된다.', () => {
+    const state = reducer(initialState, { type: 'hello' });
+
+    expect(state).toEqual(initialState);
+  });
+
   describe('changeRegion', () => {
     it('새로운 regionName 으로 변경후, 새로운 state 를 반환한다. ', () => {
       const prevState = {
