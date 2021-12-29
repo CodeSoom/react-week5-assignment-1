@@ -2,7 +2,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { getRegions, getCategories } from '../services/__mocks__/api';
 import {
-  fetchCategories, setCategories, setLocations, fetchLocations,
+  fetchCategories, setCategories, setLocations, fetchLocations, setLocation, setCategory,
 } from './actions';
 
 import reducer, { initialState } from './reducer';
@@ -32,6 +32,20 @@ describe('reducer', () => {
 
     expect(state.categories).toHaveLength(1);
     expect(state.categories).toEqual([{ id: 1, name: '한식' }]);
+  });
+
+  test('setLocation', () => {
+    const state = reducer({ location: null, locations: [{ id: 1, name: '서울' }] }, setLocation({ id: 1, name: '서울' }));
+
+    expect(state.selected.location).toEqual({ id: 1, name: '서울' });
+    expect(state.locations).toEqual([{ id: 1, name: '서울(V)' }]);
+  });
+
+  test('setCategory', () => {
+    const state = reducer({ category: null, categories: [{ id: 1, name: '한식' }] }, setCategory({ id: 1, name: '한식' }));
+
+    expect(state.selected.category).toEqual({ id: 1, name: '한식' });
+    expect(state.categories).toEqual([{ id: 1, name: '한식(V)' }]);
   });
 
   it('fetchCategories', () => {

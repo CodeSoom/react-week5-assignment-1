@@ -9,8 +9,22 @@ export function setLocations(locations) {
 
 export function setCategories(categories) {
   return {
-    type: 'setCategory',
+    type: 'setCategories',
     payload: { categories },
+  };
+}
+
+export function setCategory(category) {
+  return {
+    type: 'setCategory',
+    payload: { category },
+  };
+}
+
+export function setLocation(location) {
+  return {
+    type: 'setLocation',
+    payload: { location },
   };
 }
 
