@@ -1,9 +1,13 @@
+import LocalList from './LocalList';
+
 export default function App() {
+  const locals = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '대전' },
+    { id: 2, name: '대구' },
+  ];
+
   return (
-    <>
-      <button type="button">서울</button>
-      <button type="button">대전</button>
-      <button type="button">대구</button>
-    </>
+    <LocalList locals={locals} />
   );
 }
