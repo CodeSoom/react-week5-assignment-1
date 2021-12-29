@@ -32,3 +32,10 @@ export const loadCategories = () => async (dispatch) => {
 
   dispatch(setCategories(categories));
 };
+
+export const setSelectedRegion = (name) => ({
+  type: 'setSelectedRegion',
+  payload: {
+    name,
+  },
+});

@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setCategories,
   setRegions,
+  setSelectedRegion,
 } from './actions';
 
 import { categories } from '../__fixtures__/categories';
@@ -12,6 +13,7 @@ describe('redcuer', () => {
   const previousState = {
     categories: [],
     regions: [],
+    selectedRegion: '',
   };
 
   describe('setCategories', () => {
@@ -27,6 +29,14 @@ describe('redcuer', () => {
       const state = reducer(previousState, setRegions(regions));
 
       expect(state.regions).toEqual(regions);
+    });
+  });
+
+  describe('set selectedRegion', () => {
+    it('changes selectedRegion', () => {
+      const state = reducer(previousState, setSelectedRegion('서울'));
+
+      expect(state.selectedRegion).toBe('서울');
     });
   });
 });
