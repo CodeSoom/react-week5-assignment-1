@@ -1,7 +1,7 @@
-import Locations from './components/Locations/Locations';
+import LocationsContainer from './components/LocationsContainer/LocationsContainer';
 
 export default function App() {
   return (
-    <Locations />
+    <LocationsContainer />
   );
 }
