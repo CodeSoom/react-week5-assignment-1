@@ -17,6 +17,5 @@ describe('App', () => {
     ));
 
     expect(queryByText('지역')).not.toBeNull();
-    expect(queryByText('서울')).toBeNull();
   });
 });

@@ -3,13 +3,18 @@ const initialState = {
   location: '',
 };
 
-export default function reducer(state = initialState, action = {}) {
-  if (action.type === 'setLocation') {
-    return {
-      ...state,
-      location: action.payload.location,
-    };
-  }
+const actions = {
+  setLocation: (state, payload) => ({
+    ...state,
+    location: payload.location,
+  }),
+};
 
-  return state;
+export default function reducer(state = initialState, action) {
+  if (!action) {
+    return state;
+  }
+  const { type, payload } = action;
+
+  return actions[type](state, payload);
 }
