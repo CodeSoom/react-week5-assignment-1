@@ -19,7 +19,7 @@ describe('CategoriesContainer', () => {
     );
 
     categories.forEach((category) => {
-      getByRole('button', { name: category.name });
+      expect(getByRole('button', { name: category.name })).toBeInTheDocument();
     });
   });
 });

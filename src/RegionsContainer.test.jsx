@@ -18,8 +18,8 @@ describe('RegionsContainer', () => {
       <RegionsContainer />,
     );
 
-    regions.forEach((category) => {
-      getByRole('button', { name: category.name });
+    regions.forEach((region) => {
+      expect(getByRole('button', { name: region.name })).toBeInTheDocument();
     });
   });
 });
