@@ -1,5 +1,9 @@
 const initialState = {
   categories: [],
+  regions: [],
+  // restaurants: []
+  // selectedCategory: '' || categoryName,
+  selectedRegion: '',
 };
 
 const defaultReducer = (state) => state;
@@ -20,6 +24,15 @@ const reducers = {
     return {
       ...state,
       regions,
+    };
+  },
+
+  setSelectedRegion: (state, action) => {
+    const { name } = action.payload;
+
+    return {
+      ...state,
+      selectedRegion: name,
     };
   },
 };
