@@ -14,6 +14,11 @@ describe('ListCreatorContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
+    restaurant: {
+      name: '모토',
+      category: '일식',
+      place: '서울',
+    },
   }));
 
   const renderListCreatorContainer = () => render((<ListCreatorContainer />));
@@ -21,9 +26,9 @@ describe('ListCreatorContainer', () => {
   it('clicks to call onClick handler with addRestaurant', () => {
     const { getByText } = renderListCreatorContainer();
 
-    expect(getByText(/등록/)).toBeInTheDocument();
+    expect(getByText('등록')).toBeInTheDocument();
 
-    fireEvent.click(getByText(/등록/));
+    fireEvent.click(getByText('등록'));
 
     expect(dispatch).toBeCalledWith({
       type: 'addRestaurant',
@@ -33,8 +38,8 @@ describe('ListCreatorContainer', () => {
   it('changes to call onChange handler with createRestaurant', () => {
     const { getByDisplayValue } = renderListCreatorContainer();
 
-    expect(getByDisplayValue(/모토/)).toBeInTheDocument();
-    expect(getByDisplayValue(/일식/)).toBeInTheDocument();
-    expect(getByDisplayValue(/서울/)).toBeInTheDocument();
+    expect(getByDisplayValue('모토')).toBeInTheDocument();
+    expect(getByDisplayValue('일식')).toBeInTheDocument();
+    expect(getByDisplayValue('서울')).toBeInTheDocument();
   });
 });

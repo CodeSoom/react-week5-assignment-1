@@ -2,10 +2,7 @@
 export default function ListCreator({ onClick }) {
   return (
     <div>
-      <button
-        type="button"
-        onClick={onClick}
-      >
+      <button type="button" onClick={onClick}>
         등록
       </button>
     </div>
