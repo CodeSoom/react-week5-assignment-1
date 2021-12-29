@@ -1,3 +1,4 @@
+// Presentational Components: 레스토랑 목록을 그려준다.
 export default function Restaurants({ restaurants }) {
   return (
     <ul>

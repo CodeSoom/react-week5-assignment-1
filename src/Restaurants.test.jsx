@@ -1,3 +1,4 @@
+// Presentational Components: 레스토랑 목록을 그려주는 것에 대한 테스트
 import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';

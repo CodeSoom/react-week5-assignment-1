@@ -1,3 +1,4 @@
+// Container Components: 레스토랑 목록을 가져오는 액션에 대한 테스트
 import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
