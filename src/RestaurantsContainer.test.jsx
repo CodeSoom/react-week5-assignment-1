@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import { restaurants } from '../fixtures/fixture';
+import restaurants from '../fixtures/fixture';
 
 jest.mock('react-redux');
 

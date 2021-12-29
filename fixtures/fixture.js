@@ -1,4 +1,4 @@
-export const restaurants = [
+const restaurants = [
   {
     id: 1,
     name: '모토쿠라시',
@@ -7,6 +7,4 @@ export const restaurants = [
   },
 ];
 
-export const xx = [
-  // xx
-];
+export default restaurants;
