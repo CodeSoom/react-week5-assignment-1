@@ -1,4 +1,4 @@
-import ApiService from './apiService';
+import ApiService from './ApiService';
 
 describe('ApiService', () => {
   const host = 'https://test.com';

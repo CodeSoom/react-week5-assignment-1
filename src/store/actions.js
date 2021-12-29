@@ -1,4 +1,4 @@
-import ApiService from '../services/api/apiService';
+import ApiService from '../services/api/ApiService';
 
 const apiService = new ApiService('https://eatgo-customer-api.ahastudio.com', console);
 
