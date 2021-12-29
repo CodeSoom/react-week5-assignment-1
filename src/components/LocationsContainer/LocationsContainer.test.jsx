@@ -10,11 +10,8 @@ describe('LocationsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
-    useDispatch.mockImplementation(() => dispatch);
-  });
-
-  afterEach(() => {
     dispatch.mockRestore();
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('컴포넌트 mount시, 지역명들을 fetch한다.', async () => {
