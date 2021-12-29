@@ -10,5 +10,6 @@ export default function reducer(state = initialState, action) {
       ...state,
       restaurants,
     };
-  } return state;
+  }
+  return state;
 }

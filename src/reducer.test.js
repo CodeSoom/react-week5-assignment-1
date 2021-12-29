@@ -4,7 +4,10 @@ import reducer from './reducer';
 
 import restaurants from '../fixtures/fixture';
 
-import { setRestaurants } from './action';
+import {
+  setRestaurants,
+  addRestaurant,
+} from './action';
 
 describe('reducer', () => {
   const dispatch = useDispatch();

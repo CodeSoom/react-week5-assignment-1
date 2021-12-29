@@ -5,14 +5,14 @@ import { useDispatch } from 'react-redux';
 import ListCreator from './ListCreator';
 
 import {
-  addRestaurants,
+  addRestaurant,
 } from './action';
 
 export default function ListCreatorContainer() {
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(addRestaurants());
+    dispatch(addRestaurant());
   }
 
   return (
