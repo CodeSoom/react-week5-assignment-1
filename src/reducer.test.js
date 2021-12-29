@@ -1,11 +1,15 @@
-import { useDispatch } from 'react-redux';
-
 import reducer from './reducer';
 
-jest.mock('react-redux');
+import restaurants from '../fixtures/fixture';
+
+import { setRestaurants } from './action';
 
 describe('reducer test', () => {
-  const dispatch = useDispatch(() => dispatch);
-  it('sets restaurants', () => {
+  it('updates state', () => {
+    const initialState = [];
+
+    const state = reducer(initialState, setRestaurants(restaurants));
+
+    expect(state.initialState).toHaveLength(1);
   });
 });
