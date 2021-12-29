@@ -16,7 +16,7 @@ describe('Regions', () => {
       />
     );
 
-  it('render', () => {
+  it('컴포넌트가 깨지지 않고 정상적으로 렌더링됩니다', () => {
     const { container } = renderComponent(REGIONS);
 
     expect(container).toHaveTextContent('서울');
@@ -31,6 +31,7 @@ describe('Regions', () => {
 
       expect(updateSelectedRegion).toBeCalled();
     });
+
     it('선택된 지역에는 V가 표시된다', () => {
       const { container } = renderComponent(REGIONS, '서울');
 

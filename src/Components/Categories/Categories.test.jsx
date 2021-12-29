@@ -16,7 +16,7 @@ describe('Categories', () => {
       />
     );
 
-  it('render', () => {
+  it('컴포넌트가 깨지지 않고 정상적으로 렌더링됩니다', () => {
     const { container } = renderComponent(CATEGORIES, '');
 
     expect(container).toHaveTextContent('한식');
@@ -28,6 +28,7 @@ describe('Categories', () => {
 
       const button = getByRole('button', { name: '한식' });
       fireEvent.click(button);
+
       expect(updateSelectedCategory).toBeCalled();
     });
 
