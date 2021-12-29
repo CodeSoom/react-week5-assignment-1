@@ -1,19 +1,12 @@
-import { useDispatch } from 'react-redux';
-
-import { setSelectedRegion } from './actions';
-
-export default function Item({ value: { name } }) {
-  const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(setSelectedRegion(name));
-  };
-
+export default function Item({ name, selected, onClick }) {
   return (
     <button
       type="button"
-      onClick={handleClick}
+      onClick={() => onClick(name)}
     >
       {name}
+      {' '}
+      {selected && 'V'}
     </button>
   );
 }
