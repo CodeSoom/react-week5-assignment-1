@@ -77,8 +77,8 @@ export function loadRestaurants() {
     }
 
     const restaurants = await fetchRestaurants({
-      regionName: getState.selected.regionName,
-      categoryId: getState.selected.categoryId,
+      regionName,
+      categoryId,
     });
 
     dispatch(setRestaurants(restaurants));
