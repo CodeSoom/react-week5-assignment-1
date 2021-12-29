@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Categories from './Categories';
+import Options from './Options';
 
 import { CATEGORIES } from '../../lib/fixtures';
 
@@ -9,10 +9,10 @@ const updateSelectedCategory = jest.fn();
 describe('Categories', () => {
   const renderComponent = (categories, selectedCategoryId) =>
     render(
-      <Categories
-        categories={categories}
-        updateSelectedCategory={updateSelectedCategory}
-        selectedCategoryId={selectedCategoryId}
+      <Options
+        selectedId={selectedCategoryId}
+        options={categories}
+        updateSelectedOption={updateSelectedCategory}
       />
     );
 
@@ -43,7 +43,7 @@ describe('Categories', () => {
     it('헬퍼메세지가 출력된다', () => {
       const { container } = renderComponent([]);
 
-      expect(container).toHaveTextContent('카테고리가 존재하지 않습니다');
+      expect(container).toHaveTextContent('정보가 존재하지 않습니다');
     });
   });
 });
