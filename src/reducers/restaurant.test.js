@@ -41,9 +41,25 @@ describe('restaurantReducer', () => {
   describe('setSelectedItem 액션은 상태의 selected를 설정합니다.', () => {
     it('regionName과 categoryId를 변경합니다.', () => {
       const selected = { regionName: 'foo', categoryId: 1 };
+
       const state = restaurantReducer(initialState, setSelectedItem(selected));
 
       expect(state.selected).toEqual(selected);
+    });
+
+    it('regionName 또는 categoryId만 변경했을 때 기존의 다른 값은 유지합니다.', () => {
+      const selected = { regionName: 'foo' };
+      const categoryId = 1;
+
+      const state = restaurantReducer(
+        {
+          ...initialState,
+          selected: { categoryId },
+        },
+        setSelectedItem(selected),
+      );
+
+      expect(state.selected).toEqual({ ...selected, categoryId });
     });
   });
 });
