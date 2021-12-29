@@ -56,4 +56,9 @@ export function loadRestaurants({ regionName, categoryId }) {
   };
 }
 
-export function setSelectedItem() {}
+export function setSelectedItem({ regionName, categoryId }) {
+  return {
+    type: TYPES.SET_SELECTED,
+    payload: { regionName, categoryId },
+  };
+}

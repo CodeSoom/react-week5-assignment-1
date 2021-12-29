@@ -29,5 +29,12 @@ export default function restaurantReducer(state = initialState, { type, payload 
     };
   }
 
+  if (type === TYPES.SET_SELECTED) {
+    return {
+      ...state,
+      selected: payload,
+    };
+  }
+
   return initialState;
 }
