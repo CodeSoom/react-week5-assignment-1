@@ -6,10 +6,10 @@ describe('Item', () => {
 
   const renderComponent = ({
     item = { name: 'test', id: 1 },
-    selectedId = 1,
+    selected = true,
   } = {}) => render(<Item
     item={item}
-    selectedId={selectedId}
+    selected={selected}
     onClick={handleClick}
   />);
 
@@ -23,8 +23,8 @@ describe('Item', () => {
     expect(container).not.toBeNull();
   });
 
-  it('selectedId 와 item 의 id 가 동일하면 "(V)" 가 표시된다.', () => {
-    const { container } = renderComponent({ item: { id: 1, name: 'test' }, selectedId: 1 });
+  it('넘겨받은 selected 가 참이라면,  "(V)" 가 표시된다.', () => {
+    const { container } = renderComponent({ item: { id: 1, name: 'test' }, selected: true });
 
     expect(container).toHaveTextContent(/(V)/);
   });

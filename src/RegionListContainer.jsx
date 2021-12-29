@@ -4,9 +4,9 @@ import Item from './Item';
 
 export default function RegionListContainer() {
   const dispatch = useDispatch();
-  const { regions, selectedRegionId } = useSelector((state) => ({
+  const { regions, selectedRegionName } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegionId: state.selected.regionId,
+    selectedRegionName: state.selected.regionName,
   }));
 
   function handleClick(id) {
@@ -20,7 +20,7 @@ export default function RegionListContainer() {
           key={region.id}
           item={region}
           onClick={() => handleClick(region.id)}
-          selectedId={selectedRegionId}
+          selected={selectedRegionName === region.name}
         />
       ))}
     </ul>

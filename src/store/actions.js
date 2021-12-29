@@ -1,10 +1,10 @@
 export const CHANGE_REGION = 'changeRegion';
 export const CHANGE_CATEGORY = 'changeCategory';
 
-export const changeRegion = (regionId) => ({
+export const changeRegion = (regionName) => ({
   type: CHANGE_REGION,
   payload: {
-    regionId,
+    regionName,
   },
 });
 

@@ -4,9 +4,9 @@ import { changeCategory } from './store/actions';
 
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
-  const { categories, selectedRegionId } = useSelector((state) => ({
+  const { categories, categoryId } = useSelector((state) => ({
     categories: state.categories,
-    selectedRegionId: state.selected.categoryId,
+    categoryId: state.selected.categoryId,
   }));
 
   function handleClick(id) {
@@ -20,7 +20,7 @@ export default function CategoryListContainer() {
           key={category.id}
           item={category}
           onClick={() => handleClick(category.id)}
-          selectedId={selectedRegionId}
+          selected={categoryId === category.id}
         />
       ))}
     </ul>

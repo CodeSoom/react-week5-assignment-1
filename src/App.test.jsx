@@ -13,7 +13,7 @@ describe('App', () => {
 
     useSelector.mockImplementation((selector) => selector({
       selected: {
-        regionId: null,
+        regionName: null,
         categoryId: null,
       },
       regions: [

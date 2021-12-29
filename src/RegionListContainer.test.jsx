@@ -16,7 +16,7 @@ describe('RegionListContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       selected: {
-        regionId: null,
+        regionName: null,
       },
       regions: [
         {

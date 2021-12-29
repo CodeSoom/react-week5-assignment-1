@@ -3,7 +3,7 @@ import { identity } from '../lib';
 
 const initialState = {
   selected: {
-    regionId: null,
+    regionName: null,
     categoryId: null,
   },
   regions: [
@@ -101,7 +101,7 @@ const reducers = {
     ...state,
     selected: {
       ...state.selected,
-      regionId: action.payload.regionId,
+      regionName: action.payload.regionName,
     },
   }),
   [CHANGE_CATEGORY]: (state, action) => ({
