@@ -1,1 +1,3 @@
-export const identity = (a) => a;
+export function identity(a) {
+  return a;
+}

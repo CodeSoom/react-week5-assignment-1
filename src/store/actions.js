@@ -1,14 +1,18 @@
+import { fetchCategories, fetchRegions } from '../services';
+
 export const CHANGE_REGION = 'changeRegion';
 export const CHANGE_CATEGORY = 'changeCategory';
 export const SET_REGIONS = 'setRegions';
 export const SET_CATEGORIES = 'setCategories';
 
-export const changeRegion = (regionName) => ({
-  type: CHANGE_REGION,
-  payload: {
-    regionName,
-  },
-});
+export function changeRegion(regionName) {
+  return {
+    type: CHANGE_REGION,
+    payload: {
+      regionName,
+    },
+  };
+}
 
 export const changeCategory = (categoryId) => ({
   type: CHANGE_CATEGORY,
@@ -30,3 +34,19 @@ export const setCategories = (categories) => ({
     categories,
   },
 });
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+
+    dispatch(setRegions(regions));
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
+  };
+}
