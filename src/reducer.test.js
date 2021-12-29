@@ -3,17 +3,20 @@ import reducer from './reducer';
 import {
   setCategories,
   setRegions,
+  setRestaurants,
   setSelectedRegion,
   setSelectedCategory,
 } from './actions';
 
 import { categories } from '../__fixtures__/categories';
 import { regions } from '../__fixtures__/regions';
+import { restaurants } from '../__fixtures__/restaurants';
 
 describe('redcuer', () => {
   const previousState = {
     categories: [],
     regions: [],
+    restaurants: [],
     selectedRegion: '',
     selectedCategory: '',
   };
@@ -47,6 +50,14 @@ describe('redcuer', () => {
       const state = reducer(previousState, setSelectedRegion('서울'));
 
       expect(state.selectedRegion).toBe('서울');
+    });
+  });
+
+  describe('set restaurants', () => {
+    it('changes restaurants', () => {
+      const state = reducer(previousState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toBe(restaurants);
     });
   });
 });
