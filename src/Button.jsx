@@ -1,7 +1,7 @@
-export default function Button({ region, onClickFunction }) {
+export default function Button({ children, onClick }) {
   return (
-    <li>
-      <input type='button' value={region} onClick={onClickFunction} />
-    </li>
+    <button type='button' onClick={onClick}>
+      {children}
+    </button>
   );
 }
