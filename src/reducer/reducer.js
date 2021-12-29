@@ -3,6 +3,7 @@ import { checkItem } from '../util';
 export const initialState = {
   locations: [],
   categories: [],
+  restaurants: [],
   selected: {
     location: null,
     category: null,
@@ -17,6 +18,10 @@ const reducers = {
   setCategories: (state, payload) => ({
     ...state,
     categories: payload.categories,
+  }),
+  setRestaurants: (state, payload) => ({
+    ...state,
+    restaurants: payload.restaurants,
   }),
   setLocation: (state, payload) => {
     const { location } = payload;

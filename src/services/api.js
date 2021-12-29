@@ -4,7 +4,7 @@ const fetching = async (url) => {
   return response.json();
 };
 
-export async function getRestaurant({ region, category }) {
+export async function getRestaurants({ region, category }) {
   const url = `${base}/restaurants?region=${region}&category=${category}`;
   const response = await fetching(url);
   return response;

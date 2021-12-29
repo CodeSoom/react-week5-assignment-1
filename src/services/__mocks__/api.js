@@ -1,5 +1,12 @@
-export async function getRestaurant({ region, category }) {
-  return [];
+export async function getRestaurant() {
+  return [
+    {
+      id: 1, categoryId: 1, name: '양천주가', address: '서울 강남구 123456', information: '양천주가 in 서울 강남구 123456',
+    },
+    {
+      id: 6, categoryId: 1, name: '한국식 초밥', address: '서울 강남구', information: '한국식 초밥 in 서울 강남구',
+    },
+  ];
 }
 
 export async function getRegions() {
