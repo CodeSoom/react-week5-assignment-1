@@ -1,7 +1,11 @@
+import CategoriesContainer from './components/CategoriesContainer/CategoriesContainer';
 import LocationsContainer from './components/LocationsContainer/LocationsContainer';
 
 export default function App() {
   return (
-    <LocationsContainer />
+    <main>
+      <LocationsContainer />
+      <CategoriesContainer />
+    </main>
   );
 }
