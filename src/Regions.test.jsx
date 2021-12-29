@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 
+import { regionsData } from './fixtures';
 import Regions from './Regions';
 
 describe('Regions', () => {
@@ -16,11 +17,10 @@ describe('Regions', () => {
 
   context('지역정보가 있으면,', () => {
     it('지역정보를 화면에 보여준다.', () => {
-      const regions = [{ id: 1, name: '서울' }, { id: 2, name: '대전' }];
-      const { getByText } = renderRegions(regions);
+      const { getByText } = renderRegions(regionsData);
 
-      expect(getByText('서울')).not.toBeNull();
-      expect(getByText('대전')).not.toBeNull();
+      expect(getByText(regionsData[0].name)).not.toBeNull();
+      expect(getByText(regionsData[1].name)).not.toBeNull();
     });
   });
 });
