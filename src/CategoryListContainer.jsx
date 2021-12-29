@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Item from './Item';
-import { changeCategory } from './store/actions';
+import { changeCategory, loadRestaurants } from './store/actions';
 
 export default function CategoryListContainer() {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ export default function CategoryListContainer() {
 
   function handleClick(id) {
     dispatch(changeCategory(id));
+    dispatch(loadRestaurants());
   }
 
   return (

@@ -84,5 +84,6 @@ describe('CategoryListContainer', () => {
     fireEvent.click(button);
 
     expect(dispatch).toBeCalledWith(changeCategory(1));
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
