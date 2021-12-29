@@ -13,14 +13,14 @@ export default function LocationContainer() {
     locations: state.locations,
   }));
 
-  function handleClick(location) {
+  function handleClickLocation(location) {
     dispatch(setLocation(location));
   }
 
   return (
     <Locations
       locations={locations}
-      onClick={handleClick}
+      onClick={handleClickLocation}
     />
   );
 }

@@ -1,3 +1,5 @@
+import { fetchLoadLoaction } from './services/api';
+
 export function setLocation(location) {
   return {
     type: 'setLocation',
@@ -6,11 +8,19 @@ export function setLocation(location) {
     },
   };
 }
-// action 추가 예정
-export function abc() {
+
+export function setLocations(locations) {
   return {
-    type: 'type',
+    type: 'setLocations',
     payload: {
+      locations,
     },
+  };
+}
+
+export function loadLocations() {
+  return async (dispatch) => {
+    const loactions = await fetchLoadLoaction();
+    dispatch(setLocations(loactions));
   };
 }

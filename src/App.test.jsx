@@ -19,12 +19,7 @@ describe('App', () => {
       <App />
     ));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setLocation',
-      payload: {
-        location: [],
-      },
-    });
+    expect(dispatch).toBeCalledTimes(1);
 
     expect(queryByText('지역')).not.toBeNull();
   });

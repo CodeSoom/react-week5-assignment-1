@@ -3,19 +3,13 @@ import { useDispatch } from 'react-redux';
 
 import LocationContainer from './LocationContainer';
 
-import { setLocation } from './action';
-
-function loadLocations({ dispatch }) {
-  const locations = [];
-
-  dispatch(setLocation(locations));
-}
+import { loadLocations } from './action';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadLocations({ dispatch });
+    dispatch(loadLocations());
   }, []);
 
   return (

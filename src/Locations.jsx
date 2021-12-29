@@ -1,13 +1,13 @@
 export default function Locations({ locations, onClick }) {
   return (
     <ul>
-      {locations.map(({ id, location }) => (
+      {locations.map(({ id, name }) => (
         <li key={id}>
           <button
             type="button"
-            onClick={() => onClick(location)}
+            onClick={() => onClick(name)}
           >
-            {location}
+            {name}
           </button>
         </li>
       ))}

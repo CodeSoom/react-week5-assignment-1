@@ -1,12 +1,12 @@
 const locations = [
   {
-    id: 1, location: '서울',
+    id: 1, name: '서울',
   },
   {
-    id: 2, location: '대전',
+    id: 2, name: '대전',
   },
   {
-    id: 3, location: '대구',
+    id: 3, name: '대구',
   },
 ];
 
