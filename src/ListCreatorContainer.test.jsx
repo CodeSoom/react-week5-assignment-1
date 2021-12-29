@@ -14,7 +14,7 @@ describe('ListCreatorContainer', () => {
 
   const renderListCreatorContainer = () => render((<ListCreatorContainer />));
 
-  it('has "등록" button', () => {
+  it('has ', () => {
     const { getByText } = renderListCreatorContainer();
 
     expect(getByText(/등록/)).toBeInTheDocument();
