@@ -15,6 +15,7 @@ describe('LocationContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     locations,
+    location: '대전',
   }));
 
   it('renders location list', () => {
@@ -38,5 +39,13 @@ describe('LocationContainer', () => {
         location: '서울',
       },
     });
+  });
+
+  it('renders "(V)" when has location in state ', () => {
+    const { getByText } = render((
+      <LocationContainer />
+    ));
+
+    expect(getByText(/(V)/)).not.toBeNull();
   });
 });
