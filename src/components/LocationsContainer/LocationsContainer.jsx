@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Locations from '../Locations/Locations';
-import { setLocations, fetchCategories } from '../../reducer/actions';
+import { setLocations, fetchLocations } from '../../reducer/actions';
 
 export default function LocationsContainer() {
   const locations = useSelector((store) => store.locations);
@@ -12,7 +12,7 @@ export default function LocationsContainer() {
   };
 
   useEffect(() => {
-    dispatch(fetchCategories());
+    dispatch(fetchLocations());
   }, []);
 
   return (
