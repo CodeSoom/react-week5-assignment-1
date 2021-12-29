@@ -1,33 +1,13 @@
-// ToDo: 두번째, 세번째 값 undefined 해결해야함~~
-export function changeNameValue(nameValue) {
+export function dd(dd) {
   return {
-    type: 'changeNameValue',
+    type: 'dd',
     payload: {
-      nameValue,
+      dd,
     },
   };
 }
 
-export function changeCategoryValue(categoryValue) {
-  return {
-    type: 'changeCategoryValue',
-    payload: {
-      categoryValue,
-    },
-  };
-}
-
-export function changePlaceValue(placeValue) {
-  return {
-    type: 'changePlaceValue',
-    payload: {
-      placeValue,
-    },
-  };
-}
-
-export function clickAdd() {
-  return {
-    type: 'clickAdd',
-  };
+// 삭제할 것
+export function xx() {
+  // xx
 }
