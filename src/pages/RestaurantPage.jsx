@@ -1,3 +1,4 @@
+import React from 'react';
 import RestaurantCategoriesContainer from '../components/RestaurantCategoriesContainer';
 import RestaurantRegionsContainer from '../components/RestaurantRegionsContainer';
 
