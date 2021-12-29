@@ -33,6 +33,19 @@ export const loadCategories = () => async (dispatch) => {
   dispatch(setCategories(categories));
 };
 
+export const setRestaurants = (restaurants) => ({
+  type: 'setRestaurants',
+  payload: {
+    restaurants,
+  },
+});
+
+export const loadRestaurants = (regionName, categoryId) => async (dispatch) => {
+  const restaurants = [];
+
+  dispatch(setRestaurants(restaurants));
+};
+
 export const setSelectedRegion = (name) => ({
   type: 'setSelectedRegion',
   payload: {
