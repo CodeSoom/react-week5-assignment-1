@@ -1,5 +1,5 @@
 import {
-  CHANGE_CATEGORY, CHANGE_REGION, SET_CATEGORIES, SET_REGIONS,
+  CHANGE_CATEGORY, CHANGE_REGION, SET_CATEGORIES, SET_REGIONS, SET_RESTAURANTS,
 } from './actions';
 import { identity } from '../lib';
 
@@ -10,6 +10,7 @@ export const initialState = {
   },
   regions: [],
   categories: [],
+  restaurants: [],
 };
 
 const reducers = {
@@ -34,6 +35,10 @@ const reducers = {
   [SET_CATEGORIES]: (state, action) => ({
     ...state,
     categories: action.payload.categories,
+  }),
+  [SET_RESTAURANTS]: (state, action) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
   }),
 };
 

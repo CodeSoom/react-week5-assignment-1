@@ -1,5 +1,5 @@
 import {
-  changeCategory, changeRegion, setCategories, setRegions,
+  changeCategory, changeRegion, setCategories, setRegions, setRestaurants,
 } from './actions';
 import reducer, { initialState } from './reducer';
 
@@ -88,6 +88,34 @@ describe('reducer', () => {
         regions: [
           { name: '서울', id: 1 },
         ],
+      });
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('새로운 가게 리스트로 변경 후, 새로운 state 를 반환한다.', () => {
+      const prevState = {
+        restaurants: [],
+      };
+
+      const action = setRestaurants([{
+        id: 6,
+        categoryId: 1,
+        name: '한국식 초밥',
+        address: '서울 강남구',
+        information: '한국식 초밥 in 서울 강남구',
+      }]);
+
+      const state = reducer(prevState, action);
+
+      expect(state).toEqual({
+        restaurants: [{
+          id: 6,
+          categoryId: 1,
+          name: '한국식 초밥',
+          address: '서울 강남구',
+          information: '한국식 초밥 in 서울 강남구',
+        }],
       });
     });
   });

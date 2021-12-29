@@ -1,9 +1,11 @@
-import { fetchCategories, fetchRegions } from '../services';
+import { fetchCategories, fetchRegions, fetchRestaurants } from '../services';
+import { isNull } from '../lib';
 
 export const CHANGE_REGION = 'changeRegion';
 export const CHANGE_CATEGORY = 'changeCategory';
 export const SET_REGIONS = 'setRegions';
 export const SET_CATEGORIES = 'setCategories';
+export const SET_RESTAURANTS = 'setRestaurants';
 
 export function changeRegion(regionName) {
   return {
@@ -41,6 +43,15 @@ export function setCategories(categories) {
   };
 }
 
+export function setRestaurants(restaurants) {
+  return {
+    type: SET_RESTAURANTS,
+    payload: {
+      restaurants,
+    },
+  };
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
@@ -54,5 +65,22 @@ export function loadCategories() {
     const categories = await fetchCategories();
 
     dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { selected: { regionName, categoryId } } = getState();
+
+    if (isNull(regionName) || isNull(categoryId)) {
+      return;
+    }
+
+    const restaurants = await fetchRestaurants({
+      regionName: getState.selected.regionName,
+      categoryId: getState.selected.categoryId,
+    });
+
+    dispatch(setRestaurants(restaurants));
   };
 }
