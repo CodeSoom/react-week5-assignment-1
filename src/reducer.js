@@ -29,8 +29,26 @@ function setRegions(state, action) {
   };
 }
 
+function setCategories(state, action) {
+  const { categories } = action.payload;
+  return {
+    ...state,
+    categories,
+  };
+}
+
+function setRestaurants(state, action) {
+  const { restaurants } = action.payload;
+  return {
+    ...state,
+    restaurants,
+  };
+}
+
 const reducer = createReducer(initialState, {
   setRegions: setRegions,
+  setCategories: setCategories,
+  setRestaurants: setRestaurants,
 });
 
 export default reducer;
