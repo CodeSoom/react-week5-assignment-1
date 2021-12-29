@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { render, fireEvent } from '@testing-library/react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -8,10 +8,13 @@ import { REGIONS } from '../../lib/fixtures';
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) =>
     selector({
       regions: REGIONS,
-      region: { id: 2, name: '수원' },
+      region: REGIONS[1],
     })
   );
 
@@ -19,5 +22,15 @@ describe('RegionsContainer', () => {
     const { container } = render(<RegionsContainer />);
 
     expect(container).toHaveTextContent('서울');
+  });
+
+  it('지역을 클릭하면 dispatch가 실행된다', () => {
+    const { getByRole } = render(<RegionsContainer />);
+
+    const button = getByRole('button', { name: '서울' });
+
+    fireEvent.click(button);
+
+    expect(dispatch).toHaveBeenCalled();
   });
 });
