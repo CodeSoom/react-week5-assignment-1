@@ -13,6 +13,6 @@ export default function SearchFilterContainer() {
   }, []);
 
   return (
-    <SearchFilter regions={regions} categories={categories} />
+    <SearchFilter options={{ regions, categories }} />
   );
 }
