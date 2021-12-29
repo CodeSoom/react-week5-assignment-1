@@ -15,16 +15,16 @@ describe('Locations', () => {
     const locations = [
       { id: 1, name: '서울' },
     ];
-    const onClick = jest.fn();
+    const handleCategory = jest.fn();
     const { getByText } = render(
       <Locations
-        onClick={onClick}
+        onClick={handleCategory}
         locations={locations}
       />,
     );
 
     fireEvent.click(getByText('서울'));
 
-    expect(onClick).toBeCalledWith({ id: 1, name: '서울' });
+    expect(handleCategory).toBeCalledWith({ id: 1, name: '서울' });
   });
 });
