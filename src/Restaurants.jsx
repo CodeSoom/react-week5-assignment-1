@@ -1,9 +1,11 @@
 export default function Restaurants({ restaurants }) {
   return (
-    <ul key={restaurants.id}>
+    <ul>
       {restaurants.map((restaurant) => (
-        <li key={restaurants.id}>
-          {restaurant.name}
+        <li key={restaurant.id}>
+          {`${restaurant.name}
+           | ${restaurant.category}
+            | ${restaurant.place}`}
         </li>
       ))}
     </ul>
