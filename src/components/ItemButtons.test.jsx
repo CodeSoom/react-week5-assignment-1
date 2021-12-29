@@ -28,4 +28,13 @@ describe('ItemButtons', () => {
 
     expect(mockOnClick).toBeCalledWith(expect.objectContaining({ id, name }));
   });
+
+  describe('selected 속성에 name 또는 id를 전달하면 버튼에 선택 표시가 됩니다.', () => {
+    it('name을 전달한 경우', () => {
+      const { name } = regions[0];
+      const { queryByRole } = render(<ItemButtons items={regions} selected={name} />);
+
+      expect(queryByRole('button', { name: new RegExp(name) })).toHaveTextContent(/V/);
+    });
+  });
 });
