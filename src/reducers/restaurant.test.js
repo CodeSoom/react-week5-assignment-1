@@ -1,4 +1,9 @@
-import { setCategories, setRegions, setRestaurants } from '../actions/restaurant';
+import {
+  setCategories,
+  setRegions,
+  setRestaurants,
+  setSelectedItem,
+} from '../actions/restaurant';
 import restaurantReducer, { initialState } from './restaurant';
 import { categories, regions, restaurants } from '../../fixtures/restaurant';
 
@@ -31,5 +36,14 @@ describe('restaurantReducer', () => {
     const state = restaurantReducer(initialState, setRestaurants(restaurants));
 
     expect(state.restaurants).toEqual(restaurants);
+  });
+
+  describe('setSelectedItem 액션은 상태의 selected를 설정합니다.', () => {
+    it('regionName과 categoryId를 변경합니다.', () => {
+      const selected = { regionName: 'foo', categoryId: 1 };
+      const state = restaurantReducer(initialState, setSelectedItem(selected));
+
+      expect(state.selected).toEqual(selected);
+    });
   });
 });

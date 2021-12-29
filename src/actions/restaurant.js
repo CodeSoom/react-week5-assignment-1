@@ -8,6 +8,7 @@ export const TYPES = {
   SET_REGIONS: 'SET_REGIONS',
   SET_CATEGORIES: 'SET_CATEGORIES',
   SET_RESTAURANTS: 'SET_RESTAURANTS',
+  SET_SELECTED: 'SET_SELECTED',
 };
 
 export function setRegions(regions) {
@@ -54,3 +55,5 @@ export function loadRestaurants({ regionName, categoryId }) {
     dispatch(setRestaurants(restaurants));
   };
 }
+
+export function setSelectedItem() {}

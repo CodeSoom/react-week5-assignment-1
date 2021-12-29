@@ -1,6 +1,7 @@
 import { TYPES } from '../actions/restaurant';
 
 export const initialState = {
+  selected: {},
   regions: [],
   categories: [],
   restaurants: [],
