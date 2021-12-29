@@ -18,6 +18,15 @@ const reducers = {
     };
   },
 
+  setSelectedCategory: (state, action) => {
+    const { name } = action.payload;
+
+    return {
+      ...state,
+      selectedCategory: name,
+    };
+  },
+
   setRegions: (state, action) => {
     const { regions } = action.payload;
 
