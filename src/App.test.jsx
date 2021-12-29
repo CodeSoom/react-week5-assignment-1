@@ -10,6 +10,6 @@ describe('App', () => {
   it('sets restaurants', () => {
     const { container } = renderApp();
 
-    expect(container).toHaveTextContent('모토쿠라시');
+    expect(container).toHaveTextContent('Restaurants');
   });
 });
