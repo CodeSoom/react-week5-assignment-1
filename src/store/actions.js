@@ -1,6 +1,7 @@
 export const ACTION_TYPES = {
   SET_REGIONS: 'SET_REGIONS',
   SET_CATEGORIES: 'SET_CATEGORIES',
+  SET_FILTER: 'SET_FILTER',
 };
 
 export function setRegions(regions) {
@@ -30,5 +31,12 @@ export function fetchCategories() {
     const response = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
     const categories = await response.json();
     dispatch(setCategories(categories));
+  };
+}
+
+export function setFilter({ region, category }) {
+  return {
+    type: ACTION_TYPES.SET_FILTER,
+    payload: { region, category },
   };
 }

@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchRegions, fetchCategories } from '../../store/actions';
+import { fetchRegions, fetchCategories, setFilter } from '../../store/actions';
 import SearchFilter from './SearchFilter';
 
 export default function SearchFilterContainer() {
-  const { regions, categories } = useSelector((state) => state);
+  const {
+    regions, categories, filter,
+  } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,6 +15,10 @@ export default function SearchFilterContainer() {
   }, []);
 
   return (
-    <SearchFilter options={{ regions, categories }} />
+    <SearchFilter
+      options={{ regions, categories }}
+      value={filter}
+      onChange={({ region, category }) => dispatch(setFilter({ region, category }))}
+    />
   );
 }
