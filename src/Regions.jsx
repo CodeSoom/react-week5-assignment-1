@@ -8,6 +8,14 @@ export default function Regions({ regions }) {
   }
 
   return (
-    <ul />
+    <ul>
+      {regions.map((region) => {
+        const { id, name } = region;
+
+        return (
+          <li key={id}>{name}</li>
+        );
+      })}
+    </ul>
   );
 }
