@@ -1,16 +1,18 @@
 import Item from './Item';
 
-export default function Regions({ regions }) {
+export default function Regions({ regions, selectedRegion, onClick }) {
   if (!regions.length) {
     return null;
   }
 
   return (
     <>
-      {regions.map((region) => (
+      {regions.map(({ id, name }) => (
         <Item
-          key={region.id}
-          value={region}
+          key={id}
+          name={name}
+          selected={name === selectedRegion}
+          onClick={onClick}
         />
       ))}
     </>
