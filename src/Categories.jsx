@@ -1,3 +1,5 @@
+import Item from './Item';
+
 export default function Categories({ categories }) {
   if (!categories.length) {
     return null;
@@ -5,10 +7,11 @@ export default function Categories({ categories }) {
 
   return (
     <>
-      {categories.map(({ id, name }) => (
-        <button key={id} type="button">
-          {name}
-        </button>
+      {categories.map((category) => (
+        <Item
+          key={category.id}
+          value={category}
+        />
       ))}
     </>
   );

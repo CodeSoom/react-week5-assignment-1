@@ -1,6 +1,6 @@
-export default function Item({ value: { id, name } }) {
+export default function Item({ value: { name } }) {
   return (
-    <button key={id} type="button">
+    <button type="button">
       {name}
     </button>
   );
