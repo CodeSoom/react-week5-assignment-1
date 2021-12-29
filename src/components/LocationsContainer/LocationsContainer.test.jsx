@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import LocationsContainer from './LocationsContainer';
-import { setLocations } from '../../reducer/actions';
+import { setLocation } from '../../reducer/actions';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
@@ -35,6 +35,6 @@ describe('LocationsContainer', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(dispatch).toBeCalledWith(setLocations({ id: 1, name: '서울' }));
+    expect(dispatch).toBeCalledWith(setLocation({ id: 1, name: '서울' }));
   });
 });

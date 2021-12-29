@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
-import { setCategories } from '../../reducer/actions';
+import { setCategory } from '../../reducer/actions';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
@@ -36,6 +36,6 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setCategories({ id: 1, name: '한식' }));
+    expect(dispatch).toBeCalledWith(setCategory({ id: 1, name: '한식' }));
   });
 });
