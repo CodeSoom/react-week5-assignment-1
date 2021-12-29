@@ -2,14 +2,14 @@ export default function SearchFilter({ options: { regions, categories }, value =
   const handleChangeRegion = ({ target: { value: newRegion } }) => {
     onChange({
       ...value,
-      region: newRegion,
+      region: Number(newRegion),
     });
   };
 
   const handleChangeCategory = ({ target: { value: newCategory } }) => {
     onChange({
       ...value,
-      category: newCategory,
+      category: Number(newCategory),
     });
   };
 
@@ -19,7 +19,7 @@ export default function SearchFilter({ options: { regions, categories }, value =
         <label htmlFor="region">지역</label>
         <select id="region" value={value.region} onChange={handleChangeRegion}>
           {regions.map(({ id, name }) => (
-            <option key={id} value={name}>{name}</option>
+            <option key={id} value={id}>{name}</option>
           ))}
         </select>
       </div>
@@ -28,7 +28,7 @@ export default function SearchFilter({ options: { regions, categories }, value =
         <label htmlFor="category">분류</label>
         <select id="category" value={value.category} onChange={handleChangeCategory}>
           {categories.map(({ id, name }) => (
-            <option key={id} value={name}>{name}</option>
+            <option key={id} value={id}>{name}</option>
           ))}
         </select>
       </div>

@@ -8,13 +8,12 @@ jest.mock('react-redux');
 
 describe('SearchFilterContainer', () => {
   const dispatch = jest.fn();
+  const regions = [{ id: 1, name: '서울' }, { id: 2, name: '경기' }];
+  const categories = [{ id: 1, name: '한식' }, { id: 2, name: '중식' }];
   useSelector.mockImplementation((selector) => selector({
-    regions: [{ id: 1, name: '서울' }, { id: 2, name: '경기' }],
-    categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
-    filter: {
-      region: '서울',
-      category: '한식',
-    },
+    regions,
+    categories,
+    filter: { region: 1, category: 1 },
   }));
 
   beforeEach(() => {
@@ -37,10 +36,14 @@ describe('SearchFilterContainer', () => {
   });
 
   it('renders selected option value', () => {
-    const { getByLabelText } = render(<SearchFilterContainer value={{ region: '경기', category: '중식' }} />);
+    const { getByLabelText } = render(
+      <SearchFilterContainer
+        value={{ region: regions[1].id, category: categories[1].id }}
+      />,
+    );
 
-    expect(getByLabelText('지역')).toHaveValue('서울');
-    expect(getByLabelText('분류')).toHaveValue('한식');
+    expect(Number(getByLabelText('지역').value)).toBe(regions[0].id);
+    expect(Number(getByLabelText('분류').value)).toBe(categories[0].id);
   });
 
   context('when the component did mounted', () => {
@@ -53,16 +56,21 @@ describe('SearchFilterContainer', () => {
   context('when region is changed', () => {
     it('calls dispatch with setFilter', () => {
       const { getByLabelText } = render(<SearchFilterContainer />);
-      fireEvent.change(getByLabelText('지역'), { target: { value: '경기' } });
-      expect(dispatch).toBeCalledWith(setFilter({ region: '경기', category: '한식' }));
+      fireEvent.change(getByLabelText('지역'), { target: { value: regions[1].id } });
+      expect(dispatch).toBeCalledWith(setFilter({
+        region: regions[1].id,
+        category: categories[0].id,
+      }));
     });
   });
 
   context('when category is changed', () => {
     it('calls dispatch with setFilter', () => {
       const { getByLabelText } = render(<SearchFilterContainer />);
-      fireEvent.change(getByLabelText('분류'), { target: { value: '중식' } });
-      expect(dispatch).toBeCalledWith(setFilter({ region: '서울', category: '중식' }));
+      fireEvent.change(getByLabelText('분류'), { target: { value: categories[1].id } });
+      expect(dispatch).toBeCalledWith(setFilter({
+        region: regions[0].id, category: categories[1].id,
+      }));
     });
   });
 });

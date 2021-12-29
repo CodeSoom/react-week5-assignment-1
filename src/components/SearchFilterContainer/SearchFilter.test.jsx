@@ -2,6 +2,9 @@ import { fireEvent, render } from '@testing-library/react';
 
 import SearchFilter from './SearchFilter';
 
+const regions = [{ id: 1, name: '서울' }, { id: 2, name: '경기' }];
+const categories = [{ id: 1, name: '한식' }, { id: 2, name: '중식' }];
+
 describe('SearchFilter', () => {
   const handleChange = jest.fn();
   let renderComponent;
@@ -21,66 +24,65 @@ describe('SearchFilter', () => {
     });
 
     expect(getByLabelText('지역')).toBeInTheDocument();
-    expect(getByRole('option', { value: '서울' })).toBeInTheDocument();
+    expect(getByRole('option', { name: '서울' })).toBeInTheDocument();
   });
 
   it('renders categories', () => {
-    const categories = [{ id: 1, name: '한식' }];
-    const { getByLabelText, getByRole } = renderComponent({ options: { regions: [], categories } });
+    const {
+      getByLabelText,
+      getByRole,
+    } = renderComponent({ options: { regions, categories } });
 
     expect(getByLabelText('분류')).toBeInTheDocument();
-    expect(getByRole('option', { value: '한식' })).toBeInTheDocument();
+    expect(getByRole('option', { name: '한식' })).toBeInTheDocument();
   });
 
   it('renders selected option value', () => {
     const { getByLabelText } = renderComponent({
       options: {
-        regions: [{ id: 1, name: '서울' }, { id: 2, name: '경기' }],
-        categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
+        regions,
+        categories,
       },
       value: {
-        region: '경기',
-        category: '중식',
+        region: regions[1].id,
+        category: categories[1].id,
       },
     });
 
-    expect(getByLabelText('지역')).toHaveValue('경기');
-    expect(getByLabelText('분류')).toHaveValue('중식');
+    expect(Number(getByLabelText('지역').value)).toBe(regions[1].id);
+    expect(Number(getByLabelText('분류').value)).toBe(categories[1].id);
   });
 
   context('when region is changed', () => {
     it('calls onChange', () => {
       const { getByLabelText } = renderComponent({
         options: {
-          regions: [{ id: 1, name: '서울' }, { id: 2, name: '경기' }],
-          categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
+          regions,
+          categories,
         },
         value: {
-          region: '서울',
-          category: '한식',
+          region: regions[0].id,
+          category: categories[0].id,
         },
       });
 
-      fireEvent.change(getByLabelText('지역'), { target: { value: '경기' } });
-      expect(handleChange).toBeCalledWith({ region: '경기', category: '한식' });
+      fireEvent.change(getByLabelText('지역'), { target: { value: regions[1].id } });
+      expect(handleChange).toBeCalledWith({ region: regions[1].id, category: categories[0].id });
     });
   });
 
   context('when category is changed', () => {
     it('calls onChange', () => {
       const { getByLabelText } = renderComponent({
-        options: {
-          regions: [{ id: 1, name: '서울' }, { id: 2, name: '경기' }],
-          categories: [{ id: 1, name: '한식' }, { id: 2, name: '중식' }],
-        },
+        options: { regions, categories },
         value: {
-          region: '서울',
-          category: '한식',
+          region: regions[0].id,
+          category: categories[0].id,
         },
       });
 
-      fireEvent.change(getByLabelText('분류'), { target: { value: '중식' } });
-      expect(handleChange).toBeCalledWith({ region: '서울', category: '중식' });
+      fireEvent.change(getByLabelText('분류'), { target: { value: categories[1].id } });
+      expect(handleChange).toBeCalledWith({ region: regions[0].id, category: categories[1].id });
     });
   });
 });

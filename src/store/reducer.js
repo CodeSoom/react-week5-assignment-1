@@ -31,6 +31,12 @@ export default function reducer(state = initialState, action) {
       },
     };
   }
+  if (action.type === ACTION_TYPES.SET_RESTAURANTS) {
+    return {
+      ...state,
+      restaurants: action.payload.restaurants,
+    };
+  }
 
   return state;
 }
