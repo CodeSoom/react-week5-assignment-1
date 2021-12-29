@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { changeRegion } from './store/actions';
 import Item from './Item';
 
@@ -11,6 +12,10 @@ export default function RegionListContainer() {
 
   function handleClick(id) {
     dispatch(changeRegion(id));
+  }
+
+  if (!regions || !regions.length) {
+    return <></>;
   }
 
   return (

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import Item from './Item';
 import { changeCategory } from './store/actions';
 import { loadRestaurants } from './store/asyncActions';
@@ -13,6 +14,10 @@ export default function CategoryListContainer() {
   function handleClick(id) {
     dispatch(changeCategory(id));
     dispatch(loadRestaurants());
+  }
+
+  if (!categories || !categories.length) {
+    return <></>;
   }
 
   return (
