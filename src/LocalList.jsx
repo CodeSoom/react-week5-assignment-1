@@ -1,10 +1,12 @@
-export default function LocalList({ locals }) {
+export default function LocalList({ locals, onClick }) {
   return (
     <ul>
       {
         locals.map(({ id, name }) => (
           <li key={id}>
-            <button type="button">{name}</button>
+            <button type="button" onClick={onClick}>
+              {name}
+            </button>
           </li>
         ))
       }
