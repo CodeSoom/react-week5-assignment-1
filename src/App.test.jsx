@@ -5,6 +5,7 @@ import App from './App';
 
 import { categories } from '../__fixtures__/categories';
 import { regions } from '../__fixtures__/regions';
+import { restaurants } from '../__fixtures__/restaurants';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -15,6 +16,9 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
+    restaurants,
+    selectedRegion: '',
+    selectedCategory: '',
   }));
 
   context('when load', () => {
@@ -26,7 +30,7 @@ describe('App', () => {
     });
 
     it('render regions and categories', () => {
-      const { getByRole } = render(<App />);
+      const { getByRole, getByText } = render(<App />);
 
       regions.forEach((region) => {
         expect(getByRole('button', { name: region.name })).toBeInTheDocument();
@@ -35,8 +39,10 @@ describe('App', () => {
       categories.forEach((category) => {
         expect(getByRole('button', { name: category.name })).toBeInTheDocument();
       });
-    });
 
-    // TODO: render restaurants
+      restaurants.forEach((restaurant) => {
+        expect(getByText(restaurant.name)).toBeInTheDocument();
+      });
+    });
   });
 });
