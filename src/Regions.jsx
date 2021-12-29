@@ -7,11 +7,11 @@ export default function Regions({ regions, selectedRegion, onClick }) {
 
   return (
     <>
-      {regions.map(({ id, name }) => (
+      {regions.map((region) => (
         <Item
-          key={id}
-          name={name}
-          selected={name === selectedRegion}
+          key={region.id}
+          value={region}
+          selected={region.name === selectedRegion?.name}
           onClick={onClick}
         />
       ))}

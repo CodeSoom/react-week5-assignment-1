@@ -7,11 +7,11 @@ export default function Categories({ categories, selectedCategory, onClick }) {
 
   return (
     <>
-      {categories.map(({ id, name }) => (
+      {categories.map((category) => (
         <Item
-          key={id}
-          name={name}
-          selected={name === selectedCategory}
+          key={category.id}
+          value={category}
+          selected={category.name === selectedCategory?.name}
           onClick={onClick}
         />
       ))}

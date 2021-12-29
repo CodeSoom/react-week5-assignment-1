@@ -27,7 +27,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  it('calls click handler, calls "setSelectedRegion dispatch" with regionName', () => {
+  it('calls click handler, calls "setSelectedRegion dispatch" with the clicked region', () => {
     const { getByRole } = render(
       <RegionsContainer />,
     );
@@ -35,6 +35,6 @@ describe('RegionsContainer', () => {
 
     fireEvent.click((getByRole('button', { name: clickedButton.name })));
 
-    expect(dispatch).toBeCalledWith(setSelectedRegion(clickedButton.name));
+    expect(dispatch).toBeCalledWith(setSelectedRegion(clickedButton));
   });
 });

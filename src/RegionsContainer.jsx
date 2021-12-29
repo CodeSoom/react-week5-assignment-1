@@ -8,8 +8,8 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
   const { regions, selectedRegion } = useSelector((state) => state);
 
-  const handleChangeSelectedRegion = (regionName) => {
-    dispatch(setSelectedRegion(regionName));
+  const handleChangeSelectedRegion = (region) => {
+    dispatch(setSelectedRegion(region));
   };
 
   return (

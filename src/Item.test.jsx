@@ -5,9 +5,14 @@ import Item from './Item';
 describe('Item', () => {
   const handleClick = jest.fn();
 
-  const renderComponent = ({ name, selected }) => render(
+  const value = {
+    id: 1,
+    name: '서울',
+  };
+
+  const renderComponent = (selected) => render(
     <Item
-      name={name}
+      value={value}
       selected={selected}
       onClick={handleClick}
     />,
@@ -18,22 +23,22 @@ describe('Item', () => {
   });
 
   it('renders button', () => {
-    const { getByRole } = renderComponent({ name: '서울', selected: false });
+    const { getByRole } = renderComponent(false);
 
-    expect(getByRole('button', { name: '서울' })).toBeInTheDocument();
+    expect(getByRole('button', { name: value.name })).toBeInTheDocument();
   });
 
   it('clicks button, calls handleClick hanlder', () => {
-    const { getByRole } = renderComponent({ name: '서울', selected: false });
+    const { getByRole } = renderComponent(false);
 
-    fireEvent.click(getByRole('button', { name: '서울' }));
+    fireEvent.click(getByRole('button', { name: value.name }));
 
-    expect(handleClick).toBeCalledWith('서울');
+    expect(handleClick).toBeCalledWith(value);
   });
 
   it('selected button, render button with name and V', () => {
-    const { getByRole } = renderComponent({ name: '서울', selected: true });
+    const { getByRole } = renderComponent(true);
 
-    expect(getByRole('button', { name: '서울 V' })).toBeInTheDocument();
+    expect(getByRole('button', { name: `${value.name} V` })).toBeInTheDocument();
   });
 });

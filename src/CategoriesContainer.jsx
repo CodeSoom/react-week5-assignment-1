@@ -8,8 +8,8 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
   const { categories, selectedCategory } = useSelector((state) => state);
 
-  const handleChangeSelectedCategory = (categoryName) => {
-    dispatch(setSelectedCategory(categoryName));
+  const handleChangeSelectedCategory = (category) => {
+    dispatch(setSelectedCategory(category));
   };
 
   return (

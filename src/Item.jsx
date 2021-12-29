@@ -1,8 +1,10 @@
-export default function Item({ name, selected, onClick }) {
+export default function Item({ value, selected, onClick }) {
+  const { name } = value;
+
   return (
     <button
       type="button"
-      onClick={() => onClick(name)}
+      onClick={() => onClick(value)}
     >
       {name}
       {' '}
