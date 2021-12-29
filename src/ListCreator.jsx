@@ -4,18 +4,21 @@ export default function ListCreator({ restaurant, onClick }) {
     <div>
       <input
         value={restaurant.name}
+        onChange={() => { }}
         name="name"
         type="text"
         placeholder="이름"
       />
       <input
         value={restaurant.category}
+        onChange={() => { }}
         name="category"
         type="text"
         placeholder="분류"
       />
       <input
         value={restaurant.place}
+        onChange={() => { }}
         name="place"
         type="text"
         placeholder="주소"
