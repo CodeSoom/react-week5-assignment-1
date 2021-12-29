@@ -1,8 +1,14 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { getRegions, getCategories } from '../services/__mocks__/api';
+import { getRegions, getCategories, getRestaurants } from '../services/__mocks__/api';
 import {
-  fetchCategories, setCategories, setLocations, fetchLocations, setLocation, setCategory,
+  fetchCategories,
+  setCategories,
+  setLocations,
+  fetchLocations,
+  setLocation,
+  setCategory,
+  fetchRestaurants,
 } from './actions';
 
 import reducer, { initialState } from './reducer';
@@ -64,6 +70,15 @@ describe('reducer', () => {
       .then(async () => {
         const actions = getActions();
         const mockData = await getRegions();
+        expect(actions[0]).toEqual(setLocations(mockData));
+      });
+  });
+
+  it('fetchRestaurants', () => {
+    dispatch(fetchRestaurants())
+      .then(async () => {
+        const actions = getActions();
+        const mockData = await getRestaurants();
         expect(actions[0]).toEqual(setLocations(mockData));
       });
   });
