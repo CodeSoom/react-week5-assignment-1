@@ -30,9 +30,14 @@ export default function restaurantReducer(state = initialState, { type, payload 
   }
 
   if (type === TYPES.SET_SELECTED) {
+    const prevSelected = state.selected || {};
+    const { regionName, categoryId } = payload || {};
     return {
       ...state,
-      selected: payload,
+      selected: {
+        regionName: regionName !== undefined ? regionName : prevSelected.regionName,
+        categoryId: categoryId !== undefined ? categoryId : prevSelected.categoryId,
+      },
     };
   }
 
