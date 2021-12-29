@@ -87,6 +87,6 @@ describe('RegionListContainer', () => {
     const button = getByRole('button', { name: /서울/ });
     fireEvent.click(button);
 
-    expect(dispatch).toBeCalledWith(changeRegion(1));
+    expect(dispatch).toBeCalledWith(changeRegion('서울'));
   });
 });

@@ -19,7 +19,7 @@ export default function RegionListContainer() {
         <Item
           key={region.id}
           item={region}
-          onClick={() => handleClick(region.id)}
+          onClick={() => handleClick(region.name)}
           selected={selectedRegionName === region.name}
         />
       ))}
