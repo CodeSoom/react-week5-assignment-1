@@ -1,8 +1,10 @@
 import { render } from "@testing-library/react";
 
-test('App', () => {
+import App from './App';
+
+describe('App', () => {
   // 1. 지역목록을 보여준다!
-  it('show region list', () => {
+  test('show region list', () => {
     const { getByText } = render((
       <App />
     ));
@@ -10,7 +12,7 @@ test('App', () => {
     expect(getByText(/대전/)).not.toBeNull();
   });
   // 2. 카테고리를 보여준다!
-  it('show category list', () => {
+  test('show category list', () => {
     const { getByText } = render((
       <App />
     ));
