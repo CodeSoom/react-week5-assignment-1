@@ -18,8 +18,13 @@ describe('Regions', () => {
       });
     });
 
-    // TODO: 버튼을 클릭하면 해당 버튼 선택 표시 및 상태 저장? (근데 여기서 상태 저장 체크는 아님)
-    // 버튼 선택 된 것 확인은 여기서? 아니면 다른 곳에서 처리해야하나?
+    it('selected button, render region name with (V) ', () => {
+      const { getByText } = render(
+        <Regions regions={regions} selectedRegion={regions[0]} />,
+      );
+
+      expect(getByText(`${regions[0].name}(V)`)).toBeInTheDocument();
+    });
   });
 
   context('without regions', () => {
