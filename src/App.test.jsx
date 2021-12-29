@@ -1,4 +1,4 @@
-import { render } from 'react-dom/cjs/react-dom.development';
+import { render } from '@testing-library/react';
 
 import App from './App';
 
@@ -10,8 +10,8 @@ describe('App', () => {
   const renderApp = () => render((<App />));
 
   it('sets restaurants', () => {
-    const { getByText } = renderApp();
+    const { container } = renderApp();
 
-    expect(getByText(/레스토랑/)).toBeInTheDocument();
+    expect(container).toHaveTextContent('레스토랑');
   });
 });
