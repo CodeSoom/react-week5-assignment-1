@@ -1,6 +1,6 @@
 export const initialState = {
   locations: [],
-  categories: null,
+  categories: [],
 };
 
 const reducers = {

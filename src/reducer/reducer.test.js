@@ -5,7 +5,7 @@ import {
   fetchCategories, setCategories, setLocations, fetchLocations,
 } from './actions';
 
-import { initialState } from './reducer';
+import reducer, { initialState } from './reducer';
 
 jest.mock('react-redux');
 jest.mock('../services/api');
@@ -18,6 +18,20 @@ describe('reducer', () => {
 
   afterEach(() => {
     clearActions();
+  });
+
+  test('setLocations', () => {
+    const state = reducer({ locations: [] }, setLocations([{ id: 1, name: '서울' }]));
+
+    expect(state.locations).toHaveLength(1);
+    expect(state.locations).toEqual([{ id: 1, name: '서울' }]);
+  });
+
+  test('setCategories', () => {
+    const state = reducer({ categories: [] }, setCategories([{ id: 1, name: '한식' }]));
+
+    expect(state.categories).toHaveLength(1);
+    expect(state.categories).toEqual([{ id: 1, name: '한식' }]);
   });
 
   it('fetchCategories', () => {

@@ -7,10 +7,10 @@ export function setLocations(locations) {
   };
 }
 
-export function setCategories(category) {
+export function setCategories(categories) {
   return {
     type: 'setCategory',
-    payload: { category },
+    payload: { categories },
   };
 }
 
