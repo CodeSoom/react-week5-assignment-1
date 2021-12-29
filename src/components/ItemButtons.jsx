@@ -1,4 +1,4 @@
-export default function ItemButtons({ items = [], onClick }) {
+export default function ItemButtons({ items = [], onClick, selected }) {
   return (
     <ul>
       {items.map(({ id, name }) => (
@@ -7,7 +7,10 @@ export default function ItemButtons({ items = [], onClick }) {
             type="button"
             onClick={() => onClick({ id, name })}
           >
-            {name}
+            <span>
+              {name}
+              {selected && (selected === id || selected === name) ? '(V)' : ''}
+            </span>
           </button>
         </li>
       ))}

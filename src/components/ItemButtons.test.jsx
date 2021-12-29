@@ -36,5 +36,12 @@ describe('ItemButtons', () => {
 
       expect(queryByRole('button', { name: new RegExp(name) })).toHaveTextContent(/V/);
     });
+
+    it('id를 전달한 경우', () => {
+      const { id, name } = regions[0];
+      const { queryByRole } = render(<ItemButtons items={regions} selected={id} />);
+
+      expect(queryByRole('button', { name: new RegExp(name) })).toHaveTextContent(/V/);
+    });
   });
 });
