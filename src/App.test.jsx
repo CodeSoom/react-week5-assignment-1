@@ -13,9 +13,12 @@ describe('App', () => {
     categories: [],
   }));
 
-  it('set categories, when load', () => {
-    render(<App />);
+  context('when load', () => {
+    it('set regions and categories', () => {
+      render(<App />);
 
-    expect(dispatch).toBeCalled();
+      // expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledTimes(2);
+    });
   });
 });
