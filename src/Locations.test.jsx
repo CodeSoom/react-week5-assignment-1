@@ -18,6 +18,7 @@ describe('Locations', () => {
     const handleClick = jest.fn();
     const { getByText } = render((
       <Locations
+        location=""
         locations={locations}
         onClick={handleClick}
       />
@@ -25,6 +26,6 @@ describe('Locations', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(handleClick).toBeCalled();
+    expect(handleClick).toBeCalledWith('서울');
   });
 });

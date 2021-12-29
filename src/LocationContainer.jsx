@@ -9,16 +9,18 @@ import {
 export default function LocationContainer() {
   const dispatch = useDispatch();
 
-  const { locations } = useSelector((state) => ({
+  const { location, locations } = useSelector((state) => ({
+    location: state.location,
     locations: state.locations,
   }));
 
-  function handleClickLocation(location) {
-    dispatch(setLocation(location));
+  function handleClickLocation(clickedLocation) {
+    dispatch(setLocation(clickedLocation));
   }
 
   return (
     <Locations
+      location={location}
       locations={locations}
       onClick={handleClickLocation}
     />
