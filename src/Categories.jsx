@@ -1,5 +1,7 @@
 export default function Categories({
   categories,
+  activeId,
+  onClick,
 }) {
   if (categories.length === 0) {
     return (
@@ -15,7 +17,12 @@ export default function Categories({
         const { id, name } = category;
 
         return (
-          <li key={id}>{name}</li>
+          <li key={id}>
+            <button type="button" onClick={onClick}>
+              {name}
+              {activeId === id && '(V)'}
+            </button>
+          </li>
         );
       })}
     </ul>
