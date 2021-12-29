@@ -15,5 +15,4 @@ describe('Button', () => {
     fireEvent.click(getByText('대전'));
     expect(onClickFunction).toBeCalled();
   });
-  // 카테고리도 똑같으니까 나중에.
 });
