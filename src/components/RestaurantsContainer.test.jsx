@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
-import RestaurantContainer from './RestaurantsContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 import { restaurants } from '../../fixtures/restaurant';
 
 jest.mock('react-redux');
 
-describe('RestaurantContainer', () => {
+describe('RestaurantsContainer', () => {
   it('restaurants가 존재한다면 레스토랑 리스트를 보여줍니다.', () => {
     useSelector.mockImplementation(() => ({ restaurants, selected: {} }));
 
-    const { queryAllByRole } = render(<RestaurantContainer />);
+    const { queryAllByRole } = render(<RestaurantsContainer />);
 
     expect(queryAllByRole('listitem')).toHaveLength(restaurants.length);
   });
@@ -25,7 +25,7 @@ describe('RestaurantContainer', () => {
         },
       }));
 
-      render(<RestaurantContainer />);
+      render(<RestaurantsContainer />);
 
       expect(mockDispatch).toBeCalledTimes(1);
     });
@@ -39,7 +39,7 @@ describe('RestaurantContainer', () => {
         },
       }));
 
-      render(<RestaurantContainer />);
+      render(<RestaurantsContainer />);
 
       expect(mockDispatch).toBeCalledTimes(0);
     });
