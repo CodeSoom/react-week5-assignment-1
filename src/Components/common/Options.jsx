@@ -1,6 +1,6 @@
 export default function Options({ options, selectedId, updateSelectedOption }) {
-  const handleClickButton = (id) => {
-    updateSelectedOption(id);
+  const handleClickButton = (id, name) => {
+    updateSelectedOption({ id, name });
   };
 
   if (!options || options.length === 0) {
@@ -14,7 +14,7 @@ export default function Options({ options, selectedId, updateSelectedOption }) {
           <button
             type="button"
             name={name}
-            onClick={() => handleClickButton(id)}
+            onClick={() => handleClickButton(id, name)}
           >
             {`${name}${selectedId === id ? '(V)' : ''}`}
           </button>

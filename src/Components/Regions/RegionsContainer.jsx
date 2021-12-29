@@ -6,9 +6,9 @@ import Options from '../common/Options';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
-  const { selectedRegion, regions } = useSelector((state) => ({
+  const { selectedRegionId, regions } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegion: state.region,
+    selectedRegionId: state.region.id,
   }));
 
   const updateSelectedRegion = (region) => {
@@ -17,9 +17,9 @@ export default function RegionsContainer() {
 
   return (
     <Options
-      selectedId={selectedRegion}
       options={regions}
       updateSelectedOption={updateSelectedRegion}
+      selectedId={selectedRegionId}
     />
   );
 }

@@ -8,8 +8,8 @@ import Restaurants from './Restaurants';
 export default function RegionsContainer() {
   const dispatch = useDispatch();
   const { region, categoryId, restaurants } = useSelector((state) => ({
-    region: state.region,
-    categoryId: state.categoryId,
+    region: state.region.name,
+    categoryId: state.category.id,
     restaurants: state.restaurants,
   }));
 

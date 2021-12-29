@@ -7,11 +7,11 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
   const { categories, selectedCategoryId } = useSelector((state) => ({
     categories: state.categories,
-    selectedCategoryId: state.categoryId,
+    selectedCategoryId: state.category.id,
   }));
 
-  const updateSelectedCategory = (categoryId) => {
-    dispatch(setCategory(categoryId));
+  const updateSelectedCategory = (category) => {
+    dispatch(setCategory(category));
   };
 
   return (
