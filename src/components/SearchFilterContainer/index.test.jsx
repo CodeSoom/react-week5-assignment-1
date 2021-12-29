@@ -22,28 +22,22 @@ describe('SearchFilterContainer', () => {
   });
 
   it('renders region options', () => {
-    const { getByLabelText, getByText } = render(<SearchFilterContainer />);
+    const { getByText } = render(<SearchFilterContainer />);
 
-    expect(getByLabelText('지역')).toBeInTheDocument();
-    expect(getByText('서울')).toBeInTheDocument();
+    expect(getByText(/서울/)).toBeInTheDocument();
   });
 
   it('renders category options', () => {
-    const { getByLabelText, getByText } = render(<SearchFilterContainer />);
+    const { getByText } = render(<SearchFilterContainer />);
 
-    expect(getByLabelText('분류')).toBeInTheDocument();
-    expect(getByText('한식')).toBeInTheDocument();
+    expect(getByText(/한식/)).toBeInTheDocument();
   });
 
   it('renders selected option value', () => {
-    const { getByLabelText } = render(
-      <SearchFilterContainer
-        value={{ region: regions[1].id, category: categories[1].id }}
-      />,
-    );
+    const { getByText } = render(<SearchFilterContainer />);
 
-    expect(Number(getByLabelText('지역').value)).toBe(regions[0].id);
-    expect(Number(getByLabelText('분류').value)).toBe(categories[0].id);
+    expect(getByText(`${regions[0].name}(V)`)).toBeInTheDocument();
+    expect(getByText(`${categories[0].name}(V)`)).toBeInTheDocument();
   });
 
   context('when the component did mounted', () => {
@@ -55,8 +49,10 @@ describe('SearchFilterContainer', () => {
 
   context('when region is changed', () => {
     it('calls dispatch with setFilter', () => {
-      const { getByLabelText } = render(<SearchFilterContainer />);
-      fireEvent.change(getByLabelText('지역'), { target: { value: regions[1].id } });
+      const { getByText } = render(<SearchFilterContainer />);
+
+      fireEvent.click(getByText(regions[1].name));
+
       expect(dispatch).toBeCalledWith(setFilter({
         region: regions[1].id,
         category: categories[0].id,
@@ -66,8 +62,10 @@ describe('SearchFilterContainer', () => {
 
   context('when category is changed', () => {
     it('calls dispatch with setFilter', () => {
-      const { getByLabelText } = render(<SearchFilterContainer />);
-      fireEvent.change(getByLabelText('분류'), { target: { value: categories[1].id } });
+      const { getByText } = render(<SearchFilterContainer />);
+
+      fireEvent.click(getByText(categories[1].name));
+
       expect(dispatch).toBeCalledWith(setFilter({
         region: regions[0].id, category: categories[1].id,
       }));

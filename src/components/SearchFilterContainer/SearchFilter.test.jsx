@@ -17,28 +17,23 @@ describe('SearchFilter', () => {
   });
 
   it('renders regions', () => {
-    const { getByLabelText, getByRole } = renderComponent({
+    const { getByText } = renderComponent({
       options: {
         regions: [{ id: 1, name: '서울' }], categories: [],
       },
     });
 
-    expect(getByLabelText('지역')).toBeInTheDocument();
-    expect(getByRole('option', { name: '서울' })).toBeInTheDocument();
+    expect(getByText('서울')).toBeInTheDocument();
   });
 
   it('renders categories', () => {
-    const {
-      getByLabelText,
-      getByRole,
-    } = renderComponent({ options: { regions, categories } });
+    const { getByText } = renderComponent({ options: { regions, categories } });
 
-    expect(getByLabelText('분류')).toBeInTheDocument();
-    expect(getByRole('option', { name: '한식' })).toBeInTheDocument();
+    expect(getByText('한식')).toBeInTheDocument();
   });
 
   it('renders selected option value', () => {
-    const { getByLabelText } = renderComponent({
+    const { getByText } = renderComponent({
       options: {
         regions,
         categories,
@@ -49,13 +44,13 @@ describe('SearchFilter', () => {
       },
     });
 
-    expect(Number(getByLabelText('지역').value)).toBe(regions[1].id);
-    expect(Number(getByLabelText('분류').value)).toBe(categories[1].id);
+    expect(getByText(`${regions[1].name}(V)`)).toBeInTheDocument();
+    expect(getByText(`${categories[1].name}(V)`)).toBeInTheDocument();
   });
 
   context('when region is changed', () => {
     it('calls onChange', () => {
-      const { getByLabelText } = renderComponent({
+      const { getByText } = renderComponent({
         options: {
           regions,
           categories,
@@ -66,14 +61,14 @@ describe('SearchFilter', () => {
         },
       });
 
-      fireEvent.change(getByLabelText('지역'), { target: { value: regions[1].id } });
+      fireEvent.click(getByText(regions[1].name));
       expect(handleChange).toBeCalledWith({ region: regions[1].id, category: categories[0].id });
     });
   });
 
   context('when category is changed', () => {
     it('calls onChange', () => {
-      const { getByLabelText } = renderComponent({
+      const { getByText } = renderComponent({
         options: { regions, categories },
         value: {
           region: regions[0].id,
@@ -81,7 +76,7 @@ describe('SearchFilter', () => {
         },
       });
 
-      fireEvent.change(getByLabelText('분류'), { target: { value: categories[1].id } });
+      fireEvent.click(getByText(categories[1].name));
       expect(handleChange).toBeCalledWith({ region: regions[0].id, category: categories[1].id });
     });
   });

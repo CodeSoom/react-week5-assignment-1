@@ -1,37 +1,33 @@
 export default function SearchFilter({ options: { regions, categories }, value = {}, onChange }) {
-  const handleChangeRegion = ({ target: { value: newRegion } }) => {
-    onChange({
-      ...value,
-      region: Number(newRegion),
-    });
-  };
-
-  const handleChangeCategory = ({ target: { value: newCategory } }) => {
-    onChange({
-      ...value,
-      category: Number(newCategory),
-    });
-  };
-
   return (
     <form>
       <h2 style={{ display: 'none' }}>검색 필터</h2>
       <div>
         <label htmlFor="region">지역</label>
-        <select id="region" name="region" value={value.region} onChange={handleChangeRegion}>
+        <ul id="region" name="region">
           {regions.map(({ id, name }) => (
-            <option key={id} value={id}>{name}</option>
+            <li key={id} value={id}>
+              <button type="button" onClick={() => onChange({ ...value, region: id })}>
+                {name}
+                {id === value.region ? '(V)' : ''}
+              </button>
+            </li>
           ))}
-        </select>
+        </ul>
       </div>
 
       <div>
         <label htmlFor="category">분류</label>
-        <select id="category" name="category" value={value.category} onChange={handleChangeCategory}>
+        <ul id="category" name="category">
           {categories.map(({ id, name }) => (
-            <option key={id} value={id}>{name}</option>
+            <li key={id} value={id}>
+              <button type="button" onClick={() => onChange({ ...value, category: id })}>
+                {name}
+                {id === value.category ? '(V)' : ''}
+              </button>
+            </li>
           ))}
-        </select>
+        </ul>
       </div>
     </form>
   );
