@@ -35,17 +35,19 @@ describe('reducer', () => {
   });
 
   test('setLocation', () => {
-    const state = reducer({ location: null, locations: [{ id: 1, name: '서울' }] }, setLocation({ id: 1, name: '서울' }));
+    const locations = [{ id: 1, name: '서울' }, { id: 2, name: '대전(V)' }];
+    const state = reducer({ location: null, locations }, setLocation({ id: 1, name: '서울' }));
 
     expect(state.selected.location).toEqual({ id: 1, name: '서울' });
-    expect(state.locations).toEqual([{ id: 1, name: '서울(V)' }]);
+    expect(state.locations).toEqual([{ id: 1, name: '서울(V)' }, { id: 2, name: '대전' }]);
   });
 
   test('setCategory', () => {
-    const state = reducer({ category: null, categories: [{ id: 1, name: '한식' }] }, setCategory({ id: 1, name: '한식' }));
+    const categories = [{ id: 1, name: '한식' }, { id: 2, name: '양식(V)' }];
+    const state = reducer({ category: null, categories }, setCategory({ id: 1, name: '한식' }));
 
     expect(state.selected.category).toEqual({ id: 1, name: '한식' });
-    expect(state.categories).toEqual([{ id: 1, name: '한식(V)' }]);
+    expect(state.categories).toEqual([{ id: 1, name: '한식(V)' }, { id: 2, name: '양식' }]);
   });
 
   it('fetchCategories', () => {
