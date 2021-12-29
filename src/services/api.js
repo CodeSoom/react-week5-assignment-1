@@ -8,4 +8,9 @@ export async function fetchCategories() {
 }
 
 // TODO: delete...
-export function temp() {}
+export async function fetchRegions() {
+  const response = await fetch(`${BASE_URL}/regions`);
+  const data = await response.json();
+
+  return data;
+}
