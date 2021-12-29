@@ -19,9 +19,15 @@ describe('App', () => {
 
   const renderApp = () => render((<App />));
 
-  it('sets restaurants', () => {
-    const { container } = renderApp();
+  describe('dispatch', () => {
+    it('calls action to set restaurant', () => {
+      const { container } = renderApp();
 
-    expect(container).toHaveTextContent('Restaurants');
+      expect(container).toHaveTextContent('Restaurants');
+      expect(dispatch).toBeCalledWith({
+        type: 'setRestaurants',
+        payload: { restaurants },
+      });
+    });
   });
 });

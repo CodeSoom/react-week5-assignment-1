@@ -1,17 +1,41 @@
+import { useSelector, useDispatch } from 'react-redux';
+
 import reducer from './reducer';
 
 import restaurants from '../fixtures/fixture';
 
 import { setRestaurants } from './action';
 
-describe('reducer test', () => {
-  it('updates state', () => {
-    const initialState = {
-      restaurants: [],
-    };
+describe('reducer', () => {
+  const dispatch = useDispatch();
 
-    const state = reducer(initialState, setRestaurants(restaurants));
+  useDispatch.mockImplementation(() => dispatch);
 
-    expect(state.restaurants).toHaveLength(1);
+  useSelector.mockImplementation((selector) => selector({
+    restaurants: [],
+  }));
+
+  context('with setRestaurants', () => { // 테스트이름을 액션명으로 해도 되는지?
+    it('updates state with restaurants', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  context('without setRestaurants', () => {
+    it('changes nothing', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, initialState);
+
+      expect(state.restaurants).toHaveLength(0);
+    });
   });
 });
