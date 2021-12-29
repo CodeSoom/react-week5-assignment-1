@@ -10,6 +10,14 @@ export default function Categories({
   }
 
   return (
-    <ul />
+    <ul>
+      {categories.map((category) => {
+        const { id, name } = category;
+
+        return (
+          <li key={id}>{name}</li>
+        );
+      })}
+    </ul>
   );
 }
