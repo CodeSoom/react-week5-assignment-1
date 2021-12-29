@@ -10,11 +10,11 @@ describe('RestaurantList', () => {
   });
 
   it('restaurants를 전달하면 레스토랑 리스트를 보여줍니다.', () => {
-    const { queryAllByRole, queryByRole } = render(<RestaurantList restaurants={restaurants} />);
+    const { queryAllByRole, queryByText } = render(<RestaurantList restaurants={restaurants} />);
 
     expect(queryAllByRole('listitem')).toHaveLength(restaurants.length);
     restaurants.forEach(({ name }) => {
-      expect(queryByRole('listitem', { name })).not.toBeNull();
+      expect(queryByText(name)).not.toBeNull();
     });
   });
 });
