@@ -15,9 +15,10 @@ export default function SearchFilter({ options: { regions, categories }, value =
 
   return (
     <form>
+      <h2 style={{ display: 'none' }}>검색 필터</h2>
       <div>
         <label htmlFor="region">지역</label>
-        <select id="region" value={value.region} onChange={handleChangeRegion}>
+        <select id="region" name="region" value={value.region} onChange={handleChangeRegion}>
           {regions.map(({ id, name }) => (
             <option key={id} value={id}>{name}</option>
           ))}
@@ -26,7 +27,7 @@ export default function SearchFilter({ options: { regions, categories }, value =
 
       <div>
         <label htmlFor="category">분류</label>
-        <select id="category" value={value.category} onChange={handleChangeCategory}>
+        <select id="category" name="category" value={value.category} onChange={handleChangeCategory}>
           {categories.map(({ id, name }) => (
             <option key={id} value={id}>{name}</option>
           ))}

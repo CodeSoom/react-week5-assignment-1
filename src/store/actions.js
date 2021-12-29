@@ -1,3 +1,7 @@
+import ApiService from '../services/api/apiService';
+
+const apiService = new ApiService('https://eatgo-customer-api.ahastudio.com', console);
+
 export const ACTION_TYPES = {
   SET_REGIONS: 'SET_REGIONS',
   SET_CATEGORIES: 'SET_CATEGORIES',
@@ -21,8 +25,7 @@ export function setRegions(regions) {
 
 export function fetchRegions() {
   return async (dispatch, getState) => {
-    const response = await fetch('https://eatgo-customer-api.ahastudio.com/regions');
-    const regions = await response.json();
+    const regions = await apiService.fetchRegions();
     dispatch(setRegions(regions));
 
     const { filter } = getState();
@@ -39,8 +42,7 @@ export function setCategories(categories) {
 
 export function fetchCategories() {
   return async (dispatch, getState) => {
-    const response = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
-    const categories = await response.json();
+    const categories = await apiService.fetchCategories();
     dispatch(setCategories(categories));
 
     const { filter } = getState();
@@ -58,10 +60,7 @@ export function setRestaurants(restaurants) {
 export function fetchRestaurants() {
   return async (dispatch, getState) => {
     const { filter } = getState();
-    const response = await fetch(
-      `https://eatgo-customer-api.ahastudio.com/restaurants?region=${filter.region}&category=${filter.category}`,
-    );
-    const restaurants = await response.json();
+    const restaurants = await apiService.fetchRestaurants(filter.region, filter.category);
     dispatch(setRestaurants(restaurants));
   };
 }

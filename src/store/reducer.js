@@ -7,6 +7,7 @@ const initialState = {
     region: null,
     category: null,
   },
+  restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import SearchFilterContainer from './components/SearchFilterContainer';
+import RestaurantsListContainer from './components/RestaurantsListContainer';
 import { fetchRestaurants } from './store/actions';
 
 export default function App() {
@@ -16,8 +17,10 @@ export default function App() {
   }, [region, category]);
 
   return (
-    <>
+    <main>
+      <h1 style={{ display: 'none' }}>레스토랑 검색</h1>
       <SearchFilterContainer />
-    </>
+      <RestaurantsListContainer />
+    </main>
   );
 }
