@@ -18,7 +18,7 @@ describe('ListCreatorContainer', () => {
 
   const renderListCreatorContainer = () => render((<ListCreatorContainer />));
 
-  it('clicks to call onClick handler with addRestaurants', () => {
+  it('clicks to call onClick handler with addRestaurant', () => {
     const { getByText } = renderListCreatorContainer();
 
     expect(getByText(/등록/)).toBeInTheDocument();
@@ -28,5 +28,13 @@ describe('ListCreatorContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'addRestaurant',
     });
+  });
+
+  it('changes to call onChange handler with createRestaurant', () => {
+    const { getByDisplayValue } = renderListCreatorContainer();
+
+    expect(getByDisplayValue(/모토/)).toBeInTheDocument();
+    expect(getByDisplayValue(/일식/)).toBeInTheDocument();
+    expect(getByDisplayValue(/서울/)).toBeInTheDocument();
   });
 });
