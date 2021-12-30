@@ -12,3 +12,12 @@ export function addRestaurant() {
     type: 'addRestaurant',
   };
 }
+
+export function putRestaurantField({ name, value }) {
+  return {
+    type: 'putRestaurantField',
+    payload: {
+      name, value,
+    },
+  };
+}

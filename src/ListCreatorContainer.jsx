@@ -6,6 +6,7 @@ import ListCreator from './ListCreator';
 
 import {
   addRestaurant,
+  putRestaurantField,
 } from './action';
 
 export default function ListCreatorContainer() {
@@ -15,6 +16,10 @@ export default function ListCreatorContainer() {
 
   const dispatch = useDispatch();
 
+  function handleChange({ name, value }) {
+    dispatch(putRestaurantField({ name, value }));
+  }
+
   function handleClick() {
     dispatch(addRestaurant());
   }
@@ -22,6 +27,7 @@ export default function ListCreatorContainer() {
   return (
     <ListCreator
       restaurant={restaurant}
+      onChange={handleChange}
       onClick={handleClick}
     />
   );
