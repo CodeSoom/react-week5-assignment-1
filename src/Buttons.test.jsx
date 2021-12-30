@@ -1,13 +1,17 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import Locations from './Locations';
+import Buttons from './Buttons';
 
 import locations from '../fixtures/locations';
 
-describe('Locations', () => {
-  it('renders location list', () => {
+describe('Buttons', () => {
+  it('renders list', () => {
     const { container } = render((
-      <Locations locations={locations} />
+      <Buttons
+        stateValue=""
+        valueList={locations}
+        onClick={() => {}}
+      />
     ));
 
     expect(container).toHaveTextContent(locations[0].name);
@@ -16,9 +20,9 @@ describe('Locations', () => {
   it('changes state by clicking the location button', () => {
     const handleClick = jest.fn();
     const { getByText } = render((
-      <Locations
-        location=""
-        locations={locations}
+      <Buttons
+        stateValue=""
+        valueList={locations}
         onClick={handleClick}
       />
     ));

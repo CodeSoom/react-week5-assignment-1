@@ -1,14 +1,14 @@
-export default function Locations({ location, locations, onClick }) {
+export default function Buttons({ stateValue, valueList, onClick }) {
   return (
     <ul>
-      {locations.map(({ id, name }) => (
+      {valueList.map(({ id, name }) => (
         <li key={id}>
           <button
             type="button"
             onClick={() => onClick(name)}
           >
             {name}
-            {location === name ? '(V)' : ''}
+            {stateValue === name ? '(V)' : ''}
           </button>
         </li>
       ))}

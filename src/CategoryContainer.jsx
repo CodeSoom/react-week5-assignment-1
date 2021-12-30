@@ -1,28 +1,28 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Locations from './Locations';
+import Buttons from './Buttons';
 
 import {
-  setLocation,
+  setCategory,
 } from './action';
 
-export default function LocationContainer() {
+export default function CategoryContainer() {
   const dispatch = useDispatch();
 
-  const { location, locations } = useSelector((state) => ({
-    location: state.location,
-    locations: state.locations,
+  const { Category, Categories } = useSelector((state) => ({
+    Category: state.Category,
+    Categorys: state.Categories,
   }));
 
-  function handleClickLocation(clickedLocation) {
-    dispatch(setLocation(clickedLocation));
+  function handleClickCategory(clickedCategory) {
+    dispatch(setCategory(clickedCategory));
   }
 
   return (
-    <Locations
-      location={location}
-      locations={locations}
-      onClick={handleClickLocation}
+    <Buttons
+      Category={Category}
+      Categorys={Categories}
+      onClick={handleClickCategory}
     />
   );
 }
