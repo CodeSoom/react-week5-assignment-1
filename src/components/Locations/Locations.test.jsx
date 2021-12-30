@@ -20,6 +20,6 @@ describe('Locations', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(handleCategory).toBeCalledWith({ id: 1, name: '서울' });
+    expect(handleCategory).toBeCalledWith({ id: 1, name: '서울', selected: false });
   });
 });

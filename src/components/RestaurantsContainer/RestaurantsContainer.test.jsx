@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
-import { categories, locations } from '../../fixtures';
+import { categories, locations, restaurants } from '../../fixtures';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
@@ -43,6 +43,19 @@ describe('RestaurantsContainer', () => {
   });
 
   context('레스토랑 목록이', () => {
+    it('존재하는 경우, 레스토랑목록을 노출한다.', async () => {
+      useSelector.mockImplementation((selector) => selector({
+        selected: {
+          location: categories[0],
+          category: locations[0],
+        },
+        restaurants,
+      }));
+
+      const { getByText } = render(<RestaurantsContainer />);
+      expect(getByText(/양천주가/)).not.toBeNull();
+    });
+
     it('존재하지 않는 경우, "레스토랑이 존재하지 않습니다."를 노출한다.', async () => {
       useSelector.mockImplementation((selector) => selector({
         selected: {

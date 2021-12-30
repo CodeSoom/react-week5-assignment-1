@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 import { setCategory } from '../../reducer/actions';
+import { categories } from '../../fixtures';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
@@ -27,15 +28,13 @@ describe('CategoriesContainer', () => {
 
   it('지역을 클릭하면 dispatch를 실행한다.', () => {
     useSelector.mockImplementation((selector) => selector({
-      categories: [
-        { id: 1, name: '한식' },
-      ],
+      categories,
     }));
 
     const { getByText } = render(<CategoriesContainer />);
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setCategory({ id: 1, name: '한식' }));
+    expect(dispatch).toBeCalledWith(setCategory({ id: 1, name: '한식', selected: false }));
   });
 });

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LocationsContainer from './LocationsContainer';
 import { setLocation } from '../../reducer/actions';
+import { locations } from '../../fixtures';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
@@ -26,15 +27,13 @@ describe('LocationsContainer', () => {
 
   it('지역을 클릭하면 dispatch를 실행한다.', () => {
     useSelector.mockImplementation((selector) => selector({
-      locations: [
-        { id: 1, name: '서울' },
-      ],
+      locations,
     }));
 
     const { getByText } = render(<LocationsContainer />);
 
     fireEvent.click(getByText('서울'));
 
-    expect(dispatch).toBeCalledWith(setLocation({ id: 1, name: '서울' }));
+    expect(dispatch).toBeCalledWith(setLocation({ id: 1, name: '서울', selected: false }));
   });
 });

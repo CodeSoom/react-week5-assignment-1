@@ -5,7 +5,9 @@ import { categories } from '../../fixtures';
 
 describe('Categories', () => {
   it('전달된 카테고리들을 노출한다.', () => {
-    const { getByText } = render(<Categories categories={categories} />);
+    const { getByText } = render(<Categories
+      categories={categories}
+    />);
 
     expect(getByText('한식')).not.toBeNull();
   });
@@ -21,6 +23,6 @@ describe('Categories', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(handleCategory).toBeCalledWith({ id: 1, name: '한식' });
+    expect(handleCategory).toBeCalledWith({ id: 1, name: '한식', selected: false });
   });
 });

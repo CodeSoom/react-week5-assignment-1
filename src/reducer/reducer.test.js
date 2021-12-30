@@ -27,21 +27,28 @@ describe('reducer', () => {
     clearActions();
   });
 
-  test('setLocations', () => {
-    const state = reducer({ locations: [] }, setLocations([{ id: 1, name: '서울' }]));
+  it('setLocations', () => {
+    const state = reducer({ locations: [] }, setLocations([{ id: 1, name: '서울', selected: false }]));
 
     expect(state.locations).toHaveLength(1);
-    expect(state.locations).toEqual([{ id: 1, name: '서울' }]);
+    expect(state.locations).toEqual([{ id: 1, name: '서울', selected: false }]);
   });
 
-  test('setCategories', () => {
-    const state = reducer({ categories: [] }, setCategories([{ id: 1, name: '한식' }]));
+  it('setCategories', () => {
+    const state = reducer({ categories: [] }, setCategories([{ id: 1, name: '한식', selected: false }]));
 
     expect(state.categories).toHaveLength(1);
-    expect(state.categories).toEqual([{ id: 1, name: '한식' }]);
+    expect(state.categories).toEqual([{ id: 1, name: '한식', selected: false }]);
   });
 
-  test('setLocation', () => {
+  it('setRestaurants', () => {
+    const state = reducer({ restaurants: [] }, setRestaurants([{ id: 1, name: '양천주가' }]));
+
+    expect(state.restaurants).toHaveLength(1);
+    expect(state.restaurants).toEqual([{ id: 1, name: '양천주가' }]);
+  });
+
+  it('setLocation', () => {
     const locations = [{ id: 1, name: '서울', selected: false }, { id: 2, name: '대전', selected: true }];
     const state = reducer({ location: null, locations }, setLocation({ id: 1, name: '서울' }));
 
@@ -49,7 +56,7 @@ describe('reducer', () => {
     expect(state.locations).toEqual([{ id: 1, name: '서울', selected: true }, { id: 2, name: '대전', selected: false }]);
   });
 
-  test('setCategory', () => {
+  it('setCategory', () => {
     const categories = [{ id: 1, name: '한식', selected: false }, { id: 2, name: '양식', selected: true }];
     const state = reducer({ category: null, categories }, setCategory({ id: 1, name: '한식' }));
 
@@ -84,5 +91,13 @@ describe('reducer', () => {
         const mockData = await getRestaurants();
         expect(actions[0]).toEqual(setRestaurants(mockData));
       });
+  });
+
+  it('존재하지 않는 액션을 디스패치하면 초기 state를 그대로 유지한다.', () => {
+    expect(reducer({}, { type: '' })).toEqual({});
+  });
+
+  it('초기값이 주어지지 않으면 initialState가 초기값으로 할당된다', () => {
+    expect(reducer(undefined, { type: '' })).toEqual(initialState);
   });
 });
