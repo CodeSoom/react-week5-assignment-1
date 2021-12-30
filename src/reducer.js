@@ -1,8 +1,9 @@
 const initialState = {
   locations: [],
-  location: '',
+  location: { id: '', name: '' },
   categories: [],
-  category: '',
+  category: { id: '', name: '' },
+  restaurants: [],
 };
 
 const actions = {
@@ -21,6 +22,10 @@ const actions = {
   setCategories: (state, payload) => ({
     ...state,
     categories: payload.categories,
+  }),
+  setRestaurants: (state, payload) => ({
+    ...state,
+    restaurants: payload.restaurants,
   }),
 };
 

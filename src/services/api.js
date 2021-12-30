@@ -11,3 +11,15 @@ export async function fetchLoadCategories() {
   const data = await response.json();
   return data;
 }
+
+export async function fetchLoadRestaurants({ location, categoryId }) {
+  console.log(location, categoryId);
+  if (location === '' || categoryId === '') {
+    return [];
+  }
+
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${location}&category=${categoryId}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}

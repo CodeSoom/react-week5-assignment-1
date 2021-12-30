@@ -1,14 +1,14 @@
 export default function Buttons({ stateValue, valueList, onClick }) {
   return (
     <ul>
-      {valueList.map(({ id, name }) => (
-        <li key={id}>
+      {valueList.map((value) => (
+        <li key={value.id}>
           <button
             type="button"
-            onClick={() => onClick(name)}
+            onClick={() => onClick(value)}
           >
-            {name}
-            {stateValue === name ? '(V)' : ''}
+            {value.name}
+            {stateValue.name === value.name ? '(V)' : ''}
           </button>
         </li>
       ))}

@@ -29,6 +29,6 @@ describe('Buttons', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(handleClick).toBeCalledWith('서울');
+    expect(handleClick).toBeCalledWith({ id: 1, name: '서울' });
   });
 });

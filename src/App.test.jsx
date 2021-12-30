@@ -13,6 +13,9 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     locations: [],
     categories: [],
+    restaurants: [],
+    location: { id: '', name: '' },
+    category: { id: '', name: '' },
   }));
 
   it('renders page', () => {
@@ -20,7 +23,7 @@ describe('App', () => {
       <App />
     ));
 
-    expect(dispatch).toBeCalledTimes(2);
+    expect(dispatch).toBeCalledTimes(3);
 
     expect(container).toHaveTextContent('지역');
     expect(container).toHaveTextContent('분류');

@@ -17,7 +17,7 @@ describe('CategoryContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     categories,
-    category: '중식',
+    category: { id: 2, name: '중식' },
   }));
 
   beforeEach(() => {
@@ -39,7 +39,7 @@ describe('CategoryContainer', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setCategory('한식'));
+    expect(dispatch).toBeCalledWith(setCategory({ id: 1, name: '한식' }));
   });
 
   it('renders "(V)" when has category in state ', () => {

@@ -17,7 +17,7 @@ describe('LocationContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     locations,
-    location: '대전',
+    location: { id: 2, name: '대전' },
   }));
 
   beforeEach(() => {
@@ -39,7 +39,7 @@ describe('LocationContainer', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(dispatch).toBeCalledWith(setLocation('서울'));
+    expect(dispatch).toBeCalledWith(setLocation({ id: 1, name: '서울' }));
   });
 
   it('renders "(V)" when has location in state ', () => {

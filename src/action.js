@@ -1,6 +1,7 @@
 import {
   fetchLoadLocations,
   fetchLoadCategories,
+  fetchLoadRestaurants,
 } from './services/api';
 
 export function setLocation(location) {
@@ -50,5 +51,21 @@ export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchLoadCategories();
     dispatch(setCategories(categories));
+  };
+}
+
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
+
+export function loadRestaurants({ location, categoryId }) {
+  return async (dispatch) => {
+    const restaurants = await fetchLoadRestaurants({ location, categoryId });
+    dispatch(setRestaurants(restaurants));
   };
 }
