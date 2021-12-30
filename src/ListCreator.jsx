@@ -1,7 +1,8 @@
 // Presentational Components: 레스토랑 목록을 추가해준다.
-export default function ListCreator({ restaurant, onClick }) {
+export default function ListCreator({ restaurant, onChange, onClick }) {
   function handleChange(event) {
-    const { target: { value } } = event;
+    const { target: { value, name } } = event;
+    onChange(value, name);
   }
 
   return (
