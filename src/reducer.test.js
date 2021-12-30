@@ -48,6 +48,7 @@ describe('reducer', () => {
   context('with addRestaurant', () => {
     it('appends restaurant into restaurants and clears', () => {
       const initialState = {
+        newId: 101,
         restaurants: [],
         restaurant: {
           name: '이름',
@@ -59,6 +60,8 @@ describe('reducer', () => {
       const state = reducer(initialState, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurant.name).toBe('');
+      expect(state.restaurants[0].id).toBe(101);
     });
   });
 });

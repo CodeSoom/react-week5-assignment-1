@@ -24,6 +24,11 @@ export default function reducer(state = initialState, action) {
       ...state,
       newId: newId + 1,
       restaurants: [...restaurants, { id: newId, restaurant }],
+      restaurant: {
+        name: '',
+        category: '',
+        place: '',
+      },
     };
   }
   return state;
