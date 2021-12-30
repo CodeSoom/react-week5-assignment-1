@@ -6,7 +6,7 @@ import CategoryContainer from './CategoryContainer';
 
 import categories from '../fixtures/categories';
 
-import { setLocation } from './action';
+import { setCategory } from './action';
 
 jest.mock('react-redux');
 
@@ -39,7 +39,7 @@ describe('CategoryContainer', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalledWith(setLocation('한식'));
+    expect(dispatch).toBeCalledWith(setCategory('한식'));
   });
 
   it('renders "(V)" when has category in state ', () => {

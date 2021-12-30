@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Locations from './Locations';
+import Buttons from './Buttons';
 
 import {
   setLocation,
@@ -19,9 +19,9 @@ export default function LocationContainer() {
   }
 
   return (
-    <Locations
-      location={location}
-      locations={locations}
+    <Buttons
+      stateValue={location}
+      valueList={locations}
       onClick={handleClickLocation}
     />
   );

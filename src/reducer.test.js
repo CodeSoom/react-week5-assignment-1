@@ -26,7 +26,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setCategory('한식'));
 
-      expect(state.category).toBe('서울');
+      expect(state.category).toBe('한식');
     });
   });
 });

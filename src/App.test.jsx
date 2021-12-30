@@ -12,15 +12,17 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     locations: [],
+    categories: [],
   }));
 
-  it('renders location list', () => {
+  it('renders page', () => {
     const { container } = render((
       <App />
     ));
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalledTimes(2);
 
     expect(container).toHaveTextContent('지역');
+    expect(container).toHaveTextContent('분류');
   });
 });

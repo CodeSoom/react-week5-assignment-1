@@ -9,9 +9,9 @@ import {
 export default function CategoryContainer() {
   const dispatch = useDispatch();
 
-  const { Category, Categories } = useSelector((state) => ({
-    Category: state.Category,
-    Categorys: state.Categories,
+  const { category, categories } = useSelector((state) => ({
+    category: state.category,
+    categories: state.categories,
   }));
 
   function handleClickCategory(clickedCategory) {
@@ -20,8 +20,8 @@ export default function CategoryContainer() {
 
   return (
     <Buttons
-      Category={Category}
-      Categorys={Categories}
+      stateValue={category}
+      valueList={categories}
       onClick={handleClickCategory}
     />
   );

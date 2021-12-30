@@ -1,4 +1,7 @@
-import { fetchLoadLoaction } from './services/api';
+import {
+  fetchLoadLocations,
+  fetchLoadCategories,
+} from './services/api';
 
 export function setLocation(location) {
   return {
@@ -20,7 +23,32 @@ export function setLocations(locations) {
 
 export function loadLocations() {
   return async (dispatch) => {
-    const loactions = await fetchLoadLoaction();
+    const loactions = await fetchLoadLocations();
     dispatch(setLocations(loactions));
+  };
+}
+
+export function setCategory(category) {
+  return {
+    type: 'setCategory',
+    payload: {
+      category,
+    },
+  };
+}
+
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchLoadCategories();
+    dispatch(setCategories(categories));
   };
 }
