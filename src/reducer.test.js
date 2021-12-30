@@ -49,7 +49,11 @@ describe('reducer', () => {
     it('appends restaurant into restaurants and clears', () => {
       const initialState = {
         restaurants: [],
-        restaurant: {},
+        restaurant: {
+          name: '이름',
+          category: '분류',
+          place: '주소',
+        },
       };
 
       const state = reducer(initialState, addRestaurant());
