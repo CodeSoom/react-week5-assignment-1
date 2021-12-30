@@ -7,11 +7,6 @@ import {
 
 import restaurants from './fixtures/restaurants';
 
-const filteredRestaurant = restaurants.filter(
-  (restaurant) => restaurant.categoryId === (1)
-    && restaurant.address.includes('서울'),
-);
-
 export default function App() {
   const dispatch = useDispatch();
 
@@ -21,16 +16,20 @@ export default function App() {
   }, []);
 
   const {
-    regions, categories, checkedCategory, checkedRegion,
+    restaurantsList, regions, categories, checkedCategory, checkedRegion,
   } = useSelector((state) => ({
+    restaurantsList: state.restaurantsList,
     regions: state.regions,
     categories: state.categories,
     checkedCategory: state.checkedCategory,
     checkedRegion: state.checkedRegion,
   }));
 
+  const filteredRestaurant = restaurants[checkedCategory || 0][checkedRegion || 0];
+
   function handleRegionClick(event) {
     const { value } = event.target;
+    console.log(value)
     dispatch(checkRegion(value));
   }
   function handleCategoryClick(event) {
@@ -40,9 +39,12 @@ export default function App() {
 
   return (
     <>
-      {regions.map((region) => {
+      {regions && regions.map((region) => {
+        console.log(checkedRegion === region.id)
         const name = checkedRegion === region.id ? `${region.name}✅` : region.name;
+        console.log(checkedRegion === region.id, name)
         return (
+          // <div>{name}</div>
           <button name="region" type="button" key={region.id} value={region.id} onClick={handleRegionClick}>
             {
               name
@@ -51,7 +53,7 @@ export default function App() {
         );
       })}
       <hr />
-      {categories.map((category) => {
+      {categories && categories.map((category) => {
         const name = checkedCategory === category.id ? `${category.name}✅` : category.name;
         return (
           <button name="category" type="button" key={category.id} value={category.id} onClick={handleCategoryClick}>
