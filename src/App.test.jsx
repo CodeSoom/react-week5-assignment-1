@@ -5,8 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
-import restaurants from '../fixtures/fixture';
-
 jest.mock('react-redux');
 
 describe('App', () => {
@@ -15,7 +13,7 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurants,
+    restaurants: [],
     restaurant: {},
   }));
 
@@ -26,10 +24,6 @@ describe('App', () => {
       const { container } = renderApp();
 
       expect(container).toHaveTextContent('Restaurants');
-      expect(dispatch).toBeCalledWith({
-        type: 'setRestaurants',
-        payload: { restaurants },
-      });
     });
   });
 });

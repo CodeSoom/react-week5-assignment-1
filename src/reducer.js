@@ -2,23 +2,36 @@ const initialState = {
   newId: 100,
   restaurants: [],
   restaurant: {
-    name: '이름',
-    category: '분류',
-    place: '주소',
+    name: '',
+    category: '',
+    place: '',
   },
 };
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
+    const { restaurants } = state;
 
     return {
       ...state,
       restaurants,
     };
   }
+
+  if (action.type === 'putRestaurantField') {
+    const { name, value } = action.payload;
+
+    return {
+      ...state,
+      restaurant: {
+        ...state.restaurant,
+        [name]: value,
+      },
+    };
+  }
+
   if (action.type === 'addRestaurant') {
-    const { newId, restaurant, restaurants } = state;
+    const { newId, restaurants, restaurant } = state;
 
     return {
       ...state,
@@ -31,5 +44,6 @@ export default function reducer(state = initialState, action) {
       },
     };
   }
+
   return state;
 }

@@ -2,9 +2,9 @@
 import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
+
 import { setRestaurants } from './action';
 
-import restaurants from '../fixtures/fixture';
 import RestaurantsContainer from './RestaurantsContainer';
 import ListCreatorContainer from './ListCreatorContainer';
 
@@ -13,7 +13,7 @@ export default function App() {
 
   // ToDo: 서버에서 가져오기...
   useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    dispatch(setRestaurants([]));
   }, []);
 
   return (

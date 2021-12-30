@@ -28,7 +28,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(0);
     });
   });
 
@@ -47,7 +47,7 @@ describe('reducer', () => {
   context('with addRestaurant action', () => {
     it('appends restaurant into restaurants and clears input field', () => {
       const initialState = {
-        newId: 101,
+        newId: 100,
         restaurants: [],
         restaurant: {
           name: '이름',
@@ -59,13 +59,14 @@ describe('reducer', () => {
       const state = reducer(initialState, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants[0].id).toBe(100);
       expect(state.restaurant.name).toBe('');
-      expect(state.restaurants[0].id).toBe(101);
+      expect(state.newId).toBe(101);
     });
   });
 
   context('with putRestaurantField action', () => {
-    it('changes', () => {
+    it('changes value of input field', () => {
       const initialState = {
         restaurants: [],
         restaurant: {
