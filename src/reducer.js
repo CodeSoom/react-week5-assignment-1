@@ -2,6 +2,8 @@ const initialState = {
   categories: [],
   regions: [],
   restaurantsList: [],
+  checkedCategory: undefined,
+  checkedRegion: undefined,
 };
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +18,20 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       regions: action.payload.regions,
+    };
+  }
+
+  if (action.type === 'checkCategory') {
+    return {
+      ...state,
+      checkedCategory: Number(action.payload.checkedCategory),
+    };
+  }
+
+  if (action.type === 'checkRegion') {
+    return {
+      ...state,
+      checkedRegion: Number(action.payload.checkedRegion),
     };
   }
 
