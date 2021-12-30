@@ -1,7 +1,8 @@
-import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
+import { categories, locations } from '../../fixtures';
 
 jest.mock('react-redux');
 jest.mock('../../services/api');
@@ -28,12 +29,10 @@ describe('RestaurantsContainer', () => {
     });
 
     it('선택되어있는 경우, 레스토랑 목록을 불러오기위해 dispatch한다.', () => {
-      const location = { id: 1, name: '서울' };
-      const category = { id: 1, name: '한식' };
       useSelector.mockImplementation((selector) => selector({
         selected: {
-          location,
-          category,
+          location: categories[0],
+          category: locations[0],
         },
       }));
 
@@ -43,8 +42,6 @@ describe('RestaurantsContainer', () => {
     });
 
     it('변경된 경우, 레스토랑 목록을 불러오기위해 dispatch한다.', () => {
-      const location = { id: 1, name: '서울' };
-      const category = { id: 1, name: '한식' };
       useSelector.mockImplementation((selector) => selector({
         restaurants: [
           {
@@ -59,8 +56,8 @@ describe('RestaurantsContainer', () => {
           { id: 2, name: '대전' },
         ],
         selected: {
-          location,
-          category,
+          location: categories[0],
+          category: locations[0],
         },
       }));
 
@@ -73,12 +70,10 @@ describe('RestaurantsContainer', () => {
 
   context('레스토랑 목록이', () => {
     it('존재하지 않는 경우, "레스토랑이 존재하지 않습니다."를 노출한다.', async () => {
-      const location = { id: 1, name: '서울' };
-      const category = { id: 1, name: '한식' };
       useSelector.mockImplementation((selector) => selector({
         selected: {
-          location,
-          category,
+          location: categories[0],
+          category: locations[0],
         },
       }));
 
