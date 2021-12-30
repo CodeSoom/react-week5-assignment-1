@@ -1,5 +1,6 @@
 import reducer from './categories';
-import { setCategories } from '../actions';
+import { setCategories, setCategoryActiveId } from '../actions';
+import { categoriesData } from '../fixtures';
 
 describe('categories', () => {
   const initialState = {
@@ -8,13 +9,19 @@ describe('categories', () => {
 
   describe('setCategories', () => {
     it('새로운 카테고리를 저장한다.', () => {
-      const categories = [{ id: 1, name: '한식' }];
+      const state = reducer(initialState, setCategories(categoriesData));
 
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(3);
       expect(state.categories[0].id).toBe(1);
       expect(state.categories[0].name).toBe('한식');
+    });
+  });
+
+  describe('setCategoryActiveId', () => {
+    it('activeId가 해당 id값으로 바뀐다.', () => {
+      const state = reducer(initialState, setCategoryActiveId(10));
+
+      expect(state.activeId).toBe(10);
     });
   });
 });
