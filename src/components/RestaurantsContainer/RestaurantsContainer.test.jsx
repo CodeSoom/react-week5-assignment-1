@@ -40,32 +40,6 @@ describe('RestaurantsContainer', () => {
 
       expect(dispatch).toBeCalled();
     });
-
-    it('변경된 경우, 레스토랑 목록을 불러오기위해 dispatch한다.', () => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurants: [
-          {
-            id: 1, categoryId: 1, name: '양천주가', address: '서울 강남구 123456', information: '양천주가 in 서울 강남구 123456',
-          },
-          {
-            id: 6, categoryId: 1, name: '한국식 초밥', address: '서울 강남구', information: '한국식 초밥 in 서울 강남구',
-          },
-        ],
-        locations: [
-          { id: 1, name: '서울' },
-          { id: 2, name: '대전' },
-        ],
-        selected: {
-          location: categories[0],
-          category: locations[0],
-        },
-      }));
-
-      render(<RestaurantsContainer />);
-      // TODO: 선택된 항목을 변경햇을때, dispatch가 작동하는지 확인하는 테스트 추가
-
-      expect(dispatch).toBeCalled();
-    });
   });
 
   context('레스토랑 목록이', () => {
