@@ -13,5 +13,14 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setRegionActiveId') {
+    const { activeId } = action.payload;
+
+    return {
+      ...state,
+      activeId,
+    };
+  }
+
   return state;
 }
