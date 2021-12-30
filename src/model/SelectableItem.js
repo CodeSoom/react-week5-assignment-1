@@ -7,4 +7,8 @@ export default class SelectableItem {
   get content() {
     return `${this.name}${this.selected ? '(V)' : ''}`;
   }
+
+  static changeSelectedItem(array, selectedId) {
+    return array.map((item) => new SelectableItem({ ...item, selected: item.id === selectedId }));
+  }
 }

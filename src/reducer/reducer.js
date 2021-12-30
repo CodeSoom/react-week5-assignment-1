@@ -1,4 +1,4 @@
-import { checkItem } from '../util';
+import SelectableItem from '../model/SelectableItem';
 
 export const initialState = {
   locations: [],
@@ -25,7 +25,7 @@ const reducers = {
   }),
   setLocation: (state, payload) => {
     const { location } = payload;
-    const locations = checkItem(state.locations, (item) => item.name === location.name);
+    const locations = SelectableItem.changeSelectedItem(state.locations, location.id);
     return {
       ...state,
       locations,
@@ -37,7 +37,7 @@ const reducers = {
   },
   setCategory: (state, payload) => {
     const { category } = payload;
-    const categories = checkItem(state.categories, (item) => item.name === category.name);
+    const categories = SelectableItem.changeSelectedItem(state.categories, category.id);
 
     return {
       ...state,
