@@ -15,12 +15,6 @@ export default function RestaurantsContainer() {
     if (selected.location && selected.category) {
       dispatch(fetchRestaurants(selected));
     }
-  }, []);
-
-  useEffect(() => {
-    if (selected.location && selected.category) {
-      dispatch(fetchRestaurants(selected));
-    }
   }, [selected.location, selected.category]);
 
   if (!(selected.location && selected.category)) {
