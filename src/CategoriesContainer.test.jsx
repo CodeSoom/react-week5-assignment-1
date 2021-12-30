@@ -37,7 +37,7 @@ describe('CategoriesContainer', () => {
     );
     const clickedButton = categories[0];
 
-    fireEvent.click((getByRole('button', { name: clickedButton.name })));
+    fireEvent.click(getByRole('button', { name: clickedButton.name }));
 
     expect(dispatch).toBeCalledWith(setSelectedCategory(clickedButton));
   });

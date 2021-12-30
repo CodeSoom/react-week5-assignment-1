@@ -28,7 +28,7 @@ describe('Categories', () => {
   });
 
   context('without categories', () => {
-    it('noting render', () => {
+    it('renders nothing', () => {
       const { container } = render(
         <Categories categories={[]} />,
       );
