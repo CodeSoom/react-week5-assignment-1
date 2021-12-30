@@ -1,16 +1,17 @@
 import { getCategories, getRegions, getRestaurants } from '../services/api';
+import SelectableItem from '../model/SelectableItem';
 
 export function setLocations(locations) {
   return {
     type: 'setLocations',
-    payload: { locations },
+    payload: { locations: locations.map((item) => new SelectableItem(item)) },
   };
 }
 
 export function setCategories(categories) {
   return {
     type: 'setCategories',
-    payload: { categories },
+    payload: { categories: categories.map((item) => new SelectableItem(item)) },
   };
 }
 
@@ -51,7 +52,7 @@ export function fetchLocations() {
 
 export function fetchRestaurants({ location, category }) {
   return async (dispatch) => {
-    const regions = await getRestaurants(location.name, category.id);
-    dispatch(setRestaurants(regions));
+    const restaurants = await getRestaurants(location.name, category.id);
+    dispatch(setRestaurants(restaurants));
   };
 }

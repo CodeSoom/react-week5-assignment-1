@@ -1,5 +1,7 @@
+import SelectableItem from '../../model/SelectableItem';
+
 export async function getRestaurants() {
-  return [
+  const arr = [
     {
       id: 1, categoryId: 1, name: '양천주가', address: '서울 강남구 123456', information: '양천주가 in 서울 강남구 123456',
     },
@@ -7,6 +9,8 @@ export async function getRestaurants() {
       id: 6, categoryId: 1, name: '한국식 초밥', address: '서울 강남구', information: '한국식 초밥 in 서울 강남구',
     },
   ];
+
+  return arr.map((item) => new SelectableItem(item));
 }
 
 export async function getRegions() {

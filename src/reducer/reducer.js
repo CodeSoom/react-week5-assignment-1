@@ -26,7 +26,6 @@ const reducers = {
   setLocation: (state, payload) => {
     const { location } = payload;
     const locations = checkItem(state.locations, (item) => item.name === location.name);
-
     return {
       ...state,
       locations,

@@ -6,7 +6,7 @@ export default function Locations({ locations, onClick }) {
       onClick={(item) => onClick(item)}
       items={locations}
       keyOfItem={(item) => item.id}
-      render={(item) => item.name}
+      render={(item) => item.content}
     />
   );
 }

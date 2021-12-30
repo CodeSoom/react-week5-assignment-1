@@ -6,7 +6,7 @@ export default function Categories({ categories, onClick }) {
       onClick={(item) => onClick(item)}
       items={categories}
       keyOfItem={(item) => item.id}
-      render={(item) => item.name}
+      render={(item) => item.content}
     />
   );
 }

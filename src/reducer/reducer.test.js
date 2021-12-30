@@ -9,6 +9,7 @@ import {
   setLocation,
   setCategory,
   fetchRestaurants,
+  setRestaurants,
 } from './actions';
 
 import reducer, { initialState } from './reducer';
@@ -41,19 +42,19 @@ describe('reducer', () => {
   });
 
   test('setLocation', () => {
-    const locations = [{ id: 1, name: '서울' }, { id: 2, name: '대전(V)' }];
+    const locations = [{ id: 1, name: '서울', selected: false }, { id: 2, name: '대전', selected: true }];
     const state = reducer({ location: null, locations }, setLocation({ id: 1, name: '서울' }));
 
     expect(state.selected.location).toEqual({ id: 1, name: '서울' });
-    expect(state.locations).toEqual([{ id: 1, name: '서울(V)' }, { id: 2, name: '대전' }]);
+    expect(state.locations).toEqual([{ id: 1, name: '서울', selected: true }, { id: 2, name: '대전', selected: false }]);
   });
 
   test('setCategory', () => {
-    const categories = [{ id: 1, name: '한식' }, { id: 2, name: '양식(V)' }];
+    const categories = [{ id: 1, name: '한식', selected: false }, { id: 2, name: '양식', selected: true }];
     const state = reducer({ category: null, categories }, setCategory({ id: 1, name: '한식' }));
 
     expect(state.selected.category).toEqual({ id: 1, name: '한식' });
-    expect(state.categories).toEqual([{ id: 1, name: '한식(V)' }, { id: 2, name: '양식' }]);
+    expect(state.categories).toEqual([{ id: 1, name: '한식', selected: true }, { id: 2, name: '양식', selected: false }]);
   });
 
   it('fetchCategories', () => {
@@ -75,11 +76,13 @@ describe('reducer', () => {
   });
 
   it('fetchRestaurants', () => {
-    dispatch(fetchRestaurants())
+    const location = { id: 1, name: '서울' };
+    const category = { id: 1, name: '한식' };
+    dispatch(fetchRestaurants({ location, category }))
       .then(async () => {
         const actions = getActions();
         const mockData = await getRestaurants();
-        expect(actions[0]).toEqual(setLocations(mockData));
+        expect(actions[0]).toEqual(setRestaurants(mockData));
       });
   });
 });
