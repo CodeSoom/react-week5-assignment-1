@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div>
       <RegionsContainer />
-      {/* <CategoriesContainer /> */}
+      <CategoriesContainer />
       {/* <RestaurantsContainer /> */}
     </div>
   );

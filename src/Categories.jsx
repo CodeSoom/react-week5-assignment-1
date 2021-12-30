@@ -18,7 +18,7 @@ export default function Categories({
 
         return (
           <li key={id}>
-            <button type="button" onClick={onClick}>
+            <button type="button" onClick={() => onClick(id)}>
               {name}
               {activeId === id && '(V)'}
             </button>
