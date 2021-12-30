@@ -4,6 +4,7 @@ import {
   fetchRestaurants,
 } from './api';
 
+// TODO: fixtures 상수로 변경
 import { regions } from '../../__fixtures__/regions';
 import { categories } from '../../__fixtures__/categories';
 import { restaurants } from '../../__fixtures__/restaurants';

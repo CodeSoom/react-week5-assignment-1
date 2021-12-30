@@ -2,5 +2,10 @@ export function fetchCategories() {
   return [];
 }
 
-// TODO: delete...
-export function temp() {}
+export async function fetchRegions() {
+  return [];
+}
+
+export async function fetchRestaurants() {
+  return [];
+}
