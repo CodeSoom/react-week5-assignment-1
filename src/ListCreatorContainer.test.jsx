@@ -23,7 +23,7 @@ describe('ListCreatorContainer', () => {
 
   const renderListCreatorContainer = () => render((<ListCreatorContainer />));
 
-  it('listens "등록" button click event', () => {
+  it('listens "등록" button for click event', () => {
     const { getByText } = renderListCreatorContainer();
 
     expect(getByText('등록')).toBeInTheDocument();
@@ -35,11 +35,29 @@ describe('ListCreatorContainer', () => {
     });
   });
 
-  it('changes to call onChange handler with createRestaurant', () => {
+  it('listens input for change event', () => {
     const { getByDisplayValue } = renderListCreatorContainer();
 
     expect(getByDisplayValue('모토')).toBeInTheDocument();
     expect(getByDisplayValue('일식')).toBeInTheDocument();
     expect(getByDisplayValue('서울')).toBeInTheDocument();
+
+    fireEvent.change(getByDisplayValue('모토'), {
+      target: { value: '흠' },
+    });
+    fireEvent.change(getByDisplayValue('일식'), {
+      target: { value: '좀무' },
+    });
+    fireEvent.change(getByDisplayValue('서울'), {
+      target: { value: '섭군요' },
+    });
+
+    expect(dispatch).toBeCalledWith({
+      type: 'putRestaurantField',
+      payload: {
+        name: 'name',
+        value: '흠',
+      },
+    });
   });
 });
