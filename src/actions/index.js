@@ -7,6 +7,15 @@ export function setRegions(regions) {
   };
 }
 
+export function setRegionActiveId(activeId) {
+  return {
+    type: 'setRegionActiveId',
+    payload: {
+      activeId,
+    },
+  };
+}
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',

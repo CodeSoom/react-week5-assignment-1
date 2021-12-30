@@ -1,5 +1,5 @@
 import reducer from './regions';
-import { setRegions } from '../actions';
+import { setRegions, setRegionActiveId } from '../actions';
 import { regionsData } from '../fixtures';
 
 describe('regions', () => {
@@ -19,12 +19,7 @@ describe('regions', () => {
 
   describe('setRegionActiveId', () => {
     it('현재 선택된 지역의 id값이 activeId가 된다.', () => {
-      const state = reducer(initialState, {
-        type: 'setRegionActiveId',
-        payload: {
-          activeId: 2,
-        },
-      });
+      const state = reducer(initialState, setRegionActiveId(2));
 
       expect(state.activeId).toBe(2);
     });
