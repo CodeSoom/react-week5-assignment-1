@@ -1,5 +1,8 @@
-import categories from './fixtures/cetegories';
-import regions from './fixtures/regions';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { loadCategories, loadRegions } from './actions';
+
 import restaurants from './fixtures/restaurants';
 
 const filteredRestaurant = restaurants.filter(
@@ -8,6 +11,18 @@ const filteredRestaurant = restaurants.filter(
 );
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadCategories());
+    dispatch(loadRegions());
+  }, []);
+
+  const { regions, categories } = useSelector(state => ({
+    regions: state.regions,
+    categories: state.categories
+  }))
+
   return (
     <>
       {regions.map((region) => (
