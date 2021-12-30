@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
+
 import Categories from './Categories';
 
 describe('Categories', () => {
@@ -11,7 +12,7 @@ describe('Categories', () => {
     expect(getByText('한식')).not.toBeNull();
   });
 
-  it('지역을 클릭하면 onClick 함수를 실행한다.', () => {
+  it('지역을 클릭하면 handleCategory 함수를 실행한다.', () => {
     const categories = [
       { id: 1, name: '한식' },
     ];
