@@ -14,7 +14,7 @@ export default function Regions({ regions, activeId, onClick }) {
 
         return (
           <li key={id}>
-            <button type="button" onClick={onClick}>
+            <button type="button" onClick={() => onClick(id)}>
               {name}
               {activeId === id && '(V)'}
             </button>
