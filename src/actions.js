@@ -1,20 +1,19 @@
 // import categories from './fixtures/cetegories';
 // import regions from './fixtures/regions';
 
-import { fetchCategories, fetchRegions } from "./services/api";
+import { fetchCategories, fetchRegions } from './services/api';
 
 export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
-    dispatch(setCategories(categories))
-  }
+    dispatch(setCategories(categories));
+  };
 }
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
     dispatch(setRegions(regions));
-  }
-
+  };
 }
 
 function setCategories(categories) {

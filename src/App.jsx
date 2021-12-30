@@ -29,7 +29,7 @@ export default function App() {
 
   function handleRegionClick(event) {
     const { value } = event.target;
-    console.log(value)
+    console.log(value);
     dispatch(checkRegion(value));
   }
   function handleCategoryClick(event) {
@@ -40,9 +40,9 @@ export default function App() {
   return (
     <>
       {regions && regions.map((region) => {
-        console.log(checkedRegion === region.id)
+        console.log(checkedRegion === region.id);
         const name = checkedRegion === region.id ? `${region.name}✅` : region.name;
-        console.log(checkedRegion === region.id, name)
+        console.log(checkedRegion === region.id, name);
         return (
           // <div>{name}</div>
           <button name="region" type="button" key={region.id} value={region.id} onClick={handleRegionClick}>
