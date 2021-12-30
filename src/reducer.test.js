@@ -1,47 +1,38 @@
-import reducer from "./reducer";
-
 import { render, fireEvent } from "@testing-library/react";
 
-const initialState = {
-  regions: [
-    { id: 1, name: "서울" },
-    { id: 2, name: "대전" },
-  ],
-  categories: [
-    { id: 1, name: "한식" },
-    { id: 2, name: "대전" },
-  ],
-};
+import reducer, { initialState } from "./reducer";
+import { loadInitialState, changeRegion, changeCategory } from "./actions";
 
 describe("reducer", () => {
-  it("Load Basic API Restaurant data", () => {
+  it("Load Restaurant regions, categories Basic API data", () => {
     const state = reducer(
-      {},
-      loadInitialState({
-        type: "Load_InitialState",
-        payload: {
-          regions: [
-            { id: 1, name: "서울" },
-            { id: 2, name: "대전" },
-          ],
-          categories: [{ id: 1, name: "한식" }],
-        },
-      })
+      initialState,
+      loadInitialState(
+        [
+          { id: 1, name: "서울" },
+          { id: 2, name: "부산" },
+        ],
+        [{ id: 1, name: "한식" }]
+      )
     );
 
-    expect(state.Region).toHaveLength(2);
+    expect(state.Regions).toHaveLength(2);
     expect(state.Categories).toHaveLength(1);
   });
 
   context("when Regions button Clicked", () => {
-    const state = reducer(initialState, changeRegion(1));
+    it("change currentRegion state", () => {
+      const state = reducer(initialState, changeRegion(1));
 
-    expect(state.currentRegion).toBe(1);
+      expect(state.currentRegion).toBe(1);
+    });
   });
 
   context("when Categories button Clicked", () => {
-    const state = reducer(initialState, changeCategory(2));
+    it("change currentCategory state", () => {
+      const state = reducer(initialState, changeCategory(2));
 
-    expect(state.currentCategory).toBe(2);
+      expect(state.currentCategory).toBe(2);
+    });
   });
 });
