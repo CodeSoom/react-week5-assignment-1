@@ -7,6 +7,8 @@ import restaurants from '../fixtures/fixture';
 import {
   setRestaurants,
   addRestaurant,
+  putRestaurantField,
+
 } from './action';
 
 describe('reducer', () => {
@@ -16,6 +18,7 @@ describe('reducer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants: [],
+    restaurant: {},
   }));
 
   context('with setRestaurants', () => { // 테스트이름을 액션명으로 해도 되는지?
@@ -39,6 +42,19 @@ describe('reducer', () => {
       const state = reducer(initialState, initialState);
 
       expect(state.restaurants).toHaveLength(0);
+    });
+  });
+
+  context('with addRestaurant', () => {
+    it('appends restaurant into restaurants and clears', () => {
+      const initialState = {
+        restaurants: [],
+        restaurant: {},
+      };
+
+      const state = reducer(initialState, addRestaurant());
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });
