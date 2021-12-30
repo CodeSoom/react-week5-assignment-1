@@ -23,7 +23,7 @@ describe('ListCreatorContainer', () => {
 
   const renderListCreatorContainer = () => render((<ListCreatorContainer />));
 
-  it('clicks to call onClick handler with addRestaurant', () => {
+  it('listens "등록" button click event', () => {
     const { getByText } = renderListCreatorContainer();
 
     expect(getByText('등록')).toBeInTheDocument();

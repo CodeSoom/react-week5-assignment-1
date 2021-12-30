@@ -11,6 +11,7 @@ import ListCreatorContainer from './ListCreatorContainer';
 export default function App() {
   const dispatch = useDispatch();
 
+  // ToDo: 서버에서 가져오기...
   useEffect(() => {
     dispatch(setRestaurants(restaurants));
   }, []);

@@ -16,6 +16,7 @@ describe('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants,
+    restaurant: {},
   }));
 
   const renderApp = () => render((<App />));

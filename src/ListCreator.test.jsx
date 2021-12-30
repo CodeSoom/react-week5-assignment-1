@@ -12,13 +12,19 @@ describe('ListCreator', () => {
     place: '서울시 송파구',
   };
   const handleClick = jest.fn();
+  const handleChange = jest.fn();
 
   const renderListCreator = () => render((
     <ListCreator
       restaurant={restaurant}
       onClick={handleClick}
+      onChange={handleChange}
     />
   ));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('renders "등록" button to calls onClick handler', () => {
     const { getByText } = renderListCreator();
@@ -30,11 +36,23 @@ describe('ListCreator', () => {
     expect(handleClick).toBeCalled();
   });
 
-  it('changes to call onChange handler with createRestaurant', () => {
+  it('renders input to calls onChange handler', () => {
     const { getByDisplayValue } = renderListCreator();
 
-    expect(getByDisplayValue('모토쿠라시')).toBeInTheDocument();
-    expect(getByDisplayValue('일식')).toBeInTheDocument();
-    expect(getByDisplayValue('서울시 송파구')).toBeInTheDocument();
+    expect(getByDisplayValue('모토쿠라시').value).toBe(restaurant.name);
+    expect(getByDisplayValue('일식').value).toBe(restaurant.category);
+    expect(getByDisplayValue('서울시 송파구').value).toBe(restaurant.place);
+
+    fireEvent.change(getByDisplayValue('모토쿠라시'), {
+      target: { value: '흠' },
+    });
+    fireEvent.change(getByDisplayValue('일식'), {
+      target: { value: '좀무' },
+    });
+    fireEvent.change(getByDisplayValue('서울시 송파구'), {
+      target: { value: '섭군요' },
+    });
+
+    expect(handleChange).toBeCalled();
   });
 });
