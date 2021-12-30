@@ -9,10 +9,12 @@ export const ACTION_TYPES = {
   SET_RESTAURANTS: 'SET_RESTAURANTS',
 };
 
+const DEFAULT_OPTION_INDEX = 0;
+
 export function setFilter({ region, category }) {
   return {
     type: ACTION_TYPES.SET_FILTER,
-    payload: { region, category },
+    payload: { filter: { region, category } },
   };
 }
 
@@ -29,7 +31,9 @@ export function fetchRegions() {
     dispatch(setRegions(regions));
 
     const { filter } = getState();
-    dispatch(setFilter({ ...filter, region: regions[0].id }));
+    dispatch(
+      setFilter({ ...filter, region: regions[DEFAULT_OPTION_INDEX].id }),
+    );
   };
 }
 
@@ -46,7 +50,7 @@ export function fetchCategories() {
     dispatch(setCategories(categories));
 
     const { filter } = getState();
-    dispatch(setFilter({ ...filter, category: categories[0].id }));
+    dispatch(setFilter({ ...filter, category: categories[DEFAULT_OPTION_INDEX].id }));
   };
 }
 

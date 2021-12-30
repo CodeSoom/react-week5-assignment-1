@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SearchFilterContainer from './components/SearchFilterContainer';
 import RestaurantsListContainer from './components/RestaurantsListContainer';
 import { fetchRestaurants } from './store/actions';
+import Title from './components/Title';
 
 export default function App() {
   const { filter: { region, category } } = useSelector((state) => state);
@@ -18,7 +19,7 @@ export default function App() {
 
   return (
     <main>
-      <h1 style={{ display: 'none' }}>레스토랑 검색</h1>
+      <Title />
       <SearchFilterContainer />
       <RestaurantsListContainer />
     </main>

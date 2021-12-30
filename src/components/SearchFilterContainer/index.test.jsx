@@ -10,6 +10,9 @@ describe('SearchFilterContainer', () => {
   const dispatch = jest.fn();
   const regions = [{ id: 1, name: '서울' }, { id: 2, name: '경기' }];
   const categories = [{ id: 1, name: '한식' }, { id: 2, name: '중식' }];
+
+  const defaultOptionIndex = 0;
+
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
@@ -36,8 +39,8 @@ describe('SearchFilterContainer', () => {
   it('renders selected option value', () => {
     const { getByText } = render(<SearchFilterContainer />);
 
-    expect(getByText(`${regions[0].name}(V)`)).toBeInTheDocument();
-    expect(getByText(`${categories[0].name}(V)`)).toBeInTheDocument();
+    expect(getByText(`${regions[defaultOptionIndex].name}(V)`)).toBeInTheDocument();
+    expect(getByText(`${categories[defaultOptionIndex].name}(V)`)).toBeInTheDocument();
   });
 
   context('when the component did mounted', () => {
@@ -50,12 +53,13 @@ describe('SearchFilterContainer', () => {
   context('when region is changed', () => {
     it('calls dispatch with setFilter', () => {
       const { getByText } = render(<SearchFilterContainer />);
+      const newRegionOptionIndex = 1;
 
-      fireEvent.click(getByText(regions[1].name));
+      fireEvent.click(getByText(regions[newRegionOptionIndex].name));
 
       expect(dispatch).toBeCalledWith(setFilter({
-        region: regions[1].id,
-        category: categories[0].id,
+        region: regions[newRegionOptionIndex].id,
+        category: categories[defaultOptionIndex].id,
       }));
     });
   });
@@ -63,11 +67,12 @@ describe('SearchFilterContainer', () => {
   context('when category is changed', () => {
     it('calls dispatch with setFilter', () => {
       const { getByText } = render(<SearchFilterContainer />);
+      const newCategoryOptionIndex = 1;
 
-      fireEvent.click(getByText(categories[1].name));
+      fireEvent.click(getByText(categories[newCategoryOptionIndex].name));
 
       expect(dispatch).toBeCalledWith(setFilter({
-        region: regions[0].id, category: categories[1].id,
+        region: regions[defaultOptionIndex].id, category: categories[newCategoryOptionIndex].id,
       }));
     });
   });

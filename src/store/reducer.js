@@ -10,34 +10,27 @@ export const initialState = {
   restaurants: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === ACTION_TYPES.SET_REGIONS) {
-    return {
-      ...state,
-      regions: action.payload.regions,
-    };
-  }
-  if (action.type === ACTION_TYPES.SET_CATEGORIES) {
-    return {
-      ...state,
-      categories: action.payload.categories,
-    };
-  }
-  if (action.type === ACTION_TYPES.SET_FILTER) {
-    return {
-      ...state,
-      filter: {
-        region: action.payload.region,
-        category: action.payload.category,
-      },
-    };
-  }
-  if (action.type === ACTION_TYPES.SET_RESTAURANTS) {
-    return {
-      ...state,
-      restaurants: action.payload.restaurants,
-    };
-  }
+const reducersMap = {
+  [ACTION_TYPES.SET_REGIONS]: (state, action) => ({
+    ...state,
+    regions: action.payload.regions,
+  }),
+  [ACTION_TYPES.SET_CATEGORIES]: (state, action) => ({
+    ...state,
+    categories: action.payload.categories,
+  }),
+  [ACTION_TYPES.SET_FILTER]: (state, action) => ({
+    ...state,
+    filter: action.payload.filter,
+  }),
+  [ACTION_TYPES.SET_RESTAURANTS]: (state, action) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
+  }),
+};
 
-  return state;
+export default function reducer(state = initialState, action) {
+  return reducersMap[action.type]
+    ? reducersMap[action.type](state, action)
+    : state;
 }

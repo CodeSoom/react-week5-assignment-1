@@ -12,7 +12,9 @@ describe('reducer', () => {
     it('returns state with new regions', () => {
       const regions = [{ id: 1, name: '서울' }];
 
-      expect(reducer(undefined, setRegions(regions)).regions).toEqual(regions);
+      const state = reducer(undefined, setRegions(regions));
+
+      expect(state.regions).toEqual(regions);
     });
   });
 
