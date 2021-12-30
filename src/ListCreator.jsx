@@ -2,7 +2,7 @@
 export default function ListCreator({ restaurant, onChange, onClick }) {
   function handleChange(event) {
     const { target: { value, name } } = event;
-    onChange(value, name);
+    onChange({ value, name }); // onChange()에 인자넣기?
   }
 
   return (

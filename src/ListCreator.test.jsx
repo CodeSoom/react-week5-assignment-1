@@ -53,6 +53,17 @@ describe('ListCreator', () => {
       target: { value: '섭군요' },
     });
 
-    expect(handleChange).toBeCalled();
+    expect(handleChange).toBeCalledWith({
+      name: 'name',
+      value: '흠',
+    });
+    expect(handleChange).toBeCalledWith({
+      name: 'category',
+      value: '좀무',
+    });
+    expect(handleChange).toBeCalledWith({
+      name: 'place',
+      value: '섭군요',
+    });
   });
 });
