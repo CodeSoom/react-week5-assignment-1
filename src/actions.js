@@ -17,3 +17,21 @@ export function loadRegions() {
     },
   };
 }
+
+export function checkCategory(id) {
+  return {
+    type: 'checkCategory',
+    payload: {
+      checkedCategory: id,
+    },
+  };
+}
+
+export function checkRegion(id) {
+  return {
+    type: 'checkRegion',
+    payload: {
+      checkedRegion: id,
+    },
+  };
+}
