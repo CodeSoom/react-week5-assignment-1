@@ -52,7 +52,10 @@ export function fetchLocations() {
 
 export function fetchRestaurants({ location, category }) {
   return async (dispatch) => {
-    const restaurants = await getRestaurants(location.name, category.id);
+    const restaurants = await getRestaurants({
+      region: location.name,
+      category: category.id,
+    });
     dispatch(setRestaurants(restaurants));
   };
 }
