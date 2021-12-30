@@ -6,12 +6,11 @@ import locations from '../fixtures/locations';
 
 describe('Locations', () => {
   it('renders location list', () => {
-    const { getByText } = render((
+    const { container } = render((
       <Locations locations={locations} />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
-    expect(getByText('대구')).not.toBeNull();
+    expect(container).toHaveTextContent(locations[0].name);
   });
 
   it('changes state by clicking the location button', () => {

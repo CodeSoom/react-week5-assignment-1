@@ -15,12 +15,12 @@ describe('App', () => {
   }));
 
   it('renders location list', () => {
-    const { queryByText } = render((
+    const { container } = render((
       <App />
     ));
 
     expect(dispatch).toBeCalledTimes(1);
 
-    expect(queryByText('지역')).not.toBeNull();
+    expect(container).toHaveTextContent('지역');
   });
 });

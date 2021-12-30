@@ -6,6 +6,8 @@ import LocationContainer from './LocationContainer';
 
 import locations from '../fixtures/locations';
 
+import { setLocation } from './action';
+
 jest.mock('react-redux');
 
 describe('LocationContainer', () => {
@@ -18,12 +20,16 @@ describe('LocationContainer', () => {
     location: '대전',
   }));
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders location list', () => {
-    const { getByText } = render((
+    const { container } = render((
       <LocationContainer />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
+    expect(container).toHaveTextContent(locations[0].name);
   });
 
   it('changes state by clicking the location button', () => {
@@ -33,19 +39,14 @@ describe('LocationContainer', () => {
 
     fireEvent.click(getByText('서울'));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setLocation',
-      payload: {
-        location: '서울',
-      },
-    });
+    expect(dispatch).toBeCalledWith(setLocation('서울'));
   });
 
   it('renders "(V)" when has location in state ', () => {
-    const { getByText } = render((
+    const { container } = render((
       <LocationContainer />
     ));
 
-    expect(getByText(/(V)/)).not.toBeNull();
+    expect(container).toHaveTextContent('(V)');
   });
 });
