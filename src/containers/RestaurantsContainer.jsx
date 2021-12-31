@@ -17,7 +17,7 @@ export default function RestaurantsContainer() {
     if (targetRegion) {
       dispatch(loadRestaurants({ regionName: targetRegion.name, categoryId: categoryActiveId }));
     }
-  }, [targetRegion, categoryActiveId]);
+  }, [regionActiveId, categoryActiveId]);
 
   return (
     <Restaurants restaurants={restaurants} />

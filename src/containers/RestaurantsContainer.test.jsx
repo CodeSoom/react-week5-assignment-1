@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
-
 import { useSelector, useDispatch } from 'react-redux';
-import { restaurantsData } from '../fixtures';
 
+import { regionsData, categoriesData, restaurantsData } from '../fixtures';
+import { loadRestaurants } from '../actions';
 import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
@@ -15,7 +15,7 @@ describe('RestaurantsContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       regions: {
         regions: [],
-        activeRegionName: '',
+        activeId: -1,
       },
       categories: {
         categories: [],
@@ -41,7 +41,7 @@ describe('RestaurantsContainer', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: {
           regions: [],
-          activeRegionName: '',
+          activeId: -1,
         },
         categories: {
           categories: [],
@@ -56,6 +56,26 @@ describe('RestaurantsContainer', () => {
 
       expect(getByText(restaurantsData[0].name)).not.toBeNull();
       expect(getByText(restaurantsData[1].name)).not.toBeNull();
+    });
+
+    it('regionActiveId와 categoryActiveId가 존재하면, loadRestaurants 액션이 디스패치된다.', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: {
+          regions: regionsData,
+          activeId: -1,
+        },
+        categories: {
+          categories: categoriesData,
+          activeId: -1,
+        },
+        restaurants: {
+          restaurants: restaurantsData,
+        },
+      }));
+
+      const { getByText } = renderRestaurantsContainer();
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
