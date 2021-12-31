@@ -14,10 +14,8 @@ export async function fetchRestaurantCategories() {
 
 export async function functionRestaurant(regionName, categoryId) {
   const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
-
   const response = await fetch(url);
   //response.json()은 왜 await가 필요한가?
   const data = await response.json();
-
   return data;
 }
