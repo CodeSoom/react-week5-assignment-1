@@ -3,6 +3,7 @@ export const initialState = {
   currentCategory: "",
   Regions: [],
   Categories: [],
+  Restaurants: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,6 +23,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         currentCategory: action.payload.id,
+      };
+
+    case "SET_RESTAURANTS":
+      return {
+        ...state,
+        Restaurants: action.payload.restaurants,
       };
     default:
       return state;

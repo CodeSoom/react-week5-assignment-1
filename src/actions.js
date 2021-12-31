@@ -1,6 +1,7 @@
 import {
   fetchRestaurantRegions,
   fetchRestaurantCategories,
+  fetchRestaurants,
 } from "./services/api";
 
 export function setInitialState(regions, categories) {
@@ -31,5 +32,20 @@ export const changeCategory = (id) => {
   return {
     type: "CHANGE_CATEGORY",
     payload: { id },
+  };
+};
+
+export const setRestaurants = (restaurants) => {
+  return {
+    type: "SET_RESTAURANTS",
+    payload: { restaurants },
+  };
+};
+
+export const getRestaurants = (regionName, categoryId) => {
+  return async (dispatch) => {
+    const restaurants = await fetchRestaurants(regionName, categoryId);
+
+    dispatch(setRestaurants(restaurants));
   };
 };
