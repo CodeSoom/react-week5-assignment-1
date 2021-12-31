@@ -38,6 +38,7 @@ describe("Regions", () => {
 
     expect(handleClick).toBeCalled();
     //상태값이 변한거는 <Regions />의 관심사가 아니다
-    expect(getByText(/부산 (V)/)).toBeNull();
+    // RegExpr에서 ()은 캡쳐링 기능이다
+    expect(getByText("부산 (V)")).not.toBeNull();
   });
 });

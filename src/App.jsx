@@ -6,7 +6,7 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import Regions from "./Regions";
 import Categories from "./Categories";
 
-import { loadInitialState } from "./actions";
+import { loadInitialState, changeRegion } from "./actions";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -15,6 +15,10 @@ export default function App() {
     categories: state.Categories,
   }));
 
+  function handleRegionClick(id) {
+    dispatch(changeRegion(id));
+  }
+
   useEffect(() => {
     dispatch(loadInitialState());
   }, []);
@@ -22,7 +26,11 @@ export default function App() {
   return (
     <>
       <Provider store={store}>
-        <Regions restaurantRegions={regions} />
+        <Regions
+          currentRegion={regions}
+          restaurantRegions={regions}
+          onClick={handleRegionClick}
+        />
         <Categories restaurantCategories={categories} />
       </Provider>
     </>
