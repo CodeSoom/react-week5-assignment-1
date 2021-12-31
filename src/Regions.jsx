@@ -1,3 +1,3 @@
-export default function Regions() {
+export default function Regions({ currentRegion, restaurantRegions, onClick }) {
   return {};
 }
