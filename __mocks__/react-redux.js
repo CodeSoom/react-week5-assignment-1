@@ -1,2 +1,2 @@
-export const useDispatch = jset.fn();
+export const useDispatch = jest.fn();
 export const useSelector = jest.fn();
