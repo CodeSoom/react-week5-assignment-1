@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Lists from './Lists';
+import Regions from './Regions';
+import Categories from './Categories';
 
 import {
   loadRegions,
@@ -23,8 +24,8 @@ export default function App() {
   return (
     <div>
       <h1>Restaurants</h1>
-      <Lists items={regions} />
-      <Lists items={categories} />
+      <Regions items={regions} />
+      <Categories items={categories} />
     </div>
   );
 }
