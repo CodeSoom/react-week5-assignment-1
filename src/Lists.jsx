@@ -1,19 +1,15 @@
 import Button from './Button'
 
-export default function ButtonContainer({ regions }) {
-  function clickHandler(event) {
-    // children 요소를 리턴.
-  }
-
+export default function Lists({ items, onClick }) {
   return (
     <ul>
-    { regions.map((region) => (
-      <li key={region.id}>
-        <Button onClick={clickHandler}>
-          {region.name}
+    { items !== undefined ? items.map((item) => (
+      <li key={item.id}>
+        <Button id={item.id} onClick={onClick}>
+          {item.name}
         </Button>
       </li>
-    ))}
+    )) : ''}
     </ul>
   );
 }
