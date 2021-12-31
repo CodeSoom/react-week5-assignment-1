@@ -4,7 +4,7 @@ import Regions from "./Regions";
 import Categories from "./Categories";
 
 import { useDispatch, useSelector } from "react-redux";
-import { loadInitialState, changeRegion } from "./actions";
+import { loadInitialState, changeRegion, changeCategory } from "./actions";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -16,10 +16,13 @@ export default function App() {
       categories: state.Categories,
     })
   );
-  console.log("반복?");
-  console.log(currentRegion, regions);
+
   function handleRegionClick(id) {
     dispatch(changeRegion(id));
+  }
+
+  function handleCategoryClick(id) {
+    dispatch(changeCategory(id));
   }
 
   useEffect(() => {
@@ -33,8 +36,11 @@ export default function App() {
         restaurantRegions={regions}
         onClick={handleRegionClick}
       />
-      <br />
-      <Categories restaurantCategories={categories} />
+      <Categories
+        currentCategory={currentCategory}
+        restaurantCategories={categories}
+        onClick={handleCategoryClick}
+      />
     </>
   );
 }
