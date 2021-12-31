@@ -1,20 +1,23 @@
-import store from "store";
-
 import { useEffect } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
 
 import Regions from "./Regions";
 import Categories from "./Categories";
 
+import { useDispatch, useSelector } from "react-redux";
 import { loadInitialState, changeRegion } from "./actions";
 
 export default function App() {
   const dispatch = useDispatch();
-  const { regions, categories } = useSelector((state) => ({
-    regions: state.Regions,
-    categories: state.Categories,
-  }));
-
+  const { currentRegion, currentCategory, regions, categories } = useSelector(
+    (state) => ({
+      currentRegion: state.currentRegion,
+      currentCategory: state.currentCategory,
+      regions: state.Regions,
+      categories: state.Categories,
+    })
+  );
+  console.log("반복?");
+  console.log(currentRegion, regions);
   function handleRegionClick(id) {
     dispatch(changeRegion(id));
   }
@@ -25,14 +28,13 @@ export default function App() {
 
   return (
     <>
-      <Provider store={store}>
-        <Regions
-          currentRegion={regions}
-          restaurantRegions={regions}
-          onClick={handleRegionClick}
-        />
-        <Categories restaurantCategories={categories} />
-      </Provider>
+      <Regions
+        currentRegion={currentRegion}
+        restaurantRegions={regions}
+        onClick={handleRegionClick}
+      />
+      <br />
+      <Categories restaurantCategories={categories} />
     </>
   );
 }

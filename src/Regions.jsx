@@ -1,24 +1,29 @@
 export default function Regions({ currentRegion, restaurantRegions, onClick }) {
-  function handleClick(e) {
-    onClick(e.target.currentRegion);
+  function handleClick(id) {
+    onClick(id);
   }
 
+  if (restaurantRegions.length === 0) {
+    return null;
+  }
   return (
     <ul>
       {restaurantRegions.map((region) => {
-        if (region.id === currentRegion) {
+        const { id, name } = region;
+        if (id === currentRegion) {
           return (
-            <li key={region.id}>
-              <button type='button' onClick={handleClick}>
-                {`${region.name} (V)`}
-              </button>
+            <li key={id}>
+              <button
+                type='button'
+                onClick={() => handleClick(id)}
+              >{`${name} (V)`}</button>
             </li>
           );
         }
         return (
-          <li key={region.id}>
-            <button type='button' onClick={handleClick}>
-              {region.name}
+          <li key={id}>
+            <button type='button' onClick={() => handleClick(id)}>
+              {name}
             </button>
           </li>
         );

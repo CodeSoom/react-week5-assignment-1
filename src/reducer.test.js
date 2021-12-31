@@ -3,12 +3,9 @@ import { render, fireEvent } from "@testing-library/react";
 import reducer, { initialState } from "./reducer";
 import { setInitialState, changeRegion, changeCategory } from "./actions";
 
-// mock를 넣어서 수정
-// refactoring으로 커밋하자
-
 describe("reducer", () => {
+  //load 되는 액션 크리에이터도 검사할 수 있을까?
   it("Set Restaurant regions, categories Basic API data", () => {
-    //setInitialState 검사까지 같이 되는 것
     const state = reducer(
       initialState,
       setInitialState(

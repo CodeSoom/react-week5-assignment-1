@@ -1,3 +1,3 @@
 export default function Categories() {
-  return {};
+  return null;
 }
