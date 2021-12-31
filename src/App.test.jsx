@@ -20,6 +20,9 @@ describe('App', () => {
         categories: [],
         activeId: -1,
       },
+      restaurants: {
+        restaurants: [],
+      },
     }));
     useDispatch.mockImplementation(() => dispatch);
   });

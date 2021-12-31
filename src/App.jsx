@@ -7,7 +7,7 @@ export default function App() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
-      {/* <RestaurantsContainer /> */}
+      <RestaurantsContainer />
     </div>
   );
 }
