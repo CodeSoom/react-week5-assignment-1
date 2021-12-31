@@ -7,11 +7,11 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "LOAD_INITIAL_STATE":
+    case "SET_INITIAL_STATE":
       return {
         ...state,
-        Regions: [...state.Regions, ...action.payload.regions],
-        Categories: [...state.Categories, ...action.payload.categories],
+        Regions: [...action.payload.regions],
+        Categories: [...action.payload.categories],
       };
     case "CHANGE_REGION":
       return {

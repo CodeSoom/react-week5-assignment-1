@@ -1,9 +1,24 @@
-export const loadInitialState = (regions, categories) => {
+import {
+  fetchRestaurantRegions,
+  fetchRestaurantCategories,
+} from "./services/api";
+
+export function setInitialState(regions, categories) {
   return {
-    type: "LOAD_INITIAL_STATE",
+    type: "SET_INITIAL_STATE",
     payload: { regions, categories },
   };
-};
+}
+
+export function loadInitialState() {
+  return async (dispatch) => {
+    //fork 해줄수 있나?
+    const regions = await fetchRestaurantRegions();
+    const categories = await fetchRestaurantCategories();
+
+    dispatch(setInitialState(regions, categories));
+  };
+}
 
 export const changeRegion = (id) => {
   return {

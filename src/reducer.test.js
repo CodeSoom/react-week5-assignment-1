@@ -1,13 +1,17 @@
 import { render, fireEvent } from "@testing-library/react";
 
 import reducer, { initialState } from "./reducer";
-import { loadInitialState, changeRegion, changeCategory } from "./actions";
+import { setInitialState, changeRegion, changeCategory } from "./actions";
+
+// mock를 넣어서 수정
+// refactoring으로 커밋하자
 
 describe("reducer", () => {
-  it("Load Restaurant regions, categories Basic API data", () => {
+  it("Set Restaurant regions, categories Basic API data", () => {
+    //setInitialState 검사까지 같이 되는 것
     const state = reducer(
       initialState,
-      loadInitialState(
+      setInitialState(
         [
           { id: 1, name: "서울" },
           { id: 2, name: "부산" },
