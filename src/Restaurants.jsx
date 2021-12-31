@@ -2,7 +2,7 @@ export default function Restaurants({ restaurants }) {
   if (restaurants.length === 0) {
     return (
       <div>
-        지역과 카테고리를 선택하세요.
+        식당 정보가 없습니다.
       </div>
     );
   }

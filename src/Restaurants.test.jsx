@@ -11,7 +11,7 @@ describe('Restaurants', () => {
       const restaurants = [];
       const { getByText } = renderRestaurants(restaurants);
 
-      expect(getByText(/지역과 카테고리를 선택하세요./)).toBeInTheDocument();
+      expect(getByText(/식당 정보가 없습니다./)).toBeInTheDocument();
     });
   });
 
