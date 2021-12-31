@@ -21,7 +21,7 @@ describe("Regions", () => {
 
   it("Restaurant Regions button clicked and rerender", () => {
     const handleClick = jest.fn();
-    const currentRegion = 2;
+    const currentRegion = "부산";
     const regions = [
       { id: 1, name: "서울" },
       { id: 2, name: "부산" },
@@ -36,7 +36,7 @@ describe("Regions", () => {
 
     fireEvent.click(getByText(/부산/));
 
-    expect(handleClick).toBeCalledWith(2);
+    expect(handleClick).toBeCalledWith("부산");
     //상태값이 변한거는 <Regions />의 관심사가 아니다
     // RegExpr에서 ()은 캡쳐링 기능이다
     expect(getByText("부산 (V)")).not.toBeNull();

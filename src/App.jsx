@@ -17,8 +17,8 @@ export default function App() {
     })
   );
 
-  function handleRegionClick(id) {
-    dispatch(changeRegion(id));
+  function handleRegionClick(name) {
+    dispatch(changeRegion(name));
   }
 
   function handleCategoryClick(id) {

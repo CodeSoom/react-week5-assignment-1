@@ -13,7 +13,9 @@ describe("Categories", () => {
       { id: 1, name: "한식" },
       { id: 2, name: "양식" },
     ];
-    const { getByText } = render(<Regions restaurantCategories={categories} />);
+    const { getByText } = render(
+      <Categories restaurantCategories={categories} />
+    );
 
     expect(getByText(/한식/)).not.toBeNull();
     expect(getByText(/양식/)).not.toBeNull();
