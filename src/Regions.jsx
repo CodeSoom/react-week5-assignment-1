@@ -14,15 +14,17 @@ export default function Regions({ currentRegion, restaurantRegions, onClick }) {
           return (
             <li key={id}>
               <button
-                type='button'
+                type="button"
                 onClick={() => handleClick(name)}
-              >{`${name} (V)`}</button>
+              >
+                {`${name} (V)`}
+              </button>
             </li>
           );
         }
         return (
           <li key={id}>
-            <button type='button' onClick={() => handleClick(name)}>
+            <button type="button" onClick={() => handleClick(name)}>
               {name}
             </button>
           </li>

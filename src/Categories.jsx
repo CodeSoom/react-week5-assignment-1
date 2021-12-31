@@ -18,15 +18,17 @@ export default function Categories({
           return (
             <li key={id}>
               <button
-                type='button'
+                type="button"
                 onClick={() => handleClick(id)}
-              >{`${name} (V)`}</button>
+              >
+                {`${name} (V)`}
+              </button>
             </li>
           );
         }
         return (
           <li key={id}>
-            <button type='button' onClick={() => handleClick(id)}>
+            <button type="button" onClick={() => handleClick(id)}>
               {name}
             </button>
           </li>
