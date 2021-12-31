@@ -2,11 +2,11 @@ import {
   fetchRestaurantRegions,
   fetchRestaurantCategories,
   fetchRestaurants,
-} from './services/api';
+} from "../services/api";
 
 export function setInitialState(regions, categories) {
   return {
-    type: 'SET_INITIAL_STATE',
+    type: "SET_INITIAL_STATE",
     payload: { regions, categories },
   };
 }
@@ -22,17 +22,17 @@ export function loadInitialState() {
 }
 
 export const changeRegion = (id) => ({
-  type: 'CHANGE_REGION',
+  type: "CHANGE_REGION",
   payload: { id },
 });
 
 export const changeCategory = (id) => ({
-  type: 'CHANGE_CATEGORY',
+  type: "CHANGE_CATEGORY",
   payload: { id },
 });
 
 export const setRestaurants = (restaurants) => ({
-  type: 'SET_RESTAURANTS',
+  type: "SET_RESTAURANTS",
   payload: { restaurants },
 });
 
