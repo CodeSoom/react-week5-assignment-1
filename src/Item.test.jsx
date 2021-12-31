@@ -1,19 +1,22 @@
 import { fireEvent, render } from '@testing-library/react';
+import given from 'given2';
 
 import Item from './Item';
 
 describe('Item', () => {
-  const handleClick = jest.fn();
-
   const value = {
     id: 1,
     name: '서울',
   };
 
-  const renderComponent = (selected) => render(
+  given('selected', () => false);
+
+  const handleClick = jest.fn();
+
+  const renderComponent = () => render(
     <Item
       value={value}
-      selected={selected}
+      selected={given.selected}
       onClick={handleClick}
     />,
   );
@@ -23,22 +26,30 @@ describe('Item', () => {
   });
 
   it('renders button', () => {
-    const { getByRole } = renderComponent(false);
+    const { getByRole } = renderComponent();
 
     expect(getByRole('button', { name: value.name })).toBeInTheDocument();
   });
 
-  it('clicks button, calls handleClick hanlder', () => {
-    const { getByRole } = renderComponent(false);
+  context('when unselected', () => {
+    given('selected', () => false);
 
-    fireEvent.click(getByRole('button', { name: value.name }));
+    it('clicks button, calls handleClick hanlder', () => {
+      const { getByRole } = renderComponent();
 
-    expect(handleClick).toBeCalledWith(value);
+      fireEvent.click(getByRole('button', { name: value.name }));
+
+      expect(handleClick).toBeCalledWith(value);
+    });
   });
 
-  it('selected button, render button with name and (V)', () => {
-    const { getByRole } = renderComponent(true);
+  context('when selected', () => {
+    given('selected', () => true);
 
-    expect(getByRole('button', { name: `${value.name}(V)` })).toBeInTheDocument();
+    it('selected button, render button with name and (V)', () => {
+      const { getByRole } = renderComponent();
+
+      expect(getByRole('button', { name: `${value.name}(V)` })).toBeInTheDocument();
+    });
   });
 });

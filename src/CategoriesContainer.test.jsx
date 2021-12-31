@@ -27,10 +27,6 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  // TODO: 궁금한 점 물어보기
-  // Category 컨테이너에서 selectedCategory 값을 변경하는 로직이 있음.
-  // 이 부분을 어떻게 테스트해야하나?? => button 이 눌려야 해당 dispatch 가 호출되는데
-  // 버튼을 클릭해서 테스트 해야하는지 궁금
   it('calls click handler, calls "setSelectedCategory dispatch" with the clicked category', () => {
     const { getByRole } = render(
       <CategoriesContainer />,
