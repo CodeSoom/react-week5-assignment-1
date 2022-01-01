@@ -6,7 +6,7 @@ export default function Regions({
   return (
     <ul>
       {regions.map((region) => {
-        const name = checkedRegion === region.name ? `${region.name}(V)` : region.name;
+        const checked = checkedRegion === region.name;
 
         return (
           <li key={region.id}>
@@ -15,7 +15,8 @@ export default function Regions({
               value={region.name}
               onClick={onClick}
             >
-              {name}
+              {region.name}
+              {checked && '(V)'}
             </button>
           </li>
         );

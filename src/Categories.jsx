@@ -6,10 +6,7 @@ export default function Categories({
   return (
     <ul>
       {categories.map((category) => {
-        const name = checkedCategoryId === category.id
-          ? `${category.name}(V)`
-          : category.name;
-
+        const checked = checkedCategoryId === category.id;
         return (
           <li key={category.id}>
             <button
@@ -17,7 +14,8 @@ export default function Categories({
               value={category.id}
               onClick={onClick}
             >
-              {name}
+              {category.name}
+              {checked && '(V)'}
             </button>
           </li>
         );
