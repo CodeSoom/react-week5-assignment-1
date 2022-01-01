@@ -16,68 +16,57 @@ describe('SearchFilter', () => {
     );
   });
 
-  it('renders regions', () => {
-    const { getByText } = renderComponent({
-      options: {
-        regions: [{ id: 1, name: '서울' }], categories: [],
-      },
-    });
-
-    expect(getByText('서울')).toBeInTheDocument();
-  });
-
-  it('renders categories', () => {
+  it('renders regions and categories', () => {
     const { getByText } = renderComponent({ options: { regions, categories } });
 
+    expect(getByText('서울')).toBeInTheDocument();
     expect(getByText('한식')).toBeInTheDocument();
   });
 
-  it('renders selected option value', () => {
-    const { getByText } = renderComponent({
-      options: {
-        regions,
-        categories,
-      },
-      value: {
-        region: regions[1].id,
-        category: categories[1].id,
-      },
-    });
+  context('when region and category are selected', () => {
+    const value = { region: regions[0].id, category: categories[0].id };
 
-    expect(getByText(`${regions[1].name}(V)`)).toBeInTheDocument();
-    expect(getByText(`${categories[1].name}(V)`)).toBeInTheDocument();
-  });
-
-  context('when region is changed', () => {
-    it('calls onChange', () => {
+    it('renders selected option value', () => {
       const { getByText } = renderComponent({
         options: {
           regions,
           categories,
         },
-        value: {
-          region: regions[0].id,
-          category: categories[0].id,
-        },
+        value,
       });
 
-      fireEvent.click(getByText(regions[1].name));
-      expect(handleChange).toBeCalledWith({ region: regions[1].id, category: categories[0].id });
+      expect(getByText(`${regions[0].name}(V)`)).toBeInTheDocument();
+      expect(getByText(`${categories[0].name}(V)`)).toBeInTheDocument();
     });
-  });
 
-  context('when category is changed', () => {
-    it('calls onChange', () => {
-      const { getByText } = renderComponent({
-        options: { regions, categories },
-        value: {
-          region: regions[0].id,
-          category: categories[0].id,
-        },
+    describe('Click region', () => {
+      it('calls onChange handler', () => {
+        const { getByText } = renderComponent({
+          options: {
+            regions,
+            categories,
+          },
+          value,
+        });
+
+        fireEvent.click(getByText(regions[1].name));
+        expect(handleChange).toBeCalledWith({ region: regions[1].id, category: categories[0].id });
       });
+    });
 
-      fireEvent.click(getByText(categories[1].name));
-      expect(handleChange).toBeCalledWith({ region: regions[0].id, category: categories[1].id });
+    describe('Click category', () => {
+      it('calls onChange handler', () => {
+        const { getByText } = renderComponent({
+          options: { regions, categories },
+          value: {
+            region: regions[0].id,
+            category: categories[0].id,
+          },
+        });
+
+        fireEvent.click(getByText(categories[1].name));
+        expect(handleChange).toBeCalledWith({ region: regions[0].id, category: categories[1].id });
+      });
     });
   });
 });
