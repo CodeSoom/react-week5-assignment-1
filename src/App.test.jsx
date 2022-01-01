@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
@@ -15,15 +16,21 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [],
     restaurant: {},
+    categories: [],
   }));
 
-  const renderApp = () => render((<App />));
-
   describe('dispatch', () => {
-    it('calls action to set restaurant', () => {
-      const { container } = renderApp();
+    it('calls action with setRestaurants', () => {
+      const { queryByText } = render((<App />));
 
-      expect(container).toHaveTextContent('Restaurants');
+      expect(dispatch).toBeCalledWith({
+        type: 'setRestaurants',
+        payload: {
+          restaurants: [],
+        },
+      });
+
+      expect(queryByText(/한식/)).toBeNull();
     });
   });
 });

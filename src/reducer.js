@@ -6,27 +6,16 @@ const initialState = {
     category: '',
     place: '',
   },
+  categories: [],
 };
 
 export default function reducer(state = initialState, action) {
   if (action.type === 'setRestaurants') {
-    const { restaurants } = state;
+    const { restaurants, restaurant } = state;
 
     return {
       ...state,
-      restaurants,
-    };
-  }
-
-  if (action.type === 'putRestaurantField') {
-    const { name, value } = action.payload;
-
-    return {
-      ...state,
-      restaurant: {
-        ...state.restaurant,
-        [name]: value,
-      },
+      restaurants: [...restaurants, restaurant],
     };
   }
 
@@ -42,6 +31,27 @@ export default function reducer(state = initialState, action) {
         category: '',
         place: '',
       },
+    };
+  }
+
+  if (action.type === 'putInputField') {
+    const { name, value, restaurant } = action.payload;
+
+    return {
+      ...state,
+      restaurant: {
+        ...restaurant,
+        [name]: value,
+      },
+    };
+  }
+
+  if (action.type === 'loadCategories') {
+    const { categories } = action.payload;
+
+    return {
+      ...state,
+      categories,
     };
   }
 

@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
-
+// reducer: action과 reducer받아와서 테스트
 import reducer from './reducer';
 
 import restaurants from '../fixtures/fixture';
@@ -7,45 +6,25 @@ import restaurants from '../fixtures/fixture';
 import {
   setRestaurants,
   addRestaurant,
-  putRestaurantField,
+  putInputField,
+  loadCategories,
 } from './action';
 
 describe('reducer', () => {
-  const dispatch = useDispatch();
-
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [],
-    restaurant: {},
-  }));
-
-  context('with setRestaurants action', () => { // 테스트이름을 액션명으로 해도 되는지?
-    it('updates state with restaurants', () => {
+  describe('setRestaurants', () => {
+    it('updates restaurants', () => {
       const initialState = {
         restaurants: [],
       };
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.restaurants).toHaveLength(0);
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 
-  context('without setRestaurants action', () => {
-    it('changes nothing', () => {
-      const initialState = {
-        restaurants: [],
-      };
-
-      const state = reducer(initialState, initialState);
-
-      expect(state.restaurants).toHaveLength(0);
-    });
-  });
-
-  context('with addRestaurant action', () => {
-    it('appends restaurant into restaurants and clears input field', () => {
+  describe('addRestaurant', () => {
+    it('appends restaurant into restaurants and clears input field and updates newId', () => {
       const initialState = {
         newId: 100,
         restaurants: [],
@@ -65,7 +44,7 @@ describe('reducer', () => {
     });
   });
 
-  context('with putRestaurantField action', () => {
+  describe('putInputField', () => {
     it('changes value of input field', () => {
       const initialState = {
         restaurants: [],
@@ -76,12 +55,27 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(initialState, putRestaurantField({
+      const state = reducer(initialState, putInputField({
         name: 'name',
         value: '왈랄라',
       }));
 
       expect(state.restaurant.name).toBe('왈랄라');
+    });
+  });
+
+  describe('loadCategories', () => {
+    it('updates categories', () => {
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+      const initialState = {
+        categories: [],
+      };
+
+      const state = reducer(initialState, loadCategories(categories));
+
+      expect(state.categories).toHaveLength(1);
     });
   });
 });
