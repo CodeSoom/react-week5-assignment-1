@@ -1,17 +1,31 @@
-import {
-  checkCategory, checkRegion, loadCategories, loadRegions,
-} from './actions';
 import reducer from './reducer';
+
+import {
+  checkCategory,
+  checkRegion,
+  setRegions,
+  setCategories,
+  setRestaurantsList,
+} from './actions';
+
+import categories from './fixtures/cetegories';
+import regions from './fixtures/regions';
+import restaurants from './fixtures/restaurants';
 
 test('reducer', () => {
   const state = {
     categories: [],
     regions: [],
-    checkedCategory: undefined,
-    checkedRegion: undefined,
+    checkedCategoryId: undefined,
+    checkedRegion: '',
+    restaurantsList: [],
   };
-  expect(reducer(state, loadCategories()).categories).toHaveLength(1);
-  expect(reducer(state, loadRegions()).regions).toHaveLength(1);
-  expect(reducer(state, checkCategory(1)).checkedCategory).toBe(1);
+
+  expect(reducer(undefined, { type: undefined })).toStrictEqual(state);
+  expect(reducer(state, setRegions(regions)).regions).toHaveLength(regions.length);
+  expect(reducer(state, setCategories(categories)).categories).toHaveLength(categories.length);
+  expect(reducer(state, checkCategory(1)).checkedCategoryId).toBe(1);
   expect(reducer(state, checkRegion(1)).checkedRegion).toBe(1);
+  expect(reducer(state, setRestaurantsList(restaurants)).restaurantsList)
+    .toHaveLength(restaurants.length);
 });
