@@ -21,9 +21,9 @@ export function loadInitialState() {
   };
 }
 
-export const changeRegion = (id) => ({
+export const changeRegion = (name) => ({
   type: "CHANGE_REGION",
-  payload: { id },
+  payload: { name },
 });
 
 export const changeCategory = (id) => ({

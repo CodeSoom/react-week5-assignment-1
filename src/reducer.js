@@ -17,7 +17,7 @@ export default function reducer(state = initialState, action) {
     case "CHANGE_REGION":
       return {
         ...state,
-        currentRegion: action.payload.id,
+        currentRegion: action.payload.name,
       };
     case "CHANGE_CATEGORY":
       return {
