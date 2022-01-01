@@ -9,10 +9,6 @@ describe('ApiService', () => {
     json: async () => ({}),
   }));
 
-  beforeEach(() => {
-    global.fetch.mockClear();
-  });
-
   it('calls fetch in fetchRegions', () => {
     apiService.fetchRegions();
 
@@ -33,32 +29,32 @@ describe('ApiService', () => {
     expect(fetch).toBeCalledWith(`${host}/restaurants?region=${regionId}&category=${categoryId}`);
   });
 
-  // context('with api error', () => {
-  //   const error = new Error('test error');
-  //   beforeEach(() => {
-  //     global.fetch = () => {
-  //       throw error;
-  //     };
-  //   });
+  context('with api error', () => {
+    const error = new Error('test error');
+    beforeEach(() => {
+      global.fetch = () => {
+        throw error;
+      };
+    });
 
-  //   it('calls logger.error in fetchRegions', () => {
-  //     apiService.fetchRegions();
+    it('calls logger.error in fetchRegions', () => {
+      apiService.fetchRegions();
 
-  //     expect(logger.error).toBeCalledWith(error);
-  //   });
+      expect(logger.error).toBeCalledWith(error);
+    });
 
-  //   it('calls logger.error in fetchCategories', () => {
-  //     apiService.fetchCategories();
+    it('calls logger.error in fetchCategories', () => {
+      apiService.fetchCategories();
 
-  //     expect(logger.error).toBeCalledWith(error);
-  //   });
+      expect(logger.error).toBeCalledWith(error);
+    });
 
-  //   it('calls logger.error in fetchRestaurants', () => {
-  //     const regionId = 1;
-  //     const categoryId = 2;
-  //     apiService.fetchRestaurants(regionId, categoryId);
+    it('calls logger.error in fetchRestaurants', () => {
+      const regionId = 1;
+      const categoryId = 2;
+      apiService.fetchRestaurants(regionId, categoryId);
 
-  //     expect(logger.error).toBeCalledWith(error);
-  //   });
-  // });
+      expect(logger.error).toBeCalledWith(error);
+    });
+  });
 });
