@@ -6,7 +6,7 @@ import { RESTAURANTS } from './fixture';
 jest.mock('react-redux');
 
 describe('RestaurantListContainer', () => {
-  const renderComponent = () => render(<RestaurantListContainer />);
+  const renderRestaurantListContainer = () => render(<RestaurantListContainer />);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -17,13 +17,13 @@ describe('RestaurantListContainer', () => {
   });
 
   it('RestaurantListContainer 컴포넌트 렌더링', () => {
-    const { container } = renderComponent();
+    const { container } = renderRestaurantListContainer();
 
     expect(container).not.toBeNull();
   });
 
   it('렌더링 시, 가게 리스트가 노출된다.', () => {
-    const { container } = renderComponent();
+    const { container } = renderRestaurantListContainer();
 
     expect(container).toHaveTextContent(/한국식 초밥/);
     expect(container).toHaveTextContent(/양천주가/);

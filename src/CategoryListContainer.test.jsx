@@ -10,7 +10,7 @@ jest.mock('react-redux');
 describe('CategoryListContainer', () => {
   const dispatch = jest.fn();
 
-  const renderComponent = () => render(<CategoryListContainer />);
+  const renderCategoryListContainer = () => render(<CategoryListContainer />);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -25,20 +25,20 @@ describe('CategoryListContainer', () => {
   });
 
   it('CategoryListContainer 렌더링', () => {
-    const { container } = renderComponent();
+    const { container } = renderCategoryListContainer();
 
     expect(container).not.toBeNull();
   });
 
   it('렌더링 시, 카테고리 리스트가 노출된다.', () => {
-    const { container } = renderComponent();
+    const { container } = renderCategoryListContainer();
 
     expect(container).toHaveTextContent('한식');
     expect(container).toHaveTextContent('중식');
   });
 
   it('버튼 클릭 시, changeCategory 가 dispatch 된다.', () => {
-    const { getByRole } = renderComponent();
+    const { getByRole } = renderCategoryListContainer();
 
     const button = getByRole('button', { name: /한식/ });
     fireEvent.click(button);

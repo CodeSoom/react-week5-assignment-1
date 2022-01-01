@@ -10,7 +10,7 @@ jest.mock('react-redux');
 describe('RegionListContainer', () => {
   const dispatch = jest.fn();
 
-  const renderComponent = () => render(<RegionListContainer />);
+  const renderRegionListContainer = () => render(<RegionListContainer />);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -25,20 +25,20 @@ describe('RegionListContainer', () => {
   });
 
   it('RegionListContainer 렌더링', () => {
-    const { container } = renderComponent();
+    const { container } = renderRegionListContainer();
 
     expect(container).not.toBeNull();
   });
 
   it('렌더링 시, 지역 리스트가 노출 된다.', () => {
-    const { container } = renderComponent();
+    const { container } = renderRegionListContainer();
 
     expect(container).toHaveTextContent('서울');
     expect(container).toHaveTextContent('대전');
   });
 
   it('버튼 클릭 시, changeRegion 이 dispatch 된다.', () => {
-    const { getByRole } = renderComponent();
+    const { getByRole } = renderRegionListContainer();
 
     const button = getByRole('button', { name: /서울/ });
     fireEvent.click(button);
