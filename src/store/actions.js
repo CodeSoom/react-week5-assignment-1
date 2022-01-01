@@ -1,3 +1,4 @@
+import _ from '../libs/lodash';
 import ApiService from '../services/api/ApiService';
 
 const apiService = new ApiService('https://eatgo-customer-api.ahastudio.com', console);
@@ -8,8 +9,6 @@ export const ACTION_TYPES = {
   SET_FILTER: 'SET_FILTER',
   SET_RESTAURANTS: 'SET_RESTAURANTS',
 };
-
-const DEFAULT_OPTION_INDEX = 0;
 
 export function setFilter({ region, category }) {
   return {
@@ -32,7 +31,10 @@ export function fetchRegions() {
 
     const { filter } = getState();
     dispatch(
-      setFilter({ ...filter, region: regions[DEFAULT_OPTION_INDEX].id }),
+      setFilter({
+        ...filter,
+        region: _.first(regions).id,
+      }),
     );
   };
 }
@@ -50,7 +52,12 @@ export function fetchCategories() {
     dispatch(setCategories(categories));
 
     const { filter } = getState();
-    dispatch(setFilter({ ...filter, category: categories[DEFAULT_OPTION_INDEX].id }));
+    dispatch(
+      setFilter({
+        ...filter,
+        category: _.first(categories).id,
+      }),
+    );
   };
 }
 
