@@ -1,50 +1,55 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from "@testing-library/react";
 
-import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
-import App from './App';
+import React from "react";
+import App from "./App";
 
-import { changeRegion, changeCategory } from './actions';
-
-jest.mock('react-redux');
+import { changeRegion, changeCategory, getRestaurants } from "./actions";
+import { useDispatch, useSelector } from "react-redux";
+jest.mock("react-redux");
 
 /* 계획
 -[x] dispatch 잘되는지
     - 버튼이 클릭되면 dispatch가 잘 호출되는지
 -[x] selector 잘되는지
     - selector 정보 있을때 텍스트 보이는지?
--[x] useEffect 잘되는지
-    - 첫 로드때 불러와져서 화면에 렌더링 잘 뿌려주는지
+- useEffect는 react내부의 동작함수이므로 mock해선 안된다
 */
 
-describe('App', () => {
+describe("App", () => {
   const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    currentRegion: '서울',
-    currentCategory: 2,
-    Regions: [{ id: 1, name: '서울' }],
-    Categories: [{ id: 2, name: '양식' }],
-  }));
-
   beforeEach(() => {
     jest.clearAllMocks();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) =>
+      selector({
+        currentRegion: "서울",
+        currentCategory: 1,
+        Regions: [
+          { id: 1, name: "서울" },
+          { id: 2, name: "부산" },
+        ],
+        Categories: [
+          { id: 1, name: "한식" },
+          { id: 2, name: "양식" },
+        ],
+      })
+    );
   });
 
-  it('render clicked button and buttons', () => {
+  it("render clicked button and buttons", () => {
     const { getByText } = render(<App />);
 
-    expect(getByText(/서울/)).not.toBeNull();
-    expect(getByText('양식 (V)')).not.toBeNull();
+    expect(getByText(/부산/)).not.toBeNull();
+    expect(getByText("한식 (V)")).not.toBeNull();
   });
 
-  context('when Region and Category button clicked ', () => {
-    it('Region and Category State is dispatched', () => {
+  context("when Region AND Category button clicked", () => {
+    it("Region and Category Current State is dispatched", () => {
       const { getByText } = render(<App />);
 
-      fireEvent.click(getByText(/서울/));
+      fireEvent.click(getByText(/부산/));
 
-      expect(dispatch).toBeCalledWith(changeRegion('서울'));
+      expect(dispatch).toBeCalledWith(changeRegion("부산"));
 
       fireEvent.click(getByText(/양식/));
 
@@ -52,23 +57,33 @@ describe('App', () => {
     });
   });
 
-  // context("when the first load is carried out", () => {
-  //   it("Restaurant API data is rendered", () => {
-  //     useSelector.mockImplementation((selector) =>
-  //       selector({
-  //         currentRegion: "",
-  //         currentCategory: "",
-  //         Regions: [],
-  //         Categories: [],
-  //       })
-  //     );
-  //     const { container } = render(<App />);
+  context("when Region OR Category button clicked", () => {
+    it("Restaurant API dispatch in useEffect doesn't called", () => {
+      const currentRegion = "서울";
+      const currentCategory = "";
+      useSelector.mockImplementation((selector) =>
+        selector({
+          currentRegion,
+          currentCategory,
+          Regions: [
+            { id: 1, name: "서울" },
+            { id: 2, name: "부산" },
+          ],
+          Categories: [
+            { id: 1, name: "한식" },
+            { id: 2, name: "양식" },
+          ],
+        })
+      );
+      const { getByText } = render(<App />);
 
-  //     expect(container).not.toHaveTextContent();
+      fireEvent.click(getByText(/부산/));
 
-  //     jest.spyOn(React, "useEffect").mockImplementation((f) => f());
+      expect(dispatch).toBeCalledWith(changeRegion("부산"));
 
-  //     expect(useEffect).toBeCalled();
-  //   });
-  // });
+      expect(dispatch).not.toBeCalledWith(
+        getRestaurants(currentRegion, currentCategory)
+      );
+    });
+  });
 });
