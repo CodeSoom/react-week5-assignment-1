@@ -28,24 +28,27 @@ describe('reducer', () => {
   });
 
   it('setLocations', () => {
-    const state = reducer({ locations: [] }, setLocations([{ id: 1, name: '서울', selected: false }]));
+    const locations = [{ id: 1, name: '서울', selected: false }];
+    const state = reducer({ locations: [] }, setLocations(locations));
 
     expect(state.locations).toHaveLength(1);
-    expect(state.locations).toEqual([{ id: 1, name: '서울', selected: false }]);
+    expect(state.locations).toEqual(locations);
   });
 
   it('setCategories', () => {
-    const state = reducer({ categories: [] }, setCategories([{ id: 1, name: '한식', selected: false }]));
+    const categories = [{ id: 1, name: '한식', selected: false }];
+    const state = reducer({ categories: [] }, setCategories(categories));
 
     expect(state.categories).toHaveLength(1);
-    expect(state.categories).toEqual([{ id: 1, name: '한식', selected: false }]);
+    expect(state.categories).toEqual(categories);
   });
 
   it('setRestaurants', () => {
-    const state = reducer({ restaurants: [] }, setRestaurants([{ id: 1, name: '양천주가' }]));
+    const restaurants = [{ id: 1, name: '양천주가' }];
+    const state = reducer({ restaurants: [] }, setRestaurants(restaurants));
 
     expect(state.restaurants).toHaveLength(1);
-    expect(state.restaurants).toEqual([{ id: 1, name: '양천주가' }]);
+    expect(state.restaurants).toEqual(restaurants);
   });
 
   it('setLocation', () => {
