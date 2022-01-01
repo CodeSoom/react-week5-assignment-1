@@ -5,7 +5,7 @@ describe('api', () => {
   const categoriesUrl = 'https://eatgo-customer-api.ahastudio.com/categories';
   const restaurantuUrl = 'https://eatgo-customer-api.ahastudio.com/restaurants?region=1&category=1';
 
-  const fetch = global.fetch = jest.fn().mockResolvedValue({
+  global.fetch = jest.fn().mockResolvedValue({
     async json() {
       return true;
     },
@@ -15,7 +15,7 @@ describe('api', () => {
     it('returns regions', async () => {
       const result = await fetchRegions();
       expect(result).toBe(true);
-      expect(fetch).toBeCalledWith(regionUrl);
+      expect(global.fetch).toBeCalledWith(regionUrl);
     });
   });
 
@@ -23,7 +23,7 @@ describe('api', () => {
     it('returns regions', async () => {
       const result = await fetchCategories();
       expect(result).toBe(true);
-      expect(fetch).toBeCalledWith(categoriesUrl);
+      expect(global.fetch).toBeCalledWith(categoriesUrl);
     });
   });
 
@@ -31,7 +31,7 @@ describe('api', () => {
     it('returns regions', async () => {
       const result = await fetchRestaurant(1, 1);
       expect(result).toBe(true);
-      expect(fetch).toBeCalledWith(restaurantuUrl);
+      expect(global.fetch).toBeCalledWith(restaurantuUrl);
     });
   });
 });
