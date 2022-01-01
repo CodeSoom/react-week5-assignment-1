@@ -16,8 +16,7 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
-  // TODO: fetch -> 불러온다 명칭변경
-  it('컴포넌트 mount시, 음식종류들을 fetch한다.', async () => {
+  it('컴포넌트 mount시, 음식종류들을 불러온다.', async () => {
     useSelector.mockImplementation((selector) => selector({
       categories: [],
     }));
@@ -26,7 +25,7 @@ describe('CategoriesContainer', () => {
     expect(dispatch).toBeCalled();
   });
 
-  it('지역을 클릭하면 dispatch를 실행한다.', () => {
+  it('음식 종류를 클릭하면 콜백함수에 클릭한 음식종류를 전달하여 실행한다.', () => {
     useSelector.mockImplementation((selector) => selector({
       categories,
     }));
