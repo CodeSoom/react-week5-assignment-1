@@ -6,7 +6,7 @@ export default function RestaurantListContainer() {
   }));
 
   if (restaurants.length === 0) {
-    return <></>;
+    return <>식당 목록이 비어있습니다.</>;
   }
 
   return (

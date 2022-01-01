@@ -15,7 +15,7 @@ export default function RegionListContainer() {
   }
 
   if (!regions || !regions.length) {
-    return <></>;
+    return <>지역 목록이 비어있습니다.</>;
   }
 
   return (

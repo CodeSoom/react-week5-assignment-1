@@ -17,7 +17,7 @@ export default function CategoryListContainer() {
   }
 
   if (!categories || !categories.length) {
-    return <></>;
+    return <>카데고리 목록이 비어있습니다.</>;
   }
 
   return (
