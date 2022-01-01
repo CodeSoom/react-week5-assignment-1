@@ -14,4 +14,20 @@ describe('lodash', () => {
       expect(_.first(undefined)).toBeUndefined();
     });
   });
+
+  describe('get', () => {
+    it('returns value of object', () => {
+      expect(_.get({ a: 1 }, 'a')).toBe(1);
+    });
+
+    it('returns getter by given key', () => {
+      const getter = _.get('a');
+
+      expect(getter({ a: 1 })).toBe(1);
+    });
+
+    it('returns undefined if object is not found', () => {
+      expect(_.get({ a: 1 }, 'b')).toBeUndefined();
+    });
+  });
 });
