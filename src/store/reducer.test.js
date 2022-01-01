@@ -3,6 +3,10 @@ import {
 } from './actions';
 import reducer, { initialState } from './reducer';
 
+jest.mock('../services/api/ApiService', () => jest.fn().mockImplementation(() => ({
+  fetchRegions: () => [{ id: 1, name: '서울' }],
+})));
+
 describe('reducer', () => {
   it('returns initialState', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
