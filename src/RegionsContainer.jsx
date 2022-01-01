@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { checkCategory } from './actions';
+import { checkRegion } from './actions';
 import Regions from './Regions';
 
 export default function RegionsContainer() {
@@ -11,8 +11,8 @@ export default function RegionsContainer() {
   }));
 
   function handleChangeSelectedRegion(event) {
-    const categoryId = event.target.value;
-    dispatch(checkCategory(categoryId));
+    const regionName = event.target.value;
+    dispatch(checkRegion(regionName));
   }
 
   return (
