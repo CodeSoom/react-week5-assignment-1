@@ -48,14 +48,28 @@ describe('asyncActions', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('loadRestaurants 는 api 통신 후 setRegions 를 dispatch 한다.', async () => {
-      store = mockStore({ selected: { regionName: '서울', categoryId: 1 } });
+    describe('store 의 selected 값이 비어있는 경우', () => {
+      it('아무 action 도 dispatch 하지 않는다.', async () => {
+        store = mockStore({});
 
-      await store.dispatch(loadRestaurants());
+        await store.dispatch(loadRestaurants());
 
-      const actions = store.getActions();
+        const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurants(RESTAURANTS));
+        expect(actions).toHaveLength(0);
+      });
+    });
+
+    describe('store 의 selected 값이 정상적인 경우', () => {
+      it('loadRestaurants 는 api 통신 후 setRegions 를 dispatch 한다.', async () => {
+        store = mockStore({ selected: { regionName: '서울', categoryId: 1 } });
+
+        await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurants(RESTAURANTS));
+      });
     });
   });
 });

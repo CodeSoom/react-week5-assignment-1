@@ -2,6 +2,6 @@ export function identity(a) {
   return a;
 }
 
-export function isNull(a) {
-  return a === null;
+export function isNil(a) {
+  return a === null || a === undefined;
 }

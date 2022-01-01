@@ -1,5 +1,5 @@
 import { fetchCategories, fetchRegions, fetchRestaurants } from '../services';
-import { isNull } from '../lib';
+import { isNil } from '../lib';
 import { setCategories, setRegions, setRestaurants } from './actions';
 
 export function loadRegions() {
@@ -20,9 +20,10 @@ export function loadCategories() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const { selected: { regionName, categoryId } } = getState();
+    const { selected } = getState();
+    const { regionName, categoryId } = selected || {};
 
-    if (isNull(regionName) || isNull(categoryId)) {
+    if (isNil(regionName) || isNil(categoryId)) {
       return;
     }
 
