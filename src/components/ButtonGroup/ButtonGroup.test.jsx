@@ -16,7 +16,7 @@ describe('ButtonGroup', () => {
   it('전달한 목록과 렌더링 방식에 따라 내용을 출력한다.', () => {
     const { getByText } = render(<ButtonGroupHelper />);
 
-    expect(getByText('버튼1')).not.toBeNull();
+    expect(getByText('버튼1')).toBeInTheDocument();
   });
 
   it('클릭시 전달받은 onClick을 실행한다.', () => {
