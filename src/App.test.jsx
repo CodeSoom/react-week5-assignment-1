@@ -1,15 +1,15 @@
 import { render } from '@testing-library/react';
+import { useDispatch } from 'react-redux';
 
 import App from './App';
 
 describe('App', () => {
   it('지역명(버튼)들을 보여준다.', () => {
-    const { container } = render((
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    const { queryByText } = render((
       <App />
     ));
-
-    expect(container).toHaveTextContent('서울');
-    expect(container).toHaveTextContent('대전');
-    expect(container).toHaveTextContent('대구');
+    expect(dispatch).toBeCalled();
   });
 });

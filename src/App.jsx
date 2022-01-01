@@ -1,13 +1,40 @@
-import LocalList from './LocalList';
+// import RegionsContainer from './RegionsContainer';
+// import CategoriesContainer from './CategoriesContainer';
+// import RestaurantsContainer from './RestaurantsContainer';
+
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+
+import {
+  loadInitialData,
+} from './actions';
+
+function RegionsContainer() {
+  return null;
+}
+
+function CategoriesContainer() {
+  return null;
+}
+
+function RestaurantsContainer() {
+  return null;
+}
 
 export default function App() {
-  const locals = [
-    { id: 1, name: '서울' },
-    { id: 2, name: '대전' },
-    { id: 3, name: '대구' },
-  ];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // 액션 크리에이터 하나 만들어야 함.
+    dispatch(loadInitialData());
+  });
 
   return (
-    <LocalList locals={locals} />
+    <>
+      <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
+    </>
   );
 }
