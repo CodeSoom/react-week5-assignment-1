@@ -2,71 +2,89 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  checkCategory, checkRegion, loadCategories, loadRegions,
+  checkCategory,
+  checkRegion,
+  loadCategories,
+  loadRegions,
+  loadRestaurantsList,
 } from './actions';
-
-import restaurants from './fixtures/restaurants';
 
 export default function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadCategories());
-    dispatch(loadRegions());
-  }, []);
-
   const {
-    restaurantsList, regions, categories, checkedCategory, checkedRegion,
+    restaurantsList, regions, categories, checkedCategoryId, checkedRegion,
   } = useSelector((state) => ({
     restaurantsList: state.restaurantsList,
     regions: state.regions,
     categories: state.categories,
-    checkedCategory: state.checkedCategory,
+    checkedCategoryId: state.checkedCategoryId,
     checkedRegion: state.checkedRegion,
   }));
 
-  const filteredRestaurant = restaurants[checkedCategory || 0][checkedRegion || 0];
+  useEffect(() => {
+    dispatch(loadCategories());
+    dispatch(loadRegions());
+    dispatch(loadRestaurantsList(checkedRegion, checkedCategoryId));
+  }, [checkedCategoryId, checkedRegion]);
 
   function handleRegionClick(event) {
-    const { value } = event.target;
-    console.log(value);
-    dispatch(checkRegion(value));
+    const regionName = event.target.value;
+    dispatch(checkRegion(regionName));
   }
+
   function handleCategoryClick(event) {
-    const { value } = event.target;
-    dispatch(checkCategory(value));
+    const categoryId = event.target.value;
+    dispatch(checkCategory(categoryId));
   }
 
   return (
     <>
-      {regions && regions.map((region) => {
-        console.log(checkedRegion === region.id);
-        const name = checkedRegion === region.id ? `${region.name}✅` : region.name;
-        console.log(checkedRegion === region.id, name);
-        return (
-          // <div>{name}</div>
-          <button name="region" type="button" key={region.id} value={region.id} onClick={handleRegionClick}>
-            {
-              name
-            }
-          </button>
-        );
-      })}
-      <hr />
-      {categories && categories.map((category) => {
-        const name = checkedCategory === category.id ? `${category.name}✅` : category.name;
-        return (
-          <button name="category" type="button" key={category.id} value={category.id} onClick={handleCategoryClick}>
-            {
-              name
-            }
-          </button>
-        );
-      })}
+      <ul>
+        {regions.map((region) => {
+          const name = checkedRegion === region.name ? `${region.name}(V)` : region.name;
 
+          return (
+            <li key={region.id}>
+              <button
+                type="button"
+                value={region.name}
+                onClick={handleRegionClick}
+              >
+                {name}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <hr />
+      <ul>
+        {categories.map((category) => {
+          const name = checkedCategoryId === category.id ? `${category.name}(V)` : category.name;
+
+          return (
+            <li key={category.id}>
+              <button
+                type="button"
+                value={category.id}
+                onClick={handleCategoryClick}
+              >
+                {name}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      <hr />
       <ul>
         {
-          filteredRestaurant.map((restaurant) => (<li key={restaurant.id}>{restaurant.name}</li>))
+          restaurantsList.map(
+            (restaurant) => (
+              <li key={restaurant.id}>
+                {restaurant.name}
+              </li>
+            ),
+          )
         }
       </ul>
     </>
