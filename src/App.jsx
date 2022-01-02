@@ -1,4 +1,4 @@
-import SelectLists from "./SelectLists";
+import SelectLists from './SelectLists';
 
 export default function App() {
   return (

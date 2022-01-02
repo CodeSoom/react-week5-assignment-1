@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Lists from './Lists'
+import Lists from './Lists';
 
 import {
   loadCategories,
@@ -21,7 +21,7 @@ export default function SelectLists() {
     return {
       regionName,
       categoryId,
-    }
+    };
   }
 
   useEffect(() => {
@@ -31,12 +31,13 @@ export default function SelectLists() {
   }, []);
 
   function regionsClick(event) {
+    // todo: 재할당 고치기.
     const buttons = document.querySelectorAll('ul')[0].querySelectorAll('button');
     buttons.forEach((button) => {
       button.className = '';
     });
     event.target.className = 'regionCheck';
-  
+
     const categoryChceck = document.querySelector('.categoryCheck');
     return dispatch(loadRestaurants(setSelect(
       event.target.innerText,

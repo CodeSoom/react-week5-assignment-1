@@ -2,7 +2,7 @@ const initialRestaurant = {
   name: '',
   category: '',
   address: '',
-}
+};
 
 const initialState = {
   newId: 100,
@@ -46,9 +46,9 @@ function setRestaurants(state, action) {
 }
 
 const reducer = createReducer(initialState, {
-  setRegions: setRegions,
-  setCategories: setCategories,
-  setRestaurants: setRestaurants,
+  setRegions,
+  setCategories,
+  setRestaurants,
 });
 
 export default reducer;

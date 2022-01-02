@@ -1,4 +1,4 @@
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from '@testing-library/react';
 
 import Button from './Button';
 
@@ -7,7 +7,7 @@ describe('Button', () => {
     it('아이디와 클릭 이벤트를 담은 버튼이 만들어진다', () => {
       const onClickFunction = jest.fn();
       const id = 1;
-  
+
       const { getByText } = render((
         <Button id={id} onClick={onClickFunction}>
           대전

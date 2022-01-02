@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from '@testing-library/react';
 
 import Lists from './Lists';
 
@@ -6,14 +6,14 @@ describe('Lists', () => {
   context('버튼을 담은 li 태그들이 목록으로 만들어진다', () => {
     it('item이 존재하면 해당 아이템으로 목록을 만든다', () => {
       const items = [
-        {id: 1, name: '서울'},
-        {id: 2, name: '대전'},
-        {id: 3, name: '부산'},
+        { id: 1, name: '서울' },
+        { id: 2, name: '대전' },
+        { id: 3, name: '부산' },
       ];
       const clickHandler = jest.fn();
 
       const { getByText, getAllByRole } = render((
-        <Lists items={items} onClick={clickHandler}/>
+        <Lists items={items} onClick={clickHandler} />
       ));
 
       expect(getAllByRole('listitem').length).toBe(3);
@@ -27,10 +27,25 @@ describe('Lists', () => {
       const clickHandler = jest.fn();
 
       const { getByRole } = render((
-        <Lists items={items} onClick={clickHandler}/>
+        <Lists items={items} onClick={clickHandler} />
       ));
 
       expect(getByRole('list').innerHTML).toBe('');
+    });
+
+    it('clickFunction을 넘겨주지 않으면 버튼이 아닌 list만 출력하도록 한다', () => {
+      const items = [
+        { id: 1, name: 'A레스토랑' },
+        { id: 2, name: 'B카페' },
+        { id: 3, name: 'C베이커리' },
+      ];
+
+      const { getByText, getAllByRole } = render((
+        <Lists items={items} />
+      ));
+
+      expect(getByText(/A레스토랑/)).not.toBeNull();
+      expect(getAllByRole('listitem').length).toBe(3);
     });
   });
 });
