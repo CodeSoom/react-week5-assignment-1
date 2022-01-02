@@ -1,7 +1,10 @@
 import { render, fireEvent } from '@testing-library/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
+
+jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
   it('카테고리(버튼)들을 보여준다.', () => {

@@ -30,6 +30,7 @@ export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
     dispatch(setRegions(regions));
+
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
@@ -37,20 +38,16 @@ export function loadInitialData() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const {
-      selectedRegion: region,
-      selectedCategory: category,
-    } = getState();
+    const { selectedRegion, selectedCategory } = getState();
 
-    if (!region || !category) {
+    if (!selectedRegion || !selectedCategory) {
       return;
     }
 
     const restaurants = await fetchRestaurants({
-      regionName: region.name,
-      categoryId: category.id,
+      regionName: selectedRegion.name,
+      categoryId: selectedCategory.id,
     });
-    console.log(restaurants);
     dispatch(setRestaurants(restaurants));
   };
 }

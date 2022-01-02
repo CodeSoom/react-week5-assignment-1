@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+jest.mock('react-redux');
+
 describe('RestaurantsContainer', () => {
   it('선택된 지역/카테고리에 해당하는 식당들을 보여준다.', () => {
     useSelector.mockImplementation((selector) => selector({
@@ -11,6 +13,7 @@ describe('RestaurantsContainer', () => {
         { id: 1, name: '마법사주방' },
       ],
     }));
+
     const { container } = render((
       <RestaurantsContainer />
     ));

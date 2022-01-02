@@ -1,5 +1,5 @@
 export function get(key) {
-  return (obj) => obj[key] || null;
+  return (obj) => obj[key];
 }
 
 export function equal(key, value) {

@@ -1,8 +1,8 @@
 import reducer from './reducer';
 
 import {
-  setCategories,
   setRegions,
+  setCategories,
   setRestaurants,
   selectRegion,
   selectCategory,
@@ -38,7 +38,7 @@ describe('reducer', () => {
   });
 
   describe('setRestaurants', () => {
-    it('식당 내용을 바꾼다.', () => {
+    it('식당목록의 내용을 바꾼다.', () => {
       const initialState = {
         restaurants: [],
       };

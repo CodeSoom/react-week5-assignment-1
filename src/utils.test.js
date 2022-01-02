@@ -5,7 +5,11 @@ test('get', () => {
     name: '홍길동',
   };
 
-  expect(get('name')(state)).toBe('홍길동');
+  const f = get('name');
+  const g = get('age');
+
+  expect(f(state)).toBe('홍길동');
+  expect(g(state)).toBeUndefined();
 });
 
 test('equal', () => {
@@ -13,6 +17,9 @@ test('equal', () => {
     name: '홍길동',
   };
 
-  expect(equal('name', '홍길동')(state)).toBeTruthy();
-  expect(equal('name', '임꺽정')(state)).toBeFalsy();
+  const f = equal('name', '홍길동');
+  const g = equal('name', '임꺼정');
+
+  expect(f(state)).toBeTruthy();
+  expect(g(state)).toBeFalsy();
 });
