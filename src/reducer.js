@@ -1,6 +1,7 @@
 export const initialState = {
   regions: [],
   categories: [],
+  restaurants: [],
 };
 
 const reducer = (state = initialState, action) => {
