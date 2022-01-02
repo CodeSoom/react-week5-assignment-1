@@ -1,14 +1,30 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import { useDispatch } from 'react-redux';
+
+import { setCategory } from './actions';
+
 import Categories from './Categories';
 
-describe('Categories', () => {
-  it('categories 렌더링', () => {
-    const categories = [{
-      id: 1,
-      name: '한식',
-    }];
+jest.mock('react-redux');
 
-    const { getByText } = render(<Categories categories={categories} />);
-    expect(getByText('한식')).not.toBeNull();
-  });
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
+test('Categories', () => {
+  const dispatch = jest.fn();
+  const categories = [{
+    id: 1,
+    name: '한식',
+  }];
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  const { getByText } = render(<Categories categories={categories} />);
+
+  const button = getByText('한식');
+
+  fireEvent.click(button);
+
+  expect(dispatch).toBeCalledWith(setCategory({ category: '한식' }));
 });
