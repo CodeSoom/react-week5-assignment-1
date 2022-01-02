@@ -27,7 +27,7 @@ describe('Categories', () => {
       expect(getAllByRole('button').length).toBe(3);
     });
 
-    it('select한 값이 있을 경우 selectedCategory에 추가된다', () => {
+    it('클릭할 경우 해당 category가 selectedCategory에 추가된다', () => {
       const dispatch = jest.fn();
       useSelector.mockImplementation((selector) => selector({
         categories: [
@@ -44,6 +44,25 @@ describe('Categories', () => {
       expect(container).toHaveTextContent('한식');
       fireEvent.click(getByText('한식'));
       expect(dispatch).toBeCalled();
+    });
+
+    it('select한 값과 같은 category가 있을 경우 (V)가 붙어서 표시된다', () => {
+      const dispatch = jest.fn();
+      useSelector.mockImplementation((selector) => selector({
+        categories: [
+          { id: 101, name: '한식' },
+          { id: 202, name: '분식' },
+        ],
+        selectedCategory: { id: 101, name: '한식' },
+      }));
+      useDispatch.mockImplementation(() => dispatch);
+
+      const { container, getByText } = render((
+        <Categories />
+      ));
+
+      expect(container).toHaveTextContent('(V)');
+      expect(getByText('분식')).not.toHaveTextContent('(V)');
     });
   });
 

@@ -27,7 +27,7 @@ describe('Regions', () => {
       expect(getAllByRole('button').length).toBe(3);
     });
 
-    it('select한 값이 있을 경우 selectedRegion에 추가된다', () => {
+    it('클릭할 경우 해당 region이 selectedRegion에 추가된다', () => {
       const dispatch = jest.fn();
       useSelector.mockImplementation((selector) => selector({
         regions: [
@@ -44,6 +44,25 @@ describe('Regions', () => {
       expect(container).toHaveTextContent('부산');
       fireEvent.click(getByText('부산'));
       expect(dispatch).toBeCalled();
+    });
+
+    it('select한 값과 같은 region이 있을 경우 (V)가 붙어서 표시된다', () => {
+      const dispatch = jest.fn();
+      useSelector.mockImplementation((selector) => selector({
+        regions: [
+          { id: 1, name: '부산' },
+          { id: 2, name: '대전' },
+        ],
+        selectedRegion: { id: 1, name: '부산' },
+      }));
+      useDispatch.mockImplementation(() => dispatch);
+
+      const { container, getByText } = render((
+        <Regions />
+      ));
+
+      expect(container).toHaveTextContent('(V)');
+      expect(getByText('대전')).not.toHaveTextContent('(V)');
     });
   });
 

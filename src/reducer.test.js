@@ -59,34 +59,60 @@ describe('reducer', () => {
   });
 
   describe('selectRegion', () => {
-    const initialState = {
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      selectedRegion: null,
-    };
+    it('선택한 id와 같은 region이 선택된다', () => {
+      const initialState = {
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        selectedRegion: null,
+      };
 
-    const state = reducer(initialState, selectRegion(1));
+      const state = reducer(initialState, selectRegion(1));
 
-    expect(state.selectedRegion).toEqual({
-      id: 1,
-      name: '서울',
+      expect(state.selectedRegion).toEqual({
+        id: 1,
+        name: '서울',
+      });
     });
   });
 
   describe('selectCategory', () => {
-    const initialState = {
-      categories: [
-        { id: 11, name: '분식' },
-      ],
-      selectedCategory: null,
-    };
+    it('선택한 id와 같은 category가 선택된다', () => {
+      const initialState = {
+        categories: [
+          { id: 11, name: '분식' },
+        ],
+        selectedCategory: null,
+      };
 
-    const state = reducer(initialState, selectCategory(11));
+      const state = reducer(initialState, selectCategory(11));
 
-    expect(state.selectedCategory).toEqual({
-      id: 11,
-      name: '분식',
+      expect(state.selectedCategory).toEqual({
+        id: 11,
+        name: '분식',
+      });
+    });
+  });
+
+  describe('defaultReducer', () => {
+    it('정의되지 않은 타입은 아무런 액션없이 리턴된다', () => {
+      const state = reducer({}, { type: 'defaultReducer' });
+
+      expect(state).toEqual({});
+    });
+
+    it('state가 없을 경우 기본state로 설정된다', () => {
+      const initialState = {
+        restaurants: [],
+        categories: [],
+        regions: [],
+        selectRegion: null,
+        selectCategory: null,
+      };
+
+      const state = reducer(undefined, { type: 'defaultReducer' });
+
+      expect(state).toEqual(initialState);
     });
   });
 });
