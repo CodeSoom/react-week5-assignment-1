@@ -4,35 +4,43 @@ export const initialState = {
   restaurants: [],
 };
 
+const setRegions = (state, action) => {
+  const { regions } = action.payload;
+
+  return {
+    ...state,
+    regions,
+  };
+};
+
+const setCategories = (state, action) => {
+  const { categories } = action.payload;
+
+  return {
+    ...state,
+    categories,
+  };
+};
+
+const setRestaurants = (state, action) => {
+  const { restaurants } = action.payload;
+
+  return {
+    ...state,
+    restaurants,
+  };
+};
+
+const actionFunctions = {
+  setRegions,
+  setCategories,
+  setRestaurants,
+};
+
 const reducer = (state = initialState, action) => {
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
+  const actionFunction = actionFunctions[action.type] || (() => state);
 
-    return {
-      ...state,
-      regions,
-    };
-  }
-
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
-
-    return {
-      ...state,
-      categories,
-    };
-  }
-
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
-
-    return {
-      ...state,
-      restaurants,
-    };
-  }
-
-  return state;
+  return actionFunction(state, action);
 };
 
 export default reducer;
