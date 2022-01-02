@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { setRegions } from './actions';
+import { setCategories, setRegions } from './actions';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -14,6 +14,20 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('카테고리 내용 바꾸기', () => {
+      const initialState = {
+        categories: [],
+      };
+      const categories = [
+        { id: 1, name: '한식' },
+      ];
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).toHaveLength(1);
     });
   });
 });

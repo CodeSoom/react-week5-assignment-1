@@ -10,6 +10,8 @@ describe('App', () => {
     const { queryByText } = render((
       <App />
     ));
+    // 시작하자마자 dispatch 불리니까
     expect(dispatch).toBeCalled();
+    expect(queryByText(/Hello/)).toBeNull();
   });
 });
