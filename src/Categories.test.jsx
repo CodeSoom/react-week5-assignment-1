@@ -26,5 +26,5 @@ test('Categories', () => {
 
   fireEvent.click(button);
 
-  expect(dispatch).toBeCalledWith(setCategory({ category: '한식' }));
+  expect(dispatch).toBeCalledWith(setCategory({ category: '1' }));
 });

@@ -14,9 +14,9 @@ export default function Categories({ categories }) {
     <ul>
       { categories.map(({ id, name }) => (
         <li key={id}>
-          <button type="button" value={name} onClick={onClick}>
+          <button type="button" value={id} onClick={onClick}>
             {name}
-            {category === name ? '(V)' : ''}
+            {Number(category) === id ? '(V)' : ''}
           </button>
         </li>
       )) }
