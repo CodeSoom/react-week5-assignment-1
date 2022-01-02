@@ -1,13 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { setRegion } from './actions';
 
 export default function Regions({ regions }) {
   const dispatch = useDispatch();
+  const { region } = useSelector((state) => state);
 
   const onClick = (e) => {
-    const region = e.target.value;
-
-    dispatch(setRegion({ region }));
+    dispatch(setRegion({ region: e.target.value }));
   };
 
   return (
@@ -15,7 +15,10 @@ export default function Regions({ regions }) {
       {
         regions.map(({ id, name }) => (
           <li key={id}>
-            <button type="button" onClick={onClick} value={name}>{name}</button>
+            <button type="button" onClick={onClick} value={name}>
+              {name}
+              {region === name ? '(V)' : ''}
+            </button>
           </li>
         ))
       }
