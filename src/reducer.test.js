@@ -1,6 +1,6 @@
 import reducer, { initialState } from './reducer';
 import {
-  setRegions, setCategories, setRestaurants, setRegion,
+  setRegions, setCategories, setRestaurants, setRegion, setCategory,
 } from './actions';
 
 import regions from '../fixtures/regions';
@@ -47,6 +47,16 @@ describe('reducer', () => {
       }));
 
       expect(state.region).toBe('서울');
+    });
+  });
+
+  describe('setCategory', () => {
+    it('changes category', () => {
+      const state = reducer(initialState, setCategory({
+        category: '한식',
+      }));
+
+      expect(state.category).toBe('한식');
     });
   });
 });
