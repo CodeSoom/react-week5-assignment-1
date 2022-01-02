@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 
 import App from './App';
 
+jest.mock('react-redux');
+jest.mock('./services/api');
+
 describe('App', () => {
   it('지역명(버튼)들을 보여준다.', () => {
     const dispatch = jest.fn();

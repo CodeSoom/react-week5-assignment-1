@@ -3,21 +3,27 @@ const initialState = {
   categories: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setRegions') {
+const reducers = {
+  setRegions(state, action) {
     const { regions } = action.payload;
     return {
       ...state,
       regions,
     };
-  }
-
-  if (action.type === 'setCategories') {
+  },
+  setCategories(state, action) {
     const { categories } = action.payload;
     return {
       ...state,
       categories,
     };
-  }
+  },
+};
+
+function defaultReducder(state) {
   return state;
+}
+
+export default function reducer(state = initialState, action) {
+  return (reducers[action.type] || defaultReducder)(state, action);
 }
