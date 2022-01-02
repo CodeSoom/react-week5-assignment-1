@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { regionsData, categoriesData, restaurantsData } from '../fixtures';
-import { loadRestaurants } from '../actions';
 import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
@@ -62,18 +61,18 @@ describe('RestaurantsContainer', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: {
           regions: regionsData,
-          activeId: -1,
+          activeId: 1,
         },
         categories: {
           categories: categoriesData,
-          activeId: -1,
+          activeId: 1,
         },
         restaurants: {
           restaurants: restaurantsData,
         },
       }));
 
-      const { getByText } = renderRestaurantsContainer();
+      renderRestaurantsContainer();
 
       expect(dispatch).toBeCalled();
     });

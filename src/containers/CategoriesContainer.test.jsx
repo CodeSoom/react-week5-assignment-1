@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 import { categoriesData } from '../fixtures';
-import { loadCategories, setCategoryActiveId } from '../actions';
+import { setCategoryActiveId } from '../actions';
 
 jest.mock('react-redux');
 
