@@ -28,6 +28,12 @@ export default function Categories() {
     dispatch(loadRestaurants());
   }
 
+  if (!categories || categories.length === 0) {
+    return (
+      <p>목록이 없습니다.</p>
+    );
+  }
+
   return (
     <ul>
       {categories.map((category) => (

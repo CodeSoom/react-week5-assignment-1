@@ -25,6 +25,12 @@ export default function Regions() {
     dispatch(loadRestaurants());
   }
 
+  if (!regions || regions.length === 0) {
+    return (
+      <p>목록이 없습니다.</p>
+    );
+  }
+
   return (
     <ul>
       {regions.map((region) => (
