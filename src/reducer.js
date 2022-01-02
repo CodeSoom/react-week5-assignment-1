@@ -1,5 +1,6 @@
-const initialState = {
+export const initialState = {
   regions: [],
+  categories: [],
 };
 
 // eslint-disable-next-line no-unused-vars
