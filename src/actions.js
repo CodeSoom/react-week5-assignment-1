@@ -38,3 +38,10 @@ export function selectRegion(regionId) {
     payload: { regionId },
   };
 }
+
+export function selectCategory(categoryId) {
+  return {
+    type: 'selectCategory',
+    payload: { categoryId },
+  };
+}

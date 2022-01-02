@@ -1,3 +1,5 @@
+import { equal } from './utils';
+
 const initialState = {
   regions: [],
   categories: [],
@@ -22,7 +24,14 @@ const reducers = {
     const { regionId } = action.payload;
     return {
       ...state,
-      selectedRegion: state.regions.find((region) => region.id === regionId),
+      selectedRegion: state.regions.find(equal('id', regionId)),
+    };
+  },
+  selectCategory(state, action) {
+    const { categoryId } = action.payload;
+    return {
+      ...state,
+      selectedCategory: state.categories.find(equal('id', categoryId)),
     };
   },
 };
