@@ -43,3 +43,10 @@ export function setRegion({ region }) {
     payload: { region },
   };
 }
+
+export function setCategory({ category }) {
+  return {
+    type: 'setCategory',
+    payload: { category },
+  };
+}

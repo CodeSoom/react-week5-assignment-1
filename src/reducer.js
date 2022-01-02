@@ -41,11 +41,21 @@ const setRegion = (state, action) => {
   };
 };
 
+const setCategory = (state, action) => {
+  const { category } = action.payload;
+
+  return {
+    ...state,
+    category,
+  };
+};
+
 const actionFunctions = {
   setRegions,
   setCategories,
   setRestaurants,
   setRegion,
+  setCategory,
 };
 
 const reducer = (state = initialState, action) => {
