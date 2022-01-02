@@ -1,11 +1,13 @@
-export default function Categories() {
+export default function Categories({ categories }) {
   return (
     <ul>
-      <li>
-        <button type="button">
-          한식
-        </button>
-      </li>
+      { categories.map(({ id, name }) => (
+        <li key={id}>
+          <button type="button">
+            {name}
+          </button>
+        </li>
+      )) }
     </ul>
   );
 }
