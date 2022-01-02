@@ -3,6 +3,7 @@ import ButtonGroup from './ButtonGroup';
 
 describe('ButtonGroup', () => {
   const handleClick = jest.fn();
+
   const renderButtonGroup = () => render(
     <ButtonGroup
       items={[
@@ -20,7 +21,7 @@ describe('ButtonGroup', () => {
     expect(getByText('버튼1')).toBeInTheDocument();
   });
 
-  it('클릭시 전달받은 onClick을 실행한다.', () => {
+  it('클릭시 전달받은 onClick 핸들러를 실행한다.', () => {
     const { getByText } = renderButtonGroup();
 
     fireEvent.click(getByText('버튼1'));
