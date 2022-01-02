@@ -15,6 +15,13 @@ export default function App() {
   return (
     <>
       <RegionsContainer />
+      <ul>
+        <li>
+          <button type="button">
+            한식
+          </button>
+        </li>
+      </ul>
     </>
   );
 }
