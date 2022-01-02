@@ -23,7 +23,7 @@ describe("App", () => {
     useSelector.mockImplementation((selector) =>
       selector({
         currentRegion: "서울",
-        currentCategory: 1,
+        currentCategory: given.currentCategory,
         Regions: [
           { id: 1, name: "서울" },
           { id: 2, name: "부산" },
@@ -37,53 +37,36 @@ describe("App", () => {
   });
 
   it("render clicked button and buttons", () => {
+    given("currentCategory", () => 1);
     const { getByText } = render(<App />);
 
     expect(getByText(/부산/)).not.toBeNull();
     expect(getByText("한식 (V)")).not.toBeNull();
   });
 
-  context("when Region AND Category button clicked", () => {
-    it("Region and Category Current State is dispatched", () => {
-      const { getByText } = render(<App />);
+  it("Region and Category Current State is dispatched and get Restaurant API", () => {
+    const { getByText } = render(<App />);
 
-      fireEvent.click(getByText(/부산/));
+    fireEvent.click(getByText(/부산/));
 
-      expect(dispatch).toBeCalledWith(changeRegion("부산"));
+    expect(dispatch).toBeCalledWith(changeRegion("부산"));
 
-      fireEvent.click(getByText(/양식/));
+    fireEvent.click(getByText(/양식/));
 
-      expect(dispatch).toBeCalledWith(changeCategory(2));
-    });
+    expect(dispatch).toBeCalledWith(changeCategory(2));
+    expect(dispatch).toBeCalledWith(getRestaurants("부산", 2));
   });
 
-  context("when Region OR Category button clicked", () => {
-    it("Restaurant API dispatch in useEffect doesn't called", () => {
-      const currentRegion = "서울";
-      const currentCategory = "";
-      useSelector.mockImplementation((selector) =>
-        selector({
-          currentRegion,
-          currentCategory,
-          Regions: [
-            { id: 1, name: "서울" },
-            { id: 2, name: "부산" },
-          ],
-          Categories: [
-            { id: 1, name: "한식" },
-            { id: 2, name: "양식" },
-          ],
-        })
-      );
-      const { getByText } = render(<App />);
+  // it("Restaurant API dispatch in useEffect doesn't called", () => {
+  //   given("currentCategory", () => "");
+  //   const { getByText } = render(<App />);
 
-      fireEvent.click(getByText(/부산/));
+  //   fireEvent.click(getByText(/부산/));
 
-      expect(dispatch).toBeCalledWith(changeRegion("부산"));
+  //   expect(dispatch).toBeCalledWith(changeRegion("부산"));
 
-      expect(dispatch).not.toBeCalledWith(
-        getRestaurants(currentRegion, currentCategory)
-      );
-    });
-  });
+  //   expect(dispatch).not.toBeCalledWith(
+  //     getRestaurants("서울", given.currentCategory)
+  //   );
+  // });
 });

@@ -8,8 +8,8 @@ import Regions from "./Regions";
 */
 
 describe("Regions", () => {
-  context("restaurantRegions prop has no data", () => {
-    it("Not render any button", () => {
+  context("without regions", () => {
+    it("don't render any Regions buttons", () => {
       const regions = [];
       const { queryByRole } = render(<Regions restaurantRegions={regions} />);
 

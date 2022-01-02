@@ -29,20 +29,16 @@ describe("reducer", () => {
     expect(state.Categories).toHaveLength(1);
   });
 
-  context("when Regions button Clicked", () => {
-    it("change currentRegion state", () => {
-      const state = reducer(initialState, changeRegion(1));
+  it("change currentRegion state", () => {
+    const state = reducer(initialState, changeRegion(1));
 
-      expect(state.currentRegion).toBe(1);
-    });
+    expect(state.currentRegion).toBe(1);
   });
 
-  context("when Categories button Clicked", () => {
-    it("change currentCategory state", () => {
-      const state = reducer(initialState, changeCategory(2));
+  it("change currentCategory state", () => {
+    const state = reducer(initialState, changeCategory(2));
 
-      expect(state.currentCategory).toBe(2);
-    });
+    expect(state.currentCategory).toBe(2);
   });
 
   it("render Restaurants List for region and category", () => {

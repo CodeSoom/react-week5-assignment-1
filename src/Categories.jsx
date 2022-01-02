@@ -3,12 +3,8 @@ export default function Categories({
   restaurantCategories,
   onClick,
 }) {
-  function handleClick(id) {
-    onClick(id);
-  }
-
   if (restaurantCategories.length === 0) {
-    return null;
+    return <p>없어요</p>;
   }
   return (
     <ul>
@@ -17,10 +13,7 @@ export default function Categories({
         if (id === currentCategory) {
           return (
             <li key={id}>
-              <button
-                type="button"
-                onClick={() => handleClick(id)}
-              >
+              <button type='button' onClick={() => onClick(id)}>
                 {`${name} (V)`}
               </button>
             </li>
@@ -28,7 +21,7 @@ export default function Categories({
         }
         return (
           <li key={id}>
-            <button type="button" onClick={() => handleClick(id)}>
+            <button type='button' onClick={() => onClick(id)}>
               {name}
             </button>
           </li>

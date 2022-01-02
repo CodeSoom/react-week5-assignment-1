@@ -2,7 +2,7 @@ import {
   fetchRestaurantRegions,
   fetchRestaurantCategories,
   fetchRestaurants,
-} from "../services/api";
+} from "./services/api";
 
 export function setInitialState(regions, categories) {
   return {
