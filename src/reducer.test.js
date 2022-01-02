@@ -1,5 +1,7 @@
 import reducer, { initialState } from './reducer';
-import { setRegions, setCategories, setRestaurants } from './actions';
+import {
+  setRegions, setCategories, setRestaurants, setRegion,
+} from './actions';
 
 import regions from '../fixtures/regions';
 import restaurants from '../fixtures/restaurants';
@@ -35,6 +37,16 @@ describe('reducer', () => {
       }));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRegion', () => {
+    it('changes region', () => {
+      const state = reducer(initialState, setRegion({
+        region: '서울',
+      }));
+
+      expect(state.region).toBe('서울');
     });
   });
 });
