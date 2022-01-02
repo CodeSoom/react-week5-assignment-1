@@ -29,7 +29,9 @@ describe('App', () => {
       <App />
     ));
 
+    expect(dispatch).toBeCalled();
     expect(getByText(/Restaurants/)).not.toBeNull();
     expect(getByText(/서울/)).not.toBeNull();
+    expect(getByText(/한식/)).not.toBeNull();
   });
 });
