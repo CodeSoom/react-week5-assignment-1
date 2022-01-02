@@ -2,6 +2,7 @@ export const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  region: '',
 };
 
 const setRegions = (state, action) => {
@@ -31,10 +32,20 @@ const setRestaurants = (state, action) => {
   };
 };
 
+const setRegion = (state, action) => {
+  const { region } = action.payload;
+
+  return {
+    ...state,
+    region,
+  };
+};
+
 const actionFunctions = {
   setRegions,
   setCategories,
   setRestaurants,
+  setRegion,
 };
 
 const reducer = (state = initialState, action) => {

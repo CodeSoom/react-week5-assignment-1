@@ -36,3 +36,10 @@ export function setRestaurants({ restaurants }) {
     payload: { restaurants },
   };
 }
+
+export function setRegion({ region }) {
+  return {
+    type: 'setRegion',
+    payload: { region },
+  };
+}
