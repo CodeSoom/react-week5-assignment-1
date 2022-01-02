@@ -1,7 +1,8 @@
 import reducer, { initialState } from './reducer';
-import { setRegions, setCategories } from './actions';
+import { setRegions, setCategories, setRestaurants } from './actions';
 
 import regions from '../fixtures/regions';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -24,6 +25,16 @@ describe('reducer', () => {
       }));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const state = reducer(initialState, setRestaurants({
+        restaurants,
+      }));
+
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 });

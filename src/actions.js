@@ -29,3 +29,7 @@ export function loadCategories() {
     dispatch(setCategories({ categories }));
   };
 }
+
+export function setRestaurants() {
+
+}
