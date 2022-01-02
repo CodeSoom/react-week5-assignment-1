@@ -19,4 +19,10 @@ describe('App', () => {
 
     expect(dispatch).toBeCalled();
   });
+
+  it('레스토랑 카테고리 목록 렌더링', () => {
+    const { getByText } = render(<App />);
+
+    expect(getByText('한식')).not.toBeNull();
+  });
 });
