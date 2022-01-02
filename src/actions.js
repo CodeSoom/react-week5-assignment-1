@@ -31,3 +31,10 @@ export function loadInitialData() {
 export function xxx() {
   return {};
 }
+
+export function selectRegion(regionId) {
+  return {
+    type: 'selectRegion',
+    payload: { regionId },
+  };
+}

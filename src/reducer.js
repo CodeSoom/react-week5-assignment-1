@@ -18,6 +18,13 @@ const reducers = {
       categories,
     };
   },
+  selectRegion(state, action) {
+    const { regionId } = action.payload;
+    return {
+      ...state,
+      selectedRegion: state.regions.find((region) => region.id === regionId),
+    };
+  },
 };
 
 function defaultReducder(state) {

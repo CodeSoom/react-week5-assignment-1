@@ -1,6 +1,6 @@
 import reducer from './reducer';
 
-import { setCategories, setRegions } from './actions';
+import { setCategories, setRegions, selectRegion } from './actions';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -28,6 +28,20 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('selectRegion', () => {
+    const initialState = {
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      selectedRegion: null,
+    };
+    const state = reducer(initialState, selectRegion(1));
+    expect(state.selectedRegion).toEqual({
+      id: 1,
+      name: '서울',
     });
   });
 });
