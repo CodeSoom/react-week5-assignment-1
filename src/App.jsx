@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
-// import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitialData,
@@ -22,7 +22,7 @@ export default function App() {
     <>
       <RegionsContainer />
       <CategoriesContainer />
-      {/* <RestaurantsContainer /> */}
+      <RestaurantsContainer />
     </>
   );
 }

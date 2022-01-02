@@ -18,7 +18,7 @@ export default function RegionsContainer() {
 
   return (
     <ul>
-      {regions && regions.map((region) => (
+      {regions.map((region) => (
         <li key={region.id}>
           <button
             type="button"

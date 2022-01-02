@@ -1,6 +1,7 @@
 import {
   fetchRegions,
   fetchCategories,
+  fetchRestaurants,
 } from './services/api';
 
 export function setRegions(regions) {
@@ -17,6 +18,13 @@ export function setCategories(categories) {
   };
 }
 
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: { restaurants },
+  };
+}
+
 export function loadInitialData() {
   // 얻어와야 하는 부분
   return async (dispatch) => {
@@ -27,9 +35,24 @@ export function loadInitialData() {
   };
 }
 
-// TODO: delete this!
-export function xxx() {
-  return {};
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const {
+      selectedRegion: region,
+      selectedCategory: category,
+    } = getState();
+
+    if (!region || !category) {
+      return;
+    }
+
+    const restaurants = await fetchRestaurants({
+      regionName: region.name,
+      categoryId: category.id,
+    });
+    console.log(restaurants);
+    dispatch(setRestaurants(restaurants));
+  };
 }
 
 export function selectRegion(regionId) {

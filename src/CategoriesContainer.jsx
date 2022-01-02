@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   selectCategory,
+  loadRestaurants,
 } from './actions';
 
 import { get } from './utils';
@@ -14,11 +15,12 @@ export default function CategoriesContainer() {
 
   function handleClick(categoryId) {
     dispatch(selectCategory(categoryId));
+    dispatch(loadRestaurants());
   }
 
   return (
     <ul>
-      {categories && categories.map((category) => (
+      {categories.map((category) => (
         <li key={category.id}>
           <button
             type="button"

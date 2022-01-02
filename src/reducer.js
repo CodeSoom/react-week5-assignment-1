@@ -3,6 +3,9 @@ import { equal } from './utils';
 const initialState = {
   regions: [],
   categories: [],
+  restaurants: [],
+  selectedRegion: null,
+  selectedCategory: null,
 };
 
 const reducers = {
@@ -18,6 +21,13 @@ const reducers = {
     return {
       ...state,
       categories,
+    };
+  },
+  setRestaurants(state, action) {
+    const { restaurants } = action.payload;
+    return {
+      ...state,
+      restaurants,
     };
   },
   selectRegion(state, action) {
