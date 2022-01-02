@@ -3,6 +3,7 @@ export const initialState = {
   categories: [],
   restaurants: [],
   region: '',
+  category: '',
 };
 
 const setRegions = (state, action) => {
