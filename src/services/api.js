@@ -5,8 +5,7 @@ export async function fetchModule(url) {
     const response = await fetch(url);
     return response.json();
   } catch (error) {
-    console.error(error);
-    throw new Error(error);
+    throw new Error('에러발생');
   }
 }
 
