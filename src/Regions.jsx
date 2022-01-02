@@ -27,14 +27,14 @@ export default function Regions() {
 
   return (
     <ul>
-    {regions.map((region) => (
-      <li key={region.id}>
-        <Button id={region.id} onClick={() => clickHandler(region.id)}>
-          {region.name}
-          {selectedRegion && region.id === selectedRegion.id ? '(V)' : null}
-        </Button>
-      </li>
-    ))}
-  </ul>
+      {regions.map((region) => (
+        <li key={region.id}>
+          <Button id={region.id} onClick={() => clickHandler(region.id)}>
+            {region.name}
+            {selectedRegion && region.id === selectedRegion.id ? '(V)' : null}
+          </Button>
+        </li>
+      ))}
+    </ul>
   );
 }

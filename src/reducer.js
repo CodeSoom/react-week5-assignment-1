@@ -16,7 +16,7 @@ const reducers = {
     };
   },
 
-  setCategories(state, { payload: { categories }}) {
+  setCategories(state, { payload: { categories } }) {
     return {
       ...state,
       categories,
@@ -31,7 +31,7 @@ const reducers = {
     };
   },
 
-  selectRegion(state, { payload: { regionId }}) {
+  selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
       ...state,
@@ -39,7 +39,7 @@ const reducers = {
     };
   },
 
-  selectCategory(state, { payload: { categoryId }}) {
+  selectCategory(state, { payload: { categoryId } }) {
     const { categories } = state;
     return {
       ...state,
@@ -55,4 +55,4 @@ function defaultReducer(state) {
 
 export default function reducer(state = initialState, action) {
   return (reducers[action.type] || defaultReducer)(state, action);
-};
+}

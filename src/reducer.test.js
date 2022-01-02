@@ -67,7 +67,7 @@ describe('reducer', () => {
     };
 
     const state = reducer(initialState, selectRegion(1));
-    
+
     expect(state.selectedRegion).toEqual({
       id: 1,
       name: '서울',
@@ -83,7 +83,7 @@ describe('reducer', () => {
     };
 
     const state = reducer(initialState, selectCategory(11));
-    
+
     expect(state.selectedCategory).toEqual({
       id: 11,
       name: '분식',

@@ -36,8 +36,8 @@ export function selectRegion(regionId) {
     type: 'selectRegion',
     payload: {
       regionId,
-    }
-  }
+    },
+  };
 }
 
 export function selectCategory(categoryId) {
@@ -45,8 +45,8 @@ export function selectCategory(categoryId) {
     type: 'selectCategory',
     payload: {
       categoryId,
-    }
-  }
+    },
+  };
 }
 
 export function loadRegions() {

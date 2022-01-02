@@ -30,18 +30,18 @@ export default function Categories() {
 
   return (
     <ul>
-    {categories.map((category) => (
-      <li key={category.id}>
-        <Button id={category.id} onClick={() => clickHandler(category.id)}>
-          {category.name}
-          {selectedCategory ? (
-            <>
-              { category.id === selectedCategory.id ? '(V)' : null } 
-            </>
-          ) : null}
-        </Button>
-      </li>
-    ))}
-  </ul>
+      {categories.map((category) => (
+        <li key={category.id}>
+          <Button id={category.id} onClick={() => clickHandler(category.id)}>
+            {category.name}
+            {selectedCategory ? (
+              <>
+                { category.id === selectedCategory.id ? '(V)' : null }
+              </>
+            ) : null}
+          </Button>
+        </li>
+      ))}
+    </ul>
   );
 }
