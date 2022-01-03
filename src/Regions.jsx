@@ -11,8 +11,7 @@ export default function Regions({ regions, region, handleClick }) {
               }}
               value={id}
             >
-              {name}
-              {region && region.id === id ? '(V)' : ''}
+              {region && region.id === id ? `${name}(V)` : `${name}`}
             </button>
           </li>
         ))
