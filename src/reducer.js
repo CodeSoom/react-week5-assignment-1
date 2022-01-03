@@ -1,66 +1,56 @@
+import { equal } from './utils';
+
 export const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  region: '',
-  category: '',
+  region: null,
+  category: null,
 };
 
-const setRegions = (state, action) => {
-  const { regions } = action.payload;
+const reducers = {
+  setRegions(state, { payload: { regions } }) {
+    return {
+      ...state,
+      regions,
+    };
+  },
+  setCategories(state, { payload: { categories } }) {
+    return {
+      ...state,
+      categories,
+    };
+  },
+  setRestaurants(state, { payload: { restaurants } }) {
+    return {
+      ...state,
+      restaurants,
+    };
+  },
+  selectRegion(state, { payload: { regionId } }) {
+    const { regions } = state;
 
-  return {
-    ...state,
-    regions,
-  };
+    return {
+      ...state,
+      region: regions.find(equal('id', regionId)),
+    };
+  },
+  selectCategory(state, { payload: { categoryId } }) {
+    const { categories } = state;
+
+    return {
+      ...state,
+      category: categories.find(equal('id', categoryId)),
+    };
+  },
 };
 
-const setCategories = (state, action) => {
-  const { categories } = action.payload;
-
-  return {
-    ...state,
-    categories,
-  };
-};
-
-const setRestaurants = (state, action) => {
-  const { restaurants } = action.payload;
-
-  return {
-    ...state,
-    restaurants,
-  };
-};
-
-const setRegion = (state, action) => {
-  const { region } = action.payload;
-
-  return {
-    ...state,
-    region,
-  };
-};
-
-const setCategory = (state, action) => {
-  const { category } = action.payload;
-
-  return {
-    ...state,
-    category,
-  };
-};
-
-const actionFunctions = {
-  setRegions,
-  setCategories,
-  setRestaurants,
-  setRegion,
-  setCategory,
-};
+function defaultReducer(state) {
+  return state;
+}
 
 const reducer = (state = initialState, action) => {
-  const actionFunction = actionFunctions[action.type] || (() => state);
+  const actionFunction = reducers[action.type] || defaultReducer;
 
   return actionFunction(state, action);
 };

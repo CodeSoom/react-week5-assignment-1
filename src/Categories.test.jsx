@@ -1,30 +1,20 @@
 import { render, fireEvent } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
 
-import { setCategory } from './actions';
+import categories from '../fixtures/categories';
 
 import Categories from './Categories';
 
-jest.mock('react-redux');
+it('Categories', () => {
+  const category = categories[0];
+  const handleClick = jest.fn();
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
+  const { getByText } = render(
+    <Categories categories={categories} category={category} handleClick={handleClick} />,
+  );
 
-test('Categories', () => {
-  const dispatch = jest.fn();
-  const categories = [{
-    id: 1,
-    name: '한식',
-  }];
+  expect(getByText(/(V)/)).not.toBeNull();
 
-  useDispatch.mockImplementation(() => dispatch);
+  fireEvent.click(getByText('중식'));
 
-  const { getByText } = render(<Categories categories={categories} />);
-
-  const button = getByText('한식');
-
-  fireEvent.click(button);
-
-  expect(dispatch).toBeCalledWith(setCategory({ category: '1' }));
+  expect(handleClick).toBeCalledWith(2);
 });

@@ -1,23 +1,18 @@
-import { useSelector, useDispatch } from 'react-redux';
-
-import { setRegion } from './actions';
-
-export default function Regions({ regions }) {
-  const dispatch = useDispatch();
-  const { region } = useSelector((state) => state);
-
-  const onClick = (e) => {
-    dispatch(setRegion({ region: e.target.value }));
-  };
-
+export default function Regions({ regions, region, handleClick }) {
   return (
     <ul>
       {
         regions.map(({ id, name }) => (
           <li key={id}>
-            <button type="button" onClick={onClick} value={name}>
+            <button
+              type="button"
+              onClick={() => {
+                handleClick(id);
+              }}
+              value={id}
+            >
               {name}
-              {region === name ? '(V)' : ''}
+              {region && region.id === id ? '(V)' : ''}
             </button>
           </li>
         ))

@@ -1,22 +1,17 @@
-import { useSelector, useDispatch } from 'react-redux';
-
-import { setCategory } from './actions';
-
-export default function Categories({ categories }) {
-  const dispatch = useDispatch();
-  const { category } = useSelector((state) => state);
-
-  const onClick = (e) => {
-    dispatch(setCategory({ category: e.target.value }));
-  };
-
+export default function Categories({ categories, category, handleClick }) {
   return (
     <ul>
       { categories.map(({ id, name }) => (
         <li key={id}>
-          <button type="button" value={id} onClick={onClick}>
+          <button
+            type="button"
+            value={id}
+            onClick={() => {
+              handleClick(id);
+            }}
+          >
             {name}
-            {Number(category) === id ? '(V)' : ''}
+            {category && category.id === id ? '(V)' : ''}
           </button>
         </li>
       )) }

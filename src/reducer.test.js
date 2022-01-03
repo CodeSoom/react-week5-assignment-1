@@ -1,6 +1,6 @@
 import reducer, { initialState } from './reducer';
 import {
-  setRegions, setCategories, setRestaurants, setRegion, setCategory,
+  setRegions, setCategories, setRestaurants, selectRegion, selectCategory,
 } from './actions';
 
 import regions from '../fixtures/regions';
@@ -40,23 +40,51 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRegion', () => {
+  describe('selectRegion', () => {
     it('changes region', () => {
-      const state = reducer(initialState, setRegion({
-        region: '서울',
+      const state = reducer({
+        ...initialState,
+        regions: [{
+          id: 1,
+          name: '서울',
+        }],
+      }, selectRegion({
+        regionId: 1,
       }));
 
-      expect(state.region).toBe('서울');
+      expect(state.region).toEqual({
+        id: 1,
+        name: '서울',
+      });
     });
   });
 
-  describe('setCategory', () => {
+  describe('selectCategory', () => {
     it('changes category', () => {
-      const state = reducer(initialState, setCategory({
-        category: '한식',
+      const state = reducer({
+        ...initialState,
+        categories: [{
+          id: 1,
+          name: '한식',
+        }],
+      }, selectCategory({
+        categoryId: 1,
       }));
 
-      expect(state.category).toBe('한식');
+      expect(state.category).toEqual({
+        id: 1,
+        name: '한식',
+      });
+    });
+  });
+
+  describe('without any actions', () => {
+    it('returns initial state', () => {
+      const state = reducer(undefined, {
+        type: undefined,
+      });
+
+      expect(state).toEqual(initialState);
     });
   });
 });

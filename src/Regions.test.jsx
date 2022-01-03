@@ -1,30 +1,21 @@
 import { render, fireEvent } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
-
-import { setRegion } from './actions';
 
 import regions from '../fixtures/regions';
 
 import Regions from './Regions';
 
-jest.mock('react-redux');
-
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('Regions', () => {
-  const dispatch = jest.fn();
+  const handleClick = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  const region = regions[0];
 
-  const { getByText } = render(<Regions regions={regions} />);
+  const { getByText } = render(
+    <Regions regions={regions} region={region} handleClick={handleClick} />,
+  );
 
-  const button = getByText('부산');
+  expect(getByText(/(V)/)).not.toBeNull();
 
-  fireEvent.click(button);
+  fireEvent.click(getByText('대전'));
 
-  expect(dispatch).toBeCalledWith(setRegion({
-    region: '부산',
-  }));
+  expect(handleClick).toBeCalledWith(2);
 });

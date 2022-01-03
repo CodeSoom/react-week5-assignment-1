@@ -1,6 +1,9 @@
 import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+
 import { initialState } from './reducer';
 
 import App from './App';
@@ -12,9 +15,16 @@ test('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector(initialState));
+  useSelector.mockImplementation((selector) => selector({
+    ...initialState,
+    regions,
+    categories,
+  }));
 
-  render(<App />);
+  const { getByText } = render(<App />);
 
-  expect(dispatch).toBeCalledTimes(2);
+  expect(getByText(/한식/)).not.toBeNull();
+  expect(getByText(/서울/)).not.toBeNull();
+
+  expect(dispatch).toBeCalled();
 });
