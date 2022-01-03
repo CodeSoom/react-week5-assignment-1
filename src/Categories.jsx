@@ -1,7 +1,7 @@
 export default function Categories({ categories, category, handleClick }) {
   return (
     <ul>
-      { categories.map(({ id, name }) => (
+      {categories.length > 0 && categories.map(({ id, name }) => (
         <li key={id}>
           <button
             type="button"
@@ -14,7 +14,7 @@ export default function Categories({ categories, category, handleClick }) {
             {category && category.id === id ? '(V)' : ''}
           </button>
         </li>
-      )) }
+      ))}
     </ul>
   );
 }
