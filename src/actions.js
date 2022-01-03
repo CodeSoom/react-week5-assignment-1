@@ -10,10 +10,24 @@ export function setRegions(regions) {
   };
 }
 
+export function selectRegion(regionId) {
+  return {
+    type: 'selectRegion',
+    payload: { regionId },
+  };
+}
+
 export function setCategories(categories) {
   return {
     type: 'setCategories',
     payload: { categories },
+  };
+}
+
+export function selectCategory(categoryId) {
+  return {
+    type: 'selectCategory',
+    payload: { categoryId },
   };
 }
 
@@ -26,12 +40,5 @@ export function loadInitialData() {
 
     dispatch(setRegions(regions));
     dispatch(setCategories(categories));
-  };
-}
-
-export function selectRegion(regionId) {
-  return {
-    type: 'selectRegion',
-    payload: { regionId },
   };
 }

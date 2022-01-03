@@ -11,10 +11,7 @@ import {
 } from './actions';
 
 import RegionsContainer from './RegionsContainer';
-
-function CategoriesContainer() {
-  return null;
-}
+import CategoriesContainer from './CategoriesContainer';
 
 function RestaurantsContainer() {
   return null;
