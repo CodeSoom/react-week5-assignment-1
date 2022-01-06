@@ -12,10 +12,7 @@ import {
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
-
-function RestaurantsContainer() {
-  return null;
-}
+import RestaurantsContainer from './RestaurantsContainer';
 
 export default function App() {
   const dispatch = useDispatch();

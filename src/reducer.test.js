@@ -5,6 +5,7 @@ import {
   setRegions,
   selectRegion,
   selectCategory,
+  setRestaurants,
 } from './actions';
 
 describe('reducer', () => {
@@ -41,7 +42,7 @@ describe('reducer', () => {
   });
 
   describe('selectRegion', () => {
-    it('changes categories', () => {
+    it('changes selected Regions', () => {
       const initialState = {
         regions: [
           { id: 1, name: '서울' },
@@ -55,6 +56,22 @@ describe('reducer', () => {
         id: 1,
         name: '서울',
       });
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const restaurants = [
+        { id: 1, name: '마법사주방' },
+      ];
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+console.log(state);
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 
