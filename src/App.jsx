@@ -32,6 +32,7 @@ export default function App() {
       <LocationsContainer />
       <h2>Category</h2>
       <CategoriesContainer />
+      <h2>Restaurants</h2>
       <RestaurantsListContainer />
     </>
   );
