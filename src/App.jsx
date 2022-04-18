@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { useSelector } from 'react-redux';
+
 import LocationsContainer from './LocationsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsListContainer from './RestaurantsListContainer';
@@ -35,11 +37,19 @@ async function loadRestaurants({ dispatch }) {
 }
 
 export default function App() {
+  const { locationId, categoryId } = useSelector((state) => ({
+    locationId: state.locationId,
+    categoryId: state.categoryId,
+  }));
+
   useEffect(() => {
     loadLocations();
     loadCategories();
-    loadRestaurants();
   }, []);
+
+  useEffect(() => {
+    loadRestaurants();
+  }, [locationId, categoryId]);
 
   return (
     <>
