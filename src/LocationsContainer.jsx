@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Locations from './Locations';
 
 export default function LocationsContainer() {
-  const locations = useSelector((state) => ({
+  const { locations } = useSelector((state) => ({
     locations: state.locations,
   }));
 
