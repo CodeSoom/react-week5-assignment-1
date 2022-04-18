@@ -9,11 +9,11 @@ describe('Categories', () => {
     { id: 1, name: '한식' },
   ];
 
-  const renderCategories = (selectCategoryId) => render((
+  const renderCategories = (selectedCategoryId) => render((
     <Categories
       categories={categories}
       onSelect={onSelect}
-      selectCategoryId={selectCategoryId}
+      selectedCategoryId={selectedCategoryId}
     />
   ));
 

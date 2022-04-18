@@ -43,11 +43,16 @@ describe('CategoriesContainer', () => {
 
   context('when selected', () => {
     it('renders category name with (V)', () => {
-      const { getByText, queryByText } = render((
+      useSelector.mockImplementationOnce((selector) => selector({
+        selectedCategoryId: 1,
+        categories: [
+          { id: 1, name: '한식' },
+        ],
+      }));
+
+      const { queryByText } = render((
         <CategoriesContainer />
       ));
-
-      fireEvent.click(getByText('한식'));
 
       expect(queryByText('한식 (V)')).not.toBeNull();
     });
