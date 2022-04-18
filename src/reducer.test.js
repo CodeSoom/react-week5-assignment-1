@@ -85,4 +85,18 @@ describe('Reducer', () => {
       });
     });
   });
+
+  describe('loadCategories', () => {
+    it('called setCategories with categories data', async () => {
+      const dispatch = jest.fn();
+      await loadCategories()(dispatch);
+
+      expect(dispatch).toBeCalledWith({
+        type: 'setCategories',
+        payload: {
+          categories,
+        },
+      });
+    });
+  });
 });
