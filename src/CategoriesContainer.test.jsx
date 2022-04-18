@@ -40,4 +40,16 @@ describe('CategoriesContainer', () => {
       },
     });
   });
+
+  context('when selected', () => {
+    it('renders category name with (V)', () => {
+      const { getByText, queryByText } = render((
+        <CategoriesContainer />
+      ));
+
+      fireEvent.click(getByText('한식'));
+
+      expect(queryByText('한식 (V)')).not.toBeNull();
+    });
+  });
 });
