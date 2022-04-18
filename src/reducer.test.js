@@ -2,7 +2,7 @@ import reducer from './reducer';
 
 import {
   selectCategory,
-  selectAddress,
+  selectRegion,
 } from './actions';
 
 jest.mock('react-redux');
@@ -12,8 +12,8 @@ describe('Reducer', () => {
     expect(reducer(undefined, {})).toMatchObject({
       selectCategoryId: undefined,
       categories: [],
-      selectAddressId: undefined,
-      addresses: [],
+      selectRegionId: undefined,
+      regions: [],
     });
   });
 
@@ -29,14 +29,14 @@ describe('Reducer', () => {
     });
   });
 
-  describe('selectAddress', () => {
+  describe('selectRegion', () => {
     const initialState = {
-      selectAddressId: undefined,
+      selectRegionId: undefined,
     };
 
     it('returns select adress id', () => {
-      expect(reducer(initialState, selectAddress({ selectAddressId: 1 }))).toStrictEqual({
-        selectAddressId: 1,
+      expect(reducer(initialState, selectRegion({ selectRegionId: 1 }))).toStrictEqual({
+        selectRegionId: 1,
       });
     });
   });

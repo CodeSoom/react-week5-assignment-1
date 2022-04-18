@@ -1,19 +1,20 @@
 import { nameFunctions } from './helper';
 
-export default function Addresses({ addresses, onSelect, selectAddressId }) {
+export default function Regions({ regions, onSelect, selectRegionId }) {
   function handleClick(id) {
     onSelect(id);
   }
 
   return (
     <ul>
-      {addresses.map((address) => (
+      {regions.map((address) => (
         <button
           key={address.id}
+          name="region"
           type="button"
           onClick={() => handleClick(address.id)}
         >
-          {nameFunctions[address.id === selectAddressId](address.name)}
+          {nameFunctions[address.id === selectRegionId](address.name)}
 
         </button>
       ))}

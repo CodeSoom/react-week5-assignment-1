@@ -1,11 +1,11 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import AddressesContainer from './AddressesContainer';
+import RegionsContainer from './RegionsContainer';
 
-import addresses from '../fixture/addresses';
+import regions from '../fixture/regions';
 
-describe('AddressesContainer', () => {
+describe('RegionsContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -15,41 +15,41 @@ describe('AddressesContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    addresses,
+    regions,
   }));
 
-  it('renders categories', () => {
+  it('renders regions', () => {
     const { container } = render((
-      <AddressesContainer />
+      <RegionsContainer />
     ));
 
     expect(container).toHaveTextContent('서울');
   });
 
-  it('listens for click event on select category', () => {
+  it('listens for click event on select region', () => {
     const { getByText } = render((
-      <AddressesContainer />
+      <RegionsContainer />
     ));
 
     fireEvent.click(getByText('서울'));
 
     expect(dispatch).toBeCalledWith({
-      type: 'selectAddress',
+      type: 'selectRegion',
       payload: {
-        selectAddressId: 1,
+        selectRegionId: 1,
       },
     });
   });
 
   context('when selected', () => {
-    it('renders category name with (V)', () => {
+    it('renders region name with (V)', () => {
       useSelector.mockImplementationOnce((selector) => selector({
-        selectAddressId: 1,
-        addresses,
+        selectRegionId: 1,
+        regions,
       }));
 
       const { queryByText } = render((
-        <AddressesContainer />
+        <RegionsContainer />
       ));
 
       expect(queryByText('서울 (V)')).not.toBeNull();

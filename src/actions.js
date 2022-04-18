@@ -7,16 +7,11 @@ export function selectCategory({ selectCategoryId }) {
   };
 }
 
-export function selectAddress({ selectAddressId }) {
+export function selectRegion({ selectRegionId }) {
   return {
-    type: 'selectAddress',
+    type: 'selectRegion',
     payload: {
-      selectAddressId,
+      selectRegionId,
     },
   };
-}
-
-// TODO: delete
-export function xxx() {
-
 }

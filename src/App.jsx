@@ -1,10 +1,10 @@
-import AddressesContainer from './AddressesContainer';
+import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
   return (
     <div>
-      <AddressesContainer />
+      <RegionsContainer />
       <CategoriesContainer />
     </div>
   );

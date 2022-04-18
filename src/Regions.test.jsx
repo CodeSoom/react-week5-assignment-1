@@ -1,28 +1,28 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import Addresses from './Addresses';
+import Regions from './Regions';
 
-import addresses from '../fixture/addresses';
+import regions from '../fixture/regions';
 
 describe('Addresses', () => {
   const onSelect = jest.fn();
 
-  const renderAddresses = (selectAddressId) => render((
-    <Addresses
-      addresses={addresses}
+  const renderRegions = (selectRegionId) => render((
+    <Regions
+      regions={regions}
       onSelect={onSelect}
-      selectAddressId={selectAddressId}
+      selectRegionId={selectRegionId}
     />
   ));
 
-  it('renders Addresses', () => {
-    const { container } = renderAddresses();
+  it('renders Regions', () => {
+    const { container } = renderRegions();
 
     expect(container).toHaveTextContent('서울');
   });
 
-  it('listens for click event on select category', () => {
-    const { getByText } = renderAddresses();
+  it('listens for click event on select regions', () => {
+    const { getByText } = renderRegions();
 
     fireEvent.click(getByText('서울'));
 
@@ -31,7 +31,7 @@ describe('Addresses', () => {
 
   context('when selected', () => {
     it('renders name with (V)', () => {
-      const { queryByText } = renderAddresses(1);
+      const { queryByText } = renderRegions(1);
 
       expect(queryByText('서울 (V)')).not.toBeNull();
     });

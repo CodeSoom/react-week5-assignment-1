@@ -1,8 +1,8 @@
 const initialState = {
   selectCategoryId: undefined,
   categories: [],
-  selectAddressId: undefined,
-  addresses: [],
+  selectRegionId: undefined,
+  regions: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -15,12 +15,12 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'selectAddress') {
-    const { selectAddressId } = action.payload;
+  if (action.type === 'selectRegion') {
+    const { selectRegionId } = action.payload;
 
     return {
       ...state,
-      selectAddressId,
+      selectRegionId,
     };
   }
 

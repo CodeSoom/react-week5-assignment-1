@@ -5,12 +5,12 @@ import { useSelector } from 'react-redux';
 import App from './App';
 
 import categories from '../fixture/categories';
-import addresses from '../fixture/addresses';
+import regions from '../fixture/regions';
 
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
-    addresses,
+    regions,
   }));
 
   it('renders categories', () => {
@@ -21,7 +21,7 @@ describe('App', () => {
     expect(container).toHaveTextContent('한식');
   });
 
-  it('renders addresses', () => {
+  it('renders regions', () => {
     const { container } = render((
       <App />
     ));
