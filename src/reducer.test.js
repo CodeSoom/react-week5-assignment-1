@@ -3,9 +3,15 @@ import reducer from './reducer';
 import {
   selectCategory,
   selectRegion,
+  setRegions,
 } from './actions';
 
+import { fetchRegions } from './services/api';
+
+import regions from '../fixture/regions';
+
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('Reducer', () => {
   it('returns initialState', () => {
@@ -37,6 +43,18 @@ describe('Reducer', () => {
     it('returns select adress id', () => {
       expect(reducer(initialState, selectRegion({ selectRegionId: 1 }))).toStrictEqual({
         selectRegionId: 1,
+      });
+    });
+  });
+
+  describe('setRegions', () => {
+    const initialState = {
+      regions: [],
+    };
+
+    it('returns regions', () => {
+      expect(reducer(initialState, setRegions({ regions }))).toStrictEqual({
+        regions,
       });
     });
   });

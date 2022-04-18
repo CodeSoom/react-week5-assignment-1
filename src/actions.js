@@ -1,3 +1,5 @@
+import { fetchRegions } from './services/api';
+
 export function selectCategory({ selectCategoryId }) {
   return {
     type: 'selectCategory',
@@ -12,6 +14,15 @@ export function selectRegion({ selectRegionId }) {
     type: 'selectRegion',
     payload: {
       selectRegionId,
+    },
+  };
+}
+
+export function setRegions({ regions }) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
     },
   };
 }
