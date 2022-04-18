@@ -60,9 +60,9 @@ describe('reducer', () => {
     it('doesn\'t change initial state', () => {
       const state = reducer(undefined, someFunction());
 
-      expect(state.locations).toBe([]);
-      expect(state.categories).toBe([]);
-      expect(state.restaurants).toBe([]);
+      expect(state.locations).toEqual([]);
+      expect(state.categories).toEqual([]);
+      expect(state.restaurants).toEqual([]);
     });
   });
 });

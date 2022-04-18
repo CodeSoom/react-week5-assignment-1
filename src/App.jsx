@@ -7,6 +7,8 @@ import CategoriesContainer from './CategoriesContainer';
 
 import {
   setLocations,
+  setCategories,
+  setRestaurants,
 } from './actions';
 
 import locations from '../fixtures/locations';
