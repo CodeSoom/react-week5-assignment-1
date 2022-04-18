@@ -1,11 +1,13 @@
-import LocationContainer from './LocationContainer';
+import LocationsContainer from './LocationsContainer';
+
+jest.mock('react-redux');
 
 export default function App() {
   return (
     <>
       <h1>Restaurants</h1>
       <h2>Location</h2>
-      <LocationContainer />
+      <LocationsContainer />
       <h2>Category</h2>
       <ul>
         <li>한식</li>
