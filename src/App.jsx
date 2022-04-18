@@ -10,12 +10,16 @@ import {
 } from './actions';
 
 import locations from '../fixtures/locations';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setLocations(locations));
+    dispatch(setCategories(categories));
+    dispatch(setRestaurants(restaurants));
   }, []);
 
   return (
