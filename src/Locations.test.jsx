@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import Locations from './Locations';
 
@@ -9,9 +9,18 @@ test('Locations', () => {
     },
   ];
 
-  const { queryByText } = render((
-    <Locations locations={locations} />
+  const handleClick = jest.fn();
+
+  const { queryByText, getByText } = render((
+    <Locations
+      locations={locations}
+      onClick={handleClick}
+    />
   ));
 
   expect(queryByText('서울')).not.toBeNull();
+
+  fireEvent.click(getByText('서울'));
+
+  expect(handleClick).toBeCalled();
 });
