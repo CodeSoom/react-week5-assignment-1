@@ -6,6 +6,7 @@ import {
   setRegions,
   loadRegions,
   setCategories,
+  loadCategories,
 } from './actions';
 
 import regions from '../fixture/regions';
