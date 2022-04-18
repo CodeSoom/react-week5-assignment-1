@@ -2,12 +2,10 @@ import { fireEvent, render } from '@testing-library/react';
 
 import Categories from './Categories';
 
+import categories from '../fixture/categories';
+
 describe('Categories', () => {
   const onSelect = jest.fn();
-
-  const categories = [
-    { id: 1, name: '한식' },
-  ];
 
   const renderCategories = (selectedCategoryId) => render((
     <Categories

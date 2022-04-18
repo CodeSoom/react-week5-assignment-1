@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 
 import App from './App';
 
+import categories from '../fixture/categories';
+
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
-    categories: [
-      { id: 1, name: '한식' },
-    ],
+    categories,
   }));
 
   it('renders categories', () => {
