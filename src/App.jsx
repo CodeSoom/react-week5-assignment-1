@@ -12,23 +12,32 @@ import {
   setRestaurants,
 } from './actions';
 
-import locations from '../fixtures/locations';
-import categories from '../fixtures/categories';
-import restaurants from '../fixtures/restaurants';
+function loadLocations({ dispatch }) {
+  const locations = [];
+  // TODO: load locations from API server
+  // fetch
+  dispatch(setLocations(locations));
+}
+
+function loadCategories({ dispatch }) {
+  const categories = [];
+  // TODO: load locations from API server
+  // fetch
+  dispatch(setCategories(categories));
+}
+
+function loadRestaurants({ dispatch }) {
+  const restaurants = [];
+  // TODO: load locations from API server
+  // fetch
+  dispatch(setRestaurants(restaurants));
+}
 
 export default function App() {
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(setLocations(locations));
-  }, []);
-
-  useEffect(() => {
-    dispatch(setCategories(categories));
-  }, []);
-
-  useEffect(() => {
-    dispatch(setRestaurants(restaurants));
+    loadLocations();
+    loadCategories();
+    loadRestaurants();
   }, []);
 
   return (
