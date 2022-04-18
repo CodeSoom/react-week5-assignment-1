@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
-
 import LocationsContainer from './LocationsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsListContainer from './RestaurantsListContainer';
@@ -12,24 +10,27 @@ import {
   setRestaurants,
 } from './actions';
 
-function loadLocations({ dispatch }) {
-  const locations = [];
-  // TODO: load locations from API server
-  // fetch
+import {
+  fetchLocations,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
+
+async function loadLocations({ dispatch }) {
+  const locations = await fetchLocations();
+
   dispatch(setLocations(locations));
 }
 
-function loadCategories({ dispatch }) {
-  const categories = [];
-  // TODO: load locations from API server
-  // fetch
+async function loadCategories({ dispatch }) {
+  const categories = await fetchCategories();
+
   dispatch(setCategories(categories));
 }
 
-function loadRestaurants({ dispatch }) {
-  const restaurants = [];
-  // TODO: load locations from API server
-  // fetch
+async function loadRestaurants({ dispatch }) {
+  const restaurants = await fetchRestaurants();
+
   dispatch(setRestaurants(restaurants));
 }
 
