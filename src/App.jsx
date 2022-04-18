@@ -1,8 +1,19 @@
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+
 import LocationsContainer from './LocationsContainer';
 
-jest.mock('react-redux');
+import {
+  setLocations,
+} from './actions';
 
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setLocations(locations));
+  }, []);
   return (
     <>
       <h1>Restaurants</h1>
