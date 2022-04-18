@@ -9,10 +9,11 @@ describe('Categories', () => {
     { id: 1, name: '한식' },
   ];
 
-  const renderCategories = () => render((
+  const renderCategories = (selectCategoryId) => render((
     <Categories
       categories={categories}
       onSelect={onSelect}
+      selectCategoryId={selectCategoryId}
     />
   ));
 
@@ -28,5 +29,13 @@ describe('Categories', () => {
     fireEvent.click(getByText('한식'));
 
     expect(onSelect).toBeCalledWith(1);
+  });
+
+  context('when selected', () => {
+    it('renders name with (V)', () => {
+      const { queryByText } = renderCategories();
+
+      expect(queryByText('한식 (V)')).not.toBeNull();
+    });
   });
 });
