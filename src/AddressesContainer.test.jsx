@@ -26,22 +26,22 @@ describe('AddressesContainer', () => {
     expect(container).toHaveTextContent('서울');
   });
 
+  it('listens for click event on select category', () => {
+    const { getByText } = render((
+      <AddressesContainer />
+    ));
+
+    fireEvent.click(getByText('서울'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'selectAddress',
+      payload: {
+        selectAddressId: 1,
+      },
+    });
+  });
+
   // TODO: add test
-  // it('listens for click event on select category', () => {
-  //   const { getByText } = render((
-  //     <AddressesContainer />
-  //   ));
-
-  //   fireEvent.click(getByText('서울'));
-
-  //   expect(dispatch).toBeCalledWith({
-  //     type: 'selectCategory',
-  //     payload: {
-  //       selectCategoryId: 1,
-  //     },
-  //   });
-  // });
-
   // context('when selected', () => {
   //   it('renders category name with (V)', () => {
   //     useSelector.mockImplementationOnce((selector) => selector({
