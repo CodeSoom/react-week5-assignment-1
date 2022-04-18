@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import LocationsContainer from './LocationsContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantsListContainer from './RestaurantsListContainer';
 
 import {
   setLocations,
@@ -31,11 +32,7 @@ export default function App() {
       <LocationsContainer />
       <h2>Category</h2>
       <CategoriesContainer />
-      <ul>
-        <li>
-          양천주가
-        </li>
-      </ul>
+      <RestaurantsListContainer />
     </>
   );
 }
