@@ -17,12 +17,10 @@ export default function LocationsContainer() {
   }
 
   return (
-    <>
-      <Locations
-        locations={locations}
-        locationId={locationId}
-        onClick={handleClick}
-      />
-    </>
+    <Locations
+      locations={locations}
+      locationId={locationId}
+      onClick={handleClick}
+    />
   );
 }
