@@ -9,6 +9,7 @@ import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 test('App', () => {
   const dispatch = jest.fn();
@@ -24,11 +25,6 @@ test('App', () => {
   const { queryByText } = render((
     <App />
   ));
-
-  expect(dispatch).toBeCalledWith({
-    type: 'setLocations',
-    payload: { locations },
-  });
 
   expect(queryByText('서울')).not.toBeNull();
   expect(queryByText('한식')).not.toBeNull();

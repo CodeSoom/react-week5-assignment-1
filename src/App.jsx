@@ -32,7 +32,7 @@ async function loadCategories({ dispatch }) {
 
 async function loadRestaurants({ dispatch, locationId, categoryId }) {
   const locations = await fetchLocations();
-  const regionName = locations.find((location) => location.id === locationId).name;
+  const regionName = locations.find((location) => location.id === locationId)?.name;
   const restaurants = await fetchRestaurants({ regionName, categoryId });
 
   dispatch(setRestaurants(restaurants));
