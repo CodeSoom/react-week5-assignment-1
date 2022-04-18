@@ -8,8 +8,6 @@ test('App', () => {
   ));
 
   expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('인천')).not.toBeNull();
 
   expect(queryByText('한식')).not.toBeNull();
-  expect(queryByText('분식')).not.toBeNull();
 });
