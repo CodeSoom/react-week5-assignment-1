@@ -7,36 +7,10 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsListContainer from './RestaurantsListContainer';
 
 import {
-  setLocations,
-  setCategories,
-  setRestaurants,
+  loadLocations,
+  loadCategories,
+  loadRestaurants,
 } from './actions';
-
-import {
-  fetchLocations,
-  fetchCategories,
-  fetchRestaurants,
-} from './services/api';
-
-async function loadLocations({ dispatch }) {
-  const locations = await fetchLocations();
-
-  dispatch(setLocations(locations));
-}
-
-async function loadCategories({ dispatch }) {
-  const categories = await fetchCategories();
-
-  dispatch(setCategories(categories));
-}
-
-async function loadRestaurants({ dispatch, locationId, categoryId }) {
-  const locations = await fetchLocations();
-  const regionName = locations.find((location) => location.id === locationId)?.name;
-  const restaurants = await fetchRestaurants({ regionName, categoryId });
-
-  dispatch(setRestaurants(restaurants));
-}
 
 export default function App() {
   const { locationId, categoryId } = useSelector((state) => ({
@@ -47,12 +21,12 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadLocations({ dispatch });
-    loadCategories({ dispatch });
+    dispatch(loadLocations());
+    dispatch(loadCategories());
   }, []);
 
   useEffect(() => {
-    loadRestaurants({ dispatch, locationId, categoryId });
+    dispatch(loadRestaurants({ locationId, categoryId }));
   }, [locationId, categoryId]);
 
   return (
