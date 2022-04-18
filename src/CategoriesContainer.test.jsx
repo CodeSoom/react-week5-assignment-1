@@ -31,7 +31,7 @@ describe('CategoriesContainer', () => {
       <CategoriesContainer />
     ));
 
-    fireEvent.click(getByText('getByText'));
+    fireEvent.click(getByText('한식'));
 
     expect(dispatch).toBeCalled();
   });
