@@ -24,3 +24,21 @@ export function setRestaurants(restaurants) {
     },
   };
 }
+
+export function selectLocation({ id }) {
+  return {
+    type: 'selectLocation',
+    payload: {
+      id,
+    },
+  };
+}
+
+export function selectCategory({ id }) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      id,
+    },
+  };
+}

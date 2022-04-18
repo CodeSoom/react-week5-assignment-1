@@ -2,6 +2,8 @@ const initialState = {
   locations: [],
   categories: [],
   restaurants: [],
+  locationId: '',
+  categoryId: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -29,6 +31,24 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       restaurants,
+    };
+  }
+
+  if (action.type === 'selectLocation') {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      locationId: id,
+    };
+  }
+
+  if (action.type === 'selectCategory') {
+    const { id } = action.payload;
+
+    return {
+      ...state,
+      categoryId: id,
     };
   }
 
