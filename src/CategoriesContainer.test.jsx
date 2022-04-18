@@ -36,7 +36,7 @@ describe('CategoriesContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'selectCategory',
       payload: {
-        id: 1,
+        selectCategoryId: 1,
       },
     });
   });

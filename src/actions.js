@@ -1,7 +1,9 @@
-export function selectCategory(id) {
+export function selectCategory(selectCategoryId) {
   return {
     type: 'selectCategory',
-    payload: { id },
+    payload: {
+      selectCategoryId,
+    },
   };
 }
 

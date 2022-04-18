@@ -8,7 +8,7 @@ jest.mock('react-redux');
 
 describe('Reducer', () => {
   it('returns initialState', () => {
-    expect(reducer()).toMatchObject({
+    expect(reducer(undefined, {})).toMatchObject({
       selectCategoryId: undefined,
       categories: [],
     });
@@ -20,7 +20,7 @@ describe('Reducer', () => {
     };
 
     it('returns categories and select cateogry id', () => {
-      expect(reducer(initialState, selectCategory(1))).toBe({
+      expect(reducer(initialState, selectCategory(1))).toStrictEqual({
         selectCategoryId: 1,
       });
     });
