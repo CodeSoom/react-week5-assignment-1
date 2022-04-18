@@ -4,10 +4,6 @@ import {
   fetchRestaurants,
 } from './api';
 
-import locations from '../../fixtures/locations';
-import categories from '../../fixtures/categories';
-import restaurants from '../../fixtures/restaurants';
-
 global.fetch = jest.fn();
 
 describe('api', () => {
