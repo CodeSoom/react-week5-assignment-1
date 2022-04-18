@@ -41,21 +41,18 @@ describe('AddressesContainer', () => {
     });
   });
 
-  // TODO: add test
-  // context('when selected', () => {
-  //   it('renders category name with (V)', () => {
-  //     useSelector.mockImplementationOnce((selector) => selector({
-  //       selectedCategoryId: 1,
-  //       categories: [
-  //         { id: 1, name: '한식' },
-  //       ],
-  //     }));
+  context('when selected', () => {
+    it('renders category name with (V)', () => {
+      useSelector.mockImplementationOnce((selector) => selector({
+        selectAddressId: 1,
+        addresses,
+      }));
 
-  //     const { queryByText } = render((
-  //       <AddressesContainer />
-  //     ));
+      const { queryByText } = render((
+        <AddressesContainer />
+      ));
 
-  //     expect(queryByText('한식 (V)')).not.toBeNull();
-  //   });
-  // });
+      expect(queryByText('서울 (V)')).not.toBeNull();
+    });
+  });
 });
