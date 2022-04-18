@@ -8,6 +8,8 @@ import {
   setLocations,
 } from './actions';
 
+import locations from '../fixtures/locations';
+
 export default function App() {
   const dispatch = useDispatch();
 

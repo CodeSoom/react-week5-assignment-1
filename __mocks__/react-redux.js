@@ -1,4 +1,3 @@
-export const useSelector = jest.fn((selector) => selector({}));
+export const useDispatch = jest.fn();
 
-// TODO: Delete this.
-export const a = 1;
+export const useSelector = jest.fn((selector) => selector({}));
