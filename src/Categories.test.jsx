@@ -33,7 +33,7 @@ describe('Categories', () => {
 
   context('when selected', () => {
     it('renders name with (V)', () => {
-      const { queryByText } = renderCategories();
+      const { queryByText } = renderCategories(1);
 
       expect(queryByText('한식 (V)')).not.toBeNull();
     });
