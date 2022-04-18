@@ -4,9 +4,8 @@ import {
   selectCategory,
   selectRegion,
   setRegions,
+  loadRegions,
 } from './actions';
-
-import { fetchRegions } from './services/api';
 
 import regions from '../fixture/regions';
 
@@ -59,14 +58,16 @@ describe('Reducer', () => {
     });
   });
 
-  describe('fetchRegions', () => {
-    const initialState = {
-      regions: [],
-    };
+  describe('loadRegions', () => {
+    it('called setRegions with regions data', async () => {
+      const dispatch = jest.fn();
+      await loadRegions()(dispatch);
 
-    it('returns regions', () => {
-      expect(reducer(initialState, fetchRegions())).toStrictEqual({
-        regions,
+      expect(dispatch).toBeCalledWith({
+        type: 'setRegions',
+        payload: {
+          regions,
+        },
       });
     });
   });
