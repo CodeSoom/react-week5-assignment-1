@@ -24,6 +24,11 @@ export default function App() {
       <LocationsContainer />
       <h2>Category</h2>
       <CategoriesContainer />
+      <ul>
+        <li>
+          양천주가
+        </li>
+      </ul>
     </>
   );
 }
