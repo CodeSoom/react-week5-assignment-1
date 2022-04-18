@@ -1,4 +1,9 @@
-export default function Addresses({ addresses, onSelect }) {
+const addressNameFunctions = {
+  [true]: (name) => `${name} (V)`,
+  [false]: (name) => name,
+};
+
+export default function Addresses({ addresses, onSelect, selectAddressId }) {
   function handleClick(id) {
     onSelect(id);
   }
@@ -11,7 +16,8 @@ export default function Addresses({ addresses, onSelect }) {
           type="button"
           onClick={() => handleClick(address.id)}
         >
-          {address.name}
+          {addressNameFunctions[address.id === selectAddressId](address.name)}
+
         </button>
       ))}
     </ul>

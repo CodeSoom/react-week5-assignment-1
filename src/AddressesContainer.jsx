@@ -9,8 +9,9 @@ import {
 export default function AddressesContainer() {
   const dispatch = useDispatch();
 
-  const { addresses } = useSelector((selector) => ({
+  const { addresses, selectAddressId } = useSelector((selector) => ({
     addresses: selector.addresses,
+    selectAddressId: selector.selectAddressId,
   }));
 
   function onSelect(id) {
@@ -21,6 +22,7 @@ export default function AddressesContainer() {
     <Addresses
       addresses={addresses}
       onSelect={onSelect}
+      selectAddressId={selectAddressId}
     />
   );
 }

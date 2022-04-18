@@ -7,10 +7,11 @@ import addresses from '../fixture/addresses';
 describe('Addresses', () => {
   const onSelect = jest.fn();
 
-  const renderAddresses = () => render((
+  const renderAddresses = (selectAddressId) => render((
     <Addresses
       addresses={addresses}
       onSelect={onSelect}
+      selectAddressId={selectAddressId}
     />
   ));
 
@@ -28,12 +29,11 @@ describe('Addresses', () => {
     expect(onSelect).toBeCalledWith(1);
   });
 
-  // TODO: selected address
-  // context('when selected', () => {
-  //   it('renders name with (V)', () => {
-  //     const { queryByText } = renderAddresses(1);
+  context('when selected', () => {
+    it('renders name with (V)', () => {
+      const { queryByText } = renderAddresses(1);
 
-  //     expect(queryByText('한식 (V)')).not.toBeNull();
-  //   });
-  // });
+      expect(queryByText('서울 (V)')).not.toBeNull();
+    });
+  });
 });
