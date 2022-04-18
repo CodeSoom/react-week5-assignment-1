@@ -32,7 +32,7 @@ test('LocationsContainer', () => {
   expect(dispatch).toBeCalledWith({
     type: 'selectLocation',
     payload: {
-      id: 1,
+      name: '서울',
     },
   });
 });

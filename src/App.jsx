@@ -13,8 +13,8 @@ import {
 } from './actions';
 
 export default function App() {
-  const { locationId, categoryId } = useSelector((state) => ({
-    locationId: state.locationId,
+  const { locationName, categoryId } = useSelector((state) => ({
+    locationName: state.locationName,
     categoryId: state.categoryId,
   }));
 
@@ -26,8 +26,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    dispatch(loadRestaurants({ locationId, categoryId }));
-  }, [locationId, categoryId]);
+    dispatch(loadRestaurants({ locationName, categoryId }));
+  }, [locationName, categoryId]);
 
   return (
     <>

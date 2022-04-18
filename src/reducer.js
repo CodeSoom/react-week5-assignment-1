@@ -2,7 +2,7 @@ const initialState = {
   locations: [],
   categories: [],
   restaurants: [],
-  locationId: '',
+  locationName: '',
   categoryId: '',
 };
 
@@ -35,11 +35,11 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'selectLocation') {
-    const { id } = action.payload;
+    const { name } = action.payload;
 
     return {
       ...state,
-      locationId: id,
+      locationName: name,
     };
   }
 

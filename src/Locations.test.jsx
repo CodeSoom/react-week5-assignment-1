@@ -11,11 +11,11 @@ beforeEach(() => {
 describe('Locations', () => {
   const handleClick = jest.fn();
 
-  function renderLocations({ locationId }) {
+  function renderLocations({ locationName }) {
     return render((
       <Locations
         locations={locations}
-        locationId={locationId}
+        locationName={locationName}
         onClick={handleClick}
       />
     ));
@@ -23,7 +23,7 @@ describe('Locations', () => {
 
   context('when the location is selected', () => {
     it('renders location with a mark', () => {
-      const { queryByText } = renderLocations({ locationId: 1 });
+      const { queryByText } = renderLocations({ locationName: '서울' });
 
       expect(queryByText('서울(V)')).not.toBeNull();
     });
@@ -31,14 +31,14 @@ describe('Locations', () => {
 
   context('when the location is not selected', () => {
     it('renders location without mark', () => {
-      const { queryByText } = renderLocations({ locationId: '' });
+      const { queryByText } = renderLocations({ locationName: '' });
 
       expect(queryByText('서울')).not.toBeNull();
     });
   });
 
   it('calls handleClick', () => {
-    const { getByText } = renderLocations({ locationId: '' });
+    const { getByText } = renderLocations({ locationName: '' });
 
     fireEvent.click(getByText('서울'));
 

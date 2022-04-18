@@ -55,7 +55,7 @@ describe('async actions', () => {
     it('dispatches setRestaurants', async () => {
       const store = mockStore({});
 
-      await store.dispatch(loadRestaurants({ locationId: 1, categoryId: 1 }));
+      await store.dispatch(loadRestaurants({ locationName: '서울', categoryId: 1 }));
 
       expect(store.getActions()).toEqual([
         {

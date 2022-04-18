@@ -56,12 +56,12 @@ describe('reducer', () => {
   describe('selectLocations', () => {
     it('select location', () => {
       const initialState = {
-        locationId: '',
+        locationName: '',
       };
 
-      const state = reducer(initialState, selectLocation({ id: 1 }));
+      const state = reducer(initialState, selectLocation({ name: '서울' }));
 
-      expect(state.locationId).toBe(1);
+      expect(state.locationName).toBe('서울');
     });
   });
 

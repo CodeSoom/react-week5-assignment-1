@@ -5,21 +5,21 @@ import Locations from './Locations';
 import { selectLocation } from './actions';
 
 export default function LocationsContainer() {
-  const { locations, locationId } = useSelector((state) => ({
+  const { locations, locationName } = useSelector((state) => ({
     locations: state.locations,
-    locationId: state.locationId,
+    locationName: state.locationName,
   }));
 
   const dispatch = useDispatch();
 
-  function handleClick({ id }) {
-    dispatch(selectLocation({ id }));
+  function handleClick({ name }) {
+    dispatch(selectLocation({ name }));
   }
 
   return (
     <Locations
       locations={locations}
-      locationId={locationId}
+      locationName={locationName}
       onClick={handleClick}
     />
   );
