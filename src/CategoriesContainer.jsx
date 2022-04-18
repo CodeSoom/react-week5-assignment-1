@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import SelectList from './SelectList';
 
 import {
   selectCategory,
@@ -19,10 +19,10 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Categories
-      categories={categories}
+    <SelectList
+      selectList={categories}
       onSelect={onSelect}
-      selectCategoryId={selectCategoryId}
+      selectedId={selectCategoryId}
     />
   );
 }
