@@ -4,6 +4,8 @@ import {
   setCategories,
   setLocations,
   setRestaurants,
+  selectLocations,
+  selectCategories,
 } from './actions';
 
 import locations from '../fixtures/locations';
@@ -44,6 +46,30 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('selectLocations', () => {
+    it('select location', () => {
+      const initialState = {
+        location: '',
+      };
+
+      const state = reducer(initialState, selectLocations({ location: '서울' }));
+
+      expect(state.location).toBe('서울');
+    });
+  });
+
+  describe('selectCategories', () => {
+    it('select category', () => {
+      const initialState = {
+        categoryId: '',
+      };
+
+      const state = reducer(initialState, selectCategories({ id: 1 }));
+
+      expect(state.categoryId).toBe(1);
     });
   });
 
