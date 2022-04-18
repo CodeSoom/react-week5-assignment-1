@@ -44,7 +44,7 @@ describe('CategoriesContainer', () => {
   context('when selected', () => {
     it('renders category name with (V)', () => {
       useSelector.mockImplementationOnce((selector) => selector({
-        selectedCategoryId: 1,
+        selectCategoryId: 1,
         categories: [
           { id: 1, name: '한식' },
         ],

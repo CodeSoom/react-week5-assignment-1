@@ -7,11 +7,11 @@ import categories from '../fixture/categories';
 describe('Categories', () => {
   const onSelect = jest.fn();
 
-  const renderCategories = (selectedCategoryId) => render((
+  const renderCategories = (selectCategoryId) => render((
     <Categories
       categories={categories}
       onSelect={onSelect}
-      selectedCategoryId={selectedCategoryId}
+      selectCategoryId={selectCategoryId}
     />
   ));
 

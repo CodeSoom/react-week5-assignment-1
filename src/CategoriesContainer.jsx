@@ -9,9 +9,9 @@ import {
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories, selectedCategoryId } = useSelector((selector) => ({
+  const { categories, selectCategoryId } = useSelector((selector) => ({
     categories: selector.categories,
-    selectedCategoryId: selector.selectedCategoryId,
+    selectCategoryId: selector.selectCategoryId,
   }));
 
   function onSelect(id) {
@@ -22,7 +22,7 @@ export default function CategoriesContainer() {
     <Categories
       categories={categories}
       onSelect={onSelect}
-      selectedCategoryId={selectedCategoryId}
+      selectCategoryId={selectCategoryId}
     />
   );
 }

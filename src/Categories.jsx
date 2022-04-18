@@ -3,7 +3,7 @@ const categoryNameFunctions = {
   [false]: (name) => name,
 };
 
-export default function Categories({ categories, onSelect, selectedCategoryId }) {
+export default function Categories({ categories, onSelect, selectCategoryId }) {
   function handleClick(id) {
     onSelect(id);
   }
@@ -16,7 +16,7 @@ export default function Categories({ categories, onSelect, selectedCategoryId })
           type="button"
           onClick={() => handleClick(category.id)}
         >
-          {categoryNameFunctions[category.id === selectedCategoryId](category.name)}
+          {categoryNameFunctions[category.id === selectCategoryId](category.name)}
         </button>
       ))}
     </ul>
