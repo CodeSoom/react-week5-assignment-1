@@ -1,7 +1,6 @@
-export default function Addresses({ addresses }) {
+export default function Addresses({ addresses, onSelect }) {
   function handleClick(id) {
-    // TODO
-    // onSelect(id);
+    onSelect(id);
   }
 
   return (

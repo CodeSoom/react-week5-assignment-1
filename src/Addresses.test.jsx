@@ -10,6 +10,7 @@ describe('Addresses', () => {
   const renderAddresses = () => render((
     <Addresses
       addresses={addresses}
+      onSelect={onSelect}
     />
   ));
 
