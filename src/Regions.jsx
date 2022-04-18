@@ -15,7 +15,6 @@ export default function Regions({ regions, onSelect, selectRegionId }) {
           onClick={() => handleClick(address.id)}
         >
           {nameFunctions[address.id === selectRegionId](address.name)}
-
         </button>
       ))}
     </ul>
