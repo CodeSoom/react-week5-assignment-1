@@ -12,6 +12,8 @@ describe('Reducer', () => {
     expect(reducer(undefined, {})).toMatchObject({
       selectCategoryId: undefined,
       categories: [],
+      selectAddressId: undefined,
+      addresses: [],
     });
   });
 
@@ -29,7 +31,7 @@ describe('Reducer', () => {
 
   describe('selectAddress', () => {
     const initialState = {
-      selectCategoryId: undefined,
+      selectAddressId: undefined,
     };
 
     it('returns select adress id', () => {
