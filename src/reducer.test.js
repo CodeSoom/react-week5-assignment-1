@@ -58,4 +58,16 @@ describe('Reducer', () => {
       });
     });
   });
+
+  describe('fetchRegions', () => {
+    const initialState = {
+      regions: [],
+    };
+
+    it('returns regions', () => {
+      expect(reducer(initialState, fetchRegions())).toStrictEqual({
+        regions,
+      });
+    });
+  });
 });
