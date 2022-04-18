@@ -1,11 +1,11 @@
+import { useSelector } from 'react-redux';
+
 import Locations from './Locations';
 
 export default function LocationsContainer() {
-  const locations = [
-    {
-      id: 1, name: '서울',
-    },
-  ];
+  const locations = useSelector((state) => ({
+    locations: state.locations,
+  }));
 
   return (
     <>
