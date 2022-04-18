@@ -30,8 +30,10 @@ async function loadCategories({ dispatch }) {
   dispatch(setCategories(categories));
 }
 
-async function loadRestaurants({ dispatch }) {
-  const restaurants = await fetchRestaurants();
+async function loadRestaurants({ dispatch, locationId, categoryId }) {
+  const locations = await fetchLocations();
+  const regionName = locations.find((location) => location.id === locationId).name;
+  const restaurants = await fetchRestaurants({ regionName, categoryId });
 
   dispatch(setRestaurants(restaurants));
 }
@@ -50,7 +52,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    loadRestaurants();
+    loadRestaurants({ dispatch, locationId, categoryId });
   }, [locationId, categoryId]);
 
   return (
