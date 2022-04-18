@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import LocationsContainer from './LocationsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -42,9 +42,11 @@ export default function App() {
     categoryId: state.categoryId,
   }));
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    loadLocations();
-    loadCategories();
+    loadLocations({ dispatch });
+    loadCategories({ dispatch });
   }, []);
 
   useEffect(() => {
