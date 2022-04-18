@@ -7,6 +7,15 @@ export function selectCategory({ selectCategoryId }) {
   };
 }
 
+export function selectAddress({ selectAddressId }) {
+  return {
+    type: 'selectAddress',
+    payload: {
+      selectAddressId,
+    },
+  };
+}
+
 // TODO: delete
 export function xxx() {
 

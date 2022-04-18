@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Addresses from './Addresses';
 
 import {
-  selectCategory,
+  selectAddress,
 } from './actions';
 
 export default function AddressesContainer() {
@@ -13,13 +13,14 @@ export default function AddressesContainer() {
     addresses: selector.addresses,
   }));
 
-  // function onSelect(id) {
-  //   dispatch(selectCategory({ selectCategoryId: id }));
-  // }
+  function onSelect(id) {
+    dispatch(selectAddress({ selectAddressId: id }));
+  }
 
   return (
     <Addresses
       addresses={addresses}
+      onSelect={onSelect}
     />
   );
 }
