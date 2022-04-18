@@ -20,7 +20,7 @@ describe('Reducer', () => {
     };
 
     it('returns categories and select cateogry id', () => {
-      expect(reducer(initialState, selectCategory(1))).toStrictEqual({
+      expect(reducer(initialState, selectCategory({ selectCategoryId: 1 }))).toStrictEqual({
         selectCategoryId: 1,
       });
     });

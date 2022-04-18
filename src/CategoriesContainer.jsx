@@ -14,7 +14,7 @@ export default function CategoriesContainer() {
   }));
 
   function onSelect(id) {
-    dispatch(selectCategory(id));
+    dispatch(selectCategory({ selectCategoryId: id }));
   }
 
   return (
