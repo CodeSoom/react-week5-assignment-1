@@ -1,3 +1,9 @@
+import {
+  fetchLocations,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
+
 export function setLocations(locations) {
   return {
     type: 'setLocations',
@@ -40,5 +46,31 @@ export function selectCategory({ id }) {
     payload: {
       id,
     },
+  };
+}
+
+export function loadLocations() {
+  return async (dispatch) => {
+    const locations = await fetchLocations();
+
+    dispatch(setLocations(locations));
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+
+    dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants({ locationId, categoryId }) {
+  return async (dispatch) => {
+    const locations = await fetchLocations();
+    const regionName = locations.find((location) => location.id === locationId)?.name;
+    const restaurants = await fetchRestaurants({ regionName, categoryId });
+
+    dispatch(setRestaurants(restaurants));
   };
 }
