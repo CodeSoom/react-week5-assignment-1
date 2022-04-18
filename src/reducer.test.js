@@ -5,9 +5,11 @@ import {
   selectRegion,
   setRegions,
   loadRegions,
+  setCategories,
 } from './actions';
 
 import regions from '../fixture/regions';
+import categories from '../fixture/categories';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -68,6 +70,18 @@ describe('Reducer', () => {
         payload: {
           regions,
         },
+      });
+    });
+  });
+
+  describe('setCategories', () => {
+    const initialState = {
+      categories: [],
+    };
+
+    it('returns regions', () => {
+      expect(reducer(initialState, setCategories({ categories }))).toStrictEqual({
+        categories,
       });
     });
   });
