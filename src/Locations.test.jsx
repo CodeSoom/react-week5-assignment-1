@@ -4,19 +4,38 @@ import Locations from './Locations';
 
 import locations from '../fixtures/locations';
 
-test('Locations', () => {
+describe('Locations', () => {
   const handleClick = jest.fn();
 
-  const { queryByText, getByText } = render((
-    <Locations
-      locations={locations}
-      onClick={handleClick}
-    />
-  ));
+  function renderLocations({ locationId }) {
+    return render((
+      <Locations
+        locations={locations}
+        locationId={locationId}
+        onClick={handleClick}
+      />
+    ));
+  }
 
-  expect(queryByText('서울')).not.toBeNull();
+  it('render locations', () => {
+    const { queryByText } = renderLocations({ locationId: '' });
 
-  fireEvent.click(getByText('서울'));
+    expect(queryByText('서울')).not.toBeNull();
+  });
 
-  expect(handleClick).toBeCalled();
+  it('calls handleClick', () => {
+    const { getByText } = renderLocations({ locationId: '' });
+
+    fireEvent.click(getByText('서울'));
+
+    expect(handleClick).toBeCalled();
+  });
+
+  context('with selected location', () => {
+    it('renders location with a mark', () => {
+      const { queryByText } = renderLocations({ locationId: 1 });
+
+      expect(queryByText('서울(V)')).not.toBeNull();
+    });
+  });
 });
