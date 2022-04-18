@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import App from './App';
 
 import locations from '../fixtures/locations';
+import categories from '../fixtures/categories';
 
 jest.mock('react-redux');
 
@@ -15,6 +16,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     locations,
+    categories,
   }));
 
   const { queryByText } = render((
