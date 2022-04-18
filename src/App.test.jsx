@@ -18,4 +18,12 @@ describe('App', () => {
 
     expect(container).toHaveTextContent('한식');
   });
+
+  it('renders addresses', () => {
+    const { container } = render((
+      <App />
+    ));
+
+    expect(container).toHaveTextContent('서울');
+  });
 });
