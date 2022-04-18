@@ -23,10 +23,12 @@ test('LocationsContainer', () => {
 
   expect(queryByText('서울')).not.toBeNull();
 
-  fireEvent.click(getByText('한식'));
+  fireEvent.click(getByText('서울'));
 
   expect(dispatch).toBeCalledWith({
     type: 'selectLocation',
-    id: 1,
+    payload: {
+      id: 1,
+    },
   });
 });

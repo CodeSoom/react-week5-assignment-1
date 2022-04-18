@@ -5,7 +5,7 @@ export default function Locations({ locations, onClick }) {
         <li key={location.id}>
           <button
             type="button"
-            onClick={onClick}
+            onClick={onClick({ id: location.id })}
           >
             {location.name}
           </button>

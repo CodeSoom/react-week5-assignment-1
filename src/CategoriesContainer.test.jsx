@@ -27,6 +27,8 @@ test('CategoriesContainer', () => {
 
   expect(dispatch).toBeCalledWith({
     type: 'selectCategory',
-    id: 1,
+    payload: {
+      id: 1,
+    },
   });
 });
