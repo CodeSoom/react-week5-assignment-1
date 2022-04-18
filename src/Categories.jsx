@@ -1,7 +1,4 @@
-const categoryNameFunctions = {
-  [true]: (name) => `${name} (V)`,
-  [false]: (name) => name,
-};
+import { nameFunctions } from './helper';
 
 export default function Categories({ categories, onSelect, selectCategoryId }) {
   function handleClick(id) {
@@ -16,7 +13,7 @@ export default function Categories({ categories, onSelect, selectCategoryId }) {
           type="button"
           onClick={() => handleClick(category.id)}
         >
-          {categoryNameFunctions[category.id === selectCategoryId](category.name)}
+          {nameFunctions[category.id === selectCategoryId](category.name)}
         </button>
       ))}
     </ul>

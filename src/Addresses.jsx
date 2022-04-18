@@ -1,7 +1,4 @@
-const addressNameFunctions = {
-  [true]: (name) => `${name} (V)`,
-  [false]: (name) => name,
-};
+import { nameFunctions } from './helper';
 
 export default function Addresses({ addresses, onSelect, selectAddressId }) {
   function handleClick(id) {
@@ -16,7 +13,7 @@ export default function Addresses({ addresses, onSelect, selectAddressId }) {
           type="button"
           onClick={() => handleClick(address.id)}
         >
-          {addressNameFunctions[address.id === selectAddressId](address.name)}
+          {nameFunctions[address.id === selectAddressId](address.name)}
 
         </button>
       ))}
