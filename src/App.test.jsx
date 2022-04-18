@@ -21,6 +21,11 @@ test('App', () => {
     <App />
   ));
 
+  expect(dispatch).toBeCalledWith({
+    type: 'setLocations',
+    payload: { locations },
+  });
+
   expect(queryByText('서울')).not.toBeNull();
 
   expect(queryByText('한식')).not.toBeNull();
