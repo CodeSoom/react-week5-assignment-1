@@ -1,10 +1,18 @@
-export default function Categories({ categories }) {
+export default function Categories({ categories, onSelect }) {
+  function handleClick(id) {
+    onSelect(id);
+  }
+
   return (
     <ul>
       {categories.map((category) => (
-        <li key={category.id}>
+        <button
+          key={category.id}
+          type="button"
+          onClick={() => handleClick(category.id)}
+        >
           {category.name}
-        </li>
+        </button>
       ))}
     </ul>
   );
