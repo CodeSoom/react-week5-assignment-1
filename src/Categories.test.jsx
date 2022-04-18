@@ -3,30 +3,30 @@ import { fireEvent, render } from '@testing-library/react';
 import Categories from './Categories';
 
 describe('Categories', () => {
+  const onSelect = jest.fn();
+
   const categories = [
     { id: 1, name: '한식' },
   ];
 
+  const renderCategories = () => render((
+    <Categories
+      categories={categories}
+      onSelect={onSelect}
+    />
+  ));
+
   it('renders categories', () => {
-    const { container } = render((
-      <Categories categories={categories} />
-    ));
+    const { container } = renderCategories();
 
     expect(container).toHaveTextContent('한식');
   });
 
   it('listens for click event on select category', () => {
-    const onSelect = jest.fn();
-
-    const { getByText } = render((
-      <Categories
-        categories={categories}
-        onSelect={onSelect}
-      />
-    ));
+    const { getByText } = renderCategories();
 
     fireEvent.click(getByText('한식'));
 
-    expect(onSelect).toBeCalled();
+    expect(onSelect).toBeCalledWith(1);
   });
 });
