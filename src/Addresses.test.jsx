@@ -19,16 +19,15 @@ describe('Addresses', () => {
     expect(container).toHaveTextContent('서울');
   });
 
+  it('listens for click event on select category', () => {
+    const { getByText } = renderAddresses();
+
+    fireEvent.click(getByText('서울'));
+
+    expect(onSelect).toBeCalledWith(1);
+  });
+
   // TODO: selected address
-
-  // it('listens for click event on select category', () => {
-  //   const { getByText } = renderAddresses();
-
-  //   fireEvent.click(getByText('서울'));
-
-  //   expect(onSelect).toBeCalledWith(1);
-  // });
-
   // context('when selected', () => {
   //   it('renders name with (V)', () => {
   //     const { queryByText } = renderAddresses(1);
