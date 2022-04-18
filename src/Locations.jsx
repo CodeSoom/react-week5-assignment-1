@@ -1,8 +1,11 @@
-export default function Locations() {
+export default function Locations({ locations }) {
   return (
     <ul>
-      <li>서울</li>
-      <li>인천</li>
+      {locations.map((location) => (
+        <li key={location.id}>
+          {location.name}
+        </li>
+      ))}
     </ul>
   );
 }
