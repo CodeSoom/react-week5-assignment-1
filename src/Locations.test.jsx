@@ -17,10 +17,20 @@ describe('Locations', () => {
     ));
   }
 
-  it('render locations', () => {
-    const { queryByText } = renderLocations({ locationId: '' });
+  context('when the location is selected', () => {
+    it('renders location with a mark', () => {
+      const { queryByText } = renderLocations({ locationId: 1 });
 
-    expect(queryByText('서울')).not.toBeNull();
+      expect(queryByText('서울(V)')).not.toBeNull();
+    });
+  });
+
+  context('when the location is not selected', () => {
+    it('renders location without mark', () => {
+      const { queryByText } = renderLocations({ locationId: '' });
+
+      expect(queryByText('서울')).not.toBeNull();
+    });
   });
 
   it('calls handleClick', () => {
@@ -29,13 +39,5 @@ describe('Locations', () => {
     fireEvent.click(getByText('서울'));
 
     expect(handleClick).toBeCalled();
-  });
-
-  context('with selected location', () => {
-    it('renders location with a mark', () => {
-      const { queryByText } = renderLocations({ locationId: 1 });
-
-      expect(queryByText('서울(V)')).not.toBeNull();
-    });
   });
 });

@@ -4,19 +4,40 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
-test('Categories', () => {
+describe('Categories', () => {
   const handleClick = jest.fn();
 
-  const { queryByText, getByText } = render((
-    <Categories
-      categories={categories}
-      onClick={handleClick}
-    />
-  ));
+  function renderCategories({ categoryId }) {
+    return render((
+      <Categories
+        categories={categories}
+        categoryId={categoryId}
+        onClick={handleClick}
+      />
+    ));
+  }
 
-  expect(queryByText('한식')).not.toBeNull();
+  context('when the category is selected', () => {
+    it('renders category with a mark', () => {
+      const { queryByText } = renderCategories({ categoryId: 1 });
 
-  fireEvent.click(getByText('한식'));
+      expect(queryByText('한식(V)')).not.toBeNull();
+    });
+  });
 
-  expect(handleClick).toBeCalled();
+  context('when the category is not selected', () => {
+    it('render category without mark', () => {
+      const { queryByText } = renderCategories({ categoryId: '' });
+
+      expect(queryByText('한식')).not.toBeNull();
+    });
+  });
+
+  it('calls handleClick', () => {
+    const { getByText } = renderCategories({ categoryId: '' });
+
+    fireEvent.click(getByText('한식'));
+
+    expect(handleClick).toBeCalled();
+  });
 });
