@@ -2,13 +2,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Locations from './Locations';
 
-test('Locations', () => {
-  const locations = [
-    {
-      id: 1, name: '서울',
-    },
-  ];
+import locations from '../fixtures/locations';
 
+test('Locations', () => {
   const handleClick = jest.fn();
 
   const { queryByText, getByText } = render((

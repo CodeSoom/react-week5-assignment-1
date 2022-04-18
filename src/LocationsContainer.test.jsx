@@ -4,15 +4,13 @@ import { render } from '@testing-library/react';
 
 import LocationsContainer from './LocationsContainer';
 
+import locations from '../fixtures/locations';
+
 jest.mock('react-redux');
 
 test('LocationsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    locations: [
-      {
-        id: 1, name: '서울',
-      },
-    ],
+    locations,
   }));
 
   const { queryByText } = render((
