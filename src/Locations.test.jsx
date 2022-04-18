@@ -4,6 +4,10 @@ import Locations from './Locations';
 
 import locations from '../fixtures/locations';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('Locations', () => {
   const handleClick = jest.fn();
 

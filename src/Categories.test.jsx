@@ -4,6 +4,10 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('Categories', () => {
   const handleClick = jest.fn();
 

@@ -6,6 +6,10 @@ import {
 
 global.fetch = jest.fn();
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('api', () => {
   describe('fetchLocations', () => {
     it('fetch locations', async () => {
@@ -24,7 +28,7 @@ describe('api', () => {
   });
 
   describe('fetchRestaurants', () => {
-    context('with regionName and category', () => {
+    context('with regionName and categoryId', () => {
       it('fetch restaurants', async () => {
         await fetchRestaurants({ regionName: '서울', categoryId: 1 });
 
@@ -32,9 +36,9 @@ describe('api', () => {
       });
     });
 
-    context('without regionName or category', () => {
+    context('without regionName or categoryId', () => {
       it('returns an empty array', async () => {
-        const data = await fetchRestaurants({ regionName: '', category: '' });
+        const data = await fetchRestaurants({ regionName: '', categoryId: '' });
 
         expect(data).toEqual([]);
       });

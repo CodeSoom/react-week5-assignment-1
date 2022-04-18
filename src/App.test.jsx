@@ -11,6 +11,10 @@ import restaurants from '../fixtures/restaurants';
 jest.mock('react-redux');
 jest.mock('./services/api');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('App', () => {
   const dispatch = jest.fn();
 

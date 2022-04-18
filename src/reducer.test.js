@@ -12,6 +12,10 @@ import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('reducer', () => {
   describe('setLocations', () => {
     it('changes the locations array', () => {

@@ -8,6 +8,10 @@ import locations from '../fixtures/locations';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('LocationsContainer', () => {
   const dispatch = jest.fn();
 

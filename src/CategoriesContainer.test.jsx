@@ -8,6 +8,10 @@ import categories from '../fixtures/categories';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
