@@ -5,7 +5,7 @@ export default function Locations({ locations, locationId, onClick }) {
         <li key={location.id}>
           <button
             type="button"
-            onClick={onClick({ id: location.id })}
+            onClick={() => onClick({ id: location.id })}
           >
             {locationId === location.id ? (
               `${location.name}(V)`

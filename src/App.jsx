@@ -21,7 +21,13 @@ export default function App() {
 
   useEffect(() => {
     dispatch(setLocations(locations));
+  }, []);
+
+  useEffect(() => {
     dispatch(setCategories(categories));
+  }, []);
+
+  useEffect(() => {
     dispatch(setRestaurants(restaurants));
   }, []);
 

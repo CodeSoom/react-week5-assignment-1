@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLocation } from './actions';
 
 import Locations from './Locations';
+
+import { selectLocation } from './actions';
 
 export default function LocationsContainer() {
   const { locations, locationId } = useSelector((state) => ({
