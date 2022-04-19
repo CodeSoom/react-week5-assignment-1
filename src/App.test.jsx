@@ -12,4 +12,6 @@ test('App', () => {
 
   expect(queryByText(/한식/)).not.toBeNull();
   expect(queryByText(/분식/)).not.toBeNull();
+
+  expect(queryByText(/조회된 레스토랑이 없습니다/)).not.toBeNull();
 });

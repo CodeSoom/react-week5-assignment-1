@@ -45,6 +45,11 @@ export default function App() {
           <button type="button">분식</button>
         </li>
       </ul>
+
+      <h2>조회된 레스토랑</h2>
+      <ul>
+        <li>조회된 레스토랑이 없습니다.</li>
+      </ul>
     </>
   );
 }
