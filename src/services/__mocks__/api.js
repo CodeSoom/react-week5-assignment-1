@@ -10,6 +10,10 @@ export async function fetchRegions() {
   return regions;
 }
 
-export async function fetchRestaurants() {
+export async function fetchRestaurants({ regionName, categoryId }) {
+  if (!regionName || !categoryId) {
+    return [];
+  }
+
   return restaurants;
 }
