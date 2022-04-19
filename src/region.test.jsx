@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import Location from './Location';
+import Region from './Region';
 
 test('Location', () => {
   const locations = [
@@ -8,11 +8,10 @@ test('Location', () => {
       id: 1,
       name: '포항',
     },
-
   ];
 
   const { queryByText } = render(
-    <Location locations={locations} />,
+    <Region locations={locations} />,
   );
   expect(queryByText('포항')).not.toBeNull();
 });
