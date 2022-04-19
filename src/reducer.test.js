@@ -142,14 +142,16 @@ describe('Reducer', () => {
       });
     });
 
-    it('called setRestaurants with restaurants data', async () => {
-      await loadRestaurants({ regionName: '서울', categoryId: 1 })(dispatch);
+    context('when pass categoryId and regionName', () => {
+      it('called setRestaurants with restaurants data', async () => {
+        await loadRestaurants({ regionName: '서울', categoryId: 1 })(dispatch);
 
-      expect(dispatch).toBeCalledWith({
-        type: 'setRestaurants',
-        payload: {
-          restaurants,
-        },
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: {
+            restaurants,
+          },
+        });
       });
     });
   });
