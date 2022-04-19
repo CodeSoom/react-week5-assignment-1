@@ -44,6 +44,13 @@ export const updateAddress = ({ address }) => ({
   },
 });
 
+export const updateRegionName = ({ regionName }) => ({
+  type: 'updateRegionName',
+  payload: {
+    regionName,
+  },
+});
+
 export const setCategories = ({ categories }) => ({
   type: 'setCategories',
   payload: {
