@@ -61,9 +61,9 @@ export function setRestaurants({ restaurants }) {
   };
 }
 
-export function loadRestaurants({ regionName }) {
+export function loadRestaurants({ regionName, categoryId }) {
   return async (dispatch) => {
-    if (!regionName) {
+    if (!regionName || !categoryId) {
       return;
     }
 
