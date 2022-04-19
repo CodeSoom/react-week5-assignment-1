@@ -4,12 +4,13 @@ import { useDispatch } from 'react-redux';
 import RestaurantContainer from '../containers/RestaurantContainer';
 import CategoriesContainer from '../containers/CategoriesContainer';
 
-import { loadCategories, loadRestaurants } from '../redux/actions';
+import { loadCategories, loadRestaurants, loadRegions } from '../redux/actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loadRegions());
     dispatch(loadCategories());
     dispatch(loadRestaurants());
   }, []);
