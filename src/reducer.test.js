@@ -133,6 +133,7 @@ describe('Reducer', () => {
         expect(dispatch).not.toBeCalled();
       });
     });
+
     it('called setRestaurants with restaurants data', async () => {
       await loadRestaurants({})(dispatch);
 
