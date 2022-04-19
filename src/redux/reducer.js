@@ -3,6 +3,7 @@ const initialState = {
   name: '',
   category: '',
   address: '',
+  regionName: '',
   restaurants: [],
   categories: [],
   regions: [],
@@ -68,6 +69,14 @@ export default function reducer({
     return {
       ...state,
       address: action.payload.address,
+    };
+  }
+
+  if (action.type === 'updateRegionName') {
+    const { regionName } = action.payload;
+    return {
+      ...state,
+      regionName,
     };
   }
 
