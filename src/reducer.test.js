@@ -19,11 +19,12 @@ jest.mock('./services/api');
 
 describe('Reducer', () => {
   it('returns initialState', () => {
-    expect(reducer(undefined, {})).toMatchObject({
+    expect(reducer(undefined, {})).toStrictEqual({
       selectCategoryId: undefined,
       categories: [],
       selectRegionId: undefined,
       regions: [],
+      restaurants: [],
     });
   });
 
