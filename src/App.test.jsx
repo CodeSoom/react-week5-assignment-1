@@ -11,7 +11,7 @@ import restaurants from '../fixtures/restaurants';
 jest.mock('react-redux');
 jest.mock('./services/api');
 
-test('App', () => {
+describe('App', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -26,13 +26,19 @@ test('App', () => {
     restaurants,
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  it('calls dispatch three times', () => {
+    render(<App />);
 
-  expect(dispatch).toBeCalledTimes(3);
+    expect(dispatch).toBeCalledTimes(3);
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
-  expect(queryByText('양천주가')).not.toBeNull();
+  it('renders regions, categories and restaurants', () => {
+    const { queryByText } = render((
+      <App />
+    ));
+
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('양천주가')).not.toBeNull();
+  });
 });

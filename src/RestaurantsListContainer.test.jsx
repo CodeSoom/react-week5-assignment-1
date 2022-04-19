@@ -8,18 +8,20 @@ import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
-test('RestaurantsListContainer', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
+describe('RestaurantsListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants,
   }));
 
-  const { queryByText } = render((
-    <RestaurantsListContainer />
-  ));
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText('양천주가')).not.toBeNull();
+  it('renders restaurants', () => {
+    const { queryByText } = render((
+      <RestaurantsListContainer />
+    ));
+
+    expect(queryByText('양천주가')).not.toBeNull();
+  });
 });

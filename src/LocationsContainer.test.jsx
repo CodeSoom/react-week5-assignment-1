@@ -8,11 +8,7 @@ import locations from '../fixtures/locations';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
-test('LocationsContainer', () => {
+describe('LocationsContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -21,18 +17,30 @@ test('LocationsContainer', () => {
     locations,
   }));
 
-  const { queryByText, getByText } = render((
-    <LocationsContainer />
-  ));
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
+  it('renders regions', () => {
+    const { queryByText } = render((
+      <LocationsContainer />
+    ));
 
-  fireEvent.click(getByText('서울'));
+    expect(queryByText('서울')).not.toBeNull();
+  });
 
-  expect(dispatch).toBeCalledWith({
-    type: 'selectLocation',
-    payload: {
-      name: '서울',
-    },
+  it('calls dispatch', () => {
+    const { getByText } = render((
+      <LocationsContainer />
+    ));
+
+    fireEvent.click(getByText('서울'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'selectLocation',
+      payload: {
+        name: '서울',
+      },
+    });
   });
 });

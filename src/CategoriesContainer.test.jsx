@@ -8,11 +8,7 @@ import categories from '../fixtures/categories';
 
 jest.mock('react-redux');
 
-test('CategoriesContainer', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
+describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -21,18 +17,30 @@ test('CategoriesContainer', () => {
     categories,
   }));
 
-  const { queryByText, getByText } = render((
-    <CategoriesContainer />
-  ));
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText('한식')).not.toBeNull();
+  it('renders categories', () => {
+    const { queryByText } = render((
+      <CategoriesContainer />
+    ));
 
-  fireEvent.click(getByText('한식'));
+    expect(queryByText('한식')).not.toBeNull();
+  });
 
-  expect(dispatch).toBeCalledWith({
-    type: 'selectCategory',
-    payload: {
-      id: 1,
-    },
+  it('calls dispatch', () => {
+    const { getByText } = render((
+      <CategoriesContainer />
+    ));
+
+    fireEvent.click(getByText('한식'));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'selectCategory',
+      payload: {
+        id: 1,
+      },
+    });
   });
 });
