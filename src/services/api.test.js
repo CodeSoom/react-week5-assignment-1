@@ -4,7 +4,9 @@ import {
   fetchRestaurants,
 } from './api';
 
-global.fetch = jest.fn();
+global.fetch = jest.fn(() => Promise.resolve({
+  json: () => Promise.resolve(''),
+}));
 
 describe('api', () => {
   beforeEach(() => {
@@ -15,7 +17,7 @@ describe('api', () => {
     it('fetch locations', async () => {
       await fetchLocations();
 
-      expect(global.fetch).toBeCalled();
+      expect(global.fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/regions');
     });
   });
 
@@ -23,7 +25,7 @@ describe('api', () => {
     it('fetch categories', async () => {
       await fetchCategories();
 
-      expect(global.fetch).toBeCalled();
+      expect(global.fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/categories');
     });
   });
 
@@ -32,7 +34,7 @@ describe('api', () => {
       it('fetch restaurants', async () => {
         await fetchRestaurants({ regionName: '서울', categoryId: 1 });
 
-        expect(global.fetch).toBeCalled();
+        expect(global.fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/restaurants?region=서울&category=1');
       });
     });
 
