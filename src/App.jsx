@@ -1,4 +1,5 @@
 import Regions from './Regions';
+import Categories from './Categories';
 
 export default function App() {
   const regions = [
@@ -15,29 +16,23 @@ export default function App() {
     { id: 11, name: '독도' },
   ];
 
+  const categories = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+    { id: 3, name: '일식' },
+    { id: 4, name: '양식' },
+    { id: 5, name: '분식' },
+  ];
+
   return (
     <>
       <h1>레스토랑</h1>
+
+      <h2>지역</h2>
       <Regions regions={regions} />
 
       <h2>카테고리</h2>
-      <ul>
-        <li>
-          <button type="button">한식</button>
-        </li>
-        <li>
-          <button type="button">중식</button>
-        </li>
-        <li>
-          <button type="button">일식</button>
-        </li>
-        <li>
-          <button type="button">양식</button>
-        </li>
-        <li>
-          <button type="button">분식</button>
-        </li>
-      </ul>
+      <Categories categories={categories} />
 
       <h2>조회된 레스토랑</h2>
       <ul>

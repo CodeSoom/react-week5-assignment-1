@@ -7,7 +7,6 @@ export default function Regions({ regions }) {
 
   return (
     <>
-      <h2>지역</h2>
       <ul>
         {
           regions.map((region) => (
