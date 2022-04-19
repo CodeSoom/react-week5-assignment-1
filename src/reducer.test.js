@@ -64,6 +64,7 @@ describe('Reducer', () => {
   describe('loadRegions', () => {
     it('called setRegions with regions data', async () => {
       const dispatch = jest.fn();
+
       await loadRegions()(dispatch);
 
       expect(dispatch).toBeCalledWith({
@@ -90,6 +91,7 @@ describe('Reducer', () => {
   describe('loadCategories', () => {
     it('called setCategories with categories data', async () => {
       const dispatch = jest.fn();
+
       await loadCategories()(dispatch);
 
       expect(dispatch).toBeCalledWith({
