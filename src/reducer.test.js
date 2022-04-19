@@ -7,10 +7,12 @@ import {
   loadRegions,
   setCategories,
   loadCategories,
+  setRestaurants,
 } from './actions';
 
 import regions from '../fixture/regions';
 import categories from '../fixture/categories';
+import restaurants from '../fixture/restaurants';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
@@ -99,6 +101,18 @@ describe('Reducer', () => {
         payload: {
           categories,
         },
+      });
+    });
+  });
+
+  describe('setRestaurants', () => {
+    const initialState = {
+      restaurants: [],
+    };
+
+    it('returns regions', () => {
+      expect(reducer(initialState, setRestaurants({ restaurants }))).toStrictEqual({
+        restaurants,
       });
     });
   });
