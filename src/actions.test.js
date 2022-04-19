@@ -12,11 +12,11 @@ const mockStore = configureMockStore(middlewares);
 
 jest.mock('./services/api');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('async actions', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('loadLocations', () => {
     it('dispatches setLocations', async () => {
       const store = mockStore({});

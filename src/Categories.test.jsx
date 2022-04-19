@@ -4,10 +4,6 @@ import Categories from './Categories';
 
 import categories from '../fixtures/categories';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('Categories', () => {
   const handleClick = jest.fn();
 
@@ -20,6 +16,10 @@ describe('Categories', () => {
       />
     ));
   }
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   context('when the category is selected', () => {
     it('renders category with a mark', () => {

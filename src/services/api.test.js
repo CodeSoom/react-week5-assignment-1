@@ -6,11 +6,11 @@ import {
 
 global.fetch = jest.fn();
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('api', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('fetchLocations', () => {
     it('fetch locations', async () => {
       await fetchLocations();

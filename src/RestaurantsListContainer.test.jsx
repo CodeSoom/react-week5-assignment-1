@@ -8,11 +8,11 @@ import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('RestaurantsListContainer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   useSelector.mockImplementation((selector) => selector({
     restaurants,
   }));
