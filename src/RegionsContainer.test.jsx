@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import given from 'given2';
 import RegionsContainer from './RegionsContainer';
 
 import regions from '../fixture/regions';
@@ -8,15 +9,17 @@ import regions from '../fixture/regions';
 describe('RegionsContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+
+    given('selector', () => ({
+      regions,
+    }));
   });
 
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    regions,
-  }));
+  useSelector.mockImplementation((selector) => selector(given.selector));
 
   it('renders regions', () => {
     const { container } = render((
@@ -43,7 +46,7 @@ describe('RegionsContainer', () => {
 
   context('when selected region', () => {
     it('renders region name with (V)', () => {
-      useSelector.mockImplementationOnce((selector) => selector({
+      given('selector', () => ({
         selectRegionId: 1,
         regions,
       }));

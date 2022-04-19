@@ -2,6 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import given from 'given2';
 import CategoriesContainer from './CategoriesContainer';
 
 import categories from '../fixture/categories';
@@ -9,15 +10,17 @@ import categories from '../fixture/categories';
 describe('CategoriesContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+
+    given('selector', () => ({
+      categories,
+    }));
   });
 
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }));
+  useSelector.mockImplementation((selector) => selector(given.selector));
 
   it('renders categories', () => {
     const { container } = render((
@@ -44,7 +47,7 @@ describe('CategoriesContainer', () => {
 
   context('when selected category', () => {
     it('renders category name with (V)', () => {
-      useSelector.mockImplementationOnce((selector) => selector({
+      given('selector', () => ({
         selectCategoryId: 1,
         categories: [
           { id: 1, name: '한식' },
