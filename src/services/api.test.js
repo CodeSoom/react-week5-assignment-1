@@ -25,4 +25,10 @@ describe('api', () => {
 
     expect(fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/categories');
   });
+
+  it('called with restaurants url', async () => {
+    await fetchRestaurants({ regionName: '서울', categoryId: 1 });
+
+    expect(fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/restaurants?region=서울&category=1');
+  });
 });
