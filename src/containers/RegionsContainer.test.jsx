@@ -1,7 +1,9 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import given from 'given2';
 import 'given2/setup';
+
+import { updateRegionName } from '../redux/actions';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -37,6 +39,18 @@ describe('RegionsContainer', () => {
       const { queryByText } = renderRegionsContainer();
 
       expect(queryByText(/서울/)).not.toBeNull();
+    });
+
+    it('updates region when button clicked', () => {
+      given('regions', () => [{
+        id: 1,
+        name: '서울',
+      }]);
+      const { getByText } = renderRegionsContainer();
+
+      fireEvent.click(getByText('서울'));
+
+      expect(dispatch).toBeCalledWith(updateRegionName({ regionName: '서울' }));
     });
   });
 
