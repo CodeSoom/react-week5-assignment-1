@@ -1,16 +1,16 @@
 export default function Locations({ locations, locationName, onClick }) {
   return (
     <ul>
-      {locations.map((location) => (
-        <li key={location.id}>
+      {locations.map(({ id, name }) => (
+        <li key={id}>
           <button
             type="button"
-            onClick={() => onClick({ name: location.name })}
+            onClick={() => onClick({ name })}
           >
-            {locationName === location.name ? (
-              `${location.name}(V)`
+            {locationName === name ? (
+              `${name}(V)`
             ) : (
-              location.name
+              name
             )}
           </button>
         </li>

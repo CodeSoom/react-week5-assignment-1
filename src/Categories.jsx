@@ -1,16 +1,16 @@
 export default function Categories({ categories, categoryId, onClick }) {
   return (
     <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
           <button
             type="button"
-            onClick={() => onClick({ id: category.id })}
+            onClick={() => onClick({ id })}
           >
-            {categoryId === category.id ? (
-              `${category.name}(V)`
+            {categoryId === id ? (
+              `${name}(V)`
             ) : (
-              category.name
+              name
             )}
           </button>
         </li>
