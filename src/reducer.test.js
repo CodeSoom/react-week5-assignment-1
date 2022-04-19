@@ -19,6 +19,10 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('Reducer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('returns initialState', () => {
     expect(reducer(undefined, {})).toStrictEqual({
       selectCategoryId: undefined,
@@ -120,10 +124,17 @@ describe('Reducer', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('called setRestaurants with restaurants data', async () => {
-      const dispatch = jest.fn();
+    const dispatch = jest.fn();
 
-      await loadRestaurants()(dispatch);
+    context("when doesn't pass regionName args", () => {
+      it("doesn't working", async () => {
+        await loadRestaurants({ categoryId: 1 })(dispatch);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
+    it('called setRestaurants with restaurants data', async () => {
+      await loadRestaurants({})(dispatch);
 
       expect(dispatch).toBeCalledWith({
         type: 'setRestaurants',
