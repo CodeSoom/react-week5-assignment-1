@@ -8,6 +8,7 @@ import {
   setCategories,
   loadCategories,
   setRestaurants,
+  loadRestaurants,
 } from './actions';
 
 import regions from '../fixture/regions';
@@ -114,6 +115,21 @@ describe('Reducer', () => {
     it('returns regions', () => {
       expect(reducer(initialState, setRestaurants({ restaurants }))).toStrictEqual({
         restaurants,
+      });
+    });
+  });
+
+  describe('loadRestaurants', () => {
+    it('called setRestaurants with restaurants data', async () => {
+      const dispatch = jest.fn();
+
+      await loadRestaurants()(dispatch);
+
+      expect(dispatch).toBeCalledWith({
+        type: 'setRestaurants',
+        payload: {
+          restaurants,
+        },
       });
     });
   });
