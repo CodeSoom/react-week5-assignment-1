@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import InputContainer from '../containers/InputContainer';
 import RestaurantContainer from '../containers/RestaurantContainer';
 import CategoriesContainer from '../containers/CategoriesContainer';
 
@@ -21,7 +20,6 @@ export default function App() {
       <CategoriesContainer />
       <br />
       <RestaurantContainer />
-      <InputContainer />
     </>
   );
 }

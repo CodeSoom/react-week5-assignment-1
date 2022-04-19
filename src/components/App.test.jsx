@@ -27,11 +27,9 @@ test('App', () => {
     ],
   }));
 
-  const { getByText, queryByText } = render((
+  const { queryByText } = render((
     <App />
   ));
-
-  expect(getByText(/등록/)).not.toBeNull();
 
   expect(queryByText(/두향 | 한식 | 성남시 분당구/)).not.toBeNull();
   expect(queryByText(/맥도날드 | 양식 | 서울시 강남구/)).not.toBeNull();
