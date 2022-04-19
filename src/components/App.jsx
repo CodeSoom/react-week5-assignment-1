@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import RestaurantContainer from '../containers/RestaurantContainer';
+import RegionsContainer from '../containers/RegionsContainer';
 import CategoriesContainer from '../containers/CategoriesContainer';
+import RestaurantContainer from '../containers/RestaurantContainer';
 
 import { loadCategories, loadRestaurants, loadRegions } from '../redux/actions';
 
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <>
       <h1>Restaurants</h1>
+      <RegionsContainer />
       <CategoriesContainer />
       <br />
       <RestaurantContainer />
