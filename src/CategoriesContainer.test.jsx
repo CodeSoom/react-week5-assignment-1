@@ -42,7 +42,7 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  context('when selected', () => {
+  context('when selected category', () => {
     it('renders category name with (V)', () => {
       useSelector.mockImplementationOnce((selector) => selector({
         selectCategoryId: 1,

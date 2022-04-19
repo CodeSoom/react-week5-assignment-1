@@ -41,7 +41,7 @@ describe('RegionsContainer', () => {
     });
   });
 
-  context('when selected', () => {
+  context('when selected region', () => {
     it('renders region name with (V)', () => {
       useSelector.mockImplementationOnce((selector) => selector({
         selectRegionId: 1,
