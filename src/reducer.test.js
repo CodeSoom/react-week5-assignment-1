@@ -54,7 +54,7 @@ describe('reducer', () => {
   });
 
   describe('selectLocations', () => {
-    it('select location', () => {
+    it('selects location', () => {
       const initialState = {
         locationName: '',
       };
@@ -66,7 +66,7 @@ describe('reducer', () => {
   });
 
   describe('selectCategory', () => {
-    it('select category', () => {
+    it('selects category', () => {
       const initialState = {
         categoryId: '',
       };

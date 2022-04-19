@@ -8,8 +8,6 @@ export default function RestaurantsListContainer() {
   }));
 
   return (
-    <>
-      <RestaurantsList restaurants={restaurants} />
-    </>
+    <RestaurantsList restaurants={restaurants} />
   );
 }
