@@ -126,7 +126,7 @@ describe('Reducer', () => {
   describe('loadRestaurants', () => {
     const dispatch = jest.fn();
 
-    context("when doesn't pass regionName args", () => {
+    context("when doesn't pass regionName arg", () => {
       it("doesn't working", async () => {
         await loadRestaurants({ categoryId: 1 })(dispatch);
 
@@ -134,8 +134,16 @@ describe('Reducer', () => {
       });
     });
 
+    context("when doesn't pass categoryId arg", () => {
+      it("doesn't working", async () => {
+        await loadRestaurants({ regionName: '서울' })(dispatch);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
+
     it('called setRestaurants with restaurants data', async () => {
-      await loadRestaurants({})(dispatch);
+      await loadRestaurants({ regionName: '서울', categoryId: 1 })(dispatch);
 
       expect(dispatch).toBeCalledWith({
         type: 'setRestaurants',
