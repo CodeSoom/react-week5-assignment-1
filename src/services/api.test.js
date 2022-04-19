@@ -1,7 +1,8 @@
-import { fetchCategories, fetchRegions } from './api';
-
-import regions from '../../fixture/regions';
-import categories from '../../fixture/categories';
+import {
+  fetchCategories,
+  fetchRegions,
+  fetchRestaurants,
+} from './api';
 
 describe('api', () => {
   beforeEach(() => {
@@ -9,7 +10,7 @@ describe('api', () => {
   });
 
   const fetch = jest.fn(() => Promise.resolve({
-    json: () => Promise.resolve({ regions }),
+    json: () => Promise.resolve(''),
   }));
 
   global.fetch = fetch;
