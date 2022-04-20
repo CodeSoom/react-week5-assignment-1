@@ -2,6 +2,10 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 import App from './App';
 
 jest.mock('react-redux');
@@ -12,29 +16,9 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [{
-      id: 1,
-      name: '서울',
-    }, {
-      id: 2,
-      name: '대전',
-    }],
-    categories: [{
-      id: 1,
-      name: '한식',
-    }, {
-      id: 2,
-      name: '일식',
-    }],
-    restaurants: [{
-      id: 1,
-      name: '두향',
-    },
-    {
-      id: 2,
-      name: '맥도날드',
-    },
-    ],
+    regions,
+    categories,
+    restaurants,
   }));
 
   function renderApp() {

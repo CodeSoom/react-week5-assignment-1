@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import given from 'given2';
 import 'given2/setup';
 
+import restaurants from '../fixtures/restaurants';
+
 import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-redux');
@@ -11,10 +13,7 @@ describe('RestaurantContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  given('restaurants', () => [{
-    id: 1,
-    name: '두향',
-  }]);
+  given('restaurants', () => restaurants);
 
   useSelector.mockImplementation((selector) => selector({
     restaurants: given.restaurants,
@@ -30,10 +29,8 @@ describe('RestaurantContainer', () => {
 
   context('with restaurants', () => {
     it('renders restaurants', () => {
-      given('restaurants', () => [{
-        id: 1,
-        name: '두향',
-      }]);
+      given('restaurants', () => restaurants);
+
       const { queryByText } = renderRestaurantContainer();
 
       expect(queryByText(/두향/)).not.toBeNull();

@@ -1,19 +1,14 @@
 import { render } from '@testing-library/react';
 
+import restaurants from '../fixtures/restaurants';
+
 import Restaurant from './Restaurant';
 
 describe('Restaurant', () => {
-  const restaurant = {
-    id: 1,
-    name: '두향',
-    category: '한식',
-    address: '성남시 분당구',
-  };
-
   function renderRestaurant() {
     return render((
       <Restaurant
-        restaurant={restaurant}
+        restaurant={restaurants[0]}
       />
     ));
   }
