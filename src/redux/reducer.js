@@ -4,6 +4,7 @@ const initialState = {
   category: '',
   address: '',
   regionName: '',
+  categoryId: -1,
   restaurants: [],
   categories: [],
   regions: [],
@@ -77,6 +78,14 @@ export default function reducer({
     return {
       ...state,
       regionName,
+    };
+  }
+
+  if (action.type === 'updateCategoryId') {
+    const { categoryId } = action.payload;
+    return {
+      ...state,
+      categoryId,
     };
   }
 
