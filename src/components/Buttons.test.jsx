@@ -2,8 +2,6 @@ import { fireEvent, render } from '@testing-library/react';
 import given from 'given2';
 import 'given2/setup';
 
-import { useDispatch } from 'react-redux';
-
 import Buttons from './Buttons';
 
 describe('Buttons', () => {
@@ -14,9 +12,6 @@ describe('Buttons', () => {
   }]);
   given('currentButtonInfo', () => '서울');
   given('emptyMessage', () => '정보가 없어요!');
-
-  const dispatch = jest.fn();
-  useDispatch.mockImplementation(() => dispatch);
 
   const handleButtonClick = jest.fn();
 
