@@ -101,13 +101,9 @@ describe('Reducer', () => {
 
   // TODO: mocking redux-thunk
   describe('loadCategories', () => {
-    const getState = () => ({
-      selectCategoryId: 1,
-      selectRegionId: 1,
-    });
     it('called setCategories with categories data', async () => {
       const dispatch = jest.fn();
-      await loadCategories()(dispatch, getState);
+      await loadCategories()(dispatch);
 
       expect(dispatch).toBeCalledWith({
         type: 'setCategories',
@@ -135,24 +131,69 @@ describe('Reducer', () => {
     const dispatch = jest.fn();
 
     context('before select category', () => {
+      const getState = () => ({
+        categoryId: 1,
+      });
+
       it("doesn't working", async () => {
-        await loadRestaurants({ categoryId: 1 })(dispatch);
+        await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).not.toBeCalled();
       });
     });
 
     context('before select region', () => {
+      const getState = () => ({
+        selectRegionId: 1,
+      });
+
       it("doesn't working", async () => {
-        await loadRestaurants({ regionName: '서울' })(dispatch);
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
+
+    context('before load regions', () => {
+      const getState = () => ({
+        selectRegionId: 1,
+        selectCategoryId: 1,
+      });
+
+      it("doesn't working", async () => {
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).not.toBeCalled();
+      });
+    });
+
+    context('when select region id not exist', () => {
+      const getState = () => ({
+        selectRegionId: 1,
+        selectCategoryId: 1,
+        regions: [
+          { id: 2, name: '서울' },
+        ],
+      });
+
+      it("doesn't working", async () => {
+        await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).not.toBeCalled();
       });
     });
 
     context('when select region and category', () => {
+      const getState = () => ({
+        selectRegionId: 1,
+        selectCategoryId: 1,
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+      });
+
       it('called setRestaurants with restaurants data', async () => {
-        await loadRestaurants({ regionName: '서울', categoryId: 1 })(dispatch);
+        await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).toBeCalledWith({
           type: 'setRestaurants',

@@ -61,13 +61,24 @@ export function setRestaurants({ restaurants }) {
   };
 }
 
-export function loadRestaurants({ regionName, categoryId }) {
-  return async (dispatch) => {
-    if (!regionName || !categoryId) {
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const { selectCategoryId, selectRegionId, regions } = getState();
+
+    if (!selectRegionId || !selectCategoryId || !regions) {
       return;
     }
 
-    const restaurants = await fetchRestaurants({ regionName, categoryId });
+    const region = regions.find(({ id }) => id === selectRegionId);
+
+    if (!region) {
+      return;
+    }
+
+    const restaurants = await fetchRestaurants({
+      regionName: region.name,
+      categoryId: selectCategoryId,
+    });
 
     dispatch(setRestaurants({ restaurants }));
   };
