@@ -22,10 +22,6 @@ describe('Regions', () => {
     ));
   }
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   context('with regions', () => {
     given('regions', () => [{
       id: 1,
