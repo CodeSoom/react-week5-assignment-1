@@ -30,10 +30,8 @@ export default function App() {
 
       <h2>지역</h2>
       <Regions regions={regions} />
-
       <h2>카테고리</h2>
       <Categories categories={categories} />
-
       <h2>조회된 레스토랑</h2>
       <ul>
         <li>조회된 레스토랑이 없습니다.</li>
