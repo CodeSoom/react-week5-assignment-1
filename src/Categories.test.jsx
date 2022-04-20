@@ -5,10 +5,6 @@ import given from 'given2';
 
 import Categories from './Categories';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 const renderCategories = (categories) => render((
   <Categories
     categories={categories}
