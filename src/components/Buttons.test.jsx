@@ -87,6 +87,27 @@ describe('Buttons', () => {
         expect(container).toHaveTextContent(/정보가 없어요!/);
       });
     });
+
+    context('with currentButtonInfo', () => {
+      given('buttonList', () => regions);
+      given('currentButtonInfo', () => '서울');
+
+      it('renders "(V)" when region name is match to currentButtonInfo', () => {
+        const { queryByText } = renderButtons();
+
+        expect(queryByText(/(V)/)).not.toBe(null);
+      });
+    });
+    context('without currentButtonInfo', () => {
+      given('buttonList', () => regions);
+      given('currentButtonInfo', () => undefined);
+
+      it('doesn\'t renders "(V)"', () => {
+        const { queryByText } = renderButtons();
+
+        expect(queryByText(/(V)/)).toBe(null);
+      });
+    });
   });
 
   describe('Buttons for categories', () => {
