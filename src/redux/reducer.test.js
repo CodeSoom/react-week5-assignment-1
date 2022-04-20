@@ -1,6 +1,6 @@
-/* eslint-disable comma-dangle */
 import {
-  setRestaurants, setCategories, setRegions
+  setRestaurants, setCategories, setRegions,
+  updateRegionName, updateCategoryId,
 } from './actions';
 import reducer from './reducer';
 
@@ -27,7 +27,7 @@ describe('reducer', () => {
           restaurants: [{
             id: 5,
             name: '피카츄',
-          }]
+          }],
         });
 
         expect(state.restaurants).toHaveLength(1);
@@ -35,7 +35,7 @@ describe('reducer', () => {
 
       it('sets restaurants with empty array', () => {
         const state = reduceSetRestaurants({
-          restaurants: []
+          restaurants: [],
         });
 
         expect(state.restaurants).toHaveLength(0);
@@ -60,7 +60,7 @@ describe('reducer', () => {
           categories: [{
             id: 5,
             name: '중식',
-          }]
+          }],
         });
 
         expect(state.categories).toHaveLength(1);
@@ -68,7 +68,7 @@ describe('reducer', () => {
 
       it('sets categories with empty array', () => {
         const state = reduceSetCategories({
-          categories: []
+          categories: [],
         });
 
         expect(state.categories).toHaveLength(0);
@@ -93,7 +93,7 @@ describe('reducer', () => {
           regions: [{
             id: 5,
             name: '부산',
-          }]
+          }],
         });
 
         expect(state.regions).toHaveLength(1);
@@ -101,10 +101,48 @@ describe('reducer', () => {
 
       it('sets regions with empty array', () => {
         const state = reduceSetRegions({
-          regions: []
+          regions: [],
         });
 
         expect(state.regions).toHaveLength(0);
+      });
+    });
+
+    describe('updateRegionName', () => {
+      function reduceUpdateRegionName({ regionName }) {
+        return reducer({
+          state: {
+            regionName: '',
+          },
+          action: updateRegionName({ regionName }),
+        });
+      }
+
+      it('sets regionName with new regionName', () => {
+        const state = reduceUpdateRegionName({
+          regionName: '바르셀로나',
+        });
+
+        expect(state.regionName).toBe('바르셀로나');
+      });
+    });
+
+    describe('updateCategoryId', () => {
+      function reduceUpdateCategoryId({ categoryId }) {
+        return reducer({
+          state: {
+            categoryId: -1,
+          },
+          action: updateCategoryId({ categoryId }),
+        });
+      }
+
+      it('sets categoryId with new categoryId', () => {
+        const state = reduceUpdateCategoryId({
+          categoryId: 5,
+        });
+
+        expect(state.categoryId).toBe(5);
       });
     });
   });
