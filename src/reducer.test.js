@@ -13,16 +13,20 @@ import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
+  const initialState = {
+    locations: [],
+    categories: [],
+    restaurants: [],
+    locationName: '',
+    categoryId: '',
+  };
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   describe('setLocations', () => {
     it('changes the locations array', () => {
-      const initialState = {
-        locations: [],
-      };
-
       const state = reducer(initialState, setLocations(locations));
 
       expect(state.locations).toHaveLength(1);
@@ -31,10 +35,6 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('changes the categories array', () => {
-      const initialState = {
-        categories: [],
-      };
-
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
@@ -43,10 +43,6 @@ describe('reducer', () => {
 
   describe('setRestaurants', () => {
     it('changes the restaurants array', () => {
-      const initialState = {
-        restaurants: [],
-      };
-
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
@@ -55,10 +51,6 @@ describe('reducer', () => {
 
   describe('selectLocations', () => {
     it('selects location', () => {
-      const initialState = {
-        locationName: '',
-      };
-
       const state = reducer(initialState, selectLocation({ name: '서울' }));
 
       expect(state.locationName).toBe('서울');
@@ -67,10 +59,6 @@ describe('reducer', () => {
 
   describe('selectCategory', () => {
     it('selects category', () => {
-      const initialState = {
-        categoryId: '',
-      };
-
       const state = reducer(initialState, selectCategory({ id: 1 }));
 
       expect(state.categoryId).toBe(1);
