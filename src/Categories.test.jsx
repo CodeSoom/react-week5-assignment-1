@@ -5,6 +5,10 @@ import given from 'given2';
 
 import Categories from './Categories';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 const renderCategories = (categories) => render((
   <Categories
     categories={categories}
@@ -21,6 +25,16 @@ describe('Categories', () => {
       const { queryByText } = renderCategories(given.categories);
 
       expect(queryByText(/한식/)).not.toBeNull();
+    });
+  });
+
+  context('without categories', () => {
+    given('categories', () => []);
+
+    it('renders "카테고리가 없어요!"', () => {
+      const { queryByText } = renderCategories(given.categories);
+
+      expect(queryByText(/카테고리가 없어요!/)).not.toBeNull();
     });
   });
 });
