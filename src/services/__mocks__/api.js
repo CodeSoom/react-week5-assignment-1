@@ -1,5 +1,7 @@
+import categories from '../../../fixtures/categories';
+
 export async function fetchCategories() {
-  return [];
+  return categories;
 }
 
 export function xxx() {

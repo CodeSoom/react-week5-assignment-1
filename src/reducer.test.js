@@ -7,7 +7,6 @@ import {
 
 import categories from '../fixtures/categories';
 
-jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('reducer', () => {
@@ -29,7 +28,6 @@ describe('reducer', () => {
 
       await loadCategories()(dispatch);
 
-      // 흠... 왜 categories에 빈 배열[]이 나오지???
       expect(dispatch).toBeCalledWith({
         type: 'setCategories',
         payload: {
