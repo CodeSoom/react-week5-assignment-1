@@ -37,7 +37,7 @@ describe('SelectList', () => {
     it('renders name with (V)', () => {
       const { queryByText } = renderSelectList(1);
 
-      expect(queryByText('한식 (V)')).not.toBeNull();
+      expect(queryByText('한식(V)')).not.toBeNull();
     });
   });
 });
