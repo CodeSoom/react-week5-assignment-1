@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from '../components/Categories';
+import Buttons from '../components/Buttons';
 
 import { updateCategoryId } from '../redux/actions';
 
@@ -17,10 +17,12 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Categories
-      categoryId={categoryId}
-      categories={categories}
-      onCategoryClick={handleCategoryClick}
+    <Buttons
+      value="id"
+      buttonList={categories}
+      currentButtonInfo={categoryId}
+      emptyMessage="카테고리가 없어요!"
+      onButtonClick={handleCategoryClick}
     />
   );
 }
