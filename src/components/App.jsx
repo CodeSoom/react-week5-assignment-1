@@ -18,27 +18,18 @@ export default function App() {
   useEffect(() => {
     dispatch(loadRegions());
     dispatch(loadCategories());
-    dispatch(loadRestaurants());
   }, []);
+
+  useEffect(() => {
+    dispatch(loadRestaurants({ regionName, categoryId }));
+  }, [regionName, categoryId]);
 
   return (
     <>
       <h1>Restaurants</h1>
       <RegionsContainer />
       <CategoriesContainer />
-      <br />
       <RestaurantContainer />
-
-      <div>
-        지역 :
-        {' '}
-        {regionName}
-      </div>
-      <div>
-        카테고리 :
-        {' '}
-        {categoryId}
-      </div>
     </>
   );
 }
