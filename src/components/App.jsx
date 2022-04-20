@@ -10,8 +10,9 @@ import { loadCategories, loadRestaurants, loadRegions } from '../redux/actions';
 export default function App() {
   const dispatch = useDispatch();
 
-  const { regionName } = useSelector((state) => ({
+  const { regionName, categoryId } = useSelector((state) => ({
     regionName: state.regionName,
+    categoryId: state.categoryId,
   }));
 
   useEffect(() => {
@@ -32,6 +33,11 @@ export default function App() {
         지역 :
         {' '}
         {regionName}
+      </div>
+      <div>
+        카테고리 :
+        {' '}
+        {categoryId}
       </div>
     </>
   );
