@@ -1,19 +1,14 @@
+import Item from './Item';
+
 export default function List({ items, selectedItemId, onClick }) {
   return (
     <ul>
-      {items.map(({ id, name }) => (
-        <li key={id}>
-          <button
-            type="button"
-            onClick={() => onClick({ id })}
-          >
-            {id === selectedItemId ? (
-              `${name}(V)`
-            ) : (
-              name
-            )}
-          </button>
-        </li>
+      {items.map((item) => (
+        <Item
+          item={item}
+          selectedItemId={selectedItemId}
+          onClick={onClick}
+        />
       ))}
     </ul>
   );

@@ -22,13 +22,13 @@ describe('Item', () => {
   });
 
   it('renders an item', () => {
-    const { queryByText } = renderItem();
+    const { queryByText } = renderItem({ selectedItemId: '' });
 
     expect(queryByText('서울')).not.toBeNull();
   });
 
   it('calls handleClick', () => {
-    const { getByText } = renderItem();
+    const { getByText } = renderItem({ selectedItemId: '' });
 
     fireEvent.click(getByText('서울'));
 
@@ -44,8 +44,8 @@ describe('Item', () => {
   });
 
   context('when the item is not selected', () => {
-    it('renders with mark', () => {
-      const { queryByText } = renderItem();
+    it('renders without mark', () => {
+      const { queryByText } = renderItem({ selectedItemId: '' });
 
       expect(queryByText('서울(V)')).toBeNull();
     });
