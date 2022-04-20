@@ -14,7 +14,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      categories: [],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
     }));
 
     const { queryByText } = render((
