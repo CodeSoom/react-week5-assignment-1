@@ -2,6 +2,11 @@ export async function fetchCategories() {
   return [];
 }
 
-export function hello() {
+export async function fetchRegions() {
+  return [];
+}
 
+export async function fetchRestaurants({ regionName, categoryId }) {
+  console.log(regionName, categoryId);
+  return [];
 }
