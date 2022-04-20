@@ -1,7 +1,9 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import given from 'given2';
 import 'given2/setup';
+
+import { updateCategoryId } from '../redux/actions';
 
 import CategoriesContainer from './CategoriesContainer';
 
@@ -37,6 +39,18 @@ describe('CategoriesContainer', () => {
       const { queryByText } = renderCategoriesContainer();
 
       expect(queryByText(/한식/)).not.toBeNull();
+    });
+
+    it('updates categoryId when button clicked', () => {
+      given('categories', () => [{
+        id: 1,
+        name: '한식',
+      }]);
+      const { getByText } = renderCategoriesContainer();
+
+      fireEvent.click(getByText('한식'));
+
+      expect(dispatch).toBeCalledWith(updateCategoryId({ categoryId: 1 }));
     });
   });
 
