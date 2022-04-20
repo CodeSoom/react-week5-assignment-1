@@ -10,7 +10,7 @@
     "test:e2e": "codeceptjs run --steps",
     "test": "npm run coverage && start-server-and-test start http://localhost:8080 test:e2e",
     "lint": "eslint --ext js,jsx .",
-    "watch": "jest --watchAll"
+    "watch": "jest --watchAll --verbose"
   },
   "keywords": [],
   "author": "",
