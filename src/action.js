@@ -1,3 +1,5 @@
+import { fetchRegionList } from './services/api';
+
 export function setRegionList(regionList) {
   return {
     type: 'setRegionList',
@@ -7,8 +9,9 @@ export function setRegionList(regionList) {
   };
 }
 // todo : delete this
-export function hello() {
-  return {
-    type: 'hello',
+export function loadRegionList() {
+  return async (dispatch) => {
+    const regionList = await fetchRegionList();
+    dispatch(setRegionList(regionList));
   };
 }

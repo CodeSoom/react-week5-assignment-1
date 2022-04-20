@@ -2,24 +2,18 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { setRegionList } from './action';
-
-import { fetchRegionList } from './services/api';
+import {
+  loadRegionList,
+} from './action';
 
 import RegionListContainer from './RegionListcontainer';
-
-async function loadRegionList({ dispatch }) {
-  const regionList = await fetchRegionList();
-  dispatch(setRegionList(regionList));
-}
 
 export default function App() {
   // TODO : 실제 데이터 받아오기
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // TODO: loadcategories
-    loadRegionList({ dispatch });
+    dispatch(loadRegionList());
   }, []);
   return (
     <div>
