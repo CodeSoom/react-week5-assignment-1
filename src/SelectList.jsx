@@ -1,4 +1,7 @@
-import { nameFunctions } from './helper';
+const nameFunctions = {
+  [true]: (name) => `${name}(V)`,
+  [false]: (name) => name,
+};
 
 export default function SelectList({ selectList, onSelect, selectedId }) {
   function handleClick(id) {

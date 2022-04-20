@@ -71,7 +71,6 @@ describe('Reducer', () => {
     });
   });
 
-  // TODO: mocking redux-thunk
   describe('loadRegions', () => {
     it('called setRegions with regions data', async () => {
       const dispatch = jest.fn();
@@ -99,7 +98,6 @@ describe('Reducer', () => {
     });
   });
 
-  // TODO: mocking redux-thunk
   describe('loadCategories', () => {
     it('called setCategories with categories data', async () => {
       const dispatch = jest.fn();
@@ -126,7 +124,6 @@ describe('Reducer', () => {
     });
   });
 
-  // TODO: mocking redux-thunk
   describe('loadRestaurants', () => {
     const dispatch = jest.fn();
 
