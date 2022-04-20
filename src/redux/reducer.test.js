@@ -13,13 +13,9 @@ describe('reducer', () => {
             restaurants: [{
               id: 1,
               name: '마녀주방',
-              category: '한식',
-              address: '서울시 강남구',
             }, {
               id: 2,
               name: '마녀주방',
-              category: '한식',
-              address: '서울시 강남구',
             }],
           },
           action: setRestaurants({ restaurants }),
@@ -31,8 +27,6 @@ describe('reducer', () => {
           restaurants: [{
             id: 5,
             name: '피카츄',
-            category: '포켓몬',
-            address: '태초마을'
           }]
         });
 
