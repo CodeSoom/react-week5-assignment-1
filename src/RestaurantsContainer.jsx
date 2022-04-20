@@ -1,28 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import SelectList from './SelectList';
+import Restaurants from './Restaurants';
 
-import {
-  selectCategory,
-} from './actions';
-
-export default function CategoriesContainer() {
-  const dispatch = useDispatch();
-
-  const { categories, selectCategoryId } = useSelector((selector) => ({
-    categories: selector.categories,
-    selectCategoryId: selector.selectCategoryId,
+export default function RestaurantsContainer() {
+  const { restaurants } = useSelector((selector) => ({
+    restaurants: selector.restaurants,
   }));
 
-  function onSelect(id) {
-    dispatch(selectCategory({ selectCategoryId: id }));
-  }
-
   return (
-    <SelectList
-      selectList={categories}
-      onSelect={onSelect}
-      selectedId={selectCategoryId}
+    <Restaurants
+      restaurants={restaurants}
     />
   );
 }

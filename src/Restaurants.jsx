@@ -1,4 +1,8 @@
 export default function Restaurants({ restaurants }) {
+  if (!restaurants) {
+    return null;
+  }
+
   return (
     <ul>
       {restaurants.map((restaurant) => (
