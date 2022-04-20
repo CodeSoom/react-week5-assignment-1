@@ -40,8 +40,11 @@ describe('App', () => {
   function renderApp() {
     return render(<App />);
   }
-  it('fetchs regions', () => {
 
+  it('fetchs regions, categories, restaurants', () => {
+    renderApp();
+
+    expect(dispatch).toBeCalledTimes(3);
   });
 
   it('renders regions', () => {
