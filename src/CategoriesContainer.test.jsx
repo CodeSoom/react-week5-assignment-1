@@ -58,7 +58,7 @@ describe('CategoriesContainer', () => {
         <CategoriesContainer />
       ));
 
-      expect(queryByText('한식 (V)')).not.toBeNull();
+      expect(queryByText('한식(V)')).not.toBeNull();
     });
   });
 });

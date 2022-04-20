@@ -1,5 +1,5 @@
 export const nameFunctions = {
-  [true]: (name) => `${name} (V)`,
+  [true]: (name) => `${name}(V)`,
   [false]: (name) => name,
 };
 

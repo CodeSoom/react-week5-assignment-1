@@ -55,7 +55,7 @@ describe('RegionsContainer', () => {
         <RegionsContainer />
       ));
 
-      expect(queryByText('서울 (V)')).not.toBeNull();
+      expect(queryByText('서울(V)')).not.toBeNull();
     });
   });
 });
