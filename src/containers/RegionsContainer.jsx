@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Regions from '../components/Regions';
+import Buttons from '../components/Buttons';
 
 import { updateRegionName } from '../redux/actions';
 
@@ -17,10 +17,12 @@ export default function RegionsContainer() {
   }
 
   return (
-    <Regions
-      regions={regions}
-      regionName={regionName}
-      onRegionClick={handleRegionClick}
+    <Buttons
+      value="name"
+      buttonList={regions}
+      currentButtonInfo={regionName}
+      emptyMessage="지역이 없어요!"
+      onButtonClick={handleRegionClick}
     />
   );
 }
