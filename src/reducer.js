@@ -1,13 +1,13 @@
 const initialState = {
-  RegionList: [],
+  regionList: [],
 };
 
 export default function reducer(state = initialState, action) {
-  const { RegionList } = state;
   if (action.type === 'setRegionList') {
+    const { regionList } = action.payload;
     return {
       ...state,
-      RegionList,
+      regionList,
     };
   }
 

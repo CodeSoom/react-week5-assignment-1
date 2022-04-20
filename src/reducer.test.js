@@ -3,9 +3,17 @@ import reducer from './reducer';
 import { setRegionList } from './action';
 
 test('setRegionList', () => {
-  const RegionList = [];
+  const regionList = [
+    {
+      id: 1,
+      name: '서울',
+    },
+  ];
+  const initialState = {
+    regionList: [],
+  };
   const state = reducer(
-    RegionList, setRegionList(RegionList),
+    initialState, setRegionList(regionList),
   );
-  expect(state.RegionList).toHaveLength(1);
+  expect(state.regionList).toHaveLength(1);
 });

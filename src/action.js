@@ -1,8 +1,8 @@
-export function setRegionList(RegionList) {
+export function setRegionList(regionList) {
   return {
     type: 'setRegionList',
     payload: {
-      RegionList,
+      regionList,
     },
   };
 }
