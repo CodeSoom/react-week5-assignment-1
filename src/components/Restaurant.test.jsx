@@ -25,6 +25,6 @@ describe('Restaurant', () => {
   it('renders restaurant', () => {
     const { container } = renderRestaurant();
 
-    expect(container).toHaveTextContent(/두향 | 한식 | 성남시 분당구/);
+    expect(container).toHaveTextContent(/두향/);
   });
 });

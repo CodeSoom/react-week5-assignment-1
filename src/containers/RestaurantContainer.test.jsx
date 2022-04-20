@@ -14,8 +14,6 @@ describe('RestaurantContainer', () => {
   given('restaurants', () => [{
     id: 1,
     name: '두향',
-    category: '한식',
-    address: '성남시 분당구',
   }]);
 
   useSelector.mockImplementation((selector) => selector({
@@ -35,12 +33,10 @@ describe('RestaurantContainer', () => {
       given('restaurants', () => [{
         id: 1,
         name: '두향',
-        category: '한식',
-        address: '성남시 분당구',
       }]);
       const { queryByText } = renderRestaurantContainer();
 
-      expect(queryByText(/두향 | 한식 | 성남시 분당구/)).not.toBeNull();
+      expect(queryByText(/두향/)).not.toBeNull();
     });
   });
 
