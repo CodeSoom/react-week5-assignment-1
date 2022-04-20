@@ -1,12 +1,16 @@
-export default function Region({ regionList }) {
+export default function Region({ regionList }, id, onclickRegion) {
   return (
     <ul>
       {regionList.map((region) => (
         <li key={region.id}>
-          <p>
+          <button
+            type="button"
+            onClick={() => onclickRegion(id)}
+          >
             {region.name}
-          </p>
+          </button>
         </li>
+
       ))}
     </ul>
   );
