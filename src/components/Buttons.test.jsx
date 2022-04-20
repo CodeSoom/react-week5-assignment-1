@@ -82,6 +82,28 @@ describe('Buttons', () => {
         expect(container).toHaveTextContent(/지역이 없어요!/);
       });
     });
+
+    context('with emptyMessage', () => {
+      given('buttonList', () => []);
+      given('emptyMessage', () => '지역이 없어요!');
+
+      it('renders "지역이 없어요!"', () => {
+        const { container } = renderButtons();
+
+        expect(container).toHaveTextContent(/지역이 없어요!/);
+      });
+    });
+
+    context('without emptyMessage', () => {
+      given('buttonList', () => []);
+      given('emptyMessage', () => undefined);
+
+      it('renders "정보가 없어요!"', () => {
+        const { container } = renderButtons();
+
+        expect(container).toHaveTextContent(/정보가 없어요!/);
+      });
+    });
   });
 
   describe('Buttons for categories', () => {
