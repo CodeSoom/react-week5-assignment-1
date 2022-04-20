@@ -1,3 +1,5 @@
+import given from 'given2';
+
 import reducer from './reducer';
 
 import {
@@ -13,13 +15,13 @@ import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
-  const initialState = {
-    locations: [],
+  given('initialState', () => ({
+    locations: given.locations,
     categories: [],
     restaurants: [],
     locationName: '',
     categoryId: '',
-  };
+  }));
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -27,7 +29,9 @@ describe('reducer', () => {
 
   describe('setLocations', () => {
     it('changes the locations array', () => {
-      const state = reducer(initialState, setLocations(locations));
+      given('locations', () => []);
+
+      const state = reducer(given.initialState, setLocations(locations));
 
       expect(state.locations).toHaveLength(1);
     });
@@ -35,7 +39,9 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('changes the categories array', () => {
-      const state = reducer(initialState, setCategories(categories));
+      given('locations', () => []);
+
+      const state = reducer(given.initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
     });
@@ -43,7 +49,9 @@ describe('reducer', () => {
 
   describe('setRestaurants', () => {
     it('changes the restaurants array', () => {
-      const state = reducer(initialState, setRestaurants(restaurants));
+      given('locations', () => []);
+
+      const state = reducer(given.initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
     });
@@ -51,7 +59,9 @@ describe('reducer', () => {
 
   describe('selectLocations', () => {
     it('selects location', () => {
-      const state = reducer(initialState, selectLocation({ name: '서울' }));
+      given('locations', () => locations);
+
+      const state = reducer(given.initialState, selectLocation({ id: 1 }));
 
       expect(state.locationName).toBe('서울');
     });
@@ -59,7 +69,9 @@ describe('reducer', () => {
 
   describe('selectCategory', () => {
     it('selects category', () => {
-      const state = reducer(initialState, selectCategory({ id: 1 }));
+      given('locations', () => []);
+
+      const state = reducer(given.initialState, selectCategory({ id: 1 }));
 
       expect(state.categoryId).toBe(1);
     });

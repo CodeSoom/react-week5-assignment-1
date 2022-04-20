@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Locations from './Locations';
+import List from './List';
 
 import { selectLocation } from './actions';
 
@@ -12,14 +12,16 @@ export default function LocationsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleClick({ name }) {
-    dispatch(selectLocation({ name }));
+  function handleClick({ id }) {
+    dispatch(selectLocation({ id }));
   }
 
+  const selectedLocation = locations.find((location) => location.name === locationName);
+
   return (
-    <Locations
-      locations={locations}
-      locationName={locationName}
+    <List
+      items={locations}
+      selectedItemId={selectedLocation?.id || ''}
       onClick={handleClick}
     />
   );

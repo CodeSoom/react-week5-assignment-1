@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import List from './List';
 
 import { selectCategory } from './actions';
 
@@ -17,9 +17,9 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Categories
-      categories={categories}
-      categoryId={categoryId}
+    <List
+      items={categories}
+      selectedItemId={categoryId || ''}
       onClick={handleClick}
     />
   );

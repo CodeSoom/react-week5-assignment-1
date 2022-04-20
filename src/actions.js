@@ -31,11 +31,11 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function selectLocation({ name }) {
+export function selectLocation({ id }) {
   return {
     type: 'selectLocation',
     payload: {
-      name,
+      id,
     },
   };
 }

@@ -35,11 +35,15 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'selectLocation') {
-    const { name } = action.payload;
+    const { id } = action.payload;
+
+    const { locations } = state;
+
+    const locationName = locations.find((location) => location.id === id)?.name;
 
     return {
       ...state,
-      locationName: name,
+      locationName,
     };
   }
 

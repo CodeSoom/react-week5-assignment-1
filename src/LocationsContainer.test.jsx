@@ -39,7 +39,7 @@ describe('LocationsContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'selectLocation',
       payload: {
-        name: '서울',
+        id: 1,
       },
     });
   });

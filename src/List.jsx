@@ -5,7 +5,7 @@ export default function List({ items, selectedItemId, onClick }) {
         <li key={id}>
           <button
             type="button"
-            onClick={() => onClick({ name })}
+            onClick={() => onClick({ id })}
           >
             {id === selectedItemId ? (
               `${name}(V)`
