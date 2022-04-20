@@ -107,23 +107,31 @@ describe('Buttons', () => {
   });
 
   describe('Buttons for categories', () => {
-    context('with categories', () => {
-      given('value', () => 'id');
-      given('buttonList', () => [{
-        id: 1,
-        name: '한식',
-      }, {
-        id: 2,
-        name: '중식',
-      }]);
-      given('currentButtonInfo', () => -1);
-      given('emptyMessage', () => '카테고리가 없어요!');
+    given('value', () => 'id');
+    given('buttonList', () => [{
+      id: 1,
+      name: '한식',
+    }, {
+      id: 2,
+      name: '중식',
+    }]);
+    given('currentButtonInfo', () => -1);
+    given('emptyMessage', () => '카테고리가 없어요!');
 
+    context('with categories', () => {
       it('renders categories', () => {
         const { container } = renderButtons();
 
         expect(container).toHaveTextContent(/한식/);
         expect(container).toHaveTextContent(/중식/);
+      });
+
+      it('updates categoryId when clicks the category button', () => {
+        const { getByText } = renderButtons();
+
+        fireEvent.click(getByText('중식'));
+
+        expect(handleButtonClick).toBeCalledWith({ value: 2 });
       });
     });
   });
