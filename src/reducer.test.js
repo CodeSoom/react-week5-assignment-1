@@ -128,7 +128,7 @@ describe('Reducer', () => {
   describe('loadRestaurants', () => {
     const dispatch = jest.fn();
 
-    context("when doesn't pass regionName arg", () => {
+    context('before select category', () => {
       it("doesn't working", async () => {
         await loadRestaurants({ categoryId: 1 })(dispatch);
 
@@ -136,7 +136,7 @@ describe('Reducer', () => {
       });
     });
 
-    context("when doesn't pass categoryId arg", () => {
+    context('before select region', () => {
       it("doesn't working", async () => {
         await loadRestaurants({ regionName: '서울' })(dispatch);
 
@@ -144,7 +144,7 @@ describe('Reducer', () => {
       });
     });
 
-    context('when pass categoryId and regionName', () => {
+    context('when select region and category', () => {
       it('called setRestaurants with restaurants data', async () => {
         await loadRestaurants({ regionName: '서울', categoryId: 1 })(dispatch);
 
