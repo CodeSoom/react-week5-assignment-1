@@ -1,60 +1,9 @@
 import { fetchCategories, fetchRegions, fetchRestaurants } from '../services/api';
 
-export const addRestaurant = ({ name, category, address }) => ({
-  type: 'addRestaurant',
-  payload: {
-    name,
-    category,
-    address,
-  },
-});
-
-export const deleteRestaurant = ({ id }) => ({
-  type: 'deleteRestaurant',
-  payload: {
-    id,
-  },
-});
-
 export const setRestaurants = ({ restaurants }) => ({
   type: 'setRestaurants',
   payload: {
     restaurants,
-  },
-});
-
-export const updateName = ({ name }) => ({
-  type: 'updateName',
-  payload: {
-    name,
-  },
-});
-
-export const updateCategory = ({ category }) => ({
-  type: 'updateCategory',
-  payload: {
-    category,
-  },
-});
-
-export const updateAddress = ({ address }) => ({
-  type: 'updateAddress',
-  payload: {
-    address,
-  },
-});
-
-export const updateRegionName = ({ regionName }) => ({
-  type: 'updateRegionName',
-  payload: {
-    regionName,
-  },
-});
-
-export const updateCategoryId = ({ categoryId }) => ({
-  type: 'updateCategoryId',
-  payload: {
-    categoryId,
   },
 });
 
@@ -69,6 +18,20 @@ export const setRegions = ({ regions }) => ({
   type: 'setRegions',
   payload: {
     regions,
+  },
+});
+
+export const updateRegionName = ({ regionName }) => ({
+  type: 'updateRegionName',
+  payload: {
+    regionName,
+  },
+});
+
+export const updateCategoryId = ({ categoryId }) => ({
+  type: 'updateCategoryId',
+  payload: {
+    categoryId,
   },
 });
 
