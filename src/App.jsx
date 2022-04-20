@@ -4,6 +4,13 @@ import { useDispatch } from 'react-redux';
 
 import Region from './Region';
 
+import { setRegionList } from './action';
+
+function loadRegionList({ dispatch }) {
+  const regionList = [];
+  dispatch(setRegionList(regionList));
+}
+
 export default function App() {
   const regionList = [
     {
@@ -20,10 +27,12 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // TODO: load
+    // TODO: loadcategories
+    loadRegionList({ dispatch });
   }, []);
   return (
     <div>
+      <RegionListContainer />
       <Region regionList={regionList} />
       <p>한식</p>
       <p>중식</p>
