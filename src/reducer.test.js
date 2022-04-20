@@ -23,13 +23,15 @@ describe('Reducer', () => {
     jest.clearAllMocks();
   });
 
-  it('returns initialState', () => {
-    expect(reducer(undefined, {})).toStrictEqual({
-      selectCategoryId: undefined,
-      categories: [],
-      selectRegionId: undefined,
-      regions: [],
-      restaurants: [],
+  context('when call reducer with undefined args', () => {
+    it('returns initialState', () => {
+      expect(reducer(undefined, {})).toStrictEqual({
+        selectCategoryId: undefined,
+        categories: [],
+        selectRegionId: undefined,
+        regions: [],
+        restaurants: [],
+      });
     });
   });
 
@@ -99,9 +101,13 @@ describe('Reducer', () => {
 
   // TODO: mocking redux-thunk
   describe('loadCategories', () => {
+    const getState = () => ({
+      selectCategoryId: 1,
+      selectRegionId: 1,
+    });
     it('called setCategories with categories data', async () => {
       const dispatch = jest.fn();
-      await loadCategories()(dispatch);
+      await loadCategories()(dispatch, getState);
 
       expect(dispatch).toBeCalledWith({
         type: 'setCategories',
