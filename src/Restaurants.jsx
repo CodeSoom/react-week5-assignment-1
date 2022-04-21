@@ -1,4 +1,9 @@
-export default function Restaurants({ restaurants, isSelectRegion, isSelectCategory }) {
+export default function Restaurants({
+  restaurants,
+  isSelectRegion,
+  isSelectCategory,
+  loading,
+}) {
   if (!isSelectRegion) {
     return (
       <p>지역을 선택해주세요!</p>
@@ -11,8 +16,16 @@ export default function Restaurants({ restaurants, isSelectRegion, isSelectCateg
     );
   }
 
+  if (loading) {
+    return (
+      <p>레스토랑 목록을 불러오고 있습니다.</p>
+    );
+  }
+
   if (!restaurants) {
-    return null;
+    return (
+      <p>조건에 맞는 레스토랑이 없습니다.</p>
+    );
   }
 
   return (
