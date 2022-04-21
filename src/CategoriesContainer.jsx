@@ -7,6 +7,8 @@ export default function CategoriesContainer() {
   }));
 
   return (
-    <Categories categories={categories} />
+    <Categories
+      categories={categories}
+    />
   );
 }
