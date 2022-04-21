@@ -22,7 +22,7 @@ export default function Restaurants({
     );
   }
 
-  if (!restaurants) {
+  if (!restaurants || restaurants.length === 0) {
     return (
       <p>조건에 맞는 레스토랑이 없습니다.</p>
     );

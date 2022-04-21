@@ -52,6 +52,16 @@ describe('Restaurants', () => {
     });
   });
 
+  context('without restaurants', () => {
+    given('restaurants', () => []);
+
+    it('renders "조건에 맞는 레스토랑이 없습니다.', () => {
+      const { container } = renderRestaurants();
+
+      expect(container).toHaveTextContent('조건에 맞는 레스토랑이 없습니다.');
+    });
+  });
+
   context('with restaurants', () => {
     given('restaurants', () => restaurants);
 
