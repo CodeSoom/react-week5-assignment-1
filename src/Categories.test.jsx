@@ -25,7 +25,7 @@ describe('Categories', () => {
       expect(queryByText(/한식/)).not.toBeNull();
     });
 
-    it('click category', () => {
+    it('clicks category', () => {
       const onClick = jest.fn();
 
       const { queryByText } = render((
