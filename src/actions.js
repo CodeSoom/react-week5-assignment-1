@@ -66,13 +66,13 @@ export function loadRestaurants() {
     const { selectCategoryId, selectRegionId, regions } = getState();
 
     if (!selectRegionId || !selectCategoryId || !regions) {
-      return;
+      return dispatch(setRestaurants({ restaurants: [] }));
     }
 
     const region = regions.find(({ id }) => id === selectRegionId);
 
     if (!region) {
-      return;
+      return dispatch(setRestaurants({ restaurants: [] }));
     }
 
     const restaurants = await fetchRestaurants({
@@ -80,6 +80,6 @@ export function loadRestaurants() {
       categoryId: selectCategoryId,
     });
 
-    dispatch(setRestaurants({ restaurants }));
+    return dispatch(setRestaurants({ restaurants }));
   };
 }

@@ -132,10 +132,15 @@ describe('Reducer', () => {
         categoryId: 1,
       });
 
-      it("doesn't working", async () => {
+      it('returns empty restaurant', async () => {
         await loadRestaurants()(dispatch, getState);
 
-        expect(dispatch).not.toBeCalled();
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: {
+            restaurants: [],
+          },
+        });
       });
     });
 
@@ -144,10 +149,15 @@ describe('Reducer', () => {
         selectRegionId: 1,
       });
 
-      it("doesn't load restaurants data", async () => {
+      it('returns empty restaurant', async () => {
         await loadRestaurants()(dispatch, getState);
 
-        expect(dispatch).not.toBeCalled();
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: {
+            restaurants: [],
+          },
+        });
       });
     });
 
@@ -157,10 +167,15 @@ describe('Reducer', () => {
         selectCategoryId: 1,
       });
 
-      it("doesn't working", async () => {
+      it('returns empty restaurant', async () => {
         await loadRestaurants()(dispatch, getState);
 
-        expect(dispatch).not.toBeCalled();
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: {
+            restaurants: [],
+          },
+        });
       });
     });
 
@@ -173,10 +188,15 @@ describe('Reducer', () => {
         ],
       });
 
-      it("doesn't load restaurants data", async () => {
+      it('returns empty restaurant', async () => {
         await loadRestaurants()(dispatch, getState);
 
-        expect(dispatch).not.toBeCalled();
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: {
+            restaurants: [],
+          },
+        });
       });
     });
 
