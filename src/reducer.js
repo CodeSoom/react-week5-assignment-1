@@ -1,5 +1,3 @@
-import { setCategories } from './action';
-
 const initialState = {
   regionList: [],
   regionId: '',

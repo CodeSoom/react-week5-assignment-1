@@ -1,6 +1,6 @@
 export default function Region({ regionList, onClick }) {
-  function handleClick(id) {
-    onClick(id);
+  function handleClick({ id }) {
+    onClick({ id });
   }
 
   return (
@@ -9,7 +9,7 @@ export default function Region({ regionList, onClick }) {
         <li key={region.id}>
           <button
             type="button"
-            onClick={() => handleClick(region.id)}
+            onClick={() => handleClick({ id: region.id })}
           >
             {region.name}
           </button>
