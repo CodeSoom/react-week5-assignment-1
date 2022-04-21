@@ -16,7 +16,16 @@ export function setRegionList(regionList) {
     },
   };
 }
-// todo : delete this
+
+export function selectRegion(id) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      id,
+    },
+  };
+}
+
 export function loadRegionList() {
   return async (dispatch) => {
     const regionList = await fetchRegionList();
