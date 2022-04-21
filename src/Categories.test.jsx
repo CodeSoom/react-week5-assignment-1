@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import 'given2/setup';
 import given from 'given2';
@@ -19,6 +19,21 @@ describe('Categories', () => {
       ));
 
       expect(queryByText(/한식/)).not.toBeNull();
+    });
+
+    it('click category', () => {
+      const onClick = jest.fn();
+
+      const { queryByText } = render((
+        <Categories
+          categories={given.categories}
+          onClick={onClick}
+        />
+      ));
+
+      fireEvent.click(queryByText(/한식/));
+
+      expect(onClick).toBeCalled();
     });
   });
 
