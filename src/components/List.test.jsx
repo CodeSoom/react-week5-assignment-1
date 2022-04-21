@@ -3,7 +3,6 @@ import given from 'given2';
 import 'given2/setup';
 
 import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
 
 import List from './List';
 
@@ -31,116 +30,76 @@ describe('List', () => {
     ));
   }
 
-  describe('List for regions', () => {
-    given('value', () => 'name');
-    given('currentButtonInfo', () => '');
-    given('emptyMessage', () => '지역이 없어요!');
+  context('with buttonList', () => {
     given('buttonList', () => regions);
 
-    context('with buttonList', () => {
-      given('buttonList', () => regions);
+    it('renders regions', () => {
+      const { container } = renderList();
 
-      it('renders regions', () => {
-        const { container } = renderList();
-
-        expect(container).toHaveTextContent(/서울/);
-        expect(container).toHaveTextContent(/대전/);
-      });
-
-      it('updates regionName when clicks the region button', () => {
-        const { getByText } = renderList();
-
-        fireEvent.click(getByText('대전'));
-
-        expect(handleButtonClick).toBeCalledWith({ value: '대전' });
-      });
+      expect(container).toHaveTextContent(/서울/);
+      expect(container).toHaveTextContent(/대전/);
     });
 
-    context('without buttonList', () => {
-      given('buttonList', () => []);
+    it('updates regionName when clicks the region button', () => {
+      const { getByText } = renderList();
 
-      it('renders "지역이 없어요!"', () => {
-        const { container } = renderList();
+      fireEvent.click(getByText('대전'));
 
-        expect(container).toHaveTextContent(/지역이 없어요!/);
-      });
-    });
-
-    context('with emptyMessage', () => {
-      given('buttonList', () => []);
-      given('emptyMessage', () => '지역이 없어요!');
-
-      it('renders "지역이 없어요!"', () => {
-        const { container } = renderList();
-
-        expect(container).toHaveTextContent(/지역이 없어요!/);
-      });
-    });
-
-    context('without emptyMessage', () => {
-      given('buttonList', () => []);
-      given('emptyMessage', () => undefined);
-
-      it('renders "정보가 없어요!"', () => {
-        const { container } = renderList();
-
-        expect(container).toHaveTextContent(/정보가 없어요!/);
-      });
-    });
-
-    context('with currentButtonInfo', () => {
-      given('buttonList', () => regions);
-      given('currentButtonInfo', () => '서울');
-
-      it('renders "(V)" when region name is match to currentButtonInfo', () => {
-        const { queryByText } = renderList();
-
-        expect(queryByText(/(V)/)).not.toBe(null);
-      });
-    });
-    context('without currentButtonInfo', () => {
-      given('buttonList', () => regions);
-      given('currentButtonInfo', () => undefined);
-
-      it('doesn\'t renders "(V)"', () => {
-        const { queryByText } = renderList();
-
-        expect(queryByText(/(V)/)).toBe(null);
-      });
+      expect(handleButtonClick).toBeCalledWith({ value: '대전' });
     });
   });
 
-  describe('List for categories', () => {
-    given('value', () => 'id');
-    given('buttonList', () => categories);
-    given('currentButtonInfo', () => -1);
-    given('emptyMessage', () => '카테고리가 없어요!');
-
-    context('with categories', () => {
-      it('renders categories', () => {
-        const { container } = renderList();
-
-        expect(container).toHaveTextContent(/한식/);
-        expect(container).toHaveTextContent(/일식/);
-      });
-
-      it('updates categoryId when clicks the category button', () => {
-        const { getByText } = renderList();
-
-        fireEvent.click(getByText('일식'));
-
-        expect(handleButtonClick).toBeCalledWith({ value: 2 });
-      });
-    });
-  });
-
-  context('without buttons', () => {
+  context('without buttonList', () => {
     given('buttonList', () => []);
 
     it('renders "정보가 없어요!"', () => {
       const { container } = renderList();
 
       expect(container).toHaveTextContent(/정보가 없어요!/);
+    });
+  });
+
+  context('with emptyMessage', () => {
+    given('buttonList', () => []);
+    given('emptyMessage', () => '지역이 없어요!');
+
+    it('renders "지역이 없어요!"', () => {
+      const { container } = renderList();
+
+      expect(container).toHaveTextContent(/지역이 없어요!/);
+    });
+  });
+
+  context('without emptyMessage', () => {
+    given('buttonList', () => []);
+    given('emptyMessage', () => undefined);
+
+    it('renders "정보가 없어요!"', () => {
+      const { container } = renderList();
+
+      expect(container).toHaveTextContent(/정보가 없어요!/);
+    });
+  });
+
+  context('with currentButtonInfo', () => {
+    given('buttonList', () => regions);
+    given('currentButtonInfo', () => '서울');
+
+    it('renders "(V)" when region name is match to currentButtonInfo', () => {
+      const { queryByText } = renderList();
+
+      expect(queryByText(/(V)/)).not.toBe(null);
+    });
+  });
+
+  context('without currentButtonInfo', () => {
+    given('buttonList', () => regions);
+    given('currentButtonInfo', () => undefined);
+
+    it('doesn\'t renders "(V)"', () => {
+      const { queryByText } = renderList();
+
+      expect(queryByText(/(V)/)).toBe(null);
     });
   });
 });
