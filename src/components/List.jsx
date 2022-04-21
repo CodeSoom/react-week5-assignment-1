@@ -1,3 +1,5 @@
+import Button from './Button';
+
 export default function List({
   buttonList, currentButtonInfo, onButtonClick, value,
   emptyMessage,
@@ -9,12 +11,13 @@ export default function List({
   return (
     <ul>
       {buttonList.map((button) => (
-        <li key={button.id}>
-          <button type="button" onClick={() => onButtonClick({ value: button[value] })}>
-            {button.name}
-            {currentButtonInfo === button[value] ? '(V)' : null}
-          </button>
-        </li>
+        <Button
+          key={button.id}
+          button={button}
+          currentButtonInfo={currentButtonInfo}
+          onButtonClick={onButtonClick}
+          value={value}
+        />
       ))}
     </ul>
   );
