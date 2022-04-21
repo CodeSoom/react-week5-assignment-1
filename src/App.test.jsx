@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 
 import App from './App';
+
+import * as actions from './actions';
 
 import locations from '../fixtures/locations';
 import categories from '../fixtures/categories';
@@ -12,10 +14,6 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('App', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -26,10 +24,24 @@ describe('App', () => {
     restaurants,
   }));
 
-  it('calls dispatch three times', () => {
-    render(<App />);
+  const spyLoadLocations = jest.spyOn(actions, 'loadLocations').mockReturnValue(() => locations);
+  const spyLoadCategories = jest.spyOn(actions, 'loadCategories').mockReturnValue(() => categories);
+  const spyLoadRestaurants = jest.spyOn(actions, 'loadRestaurants').mockReturnValue(() => restaurants);
 
-    expect(dispatch).toBeCalledTimes(3);
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  context('when mounted', () => {
+    it('calls loadLocations, loadCategories and loadRestaurants', async () => {
+      render(<App />);
+
+      await waitFor(() => {
+        expect(spyLoadLocations).toBeCalled();
+        expect(spyLoadCategories).toBeCalled();
+        expect(spyLoadRestaurants).toBeCalled();
+      });
+    });
   });
 
   it('renders regions, categories and restaurants', () => {
