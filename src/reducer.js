@@ -1,4 +1,5 @@
 const initialState = {
+  selectedCategoryID: null,
   categories: [],
 };
 

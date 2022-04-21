@@ -9,6 +9,10 @@ import categories from '../fixtures/categories';
 
 jest.mock('./services/api');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('reducer', () => {
   describe('setCategories', () => {
     it('sets categories', () => {
