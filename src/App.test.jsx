@@ -30,5 +30,5 @@ test('App', () => {
   const { container } = render(
     <App />,
   );
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledTimes(2);
 });
