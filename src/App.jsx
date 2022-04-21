@@ -3,12 +3,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
-  loadCategories,
   loadRegionList,
 } from './action';
 
 import RegionListContainer from './RegionListcontainer';
-import Categories from "./Categories";
+import CategoriesContainer from './CategoriesContainer';
 
 function loadCategories({ dispatch }) {
   const categories = [];

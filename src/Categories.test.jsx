@@ -1,21 +1,17 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Categories from './Categories';
 
 describe('Categories', () => {
   it('Renders Categories Button', () => {
-    const handleClick = jest.fn();
-
-    const { queryByText, getByText } = render(
+    const categories = [
+      { id: 1, name: '일식' },
+    ];
+    const { queryByText } = render(
       <Categories
-        Categories={Categories}
-        onclick={handleClick}
+        categories={categories}
       />,
     );
     expect(queryByText('일식')).not.toBeNull();
-
-    fireEvent.click(getByText('일식'));
-
-    expect(handleClick).toBeCalled();
   });
 });
