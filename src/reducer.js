@@ -4,6 +4,7 @@ const initialState = {
   selectRegionId: undefined,
   regions: [],
   restaurants: [],
+  loading: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -43,12 +44,20 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'setLoading') {
+    return {
+      ...state,
+      loading: true,
+    };
+  }
+
   if (action.type === 'setRestaurants') {
     const { restaurants } = action.payload;
 
     return {
       ...state,
       restaurants,
+      loading: false,
     };
   }
 
