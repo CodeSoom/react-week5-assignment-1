@@ -8,6 +8,7 @@ import restaurants from '../fixture/restaurants';
 describe('Restaurants', () => {
   beforeEach(() => {
     given('selectRegion', () => true);
+    given('selectCategory', () => true);
     given('restaurants', () => restaurants);
   });
 
@@ -25,6 +26,16 @@ describe('Restaurants', () => {
       const { container } = renderRestaurants();
 
       expect(container).toHaveTextContent('지역을 선택해주세요!');
+    });
+  });
+
+  context('wihout select category', () => {
+    given('selectCategory', () => false);
+
+    it('renders "분류를 선택해주세요!"', () => {
+      const { container } = renderRestaurants();
+
+      expect(container).toHaveTextContent('분류를 선택해주세요!');
     });
   });
 
