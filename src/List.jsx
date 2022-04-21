@@ -5,6 +5,7 @@ export default function List({ items, selectedItemId, onClick }) {
     <ul>
       {items.map((item) => (
         <Item
+          key={item.id}
           item={item}
           selectedItemId={selectedItemId}
           onClick={onClick}

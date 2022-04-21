@@ -14,7 +14,7 @@ describe('api', () => {
   });
 
   describe('fetchLocations', () => {
-    it('fetch locations', async () => {
+    it('fetches locations', async () => {
       await fetchLocations();
 
       expect(global.fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/regions');
@@ -22,7 +22,7 @@ describe('api', () => {
   });
 
   describe('fetchCategories', () => {
-    it('fetch categories', async () => {
+    it('fetches categories', async () => {
       await fetchCategories();
 
       expect(global.fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/categories');
@@ -31,7 +31,7 @@ describe('api', () => {
 
   describe('fetchRestaurants', () => {
     context('with regionName and categoryId', () => {
-      it('fetch restaurants', async () => {
+      it('fetches restaurants', async () => {
         await fetchRestaurants({ regionName: '서울', categoryId: 1 });
 
         expect(global.fetch).toBeCalledWith('https://eatgo-customer-api.ahastudio.com/restaurants?region=서울&category=1');
