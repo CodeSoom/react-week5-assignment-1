@@ -31,6 +31,7 @@ describe('Reducer', () => {
         selectRegionId: undefined,
         regions: [],
         restaurants: [],
+        loading: false,
       });
     });
   });
@@ -200,7 +201,7 @@ describe('Reducer', () => {
       });
     });
 
-    context('when select region and category', () => {
+    context('with select region id and select category id', () => {
       const getState = () => ({
         selectRegionId: 1,
         selectCategoryId: 1,
@@ -211,6 +212,12 @@ describe('Reducer', () => {
 
       it('calls setRestaurants with restaurants data', async () => {
         await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).toBeCalledTimes(2);
+
+        expect(dispatch).toBeCalledWith({
+          type: 'loadRestaurants',
+        });
 
         expect(dispatch).toBeCalledWith({
           type: 'setRestaurants',
