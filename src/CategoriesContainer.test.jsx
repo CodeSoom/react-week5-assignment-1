@@ -7,10 +7,12 @@ import CategoriesContainer from './CategoriesContainer';
 const dispatch = jest.fn();
 
 beforeEach(() => {
-  jest.clearAllMocks();
+  useDispatch.mockImplementation(() => dispatch);
 });
 
-useDispatch.mockImplementation(() => dispatch);
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
 describe('CategoriesContainer', () => {
   it('renders categories', () => {
