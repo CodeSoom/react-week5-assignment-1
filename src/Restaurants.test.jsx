@@ -9,6 +9,7 @@ describe('Restaurants', () => {
   beforeEach(() => {
     given('selectRegion', () => true);
     given('selectCategory', () => true);
+    given('loading', () => false);
     given('restaurants', () => restaurants);
   });
 
@@ -17,6 +18,7 @@ describe('Restaurants', () => {
       restaurants={given.restaurants}
       isSelectRegion={given.selectRegion}
       isSelectCategory={given.selectCategory}
+      loading={given.loading}
     />
   ));
 
@@ -37,6 +39,16 @@ describe('Restaurants', () => {
       const { container } = renderRestaurants();
 
       expect(container).toHaveTextContent('분류를 선택해주세요!');
+    });
+  });
+
+  context('when loading', () => {
+    given('loading', () => true);
+
+    it('renders "레스토랑 목록을 불러오고 있습니다."', () => {
+      const { container } = renderRestaurants();
+
+      expect(container).toHaveTextContent('레스토랑 목록을 불러오고 있습니다.');
     });
   });
 
