@@ -16,6 +16,7 @@ describe('Restaurants', () => {
     <Restaurants
       restaurants={given.restaurants}
       isSelectRegion={given.selectRegion}
+      isSelectCategory={given.selectCategory}
     />
   ));
 
