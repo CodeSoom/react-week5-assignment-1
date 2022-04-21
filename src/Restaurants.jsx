@@ -1,4 +1,10 @@
-export default function Restaurants({ restaurants }) {
+export default function Restaurants({ restaurants, isSelectRegion }) {
+  if (!isSelectRegion) {
+    return (
+      <p>지역을 선택해주세요!</p>
+    );
+  }
+
   if (!restaurants) {
     return null;
   }
