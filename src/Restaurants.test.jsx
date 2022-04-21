@@ -6,19 +6,17 @@ import Restaurants from './Restaurants';
 import restaurants from '../fixture/restaurants';
 
 describe('Restaurants', () => {
-  given('selectRegion', () => true);
+  beforeEach(() => {
+    given('selectRegion', () => true);
+    given('restaurants', () => restaurants);
+  });
 
   const renderRestaurants = () => render((
     <Restaurants
-      restaurants={restaurants}
+      restaurants={given.restaurants}
       isSelectRegion={given.selectRegion}
     />
   ));
-  it('renders Restaurants', () => {
-    const { container } = renderRestaurants();
-
-    expect(container).toHaveTextContent('서울식당');
-  });
 
   context('wihout select region', () => {
     given('selectRegion', () => false);
@@ -27,6 +25,16 @@ describe('Restaurants', () => {
       const { container } = renderRestaurants();
 
       expect(container).toHaveTextContent('지역을 선택해주세요!');
+    });
+  });
+
+  context('with restaurants', () => {
+    given('restaurants', () => restaurants);
+
+    it('renders Restaurants', () => {
+      const { container } = renderRestaurants();
+
+      expect(container).toHaveTextContent('서울식당');
     });
   });
 });
