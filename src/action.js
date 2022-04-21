@@ -17,7 +17,7 @@ export function setRegionList(regionList) {
   };
 }
 
-export function selectRegion(id) {
+export function selectRegion({ id }) {
   return {
     type: 'selectRegion',
     payload: {

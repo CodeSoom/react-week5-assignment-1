@@ -17,8 +17,8 @@ export default function RegionListContainer() {
 
   const dispatch = useDispatch;
 
-  function handleClickRegion(id) {
-    dispatch(selectRegion(id));
+  function handleClickRegion({ id }) {
+    dispatch(selectRegion({ id }));
   }
 
   return (

@@ -1,5 +1,6 @@
 const initialState = {
   regionList: [],
+  regionId: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -8,6 +9,14 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       regionList,
+    };
+  }
+
+  if (action.type === 'selectRegion') {
+    const { id } = action.payload;
+    return {
+      ...state,
+      regionId: id,
     };
   }
 

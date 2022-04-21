@@ -1,11 +1,15 @@
-export default function Categories({ regionList }, id, onclickRegion) {
+export default function Categories({ categoryList, onClick }) {
+  function handleClick(id) {
+    onClick(id);
+  }
+
   return (
     <ul>
-      {regionList.map((region) => (
+      {categoryList.map((region) => (
         <li key={region.id}>
           <button
             type="button"
-            onClick={() => onclickRegion(id)}
+            onClick={() => handleClick(id)}
           >
             {region.name}
           </button>

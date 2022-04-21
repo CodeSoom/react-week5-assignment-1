@@ -44,7 +44,7 @@ describe('RegionListContainer', () => {
     expect(dispatch).toBeCalledWith({
       type: 'selectRegion',
       payload: {
-        id: 1,
+        regionId: 1,
       },
     });
   });

@@ -23,12 +23,12 @@ describe('Reducer', () => {
 
   it('selects Region', () => {
     const initialState = {
-      id: '',
+      regionId: '',
     };
 
     const state = reducer(
-      initialState, selectRegion(1),
+      initialState, selectRegion({ id: 1 }),
     );
-    expect(state.id).toBe(1);
+    expect(state.regionId).toBe(1);
   });
 });
