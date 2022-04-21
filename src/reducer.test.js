@@ -50,8 +50,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectCategory(1));
 
-      // 왜 state.selectedCategoryID 값이 undefined가 나오지???
-      expect(state.selectedCategoryID).toStrictEqual(1);
+      expect(state.selectedCategoryID).toBe(1);
     });
   });
 });
