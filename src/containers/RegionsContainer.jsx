@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Buttons from '../components/Buttons';
+import List from '../components/List';
 
 import { updateRegionName } from '../redux/actions';
 
@@ -17,7 +17,7 @@ export default function RegionsContainer() {
   }
 
   return (
-    <Buttons
+    <List
       value="name"
       buttonList={regions}
       currentButtonInfo={regionName}

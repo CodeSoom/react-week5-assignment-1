@@ -1,4 +1,4 @@
-export default function Buttons({
+export default function List({
   buttonList, currentButtonInfo, onButtonClick, value,
   emptyMessage,
 }) {

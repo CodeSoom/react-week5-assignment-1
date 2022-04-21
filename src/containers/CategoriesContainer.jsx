@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import Buttons from '../components/Buttons';
+import List from '../components/List';
 
 import { updateCategoryId } from '../redux/actions';
 
@@ -17,7 +17,7 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Buttons
+    <List
       value="id"
       buttonList={categories}
       currentButtonInfo={categoryId}

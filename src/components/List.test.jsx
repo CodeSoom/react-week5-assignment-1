@@ -5,9 +5,9 @@ import 'given2/setup';
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
 
-import Buttons from './Buttons';
+import List from './List';
 
-describe('Buttons', () => {
+describe('List', () => {
   given('value', () => 'name');
   given('buttonList', () => regions);
   given('currentButtonInfo', () => '서울');
@@ -19,9 +19,9 @@ describe('Buttons', () => {
     jest.clearAllMocks();
   });
 
-  function renderButtons() {
+  function renderList() {
     return render((
-      <Buttons
+      <List
         value={given.value}
         buttonList={given.buttonList}
         currentButtonInfo={given.currentButtonInfo}
@@ -31,7 +31,7 @@ describe('Buttons', () => {
     ));
   }
 
-  describe('Buttons for regions', () => {
+  describe('List for regions', () => {
     given('value', () => 'name');
     given('currentButtonInfo', () => '');
     given('emptyMessage', () => '지역이 없어요!');
@@ -41,14 +41,14 @@ describe('Buttons', () => {
       given('buttonList', () => regions);
 
       it('renders regions', () => {
-        const { container } = renderButtons();
+        const { container } = renderList();
 
         expect(container).toHaveTextContent(/서울/);
         expect(container).toHaveTextContent(/대전/);
       });
 
       it('updates regionName when clicks the region button', () => {
-        const { getByText } = renderButtons();
+        const { getByText } = renderList();
 
         fireEvent.click(getByText('대전'));
 
@@ -60,7 +60,7 @@ describe('Buttons', () => {
       given('buttonList', () => []);
 
       it('renders "지역이 없어요!"', () => {
-        const { container } = renderButtons();
+        const { container } = renderList();
 
         expect(container).toHaveTextContent(/지역이 없어요!/);
       });
@@ -71,7 +71,7 @@ describe('Buttons', () => {
       given('emptyMessage', () => '지역이 없어요!');
 
       it('renders "지역이 없어요!"', () => {
-        const { container } = renderButtons();
+        const { container } = renderList();
 
         expect(container).toHaveTextContent(/지역이 없어요!/);
       });
@@ -82,7 +82,7 @@ describe('Buttons', () => {
       given('emptyMessage', () => undefined);
 
       it('renders "정보가 없어요!"', () => {
-        const { container } = renderButtons();
+        const { container } = renderList();
 
         expect(container).toHaveTextContent(/정보가 없어요!/);
       });
@@ -93,7 +93,7 @@ describe('Buttons', () => {
       given('currentButtonInfo', () => '서울');
 
       it('renders "(V)" when region name is match to currentButtonInfo', () => {
-        const { queryByText } = renderButtons();
+        const { queryByText } = renderList();
 
         expect(queryByText(/(V)/)).not.toBe(null);
       });
@@ -103,14 +103,14 @@ describe('Buttons', () => {
       given('currentButtonInfo', () => undefined);
 
       it('doesn\'t renders "(V)"', () => {
-        const { queryByText } = renderButtons();
+        const { queryByText } = renderList();
 
         expect(queryByText(/(V)/)).toBe(null);
       });
     });
   });
 
-  describe('Buttons for categories', () => {
+  describe('List for categories', () => {
     given('value', () => 'id');
     given('buttonList', () => categories);
     given('currentButtonInfo', () => -1);
@@ -118,14 +118,14 @@ describe('Buttons', () => {
 
     context('with categories', () => {
       it('renders categories', () => {
-        const { container } = renderButtons();
+        const { container } = renderList();
 
         expect(container).toHaveTextContent(/한식/);
         expect(container).toHaveTextContent(/일식/);
       });
 
       it('updates categoryId when clicks the category button', () => {
-        const { getByText } = renderButtons();
+        const { getByText } = renderList();
 
         fireEvent.click(getByText('일식'));
 
@@ -138,7 +138,7 @@ describe('Buttons', () => {
     given('buttonList', () => []);
 
     it('renders "정보가 없어요!"', () => {
-      const { container } = renderButtons();
+      const { container } = renderList();
 
       expect(container).toHaveTextContent(/정보가 없어요!/);
     });
