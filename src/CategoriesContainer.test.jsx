@@ -36,6 +36,11 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(queryByText(/한식/));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledWith({
+      type: 'selectCategory',
+      payload: {
+        id: 1,
+      },
+    });
   });
 });
