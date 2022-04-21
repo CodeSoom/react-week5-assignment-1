@@ -6,5 +6,5 @@ export async function fetchCategories() {
 }
 
 export function xxx() {
-  //
+  // TODO: Delete this!
 }
