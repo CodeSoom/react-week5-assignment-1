@@ -13,5 +13,14 @@ export default function reducer(state = initialState, action) {
     };
   }
 
+  if (action.type === 'selectCategory') {
+    const { selectedCategoryID } = action.payload;
+
+    return {
+      ...state,
+      selectedCategoryID,
+    };
+  }
+
   return state;
 }

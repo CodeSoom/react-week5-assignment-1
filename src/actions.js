@@ -19,6 +19,8 @@ export function loadCategories() {
 export function selectCategory(id) {
   return {
     type: 'selectCategory',
-    payload: { id },
+    payload: {
+      id,
+    },
   };
 }

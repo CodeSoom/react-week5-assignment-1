@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   loadCategories,
+  selectCategory,
   setCategories,
 } from './actions';
 
@@ -38,6 +39,19 @@ describe('reducer', () => {
           categories,
         },
       });
+    });
+  });
+
+  describe('selectCategory', () => {
+    it('selects category', () => {
+      const initialState = {
+        selectedCategoryID: null,
+      };
+
+      const state = reducer(initialState, selectCategory(1));
+
+      // 왜 state.selectedCategoryID 값이 undefined가 나오지???
+      expect(state.selectedCategoryID).toStrictEqual(1);
     });
   });
 });
