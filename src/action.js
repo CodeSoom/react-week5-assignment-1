@@ -1,4 +1,7 @@
-import { fetchRegionList } from './services/api';
+import {
+  fetchRegionList,
+  fetchCategories,
+} from './services/api';
 
 export function setCategories(categories) {
   return {
@@ -11,8 +14,7 @@ export function setCategories(categories) {
 
 export function loadCategories() {
   return async (dispatch) => {
-    // TODO : fetch
-    const categories = [];
+    const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
 }
