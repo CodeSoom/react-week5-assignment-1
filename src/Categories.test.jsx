@@ -5,12 +5,6 @@ import given from 'given2';
 
 import Categories from './Categories';
 
-const renderCategories = (categories) => render((
-  <Categories
-    categories={categories}
-  />
-));
-
 describe('Categories', () => {
   context('with categories', () => {
     given('categories', () => [
@@ -18,7 +12,11 @@ describe('Categories', () => {
     ]);
 
     it('renders categories', () => {
-      const { queryByText } = renderCategories(given.categories);
+      const { queryByText } = render((
+        <Categories
+          categories={given.categories}
+        />
+      ));
 
       expect(queryByText(/한식/)).not.toBeNull();
     });
@@ -28,7 +26,11 @@ describe('Categories', () => {
     given('categories', () => []);
 
     it('renders "카테고리가 없어요!"', () => {
-      const { queryByText } = renderCategories(given.categories);
+      const { queryByText } = render((
+        <Categories
+          categories={given.categories}
+        />
+      ));
 
       expect(queryByText(/카테고리가 없어요!/)).not.toBeNull();
     });
