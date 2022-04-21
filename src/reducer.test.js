@@ -9,6 +9,7 @@ import {
   loadCategories,
   setRestaurants,
   loadRestaurants,
+  setLoading,
 } from './actions';
 
 import regions from '../fixture/regions';
@@ -56,6 +57,18 @@ describe('Reducer', () => {
     it('returns select adress id', () => {
       expect(reducer(initialState, selectRegion({ selectRegionId: 1 }))).toStrictEqual({
         selectRegionId: 1,
+      });
+    });
+  });
+
+  describe('setLoading', () => {
+    const initialState = {
+      loading: false,
+    };
+
+    it('returns loading', () => {
+      expect(reducer(initialState, setLoading())).toStrictEqual({
+        loading: true,
       });
     });
   });
@@ -121,6 +134,7 @@ describe('Reducer', () => {
     it('returns regions', () => {
       expect(reducer(initialState, setRestaurants({ restaurants }))).toStrictEqual({
         restaurants,
+        loading: false,
       });
     });
   });
@@ -216,7 +230,7 @@ describe('Reducer', () => {
         expect(dispatch).toBeCalledTimes(2);
 
         expect(dispatch).toBeCalledWith({
-          type: 'loadRestaurants',
+          type: 'setLoading',
         });
 
         expect(dispatch).toBeCalledWith({
