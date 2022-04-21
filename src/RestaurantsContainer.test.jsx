@@ -13,6 +13,7 @@ describe('RestaurantsContainer', () => {
 
     given('selector', () => ({
       selectRegionId: 1,
+      selectCategoryId: 1,
       restaurants,
     }));
   });
@@ -34,6 +35,21 @@ describe('RestaurantsContainer', () => {
       ));
 
       expect(container).toHaveTextContent('지역을 선택해주세요!');
+    });
+  });
+
+  context('without select category id', () => {
+    given('selector', () => ({
+      restaurants: [],
+      selectRegionId: 1,
+    }));
+
+    it('renders "분류를 선택해주세요!"', () => {
+      const { container } = render((
+        <RestaurantsContainer />
+      ));
+
+      expect(container).toHaveTextContent('분류를 선택해주세요!');
     });
   });
 
