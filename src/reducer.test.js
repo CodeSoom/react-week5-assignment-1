@@ -139,19 +139,19 @@ describe('Reducer', () => {
       });
     });
 
-    context('before select region', () => {
+    context('when before select region', () => {
       const getState = () => ({
         selectRegionId: 1,
       });
 
-      it("doesn't working", async () => {
+      it("doesn't load restaurants data", async () => {
         await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).not.toBeCalled();
       });
     });
 
-    context('before load regions', () => {
+    context('when before load regions', () => {
       const getState = () => ({
         selectRegionId: 1,
         selectCategoryId: 1,
@@ -173,7 +173,7 @@ describe('Reducer', () => {
         ],
       });
 
-      it("doesn't working", async () => {
+      it("doesn't load restaurants data", async () => {
         await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).not.toBeCalled();
@@ -189,7 +189,7 @@ describe('Reducer', () => {
         ],
       });
 
-      it('called setRestaurants with restaurants data', async () => {
+      it('calls setRestaurants with restaurants data', async () => {
         await loadRestaurants()(dispatch, getState);
 
         expect(dispatch).toBeCalledWith({
