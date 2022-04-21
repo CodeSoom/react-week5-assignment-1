@@ -5,6 +5,10 @@ import given from 'given2';
 
 import Categories from './Categories';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('Categories', () => {
   context('with categories', () => {
     given('categories', () => [
