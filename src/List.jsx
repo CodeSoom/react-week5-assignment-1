@@ -3,20 +3,20 @@ const nameFunctions = {
   [false]: (name) => name,
 };
 
-export default function SelectList({ selectList, onSelect, selectedId }) {
+export default function List({ list, onSelect, selectedId }) {
   function handleClick(id) {
     onSelect(id);
   }
 
   return (
     <ul>
-      {selectList.map((listItem) => (
-        <li key={listItem.id}>
+      {list.map((item) => (
+        <li key={item.id}>
           <button
             type="button"
-            onClick={() => handleClick(listItem.id)}
+            onClick={() => handleClick(item.id)}
           >
-            {nameFunctions[listItem.id === selectedId](listItem.name)}
+            {nameFunctions[item.id === selectedId](item.name)}
           </button>
         </li>
       ))}

@@ -1,6 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import SelectList from './SelectList';
+import List from './List';
 
 import categories from '../fixture/categories';
 
@@ -12,8 +12,8 @@ describe('SelectList', () => {
   const onSelect = jest.fn();
 
   const renderSelectList = (selectCategoryId) => render((
-    <SelectList
-      selectList={categories}
+    <List
+      list={categories}
       onSelect={onSelect}
       selectedId={selectCategoryId}
     />

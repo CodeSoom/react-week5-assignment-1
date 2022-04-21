@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import SelectList from './SelectList';
+import List from './List';
 
 import {
   selectRegion,
@@ -19,8 +19,8 @@ export default function RegionsContainer() {
   }
 
   return (
-    <SelectList
-      selectList={regions}
+    <List
+      list={regions}
       onSelect={onSelect}
       selectedId={selectRegionId}
     />
