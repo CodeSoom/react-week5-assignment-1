@@ -23,7 +23,7 @@ describe('reducer', () => {
   });
 
   describe('loadCategories', () => {
-    it('called with categories data for renders categories', async () => {
+    it('called with categories data', async () => {
       const dispatch = jest.fn();
 
       await loadCategories()(dispatch);
