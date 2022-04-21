@@ -12,6 +12,7 @@ describe('RestaurantsContainer', () => {
     jest.clearAllMocks();
 
     given('selector', () => ({
+      selectRegionId: 1,
       restaurants,
     }));
   });
@@ -22,11 +23,27 @@ describe('RestaurantsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector(given.selector));
 
-  it('renders restaurants', () => {
-    const { container } = render((
-      <RestaurantsContainer />
-    ));
+  context('without select region id', () => {
+    given('selector', () => ({
+      restaurants: [],
+    }));
 
-    expect(container).toHaveTextContent('서울식당');
+    it('renders "지역을 선택해주세요!"', () => {
+      const { container } = render((
+        <RestaurantsContainer />
+      ));
+
+      expect(container).toHaveTextContent('지역을 선택해주세요!');
+    });
+  });
+
+  context('with restaurants', () => {
+    it('renders restaurants', () => {
+      const { container } = render((
+        <RestaurantsContainer />
+      ));
+
+      expect(container).toHaveTextContent('서울식당');
+    });
   });
 });
