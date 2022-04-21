@@ -2,7 +2,7 @@ import { fetchRegionList } from './services/api';
 
 export function setCategories(categories) {
   return {
-    type: 'setRegionList',
+    type: 'setCategories',
     payload: {
       categories,
     },
