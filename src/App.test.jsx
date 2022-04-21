@@ -15,15 +15,20 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regionList: [],
-    categories: [],
+    regionList: [
+      {
+        id: 1, name: '포항',
+      },
+    ],
+    categories: [
+      {
+        id: 1, name: '일식',
+      },
+    ],
   }));
 
-  const { queryByText } = render(
+  const { container } = render(
     <App />,
   );
   expect(dispatch).toBeCalled();
-
-  expect(queryByText('한식')).not.toBeNull();
-  expect(queryByText('중식')).not.toBeNull();
 });

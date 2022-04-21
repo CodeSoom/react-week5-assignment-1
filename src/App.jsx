@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import {
   loadRegionList,
+  setCategories,
 } from './action';
 
 import RegionListContainer from './RegionListcontainer';
