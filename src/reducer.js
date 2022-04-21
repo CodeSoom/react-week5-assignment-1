@@ -1,3 +1,5 @@
+import { setCategories } from './action';
+
 const initialState = {
   regionList: [],
   regionId: '',
@@ -17,6 +19,14 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       regionId: id,
+    };
+  }
+
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
+    return {
+      ...state,
+      categories,
     };
   }
 

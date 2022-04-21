@@ -16,6 +16,7 @@ test('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regionList: [],
+    categories: [],
   }));
 
   const { queryByText } = render(

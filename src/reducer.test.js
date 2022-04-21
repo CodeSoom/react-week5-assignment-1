@@ -1,6 +1,10 @@
 import reducer from './reducer';
 
-import { selectRegion, setRegionList } from './action';
+import {
+  selectRegion,
+  setRegionList,
+  setCategories,
+} from './action';
 
 describe('Reducer', () => {
   it('setRegionList', () => {
@@ -30,5 +34,25 @@ describe('Reducer', () => {
       initialState, selectRegion({ id: 1 }),
     );
     expect(state.regionId).toBe(1);
+  });
+
+  describe('setCategories', () => {
+    it('changes categories', () => {
+      const initialState = {
+        categories: [],
+      };
+
+      const categories = [
+        {
+          id: 1,
+          name: '한식',
+        },
+      ];
+
+      const state = reducer(
+        initialState, setCategories(categories),
+      );
+      expect(state.categories).toHaveLength(1);
+    });
   });
 });
