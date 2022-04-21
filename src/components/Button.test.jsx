@@ -2,14 +2,12 @@ import { fireEvent, render } from '@testing-library/react';
 import given from 'given2';
 import 'given2/setup';
 
-import regions from '../fixtures/regions';
-
 import Button from './Button';
 
 describe('Button', () => {
-  given('value', () => 'name');
-  given('button', () => ({ id: 1, name: '서울' }));
-  given('currentButtonInfo', () => '서울');
+  given('value', () => '서울');
+  given('buttonName', () => '서울');
+  given('isSelected', () => () => true);
   given('emptyMessage', () => '정보가 없어요!');
 
   const handleButtonClick = jest.fn();
@@ -21,9 +19,9 @@ describe('Button', () => {
   function renderButton() {
     return render((
       <Button
+        name={given.buttonName}
         value={given.value}
-        currentButtonInfo={given.currentButtonInfo}
-        button={given.button}
+        isSelected={given.isSelected}
         onButtonClick={handleButtonClick}
       />
     ));
@@ -37,20 +35,18 @@ describe('Button', () => {
     expect(handleButtonClick).toBeCalledWith({ value: '서울' });
   });
 
-  context('with currentButtonInfo', () => {
-    given('buttonButton', () => regions);
-    given('currentButtonInfo', () => '서울');
+  context('when isSelected() is true', () => {
+    given('isSelected', () => () => true);
 
-    it('renders "(V)" when region name is match to currentButtonInfo', () => {
+    it('renders "(V)"', () => {
       const { queryByText } = renderButton();
 
       expect(queryByText(/(V)/)).not.toBe(null);
     });
   });
 
-  context('without currentButtonInfo', () => {
-    given('buttonButton', () => regions);
-    given('currentButtonInfo', () => undefined);
+  context('when isSelected() is false', () => {
+    given('isSelected', () => () => false);
 
     it('doesn\'t renders "(V)"', () => {
       const { queryByText } = renderButton();

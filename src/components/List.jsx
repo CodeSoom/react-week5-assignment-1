@@ -13,10 +13,10 @@ export default function List({
       {buttonList.map((button) => (
         <Button
           key={button.id}
-          button={button}
-          currentButtonInfo={currentButtonInfo}
+          name={button.name}
+          isSelected={() => button[value] === currentButtonInfo}
           onButtonClick={onButtonClick}
-          value={value}
+          value={button[value]}
         />
       ))}
     </ul>

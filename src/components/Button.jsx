@@ -1,17 +1,17 @@
 export default function Button({
-  button,
-  currentButtonInfo,
+  name,
   onButtonClick,
   value,
+  isSelected,
 }) {
   return (
     <li>
       <button
         type="button"
-        onClick={() => onButtonClick({ value: button[value] })}
+        onClick={() => onButtonClick({ value })}
       >
-        {button.name}
-        {currentButtonInfo === button[value] ? '(V)' : null}
+        {name}
+        {isSelected() ? '(V)' : null}
       </button>
     </li>
   );
