@@ -1,5 +1,14 @@
 import { fetchRegionList } from './services/api';
 
+export function setCategories(categories) {
+  return {
+    type: 'setRegionList',
+    payload: {
+      categories,
+    },
+  };
+}
+
 export function loadCategories() {
   return async (dispatch) => {
     // TODO : fetch
