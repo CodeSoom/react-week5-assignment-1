@@ -15,7 +15,7 @@ function selector(state) {
 export default function RegionListContainer() {
   const { regionList } = useSelector(selector);
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   function handleClickRegion({ id }) {
     dispatch(selectRegion({ id }));
