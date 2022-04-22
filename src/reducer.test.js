@@ -86,7 +86,7 @@ describe('Reducer', () => {
   });
 
   describe('loadRegions', () => {
-    it('called setRegions with regions data', async () => {
+    it('calls setRegions with regions data', async () => {
       const dispatch = jest.fn();
 
       await loadRegions()(dispatch);
@@ -113,7 +113,7 @@ describe('Reducer', () => {
   });
 
   describe('loadCategories', () => {
-    it('called setCategories with categories data', async () => {
+    it('calls setCategories with categories data', async () => {
       const dispatch = jest.fn();
       await loadCategories()(dispatch);
 
@@ -142,24 +142,7 @@ describe('Reducer', () => {
   describe('loadRestaurants', () => {
     const dispatch = jest.fn();
 
-    context('before select category', () => {
-      const getState = () => ({
-        categoryId: 1,
-      });
-
-      it('returns empty restaurant', async () => {
-        await loadRestaurants()(dispatch, getState);
-
-        expect(dispatch).toBeCalledWith({
-          type: 'setRestaurants',
-          payload: {
-            restaurants: [],
-          },
-        });
-      });
-    });
-
-    context('when before select region', () => {
+    context('without select category', () => {
       const getState = () => ({
         selectRegionId: 1,
       });
@@ -176,7 +159,24 @@ describe('Reducer', () => {
       });
     });
 
-    context('when before load regions', () => {
+    context('without select region', () => {
+      const getState = () => ({
+        selectCategoryId: 1,
+      });
+
+      it('returns empty restaurant', async () => {
+        await loadRestaurants()(dispatch, getState);
+
+        expect(dispatch).toBeCalledWith({
+          type: 'setRestaurants',
+          payload: {
+            restaurants: [],
+          },
+        });
+      });
+    });
+
+    context('without regions', () => {
       const getState = () => ({
         selectRegionId: 1,
         selectCategoryId: 1,
