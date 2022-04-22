@@ -5,6 +5,8 @@ import given from 'given2';
 
 import Categories from './Categories';
 
+const onClick = jest.fn();
+
 beforeEach(() => {
   jest.clearAllMocks();
 });
@@ -26,8 +28,6 @@ describe('Categories', () => {
     });
 
     it('clicks category and renders name with(V)', () => {
-      const onClick = jest.fn();
-
       const { queryByText } = render((
         <Categories
           categories={given.categories}
@@ -55,14 +55,12 @@ describe('Categories', () => {
     });
   });
 
-  context('when selected', () => {
+  context('when selected category', () => {
     given('categories', () => [
       { id: 1, name: '한식' },
     ]);
 
     it('renders name with (V)', () => {
-      const onClick = jest.fn();
-
       const { queryByText } = render((
         <Categories
           selectedCategoryID={given.categories[0].id}
