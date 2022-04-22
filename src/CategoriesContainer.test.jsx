@@ -8,9 +8,6 @@ const dispatch = jest.fn();
 
 beforeEach(() => {
   useDispatch.mockImplementation(() => dispatch);
-});
-
-afterEach(() => {
   jest.clearAllMocks();
 });
 
