@@ -24,7 +24,7 @@ describe('Reducer', () => {
     jest.clearAllMocks();
   });
 
-  context('when call reducer with undefined args', () => {
+  context('with undefined args', () => {
     it('returns initialState', () => {
       expect(reducer(undefined, {})).toStrictEqual({
         selectCategoryId: undefined,
