@@ -19,6 +19,15 @@ export function loadCategories() {
   };
 }
 
+export function selectCategory({ id }) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      id,
+    },
+  };
+}
+
 export function setRegionList(regionList) {
   return {
     type: 'setRegionList',
