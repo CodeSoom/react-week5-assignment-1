@@ -14,11 +14,7 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'selectCategory') {
-    const tmp = action.payload;
-    const selectedCategoryID = tmp.id;
-
-    // 왜 밑에가 안돼지?
-    // const { selectedCategoryID } = action.payload;
+    const { selectedCategoryID } = action.payload;
 
     return {
       ...state,

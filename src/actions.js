@@ -16,11 +16,11 @@ export function loadCategories() {
   };
 }
 
-export function selectCategory(id) {
+export function selectCategory(selectedCategoryID) {
   return {
     type: 'selectCategory',
     payload: {
-      id,
+      selectedCategoryID,
     },
   };
 }
