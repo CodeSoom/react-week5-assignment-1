@@ -9,8 +9,9 @@ import {
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories } = useSelector((selector) => ({
+  const { categories, selectedCategoryID } = useSelector((selector) => ({
     categories: selector.categories,
+    selectedCategoryID: selector.selectedCategoryID,
   }));
 
   function handleClickCategory(id) {
@@ -19,6 +20,7 @@ export default function CategoriesContainer() {
 
   return (
     <Categories
+      selectedCategoryID={selectedCategoryID}
       categories={categories}
       onClick={handleClickCategory}
     />

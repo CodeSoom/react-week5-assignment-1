@@ -1,4 +1,4 @@
-export default function Categories({ categories, onClick }) {
+export default function Categories({ categories, selectedCategoryID, onClick }) {
   function handleClickCategory(id) {
     onClick(id);
   }
@@ -16,6 +16,7 @@ export default function Categories({ categories, onClick }) {
             onClick={() => handleClickCategory(category.id)}
           >
             {category.name}
+            {selectedCategoryID === category.id ? '(V)' : null}
           </button>
         </li>
       ))}
