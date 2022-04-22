@@ -25,7 +25,7 @@ describe('Categories', () => {
       expect(queryByText(/한식/)).not.toBeNull();
     });
 
-    it('clicks category', () => {
+    it('clicks category and renders name with(V)', () => {
       const onClick = jest.fn();
 
       const { queryByText } = render((
@@ -52,6 +52,26 @@ describe('Categories', () => {
       ));
 
       expect(queryByText(/카테고리가 없어요!/)).not.toBeNull();
+    });
+  });
+
+  context('when selected', () => {
+    given('categories', () => [
+      { id: 1, name: '한식' },
+    ]);
+
+    it('renders name with (V)', () => {
+      const onClick = jest.fn();
+
+      const { queryByText } = render((
+        <Categories
+          selectedCategoryID={given.categories[0].id}
+          categories={given.categories}
+          onClick={onClick}
+        />
+      ));
+
+      expect(queryByText('한식(V)')).not.toBeNull();
     });
   });
 });
