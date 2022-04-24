@@ -5,7 +5,7 @@ export default function List({
   emptyMessage,
 }) {
   if (!buttonList || buttonList.length === 0) {
-    return <>{emptyMessage || '정보가 없어요!'}</>;
+    return <div>{emptyMessage || '정보가 없어요!'}</div>;
   }
 
   return (

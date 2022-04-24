@@ -8,7 +8,7 @@ export default function RestaurantContainer() {
   }));
 
   if (!restaurants || restaurants.length === 0) {
-    return <>식당이 없어요!</>;
+    return <div>식당이 없어요!</div>;
   }
 
   return (
