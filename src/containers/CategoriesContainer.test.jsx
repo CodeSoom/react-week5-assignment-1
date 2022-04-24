@@ -38,7 +38,7 @@ describe('CategoriesContainer', () => {
       expect(queryByText(/한식/)).not.toBeNull();
     });
 
-    it('updates categoryId when button clicked', () => {
+    it('updates categoryId', () => {
       given('categories', () => categories);
 
       const { getByText } = renderCategoriesContainer();
