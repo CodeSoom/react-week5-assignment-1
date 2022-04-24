@@ -35,7 +35,7 @@ describe('Button', () => {
     expect(handleButtonClick).toBeCalledWith({ value: '서울' });
   });
 
-  context('when isSelected() is true', () => {
+  context('when button\'s value is selected', () => {
     given('isSelected', () => () => true);
 
     it('renders "(V)"', () => {
@@ -45,7 +45,7 @@ describe('Button', () => {
     });
   });
 
-  context('when isSelected() is false', () => {
+  context('when button\'s value is NOT selected', () => {
     given('isSelected', () => () => false);
 
     it('doesn\'t renders "(V)"', () => {
