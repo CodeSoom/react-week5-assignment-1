@@ -1,5 +1,3 @@
-import { equal } from './utils/utils';
-
 const initialState = {
   regions: [],
   categories: [],
@@ -8,48 +6,49 @@ const initialState = {
   selectedCategory: null,
 };
 
-const reducers = {
-  setRegions(state, { payload: { regions } }) {
-    return {
-      ...state,
-      regions,
-    };
-  },
-
-  setCategories(state, { payload: { categories } }) {
-    return {
-      ...state,
-      categories,
-    };
-  },
-
-  setRestaurants(state, { payload: { restaurants } }) {
+export default function reducer({
+  state = initialState,
+  action,
+}) {
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
     return {
       ...state,
       restaurants,
     };
-  },
+  }
 
-  selectRegion(state, { payload: { regionId } }) {
+  if (action.type === 'setCategories') {
+    const { categories } = action.payload;
     return {
       ...state,
-      selectedRegion: state.regions.find(equal('id', regionId)),
+      categories,
     };
-  },
+  }
 
-  selectCategory(state, { payload: { categoryId } }) {
+  if (action.type === 'setRegions') {
+    const { regions } = action.payload;
     return {
       ...state,
-      selectedCategory: state.categories.find(equal('id', categoryId)),
+      regions,
     };
-  },
+  }
 
-};
+  if (action.type === 'updateRegionName') {
+    const { regionName } = action.payload;
+    return {
+      ...state,
+      regionName,
+    };
+  }
 
-function defaultReducer(state) {
+  if (action.type === 'updateCategoryId') {
+    const { categoryId } = action.payload;
+    return {
+      ...state,
+      categoryId,
+    };
+  }
+
   return state;
-}
-
-export default function reducer(state = initialState, action) {
-  return (reducers[action.type] || defaultReducer)(state, action);
 }
