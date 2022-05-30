@@ -15,4 +15,16 @@ describe('App', () => {
       });
     });
   });
+
+  context('음식 종류 리스트가 주어지면', () => {
+    const foodTypeList = ['한식', '중식', '일식'];
+
+    it('음식 선택 버튼들이 출력된다.', () => {
+      const { container } = render(<App />);
+
+      foodTypeList.forEach((foodType) => {
+        expect(container).toHaveTextContent(foodType);
+      });
+    });
+  });
 });

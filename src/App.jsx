@@ -6,6 +6,11 @@ export default function App() {
       <li>대전</li>
       <li>부산</li>
     </ul>
+    <ul>
+      <li>한식</li>
+      <li>중식</li>
+      <li>일식</li>
+    </ul>
     </>
   );
 }
