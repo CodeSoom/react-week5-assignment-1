@@ -17,6 +17,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'simple-import-sort',
   ],
   globals: {
     Atomics: 'readonly',
@@ -27,6 +28,7 @@ module.exports = {
     context: 'readonly',
   },
   rules: {
+    'simple-import-sort/imports': 'error',
     indent: ['error', 2],
     'no-trailing-spaces': 'error',
     curly: 'error',
