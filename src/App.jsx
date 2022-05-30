@@ -11,6 +11,10 @@ export default function App() {
       <li>중식</li>
       <li>일식</li>
     </ul>
+    <ul>
+      <li>원초밥</li>
+      <li>밀면넘어져요</li>
+    </ul>
     </>
   );
 }

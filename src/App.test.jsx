@@ -27,4 +27,16 @@ describe('App', () => {
       });
     });
   });
+
+  context('결과 리스트가 주어지면', () => {
+    const foodTypeList = ['원초밥', '밀면넘어져요'];
+
+    it('결과 리스트 출력된다.', () => {
+      const { container } = render(<App />);
+
+      foodTypeList.forEach((result) => {
+        expect(container).toHaveTextContent(result);
+      });
+    });
+  });
 });
