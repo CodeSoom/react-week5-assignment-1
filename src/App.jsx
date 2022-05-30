@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Regions from './Regions';
+
 export default function App() {
   const initialState = {
     currentRegionId: Number.MIN_SAFE_INTEGER,
@@ -61,14 +63,7 @@ export default function App() {
   return (
     <div>
       <ul>
-        {state.regions.map((region) => (
-          <li key={region.id}>
-            <button type="button" value={region.id} onClick={() => handleClick(region.id)}>
-              {region.name}
-              {region.id === state.currentRegionId && '(V)'}
-            </button>
-          </li>
-        ))}
+        <Regions state={state} onClick={handleClick} />
       </ul>
     </div>
   );
