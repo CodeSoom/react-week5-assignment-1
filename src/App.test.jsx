@@ -4,6 +4,10 @@ import React from 'react';
 import App from './App';
 
 describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   context('지역 리스트가 주어지면', () => {
     const locationList = ['서울', '대전', '부산'];
 
