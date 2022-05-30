@@ -4,8 +4,8 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
-  changeRegion,
-  changeCategory,
+  changeRegionName,
+  changeCategoryId,
 } from './actions';
 
 describe('reducer', () => {
@@ -55,31 +55,31 @@ describe('reducer', () => {
       });
     });
 
-    describe('changeRegion', () => {
-      it('change region', () => {
-        const region = '수원';
+    describe('changeRegionName', () => {
+      it('change regionName', () => {
+        const regionName = '수원';
 
         const initialState = {
-          region: '',
+          regionName: '',
         };
 
-        const state = reducer(initialState, changeRegion(region));
+        const state = reducer(initialState, changeRegionName(regionName));
 
-        expect(state.region).toBe('수원');
+        expect(state.regionName).toBe('수원');
       });
     });
 
-    describe('changeCategory', () => {
-      it('change category', () => {
-        const category = '패스트푸드';
+    describe('changeCategoryId', () => {
+      it('change categoryId', () => {
+        const categoryId = 1;
 
         const initialState = {
-          category: '',
+          categoryId: '',
         };
 
-        const state = reducer(initialState, changeCategory(category));
+        const state = reducer(initialState, changeCategoryId(categoryId));
 
-        expect(state.category).toBe('패스트푸드');
+        expect(state.categoryId).toBe(1);
       });
     });
   });
@@ -89,13 +89,13 @@ describe('reducer', () => {
       const state = reducer(undefined, {
         type: 'notExistingAction',
         payload: {
-          region: '수원',
-          category: '패스트푸드',
+          regionName: '수원',
+          categoryId: 1,
         },
       });
 
-      expect(state.region).toBe('');
-      expect(state.category).toBe('');
+      expect(state.regionName).toBe('');
+      expect(state.categoryId).toBe(0);
     });
   });
 });

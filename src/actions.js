@@ -21,16 +21,16 @@ export const setRestaurants = (restaurants) => ({
   },
 });
 
-export const changeRegion = (region) => ({
-  type: 'changeRegion',
+export const changeRegionName = (regionName) => ({
+  type: 'changeRegionName',
   payload: {
-    region,
+    regionName,
   },
 });
 
-export const changeCategory = (category) => ({
-  type: 'changeCategory',
+export const changeCategoryId = (categoryId) => ({
+  type: 'changeCategoryId',
   payload: {
-    category,
+    categoryId,
   },
 });

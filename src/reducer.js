@@ -1,6 +1,6 @@
 const initialState = {
-  region: '',
-  category: '',
+  regionName: '',
+  categoryId: 0,
   regions: [],
   categories: [],
   restaurants: [],
@@ -33,21 +33,21 @@ const setRestaurants = (state, action) => {
   };
 };
 
-const changeRegion = (state, action) => {
-  const { region } = action.payload;
+const changeRegionName = (state, action) => {
+  const { regionName } = action.payload;
 
   return {
     ...state,
-    region,
+    regionName,
   };
 };
 
-const changeCategory = (state, action) => {
-  const { category } = action.payload;
+const changeCategoryId = (state, action) => {
+  const { categoryId } = action.payload;
 
   return {
     ...state,
-    category,
+    categoryId,
   };
 };
 
@@ -55,8 +55,8 @@ const actionTypes = {
   setRegions: (state, action) => setRegions(state, action),
   setCategories: (state, action) => setCategories(state, action),
   setRestaurants: (state, action) => setRestaurants(state, action),
-  changeRegion: (state, action) => changeRegion(state, action),
-  changeCategory: (state, action) => changeCategory(state, action),
+  changeRegionName: (state, action) => changeRegionName(state, action),
+  changeCategoryId: (state, action) => changeCategoryId(state, action),
 };
 
 const reducer = (state = initialState, action) => {
