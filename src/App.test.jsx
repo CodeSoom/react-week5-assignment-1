@@ -13,12 +13,12 @@ describe('App', () => {
     const gangwondo = screen.getByText('강원도');
     const incheon = screen.getByText('인천');
 
-    expect(seoul).toBeInTheDocument();
-    expect(daegeon).toBeInTheDocument();
-    expect(daegu).toBeInTheDocument();
-    expect(busan).toBeInTheDocument();
-    expect(gwangju).toBeInTheDocument();
-    expect(gangwondo).toBeInTheDocument();
-    expect(incheon).toBeInTheDocument();
+    expect(seoul).toHaveValue('1');
+    expect(daegeon).toHaveValue('2');
+    expect(daegu).toHaveValue('3');
+    expect(busan).toHaveValue('4');
+    expect(gwangju).toHaveValue('5');
+    expect(gangwondo).toHaveValue('6');
+    expect(incheon).toHaveValue('7');
   });
 });
