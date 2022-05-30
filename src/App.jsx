@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export default function App() {
   const initialState = {
+    currentRegionId: Number.MIN_SAFE_INTEGER,
     regions: [
       {
         id: 1,
@@ -51,11 +52,22 @@ export default function App() {
   };
   const [state, setState] = useState(initialState);
 
+  const handleClick = (id) => {
+    setState({
+      ...state,
+      currentRegionId: id,
+    });
+  };
   return (
     <div>
       <ul>
         {state.regions.map((region) => (
-          <li key={region.id}><button type="button">{region.name}</button></li>
+          <li key={region.id}>
+            <button type="button" value={region.id} onClick={() => handleClick(region.id)}>
+              {region.name}
+              {region.id === state.currentRegionId && '(V)'}
+            </button>
+          </li>
         ))}
       </ul>
     </div>
