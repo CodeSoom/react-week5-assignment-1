@@ -1,66 +1,55 @@
-import { setCategories, setRegions, setRestaurants } from './actions';
+import thunk from 'redux-thunk';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
-import restaurants from '../fixtures/restaurants';
+import configureStore from 'redux-mock-store';
+
+import {
+  loadCategories,
+  loadRegions,
+  loadRestaurants,
+  setCategories,
+  setRegions,
+  setRestaurants,
+} from './actions';
+
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
+
+jest.mock('./services/api');
 
 describe('actions', () => {
-  const dispatch = jest.fn();
-
   describe('loadRegions', () => {
-    it('"loadRegions"가 완료되면 "setRegions" 액션을 dispatch한다', async () => {
-      await loadRegions()(dispatch);
+    it('"loadRegions"가 dispatch되면 "setRegions" 액션을 dispatch한다', async () => {
+      const store = mockStore({});
 
-      expect(dispatch).toBeCalledWith(setRegions(regions));
+      await store.dispatch(loadRegions());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRegions([]));
     });
   });
 
   describe('loadCategories', () => {
-    it('"loadCategories"가 완료되면 "setCategories" 액션을 dispatch한다', async () => {
-      await loadCategories()(dispatch);
+    it('"loadCategories"가 dispatch되면 "setCategories" 액션을 dispatch한다', async () => {
+      const store = mockStore({});
 
-      expect(dispatch).toBeCalledWith(setCategories(categories));
+      await store.dispatch(loadCategories());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setCategories([]));
     });
   });
 
   describe('loadRestaurants', () => {
-    context('regionName, categoryId가 모두 존재할 때', () => {
-      it('"loadRestaurants"가 완료되면 "loadRestaurants" 액션을 dispatch한다', async () => {
-        const getState = jest.fn(() => ({
-          regionName: '서울',
-          categoryId: 1,
-        }));
+    it('"loadRestaurants"가 dispatch되면 "loadRestaurants" 액션을 dispatch한다', async () => {
+      const store = mockStore({});
 
-        await loadRestaurants()(dispatch, getState);
+      await store.dispatch(loadRestaurants());
 
-        expect(dispatch).toBeCalledWith(setRestaurants(restaurants));
-      });
-    });
+      const actions = store.getActions();
 
-    context('regionName이 존재하지 않을 때', () => {
-      it('dispatch 하지 않는다', async () => {
-        const getState = jest.fn(() => ({
-          regionName: '',
-          categoryId: 1,
-        }));
-
-        await loadRestaurants()(dispatch, getState);
-
-        expect(dispatch).not.toBeCalled();
-      });
-    });
-
-    context('categoryId가 존재하지 않을 때', () => {
-      it('dispatch 하지 않는다', async () => {
-        const getState = jest.fn(() => ({
-          regionName: '서울',
-          categoryId: 1,
-        }));
-
-        await loadRestaurants()(dispatch, getState);
-
-        expect(dispatch).not.toBeCalled();
-      });
+      expect(actions[0]).toEqual(setRestaurants([]));
     });
   });
 });
