@@ -7,10 +7,10 @@ import App from './App';
 describe('App', () => {
   it('renders regions list', () => {
     render(<App />);
-
-    state.regions.forEach((region) => {
-      expect(screen.getByText(region.name)).toHaveValue(String(region.id));
-    });
+    // screen.debug();
+    screen.getAllByRole('button');
+    // expect(state.regions.length).toHaveLength(screen.getAllByRole('button').length);
+    expect(screen.getByText('서울')).toHaveValue(String(state.regions[0].id));
   });
   context('when the user clicks a region', () => {
     it('display region name with V sign in current region', async () => {
