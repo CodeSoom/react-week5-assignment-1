@@ -1,3 +1,13 @@
+import reducer from './reducer';
+
+import {
+  setRegions,
+  setCategories,
+  setRestaurants,
+  changeRegion,
+  changeCategory,
+} from './actions';
+
 describe('reducer', () => {
   context('존재하는 액션 타입이면', () => {
     describe('setRegions', () => {
