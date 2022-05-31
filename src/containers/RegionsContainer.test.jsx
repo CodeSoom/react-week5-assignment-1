@@ -8,6 +8,8 @@ import { changeRegionName } from '../actions';
 
 import RegionsContainer from './RegionsContainer';
 
+jest.mock('react-redux');
+
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
