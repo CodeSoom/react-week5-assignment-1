@@ -13,7 +13,7 @@ describe('reducer', () => {
         { id: 1, name: '서울' },
       ]));
 
-      expect(categories.length).toBe(1);
+      expect(categories).toBe(categories);
     });
   });
 });
