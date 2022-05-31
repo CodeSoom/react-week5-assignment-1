@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import Categories from './Categories';
 
 import Regions from './Regions';
 
 export default function App() {
   const initialState = {
     currentRegionId: Number.MIN_SAFE_INTEGER,
+    currentCategoryId: Number.MIN_SAFE_INTEGER,
     regions: [
       {
         id: 1,
@@ -51,19 +53,53 @@ export default function App() {
         name: '독도',
       },
     ],
+    categories: [
+      {
+        id: 1,
+        name: '한식',
+      },
+      {
+        id: 2,
+        name: '중식',
+      },
+      {
+        id: 3,
+        name: '일식',
+      },
+      {
+        id: 4,
+        name: '양식',
+      },
+      {
+        id: 5,
+        name: '분식',
+      },
+    ],
   };
+
   const [state, setState] = useState(initialState);
 
-  const handleClick = (id) => {
+  const handleClickRegion = (id) => {
     setState({
       ...state,
       currentRegionId: id,
     });
   };
+
+  const handleClickCategory = (id) => {
+    setState({
+      ...state,
+      currentCategoryId: id,
+    });
+  };
+
   return (
     <div>
       <ul>
-        <Regions state={state} onClick={handleClick} />
+        <Regions state={state} onClick={handleClickRegion} />
+      </ul>
+      <ul>
+        <Categories state={state} onClick={handleClickCategory} />
       </ul>
     </div>
   );
