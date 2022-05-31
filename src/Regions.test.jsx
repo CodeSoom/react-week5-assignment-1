@@ -4,7 +4,7 @@ import state from '../fixtures/state';
 import Regions from './Regions';
 
 describe('Regions', () => {
-  it('renders regions list', () => {
+  it('renders regions', () => {
     const handleClick = jest.fn();
 
     render(<Regions state={state} onClick={handleClick} />);

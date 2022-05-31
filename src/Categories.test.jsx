@@ -4,7 +4,7 @@ import state from '../fixtures/state';
 import Categories from './Categories';
 
 describe('Categories', () => {
-  it('renders Categories list', () => {
+  it('renders Categories', () => {
     const handleClick = jest.fn();
 
     render(<Categories state={state} onClick={handleClick} />);
