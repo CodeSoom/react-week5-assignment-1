@@ -32,4 +32,16 @@ describe('App', () => {
       expect(koreanFoodStyle).toHaveTextContent('한식(V)');
     });
   });
+  context('with currentRegionId and currentCategoryId', () => {
+    it('display restaurants list', async () => {
+      render(<App />);
+      const user = userEvent.setup();
+      const seoul = screen.getByText('서울');
+      await user.click(seoul);
+      const koreanFoodStyle = screen.getByText('한식');
+      await user.click(koreanFoodStyle);
+
+      expect(screen.findByText('양천주가')).toBeInTheDocument();
+    });
+  });
 });
