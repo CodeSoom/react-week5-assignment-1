@@ -98,6 +98,13 @@ export default function App() {
         address: '서울시 강남구 역삼동',
         information: '김초밥 in 서울시 강남구 역삼동',
       },
+      {
+        id: 15,
+        categoryId: 1,
+        name: '밀면넘어져요',
+        address: '서울시 강남구 역삼동',
+        information: '밀면넘어져요 in 서울시 강남구 역삼동',
+      },
     ],
   };
 
