@@ -37,6 +37,9 @@ describe('App', () => {
       render(<App />);
       const user = userEvent.setup();
       const seoul = screen.getByText('서울');
+
+      expect(screen.queryByText('양천주가')).toBeNull();
+
       await user.click(seoul);
       const koreanFoodStyle = screen.getByText('한식');
       await user.click(koreanFoodStyle);
