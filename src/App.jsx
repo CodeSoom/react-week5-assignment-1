@@ -95,12 +95,8 @@ export default function App() {
 
   return (
     <div>
-      <ul>
-        <Regions state={state} onClick={handleClickRegion} />
-      </ul>
-      <ul>
-        <Categories state={state} onClick={handleClickCategory} />
-      </ul>
+      <Regions state={state} onClick={handleClickRegion} />
+      <Categories state={state} onClick={handleClickCategory} />
     </div>
   );
 }

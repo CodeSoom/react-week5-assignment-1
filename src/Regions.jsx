@@ -1,6 +1,6 @@
 export default function Regions({ state, onClick }) {
   return (
-    <>
+    <ul>
       {state.regions.map((region) => (
         <li key={region.id}>
           <button type="button" value={region.id} onClick={() => onClick(region.id)}>
@@ -9,6 +9,6 @@ export default function Regions({ state, onClick }) {
           </button>
         </li>
       ))}
-    </>
+    </ul>
   );
 }
