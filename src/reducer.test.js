@@ -1,6 +1,7 @@
 import reducer from './reducer';
 
 import { setCategories } from './action';
+import { CATEGORIES } from './fixture';
 
 describe('reducer', () => {
   describe('setCategories', () => {
@@ -9,11 +10,9 @@ describe('reducer', () => {
     };
 
     it('카테고리를 저장한다', () => {
-      const { categories } = reducer(previousState, setCategories([
-        { id: 1, name: '서울' },
-      ]));
+      const { categories } = reducer(previousState, setCategories(CATEGORIES));
 
-      expect(categories).toBe(categories);
+      expect(categories).toBe();
     });
   });
 });
