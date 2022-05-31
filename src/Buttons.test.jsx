@@ -8,12 +8,14 @@ describe('Buttons', () => {
     const handleClick = jest.fn();
     const currentId = 1;
 
-    render(<Buttons
-      items={state.regions}
-      name="currentRegionId"
-      currentId={currentId}
-      onClick={handleClick}
-    />);
+    render(
+      <Buttons
+        items={state.regions}
+        name="currentRegionId"
+        currentId={currentId}
+        onClick={handleClick}
+      />,
+    );
 
     state.regions.forEach((region) => {
       // (V)표시가 생기는걸 테스트 해야하는것 같은데 expect해도 되는건가
