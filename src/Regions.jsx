@@ -1,14 +1,12 @@
+import Buttons from './Buttons';
+
 export default function Regions({ state, onClick }) {
   return (
-    <ul>
-      {state.regions.map((region) => (
-        <li key={region.id}>
-          <button type="button" name="currentRegionId" value={region.id} onClick={onClick}>
-            {region.name}
-            {region.id === state.currentRegionId && '(V)'}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <Buttons
+      items={state.regions}
+      name="currentRegionId"
+      currentId={state.currentRegionId}
+      onClick={onClick}
+    />
   );
 }

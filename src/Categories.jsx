@@ -1,14 +1,12 @@
+import Buttons from './Buttons';
+
 export default function Categories({ state, onClick }) {
   return (
-    <ul>
-      {state.categories.map((category) => (
-        <li key={category.id}>
-          <button type="button" name="currentCategoryId" value={category.id} onClick={onClick}>
-            {category.name}
-            {category.id === state.currentCategoryId && '(V)'}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <Buttons
+      items={state.categories}
+      name="currentCategoryId"
+      currentId={state.currentCategoryId}
+      onClick={onClick}
+    />
   );
 }
