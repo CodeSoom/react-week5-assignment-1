@@ -41,7 +41,7 @@ describe('App', () => {
       const koreanFoodStyle = screen.getByText('한식');
       await user.click(koreanFoodStyle);
 
-      expect(screen.findByText('양천주가')).toBeInTheDocument();
+      expect(screen.getByText('양천주가')).toBeInTheDocument();
     });
   });
 });
