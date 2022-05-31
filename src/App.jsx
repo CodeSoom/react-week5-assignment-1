@@ -79,24 +79,18 @@ export default function App() {
 
   const [state, setState] = useState(initialState);
 
-  const handleClickRegion = (id) => {
-    setState({
-      ...state,
-      currentRegionId: id,
-    });
-  };
-
-  const handleClickCategory = (id) => {
-    setState({
-      ...state,
-      currentCategoryId: id,
-    });
+  const handleClick = (event) => {
+    const { name, value } = event.target;
+    setState((prev) => ({
+      ...prev,
+      [name]: Number(value),
+    }));
   };
 
   return (
     <div>
-      <Regions state={state} onClick={handleClickRegion} />
-      <Categories state={state} onClick={handleClickCategory} />
+      <Regions state={state} onClick={handleClick} />
+      <Categories state={state} onClick={handleClick} />
     </div>
   );
 }

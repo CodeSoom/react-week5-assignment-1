@@ -3,7 +3,7 @@ export default function Regions({ state, onClick }) {
     <ul>
       {state.regions.map((region) => (
         <li key={region.id}>
-          <button type="button" value={region.id} onClick={() => onClick(region.id)}>
+          <button type="button" name="currentRegionId" value={region.id} onClick={onClick}>
             {region.name}
             {region.id === state.currentRegionId && '(V)'}
           </button>
