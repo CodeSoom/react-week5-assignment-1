@@ -22,4 +22,14 @@ describe('App', () => {
       expect(seoul).toHaveTextContent('서울(V)');
     });
   });
+  context('when the user clicks a category', () => {
+    it('display category name with V sign in current category', async () => {
+      render(<App />);
+      const user = userEvent.setup();
+      const koreanFoodStyle = screen.getByText('한식');
+      await user.click(koreanFoodStyle);
+
+      expect(koreanFoodStyle).toHaveTextContent('한식(V)');
+    });
+  });
 });
