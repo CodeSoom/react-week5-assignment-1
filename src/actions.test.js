@@ -18,7 +18,7 @@ jest.mock('./services/api');
 
 describe('actions', () => {
   describe('loadRegions', () => {
-    it('"loadRegions"가 dispatch되면 "setRegions" 액션을 dispatch한다', async () => {
+    it('"setRegions" 액션을 dispatch한다', async () => {
       const store = mockStore({});
 
       await store.dispatch(loadRegions());
@@ -30,7 +30,7 @@ describe('actions', () => {
   });
 
   describe('loadCategories', () => {
-    it('"loadCategories"가 dispatch되면 "setCategories" 액션을 dispatch한다', async () => {
+    it('"setCategories" 액션을 dispatch한다', async () => {
       const store = mockStore({});
 
       await store.dispatch(loadCategories());
@@ -42,7 +42,7 @@ describe('actions', () => {
   });
 
   describe('loadRestaurants', () => {
-    it('"loadRestaurants"가 dispatch되면 "loadRestaurants" 액션을 dispatch한다', async () => {
+    it('"loadRestaurants" 액션을 dispatch한다', async () => {
       const store = mockStore({});
 
       await store.dispatch(loadRestaurants());
