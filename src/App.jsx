@@ -114,7 +114,7 @@ export default function App() {
     <div>
       <Regions state={state} onClick={handleClick} />
       <Categories state={state} onClick={handleClick} />
-      {(state.currentCategoryId && state.currentRegionId) && (
+      {(state.currentCategoryId >= 0 && state.currentRegionId >= 0) && (
         <ul>
           {state.restaurants.map((restaurant) => (
             <li key={restaurant.id}>
