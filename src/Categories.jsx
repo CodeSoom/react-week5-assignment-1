@@ -6,6 +6,7 @@ export default function Categories({ categories }) {
   const handleClickButton = ({ target: { name } }) => {
     setSelected(name);
   };
+
   return (
     <>
       <ul>

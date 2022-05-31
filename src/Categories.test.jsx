@@ -5,9 +5,12 @@ import Categories from './Categories';
 import { CATEGORIES } from './fixture';
 
 describe('Categories', () => {
-  const renderComponent = () => render(<Categories categories={CATEGORIES} />);
+  const renderComponent = () => render(
+    <Categories categories={CATEGORIES} />,
+  );
+
   it('render', () => {
-    const { container } = renderComponent;
+    const { container } = renderComponent();
 
     expect(container).toHaveTextContent('한식');
   });
