@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Categories from './Categories';
 
 import Regions from './Regions';
+import Restaurants from './Restaurants';
 
 export default function App() {
   const initialState = {
@@ -114,15 +115,11 @@ export default function App() {
     <div>
       <Regions state={state} onClick={handleClick} />
       <Categories state={state} onClick={handleClick} />
-      {(state.currentCategoryId >= 0 && state.currentRegionId >= 0) && (
-        <ul>
-          {state.restaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              {restaurant.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <Restaurants
+        restaurants={state.restaurants}
+        currentCategoryId={state.currentCategoryId}
+        currentRegionId={state.currentRegionId}
+      />
     </div>
   );
 }
