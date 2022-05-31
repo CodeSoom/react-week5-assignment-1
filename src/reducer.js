@@ -52,11 +52,11 @@ const changeCategoryId = (state, action) => {
 };
 
 const actionTypes = {
-  setRegions: (state, action) => setRegions(state, action),
-  setCategories: (state, action) => setCategories(state, action),
-  setRestaurants: (state, action) => setRestaurants(state, action),
-  changeRegionName: (state, action) => changeRegionName(state, action),
-  changeCategoryId: (state, action) => changeCategoryId(state, action),
+  setRegions,
+  setCategories,
+  setRestaurants,
+  changeRegionName,
+  changeCategoryId,
 };
 
 const reducer = (state = initialState, action) => {
