@@ -5,10 +5,6 @@ import {
   setRegions,
 } from './actions';
 
-const restaurants = {
-  regions: [{ id: 0, name: '서울' }, { id: 1, name: '대전' }],
-};
-
 export default function App() {
   const { regions } = useSelector((state) => ({
     regions: state.regions,
@@ -17,7 +13,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRegions(restaurants.regions));
+    dispatch(setRegions(regions));
   }, []);
 
   return (

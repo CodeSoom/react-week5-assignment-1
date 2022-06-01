@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import regions from '../fixture/regions';
+
 jest.mock('react-redux');
 
 describe('App', () => {
@@ -12,7 +14,7 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [{ id: 0, name: '서울' }],
+    regions,
   }));
 
   test('화면에 레스트랑 지역 목록이 나온다.', () => {
