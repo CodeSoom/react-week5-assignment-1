@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   it('renders', () => {
@@ -17,9 +18,6 @@ describe('App', () => {
 
     render(<App />);
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setCategories',
-      payload: { categories: [] },
-    });
+    expect(dispatch).toBeCalled();
   });
 });

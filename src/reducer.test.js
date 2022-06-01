@@ -5,14 +5,14 @@ jest.mock('react-redux');
 
 describe('reducer', () => {
   describe('setCategories', () => {
-    it('set categories', () => {
+    it('changes categories', () => {
       const state = reducer({
         categories: [],
       }, setCategories([
         { id: 1, name: '한식' },
       ]));
 
-      expect(state.categories).not.toHaveLength(0);
+      expect(state.categories).toHaveLength(1);
       expect(state.categories[0].name).toBe('한식');
     });
   });

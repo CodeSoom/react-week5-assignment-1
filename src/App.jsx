@@ -1,21 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setCategories } from './actions';
-import CategoriesContainer from './CategoriesContainer';
+import { loadCategories } from './actions';
 
-async function loadCategories({ dispatch }) {
-  //const data = await fetchCategories();
-  const categories = [];
-  dispatch(setCategories(categories));
-}
+import CategoriesContainer from './CategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadCategories({ dispatch });
-  });
+    dispatch(loadCategories());
+  }, []);
 
   return (
     <>
