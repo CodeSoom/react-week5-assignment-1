@@ -19,6 +19,6 @@ describe('Regions', () => {
   it('"region"버튼을 클릭하면 "(V)"표시가 추가된다', () => {
     const { getByText } = renderRegions(regions[0]);
 
-    expect(getByText(`${regions[0].name}`)).toBeInTheDocument();
+    expect(getByText(`${regions[0].name}(V)`)).toBeInTheDocument();
   });
 });
