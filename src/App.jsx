@@ -1,14 +1,31 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  setRegions,
+} from './actions';
+
 const restaurants = {
-  regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
+  regions: [{ id: 0, name: '서울' }, { id: 1, name: '대전' }],
 };
 
 export default function App() {
+  const { regions } = useSelector((state) => ({
+    regions: state.regions,
+  }));
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setRegions(restaurants.regions));
+  }, []);
+
   return (
     <div>
       <ul>
-        {restaurants.regions.map((region) => (
-          <li key={region}>
-            <button type="button">{region}</button>
+        {regions.map(({ id, name }) => (
+          <li key={id}>
+            <button type="button">{name}</button>
           </li>
         ))}
       </ul>
