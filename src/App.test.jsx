@@ -20,7 +20,9 @@ describe('App', () => {
   test('화면에 레스트랑 지역 목록이 나온다.', () => {
     const { getByRole, getAllByRole } = render((<App />));
 
+    expect(dispatch).toBeCalledTimes(1);
+
     expect(getByRole('list')).toBeInTheDocument();
-    expect(getAllByRole('button')[0]).toHaveTextContent('서울');
+    expect(getAllByRole('button')[0]).toHaveTextContent(regions[0].name);
   });
 });

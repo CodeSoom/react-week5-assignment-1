@@ -17,14 +17,9 @@ describe('RegionsContainer', () => {
     regions,
   }));
 
-  test('setRegion 함수가 호출된다.', () => {
+  test('지역 목록을 가져오는 함수를 호출한다.', () => {
     render((<RegionsContainer />));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setRegions',
-      payload: {
-        regions,
-      },
-    });
+    expect(dispatch).toBeCalledTimes(1);
   });
 });

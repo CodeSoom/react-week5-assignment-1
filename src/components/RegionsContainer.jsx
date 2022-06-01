@@ -3,10 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  setRegions,
+  loadRegions,
 } from '../actions';
-
-import mockRegions from '../../fixture/regions';
 
 import Regions from './Regions';
 
@@ -18,7 +16,7 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRegions(mockRegions));
+    dispatch(loadRegions());
   }, []);
 
   return (
