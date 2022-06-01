@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setRegions,
 } from './actions';
+import Regions from './components/Regions';
 
 export default function App() {
   const { regions } = useSelector((state) => ({
@@ -17,14 +18,6 @@ export default function App() {
   }, []);
 
   return (
-    <div>
-      <ul>
-        {regions.map(({ id, name }) => (
-          <li key={id}>
-            <button type="button">{name}</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Regions regions={regions} />
   );
 }
