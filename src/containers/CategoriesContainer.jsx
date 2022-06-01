@@ -1,3 +1,22 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeCategoryId } from '../actions';
+
+import Categories from '../components/Categories';
+
 export default function CategoriesContainer() {
-  return <></>;
+  const dispatch = useDispatch();
+  const { categories, categoryId } = useSelector((state) => state);
+
+  const handleChangeCategoryId = (categoryIdParams) => {
+    dispatch(changeCategoryId(categoryIdParams));
+  };
+
+  return (
+    <Categories
+      categories={categories}
+      changeCategoryId={categoryId}
+      onClick={handleChangeCategoryId}
+    />
+  );
 }
