@@ -14,10 +14,11 @@ describe('App', () => {
 
     useSelector.mockImplementation((selector) => selector({
       categories: [],
+      regions: [],
     }));
 
     render(<App />);
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
