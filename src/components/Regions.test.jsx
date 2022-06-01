@@ -5,8 +5,7 @@ import Regions from './Regions';
 import regions from '../../fixtures/regions';
 
 describe('Regions', () => {
-  const renderRegions = (changeRegionName) =>
-    render(<Regions regions={regions} changeRegionName={changeRegionName} />);
+  const renderRegions = (changeRegionName) => render(<Regions regions={regions} changeRegionName={changeRegionName} />);
 
   it('"region"버튼을 렌더한다', () => {
     const { getByRole } = renderRegions();
