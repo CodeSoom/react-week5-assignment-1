@@ -1,23 +1,23 @@
 import { render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
-import App from './App';
+import AreasContainer from './AreasContainer';
 
 jest.mock('react-redux');
 
-describe('App', () => {
+describe('AreasContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     areas: [{ id: 1, name: '서울' }],
   }));
 
   const { getByText } = render((
-    <App />
+    <AreasContainer />
   ));
 
-  describe('제목 표시', () => {
-    it('제목이 보인다', () => {
+  describe('제목', () => {
+    it('제목과 서울이 보인다', () => {
       expect(getByText(/지역/)).not.toBeNull();
-      expect(getByText(/카테고리/)).not.toBeNull();
+      expect(getByText(/서울/)).not.toBeNull();
     });
   });
 });

@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import CategoryContainer from './CategoryContainer';
+import CategoriesContainer from './CategoriesContainer';
 
-describe('CategoryContainer', () => {
+describe('CategoriesContainer', () => {
   const { getByText } = render((
-    <CategoryContainer />
+    <CategoriesContainer />
   ));
 
   describe('제목', () => {
