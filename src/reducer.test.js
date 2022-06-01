@@ -29,4 +29,25 @@ describe('reducer', () => {
       expect(state.regions[0].name).toBe('서울');
     });
   });
+
+  describe('invalid action', () => {
+    it('returns initialState', () => {
+      const state = reducer({
+        regions: [],
+        categories: [],
+      }, { type: '' });
+
+      expect(state.categories).toHaveLength(0);
+      expect(state.regions).toHaveLength(0);
+    });
+  });
+
+  describe('empty state', () => {
+    it('returns initialState', () => {
+      const state = reducer(undefined, { type: '' });
+
+      expect(state.categories).toHaveLength(0);
+      expect(state.regions).toHaveLength(0);
+    });
+  });
 });
