@@ -11,8 +11,12 @@ export function setRegions(regions) {
 
 export function loadRegions() {
   return async (dispatch) => {
-    const regions = await fetchRegions();
+    try {
+      const regions = await fetchRegions();
 
-    dispatch(setRegions(regions));
+      dispatch(setRegions(regions));
+    } catch (error) {
+      dispatch(setRegions(null));
+    }
   };
 }

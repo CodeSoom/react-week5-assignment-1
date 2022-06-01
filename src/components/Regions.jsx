@@ -1,4 +1,10 @@
+import ERROR_MESSAGES from '../../constants/errorMessages';
+
 export default function Regions({ regions }) {
+  if (!regions) {
+    return <div>{ERROR_MESSAGES.REGION}</div>;
+  }
+
   return (
     <div>
       <ul>

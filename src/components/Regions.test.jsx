@@ -16,9 +16,9 @@ describe('Regions', () => {
 
   context('지역 목록을 가져오지 못했으면', () => {
     test('지역 목록이 나오지 않고 에러 메세지가 나온다', () => {
-      const { getByRole, getByText } = render(<Regions regions={regions} />);
+      const { queryByRole, getByText } = render(<Regions regions={null} />);
 
-      expect(getByRole('list')).not.toBeInTheDocument();
+      expect(queryByRole('list')).not.toBeInTheDocument();
       expect(getByText(/지역 목록을 가져오지 못했어요/));
     });
   });
