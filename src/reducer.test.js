@@ -1,4 +1,4 @@
-import { setCategories } from './actions';
+import { loadCategories, setCategories } from './actions';
 import reducer from './reducer';
 
 jest.mock('react-redux');
@@ -14,6 +14,19 @@ describe('reducer', () => {
 
       expect(state.categories).toHaveLength(1);
       expect(state.categories[0].name).toBe('한식');
+    });
+  });
+
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const state = reducer({
+        regions: [],
+      }, setRegions([
+        { id: 1, name: '서울' },
+      ]));
+
+      expect(state.regions).toHaveLength(1);
+      expect(state.regions[0].name).toBe('서울');
     });
   });
 });
