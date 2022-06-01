@@ -14,7 +14,7 @@ export default function RegionsContainer() {
     <>
       <Regions
         regions={regions}
-        changeRegion={changeRegionName}
+        changeRegionName={changeRegionName}
         onClick={handleChangeRegionName}
       />
     </>
