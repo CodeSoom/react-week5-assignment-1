@@ -3,7 +3,7 @@ export function setCategories(categories) {
     type: 'setCategories',
     payload: {
       categories,
-    }
+    },
   };
 }
 
