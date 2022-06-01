@@ -1,11 +1,11 @@
 export default function Categories({ categories }) {
   return (
-    <li>
+    <ul>
       {
         categories.map((category) => (
-          <li id={category.id}>{category.name}</li>
+          <li key={category.id}>{category.name}</li>
         ))
       }
-    </li>
+    </ul>
   );
 }
