@@ -18,7 +18,7 @@ describe('RegionsContainer', () => {
     regions,
   }));
 
-  it('클릭한 버튼과 함께 "changeRegionName"을 dispatch한다', () => {
+  it('지역을 클릭하면 "changeRegionName"을 dispatch한다', () => {
     const { getByRole } = render(<RegionsContainer />);
 
     const clickedButton = regions[0];

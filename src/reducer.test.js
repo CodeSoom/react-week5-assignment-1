@@ -84,6 +84,6 @@ describe('존재하지 않는 액션 타입', () => {
     });
 
     expect(state.regionName).toBe('');
-    expect(state.categoryId).toBe(0);
+    expect(state.categoryId).toBe('');
   });
 });
