@@ -1,11 +1,16 @@
 const initialState = {
   categories: [],
+  regions: [],
 };
 
 const actions = {
   setCategories: (state, action) => ({
     ...state,
     categories: action.payload.categories,
+  }),
+  setRegions: (state, action) => ({
+    ...state,
+    regions: action.payload.regions,
   }),
 };
 

@@ -1,4 +1,4 @@
-import { loadCategories, setCategories } from './actions';
+import { setCategories, setRegions } from './actions';
 import reducer from './reducer';
 
 jest.mock('react-redux');
