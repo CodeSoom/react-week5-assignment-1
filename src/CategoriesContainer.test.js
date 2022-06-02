@@ -1,5 +1,6 @@
-import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { render, fireEvent } from '@testing-library/react';
+import { useSelector, useDispatch } from 'react-redux';
+import { chooseCategory } from './actions';
 
 import CategoriesContainer from './CategoriesContainer';
 
@@ -16,5 +17,24 @@ describe('CategoriesContainer', () => {
     const { container } = render(<CategoriesContainer />);
 
     expect(container).toHaveTextContent('한식');
+  });
+
+  it('check the clicked category', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      clickedCategory: '',
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+    }));
+
+    const { getByText } = render(<CategoriesContainer />);
+
+    fireEvent.click(getByText('한식'));
+
+    expect(dispatch).toBeCalledWith(chooseCategory('한식'));
   });
 });
