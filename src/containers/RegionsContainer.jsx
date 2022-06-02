@@ -8,7 +8,7 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
   const { regions, regionName } = useSelector((state) => state);
 
-  const handleChangeRegionName = (regionNameParams) => {
+  const handleClickChangeRegionName = (regionNameParams) => {
     dispatch(changeRegionName(regionNameParams));
   };
 
@@ -17,7 +17,7 @@ export default function RegionsContainer() {
       <Regions
         regions={regions}
         changeRegionName={regionName}
-        onClick={handleChangeRegionName}
+        onClick={handleClickChangeRegionName}
       />
     </>
   );
