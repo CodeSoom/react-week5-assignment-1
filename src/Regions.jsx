@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCurrentRegionId } from './actions';
+import { setCurrentRegionId, loadRegions } from './actions';
 
 import Buttons from './Buttons';
 
@@ -15,6 +16,10 @@ export default function Regions() {
   const handleClickRegion = (id) => {
     dispatch(setCurrentRegionId(id));
   };
+
+  useEffect(() => {
+    dispatch(loadRegions());
+  }, []);
   return (
     <Buttons
       items={regions}
