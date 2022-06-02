@@ -7,6 +7,7 @@ import { CATEGORIES } from './fixture';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
