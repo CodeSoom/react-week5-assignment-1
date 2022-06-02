@@ -15,9 +15,7 @@ describe('CategoriesConainer', () => {
   it('레스토랑 업종 목록을 호출한다.', () => {
     const { getByText } = render(<CategoriesContainer />);
 
-    expect(dispatch).toBeCalledWith({
-      type: 'loadCategories',
-    });
+    expect(dispatch).toBeCalledTimes(1);
 
     expect(getByText('한식')).toBeInTheDocument();
   });

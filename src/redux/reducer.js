@@ -1,5 +1,6 @@
 const initialState = {
   regions: [],
+  categories: [],
   errorMessage: null,
 };
 
@@ -14,6 +15,10 @@ function reducer(state = initialState, action = {}) {
     setErrorMessage: {
       ...state,
       errorMessage: payload?.errorMessage,
+    },
+    setCategories: {
+      ...state,
+      categories: payload?.categories,
     },
   }[type]) || state;
 }
