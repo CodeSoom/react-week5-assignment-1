@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import Categories from './Categories';
+import Categories from '../components/Categories';
 
 export default function CategoriesContainer() {
   const { categories } = useSelector((state) => ({

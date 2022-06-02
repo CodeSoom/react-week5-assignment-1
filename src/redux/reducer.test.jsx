@@ -7,9 +7,9 @@ import {
   addRestaurant,
   setCategories,
   setRegions,
-} from './actions';
+} from '../actions';
 
-import restaurants from '../fixtures/restaurants';
+import restaurants from '../../fixtures/restaurants';
 
 describe('reducer', () => {
   describe('setRestaurants', () => {
