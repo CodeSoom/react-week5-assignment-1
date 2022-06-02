@@ -1,4 +1,7 @@
-const initialState = {};
+const initialState = {
+  categories: [],
+  regions: [],
+};
 
 const defaultReducer = (state) => state;
 
@@ -6,6 +9,11 @@ const reducers = {
   setCategories: (state, { payload: { categories } }) => ({
     ...state,
     categories,
+  }),
+
+  setRegions: (state, { payload: { regions } }) => ({
+    ...state,
+    regions,
   }),
 };
 

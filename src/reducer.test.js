@@ -24,7 +24,7 @@ describe('reducer', () => {
     it('지역을 저장한다', () => {
       const { regions } = reducer(previousState, setRegions(REGIONS));
 
-      expect(regions.length).toBe(0);
+      expect(regions.length).toBe(11);
     });
   });
 });
