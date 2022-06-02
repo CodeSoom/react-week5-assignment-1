@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   loadRegions,
-} from '../actions';
+} from '../redux/actions';
 
 import Regions from './Regions';
 

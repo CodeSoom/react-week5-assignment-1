@@ -1,8 +1,10 @@
 import reducer from './reducer';
 
-import { setRegions } from './actions';
+import {
+  setRegions,
+} from './actions';
 
-import regions from '../fixture/regions';
+import regions from '../../fixture/regions';
 
 describe('reducer', () => {
   test('setRegions', () => {

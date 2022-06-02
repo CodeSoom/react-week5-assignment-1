@@ -1,4 +1,4 @@
-import { fetchRegions } from './services/api';
+import { fetchRegions } from '../services/api';
 
 export function setRegions(regions) {
   return {
@@ -16,7 +16,8 @@ export function loadRegions() {
 
       dispatch(setRegions(regions));
     } catch (error) {
-      dispatch(setRegions(null));
+      throw new Error(error);
+      // dispatch(setRegions(null));
     }
   };
 }
