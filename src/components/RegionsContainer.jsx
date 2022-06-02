@@ -9,8 +9,9 @@ import {
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const { regions, errorMessage } = useSelector((state) => ({
     regions: state.regions,
+    errorMessage: state.errorMessage,
   }));
 
   const dispatch = useDispatch();
@@ -20,6 +21,6 @@ export default function RegionsContainer() {
   }, []);
 
   return (
-    <Regions regions={regions} />
+    <Regions regions={regions} errorMessage={errorMessage} />
   );
 }

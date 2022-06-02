@@ -9,11 +9,11 @@ export function setRegions(regions) {
   };
 }
 
-export function setErrorMessage(error) {
+export function setErrorMessage(errorMessage) {
   return {
     type: 'setErrorMessage',
     payload: {
-      error,
+      errorMessage: `${errorMessage}. 잠시 후 다시 시도해주세요`,
     },
   };
 }
@@ -25,7 +25,7 @@ export function loadRegions() {
 
       dispatch(setRegions(regions));
     } catch (error) {
-      dispatch(setErrorMessage(error));
+      dispatch(setErrorMessage(error.message));
     }
   };
 }
