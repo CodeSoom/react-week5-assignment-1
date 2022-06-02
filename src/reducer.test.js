@@ -1,5 +1,7 @@
 import reducer, { initialState } from './reducer';
 
+import { setRegions } from './actions';
+
 import regions from '../fixtures/regions';
 import emptyState from '../fixtures/emptyState';
 
