@@ -21,21 +21,21 @@ describe('redux actions loadRegions', () => {
 
       expect(dispatch).toHaveBeenCalledWith(setRegions(regions));
     });
+  });
 
-    context('호출이 실패하면', () => {
-      const error = new Error('지역 목록을 가져오지 못했어요.');
+  context('호출이 실패하면', () => {
+    const error = new Error('지역 목록을 가져오지 못했어요.');
 
-      beforeEach(() => {
-        fetchRegions.mockRejectedValue(error);
-      });
+    beforeEach(() => {
+      fetchRegions.mockRejectedValue(error);
+    });
 
-      test('setErrorMessage가 호출된다.', async () => {
-        const dispatch = jest.fn();
+    test('setErrorMessage가 호출된다.', async () => {
+      const dispatch = jest.fn();
 
-        await loadRegions()(dispatch);
+      await loadRegions()(dispatch);
 
-        expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error));
-      });
+      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
     });
   });
 });
