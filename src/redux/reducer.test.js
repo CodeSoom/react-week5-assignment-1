@@ -21,14 +21,28 @@ describe('reducer', () => {
   });
 
   describe('setErrorMessage', () => {
-    it('state의 errorMessage의 값이 생긴다.', () => {
-      const initialState = {
-        errorMessage: null,
-      };
+    context('errorMessage가 있으면', () => {
+      it('state의 errorMessage의 값이 바뀐다.', () => {
+        const initialState = {
+          errorMessage: null,
+        };
 
-      const state = reducer(initialState, setErrorMessage('지역 목록을 가져오지 못했어요.'));
+        const state = reducer(initialState, setErrorMessage('지역 목록을 가져오지 못했어요.'));
 
-      expect(state.errorMessage).toBe('지역 목록을 가져오지 못했어요. 잠시 후 다시 시도해주세요');
+        expect(state.errorMessage).toBe('지역 목록을 가져오지 못했어요. 잠시 후 다시 시도해주세요');
+      });
+    });
+
+    context('errorMessage가 없으면', () => {
+      it('state의 errorMessage의 값이 바뀌지 않는다.', () => {
+        const initialState = {
+          errorMessage: null,
+        };
+
+        const state = reducer(initialState, setErrorMessage());
+
+        expect(state.errorMessage).toBeNull();
+      });
     });
   });
 
