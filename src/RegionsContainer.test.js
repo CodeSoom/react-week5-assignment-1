@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { render, fireEvent } from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -16,5 +16,25 @@ describe('RegionsContainer', () => {
     const { container } = render(<RegionsContainer />);
 
     expect(container).toHaveTextContent('서울');
+  });
+
+  it('changes the clickedRegion', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      clickedRegion: '',
+      regions: [
+        { id: 1, name: '서울'},
+      ],
+    }));
+
+
+    const { getByText, getByDisplayValue } = render(<RegionsContainer />);
+
+    fireEvent.click(getByText('서울'));
+
+    expect(getByDisplayValue('서울(V)')).toBeInTheDocument();
   });
 });
