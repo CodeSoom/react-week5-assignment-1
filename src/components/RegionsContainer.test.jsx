@@ -17,7 +17,7 @@ describe('RegionsContainer', () => {
     regions,
   }));
 
-  test('지역 목록을 가져오는 함수를 호출한다.', () => {
+  it('지역 목록을 가져오는 함수를 호출한다.', () => {
     render((<RegionsContainer />));
 
     expect(dispatch).toBeCalledTimes(1);
