@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import state from '../fixtures/state';
 import Buttons from './Buttons';
@@ -18,7 +18,10 @@ describe('Buttons', () => {
     );
     const buttons = screen.getAllByRole('button');
     buttons.forEach((button, index) => {
+      fireEvent.click(button);
+
       expect(button).toHaveValue(String(state.regions[index].id));
+      expect(handleClick).toHaveBeenCalledWith(state.regions[index].id);
     });
   });
 });

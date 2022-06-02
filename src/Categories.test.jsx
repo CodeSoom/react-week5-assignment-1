@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -7,7 +7,7 @@ import Categories from './Categories';
 
 jest.mock('react-redux');
 
-const dispatch = useDispatch();
+const dispatch = jest.fn();
 
 describe('Categories', () => {
   useDispatch.mockImplementation(() => dispatch);
@@ -25,9 +25,12 @@ describe('Categories', () => {
       onClick={handleClick}
     />);
 
-    const buttons = screen.getAllByRole('button');
-    buttons.forEach((button, index) => {
-      expect(button).toHaveValue(String(state.categories[index].id));
+    fireEvent.click(screen.getByText('한식'));
+    expect(dispatch).toBeCalledWith({
+      type: 'setCurrentCategoryId',
+      payload: {
+        currentCategoryId: 1,
+      },
     });
   });
 });

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -7,7 +7,7 @@ import Regions from './Regions';
 
 jest.mock('react-redux');
 
-const dispatch = useDispatch();
+const dispatch = jest.fn();
 
 describe('Regions', () => {
   useDispatch.mockImplementation(() => dispatch);
@@ -17,17 +17,14 @@ describe('Regions', () => {
     currentRegionId: state.currentRegionId,
   }));
   it('renders regions', () => {
-    const handleClick = jest.fn();
+    render(<Regions />);
 
-    render(<Regions
-      regions={state.regions}
-      currentRegionId={state.currentRegionId}
-      onClick={handleClick}
-    />);
-
-    const buttons = screen.getAllByRole('button');
-    buttons.forEach((button, index) => {
-      expect(button).toHaveValue(String(state.regions[index].id));
+    fireEvent.click(screen.getByText('서울'));
+    expect(dispatch).toBeCalledWith({
+      type: 'setCurrentRegionId',
+      payload: {
+        currentRegionId: 1,
+      },
     });
   });
 });
