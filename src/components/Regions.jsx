@@ -2,7 +2,7 @@ import Item from './Item';
 
 export default function Regions({ regions, changeRegionName, onClick }) {
   return (
-    <>
+    <div>
       {regions.map((region) => (
         <Item
           key={region.id}
@@ -11,6 +11,6 @@ export default function Regions({ regions, changeRegionName, onClick }) {
           onClick={onClick}
         />
       ))}
-    </>
+    </div>
   );
 }
