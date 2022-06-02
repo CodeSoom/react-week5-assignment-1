@@ -1,21 +1,27 @@
 import { render, screen } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import state from '../fixtures/state';
 
 import Restaurants from './Restaurants';
 
+jest.mock('react-redux');
+
+const dispatch = useDispatch();
+
 describe('Restaurants', () => {
   context('with currentRegionId and currentCategoryId', () => {
     it('renders restaurants', () => {
-      const currentRegionId = 1;
-      const currentCategoryId = 1;
-      const { restaurants } = state;
+      useDispatch.mockImplementation(() => dispatch);
 
-      render(<Restaurants
-        currentCategoryId={currentCategoryId}
-        currentRegionId={currentRegionId}
-        restaurants={restaurants}
-      />);
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: state.restaurants,
+        currentRegionId: '1',
+        currentCategoryId: '1',
+      }));
+
+      render(<Restaurants />);
 
       expect(screen.getByText('양천주가')).toBeInTheDocument();
     });
