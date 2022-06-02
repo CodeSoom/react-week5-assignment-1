@@ -1,4 +1,4 @@
-import { chooseRegion, setCategories, setRegions } from './actions';
+import { chooseCategory, chooseRegion, setCategories, setRegions } from './actions';
 import reducer from './reducer';
 
 jest.mock('react-redux');
@@ -37,6 +37,16 @@ describe('reducer', () => {
       }, chooseRegion('서울'));
 
       expect(state.clickedRegion).toBe('서울');
+    });
+  });
+
+  describe('chooseCategory', () => {
+    it('set clicked regions', () => {
+      const state = reducer({
+        clickedCategory: '',
+      }, chooseCategory('한식'));
+
+      expect(state.clickedCategory).toBe('한식');
     });
   });
 

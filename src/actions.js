@@ -42,3 +42,12 @@ export function chooseRegion(region) {
     },
   };
 }
+
+export function chooseCategory(category) {
+  return {
+    type: 'chooseCategory',
+    payload: {
+      category,
+    },
+  };
+}
