@@ -3,7 +3,7 @@ export default function Regions({ regions }) {
     <ul>
       {
         regions.map((region) => (
-          <li key={region.id}>{region.name}</li>
+          <li key={region.id}><button type="button">{region.name}</button></li>
         ))
       }
     </ul>
