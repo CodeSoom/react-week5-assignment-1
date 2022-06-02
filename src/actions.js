@@ -51,3 +51,12 @@ export function chooseCategory(category) {
     },
   };
 }
+
+export function setRestaurants(restanurants) {
+  return {
+    type: 'setRestaurants',
+    payload: {
+      restanurants,
+    },
+  };
+}

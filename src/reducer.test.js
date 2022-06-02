@@ -1,5 +1,5 @@
 import {
-  chooseCategory, chooseRegion, setCategories, setRegions,
+  chooseCategory, chooseRegion, setCategories, setRegions, setRestaurants,
 } from './actions';
 import reducer from './reducer';
 
@@ -49,6 +49,21 @@ describe('reducer', () => {
       }, chooseCategory('한식'));
 
       expect(state.clickedCategory).toBe('한식');
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const restaurants = [
+        { id: 1, name: '호신각' },
+        { id: 2, name: '홍콩반점' },
+      ];
+
+      const state = reducer({
+        restaurants: [],
+      }, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(2);
     });
   });
 

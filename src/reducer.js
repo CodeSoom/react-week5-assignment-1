@@ -1,6 +1,8 @@
 const initialState = {
   categories: [],
   regions: [],
+  clickedRegion: '',
+  clickedCategory: '',
 };
 
 const actions = {
