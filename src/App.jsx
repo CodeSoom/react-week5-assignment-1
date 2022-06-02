@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
+
 import { setCurrentRegionId, setCurrentCategoryId } from './actions';
 
 import Categories from './Categories';
-
 import Regions from './Regions';
 import Restaurants from './Restaurants';
 
