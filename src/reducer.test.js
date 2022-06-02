@@ -1,6 +1,9 @@
 import reducer, { initialState } from './reducer';
 
+import { setRegions, setCategories } from './actions';
+
 import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
 import emptyState from '../fixtures/emptyState';
 
 describe('reducer', () => {
@@ -31,6 +34,13 @@ describe('reducer', () => {
       const state = reducer(emptyState, setRegions(regions));
 
       expect(state.regions).toEqual(regions);
+    });
+  });
+  describe('setCategories', () => {
+    it('set new categories into categories', () => {
+      const state = reducer(emptyState, setCategories(categories));
+
+      expect(state.categories).toEqual(categories);
     });
   });
 });
