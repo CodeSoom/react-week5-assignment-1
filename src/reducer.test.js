@@ -30,6 +30,16 @@ describe('reducer', () => {
     });
   });
 
+  describe('chooseRegion', () => {
+    it('set clicked regions', () => {
+      const state = reducer({
+        clickedRegion: '',
+      }, chooseRegion('서울'));
+
+      expect(state.clickedRegion).toBe('서울');
+    });
+  });
+
   describe('invalid action', () => {
     it('returns initialState', () => {
       const state = reducer({
