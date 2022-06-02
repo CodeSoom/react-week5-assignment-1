@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
 import categories from '../../fixtures/categories';
 
 import Categories from './Categories';
