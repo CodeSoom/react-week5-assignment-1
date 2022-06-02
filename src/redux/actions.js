@@ -13,7 +13,7 @@ export function setErrorMessage(errorMessage) {
   return {
     type: 'setErrorMessage',
     payload: {
-      errorMessage: `${errorMessage} 잠시 후 다시 시도해주세요`,
+      errorMessage: errorMessage ? `${errorMessage} 잠시 후 다시 시도해주세요` : null,
     },
   };
 }
