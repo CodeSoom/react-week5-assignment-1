@@ -1,3 +1,5 @@
+import { fetchCategories, fetchRestaurants } from './services/api';
+
 export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
@@ -20,5 +22,28 @@ export function changeRestaurantField({ name, value }) {
       name,
       value,
     },
+  };
+}
+
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: {
+      categories,
+    },
+  };
+}
+
+export function loadCategories() {
+  return async (dispatch) => {
+    const categories = await fetchCategories();
+    dispatch(setCategories(categories));
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch) => {
+    const restaurants = await fetchRestaurants();
+    dispatch(setRestaurants(restaurants));
   };
 }
