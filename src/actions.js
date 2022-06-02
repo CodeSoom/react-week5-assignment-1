@@ -33,3 +33,12 @@ export function loadRegions() {
     dispatch(setRegions(regions));
   };
 }
+
+export function chooseRegion(region) {
+  return {
+    type: 'chooseRegion',
+    payload: {
+      region,
+    },
+  };
+}
