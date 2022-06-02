@@ -1,11 +1,11 @@
 import Buttons from './Buttons';
 
-export default function Regions({ state, onClick }) {
+export default function Regions({ regions, currentRegionId, onClick }) {
   return (
     <Buttons
-      items={state.regions}
+      items={regions}
       name="currentRegionId"
-      currentId={state.currentRegionId}
+      currentId={currentRegionId}
       onClick={onClick}
     />
   );

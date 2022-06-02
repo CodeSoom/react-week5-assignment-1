@@ -7,7 +7,11 @@ describe('Regions', () => {
   it('renders regions', () => {
     const handleClick = jest.fn();
 
-    render(<Regions state={state} onClick={handleClick} />);
+    render(<Regions
+      regions={state.regions}
+      currentRegionId={state.currentRegionId}
+      onClick={handleClick}
+    />);
 
     state.regions.forEach((region) => {
       expect(screen.getByText(region.name)).toHaveValue(String(region.id));
