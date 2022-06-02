@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { chooseRegion } from './actions';
+
 import Regions from './Regions';
 
 export default function RegionsContainer() {
@@ -12,7 +13,7 @@ export default function RegionsContainer() {
   }));
 
   function handleClick(e) {
-    dispatch(chooseRegion(e.target.value));
+    dispatch(chooseRegion(e.target.textContent));
   }
 
   return (<Regions regions={regions} clickedRegion={clickedRegion} onClick={handleClick} />);
