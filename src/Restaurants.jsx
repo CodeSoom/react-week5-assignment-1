@@ -1,7 +1,7 @@
 export default function Restaurants({ restaurants, currentRegionId, currentCategoryId }) {
   return (
     <>
-      {(currentCategoryId >= 0 && currentRegionId >= 0) && (
+      {(currentCategoryId && currentRegionId) && (
         <ul>
           {restaurants.map((restaurant) => (
             <li key={restaurant.id}>

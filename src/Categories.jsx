@@ -1,11 +1,11 @@
 import Buttons from './Buttons';
 
-export default function Categories({ state, onClick }) {
+export default function Categories({ categories, currentCategoryId, onClick }) {
   return (
     <Buttons
-      items={state.categories}
+      items={categories}
       name="currentCategoryId"
-      currentId={state.currentCategoryId}
+      currentId={currentCategoryId}
       onClick={onClick}
     />
   );

@@ -5,9 +5,9 @@ export default function Buttons({
     <ul>
       {items.map((item) => (
         <li key={item.id}>
-          <button type="button" name={name} value={item.id} onClick={onClick}>
+          <button type="button" name={name} value={item.id} onClick={() => onClick(item.id)}>
             {item.name}
-            {item.id === currentId && '(V)'}
+            {item.id === Number(currentId) && '(V)'}
           </button>
         </li>
       ))}

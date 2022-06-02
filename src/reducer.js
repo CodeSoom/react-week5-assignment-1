@@ -19,8 +19,8 @@ const setCurrentRegionId = (state, action) => ({
 });
 
 export const initialState = {
-  currentRegionId: Number.MIN_SAFE_INTEGER,
-  currentCategoryId: Number.MIN_SAFE_INTEGER,
+  currentRegionId: '',
+  currentCategoryId: '',
   regions: [
     {
       id: 1,
