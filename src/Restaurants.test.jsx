@@ -8,7 +8,7 @@ import Restaurants from './Restaurants';
 
 jest.mock('react-redux');
 
-const dispatch = useDispatch();
+const dispatch = jest.fn();
 
 describe('Restaurants', () => {
   context('with currentRegionId and currentCategoryId', () => {
