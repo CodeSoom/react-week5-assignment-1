@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setCurrentCategoryId } from './actions';
+import { setCurrentCategoryId, loadCategories } from './actions';
 
 import Buttons from './Buttons';
 
@@ -15,6 +16,10 @@ export default function Categories() {
   const handleClickCategory = (id) => {
     dispatch(setCurrentCategoryId(id));
   };
+
+  useEffect(() => {
+    dispatch(loadCategories());
+  });
 
   return (
     <Buttons
