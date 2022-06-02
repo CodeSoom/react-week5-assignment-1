@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import state from '../fixtures/state';
+import state from '../../fixtures/state';
 import Buttons from './Buttons';
 
 describe('Buttons', () => {

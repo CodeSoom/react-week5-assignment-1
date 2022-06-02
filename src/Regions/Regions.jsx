@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCurrentRegionId, loadRegions } from './actions';
+import { setCurrentRegionId, loadRegions } from '../app/actions';
 
-import Buttons from './Buttons';
+import Buttons from '../Buttons/Buttons';
 
 export default function Regions() {
   const dispatch = useDispatch();

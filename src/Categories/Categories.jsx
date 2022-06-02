@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setCurrentCategoryId, loadCategories } from './actions';
+import { setCurrentCategoryId, loadCategories } from '../app/actions';
 
-import Buttons from './Buttons';
+import Buttons from '../Buttons/Buttons';
 
 export default function Categories() {
   const dispatch = useDispatch();

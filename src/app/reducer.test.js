@@ -4,9 +4,9 @@ import {
   setRegions, setCategories, setCurrentRegionId, setCurrentCategoryId, setRestaurants,
 } from './actions';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
-import emptyState from '../fixtures/emptyState';
+import regions from '../../fixtures/regions';
+import categories from '../../fixtures/categories';
+import emptyState from '../../fixtures/emptyState';
 
 describe('reducer', () => {
   context('without parameter', () => {

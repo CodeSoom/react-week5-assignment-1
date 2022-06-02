@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import state from '../fixtures/state';
+import state from '../../fixtures/state';
 import Regions from './Regions';
 
 jest.mock('react-redux');

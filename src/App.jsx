@@ -1,6 +1,6 @@
-import Categories from './Categories';
-import Regions from './Regions';
-import Restaurants from './Restaurants';
+import Categories from './Categories/Categories';
+import Regions from './Regions/Regions';
+import Restaurants from './Restaurants/Restaurants';
 
 export default function App() {
   return (
