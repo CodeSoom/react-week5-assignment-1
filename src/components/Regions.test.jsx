@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
 import regions from '../../fixture/regions';
+import { baseMessage } from '../../constants/emptyMessages';
 
 import Regions from './Regions';
 
@@ -19,7 +20,7 @@ describe('Regions', () => {
       const { queryByRole, getByText } = render(<Regions regions={null} />);
 
       expect(queryByRole('list')).not.toBeInTheDocument();
-      expect(getByText(/지역 목록을 가져오지 못했어요/));
+      expect(getByText(baseMessage('지역 목록')));
     });
   });
 });

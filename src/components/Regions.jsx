@@ -1,4 +1,4 @@
-import ERROR_MESSAGES from '../../constants/errorMessages';
+import ERROR_MESSAGES from '../../constants/emptyMessages';
 
 export default function Regions({ regions }) {
   if (!regions) {
