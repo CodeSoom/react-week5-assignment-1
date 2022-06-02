@@ -12,6 +12,7 @@ describe('CategoriesContainer', () => {
       categories: [
         { id: 1, name: '한식' },
       ],
+      clickedCategory: { id: '', name: '' },
     }));
 
     const { container } = render(<CategoriesContainer />);
@@ -25,7 +26,7 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      clickedCategory: '',
+      clickedCategory: { id: '', name: '' },
       categories: [
         { id: 1, name: '한식' },
       ],
@@ -35,6 +36,6 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(getByText('한식'));
 
-    expect(dispatch).toBeCalledWith(chooseCategory('한식'));
+    expect(dispatch).toBeCalledWith(chooseCategory({ id: 1, name: '한식' }));
   });
 });

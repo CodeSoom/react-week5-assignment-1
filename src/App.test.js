@@ -15,6 +15,8 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       categories: [],
       regions: [],
+      clickedCategory: { id: '', name: '' },
+      clickedRegion: { id: '', name: '' },
     }));
 
     render(<App />);

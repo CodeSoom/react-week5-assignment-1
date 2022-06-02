@@ -51,9 +51,10 @@ describe('reducer', () => {
     it('set clicked regions', () => {
       const state = reducer({
         clickedRegion: '',
-      }, chooseRegion('서울'));
+      }, chooseRegion({ id: 1, name: '서울' }));
 
-      expect(state.clickedRegion).toBe('서울');
+      expect(state.clickedRegion.id).toBe(1);
+      expect(state.clickedRegion.name).toBe('서울');
     });
   });
 
@@ -61,9 +62,10 @@ describe('reducer', () => {
     it('set clicked regions', () => {
       const state = reducer({
         clickedCategory: '',
-      }, chooseCategory('한식'));
+      }, chooseCategory({ id: 1, name: '한식' }));
 
-      expect(state.clickedCategory).toBe('한식');
+      expect(state.clickedCategory.id).toBe(1);
+      expect(state.clickedCategory.name).toBe('한식');
     });
   });
 

@@ -12,8 +12,8 @@ export default function RegionsContainer() {
     clickedRegion: state.clickedRegion,
   }));
 
-  function handleClick(e) {
-    dispatch(chooseRegion(e.target.textContent));
+  function handleClick(region) {
+    dispatch(chooseRegion(region));
   }
 
   return (<Regions regions={regions} clickedRegion={clickedRegion} onClick={handleClick} />);

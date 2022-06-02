@@ -12,8 +12,8 @@ export default function CategoriesContainer() {
     clickedCategory: state.clickedCategory,
   }));
 
-  function handleClick(e) {
-    dispatch(chooseCategory(e.target.textContent));
+  function handleClick(category) {
+    dispatch(chooseCategory(category));
   }
 
   return (

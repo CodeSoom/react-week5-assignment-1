@@ -1,13 +1,29 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { loadCategories, loadRegions } from './actions';
+import { loadCategories, loadRegions, loadRestaurants } from './actions';
 
 import CategoriesContainer from './CategoriesContainer';
 import RegionsContainer from './RegionsContainer';
 
+function isEmpty(str) {
+  if (str.length === 0) return true;
+  return false;
+}
+
 export default function App() {
   const dispatch = useDispatch();
+
+  const { regionName, categoryId } = useSelector((state) => ({
+    regionName: state.clickedRegion.name,
+    categoryId: state.clickedCategory.id,
+  }));
+
+  useEffect(() => {
+    if (isEmpty(regionName) || isEmpty(categoryId)) return;
+
+    dispatch(loadRestaurants(regionName, categoryId));
+  }, [regionName, categoryId]);
 
   useEffect(() => {
     dispatch(loadCategories());

@@ -8,7 +8,14 @@ describe('Categories', () => {
       { id: 1, name: '한식' },
     ];
 
-    const { container } = render(<Categories categories={categories} />);
+    const clickedCategory = { id: '', name: '' };
+
+    const { container } = render((
+      <Categories
+        categories={categories}
+        clickedCategory={clickedCategory}
+      />
+    ));
 
     expect(container).toHaveTextContent('한식');
   });
@@ -20,7 +27,15 @@ describe('Categories', () => {
       { id: 1, name: '한식' },
     ];
 
-    const { getByText } = render(<Categories categories={categories} onClick={handleClick} />);
+    const clickedCategory = { id: '', name: '' };
+
+    const { getByText } = render((
+      <Categories
+        categories={categories}
+        onClick={handleClick}
+        clickedCategory={clickedCategory}
+      />
+    ));
 
     fireEvent.click(getByText('한식'));
 

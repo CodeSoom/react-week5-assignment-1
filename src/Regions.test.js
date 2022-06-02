@@ -9,7 +9,7 @@ describe('Regions', () => {
       { id: 2, name: '대전' },
     ];
 
-    const clickedRegion = '서울';
+    const clickedRegion = { id: 1, name: '서울' };
 
     const { container } = render(<Regions regions={regions} clickedRegion={clickedRegion} />);
 
@@ -25,7 +25,15 @@ describe('Regions', () => {
       { id: 2, name: '대전' },
     ];
 
-    const { getByText } = render(<Regions regions={regions} onClick={handleClick} />);
+    const clickedRegion = { id: '', name: '' };
+
+    const { getByText } = render((
+      <Regions
+        regions={regions}
+        onClick={handleClick}
+        clickedRegion={clickedRegion}
+      />
+    ));
 
     fireEvent.click(getByText('서울'));
 
