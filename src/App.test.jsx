@@ -1,10 +1,28 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import state from '../fixtures/state';
+
 import App from './App';
 
+jest.mock('react-redux');
+
+const dispatch = useDispatch();
+
 describe('App', () => {
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => jest.fn());
+
+    useSelector.mockImplementation((selector) => selector({
+      regions: state.regions,
+      categories: state.categories,
+      currentRegionId: state.currentRegionId,
+      currentCategoryId: state.currentCategoryId,
+    }));
+  });
+
   it('renders regions list', () => {
     render(<App />);
     // screen.debug();
