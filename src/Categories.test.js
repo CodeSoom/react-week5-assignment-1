@@ -25,17 +25,20 @@ describe('Categories', () => {
 
     const categories = [
       { id: 1, name: '한식' },
+      { id: 2, name: '중식' },
     ];
 
-    const clickedCategory = { id: '', name: '' };
+    const clickedCategory = { id: 2, name: '중식' };
 
-    const { getByText } = render((
+    const { container, getByText } = render((
       <Categories
         categories={categories}
         onClick={handleClick}
         clickedCategory={clickedCategory}
       />
     ));
+
+    expect(container).toHaveTextContent('중식(V)');
 
     fireEvent.click(getByText('한식'));
 
