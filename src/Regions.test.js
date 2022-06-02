@@ -14,14 +14,17 @@ describe('Regions', () => {
   });
 
   it('check the clickedRegion', () => {
+    const handleClick = jest.fn();
+
     const regions = [
       { id: 1, name: '서울' },
     ];
 
-    const { getByText, getByDisplayValue } = render(<Regions regions={regions} />);
+    const { getByText, getByDisplayValue } = render(<Regions regions={regions} onClick={handleClick} />);
 
     fireEvent.click(getByText('서울'));
 
+    expect(handleClick).toBeCalled();
     expect(getByDisplayValue('서울(V)')).toBeInTheDocument();
   });
 });

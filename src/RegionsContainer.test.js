@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { chooseCategory, chooseRegion } from './actions';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -34,6 +35,7 @@ describe('RegionsContainer', () => {
 
     fireEvent.click(getByText('서울'));
 
+    expect(dispatch).toBeCalledWith(chooseRegion('서울'));
     expect(getByDisplayValue('서울(V)')).toBeInTheDocument();
   });
 });
