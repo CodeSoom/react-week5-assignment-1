@@ -6,7 +6,7 @@ import { baseMessage } from '../../constants/emptyMessages';
 import Regions from './Regions';
 
 describe('Regions', () => {
-  context('지역 목록을 가져왔으면', () => {
+  context('지역 목록이 있으면', () => {
     test('화면에 지역들이 보인다.', () => {
       const { getByRole, getByText } = render(<Regions regions={regions} />);
 
@@ -15,8 +15,8 @@ describe('Regions', () => {
     });
   });
 
-  context('지역 목록을 가져오지 못했으면', () => {
-    test('지역 목록이 나오지 않고 에러 메세지가 나온다', () => {
+  context('지역 목록이 없거나 비어있으면', () => {
+    test('지역 목록이 비어있다는 문구가 보인다.', () => {
       const { queryByRole, getByText } = render(<Regions regions={null} />);
 
       expect(queryByRole('list')).not.toBeInTheDocument();
