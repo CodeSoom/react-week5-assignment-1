@@ -13,7 +13,7 @@ export default function RestaurantsContainer() {
       restaurants: state.restaurants,
       selectRegionName: state.regionName.name,
       selectCategoryId: state.categoryId.id,
-    })
+    }),
   );
 
   useEffect(() => {
