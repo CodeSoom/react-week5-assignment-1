@@ -2,4 +2,10 @@ export async function fetchCategories() {
   return [];
 }
 
-export function xxx() {}
+export async function fetchRestaurants() {
+  return [];
+}
+
+export async function fetchRegions() {
+  return [];
+}
