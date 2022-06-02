@@ -18,7 +18,7 @@ describe('RegionsContainer', () => {
     expect(container).toHaveTextContent('서울');
   });
 
-  it('changes the clickedRegion', () => {
+  it('check the clickedRegion', () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
@@ -26,10 +26,9 @@ describe('RegionsContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       clickedRegion: '',
       regions: [
-        { id: 1, name: '서울'},
+        { id: 1, name: '서울' },
       ],
     }));
-
 
     const { getByText, getByDisplayValue } = render(<RegionsContainer />);
 
