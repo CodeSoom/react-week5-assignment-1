@@ -17,6 +17,7 @@ describe('App', () => {
       regions: [],
       clickedCategory: { id: '', name: '' },
       clickedRegion: { id: '', name: '' },
+      restaurants: [],
     }));
 
     render(<App />);

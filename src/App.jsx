@@ -5,6 +5,7 @@ import { loadCategories, loadRegions, loadRestaurants } from './actions';
 
 import CategoriesContainer from './CategoriesContainer';
 import RegionsContainer from './RegionsContainer';
+import RestaurantContainer from './RestaurantsContainer';
 
 function isEmpty(str) {
   if (str.length === 0) return true;
@@ -34,6 +35,7 @@ export default function App() {
     <>
       <RegionsContainer />
       <CategoriesContainer />
+      <RestaurantContainer />
     </>
   );
 }
