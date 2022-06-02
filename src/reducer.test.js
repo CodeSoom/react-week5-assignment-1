@@ -1,6 +1,7 @@
 import reducer, { initialState } from './reducer';
 
 import regions from '../fixtures/regions';
+import emptyState from '../fixtures/emptyState';
 
 describe('reducer', () => {
   context('without parameter', () => {
@@ -26,8 +27,10 @@ describe('reducer', () => {
     });
   });
   describe('setRegions', () => {
-    it('returns regions', () => {
-      
+    it('set new regions into regions', () => {
+      const state = reducer(emptyState, setRegions(regions));
+
+      expect(state.regions).toEqual(regions);
     });
   });
 });
