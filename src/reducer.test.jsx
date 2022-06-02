@@ -1,7 +1,12 @@
+/* eslint-disable comma-dangle */
 import reducer from './reducer';
 
 import {
-  setRestaurants, changeRestaurantField, addRestaurant, setCategories,
+  setRestaurants,
+  changeRestaurantField,
+  addRestaurant,
+  setCategories,
+  setRegions,
 } from './actions';
 
 import restaurants from '../fixtures/restaurants';
@@ -29,10 +34,13 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(initialState, changeRestaurantField({
-        name: 'name',
-        value: '서울시 강남구',
-      }));
+      const state = reducer(
+        initialState,
+        changeRestaurantField({
+          name: 'name',
+          value: '서울시 강남구',
+        })
+      );
 
       expect(state.restaurant.name).toBe('서울시 강남구');
     });
@@ -50,10 +58,7 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(
-        initialState,
-        addRestaurant(),
-      );
+      const state = reducer(initialState, addRestaurant());
 
       expect(state.restaurants).toHaveLength(1);
 
@@ -78,6 +83,20 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const regions = [{ id: 1, name: '서울' }];
+
+      const initialState = {
+        regions: [],
+      };
+
+      const state = reducer(initialState, setRegions(regions));
+
+      expect(state.regions).toHaveLength(1);
     });
   });
 });

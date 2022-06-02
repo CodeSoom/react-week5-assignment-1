@@ -9,6 +9,7 @@ const initialState = {
   restaurants: [],
   restaurant: initialRestaurant,
   categories: [],
+  regions: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,7 +24,6 @@ export default function reducer(state = initialState, action) {
 
   if (action.type === 'changeRestaurantField') {
     const { name, value } = action.payload;
-
     return {
       ...state,
       restaurant: {
@@ -48,6 +48,14 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       categories,
+    };
+  }
+
+  if (action.type === 'setRegions') {
+    const { regions } = action.payload;
+    return {
+      ...state,
+      regions,
     };
   }
 

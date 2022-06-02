@@ -1,9 +1,9 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
-
-import restaurants from '../fixtures/restaurants';
 
 import App from './App';
 
@@ -20,12 +20,13 @@ test('App', () => {
       restaurants: [],
       restaurant: {},
       categories: [],
+      regions: [],
     })
   );
 
   const { queryByText } = render(<App />);
 
-  expect(dispatch).toBeCalledTimes(2);
+  expect(dispatch).toBeCalledTimes(3);
 
   expect(queryByText(/김밥제국/)).toBeNull();
 });
