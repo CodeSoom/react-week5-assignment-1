@@ -7,6 +7,7 @@ describe('reducer', () => {
     it('changes areas array', () => {
       const initialState = {
         areas: [],
+        categories: [],
       };
 
       const state = reducer(initialState, setAreas(areas));

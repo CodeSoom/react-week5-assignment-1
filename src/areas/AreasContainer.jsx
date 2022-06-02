@@ -9,9 +9,9 @@ export default function AreasContainer() {
   return (
     <div>
       <h1>지역</h1>
-      <ol>
+      <ul>
         <li>서울</li>
-      </ol>
+      </ul>
     </div>
   );
 }
