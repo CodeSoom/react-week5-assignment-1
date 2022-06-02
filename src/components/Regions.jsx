@@ -1,8 +1,10 @@
-export default function Regions({ regions }) {
+import Item from './Item';
+
+export default function Regions({ regions, onClick }) {
   return (
     <ul>
-      {regions.map((category) => (
-        <li key={category.id}>{category.name}</li>
+      {regions.map((region) => (
+        <Item key={region.id} item={region} onClick={onClick} />
       ))}
     </ul>
   );

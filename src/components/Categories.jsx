@@ -1,10 +1,10 @@
-export default function Categories({ categories }) {
+import Item from './Item';
+
+export default function Categories({ categories, onClick }) {
   return (
     <ul>
       {categories.map((category) => (
-        <li key={category.id}>
-          {category.name}
-        </li>
+        <Item key={category.id} item={category} onClick={onClick} />
       ))}
     </ul>
   );
