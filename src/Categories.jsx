@@ -7,6 +7,8 @@ export default function Categories({ categories }) {
     setSelected(name);
   };
 
+  if (categories.length === 0) return <h2>카테고리가 존재하지 않습니다</h2>;
+
   return (
     <>
       <ul>
