@@ -1,5 +1,7 @@
 import reducer, { initialState } from './reducer';
 
+import regions from '../fixtures/regions';
+
 describe('reducer', () => {
   context('without parameter', () => {
     it('returns the initial state', () => {
@@ -8,7 +10,7 @@ describe('reducer', () => {
     });
   });
 
-  context('with action type that is not defined', () => {
+  context('with undefined action type', () => {
     it('returns the initial state', () => {
       // const initialState = {
       //   newId: 100,
@@ -21,6 +23,11 @@ describe('reducer', () => {
       // };
       const state = reducer(initialState, { type: 'unknown' });
       expect(state).toEqual(initialState);
+    });
+  });
+  describe('setRegions', () => {
+    it('returns regions', () => {
+      
     });
   });
 });
