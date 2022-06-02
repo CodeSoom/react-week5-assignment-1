@@ -8,6 +8,16 @@ const setCategories = (state, action) => ({
   categories: action.payload.categories,
 });
 
+const setCurrentCategoryId = (state, action) => ({
+  ...state,
+  currentCategoryId: action.payload.currentCategoryId,
+});
+
+const setCurrentRegionId = (state, action) => ({
+  ...state,
+  currentRegionId: action.payload.currentRegionId,
+});
+
 export const initialState = {
   currentRegionId: Number.MIN_SAFE_INTEGER,
   currentCategoryId: Number.MIN_SAFE_INTEGER,
@@ -114,6 +124,8 @@ export const initialState = {
 const actionHandlers = {
   setRegions,
   setCategories,
+  setCurrentCategoryId,
+  setCurrentRegionId,
 };
 
 export default function reducer(state = initialState, action = '') {

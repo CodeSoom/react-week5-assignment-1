@@ -15,3 +15,21 @@ export function setCategories(categories) {
     },
   };
 }
+
+export function setCurrentRegionId(currentRegionId) {
+  return {
+    type: 'setCurrentRegionId',
+    payload: {
+      currentRegionId,
+    },
+  };
+}
+
+export function setCurrentCategoryId(currentCategoryId) {
+  return {
+    type: 'setCurrentCategoryId',
+    payload: {
+      currentCategoryId,
+    },
+  };
+}
