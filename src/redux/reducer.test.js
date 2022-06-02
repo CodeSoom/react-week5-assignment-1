@@ -8,33 +8,53 @@ import {
 import regions from '../../fixture/regions';
 
 describe('reducer', () => {
-  test('setRegions', () => {
-    const initialState = {
-      regions: [],
-    };
+  describe('setRegions', () => {
+    it(`state의 regions 개수가 ${regions.length}개가 된다.`, () => {
+      const initialState = {
+        regions: [],
+      };
 
-    const state = reducer(initialState, setRegions(regions));
+      const state = reducer(initialState, setRegions(regions));
 
-    expect(state.regions).toHaveLength(regions.length);
+      expect(state.regions).toHaveLength(regions.length);
+    });
   });
 
-  test('setErrorMessage', () => {
-    const initialState = {
-      errorMessage: null,
-    };
+  describe('setErrorMessage', () => {
+    it('state의 errorMessage의 값이 생긴다.', () => {
+      const initialState = {
+        errorMessage: null,
+      };
 
-    const state = reducer(initialState, setErrorMessage('지역 목록을 가져오지 못했어요.'));
+      const state = reducer(initialState, setErrorMessage('지역 목록을 가져오지 못했어요.'));
 
-    expect(state.errorMessage).toBe('지역 목록을 가져오지 못했어요. 잠시 후 다시 시도해주세요');
+      expect(state.errorMessage).toBe('지역 목록을 가져오지 못했어요. 잠시 후 다시 시도해주세요');
+    });
   });
 
-  test('action이 undefined면 initialState를 반환한다', () => {
-    const initialState = {
-      regions: [],
-      errorMessage: null,
-    };
-    const state = reducer(initialState, undefined);
+  describe('action이 undefined면', () => {
+    it('initialState를 반환한다', () => {
+      const initialState = {
+        regions: [],
+        errorMessage: null,
+      };
+      const state = reducer(initialState, undefined);
 
-    expect(state).toEqual(initialState);
+      expect(state).toEqual(initialState);
+    });
+  });
+
+  describe('state가 undefined면', () => {
+    it('initialState를 반환한다', () => {
+      const initialState = {
+        regions: [],
+        errorMessage: null,
+      };
+
+      const state = reducer(undefined, setErrorMessage('지역 목록을 가져오지 못했어요.'));
+
+      expect(state.regions).toEqual(initialState.regions);
+      expect(state.errorMessage).toEqual('지역 목록을 가져오지 못했어요. 잠시 후 다시 시도해주세요');
+    });
   });
 });
