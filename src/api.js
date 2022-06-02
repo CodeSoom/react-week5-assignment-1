@@ -6,6 +6,6 @@ export function fetchCategories() {
   return fetch('https://eatgo-customer-api.ahastudio.com/categories');
 }
 
-export function fetchRestaurants(regionId, categoryId) {
-  return fetch(`https://eatgo-customer-api.ahastudio.com/restaurants?regionId=${regionId}&categoryId=${categoryId}`);
+export function fetchRestaurants(regionName, categoryId) {
+  return fetch(`https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`);
 }
