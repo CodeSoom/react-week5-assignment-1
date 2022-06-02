@@ -25,8 +25,9 @@ describe('Regions', () => {
       onClick={handleClick}
     />);
 
-    state.regions.forEach((region) => {
-      expect(screen.getByText(region.name)).toHaveValue(String(region.id));
+    const buttons = screen.getAllByRole('button');
+    buttons.forEach((button, index) => {
+      expect(button).toHaveValue(String(state.regions[index].id));
     });
   });
 });

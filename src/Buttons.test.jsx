@@ -16,15 +16,9 @@ describe('Buttons', () => {
         onClick={handleClick}
       />,
     );
-
-    state.regions.forEach((region) => {
-      // (V)표시가 생기는걸 테스트 해야하는것 같은데 expect해도 되는건가
-      if (region.id === Number(currentId)) {
-        expect(screen.getByText(`${region.name}(V)`)).toHaveValue(String(region.id));
-      }
-      if (region.id !== Number(currentId)) {
-        expect(screen.getByText(region.name)).toHaveValue(String(region.id));
-      }
+    const buttons = screen.getAllByRole('button');
+    buttons.forEach((button, index) => {
+      expect(button).toHaveValue(String(state.regions[index].id));
     });
   });
 });

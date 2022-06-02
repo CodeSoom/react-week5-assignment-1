@@ -25,8 +25,9 @@ describe('Categories', () => {
       onClick={handleClick}
     />);
 
-    state.categories.forEach((category) => {
-      expect(screen.getByText(category.name)).toHaveValue(String(category.id));
+    const buttons = screen.getAllByRole('button');
+    buttons.forEach((button, index) => {
+      expect(button).toHaveValue(String(state.categories[index].id));
     });
   });
 });
