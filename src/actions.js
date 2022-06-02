@@ -1,3 +1,5 @@
+import { fetchRegions } from './api';
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',
@@ -31,5 +33,13 @@ export function setCurrentCategoryId(currentCategoryId) {
     payload: {
       currentCategoryId,
     },
+  };
+}
+
+export function loadRegions() {
+  return async (dispatch) => {
+    const response = await fetchRegions();
+    const regions = await response.json();
+    dispatch(setRegions(regions));
   };
 }
