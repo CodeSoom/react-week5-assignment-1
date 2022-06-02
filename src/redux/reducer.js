@@ -3,7 +3,7 @@ const initialState = {
   errorMessage: null,
 };
 
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action = {}) {
   const { type, payload } = action;
 
   return ({
