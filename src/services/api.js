@@ -1,17 +1,13 @@
-export async function fetchCategories() {
-  // 한식, 중식, 양식
-  const categories = 'https://eatgo-customer-api.ahastudio.com/categories';
-  const response = await fetch(categories);
+import { GET_CATEGORIES, GET_REGIONS } from '../api/servicesApis';
 
-  return response.json();
+export async function fetchCategories() {
+  const categories = await fetch(GET_CATEGORIES);
+  return categories.json();
 }
 
 export async function fetchRegions() {
-  // 서울, 대전, 대구
-  const regions = 'https://eatgo-customer-api.ahastudio.com/regions';
-  const response = await fetch(regions);
-
-  return response.json();
+  const regions = await fetch(GET_REGIONS);
+  return regions.json();
 }
 
 export default {};
