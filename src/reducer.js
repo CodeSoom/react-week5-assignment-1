@@ -18,6 +18,11 @@ const setCurrentRegionId = (state, action) => ({
   currentRegionId: action.payload.currentRegionId,
 });
 
+const setRestaurants = (state, action) => ({
+  ...state,
+  restaurants: action.payload.restaurants,
+});
+
 export const initialState = {
   currentRegionId: '',
   currentCategoryId: '',
@@ -31,6 +36,7 @@ const actionHandlers = {
   setCategories,
   setCurrentCategoryId,
   setCurrentRegionId,
+  setRestaurants,
 };
 
 export default function reducer(state = initialState, action = '') {
