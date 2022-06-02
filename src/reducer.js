@@ -1,3 +1,13 @@
+const setRegions = (state, action) => ({
+  ...state,
+  regions: action.payload.regions,
+});
+
+const setCategories = (state, action) => ({
+  ...state,
+  categories: action.payload.categories,
+});
+
 export const initialState = {
   currentRegionId: Number.MIN_SAFE_INTEGER,
   currentCategoryId: Number.MIN_SAFE_INTEGER,
@@ -101,6 +111,11 @@ export const initialState = {
   ],
 };
 
-export default function reducer(state = initialState) {
-  return state;
+const actionHandlers = {
+  setRegions,
+  setCategories,
+};
+
+export default function reducer(state = initialState, action = '') {
+  return actionHandlers[action.type] ? actionHandlers[action.type](state, action) : state;
 }
