@@ -9,6 +9,15 @@ export function setRegions(regions) {
   };
 }
 
+export function setErrorMessage(error) {
+  return {
+    type: 'setErrorMessage',
+    payload: {
+      error,
+    },
+  };
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     try {
@@ -16,8 +25,7 @@ export function loadRegions() {
 
       dispatch(setRegions(regions));
     } catch (error) {
-      throw new Error(error);
-      // dispatch(setRegions(null));
+      dispatch(setErrorMessage(error));
     }
   };
 }

@@ -1,4 +1,4 @@
-import { loadRegions, setRegions, serErrorMessage } from './actions';
+import { loadRegions, setRegions, setErrorMessage } from './actions';
 
 import regions from '../../fixture/regions';
 
@@ -23,10 +23,10 @@ describe('redux actions loadRegions', () => {
     });
 
     context('호출이 실패하면', () => {
-      const error = '지역 목록을 가져오지 못했어요.';
+      const error = new Error('지역 목록을 가져오지 못했어요.');
 
       beforeEach(() => {
-        fetchRegions.mockRejectedValue(new Error(error));
+        fetchRegions.mockRejectedValue(error);
       });
 
       test('setErrorMessage가 호출된다.', async () => {
@@ -34,7 +34,7 @@ describe('redux actions loadRegions', () => {
 
         await loadRegions()(dispatch);
 
-        expect(dispatch).toHaveBeenLastCalledWith(serErrorMessage(error));
+        expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error));
       });
     });
   });
