@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react';
+
 import { useSelector, useDispatch } from 'react-redux';
 
-import App from './App';
 import { CATEGORIES } from './fixture';
+
+import App from './App';
 
 jest.mock('react-redux');
 
