@@ -52,11 +52,11 @@ export function chooseCategory(category) {
   };
 }
 
-export function setRestaurants(restanurants) {
+export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
     payload: {
-      restanurants,
+      restaurants,
     },
   };
 }

@@ -3,6 +3,7 @@ const initialState = {
   regions: [],
   clickedRegion: '',
   clickedCategory: '',
+  restaurants: [],
 };
 
 const actions = {
@@ -13,6 +14,10 @@ const actions = {
   setRegions: (state, action) => ({
     ...state,
     regions: action.payload.regions,
+  }),
+  setRestaurants: (state, action) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
   }),
   chooseRegion: (state, action) => ({
     ...state,
