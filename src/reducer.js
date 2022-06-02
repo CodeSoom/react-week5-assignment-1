@@ -16,6 +16,10 @@ const actions = {
     ...state,
     clickedRegion: action.payload.region,
   }),
+  chooseCategory: (state, action) => ({
+    ...state,
+    clickedCategory: action.payload.category,
+  }),
 };
 
 const defaultAction = (state) => state;
