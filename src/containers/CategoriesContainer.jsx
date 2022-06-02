@@ -8,7 +8,7 @@ export default function CategoriesContainer() {
   const dispatch = useDispatch();
   const { categories, categoryId } = useSelector((state) => state);
 
-  const handleChangeCategoryId = (categoryIdParams) => {
+  const handleClickChangeCategoryId = (categoryIdParams) => {
     dispatch(changeCategoryId(categoryIdParams));
   };
 
@@ -16,7 +16,7 @@ export default function CategoriesContainer() {
     <Categories
       categories={categories}
       changeCategoryId={categoryId}
-      onClick={handleChangeCategoryId}
+      onClick={handleClickChangeCategoryId}
     />
   );
 }
