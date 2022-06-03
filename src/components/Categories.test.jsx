@@ -15,7 +15,7 @@ describe('Categories', () => {
     expect(categoryNameButton).toBeInTheDocument();
   });
 
-  it('버튼을 클릭하면 클릭한 버튼에 V 표시가 붙는다', () => {
+  it('카테고리를 클릭하면 해당 카테고리에 V 표시가 붙는다', () => {
     const { getByText } = render(
       <Categories
         categories={categories}
