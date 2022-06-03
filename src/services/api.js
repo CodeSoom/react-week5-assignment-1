@@ -7,6 +7,9 @@ export async function fetchRegions() {
   return data;
 }
 
-export function test() {
-  //
+export async function fetchCategories() {
+  const response = await fetch(APIS.CATEGORIES);
+  const data = await response.json();
+
+  return data;
 }

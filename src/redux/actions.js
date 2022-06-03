@@ -1,6 +1,4 @@
-import { fetchRegions } from '../services/api';
-
-import mockCategories from '../../fixture/categories';
+import { fetchRegions, fetchCategories } from '../services/api';
 
 export function setRegions(regions) {
   return {
@@ -44,7 +42,9 @@ export function loadRegions() {
 export function loadCategories() {
   return async (dispatch) => {
     try {
-      dispatch(setCategories(mockCategories));
+      const categories = await fetchCategories();
+
+      dispatch(setCategories(categories));
     } catch (error) {
       dispatch(setErrorMessage(error.message));
     }

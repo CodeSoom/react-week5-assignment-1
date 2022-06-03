@@ -55,7 +55,7 @@ describe('redux actions loadCategories', () => {
 
       await loadCategories()(dispatch);
 
-      expect(dispatch).toHaveBeenCalledWith(setCategories(regions));
+      expect(dispatch).toHaveBeenCalledWith(setCategories(categories));
     });
   });
 });
