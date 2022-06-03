@@ -28,7 +28,10 @@ describe('CategoriesConainer', () => {
 
       fireEvent.click(getByText(categories[0].name, { exact: false }));
 
-      expect(dispatch).toBeCalledWith(categories[0].id);
+      expect(dispatch).toBeCalledWith({
+        type: 'selectCategoryId',
+        payload: { selectCategoryId: categories[0].id },
+      });
     });
   });
 });

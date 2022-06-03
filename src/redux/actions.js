@@ -18,6 +18,15 @@ export function setCategories(categories) {
   };
 }
 
+export function selectCategoryId(id) {
+  return {
+    type: 'selectCategoryId',
+    payload: {
+      selectCategoryId: id,
+    },
+  };
+}
+
 export function setErrorMessage(errorMessage) {
   // TODO: error 메세지 항목별로 나누기
   return {

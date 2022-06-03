@@ -4,7 +4,7 @@ import {
   setErrorMessage,
   setRegions,
   setCategories,
-  selectedCategoryId,
+  selectCategoryId,
 } from './actions';
 
 import regions from '../../fixture/regions';
@@ -35,13 +35,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('selectedCategoryId', () => {
+  describe('selectCategoryId', () => {
     it('state의 selectedCategoryId 값이 props로 전달받은 id 값이 된다.', () => {
       const initialState = {
         selectedCategoryId: null,
       };
 
-      const state = reducer(initialState, selectedCategoryId(categories[0].id));
+      const state = reducer(initialState, selectCategoryId(categories[0].id));
 
       expect(state.selectedCategoryId).toBe(categories[0].id);
     });
