@@ -5,8 +5,9 @@ import { loadCategories } from '../redux/actions';
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
-  const { categories } = useSelector((state) => ({
+  const { categories, errorMessage } = useSelector((state) => ({
     categories: state.categories,
+    errorMessage: state.errorMessage,
   }));
 
   const dispatch = useDispatch();
@@ -16,6 +17,6 @@ export default function CategoriesContainer() {
   }, []);
 
   return (
-    <Categories categories={categories} />
+    <Categories categories={categories} errorMessage={errorMessage} />
   );
 }

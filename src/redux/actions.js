@@ -19,6 +19,7 @@ export function setCategories(categories) {
 }
 
 export function setErrorMessage(errorMessage) {
+  // TODO: error 메세지 항목별로 나누기
   return {
     type: 'setErrorMessage',
     payload: {
