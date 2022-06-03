@@ -29,7 +29,7 @@ describe('Regions', () => {
     expect(container).toHaveTextContent('대전');
   });
 
-  it('check the clicked region', () => {
+  it("Adds '(v)' when click the region button", () => {
     const selectedRegion = { id: '', name: '' };
 
     const { getByText } = renderRegions(selectedRegion);
