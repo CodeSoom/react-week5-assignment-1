@@ -1,34 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import areas from '../fixtures/areas';
 
 import AreasContainer from './areas/AreasContainer';
 import CategoriesContainer from './categories/CategoriesContainer';
-import { setAreas, setCategories } from './redux/reducer';
-import categories from '../fixtures/categories';
-
-function loadAreas({ dispatch }) {
-  // TODO: fetch
-  dispatch(setAreas(areas));
-}
-
-function loadCategories({ dispatch }) {
-  // TODO: fetch
-  dispatch(setCategories(categories));
-}
+import { loadCategories, loadAreas } from './redux/reducer';
+import RestaurantsContainer from './restaurants/RestaurantsContainer';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadAreas({ dispatch });
-    loadCategories({ dispatch });
+    dispatch(loadAreas());
+    dispatch(loadCategories());
   }, []);
 
   return (
     <>
       <AreasContainer />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </>
   );
 }
