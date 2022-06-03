@@ -3,40 +3,35 @@ import { render, fireEvent } from '@testing-library/react';
 import Categories from './Categories';
 
 describe('Categories', () => {
-  it('renders', () => {
-    const categories = [
-      { id: 1, name: '한식' },
-    ];
+  const handleClick = jest.fn();
 
-    const clickedCategory = { id: '', name: '' };
+  const categories = [
+    { id: 1, name: '한식' },
+    { id: 2, name: '중식' },
+  ];
 
-    const { container } = render((
+  function renderCategories(clickedCategory) {
+    return render((
       <Categories
         categories={categories}
         clickedCategory={clickedCategory}
+        onClick={handleClick}
       />
     ));
+  }
+
+  it('renders', () => {
+    const clickedCategory = { id: '', name: '' };
+
+    const { container } = renderCategories(clickedCategory);
 
     expect(container).toHaveTextContent('한식');
   });
 
-  it('check the clicked category', () => {
-    const handleClick = jest.fn();
-
-    const categories = [
-      { id: 1, name: '한식' },
-      { id: 2, name: '중식' },
-    ];
-
+  it("Adds '(v)' when click the category button", () => {
     const clickedCategory = { id: 2, name: '중식' };
 
-    const { container, getByText } = render((
-      <Categories
-        categories={categories}
-        onClick={handleClick}
-        clickedCategory={clickedCategory}
-      />
-    ));
+    const { container, getByText } = renderCategories(clickedCategory);
 
     expect(container).toHaveTextContent('중식(V)');
 
