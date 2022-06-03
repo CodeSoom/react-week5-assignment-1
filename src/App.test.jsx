@@ -17,12 +17,12 @@ describe('App', () => {
     regions,
   }));
 
-  test('화면에 레스트랑 지역 목록이 나온다.', () => {
-    const { getByRole, getAllByRole } = render((<App />));
+  test('레스트랑 지역, 카테고리 목록이 호출된다.', () => {
+    const { getAllByRole } = render((<App />));
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalledTimes(2);
 
-    expect(getByRole('list')).toBeInTheDocument();
+    expect(getAllByRole('list')).toHaveLength(2);
     expect(getAllByRole('button')[0]).toHaveTextContent(regions[0].name);
   });
 });
