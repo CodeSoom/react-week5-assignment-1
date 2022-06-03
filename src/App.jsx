@@ -7,10 +7,7 @@ import CategoriesContainer from './CategoriesContainer';
 import RegionsContainer from './RegionsContainer';
 import RestaurantContainer from './RestaurantsContainer';
 
-function isEmpty(str) {
-  if (str.length === 0) return true;
-  return false;
-}
+const isEmpty = (str = '') => str.length === 0;
 
 export default function App() {
   const dispatch = useDispatch();
@@ -21,7 +18,9 @@ export default function App() {
   }));
 
   useEffect(() => {
-    if (isEmpty(regionName) || isEmpty(categoryId)) return;
+    if (isEmpty(regionName) || isEmpty(categoryId)) {
+      return;
+    }
 
     dispatch(loadRestaurants(regionName, categoryId));
   }, [regionName, categoryId]);
