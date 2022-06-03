@@ -1,8 +1,9 @@
 import APIS from '../../constants/apis';
 import mockRegions from '../../fixture/regions';
 import mockCategories from '../../fixture/categories';
+import mockRestaurants from '../../fixture/restaurants';
 
-import { fetchRegions, fetchCategories } from './api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 global.fetch = jest.fn();
 
@@ -27,5 +28,14 @@ describe('api', () => {
 
     expect(categories).toHaveLength(categories.length);
     expect(fetch).toHaveBeenCalledWith(APIS.CATEGORIES);
+  });
+
+  test('fetchRestaurants', async () => {
+    fetch.mockImplementationOnce(() => ({ json: () => Promise.resolve(mockRestaurants) }));
+
+    const restaurants = await fetchRestaurants();
+
+    expect(restaurants).toHaveLength(restaurants.length);
+    expect(fetch).toHaveBeenCalledWith(`${APIS.RESTAURANTS}?region=${mockRegions[0].name}&category=${mockCategories[0].id}`);
   });
 });
