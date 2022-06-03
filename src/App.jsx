@@ -13,8 +13,8 @@ export default function App() {
   const dispatch = useDispatch();
 
   const { regionName, categoryId } = useSelector((state) => ({
-    regionName: state.clickedRegion.name,
-    categoryId: state.clickedCategory.id,
+    regionName: state.selectedRegion.name,
+    categoryId: state.selectedCategory.id,
   }));
 
   useEffect(() => {

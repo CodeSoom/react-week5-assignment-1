@@ -15,8 +15,8 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       categories: [],
       regions: [],
-      clickedCategory: { id: '', name: '' },
-      clickedRegion: { id: '', name: '' },
+      selectedCategory: { id: '', name: '' },
+      selectedRegion: { id: '', name: '' },
       restaurants: [],
     }));
 
@@ -34,8 +34,8 @@ describe('App', () => {
       useSelector.mockImplementation((selector) => selector({
         categories: [],
         regions: [],
-        clickedCategory: { id: 1, name: '한식' },
-        clickedRegion: { id: 1, name: '서울' },
+        selectedCategory: { id: 1, name: '한식' },
+        selectedRegion: { id: 1, name: '서울' },
         restaurants: [],
       }));
 
