@@ -26,6 +26,14 @@ export function setCategory(category) {
     },
   };
 }
+export function setRegion(region) {
+  return {
+    type: 'setRegion',
+    payload: {
+      region,
+    },
+  };
+}
 
 export function loadCategories() {
   return async (dispatch) => {

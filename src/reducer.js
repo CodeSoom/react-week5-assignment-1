@@ -16,6 +16,11 @@ const reducers = {
     regions,
   }),
 
+  setRegion: (state, { payload: { region } }) => ({
+    ...state,
+    region,
+  }),
+
   setCategory: (state, { payload: { category } }) => ({
     ...state,
     category,

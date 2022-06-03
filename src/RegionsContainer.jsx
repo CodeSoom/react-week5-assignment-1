@@ -1,15 +1,24 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { regions } = useSelector((state) => ({
+  const dispatch = useDispatch();
+
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
+    selectedRegion: state.regions,
   }));
 
+  const updateSelectedRegions = (region) => {
+    dispatch(selectedRegion(region));
+  };
+
   return (
-    <>
-      <Regions regions={regions} />
-    </>
+    <Regions
+      regions={regions}
+      selectedRegion={selectedRegion}
+      updateSelectedRegions={updateSelectedRegions}
+    />
   );
 }

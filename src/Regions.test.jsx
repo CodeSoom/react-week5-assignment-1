@@ -4,14 +4,14 @@ import { REGIONS } from './fixture';
 
 import Regions from './Regions';
 
-const updateSelectedRegion = jest.fn();
+const updateSelectedRegions = jest.fn();
 
 describe('Regions', () => {
   const renderComponent = (regions, selectedRegion) => render(
     <Regions
       regions={regions}
       selectedRegion={selectedRegion}
-      updateSelectedRegion={updateSelectedRegion}
+      updateSelectedRegions={updateSelectedRegions}
     />,
   );
 
@@ -28,7 +28,7 @@ describe('Regions', () => {
       const button = getByRole('button', { name: '서울' });
       fireEvent.click(button);
 
-      expect(updateSelectedRegion).toBeCalled();
+      expect(updateSelectedRegions).toBeCalled();
     });
 
     it('선택된 지역에는 V가 표시된다', () => {
