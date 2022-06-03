@@ -27,6 +27,15 @@ export function selectCategoryId(id) {
   };
 }
 
+export function selectRegionId(id) {
+  return {
+    type: 'selectRegionId',
+    payload: {
+      selectRegionId: id,
+    },
+  };
+}
+
 export function setErrorMessage(errorMessage) {
   // TODO: error 메세지 항목별로 나누기
   return {
