@@ -1,11 +1,21 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadCategories, loadRegions } from './modules/actions';
+import RegionsContainer from './RegionsContainer';
+
 export default function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRegions());
+    dispatch(loadCategories());
+  }, []);
+
   return (
-    <h2>레스토랑 조회 구현하기</h2>
+    <div>
+      <h2>레스토랑 조회 구현하기</h2>
+      <hr />
+      <RegionsContainer />
+    </div>
   );
 }
-
-/*
-레스토랑 지역 목록 보기: https://eatgo-customer-api.ahastudio.com/regions
-레스토랑 카테고리 목록 보기: https://eatgo-customer-api.ahastudio.com/categories
-레스토랑 목록 보기: https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}
-*/
