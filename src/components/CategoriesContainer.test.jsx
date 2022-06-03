@@ -5,7 +5,7 @@ import categories from '../../fixture/categories';
 
 import CategoriesContainer from './CategoriesContainer';
 
-describe('CategoriesConainer', () => {
+describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
