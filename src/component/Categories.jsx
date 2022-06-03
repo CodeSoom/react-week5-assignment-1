@@ -5,7 +5,7 @@ export default function Categories({ categories }) {
     <ul>
       {categories?.map((categorie) => (
         <li key={categorie.id}>
-          <ButtonContainer data={categorie} type="categorie" />
+          <ButtonContainer data={categorie} type="category" />
         </li>
       ))}
     </ul>
