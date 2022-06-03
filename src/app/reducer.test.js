@@ -7,6 +7,7 @@ import {
 import regions from '../../fixtures/regions';
 import categories from '../../fixtures/categories';
 import emptyState from '../../fixtures/emptyState';
+import restaurants from '../../fixtures/restaurants';
 
 describe('reducer', () => {
   context('without parameter', () => {
@@ -55,19 +56,19 @@ describe('reducer', () => {
     });
   });
 
-  describe('setCurrentCategoryId', () => {
-    it('set new currentCategoryId', () => {
-      const state = reducer(emptyState, setCurrentCategoryId('1'));
+  describe('setCurrentRegionId', () => {
+    it('set new setCurrentRegionId', () => {
+      const state = reducer(emptyState, setCurrentRegionId('1'));
 
-      expect(state.currentCategoryId).toBe('1');
+      expect(state.currentRegionId).toBe('1');
     });
   });
 
   describe('setRestaurants', () => {
     it('set new restaurants into restaurants', () => {
-      const state = reducer(emptyState, setRestaurants(regions));
+      const state = reducer(emptyState, setRestaurants(restaurants));
 
-      expect(state.restaurants).toEqual(regions);
+      expect(state.restaurants).toEqual(restaurants);
     });
   });
 });
