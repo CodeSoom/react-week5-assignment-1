@@ -26,7 +26,7 @@ describe('App', () => {
 
     expect(getAllByRole('list')).toHaveLength(2);
 
-    expect(getByText(regions[0].name)).toBeInTheDocument();
-    expect(getByText(categories[0].name)).toBeInTheDocument();
+    expect(getByText(regions[0].name, { exact: false })).toBeInTheDocument();
+    expect(getByText(categories[0].name, { exact: false })).toBeInTheDocument();
   });
 });

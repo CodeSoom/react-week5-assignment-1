@@ -19,6 +19,6 @@ describe('CategoriesConainer', () => {
 
     expect(dispatch).toBeCalledTimes(1);
 
-    expect(getByText('한식')).toBeInTheDocument();
+    expect(getByText(/한식/)).toBeInTheDocument();
   });
 });

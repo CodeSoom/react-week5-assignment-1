@@ -9,7 +9,12 @@ export default function Categories({ categories, errorMessage }) {
     <div>
       <ul>
         {categories.map((category) => (
-          <li key={category.id}><button type="button">{category.name}</button></li>
+          <li key={category.id}>
+            <button type="button">
+              {category.name}
+              (V)
+            </button>
+          </li>
         ))}
       </ul>
     </div>
