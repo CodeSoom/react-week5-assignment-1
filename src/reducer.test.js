@@ -9,67 +9,83 @@ import {
 } from './actions';
 
 describe('reducer', () => {
-  it('sets regions with new regions', () => {
-    const regions = [{ id: 1, name: '수원' }];
+  describe('setRegions', () => {
+    it('sets regions with new regions', () => {
+      const regions = [{ id: 1, name: '수원' }];
 
-    const initialState = {
-      regions: [],
-    };
+      const initialState = {
+        regions: [],
+      };
 
-    const state = reducer(initialState, setRegions(regions));
+      const state = reducer(initialState, setRegions(regions));
 
-    expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(1);
+    });
   });
 
-  it('sets categories with new categories', () => {
-    const categories = [{ id: 1, name: '패스트푸드' }];
+  describe('setCategories', () => {
+    it('sets categories with new categories', () => {
+      const categories = [{ id: 1, name: '패스트푸드' }];
 
-    const initialState = {
-      categories: [],
-    };
+      const initialState = {
+        categories: [],
+      };
 
-    const state = reducer(initialState, setCategories(categories));
+      const state = reducer(initialState, setCategories(categories));
 
-    expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(1);
+    });
   });
 
-  it('sets restaurants with new restaurants', () => {
-    const restaurants = [
-      { id: 1, name: '버거킹' },
-      { id: 2, name: '입주집' },
-    ];
+  describe('setRestaurants', () => {
+    it('sets restaurants with new restaurants', () => {
+      const restaurants = [
+        { id: 1, name: '버거킹' },
+        { id: 2, name: '입주집' },
+      ];
 
-    const initialState = {
-      restaurants: [],
-    };
+      const initialState = {
+        restaurants: [],
+      };
 
-    const state = reducer(initialState, setRestaurants(restaurants));
+      const state = reducer(initialState, setRestaurants(restaurants));
 
-    expect(state.restaurants).toHaveLength(2);
+      expect(state.restaurants).toHaveLength(2);
+    });
   });
 
-  it('change regionName', () => {
-    const newChangeRegionName = '수원';
+  describe('changeRegionName', () => {
+    it('changes selectedRegionName', () => {
+      const newSelectedRegionName = '수원';
 
-    const initialState = {
-      selectedRegionName: '',
-    };
+      const initialState = {
+        selectedRegionName: '',
+      };
 
-    const state = reducer(initialState, changeRegionName(newChangeRegionName));
+      const state = reducer(
+        initialState,
+        changeRegionName(newSelectedRegionName),
+      );
 
-    expect(state.selectedRegionName).toBe('수원');
+      expect(state.selectedRegionName).toBe('수원');
+    });
   });
 
-  it('change categoryId', () => {
-    const newChangeCategoryId = 1;
+  describe('changeCategoryId', () => {
+    it('changes selectedCategoryId', () => {
+      const newSelectedCategoryId = 1;
 
-    const initialState = {
-      selectedCategoryId: '',
-    };
+      const initialState = {
+        selectedCategoryId: '',
+      };
 
-    const state = reducer(initialState, changeCategoryId(newChangeCategoryId));
+      const state = reducer(
+        initialState,
+        changeCategoryId(newSelectedCategoryId),
+      );
 
-    expect(state.selectedCategoryId).toBe(1);
+      expect(state.selectedCategoryId).toBe(1);
+    });
   });
 });
 
