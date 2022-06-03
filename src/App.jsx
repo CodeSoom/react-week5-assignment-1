@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
+
 import { loadCategories, loadRegions } from './modules/actions';
-import RegionsContainer from './RegionsContainer';
+
+import RegionsContainer from './container/RegionsContainer';
 
 export default function App() {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import ButtonContainer from './ButtonContainer';
+import ButtonContainer from '../container/ButtonContainer';
 
 export default function Regions({ regions }) {
   return (

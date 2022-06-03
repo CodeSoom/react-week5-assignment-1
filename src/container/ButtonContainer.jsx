@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 
-import Button from './Button';
+import Button from '../component/Button';
 
-import { setFieldId } from './modules/actions';
+import { setFieldId } from '../modules/actions';
 
 export default function ButtonContainer({ data, type }) {
   const dispatch = useDispatch();
