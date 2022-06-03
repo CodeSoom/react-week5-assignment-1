@@ -4,14 +4,28 @@ import categories from '../../fixture/categories';
 
 import Categories from './Categories';
 
-test('Categories', () => {
-  const { getByText } = render(<Categories categories={categories} />);
+const onClick = jest.fn();
 
-  const categoryNameButton = getByText(categories[0].name, { exact: false });
+describe('Categories', () => {
+  it('화면에 카테고리 값이 나온다', () => {
+    const { getByText } = render(<Categories categories={categories} onClick={onClick} />);
 
-  expect(categoryNameButton).toBeInTheDocument();
+    const categoryNameButton = getByText(categories[0].name, { exact: false });
 
-  fireEvent.click(categoryNameButton);
+    expect(categoryNameButton).toBeInTheDocument();
+  });
 
-  expect(categoryNameButton).toHaveTextContent(/V/g);
+  it('버튼을 클릭하면 클릭한 버튼에 V 표시가 붙는다', () => {
+    const { getByText } = render(<Categories categories={categories} onClick={onClick} />);
+
+    const categoryNameButton = getByText(categories[0].name, { exact: false });
+
+    expect(categoryNameButton).not.toHaveTextContent(/V/g);
+
+    fireEvent.click(categoryNameButton);
+
+    expect(onClick).toBeCalledWith(categories[0].id);
+
+    expect(categoryNameButton).toHaveTextContent(/V/g);
+  });
 });
