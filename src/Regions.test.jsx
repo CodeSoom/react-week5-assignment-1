@@ -11,7 +11,21 @@ describe('Regions', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   it('render Regions', () => {
-    const { getByText } = render(<Regions />);
+    const regions = [
+      {
+        id: 1,
+        name: '서울',
+      },
+      {
+        id: 2,
+        name: '대전',
+      },
+      {
+        id: 3,
+        name: '대구',
+      },
+    ];
+    const { getByText } = render(<Regions regions={regions} />);
 
     expect(getByText(/서울/)).not.toBeNull();
     expect(getByText(/대전/)).not.toBeNull();

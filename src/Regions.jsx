@@ -1,15 +1,13 @@
-export default function Regions() {
+import ButtonContainer from './ButtonContainer';
+
+export default function Regions({ regions }) {
   return (
     <ul>
-      <li>
-        서울
-      </li>
-      <li>
-        대전
-      </li>
-      <li>
-        대구
-      </li>
+      {regions?.map((region) => (
+        <li key={region.id}>
+          <ButtonContainer data={region} type="region" />
+        </li>
+      ))}
     </ul>
   );
 }
