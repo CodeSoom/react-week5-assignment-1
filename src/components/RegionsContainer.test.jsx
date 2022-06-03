@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -21,5 +21,18 @@ describe('RegionsContainer', () => {
     render((<RegionsContainer />));
 
     expect(dispatch).toBeCalledTimes(1);
+  });
+
+  describe('handleClick이 호출되면', () => {
+    it('selectRegionId 함수에 props로 받은 id를 전달하여 호출한다.', () => {
+      const { getByText } = render(<RegionsContainer />);
+
+      fireEvent.click(getByText(regions[0].name, { exact: false }));
+
+      expect(dispatch).toBeCalledWith({
+        type: 'selectRegionId',
+        payload: { selectRegionId: regions[0].id },
+      });
+    });
   });
 });

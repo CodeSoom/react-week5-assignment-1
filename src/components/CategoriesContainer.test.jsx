@@ -23,7 +23,7 @@ describe('CategoriesConainer', () => {
   });
 
   describe('handleClick이 호출되면', () => {
-    it('selectedCategory 함수에 props로 받은 id를 전달하여 호출한다.', () => {
+    it('selectCategoryId 함수에 props로 받은 id를 전달하여 호출한다.', () => {
       const { getByText } = render(<CategoriesContainer />);
 
       fireEvent.click(getByText(categories[0].name, { exact: false }));
