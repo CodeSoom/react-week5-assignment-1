@@ -12,6 +12,8 @@ describe('RestaurantsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants,
+    selectedRegionId: 1,
+    selectedCategoryId: 1,
   }));
 
   it('레스토랑 목록을 호출한다.', () => {
