@@ -1,6 +1,8 @@
 import EMPTY_MESSAGES from '../../constants/emptyMessages';
 
-export default function Regions({ regions, errorMessage }) {
+export default function Regions({
+  regions, selectedId, errorMessage, onClick,
+}) {
   if (!regions?.length) {
     return <div>{errorMessage ?? EMPTY_MESSAGES.REGION}</div>;
   }
@@ -10,7 +12,10 @@ export default function Regions({ regions, errorMessage }) {
       <ul>
         {regions.map(({ id, name }) => (
           <li key={id}>
-            <button type="button">{name}</button>
+            <button type="button" onClick={() => onClick(id)}>
+              {name}
+              {selectedId === id && '(V)'}
+            </button>
           </li>
         ))}
       </ul>
