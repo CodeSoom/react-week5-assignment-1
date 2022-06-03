@@ -1,10 +1,6 @@
-import { useState } from 'react';
-
-export default function Categories({ categories }) {
-  const [selected, setSelected] = useState();
-
+export default function Categories({ categories, selectedCategory, updateSelectedCategory }) {
   const handleClickButton = ({ target: { name } }) => {
-    setSelected(name);
+    updateSelectedCategory(name);
   };
 
   if (!categories || categories.length === 0) { return <h2>카테고리가 존재하지 않습니다</h2>; }
@@ -19,7 +15,7 @@ export default function Categories({ categories }) {
               name={name}
               onClick={handleClickButton}
             >
-              {`${name}${selected === name ? '(V)' : ''}`}
+              {`${name}${selectedCategory === name ? '(V)' : ''}`}
             </button>
           </li>
         ))}
