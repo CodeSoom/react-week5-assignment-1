@@ -58,4 +58,20 @@ describe('redux actions loadCategories', () => {
       expect(dispatch).toHaveBeenCalledWith(setCategories(categories));
     });
   });
+
+  context('호출이 실패하면', () => {
+    const error = new Error('업종 목록을 가져오지 못했어요.');
+
+    beforeEach(() => {
+      fetchCategories.mockRejectedValue(error);
+    });
+
+    it('setErrorMessage가 호출된다.', async () => {
+      const dispatch = jest.fn();
+
+      await loadCategories()(dispatch);
+
+      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
+    });
+  });
 });

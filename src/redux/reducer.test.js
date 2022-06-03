@@ -3,9 +3,11 @@ import reducer from './reducer';
 import {
   setErrorMessage,
   setRegions,
+  setCategories,
 } from './actions';
 
 import regions from '../../fixture/regions';
+import categories from '../../fixture/categories';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -17,6 +19,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(regions.length);
+    });
+  });
+
+  describe('setCategories', () => {
+    it(`state의 categories 개수가 ${categories.length}개가 된다.`, () => {
+      const initialState = {
+        categories: [],
+      };
+
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).toHaveLength(categories.length);
     });
   });
 
