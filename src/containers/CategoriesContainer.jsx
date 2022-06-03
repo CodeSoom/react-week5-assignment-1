@@ -6,16 +6,16 @@ import Categories from '../components/Categories';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
-  const { categories, categoryId } = useSelector((state) => state);
+  const { categories, selectedCategoryId } = useSelector((state) => state);
 
-  const handleClickChangeCategoryId = (categoryIdParams) => {
-    dispatch(changeCategoryId(categoryIdParams));
+  const handleClickChangeCategoryId = (categoryId) => {
+    dispatch(changeCategoryId(categoryId));
   };
 
   return (
     <Categories
       categories={categories}
-      changeCategoryId={categoryId}
+      changeCategoryId={selectedCategoryId}
       onClick={handleClickChangeCategoryId}
     />
   );

@@ -49,27 +49,27 @@ describe('reducer', () => {
   });
 
   it('change regionName', () => {
-    const regionName = '수원';
+    const newChangeRegionName = '수원';
 
     const initialState = {
-      regionName: '',
+      selectedRegionName: '',
     };
 
-    const state = reducer(initialState, changeRegionName(regionName));
+    const state = reducer(initialState, changeRegionName(newChangeRegionName));
 
-    expect(state.regionName).toBe('수원');
+    expect(state.selectedRegionName).toBe('수원');
   });
 
   it('change categoryId', () => {
-    const categoryId = 1;
+    const newChangeCategoryId = 1;
 
     const initialState = {
-      categoryId: '',
+      selectedCategoryId: '',
     };
 
-    const state = reducer(initialState, changeCategoryId(categoryId));
+    const state = reducer(initialState, changeCategoryId(newChangeCategoryId));
 
-    expect(state.categoryId).toBe(1);
+    expect(state.selectedCategoryId).toBe(1);
   });
 });
 
@@ -78,12 +78,12 @@ describe('존재하지 않는 액션 타입', () => {
     const state = reducer(undefined, {
       type: 'notExistingAction',
       payload: {
-        regionName: '수원',
-        categoryId: 1,
+        selectedRegionName: '수원',
+        changeCategoryId: 1,
       },
     });
 
-    expect(state.regionName).toBe('');
-    expect(state.categoryId).toBe('');
+    expect(state.selectedRegionName).toBe('');
+    expect(state.selectedCategoryId).toBe('');
   });
 });

@@ -6,17 +6,17 @@ import Regions from '../components/Regions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
-  const { regions, regionName } = useSelector((state) => state);
+  const { regions, selectedRegionName } = useSelector((state) => state);
 
-  const handleClickChangeRegionName = (regionNameParams) => {
-    dispatch(changeRegionName(regionNameParams));
+  const handleClickChangeRegionName = (regionName) => {
+    dispatch(changeRegionName(regionName));
   };
 
   return (
     <>
       <Regions
         regions={regions}
-        changeRegionName={regionName}
+        changeRegionName={selectedRegionName}
         onClick={handleClickChangeRegionName}
       />
     </>

@@ -15,15 +15,13 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) =>
-    selector({
-      regionName: '',
-      categoryId: '',
-      regions,
-      categories,
-      restaurants,
-    })
-  );
+  useSelector.mockImplementation((selector) => selector({
+    selectedRegionName: '',
+    selectedCategoryId: '',
+    regions,
+    categories,
+    restaurants,
+  }));
 
   const renderApp = () => render(<App />);
 

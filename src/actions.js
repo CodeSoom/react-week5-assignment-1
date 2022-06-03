@@ -43,16 +43,16 @@ export const loadRestaurants = (regionName, categoryId) => async (dispatch) => {
   dispatch(setRestaurants(restaurants));
 };
 
-export const changeRegionName = (regionName) => ({
+export const changeRegionName = (selectedRegionName) => ({
   type: 'changeRegionName',
   payload: {
-    regionName,
+    selectedRegionName,
   },
 });
 
-export const changeCategoryId = (categoryId) => ({
+export const changeCategoryId = (selectedCategoryId) => ({
   type: 'changeCategoryId',
   payload: {
-    categoryId,
+    selectedCategoryId,
   },
 });

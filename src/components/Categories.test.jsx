@@ -5,9 +5,14 @@ import Categories from './Categories';
 import categories from '../../fixtures/categories';
 
 describe('Categories', () => {
-  const renderCategories = (changeCategoryId) => render(
-    <Categories categories={categories} changeCategoryId={changeCategoryId} />,
-  );
+  function renderCategories(selectedCategoryId) {
+    return render(
+      <Categories
+        categories={categories}
+        changeCategoryId={selectedCategoryId}
+      />,
+    );
+  }
 
   it('"category"버튼을 렌더한다', () => {
     const { getByRole } = renderCategories();

@@ -14,13 +14,11 @@ describe('RestaurantsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   it('지역과 분류를 클릭하면 dispatch가 실행된다', () => {
-    useSelector.mockImplementation((selector) =>
-      selector({
-        regionName: { id: 1, name: '서울' },
-        categoryId: { id: 1, name: '한식' },
-        restaurants,
-      })
-    );
+    useSelector.mockImplementation((selector) => selector({
+      selectedRegionName: { id: 1, name: '서울' },
+      selectedCategoryId: { id: 1, name: '한식' },
+      restaurants,
+    }));
 
     render(<RestaurantsContainer />);
 

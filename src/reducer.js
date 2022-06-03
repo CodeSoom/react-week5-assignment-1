@@ -1,6 +1,6 @@
 const initialState = {
-  regionName: '',
-  categoryId: '',
+  selectedRegionName: '',
+  selectedCategoryId: '',
   regions: [],
   categories: [],
   restaurants: [],
@@ -34,20 +34,20 @@ const setRestaurants = (state, action) => {
 };
 
 const changeRegionName = (state, action) => {
-  const { regionName } = action.payload;
+  const { selectedRegionName } = action.payload;
 
   return {
     ...state,
-    regionName,
+    selectedRegionName,
   };
 };
 
 const changeCategoryId = (state, action) => {
-  const { categoryId } = action.payload;
+  const { selectedCategoryId } = action.payload;
 
   return {
     ...state,
-    categoryId,
+    selectedCategoryId,
   };
 };
 
