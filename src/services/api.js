@@ -13,3 +13,10 @@ export async function fetchCategories() {
 
   return data;
 }
+
+export async function fetchRestaurants(name, categoryId) {
+  const response = await fetch(`${APIS.RESTAURANTS}?region=${name}&category=${categoryId}`);
+  const data = await response.json();
+
+  return data;
+}

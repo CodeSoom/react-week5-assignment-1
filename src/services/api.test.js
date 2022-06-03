@@ -33,7 +33,7 @@ describe('api', () => {
   test('fetchRestaurants', async () => {
     fetch.mockImplementationOnce(() => ({ json: () => Promise.resolve(mockRestaurants) }));
 
-    const restaurants = await fetchRestaurants();
+    const restaurants = await fetchRestaurants(mockRegions[0].name, mockCategories[0].id);
 
     expect(restaurants).toHaveLength(restaurants.length);
     expect(fetch).toHaveBeenCalledWith(`${APIS.RESTAURANTS}?region=${mockRegions[0].name}&category=${mockCategories[0].id}`);
