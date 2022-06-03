@@ -1,10 +1,10 @@
-import Item from './Item';
+import Button from './Button';
 
 export default function Regions({ regions, onClick }) {
   return (
     <ul>
       {regions.map((region) => (
-        <Item key={region.id} item={region} onClick={onClick} />
+        <Button key={region.id} name={region.name} onClick={onClick} />
       ))}
     </ul>
   );

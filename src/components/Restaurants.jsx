@@ -1,18 +1,24 @@
 export default function Restaurants({ restaurants }) {
   return (
     <ul>
-      {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          {restaurant.name}
-          {' '}
-          |
-          {restaurant.category}
-          {' '}
-          |
-          {restaurant.address}
-          {' '}
-        </li>
-      ))}
+      {restaurants.map((restaurant) => {
+        const {
+          name, category, address, id,
+        } = restaurant;
+
+        return (
+          <li key={id}>
+            {name}
+            {' '}
+            |
+            {category}
+            {' '}
+            |
+            {address}
+            {' '}
+          </li>
+        );
+      })}
     </ul>
   );
 }

@@ -1,8 +1,8 @@
-export default function Item({ selected, item, onClick }) {
+export default function Button({ selected, name, onClick }) {
   return (
     <li>
       <button type="button" onClick={onClick}>
-        {item.name}
+        {name}
         {selected && '(V)'}
       </button>
     </li>

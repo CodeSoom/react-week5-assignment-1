@@ -1,10 +1,10 @@
-import Item from './Item';
+import Button from './Button';
 
 export default function Categories({ categories, onClick }) {
   return (
     <ul>
       {categories.map((category) => (
-        <Item key={category.id} item={category} onClick={onClick} />
+        <Button key={category.id} name={category.name} onClick={onClick} />
       ))}
     </ul>
   );
