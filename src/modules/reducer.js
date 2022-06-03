@@ -3,7 +3,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
-} from './actions';
+} from './services';
 
 const initialState = {
   regions: [],
