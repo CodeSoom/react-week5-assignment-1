@@ -1,5 +1,6 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
+
+import Regions from './Regions';
 
 export default function RegionsContainer() {
   const { regions } = useSelector((state) => ({
@@ -8,9 +9,7 @@ export default function RegionsContainer() {
 
   return (
     <>
-      {regions.map((region) => (
-        <li key={region.id}>{region.name}</li>
-      ))}
+      <Regions regions={regions} />
     </>
   );
 }
