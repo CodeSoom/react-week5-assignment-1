@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setCurrentRegionId, loadRegions } from '../app/actions';
+import { setCurrentRegionId } from '../app/actions';
+import { loadRegions } from '../app/asyncActions';
 
 import Buttons from '../Buttons/Buttons';
 

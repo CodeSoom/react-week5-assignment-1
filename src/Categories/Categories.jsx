@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setCurrentCategoryId, loadCategories } from '../app/actions';
+import { setCurrentCategoryId } from '../app/actions';
+import { loadCategories } from '../app/asyncActions';
 
 import Buttons from '../Buttons/Buttons';
 

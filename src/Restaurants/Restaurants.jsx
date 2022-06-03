@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { loadRestaurants } from '../app/actions';
+import { loadRestaurants } from '../app/asyncActions';
 
 export default function Restaurants() {
   const dispatch = useDispatch();
