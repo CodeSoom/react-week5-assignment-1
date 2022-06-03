@@ -1,13 +1,13 @@
 export default function Buttons({
-  items, name, currentId, onClick,
+  items, targetName, currentId, onClick,
 }) {
   return (
     <ul>
-      {items.map((item) => (
-        <li key={item.id}>
-          <button type="button" name={name} value={item.id} onClick={() => onClick(item.id)}>
-            {item.name}
-            {item.id === Number(currentId) && '(V)'}
+      {items.map(({ id, name }) => (
+        <li key={id}>
+          <button type="button" name={targetName} value={id} onClick={() => onClick(id)}>
+            {name}
+            {id === Number(currentId) && '(V)'}
           </button>
         </li>
       ))}

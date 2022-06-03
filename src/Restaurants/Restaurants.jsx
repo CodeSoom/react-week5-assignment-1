@@ -21,9 +21,9 @@ export default function Restaurants() {
     <>
       {(currentCategoryId && currentRegionId) && (
         <ul>
-          {restaurants.map((restaurant) => (
-            <li key={restaurant.id}>
-              {restaurant.name}
+          {restaurants.map(({ id, name }) => (
+            <li key={id}>
+              {name}
             </li>
           ))}
         </ul>

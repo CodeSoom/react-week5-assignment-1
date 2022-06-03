@@ -23,7 +23,7 @@ export default function Regions() {
   return (
     <Buttons
       items={regions}
-      name="currentRegionId"
+      targetName="currentRegionId"
       currentId={currentRegionId}
       onClick={handleClickRegion}
     />

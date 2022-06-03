@@ -24,7 +24,7 @@ export default function Categories() {
   return (
     <Buttons
       items={categories}
-      name="currentCategoryId"
+      targetName="currentCategoryId"
       currentId={currentCategoryId}
       onClick={handleClickCategory}
     />

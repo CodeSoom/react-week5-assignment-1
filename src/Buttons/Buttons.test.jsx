@@ -11,7 +11,7 @@ describe('Buttons', () => {
     render(
       <Buttons
         items={state.regions}
-        name="currentRegionId"
+        targetName="currentRegionId"
         currentId={currentId}
         onClick={handleClick}
       />,
