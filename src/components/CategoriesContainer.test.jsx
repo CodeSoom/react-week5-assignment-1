@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import categories from '../../fixture/categories';
@@ -20,5 +20,15 @@ describe('CategoriesConainer', () => {
     expect(dispatch).toBeCalledTimes(1);
 
     expect(getByText(/한식/)).toBeInTheDocument();
+  });
+
+  describe('handleClick이 호출되면', () => {
+    it('selectedCategory 함수에 props로 받은 id를 전달하여 호출한다.', () => {
+      const { getByText } = render(<CategoriesContainer />);
+
+      fireEvent.click(getByText(categories[0].name, { exact: false }));
+
+      expect(dispatch).toBeCalledWith(categories[0].id);
+    });
   });
 });
