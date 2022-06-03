@@ -26,6 +26,7 @@ describe('Button', () => {
 
     expect(handleClick).toBeCalled();
 
+    // 이벤트 수행 후 스스로 컴포넌트의 내용이 바뀌는건 자동 갱신이 안되나요?
     // expect(getByText('서울(V)')).toBeInTheDocument();
   });
 });
