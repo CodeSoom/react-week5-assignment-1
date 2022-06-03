@@ -6,6 +6,11 @@ export default function Regions({ regions }) {
   const handleClickButton = ({ target: { name } }) => {
     setSelected(name);
   };
+
+  if (!regions || regions.length === 0) {
+    return <h2>지역이 존재하지 않습니다</h2>;
+  }
+
   return (
     <div>
       {regions.map(({ id, name }) => (
