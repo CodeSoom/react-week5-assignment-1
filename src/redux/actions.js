@@ -11,9 +11,9 @@ export function setRegions(regions) {
   };
 }
 
-export function setCategoires(categories) {
+export function setCategories(categories) {
   return {
-    type: 'setCategoires',
+    type: 'setCategories',
     payload: {
       categories,
     },
@@ -44,7 +44,7 @@ export function loadRegions() {
 export function loadCategories() {
   return async (dispatch) => {
     try {
-      dispatch(setCategoires(mockCategories));
+      dispatch(setCategories(mockCategories));
     } catch (error) {
       dispatch(setErrorMessage(error.message));
     }
