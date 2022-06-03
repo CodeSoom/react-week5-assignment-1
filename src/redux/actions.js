@@ -1,5 +1,7 @@
 import { fetchRegions } from '../services/api';
 
+import mockCategories from '../../fixture/categories';
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',
@@ -42,9 +44,7 @@ export function loadRegions() {
 export function loadCategories() {
   return async (dispatch) => {
     try {
-      const categories = [{ id: 0, name: '한식' }, { id: 1, name: '중식' }];
-
-      dispatch(setCategoires(categories));
+      dispatch(setCategoires(mockCategories));
     } catch (error) {
       dispatch(setErrorMessage(error.message));
     }
