@@ -1,13 +1,15 @@
-import Button from './Button';
-
-export default function Regions({ regions }) {
+export default function Regions() {
   return (
     <ul>
-      {regions && regions.map((region) => (
-        <li>
-          <Button data={region} />
-        </li>
-      ))}
+      <li>
+        서울
+      </li>
+      <li>
+        대전
+      </li>
+      <li>
+        대구
+      </li>
     </ul>
   );
 }
