@@ -1,11 +1,11 @@
 import Button from './Button';
 
-export default function Regions({ list }) {
+export default function Regions({ regions }) {
   return (
     <ul>
-      {list && list.map((obj) => (
+      {regions && regions.map((region) => (
         <li>
-          <Button data={obj} />
+          <Button data={region} />
         </li>
       ))}
     </ul>
