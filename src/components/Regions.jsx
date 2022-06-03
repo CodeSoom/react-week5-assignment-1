@@ -2,7 +2,7 @@ import ERROR_MESSAGES from '../../constants/emptyMessages';
 
 export default function Regions({ regions, errorMessage }) {
   if (!regions) {
-    return <div>{errorMessage || ERROR_MESSAGES.REGION}</div>;
+    return <div>{errorMessage ?? ERROR_MESSAGES.REGION}</div>;
   }
 
   return (
