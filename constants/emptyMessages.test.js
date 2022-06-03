@@ -5,7 +5,7 @@ describe('emptyMessages', () => {
     it('"목록"이 없다는 메세지를 반환한다', () => {
       const message = baseMessage();
 
-      expect(message).toBe('아직 목록이 비어있어요');
+      expect(message).toBe('목록이 비어있어요');
     });
   });
 
@@ -14,7 +14,7 @@ describe('emptyMessages', () => {
       const text = '지역 목록';
       const message = baseMessage(text);
 
-      expect(message).toBe(`아직 ${text}이 비어있어요`);
+      expect(message).toBe(`${text}이 비어있어요`);
     });
   });
 });

@@ -1,9 +1,16 @@
-export default function Categories() {
+import EMPTY_MESSAGES from '../../constants/emptyMessages';
+
+export default function Categories({ categories, errorMessage }) {
+  if (!categories?.length) {
+    return errorMessage ?? EMPTY_MESSAGES.CATEGORY;
+  }
+
   return (
     <div>
       <ul>
-        <li><button type="button">한식</button></li>
-        <li><button type="button">중식</button></li>
+        {categories.map((category) => (
+          <li key={category.id}><button type="button">{category.name}</button></li>
+        ))}
       </ul>
     </div>
   );

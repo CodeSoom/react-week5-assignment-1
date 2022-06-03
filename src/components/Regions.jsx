@@ -1,8 +1,8 @@
-import ERROR_MESSAGES from '../../constants/emptyMessages';
+import EMPTY_MESSAGES from '../../constants/emptyMessages';
 
 export default function Regions({ regions, errorMessage }) {
   if (!regions?.length) {
-    return <div>{errorMessage ?? ERROR_MESSAGES.REGION}</div>;
+    return <div>{errorMessage ?? EMPTY_MESSAGES.REGION}</div>;
   }
 
   return (

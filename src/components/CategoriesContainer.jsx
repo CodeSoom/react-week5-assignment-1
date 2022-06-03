@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { loadCategories } from '../redux/actions';
+import Categories from './Categories';
 
 export default function CategoriesContainer() {
   const { categories } = useSelector((state) => ({
@@ -15,11 +16,6 @@ export default function CategoriesContainer() {
   }, []);
 
   return (
-    <div>
-      <ul>
-        <li><button type="button">한식</button></li>
-        <li><button type="button">중식</button></li>
-      </ul>
-    </div>
+    <Categories categories={categories} />
   );
 }
