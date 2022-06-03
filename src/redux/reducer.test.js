@@ -4,6 +4,7 @@ import {
   setErrorMessage,
   setRegions,
   setCategories,
+  selectedCategoryId,
 } from './actions';
 
 import regions from '../../fixture/regions';
@@ -31,6 +32,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(categories.length);
+    });
+  });
+
+  describe('selectedCategoryId', () => {
+    it('state의 selectedCategoryId 값이 props로 전달받은 id 값이 된다.', () => {
+      const initialState = {
+        selectedCategoryId: null,
+      };
+
+      const state = reducer(initialState, selectedCategoryId(categories[0].id));
+
+      expect(state.selectedCategoryId).toBe(categories[0].id);
     });
   });
 
