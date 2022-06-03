@@ -1,10 +1,16 @@
-export default function Button({ onClick, data }) {
-  const { name, active } = data;
+import { useSelector } from 'react-redux';
+
+export default function Button({ onClick, data, type }) {
+  const selectId = useSelector((state) => ({
+    [`${type}Id`]: state[`${type}Id`],
+  }));
+
+  const { id, name } = data;
 
   return (
-    <button type="button" onClick={onClick}>
+    <button type="button" onClick={onClick} value={id}>
       {name}
-      {active && '(V)'}
+      {(selectId && selectId[`${type}Id`] === id) && '(V)'}
     </button>
   );
 }

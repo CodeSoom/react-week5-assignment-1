@@ -1,26 +1,34 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+
+import { useSelector } from 'react-redux';
 
 import Button from './Button';
 
+jest.mock('react-redux');
+
 describe('Button', () => {
+  useSelector.mockImplementation((selector) => selector({
+    regionId: null,
+    categorieId: null,
+  }));
+
   const initialState = {
     id: 1,
     name: '서울',
-    active: false,
   };
 
   it('Button render', () => {
-    const { getByText } = render(<Button data={initialState} />);
+    const { getByText } = render(<Button data={initialState} type="region" />);
 
     expect(getByText('서울')).toBeInTheDocument();
   });
 
-  it('Button click check action', () => {
+  it('ButtonContainer click check action', () => {
     const handleClick = jest.fn();
 
-    const { getByText } = render(<Button onClick={handleClick} data={initialState} />);
+    const { getByText } = render(<Button onClick={handleClick} data={initialState} type="region" />);
 
     fireEvent.click(getByText('서울'));
 
