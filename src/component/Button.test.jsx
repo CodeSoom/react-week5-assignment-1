@@ -11,7 +11,7 @@ jest.mock('react-redux');
 describe('Button', () => {
   useSelector.mockImplementation((selector) => selector({
     regionId: null,
-    categorieId: null,
+    categoryId: null,
   }));
 
   const initialState = {
