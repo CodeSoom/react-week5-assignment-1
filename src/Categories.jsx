@@ -1,11 +1,11 @@
-export default function Categories({ categories, clickedCategory, onClick }) {
+export default function Categories({ categories, selectedCategory, onClick }) {
   return (
     <ul>
       {
         categories.map((category) => (
           <li key={category.id}>
             <button type="button" onClick={() => onClick(category)}>
-              { clickedCategory.id === category.id ? `${category.name}(V)` : category.name}
+              { selectedCategory.id === category.id ? `${category.name}(V)` : category.name}
             </button>
           </li>
         ))

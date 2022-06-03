@@ -7,9 +7,9 @@ import Categories from './Categories';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { categories, clickedCategory } = useSelector((state) => ({
+  const { categories, selectedCategory } = useSelector((state) => ({
     categories: state.categories,
-    clickedCategory: state.clickedCategory,
+    selectedCategory: state.selectedCategory,
   }));
 
   function handleClick(category) {
@@ -19,7 +19,7 @@ export default function CategoriesContainer() {
   return (
     <Categories
       categories={categories}
-      clickedCategory={clickedCategory}
+      selectedCategory={selectedCategory}
       onClick={handleClick}
     />
   );

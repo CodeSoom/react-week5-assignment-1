@@ -12,7 +12,7 @@ describe('CategoriesContainer', () => {
       categories: [
         { id: 1, name: '한식' },
       ],
-      clickedCategory: { id: '', name: '' },
+      selectedCategory: { id: '', name: '' },
     }));
 
     const { container } = render(<CategoriesContainer />);
@@ -26,7 +26,7 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      clickedCategory: { id: '', name: '' },
+      selectedCategory: { id: '', name: '' },
       categories: [
         { id: 1, name: '한식' },
       ],

@@ -10,28 +10,28 @@ describe('Categories', () => {
     { id: 2, name: '중식' },
   ];
 
-  function renderCategories(clickedCategory) {
+  function renderCategories(selectedCategory) {
     return render((
       <Categories
         categories={categories}
-        clickedCategory={clickedCategory}
+        selectedCategory={selectedCategory}
         onClick={handleClick}
       />
     ));
   }
 
   it('renders', () => {
-    const clickedCategory = { id: '', name: '' };
+    const selectedCategory = { id: '', name: '' };
 
-    const { container } = renderCategories(clickedCategory);
+    const { container } = renderCategories(selectedCategory);
 
     expect(container).toHaveTextContent('한식');
   });
 
   it("Adds '(v)' when click the category button", () => {
-    const clickedCategory = { id: 2, name: '중식' };
+    const selectedCategory = { id: 2, name: '중식' };
 
-    const { container, getByText } = renderCategories(clickedCategory);
+    const { container, getByText } = renderCategories(selectedCategory);
 
     expect(container).toHaveTextContent('중식(V)');
 
