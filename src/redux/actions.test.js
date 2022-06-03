@@ -1,11 +1,15 @@
-import { loadRegions, setRegions, setErrorMessage } from './actions';
+import {
+  loadRegions, setRegions, loadCategories, setCategories, setErrorMessage,
+} from './actions';
 
 import regions from '../../fixture/regions';
+import categories from '../../fixture/categories';
 
-import { fetchRegions } from '../services/api';
+import { fetchRegions, fetchCategories } from '../services/api';
 
 jest.mock('../services/api', () => ({
   fetchRegions: jest.fn(),
+  fetchCategories: jest.fn(),
 }));
 
 describe('redux actions loadRegions', () => {
@@ -14,7 +18,7 @@ describe('redux actions loadRegions', () => {
       fetchRegions.mockResolvedValue(regions);
     });
 
-    test('setRegions가 호출된다.', async () => {
+    it('setRegions가 호출된다.', async () => {
       const dispatch = jest.fn();
 
       await loadRegions()(dispatch);
@@ -30,12 +34,28 @@ describe('redux actions loadRegions', () => {
       fetchRegions.mockRejectedValue(error);
     });
 
-    test('setErrorMessage가 호출된다.', async () => {
+    it('setErrorMessage가 호출된다.', async () => {
       const dispatch = jest.fn();
 
       await loadRegions()(dispatch);
 
       expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
+    });
+  });
+});
+
+describe('redux actions loadCategories', () => {
+  context('호출이 성공하면', () => {
+    beforeEach(() => {
+      fetchCategories.mockResolvedValue(categories);
+    });
+
+    it('setCategories가 호출된다.', async () => {
+      const dispatch = jest.fn();
+
+      await loadCategories()(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(setCategories(regions));
     });
   });
 });
