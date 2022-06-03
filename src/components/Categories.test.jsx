@@ -16,11 +16,15 @@ describe('Categories', () => {
   });
 
   it('버튼을 클릭하면 클릭한 버튼에 V 표시가 붙는다', () => {
-    const { getByText } = render(<Categories categories={categories} onClick={onClick} />);
+    const { getByText } = render(
+      <Categories
+        categories={categories}
+        selectedId={categories[0].id}
+        onClick={onClick}
+      />,
+    );
 
     const categoryNameButton = getByText(categories[0].name, { exact: false });
-
-    expect(categoryNameButton).not.toHaveTextContent(/V/g);
 
     fireEvent.click(categoryNameButton);
 

@@ -12,11 +12,20 @@ export default function CategoriesContainer() {
 
   const dispatch = useDispatch();
 
+  const handleClick = (categoryId) => {
+    //
+  };
+
   useEffect(() => {
     dispatch(loadCategories());
   }, []);
 
   return (
-    <Categories categories={categories} errorMessage={errorMessage} />
+    <Categories
+      categories={categories}
+      errorMessage={errorMessage}
+      selectedId={0}
+      onClick={handleClick}
+    />
   );
 }

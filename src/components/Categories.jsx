@@ -1,6 +1,8 @@
 import EMPTY_MESSAGES from '../../constants/emptyMessages';
 
-export default function Categories({ categories, errorMessage }) {
+export default function Categories({
+  categories, errorMessage, selectedId, onClick,
+}) {
   if (!categories?.length) {
     return errorMessage ?? EMPTY_MESSAGES.CATEGORY;
   }
@@ -8,11 +10,11 @@ export default function Categories({ categories, errorMessage }) {
   return (
     <div>
       <ul>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <button type="button">
-              {category.name}
-              (V)
+        {categories.map(({ id, name }) => (
+          <li key={id}>
+            <button type="button" onClick={() => onClick(id)}>
+              {name}
+              {selectedId === id && '(V)'}
             </button>
           </li>
         ))}
