@@ -1,5 +1,13 @@
-export default function Regions() {
+import Button from './Button';
+
+export default function Regions({ list }) {
   return (
-    <div />
+    <ul>
+      {list && list.map((obj) => (
+        <li>
+          <Button data={obj} />
+        </li>
+      ))}
+    </ul>
   );
 }
