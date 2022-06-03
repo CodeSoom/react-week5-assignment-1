@@ -1,16 +1,12 @@
-import { useSelector } from 'react-redux';
-
-export default function Button({ onClick, data, type }) {
-  const selectId = useSelector((state) => ({
-    [`${type}Id`]: state[`${type}Id`],
-  }));
-
+export default function Button({
+  onClick, data, buttonName, selectId,
+}) {
   const { id, name } = data;
 
   return (
-    <button type="button" onClick={onClick} value={id}>
+    <button type="button" onClick={onClick} value={id} name={buttonName}>
       {name}
-      {(selectId && selectId[`${type}Id`] === id) && '(V)'}
+      {(selectId && Number(selectId[buttonName]) === id) && '(V)'}
     </button>
   );
 }
