@@ -1,8 +1,8 @@
 const initialState = {
   categories: [],
   regions: [],
-  clickedRegion: { id: '', name: '' },
-  clickedCategory: { id: '', name: '' },
+  selectedRegion: { id: '', name: '' },
+  selectedCategory: { id: '', name: '' },
   restaurants: [],
 };
 
@@ -21,11 +21,11 @@ const actions = {
   }),
   chooseRegion: (state, action) => ({
     ...state,
-    clickedRegion: action.payload.region,
+    selectedRegion: action.payload.region,
   }),
   chooseCategory: (state, action) => ({
     ...state,
-    clickedCategory: action.payload.category,
+    selectedCategory: action.payload.category,
   }),
 };
 

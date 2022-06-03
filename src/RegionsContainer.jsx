@@ -7,14 +7,14 @@ import Regions from './Regions';
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions, clickedRegion } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
-    clickedRegion: state.clickedRegion,
+    selectedRegion: state.selectedRegion,
   }));
 
   function handleClick(region) {
     dispatch(chooseRegion(region));
   }
 
-  return (<Regions regions={regions} clickedRegion={clickedRegion} onClick={handleClick} />);
+  return (<Regions regions={regions} selectedRegion={selectedRegion} onClick={handleClick} />);
 }

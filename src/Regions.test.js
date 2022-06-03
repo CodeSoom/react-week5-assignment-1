@@ -10,29 +10,29 @@ describe('Regions', () => {
     { id: 2, name: '대전' },
   ];
 
-  function renderRegions(clickedRegion) {
+  function renderRegions(selectedRegion) {
     return render((
       <Regions
         regions={regions}
-        clickedRegion={clickedRegion}
+        selectedRegion={selectedRegion}
         onClick={handleClick}
       />
     ));
   }
 
   it('renders', () => {
-    const clickedRegion = { id: 1, name: '서울' };
+    const selectedRegion = { id: 1, name: '서울' };
 
-    const { container } = renderRegions(clickedRegion);
+    const { container } = renderRegions(selectedRegion);
 
     expect(container).toHaveTextContent('서울(V)');
     expect(container).toHaveTextContent('대전');
   });
 
   it('check the clicked region', () => {
-    const clickedRegion = { id: '', name: '' };
+    const selectedRegion = { id: '', name: '' };
 
-    const { getByText } = renderRegions(clickedRegion);
+    const { getByText } = renderRegions(selectedRegion);
 
     fireEvent.click(getByText('서울'));
 
