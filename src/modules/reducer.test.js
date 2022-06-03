@@ -9,42 +9,26 @@ import {
 
 describe('reducer', () => {
   const initailState = {
-    regions: [
-      {
-        id: 1,
-        name: '서울',
-      },
-    ],
-    categories: [
-      {
-        id: 1,
-        name: '한식',
-      },
-    ],
-    restaurants: [
-      {
-        id: 1,
-        name: '정통집',
-      },
-    ],
+    regions: [],
+    categories: [],
+    restaurants: [],
     regionId: null,
     categorieId: null,
   };
 
   describe('setRegions', () => {
     it('render regions array', () => {
-      const state = reducer(initailState, setRegions(initailState.regions));
+      const regions = [{ id: 1, name: '서울' }];
+      const state = reducer(initailState, setRegions(regions));
 
-      expect(state.regions).not.toHaveLength(0);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 
   describe('setCategories', () => {
     it('render categories array', () => {
-      const state = reducer(
-        initailState,
-        setCategories(initailState.categories),
-      );
+      const categories = [{ id: 1, name: '한식' }];
+      const state = reducer(initailState, setCategories(categories));
 
       expect(state.categories).not.toHaveLength(0);
     });
@@ -52,10 +36,8 @@ describe('reducer', () => {
 
   describe('setRestaurants', () => {
     it('render restaurants array', () => {
-      const state = reducer(
-        initailState,
-        setRestaurants(initailState.restaurants),
-      );
+      const restaurants = [{ id: 1, name: '맛집' }];
+      const state = reducer(initailState, setRestaurants(restaurants));
 
       expect(state.restaurants).not.toHaveLength(0);
     });
