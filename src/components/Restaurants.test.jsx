@@ -11,7 +11,7 @@ describe('Restaurants', () => {
       const { getByRole, getByText } = render(<Restaurants restaurants={restaurants} />);
 
       expect(getByRole('list')).toBeInTheDocument();
-      expect(getByText('서울')).toBeInTheDocument();
+      expect(getByText(restaurants[0].name)).toBeInTheDocument();
     });
   });
 
