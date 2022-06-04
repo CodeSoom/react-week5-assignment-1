@@ -1,11 +1,11 @@
-import ButtonContainer from '../container/ButtonContainer';
+import RegionsButtonContainer from '../container/RegionsButtonContainer';
 
 export default function Regions({ regions }) {
   return (
     <ul>
       {regions?.map((region) => (
         <li key={region.id}>
-          <ButtonContainer data={region} type="region" />
+          <RegionsButtonContainer data={region} />
         </li>
       ))}
     </ul>

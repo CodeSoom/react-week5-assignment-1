@@ -1,11 +1,11 @@
-import ButtonContainer from '../container/ButtonContainer';
+import CategoriesButtonContainer from '../container/CategoriesButtonContainer';
 
 export default function Categories({ categories }) {
   return (
     <ul>
       {categories?.map((categorie) => (
         <li key={categorie.id}>
-          <ButtonContainer data={categorie} type="category" />
+          <CategoriesButtonContainer data={categorie} />
         </li>
       ))}
     </ul>

@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 
 import { useDispatch } from 'react-redux';
 
-import ButtonContainer from './ButtonContainer';
+import RegionsButtonContainer from './RegionsButtonContainer';
 
 jest.mock('react-redux');
 
-describe('ButtonContainer', () => {
+describe('RegionsButtonContainer', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
@@ -15,8 +15,8 @@ describe('ButtonContainer', () => {
     name: '서울',
   };
 
-  it('ButtonContainer render', () => {
-    const { getByText } = render(<ButtonContainer data={initialState} type="region" />);
+  it('RegionsButtonContainer render', () => {
+    const { getByText } = render(<RegionsButtonContainer data={initialState} />);
 
     expect(getByText('서울')).toBeInTheDocument();
   });

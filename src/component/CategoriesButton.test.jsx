@@ -4,33 +4,32 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import Button from './Button';
+import CategoriesButton from './CategoriesButton';
 
 jest.mock('react-redux');
 
-describe('Button', () => {
+describe('CategoriesButton', () => {
   useSelector.mockImplementation((selector) => selector({
-    regionId: null,
-    categoryId: null,
+    categorieId: null,
   }));
 
   const initialState = {
     id: 1,
-    name: '서울',
+    name: '한식',
   };
 
-  it('Button render', () => {
-    const { getByText } = render(<Button data={initialState} type="region" />);
+  it('CategoriesButton render', () => {
+    const { getByText } = render(<CategoriesButton data={initialState} />);
 
-    expect(getByText('서울')).toBeInTheDocument();
+    expect(getByText('한식')).toBeInTheDocument();
   });
 
-  it('ButtonContainer click check action', () => {
+  it('CategoriesButton click check action', () => {
     const handleClick = jest.fn();
 
-    const { getByText } = render(<Button onClick={handleClick} data={initialState} type="region" />);
+    const { getByText } = render(<CategoriesButton onClick={handleClick} data={initialState} />);
 
-    fireEvent.click(getByText('서울'));
+    fireEvent.click(getByText('한식'));
 
     expect(handleClick).toBeCalled();
 

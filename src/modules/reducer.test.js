@@ -12,8 +12,8 @@ describe('reducer', () => {
     regions: [],
     categories: [],
     restaurants: [],
-    regionId: null,
-    categoryId: null,
+    regionName: null,
+    categorieId: null,
   };
 
   describe('setRegions', () => {
@@ -44,28 +44,28 @@ describe('reducer', () => {
   });
 
   describe('setFieldId', () => {
-    it('changes regionId', () => {
+    it('changes regionName', () => {
       const state = reducer(
         initailState,
         setFieldId({
-          name: 'regionId',
+          name: 'regionName',
           value: 1,
         }),
       );
 
-      expect(state.regionId).toBe(1);
+      expect(state.regionName).toBe(1);
     });
 
-    it('changes categoryId', () => {
+    it('changes categorieId', () => {
       const state = reducer(
         initailState,
         setFieldId({
-          name: 'categoryId',
+          name: 'categorieId',
           value: 1,
         }),
       );
 
-      expect(state.categoryId).toBe(1);
+      expect(state.categorieId).toBe(1);
     });
   });
 });

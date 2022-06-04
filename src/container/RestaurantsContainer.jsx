@@ -7,19 +7,19 @@ import Restaurants from '../component/Restaurants';
 import { loadRestaurants } from '../modules/actions';
 
 export default function RestaurantsContainer() {
-  const { restaurants, regionId, categoryId } = useSelector((state) => ({
+  const { restaurants, regionName, categorieId } = useSelector((state) => ({
     restaurants: state.restaurants,
-    regionId: state.regionId,
-    categoryId: state.categoryId,
+    regionName: state.regionName,
+    categorieId: state.categorieId,
   }));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (regionId && categoryId) {
-      dispatch(loadRestaurants({ regionId, categoryId }));
+    if (regionName && categorieId) {
+      dispatch(loadRestaurants({ regionName, categorieId }));
     }
-  }, [regionId, categoryId]);
+  }, [regionName, categorieId]);
 
   return <Restaurants restaurants={restaurants} />;
 }

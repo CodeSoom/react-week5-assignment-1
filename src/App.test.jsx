@@ -14,8 +14,8 @@ describe('App', () => {
     regions: [],
     categories: [],
     restaurants: [],
-    regionId: null,
-    categoryId: null,
+    regionName: null,
+    categorieId: null,
   }));
 
   it('render App Title', () => {

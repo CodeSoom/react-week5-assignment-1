@@ -9,8 +9,8 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  regionId: null,
-  categoryId: null,
+  regionName: null,
+  categorieId: null,
 };
 
 const operations = {
