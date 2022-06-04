@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadRestaurants } from '../redux/actions';
 
+import Restaurants from './Restaurants';
+
 export default function RestaurantContainer() {
-  const { selectedCategoryId, selectedRegion, errorMessage } = useSelector((state) => ({
+  const {
+    selectedCategoryId, selectedRegion, restaurants, errorMessage,
+  } = useSelector((state) => ({
     selectedCategoryId: state.selectedCategoryId,
     selectedRegion: state.selectedRegion,
+    restaurants: state.restaurants,
     errorMessage: state.errorMessage,
   }));
 
@@ -19,6 +24,6 @@ export default function RestaurantContainer() {
   }, [selectedCategoryId, selectedRegion]);
 
   return (
-    null
+    <Restaurants restaurants={restaurants} errorMessage={errorMessage} />
   );
 }
