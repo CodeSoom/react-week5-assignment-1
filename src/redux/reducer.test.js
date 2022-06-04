@@ -6,10 +6,12 @@ import {
   setCategories,
   selectCategoryId,
   selectRegion,
+  setRestaurants,
 } from './actions';
 
 import regions from '../../fixture/regions';
 import categories from '../../fixture/categories';
+import restaurants from '../../fixture/restaurants';
 
 describe('reducer', () => {
   describe('setRegions', () => {
@@ -33,6 +35,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(categories.length);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it(`state의 restaurants 개수가 ${restaurants.length}개가 된다.`, () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toHaveLength(restaurants.length);
     });
   });
 
