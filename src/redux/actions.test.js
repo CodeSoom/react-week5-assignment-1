@@ -1,15 +1,23 @@
 import {
-  loadRegions, setRegions, loadCategories, setCategories, setErrorMessage,
+  loadRegions,
+  setRegions,
+  loadCategories,
+  setCategories,
+  loadRestaurants,
+  setRestaurants,
+  setErrorMessage,
 } from './actions';
 
 import regions from '../../fixture/regions';
 import categories from '../../fixture/categories';
+import restaurants from '../../fixture/restaurants';
 
-import { fetchRegions, fetchCategories } from '../services/api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from '../services/api';
 
 jest.mock('../services/api', () => ({
   fetchRegions: jest.fn(),
   fetchCategories: jest.fn(),
+  fetchRestaurants: jest.fn(),
 }));
 
 describe('redux actions loadRegions', () => {
@@ -70,6 +78,38 @@ describe('redux actions loadCategories', () => {
       const dispatch = jest.fn();
 
       await loadCategories()(dispatch);
+
+      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
+    });
+  });
+});
+
+describe('redux actions loadRestaurants', () => {
+  context('호출이 성공하면', () => {
+    beforeEach(() => {
+      fetchRestaurants.mockResolvedValue(restaurants);
+    });
+
+    it('setRestaurants가 호출된다.', async () => {
+      const dispatch = jest.fn();
+
+      await loadRestaurants(regions[0].name, categories[0].id)(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(setRestaurants(restaurants));
+    });
+  });
+
+  context('호출이 실패하면', () => {
+    const error = new Error('레스토랑 목록을 가져오지 못했어요.');
+
+    beforeEach(() => {
+      fetchRestaurants.mockRejectedValue(error);
+    });
+
+    it('setErrorMessage가 호출된다.', async () => {
+      const dispatch = jest.fn();
+
+      await loadRestaurants()(dispatch);
 
       expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
     });
