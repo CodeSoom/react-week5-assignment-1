@@ -1,6 +1,6 @@
 const initialState = {
   selectedCategoryId: null,
-  selectedRegionId: null,
+  selectedRegion: null,
   regions: [],
   categories: [],
   errorMessage: null,
@@ -26,9 +26,9 @@ function reducer(state = initialState, action = {}) {
       ...state,
       selectedCategoryId: payload?.selectCategoryId,
     },
-    selectRegionId: {
+    selectRegion: {
       ...state,
-      selectedRegionId: payload?.selectRegionId,
+      selectedRegion: payload?.selectRegion,
     },
   }[type]) || state;
 }

@@ -12,7 +12,7 @@ describe('RestaurantsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants,
-    selectedRegionId: 1,
+    selectedRegion: '서울',
     selectedCategoryId: 1,
   }));
 

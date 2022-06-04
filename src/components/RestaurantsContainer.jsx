@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadRestaurants } from '../redux/actions';
 
 export default function RestaurantContainer() {
-  const { selectedCategoryId, selectedRegionId, errorMessage } = useSelector((state) => ({
+  const { selectedCategoryId, selectedRegion, errorMessage } = useSelector((state) => ({
     selectedCategoryId: state.selectedCategoryId,
-    selectedRegionId: state.selectedRegionId,
+    selectedRegion: state.selectedRegion,
     errorMessage: state.errorMessage,
   }));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (selectedRegionId && selectedCategoryId) {
-      dispatch(loadRestaurants(selectedRegionId, selectedCategoryId));
+    if (selectedRegion && selectedCategoryId) {
+      dispatch(loadRestaurants(selectedRegion, selectedCategoryId));
     }
-  }, [selectedCategoryId, selectedRegionId]);
+  }, [selectedCategoryId, selectedRegion]);
 
   return (
     null

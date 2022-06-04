@@ -30,7 +30,7 @@ describe('Regions', () => {
     const { getByText } = render(
       <Regions
         regions={regions}
-        selectedId={regions[0].id}
+        selectedRegion={regions[0].name}
         onClick={onClick}
       />,
     );
@@ -39,7 +39,7 @@ describe('Regions', () => {
 
     fireEvent.click(regionNameButton);
 
-    expect(onClick).toBeCalledWith(regions[0].id);
+    expect(onClick).toBeCalledWith(regions[0].name);
 
     expect(regionNameButton).toHaveTextContent(/V/g);
   });

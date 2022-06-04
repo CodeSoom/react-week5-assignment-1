@@ -24,14 +24,14 @@ describe('RegionsContainer', () => {
   });
 
   describe('handleClick이 호출되면', () => {
-    it('selectRegionId 함수에 props로 받은 id를 전달하여 호출한다.', () => {
+    it('selectRegion 함수에 props로 받은 name을 전달하여 호출한다.', () => {
       const { getByText } = render(<RegionsContainer />);
 
       fireEvent.click(getByText(regions[0].name, { exact: false }));
 
       expect(dispatch).toBeCalledWith({
-        type: 'selectRegionId',
-        payload: { selectRegionId: regions[0].id },
+        type: 'selectRegion',
+        payload: { selectRegion: regions[0].name },
       });
     });
   });

@@ -36,11 +36,11 @@ export function selectCategoryId(id) {
   };
 }
 
-export function selectRegionId(id) {
+export function selectRegion(name) {
   return {
-    type: 'selectRegionId',
+    type: 'selectRegion',
     payload: {
-      selectRegionId: id,
+      selectRegion: name,
     },
   };
 }
@@ -79,10 +79,10 @@ export function loadCategories() {
   };
 }
 
-export function loadRestaurants() {
+export function loadRestaurants(region, categoryId) {
   return async (dispatch) => {
     try {
-      const restaurants = await fetchRestaurants();
+      const restaurants = await fetchRestaurants(region, categoryId);
 
       dispatch(setRestaurants(restaurants));
     } catch (error) {

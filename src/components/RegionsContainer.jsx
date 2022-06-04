@@ -4,22 +4,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import {
   loadRegions,
-  selectRegionId,
+  selectRegion,
 } from '../redux/actions';
 
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { selectedRegionId, regions, errorMessage } = useSelector((state) => ({
-    selectedRegionId: state.selectedRegionId,
+  const { selectedRegion, regions, errorMessage } = useSelector((state) => ({
+    selectedRegion: state.selectedRegion,
     regions: state.regions,
     errorMessage: state.errorMessage,
   }));
 
   const dispatch = useDispatch();
 
-  const handleClick = (id) => {
-    dispatch(selectRegionId(id));
+  const handleClick = (name) => {
+    dispatch(selectRegion(name));
   };
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function RegionsContainer() {
 
   return (
     <Regions
-      selectedId={selectedRegionId}
+      selectedRegion={selectedRegion}
       regions={regions}
       errorMessage={errorMessage}
       onClick={handleClick}
