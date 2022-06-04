@@ -3,6 +3,7 @@ const initialState = {
   selectedRegion: null,
   regions: [],
   categories: [],
+  restaurants: [],
   errorMessage: null,
 };
 
@@ -21,6 +22,10 @@ function reducer(state = initialState, action = {}) {
     setCategories: {
       ...state,
       categories: payload?.categories,
+    },
+    setRestaurants: {
+      ...state,
+      restaurants: payload?.restaurants,
     },
     selectCategoryId: {
       ...state,
