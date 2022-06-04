@@ -4,8 +4,6 @@ import Restaurants from './Restaurants';
 
 import restaurants from '../../fixtures/restaurants';
 
-jest.mock('react-redux');
-
 test('Restaurants', () => {
   const { getByText } = render(<Restaurants restaurants={restaurants} />);
 

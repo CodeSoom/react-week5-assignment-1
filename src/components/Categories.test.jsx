@@ -19,6 +19,8 @@ test('Categories', () => {
 
   expect(getByText(/한식/)).not.toBeNull();
 
+  expect(getByText(/V/)).not.toBeNull();
+
   fireEvent.click(getByText(/한식/));
 
   expect(handleClick).toBeCalled();

@@ -10,6 +10,7 @@ jest.mock('react-redux');
 
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({ restaurants }));
+
   const { getByText } = render(<RestaurantsContainer />);
 
   expect(getByText(/김밥제국/)).not.toBeNull();
