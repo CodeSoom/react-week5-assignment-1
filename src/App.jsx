@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './containers/CategoriesContainer';
 
@@ -11,16 +11,26 @@ import { loadCategories, loadRestaurants, loadRegions } from './actions';
 export default function App() {
   const dispatch = useDispatch();
 
+  const { restaurant } = useSelector((state) => ({
+    restaurant: state.restaurant,
+  }));
+
   useEffect(() => {
-    dispatch(loadRestaurants());
     dispatch(loadCategories());
     dispatch(loadRegions());
   }, []);
 
+  useEffect(() => {
+    const { categoryId, region } = restaurant;
+    if (categoryId && region) {
+      dispatch(loadRestaurants(region, categoryId));
+    }
+  }, [restaurant]);
+
   return (
     <div>
-      <RegionContainer />
-      <CategoriesContainer />
+      <RegionContainer restaurant={restaurant} />
+      <CategoriesContainer restaurant={restaurant} />
     </div>
   );
 }
