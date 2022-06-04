@@ -25,7 +25,7 @@ describe('App', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-  context('clickedCategory and clickedRegion is not empty', () => {
+  context('when category and region is selected', () => {
     it('Changes the restaurants', () => {
       const dispatch = jest.fn();
 

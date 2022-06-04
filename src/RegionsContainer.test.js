@@ -20,7 +20,7 @@ describe('RegionsContainer', () => {
     expect(container).toHaveTextContent('서울');
   });
 
-  it('check the clickedRegion', () => {
+  it("Adds '(v)' when click the region button", () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);

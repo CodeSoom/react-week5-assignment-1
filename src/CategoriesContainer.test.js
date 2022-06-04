@@ -20,7 +20,7 @@ describe('CategoriesContainer', () => {
     expect(container).toHaveTextContent('한식');
   });
 
-  it('check the clicked category', () => {
+  it("Adds '(v)' when click the category button", () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
