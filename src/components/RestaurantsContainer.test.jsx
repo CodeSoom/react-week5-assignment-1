@@ -10,15 +10,33 @@ describe('RestaurantsContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurants,
-    selectedRegion: '서울',
-    selectedCategoryId: 1,
-  }));
+  beforeEach(() => {
+    dispatch.mockReset();
+  });
 
-  it('레스토랑 목록을 호출한다.', () => {
-    render(<RestaurantsContainer />);
+  context('지역과 카테고리를 선택했으면', () => {
+    it('레스토랑 목록을 호출한다.', () => {
+      useSelector.mockImplementationOnce((selector) => selector({
+        restaurants,
+        selectedRegion: '서울',
+        selectedCategoryId: 1,
+      }));
+      render(<RestaurantsContainer />);
 
-    expect(dispatch).toBeCalledTimes(1);
+      expect(dispatch).toBeCalledTimes(1);
+    });
+  });
+
+  context('지역이과 카테고리를 선택하지 않았으면', () => {
+    it('레스토랑 목록을 호출하지 않는다.', () => {
+      useSelector.mockImplementationOnce((selector) => selector({
+        restaurants,
+        selectedRegion: null,
+        selectedCategoryId: null,
+      }));
+      render(<RestaurantsContainer />);
+
+      expect(dispatch).toBeCalledTimes(0);
+    });
   });
 });
