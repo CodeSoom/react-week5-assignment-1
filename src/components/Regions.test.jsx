@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 
-import regions from '../../fixture/regions';
 import { baseMessage } from '../../constants/emptyMessages';
+import regions from '../../fixture/regions';
 
 import Regions from './Regions';
 
