@@ -1,5 +1,7 @@
 import EMPTY_MESSAGES from '../../constants/emptyMessages';
 
+import Button from './Button';
+
 export default function Categories({
   categories, errorMessage, selectedId, onClick,
 }) {
@@ -12,10 +14,12 @@ export default function Categories({
       <ul>
         {categories.map(({ id, name }) => (
           <li key={id}>
-            <button type="button" onClick={() => onClick(id)}>
+            <Button
+              active={selectedId === id}
+              onClick={() => onClick(id)}
+            >
               {name}
-              {selectedId === id && '(V)'}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
