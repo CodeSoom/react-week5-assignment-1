@@ -6,12 +6,20 @@ describe('Button', () => {
   it('render', () => {
     const name = 'Click';
     const handleClick = jest.fn();
+    const selected = true;
 
-    const { container, getByText } = render(<Button name={name} onClick={handleClick} />);
+    const { container, getByText } = render((
+      <Button
+        name={name}
+        onClick={handleClick}
+        selected={selected}
+      />
+    ));
 
-    expect(container).toHaveTextContent('Click');
+    expect(container).toHaveTextContent(/Click/);
+    expect(container).toHaveTextContent('(V)');
 
-    fireEvent.click(getByText('Click'));
+    fireEvent.click(getByText(/Click/));
     expect(handleClick).toBeCalled();
   });
 });

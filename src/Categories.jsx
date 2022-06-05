@@ -8,7 +8,8 @@ export default function Categories({ categories, selectedCategory, onClick }) {
           <li key={category.id}>
             <Button
               onClick={() => onClick(category)}
-              name={`${category.name}${selectedCategory.id === category.id ? '(V)' : ''}`}
+              name={category.name}
+              selected={category.id === selectedCategory.id}
             />
           </li>
         ))

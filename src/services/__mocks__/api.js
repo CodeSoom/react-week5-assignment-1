@@ -1,5 +1,7 @@
 export async function fetchCategories() {
-  return [];
+  return [
+    { id: 1, name: '한식' },
+  ];
 }
 
 export async function fetchRegions() {
