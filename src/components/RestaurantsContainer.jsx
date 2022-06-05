@@ -18,7 +18,7 @@ export default function RestaurantContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (selectedRegion && selectedCategoryId) {
+    if (selectedRegion && selectedCategoryId !== null) {
       dispatch(loadRestaurants(selectedRegion, selectedCategoryId));
     }
   }, [selectedCategoryId, selectedRegion]);
