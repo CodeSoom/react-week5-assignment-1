@@ -40,7 +40,5 @@ describe('Regions', () => {
     fireEvent.click(regionNameButton);
 
     expect(onClick).toBeCalledWith(regions[0].name);
-
-    expect(regionNameButton).toHaveTextContent(/V/g);
   });
 });

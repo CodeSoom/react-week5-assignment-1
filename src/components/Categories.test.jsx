@@ -41,7 +41,5 @@ describe('Categories', () => {
     fireEvent.click(categoryNameButton);
 
     expect(onClick).toBeCalledWith(categories[0].id);
-
-    expect(categoryNameButton).toHaveTextContent(/V/g);
   });
 });
