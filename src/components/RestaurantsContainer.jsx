@@ -12,16 +12,20 @@ export default function RestaurantContainer() {
     selectedCategoryId: state.selectedCategoryId,
     selectedRegion: state.selectedRegion,
     restaurants: state.restaurants,
-    errorMessage: state.errorMessage,
+    errorMessage: state.errorMessage.restaurants,
   }));
 
   const dispatch = useDispatch();
 
+  const selectedAllCase = selectedRegion && selectedCategoryId !== null;
+
   useEffect(() => {
-    if (selectedRegion && selectedCategoryId !== null) {
+    if (selectedAllCase) {
       dispatch(loadRestaurants(selectedRegion, selectedCategoryId));
     }
   }, [selectedCategoryId, selectedRegion]);
+
+  if (!selectedAllCase) return null;
 
   return (
     <Restaurants restaurants={restaurants} errorMessage={errorMessage} />

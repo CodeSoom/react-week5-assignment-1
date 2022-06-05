@@ -13,7 +13,7 @@ export default function RegionsContainer() {
   const { selectedRegion, regions, errorMessage } = useSelector((state) => ({
     selectedRegion: state.selectedRegion,
     regions: state.regions,
-    errorMessage: state.errorMessage,
+    errorMessage: state.errorMessage.regions,
   }));
 
   const dispatch = useDispatch();

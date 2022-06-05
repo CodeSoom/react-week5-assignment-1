@@ -45,12 +45,13 @@ export function selectRegion(name) {
   };
 }
 
-export function setErrorMessage(errorMessage) {
-  // TODO: error 메세지 항목별로 나누기
+export function setErrorMessage(target, errorMessage) {
   return {
     type: 'setErrorMessage',
     payload: {
-      errorMessage: errorMessage ? `${errorMessage} 잠시 후 다시 시도해주세요` : null,
+      errorMessage: {
+        [target]: errorMessage ? `${errorMessage} 잠시 후 다시 시도해주세요` : null,
+      },
     },
   };
 }
@@ -62,7 +63,7 @@ export function loadRegions() {
 
       dispatch(setRegions(regions));
     } catch (error) {
-      dispatch(setErrorMessage(error.message));
+      dispatch(setErrorMessage('regions', error.message));
     }
   };
 }
@@ -74,7 +75,7 @@ export function loadCategories() {
 
       dispatch(setCategories(categories));
     } catch (error) {
-      dispatch(setErrorMessage(error.message));
+      dispatch(setErrorMessage('categories', error.message));
     }
   };
 }
@@ -86,7 +87,7 @@ export function loadRestaurants(region, categoryId) {
 
       dispatch(setRestaurants(restaurants));
     } catch (error) {
-      dispatch(setErrorMessage(error.message));
+      dispatch(setErrorMessage('restaurants', error.message));
     }
   };
 }

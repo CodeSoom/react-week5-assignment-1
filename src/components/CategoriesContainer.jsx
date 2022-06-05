@@ -8,7 +8,7 @@ export default function CategoriesContainer() {
   const { selectedCategoryId, categories, errorMessage } = useSelector((state) => ({
     selectedCategoryId: state.selectedCategoryId,
     categories: state.categories,
-    errorMessage: state.errorMessage,
+    errorMessage: state.errorMessage.categories,
   }));
 
   const dispatch = useDispatch();

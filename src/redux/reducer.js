@@ -4,7 +4,11 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  errorMessage: null,
+  errorMessage: {
+    regoins: null,
+    categories: null,
+    restaurants: null,
+  },
 };
 
 function reducer(state = initialState, action = {}) {
@@ -17,7 +21,10 @@ function reducer(state = initialState, action = {}) {
     },
     setErrorMessage: {
       ...state,
-      errorMessage: payload?.errorMessage,
+      errorMessage: {
+        ...state.errorMessage,
+        ...payload?.errorMessage,
+      },
     },
     setCategories: {
       ...state,

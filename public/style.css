@@ -6,3 +6,8 @@ button {
     border: none;
     border-radius: 4px;
 }
+
+#app {
+    display: flex;
+    gap: 1rem;
+}
