@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('api', () => {
   test('fetchRegions', async () => {
-    fetch.mockImplementationOnce(() => ({ json: () => Promise.resolve(mockRegions) }));
+    fetch.mockImplementationOnce(() => ({ json: async () => mockRegions }));
 
     const regions = await fetchRegions();
 
@@ -22,7 +22,7 @@ describe('api', () => {
   });
 
   test('fetchCategories', async () => {
-    fetch.mockImplementationOnce(() => ({ json: () => Promise.resolve(mockCategories) }));
+    fetch.mockImplementationOnce(() => ({ json: async () => mockCategories }));
 
     const categories = await fetchCategories();
 
@@ -31,7 +31,7 @@ describe('api', () => {
   });
 
   test('fetchRestaurants', async () => {
-    fetch.mockImplementationOnce(() => ({ json: () => Promise.resolve(mockRestaurants) }));
+    fetch.mockImplementationOnce(() => ({ json: async () => mockRestaurants }));
 
     const restaurants = await fetchRestaurants(mockRegions[0].name, mockCategories[0].id);
 
