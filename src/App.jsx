@@ -6,8 +6,7 @@ import { loadCategories, loadRegions, loadRestaurants } from './actions';
 import CategoriesContainer from './CategoriesContainer';
 import RegionsContainer from './RegionsContainer';
 import RestaurantContainer from './RestaurantsContainer';
-
-const isEmpty = (str = '') => str.length === 0;
+import isEmpty from './utils';
 
 export default function App() {
   const dispatch = useDispatch();
