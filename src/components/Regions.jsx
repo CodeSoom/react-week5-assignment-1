@@ -1,5 +1,7 @@
 import EMPTY_MESSAGES from '../../constants/emptyMessages';
 
+import Button from './Button';
+
 export default function Regions({
   regions, selectedRegion, errorMessage, onClick,
 }) {
@@ -12,10 +14,12 @@ export default function Regions({
       <ul>
         {regions.map(({ id, name }) => (
           <li key={id}>
-            <button type="button" onClick={() => onClick(name)}>
+            <Button
+              active={selectedRegion === name}
+              onClick={() => onClick(name)}
+            >
               {name}
-              {selectedRegion === name && '(V)'}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
