@@ -49,9 +49,9 @@ export function setErrorMessage(target, errorMessage) {
   return {
     type: 'setErrorMessage',
     payload: {
-      errorMessage: {
-        [target]: errorMessage ? `${errorMessage} 잠시 후 다시 시도해주세요` : null,
-      },
+      errorMessage: (errorMessage && target) ? {
+        [target]: `${errorMessage} 잠시 후 다시 시도해주세요`,
+      } : null,
     },
   };
 }

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import initialState from '../../fixture/initialState';
 import restaurants from '../../fixture/restaurants';
 
 import RestaurantsContainer from './RestaurantsContainer';
@@ -16,7 +17,8 @@ describe('RestaurantsContainer', () => {
 
   context('지역과 카테고리를 선택했으면', () => {
     it('레스토랑 목록을 호출한다.', () => {
-      useSelector.mockImplementationOnce((selector) => selector({
+      useSelector.mockImplementation((selector) => selector({
+        ...initialState,
         restaurants,
         selectedRegion: '서울',
         selectedCategoryId: 1,
@@ -29,10 +31,9 @@ describe('RestaurantsContainer', () => {
 
   context('지역이과 카테고리를 선택하지 않았으면', () => {
     it('레스토랑 목록을 호출하지 않는다.', () => {
-      useSelector.mockImplementationOnce((selector) => selector({
+      useSelector.mockImplementation((selector) => selector({
+        ...initialState,
         restaurants,
-        selectedRegion: null,
-        selectedCategoryId: null,
       }));
       render(<RestaurantsContainer />);
 

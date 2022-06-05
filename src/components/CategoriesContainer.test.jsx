@@ -1,6 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import initialState from '../../fixture/initialState';
 import categories from '../../fixture/categories';
 
 import CategoriesContainer from './CategoriesContainer';
@@ -11,6 +12,7 @@ describe('CategoriesContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
+    ...initialState,
     categories,
   }));
 

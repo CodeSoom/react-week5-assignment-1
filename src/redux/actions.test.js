@@ -47,7 +47,7 @@ describe('redux actions loadRegions', () => {
 
       await loadRegions()(dispatch);
 
-      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
+      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage('regions', error.message));
     });
   });
 });
@@ -79,7 +79,7 @@ describe('redux actions loadCategories', () => {
 
       await loadCategories()(dispatch);
 
-      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
+      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage('categories', error.message));
     });
   });
 });
@@ -111,7 +111,7 @@ describe('redux actions loadRestaurants', () => {
 
       await loadRestaurants()(dispatch);
 
-      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage(error.message));
+      expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage('restaurants', error.message));
     });
   });
 });

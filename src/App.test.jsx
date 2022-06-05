@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import initialState from '../fixture/initialState';
 import regions from '../fixture/regions';
 import categories from '../fixture/categories';
 import restaurants from '../fixture/restaurants';
@@ -21,11 +22,9 @@ describe('App', () => {
 
   it('레스토랑 지역, 카테고리 목록이 호출된다.', () => {
     useSelector.mockImplementation((selector) => selector({
+      ...initialState,
       regions,
       categories,
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategoryId: null,
     }));
     const { getAllByRole, getByText } = render((<App />));
 
@@ -40,6 +39,7 @@ describe('App', () => {
   describe('지역과 카테고리가 선택되어있으면', () => {
     it('지역, 카테고리, 레스토랑 목록 3가지가 호출된다.', () => {
       useSelector.mockImplementation((selector) => selector({
+        ...initialState,
         regions,
         categories,
         restaurants,

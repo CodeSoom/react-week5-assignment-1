@@ -1,15 +1,4 @@
-const initialState = {
-  selectedCategoryId: null,
-  selectedRegion: null,
-  regions: [],
-  categories: [],
-  restaurants: [],
-  errorMessage: {
-    regoins: null,
-    categories: null,
-    restaurants: null,
-  },
-};
+import initialState from '../../fixture/initialState';
 
 function reducer(state = initialState, action = {}) {
   const { type, payload } = action;
