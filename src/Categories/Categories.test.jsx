@@ -26,11 +26,6 @@ describe('Categories', () => {
     />);
 
     fireEvent.click(screen.getByText('한식'));
-    expect(dispatch).toBeCalledWith({
-      type: 'setCurrentCategoryId',
-      payload: {
-        currentCategoryId: 1,
-      },
-    });
+    expect(dispatch).toBeCalled();
   });
 });
