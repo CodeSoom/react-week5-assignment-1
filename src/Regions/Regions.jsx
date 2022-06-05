@@ -21,6 +21,7 @@ export default function Regions() {
   useEffect(() => {
     dispatch(loadRegions());
   }, []);
+
   return (
     <Buttons
       items={regions}
