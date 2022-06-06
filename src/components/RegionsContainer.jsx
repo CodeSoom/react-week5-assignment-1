@@ -6,15 +6,14 @@ import {
   loadRegions,
   selectRegion,
 } from '../redux/actions';
+import { get } from '../utils';
 
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { selectedRegion, regions, errorMessage } = useSelector((state) => ({
-    selectedRegion: state.selectedRegion,
-    regions: state.regions,
-    errorMessage: state.errorMessage.regions,
-  }));
+  const selectedRegion = useSelector(get('selectedRegion'));
+  const regions = useSelector(get('regions'));
+  const errorMessage = useSelector(get('errorMessage'));
 
   const dispatch = useDispatch();
 
@@ -30,7 +29,7 @@ export default function RegionsContainer() {
     <Regions
       selectedRegion={selectedRegion}
       regions={regions}
-      errorMessage={errorMessage}
+      errorMessage={errorMessage.regions}
       onClick={handleClick}
     />
   );

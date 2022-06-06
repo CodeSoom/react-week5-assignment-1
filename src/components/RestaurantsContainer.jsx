@@ -2,18 +2,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { loadRestaurants } from '../redux/actions';
+import { get } from '../utils';
 
 import Restaurants from './Restaurants';
 
 export default function RestaurantContainer() {
-  const {
-    selectedCategoryId, selectedRegion, restaurants, errorMessage,
-  } = useSelector((state) => ({
-    selectedCategoryId: state.selectedCategoryId,
-    selectedRegion: state.selectedRegion,
-    restaurants: state.restaurants,
-    errorMessage: state.errorMessage.restaurants,
-  }));
+  const selectedCategoryId = useSelector(get('selectedCategoryId'));
+  const selectedRegion = useSelector(get('selectedRegion'));
+  const restaurants = useSelector(get('restaurants'));
+  const errorMessage = useSelector(get('errorMessage'));
 
   const dispatch = useDispatch();
 
@@ -28,6 +25,6 @@ export default function RestaurantContainer() {
   if (!selectedAllCase) return null;
 
   return (
-    <Restaurants restaurants={restaurants} errorMessage={errorMessage} />
+    <Restaurants restaurants={restaurants} errorMessage={errorMessage.restaurants} />
   );
 }
