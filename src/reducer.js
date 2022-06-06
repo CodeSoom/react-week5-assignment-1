@@ -1,6 +1,9 @@
 const initialState = {
   categories: [],
   regions: [],
+  restaurants: [],
+  category: '',
+  region: '',
 };
 
 const defaultReducer = (state) => state;
@@ -24,6 +27,11 @@ const reducers = {
   setCategory: (state, { payload: { category } }) => ({
     ...state,
     category,
+  }),
+
+  setRestaurants: (state, { payload: { restaurants } }) => ({
+    ...state,
+    restaurants,
   }),
 };
 

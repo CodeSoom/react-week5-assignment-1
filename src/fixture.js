@@ -92,4 +92,11 @@ export const REGIONS = [
   },
 ];
 
+export const RESTAURANTS = [
+  {
+    id: 1,
+    name: '앙쳔주가',
+  },
+];
+
 export default {};
