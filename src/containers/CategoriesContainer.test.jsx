@@ -20,9 +20,10 @@ test('CategoriesContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     categories,
+    restaurant,
   }));
 
-  const { getByText } = render(<CategoriesContainer restaurant={restaurant} />);
+  const { getByText } = render(<CategoriesContainer />);
 
   expect(getByText(/한식/)).not.toBeNull();
 

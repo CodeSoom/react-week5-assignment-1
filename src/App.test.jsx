@@ -26,7 +26,7 @@ test('App', () => {
 
   const { queryByText } = render(<App />);
 
-  expect(dispatch).toBeCalledTimes(2);
+  expect(dispatch).toBeCalledTimes(1);
 
   expect(queryByText(/김밥제국/)).toBeNull();
 });

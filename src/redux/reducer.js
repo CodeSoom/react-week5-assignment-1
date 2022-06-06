@@ -10,18 +10,26 @@ const initialState = {
   regions: [],
 };
 
-export default function reducer(state = initialState, action) {
-  if (action.type === 'setRestaurants') {
-    const { restaurants } = action.payload;
-
+const reducers = {
+  setRegions(state, { payload: { regions } }) {
+    return {
+      ...state,
+      regions,
+    };
+  },
+  setCategories(state, { payload: { categories } }) {
+    return {
+      ...state,
+      categories,
+    };
+  },
+  setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
       restaurants,
     };
-  }
-
-  if (action.type === 'changeRestaurantField') {
-    const { name, value } = action.payload;
+  },
+  changeRestaurantField(state, { payload: { name, value } }) {
     return {
       ...state,
       restaurant: {
@@ -29,23 +37,13 @@ export default function reducer(state = initialState, action) {
         [name]: value,
       },
     };
-  }
+  },
+};
 
-  if (action.type === 'setCategories') {
-    const { categories } = action.payload;
-    return {
-      ...state,
-      categories,
-    };
-  }
-
-  if (action.type === 'setRegions') {
-    const { regions } = action.payload;
-    return {
-      ...state,
-      regions,
-    };
-  }
-
+function defaultReducer(state) {
   return state;
+}
+
+export default function reducer(state = initialState, action) {
+  return (reducers[action.type] || defaultReducer)(state, action);
 }

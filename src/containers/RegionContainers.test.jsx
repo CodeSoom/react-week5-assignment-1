@@ -20,9 +20,10 @@ test('RegionsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions,
+    restaurant,
   }));
 
-  const { getByText } = render(<RegionsContainer restaurant={restaurant} />);
+  const { getByText } = render(<RegionsContainer />);
 
   expect(getByText(/서울/)).not.toBeNull();
 

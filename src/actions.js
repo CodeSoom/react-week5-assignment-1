@@ -47,23 +47,27 @@ export function setRegions(regions) {
   };
 }
 
-export function loadCategories() {
+export function loadInitialData() {
   return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
+
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
 }
 
-export function loadRestaurants(regionName, categoryId) {
-  return async (dispatch) => {
-    const restaurants = await fetchRestaurants(regionName, categoryId);
-    dispatch(setRestaurants(restaurants));
-  };
-}
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const {
+      restaurant: { region, categoryId },
+    } = getState();
 
-export function loadRegions() {
-  return async (dispatch) => {
-    const regions = await fetchRegions();
-    dispatch(setRegions(regions));
+    if (!region || !categoryId) {
+      return;
+    }
+
+    const restaurants = await fetchRestaurants(region, categoryId);
+    dispatch(setRestaurants(restaurants));
   };
 }
