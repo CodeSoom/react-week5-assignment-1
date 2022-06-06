@@ -1,6 +1,6 @@
-export default function Regions({ regions, selectedRegion, updateSelectedRegions }) {
+export default function Regions({ regions, selectedRegion, updateSelectedRegion }) {
   const handleClickButton = ({ target: { name } }) => {
-    updateSelectedRegions(name);
+    updateSelectedRegion(name);
   };
 
   if (!regions || regions.length === 0) {

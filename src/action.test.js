@@ -42,7 +42,7 @@ describe('actions', () => {
     it('setRestaurants를 호출한다', async () => {
       const store = mockStore({});
 
-      await store.dispatch(loadRestaurants());
+      await store.dispatch(loadRestaurants('서울', '양식'));
       const actions = store.getActions();
 
       expect(actions[0].payload.restaurants).toEqual(RESTAURANTS);
