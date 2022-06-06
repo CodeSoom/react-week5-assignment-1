@@ -32,25 +32,31 @@ describe('reducer', () => {
 
   describe('setCategory', () => {
     const previousState = {
-      categoryId: 0,
+      category: {
+        id: 0,
+        name: '',
+      },
     };
 
     it('선택된 카테고리를 저장한다', () => {
-      const { categoryId } = reducer(previousState, setCategory(1));
+      const { categoryId } = reducer(previousState, setCategory(CATEGORIES[0]));
 
-      expect(categoryId).toBe(1);
+      expect(categoryId).toEqual(CATEGORIES[0]);
     });
   });
 
   describe('setRegion', () => {
     const previousState = {
-      regions: '',
+      region: {
+        id: 0,
+        name: '',
+      },
     };
 
     it('선택된 지역을 저장한다', () => {
-      const { region } = reducer(previousState, setRegion('서울'));
+      const { region } = reducer(previousState, setRegion(REGIONS[0]));
 
-      expect(region).toBe('서울');
+      expect(region).toEqual(REGIONS[0]);
     });
   });
 });
