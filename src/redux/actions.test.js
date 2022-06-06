@@ -85,6 +85,13 @@ describe('redux actions loadCategories', () => {
 });
 
 describe('redux actions loadRestaurants', () => {
+  const getState = jest.fn();
+
+  getState.mockImplementation(() => ({
+    selectedRegion: regions[0].name,
+    selectedCategoryId: categories[0].id,
+  }));
+
   context('호출이 성공하면', () => {
     beforeEach(() => {
       fetchRestaurants.mockResolvedValue(restaurants);
@@ -93,7 +100,7 @@ describe('redux actions loadRestaurants', () => {
     it('setRestaurants가 호출된다.', async () => {
       const dispatch = jest.fn();
 
-      await loadRestaurants(regions[0].name, categories[0].id)(dispatch);
+      await loadRestaurants()(dispatch, getState);
 
       expect(dispatch).toHaveBeenCalledWith(setRestaurants(restaurants));
     });
@@ -109,7 +116,7 @@ describe('redux actions loadRestaurants', () => {
     it('setErrorMessage가 호출된다.', async () => {
       const dispatch = jest.fn();
 
-      await loadRestaurants()(dispatch);
+      await loadRestaurants()(dispatch, getState);
 
       expect(dispatch).toHaveBeenLastCalledWith(setErrorMessage('restaurants', error.message));
     });
