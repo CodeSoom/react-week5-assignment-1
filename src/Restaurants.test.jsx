@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
+
 import { RESTAURANTS } from './fixture';
+
 import Restaurants from './Restaurants';
 
 describe('Restaurants', () => {
