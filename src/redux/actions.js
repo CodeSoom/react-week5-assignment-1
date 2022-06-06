@@ -80,8 +80,13 @@ export function loadCategories() {
   };
 }
 
-export function loadRestaurants(region, categoryId) {
-  return async (dispatch) => {
+export function loadRestaurants() {
+  return async (dispatch, getState) => {
+    const {
+      selectedRegion: region,
+      selectedCategoryId: categoryId,
+    } = getState();
+
     try {
       const restaurants = await fetchRestaurants(region, categoryId);
 

@@ -21,7 +21,7 @@ export default function RestaurantContainer() {
 
   useEffect(() => {
     if (selectedAllCase) {
-      dispatch(loadRestaurants(selectedRegion, selectedCategoryId));
+      dispatch(loadRestaurants());
     }
   }, [selectedCategoryId, selectedRegion]);
 
