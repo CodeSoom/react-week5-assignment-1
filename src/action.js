@@ -1,52 +1,10 @@
-import { fetchCategories, fetchRegions } from './services/api';
-
-export function setCategories(categories) {
+export default function loadInitiaData() {
   return {
-    type: 'setCategories',
-    payload: {
-      categories,
-    },
+    type: 'loadInitiaData',
   };
 }
 
-export function setRegions(regions) {
-  return {
-    type: 'setRegions',
-    payload: {
-      regions,
-    },
-  };
+// TODO delete this!
+export function xxx() {
+  return {};
 }
-
-export function setCategory(category) {
-  return {
-    type: 'setCategory',
-    payload: {
-      category,
-    },
-  };
-}
-export function setRegion(region) {
-  return {
-    type: 'setRegion',
-    payload: {
-      region,
-    },
-  };
-}
-
-export function loadCategories() {
-  return async (dispatch) => {
-    const categories = await fetchCategories();
-    dispatch(setCategories(categories));
-  };
-}
-
-export function loadRegions() {
-  return async (dispatch) => {
-    const regions = await fetchRegions();
-    dispatch(setRegions(regions));
-  };
-}
-
-export default {};

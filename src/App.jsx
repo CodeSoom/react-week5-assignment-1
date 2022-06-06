@@ -5,6 +5,10 @@
  * 3. 식당 목록 - Restaurants <- API (with region, category)
  */
 
+import { useEffect } from 'react';
+
+import { loadInitiaData } from './action';
+
 function RegionsContainer() {
   return null;
 }
@@ -16,6 +20,9 @@ function RestaurntsContainer() {
 }
 
 export default function App() {
+  useEffect(() => {
+    dispatch(loadInitiaData());
+  });
   return (
     <>
       <RegionsContainer />
