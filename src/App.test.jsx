@@ -13,6 +13,7 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     categories: CATEGORIES,
   }));
