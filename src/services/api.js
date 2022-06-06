@@ -10,9 +10,7 @@ export async function fetchRegions() {
   return regions.json();
 }
 
-export async function fetchRestaurants(category, regions) {
-  const restaurants = await fetch(GET_RESTAURANTS(category, regions));
+export async function fetchRestaurants(region, categoryId) {
+  const restaurants = await fetch(GET_RESTAURANTS(region, categoryId));
   return restaurants.json();
 }
-
-export default {};

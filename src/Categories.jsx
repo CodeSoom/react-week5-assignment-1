@@ -1,6 +1,6 @@
-export default function Categories({ categories, selectedCategory, updateSelectedCategory }) {
-  const handleClickButton = ({ target: { name } }) => {
-    updateSelectedCategory(name);
+export default function Categories({ categories, selectedCategoryId, updateSelectedCategory }) {
+  const handleClickButton = (id) => {
+    updateSelectedCategory(id);
   };
 
   if (!categories || categories.length === 0) { return <h2>카테고리가 존재하지 않습니다</h2>; }
@@ -13,9 +13,9 @@ export default function Categories({ categories, selectedCategory, updateSelecte
             <button
               type="button"
               name={name}
-              onClick={handleClickButton}
+              onClick={() => handleClickButton(id)}
             >
-              {`${name}${selectedCategory === name ? '(V)' : ''}`}
+              {`${name}${selectedCategoryId === id ? '(V)' : ''}`}
             </button>
           </li>
         ))}

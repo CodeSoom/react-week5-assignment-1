@@ -2,10 +2,11 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { loadInitiaData, loadCategories, loadRegions } from './action';
+import { loadCategories, loadRegions } from './action';
 
 import CategoriesContainer from './CategoriesContainer';
 import RegionsContainer from './RegionsContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 /**
  * 0. 지역, 분류 목록을 읽기
@@ -26,7 +27,7 @@ export default function App() {
     <>
       <RegionsContainer />
       <CategoriesContainer />
-      {/* <RestaurntsContainer /> */}
+      <RestaurantsContainer />
     </>
   );
 }

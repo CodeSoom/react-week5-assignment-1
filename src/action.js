@@ -18,14 +18,15 @@ export function setRegions(regions) {
   };
 }
 
-export function setCategory(category) {
+export function setCategory(categoryId) {
   return {
     type: 'setCategory',
     payload: {
-      category,
+      categoryId,
     },
   };
 }
+
 export function setRegion(region) {
   return {
     type: 'setRegion',
@@ -58,9 +59,9 @@ export function loadRegions() {
   };
 }
 
-export function loadRestaurants(category, regions) {
+export function loadRestaurants(categoryId, region) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants(category, regions);
+    const restaurants = await fetchRestaurants(categoryId, region);
     dispatch(setRestaurants(restaurants));
   };
 }

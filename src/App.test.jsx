@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { CATEGORIES } from './fixture';
+import { CATEGORIES, REGIONS } from './fixture';
 
 import App from './App';
 
@@ -16,6 +16,10 @@ describe('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     categories: CATEGORIES,
+    regions: REGIONS,
+    categoryId: 0,
+    region: '',
+    restaurants: [],
   }));
 
   it('App', () => {

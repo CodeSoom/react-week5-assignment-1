@@ -7,11 +7,11 @@ import { CATEGORIES } from './fixture';
 const updateSelectedCategory = jest.fn();
 
 describe('Categories', () => {
-  const renderComponent = (categories, selectedCategory) => render(
+  const renderComponent = (categories, selectedCategoryId) => render(
     <Categories
       categories={categories}
       updateSelectedCategory={updateSelectedCategory}
-      selectedCategory={selectedCategory}
+      selectedCategoryId={selectedCategoryId}
     />,
   );
 
@@ -31,7 +31,7 @@ describe('Categories', () => {
     });
 
     it('선택된 카테고리에는 V표시가 붙는다', () => {
-      const { container } = renderComponent(CATEGORIES, '한식');
+      const { container } = renderComponent(CATEGORIES, 1);
 
       expect(container).toHaveTextContent('한식(V)');
     });
