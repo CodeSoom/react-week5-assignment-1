@@ -2,14 +2,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { loadCategories, selectCategoryId } from '../redux/actions';
+import { get } from '../utils';
 import Categories from './Categories';
 
 export default function CategoriesContainer() {
-  const { selectedCategoryId, categories, errorMessage } = useSelector((state) => ({
-    selectedCategoryId: state.selectedCategoryId,
-    categories: state.categories,
-    errorMessage: state.errorMessage.categories,
-  }));
+  const selectedCategoryId = useSelector(get('selectedCategoryId'));
+  const categories = useSelector(get('categories'));
+  const errorMessage = useSelector(get('errorMessage'));
 
   const dispatch = useDispatch();
 
@@ -24,7 +23,7 @@ export default function CategoriesContainer() {
   return (
     <Categories
       categories={categories}
-      errorMessage={errorMessage}
+      errorMessage={errorMessage.categories}
       selectedId={selectedCategoryId}
       onClick={handleClick}
     />
