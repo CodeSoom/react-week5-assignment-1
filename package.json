@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "CodeSoom restaurants assignment",
   "main": "index.js",
+  "jest":{
+    "clearMocks": true
+  },
   "scripts": {
     "start": "webpack serve --mode development",
     "test:unit": "jest",
