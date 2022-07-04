@@ -3,11 +3,11 @@ import { fireEvent, render } from '@testing-library/react';
 import App from './App';
 
 describe('<App/>', () => {
-  const renderApp = () => ((
-    render(<App />)
-  ));
-
   const handleClick = jest.fn();
+
+  const renderApp = () => ((
+    render(<App onClick={handleClick} />)
+  ));
 
   it('지역 목록이 보임.', () => {
     const { getByText } = renderApp();
@@ -26,10 +26,10 @@ describe('<App/>', () => {
   });
 
   describe('버튼을 클릭할 때', () => {
-    it('handleClcik 함수 호출됨', () => {
+    it('handleClick 함수 호출됨', () => {
       const { getByRole } = renderApp();
 
-      fireEvent.click(getByRole('button'));
+      fireEvent.click(getByRole('button', { name: '한식' }));
 
       expect(handleClick).toBeCalled();
     });
