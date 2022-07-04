@@ -3,9 +3,10 @@ const reducers = {
     ...state,
     categories: action.payload.categories,
   }),
-  setRegions: (state, action) => {
-
-  },
+  setRegions: (state, action) => ({
+    ...state,
+    regions: action.payload.regions,
+  }),
 };
 
 export default reducers;

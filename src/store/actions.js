@@ -7,7 +7,7 @@ export function setCategories(categories) {
 
 export function setRegions(regions) {
   return {
-    type: 'regions',
+    type: 'setRegions',
     payload: { regions },
   };
 }

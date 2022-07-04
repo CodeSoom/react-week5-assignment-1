@@ -1,7 +1,8 @@
 import reducers from './reducerHandler';
 
-const initailState = {
-
+export const initailState = {
+  categories: [],
+  regions: [],
 };
 
 export default function reducer(state = initailState, action) {
