@@ -10,7 +10,7 @@ describe('Category', () => {
 
     const { container } = render((
       <Category
-        categories={categories}
+        name={categories.name}
       />
     ));
 

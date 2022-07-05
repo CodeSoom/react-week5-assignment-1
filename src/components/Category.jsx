@@ -1,5 +1,9 @@
-import React from 'react';
-
-export default function Category() {
-  return <div>Category</div>;
+export default function Category({ name }) {
+  return (
+    <li>
+      <button type="button">
+        {name}
+      </button>
+    </li>
+  );
 }
