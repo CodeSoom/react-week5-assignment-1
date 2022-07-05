@@ -16,7 +16,7 @@ describe('App', () => {
     <App />
   ));
 
-  context('api 호출전', () => {
+  context('loading 중일때', () => {
     it('로딩중입니다! 가 렌더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
         isLoading: true,
@@ -28,7 +28,7 @@ describe('App', () => {
     });
   });
 
-  context('api 호출후', () => {
+  context('loading이 끝난후', () => {
     it('regions가 렌더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
