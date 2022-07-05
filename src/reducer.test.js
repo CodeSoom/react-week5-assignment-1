@@ -17,9 +17,11 @@ describe('reducer', () => {
 
   context('state가 있는경우', () => {
     describe('getRegions', () => {
-      const state = reducer({ regions: [] }, getRegions(regions));
+      it('regions를 얻는다', () => {
+        const state = reducer({ regions: [] }, getRegions(regions));
 
-      expect(state.regions).toBe(regions);
+        expect(state.regions).toBe(regions);
+      });
     });
   });
 });
