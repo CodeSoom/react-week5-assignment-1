@@ -19,7 +19,7 @@ describe('reducer', () => {
 
   context('state가 있는경우', () => {
     describe('getRegions', () => {
-      it('regions를 얻는다', () => {
+      it('regions를 return 한다', () => {
         const state = reducer({ regions: [] }, getRegions(regions));
 
         expect(state.regions).toBe(regions);
@@ -27,7 +27,7 @@ describe('reducer', () => {
     });
 
     describe('getCategories', () => {
-      it('categories를 얻는다', () => {
+      it('categories를 return 한다', () => {
         const state = reducer({ categories: [] }, getCategories(categories));
 
         expect(state.categories).toBe(categories);
