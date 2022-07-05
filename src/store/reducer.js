@@ -2,6 +2,6 @@ export const initialState = {
   regions: [],
 };
 
-const reducer = () => ({});
+const reducer = (state = initialState) => state;
 
 export default reducer;
