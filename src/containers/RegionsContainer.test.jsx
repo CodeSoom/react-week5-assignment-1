@@ -11,7 +11,7 @@ import REGIONS from '../fixtures/regions';
 jest.mock('react-redux');
 
 describe('<RegionsContainer />', () => {
-  given('regions', () => REGIONS);
+  given('regions', () => []);
 
   const renderRegionsContainer = () => render((<RegionsContainer />));
 
@@ -21,9 +21,9 @@ describe('<RegionsContainer />', () => {
 
   context('without regions', () => {
     it('nothing renders', () => {
-      const { queryByText } = renderRegionsContainer();
+      const { queryAllByRole } = renderRegionsContainer();
 
-      expect(queryByText('서울')).toBeNull();
+      expect(queryAllByRole('listitem')).toHaveLength(0);
     });
   });
 
