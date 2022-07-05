@@ -1,40 +1,76 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { regions, categories, restaurants } from '../__fixture__/restaurantsInfo';
+import { fetchCategories, fetchRegions, fetchRestaurants } from './service/api';
+
+import isEmptyObj from './utils/IsEmptyObj';
 
 export default function App() {
-  // Todo: __fixture__에서 가져온 목록들을 api server에서 받아온 data로 대체
-  const [selectedRegion, setSelectedRegion] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [regions, setRegions] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedRegion, setSelectedRegion] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState({});
+  const [restaurants, setRestaurants] = useState([]);
 
-  const handleClick = (name, setSelected) => {
-    setSelected(name);
+  const handleClick = (choiceButton, setSelected) => {
+    setSelected(choiceButton);
   };
+
+  const loadCategories = async () => {
+    const categoriesData = await fetchCategories();
+
+    setCategories(categoriesData);
+  };
+
+  const loadRegions = async () => {
+    const regionsData = await fetchRegions();
+
+    setRegions(regionsData);
+  };
+
+  const loadRestaurants = async () => {
+    const restaurantsData = await fetchRestaurants(selectedRegion.name, selectedCategory.id);
+
+    setRestaurants(restaurantsData);
+  };
+
+  useEffect(() => {
+    loadCategories();
+    loadRegions();
+  }, []);
+
+  useEffect(() => {
+    if (!isEmptyObj(selectedRegion) && !isEmptyObj(selectedCategory)) {
+      loadRestaurants();
+    }
+  }, [selectedRegion, selectedCategory]);
 
   return (
     <>
       <ul>
-        {regions.map(({ name, id }) => (
-          <li key={id}>
-            <button type="button" onClick={() => handleClick(name, setSelectedRegion)}>
-              {selectedRegion !== name ? (`${name}`) : (`${name}(V)`)}
+        {regions.map((region) => (
+          <li key={regions.id}>
+            <button type="button" onClick={() => handleClick(region, setSelectedRegion)}>
+              {selectedRegion.id !== region.id ? (`${region.name}`) : (`${region.name}(V)`)}
             </button>
           </li>
         ))}
       </ul>
       <ul>
-        {categories.map(({ name, id }) => (
-          <li key={id}>
-            <button type="button" onClick={() => handleClick(name, setSelectedCategory)}>
-              {selectedCategory !== name ? (`${name}`) : (`${name}(V)`)}
+        {categories.map((category) => (
+          <li key={category.id}>
+            <button type="button" onClick={() => handleClick(category, setSelectedCategory)}>
+              {selectedCategory.id !== category.id ? (`${category.name}`) : (`${category.name}(V)`)}
             </button>
           </li>
         ))}
       </ul>
-      <ul>
-        {/* Todo: 불러올 restaurants가 없을 경우에 대한 예외 케이스 추가 */}
-        {restaurants.map(({ name, id }) => (<li key={id}>{name}</li>))}
-      </ul>
+      {restaurants.length !== 0 ? (
+        <ul>
+          {restaurants.map((test) => (<li key={test.id}>{test.name}</li>))}
+        </ul>
+      ) : (
+        <p>조건에 해당하는 식당이 없습니다.</p>
+      )}
     </>
   );
 }
