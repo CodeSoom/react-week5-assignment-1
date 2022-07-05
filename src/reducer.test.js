@@ -1,5 +1,13 @@
 import reducer from './reducer';
 
+import {
+  selectCategory,
+  selectRegion,
+  setCategories,
+  setRegions,
+  setRestaurants,
+} from './actions';
+
 import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 import restaurants from '../fixtures/restaurants';
@@ -43,12 +51,7 @@ describe('reducer', () => {
         {
           regions: [],
         },
-        {
-          type: 'setRegions',
-          payload: {
-            regions,
-          },
-        },
+        setRegions(regions),
       );
 
       expect(state.regions).toEqual(regions);
@@ -61,12 +64,7 @@ describe('reducer', () => {
         {
           categories: [],
         },
-        {
-          type: 'setCategories',
-          payload: {
-            categories,
-          },
-        },
+        setCategories(categories),
       );
 
       expect(state.categories).toEqual(categories);
@@ -79,12 +77,7 @@ describe('reducer', () => {
         {
           restaurants: [],
         },
-        {
-          type: 'setRestaurants',
-          payload: {
-            restaurants,
-          },
-        },
+        setRestaurants(restaurants),
       );
 
       expect(state.restaurants).toEqual(restaurants);
@@ -97,12 +90,7 @@ describe('reducer', () => {
         {
           selectedRegion: null,
         },
-        {
-          type: 'selectRegion',
-          payload: {
-            region: regions[1],
-          },
-        },
+        selectRegion(regions[1]),
       );
 
       expect(state.selectedRegion).toEqual(regions[1]);
@@ -115,12 +103,7 @@ describe('reducer', () => {
         {
           selectedCategory: null,
         },
-        {
-          type: 'selectCategory',
-          payload: {
-            category: categories[3],
-          },
-        },
+        selectCategory(categories[3]),
       );
 
       expect(state.selectedCategory).toEqual(categories[3]);
