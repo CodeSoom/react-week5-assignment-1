@@ -108,4 +108,22 @@ describe('reducer', () => {
       expect(state.selectedRegion).toEqual(regions[1]);
     });
   });
+
+  describe('selectCategory', () => {
+    it('changes selectedCategory', () => {
+      const state = reducer(
+        {
+          selectedCategory: null,
+        },
+        {
+          type: 'selectCategory',
+          payload: {
+            category: categories[3],
+          },
+        },
+      );
+
+      expect(state.selectedCategory).toEqual(categories[3]);
+    });
+  });
 });

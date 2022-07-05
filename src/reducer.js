@@ -43,6 +43,15 @@ const reducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'selectCategory') {
+    const { category } = action.payload;
+
+    return {
+      ...state,
+      selectedCategory: category,
+    };
+  }
+
   return state;
 };
 
