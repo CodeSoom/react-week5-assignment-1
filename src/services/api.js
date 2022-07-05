@@ -1,5 +1,7 @@
+const baseUrl = 'https://eatgo-customer-api.ahastudio.com';
+
 export async function fetchRegions() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/regions';
+  const url = `${baseUrl}/regions`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -7,7 +9,7 @@ export async function fetchRegions() {
 }
 
 export async function fetchCategories() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const url = `${baseUrl}/categories`;
   const response = await fetch(url);
   const data = await response.json();
 
