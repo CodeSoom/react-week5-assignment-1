@@ -1,9 +1,12 @@
 const initialState = {
-
+  regions: [],
 };
 
 const reducerAction = {
-
+  getRegions: (state, action) => ({
+    ...state,
+    regions: action.payload.regions,
+  }),
 };
 
 export default function reducer(state = initialState, action) {
