@@ -1,5 +1,7 @@
 import reducer from './reducer';
 
+import regions from '../fixtures/regions';
+
 describe('reducer', () => {
   context('without state', () => {
     const initialState = {
@@ -30,6 +32,24 @@ describe('reducer', () => {
       );
 
       expect(state).toEqual({ restaurants: [] });
+    });
+  });
+
+  describe('setRegions', () => {
+    it('changes regions', () => {
+      const state = reducer(
+        {
+          regions: [],
+        },
+        {
+          type: 'setRegions',
+          payload: {
+            regions,
+          },
+        },
+      );
+
+      expect(state.regions).toEqual(regions);
     });
   });
 });
