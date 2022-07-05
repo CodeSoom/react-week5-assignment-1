@@ -26,7 +26,7 @@ describe('reducer', () => {
     });
 
     describe('getCategories', () => {
-      it('getCategories를 얻는다', () => {
+      it('categories를 얻는다', () => {
         const state = reducer({ categories: [] }, getCategories(categories));
 
         expect(state.categories).toBe(categories);
