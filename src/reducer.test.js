@@ -1,5 +1,6 @@
 import reducer from './reducer';
 
+import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 
 describe('reducer', () => {
@@ -50,6 +51,24 @@ describe('reducer', () => {
       );
 
       expect(state.regions).toEqual(regions);
+    });
+  });
+
+  describe('setCategories', () => {
+    it('changes categories', () => {
+      const state = reducer(
+        {
+          categories: [],
+        },
+        {
+          type: 'setCategories',
+          payload: {
+            categories,
+          },
+        },
+      );
+
+      expect(state.categories).toEqual(categories);
     });
   });
 });
