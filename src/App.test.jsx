@@ -13,7 +13,6 @@ import {
 import App from './App';
 
 jest.mock('react-redux');
-jest.mock('./services/api');
 jest.mock('./store/async-actions');
 
 describe('<App />', () => {
