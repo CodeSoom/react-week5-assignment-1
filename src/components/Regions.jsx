@@ -1,3 +1,9 @@
-export default function Regions() {
-  return <div>Regions</div>;
+export default function Regions({ name }) {
+  return (
+    <li>
+      <button type="button">
+        {name}
+      </button>
+    </li>
+  );
 }
