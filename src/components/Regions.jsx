@@ -1,9 +1,15 @@
-export default function Regions({ name }) {
+export default function Regions({ regions }) {
   return (
-    <li>
-      <button type="button">
-        {name}
-      </button>
-    </li>
+    <ul>
+      {
+        regions.map((region) => (
+          <li key={region.id}>
+            <button type="button">
+              {region.name}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
   );
 }
