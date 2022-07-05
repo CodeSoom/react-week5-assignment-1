@@ -17,9 +17,11 @@ describe('reducer', () => {
 
   context('with state', () => {
     describe('undefined action', () => {
-      const state = reducer(initialState, undefined);
+      it('returns initialState', () => {
+        const state = reducer(initialState, undefined);
 
-      expect(state).toBe(initialState);
+        expect(state).toBe(initialState);
+      });
     });
 
     describe('setRegions', () => {
