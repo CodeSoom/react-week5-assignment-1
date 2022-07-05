@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   context('without state', () => {
@@ -69,6 +70,24 @@ describe('reducer', () => {
       );
 
       expect(state.categories).toEqual(categories);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('changes restaurants', () => {
+      const state = reducer(
+        {
+          restaurants: [],
+        },
+        {
+          type: 'setRestaurants',
+          payload: {
+            restaurants,
+          },
+        },
+      );
+
+      expect(state.restaurants).toEqual(restaurants);
     });
   });
 });
