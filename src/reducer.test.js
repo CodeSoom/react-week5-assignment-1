@@ -1,6 +1,6 @@
-import { getRestaurantRegions } from './actions';
+import { getRegions } from './actions';
 
-import { restaurantRegions } from './fixtures/restaurant';
+import { regions } from './fixtures/restaurant';
 
 import reducer from './reducer';
 
@@ -10,16 +10,16 @@ describe('reducer', () => {
       const state = reducer(undefined, { });
 
       expect(state).toEqual({
-        restaurantRegions: [],
+        regions: [],
       });
     });
   });
 
   context('state가 있는경우', () => {
-    describe('getRestaurantRegions', () => {
-      const state = reducer({ restaurantRegions: [] }, getRestaurantRegions(restaurantRegions));
+    describe('getRegions', () => {
+      const state = reducer({ regions: [] }, getRegions(regions));
 
-      expect(state.restaurantRegions).toBe(restaurantRegions);
+      expect(state.regions).toBe(regions);
     });
   });
 });
