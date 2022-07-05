@@ -16,6 +16,12 @@ describe('reducer', () => {
   });
 
   context('with state', () => {
+    describe('undefined action', () => {
+      const state = reducer(initialState, undefined);
+
+      expect(state).toBe(initialState);
+    });
+
     describe('setRegions', () => {
       it('update regions', () => {
         const state = reducer(initialState, setRegions(REGIONS));
