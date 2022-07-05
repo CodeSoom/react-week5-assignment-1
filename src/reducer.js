@@ -34,6 +34,15 @@ const reducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'selectRegion') {
+    const { region } = action.payload;
+
+    return {
+      ...state,
+      selectedRegion: region,
+    };
+  }
+
   return state;
 };
 

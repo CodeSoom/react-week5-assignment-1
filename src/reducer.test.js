@@ -90,4 +90,22 @@ describe('reducer', () => {
       expect(state.restaurants).toEqual(restaurants);
     });
   });
+
+  describe('selectRegion', () => {
+    it('changes selectedRegion', () => {
+      const state = reducer(
+        {
+          selectedRegion: null,
+        },
+        {
+          type: 'selectRegion',
+          payload: {
+            region: regions[1],
+          },
+        },
+      );
+
+      expect(state.selectedRegion).toEqual(regions[1]);
+    });
+  });
 });
