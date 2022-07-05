@@ -10,6 +10,7 @@ describe('reducer', () => {
       const state = reducer(undefined, { });
 
       expect(state).toEqual({
+        isLoading: true,
         regions: [],
         categories: [],
       });
