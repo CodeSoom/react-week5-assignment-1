@@ -1,11 +1,17 @@
 const initialState = {
   regions: [],
+  categories: [],
 };
 
 const reducerAction = {
   getRegions: (state, action) => ({
     ...state,
     regions: action.payload.regions,
+  }),
+
+  getCategories: (state, action) => ({
+    ...state,
+    categories: action.payload.categories,
   }),
 };
 
