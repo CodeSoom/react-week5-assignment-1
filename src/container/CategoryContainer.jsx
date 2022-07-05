@@ -1,5 +1,14 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+
+import Category from '../components/Category';
 
 export default function CategoryContainer() {
-  return <div>CategoryContainer</div>;
+  const { categories } = useSelector((state) => ({
+    categories: state.categories,
+  }));
+  return (
+    <Category
+      categories={categories}
+    />
+  );
 }
