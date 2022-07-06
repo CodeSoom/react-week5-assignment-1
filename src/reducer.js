@@ -7,13 +7,11 @@ const initialState = {
 const reducerAction = {
   getRegions: (state, action) => ({
     ...state,
-    isLoading: false,
     regions: action.payload.regions,
   }),
 
   getCategories: (state, action) => ({
     ...state,
-    isLoading: false,
     categories: action.payload.categories,
   }),
 };
