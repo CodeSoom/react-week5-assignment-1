@@ -1,8 +1,10 @@
+import { regionsSample } from './sampleData';
+
 export const initialState = {
   regions: [],
-  restorants: [],
+  categories: [],
   region: '',
-  restorant: '',
+  category: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,11 +13,7 @@ const reducer = (state = initialState, action) => {
     // 임시 데이터
     return {
       ...state,
-      regions: [
-        { id: 0, name: '서울' },
-        { id: 1, name: '대구' },
-        { id: 2, name: '부산' },
-      ],
+      regions: regionsSample,
     };
   }
 
