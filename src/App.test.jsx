@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import { regions } from './fixtures/restaurant';
+import { regions, categories } from './fixtures/restaurant';
 
 jest.mock('react-redux');
 
@@ -37,6 +37,16 @@ describe('App', () => {
       const { getByText } = renderApp();
 
       expect(getByText(regions[0].name)).not.toBeNull();
+    });
+
+    it('categories가 렌더링된다', () => {
+      useSelector.mockImplementation((selector) => selector({
+        categories,
+      }));
+
+      const { getByText } = renderApp();
+
+      expect(getByText(categories[0].name)).not.toBeNull();
     });
   });
 });
