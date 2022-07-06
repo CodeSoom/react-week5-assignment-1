@@ -11,8 +11,6 @@ import REGIONS from '../fixtures/regions';
 jest.mock('react-redux');
 
 describe('<RegionsContainer />', () => {
-  given('regions', () => []);
-
   const renderRegionsContainer = () => render((<RegionsContainer />));
 
   useSelector.mockImplementation((selector) => selector({
@@ -20,6 +18,8 @@ describe('<RegionsContainer />', () => {
   }));
 
   context('without regions', () => {
+    given('regions', () => []);
+
     it('nothing renders', () => {
       const { queryAllByRole } = renderRegionsContainer();
 
@@ -28,14 +28,14 @@ describe('<RegionsContainer />', () => {
   });
 
   context('with regions', () => {
-    it('renders regions', () => {
-      given('regions', () => REGIONS);
+    given('regions', () => REGIONS);
 
+    it('renders regions', () => {
       const { container } = renderRegionsContainer();
 
-      const region = given.regions[0];
-
-      expect(container).toHaveTextContent(region.name);
+      given.regions.forEach((region) => {
+        expect(container).toHaveTextContent(region.name);
+      });
     });
   });
 });
