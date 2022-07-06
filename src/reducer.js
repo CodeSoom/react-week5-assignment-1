@@ -19,6 +19,14 @@ const reducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'setRegion') {
+    const { region } = action.payload;
+    return {
+      ...state,
+      region,
+    };
+  }
+
   return state;
 };
 
