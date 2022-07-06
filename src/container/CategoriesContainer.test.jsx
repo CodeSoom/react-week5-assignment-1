@@ -4,14 +4,13 @@ import { useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
+import categories from '../fixtures/categories';
+
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    categories: [
-      { id: 1, name: '한식' },
-      { id: 2, name: '양식' },
-    ],
+    categories,
   }));
 
   it('카테고리 목록이 보여집니다.', () => {
