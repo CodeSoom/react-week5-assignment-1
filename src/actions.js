@@ -1,6 +1,14 @@
-export const getRegions = () => ({ type: 'getRegions' });
+export const ACTION_KEYS = {
+  getRegions: 'getRegions',
+  setRegion: 'setRegion',
+  getCategories: 'getCategories',
+  setCategory: 'setCategory',
+};
 
-export const setRegion = (region) => ({ type: 'setRegion', payload: { region } });
+export const getRegions = () => ({ type: ACTION_KEYS.getRegions });
 
-// TODO : lint 해결용 임시 callback
-export const xx = () => { };
+export const setRegion = (region) => ({ type: ACTION_KEYS.setRegion, payload: { region } });
+
+export const getCategories = () => ({ type: ACTION_KEYS.getCategories });
+
+export const setCategory = (category) => ({ type: ACTION_KEYS.setCategory, payload: { category } });
