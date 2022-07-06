@@ -8,7 +8,7 @@ describe('<Category/>', () => {
   const categoryNames = categories.map((region) => region.name);
 
   const renderCategory = () => ((
-    render(<Category />)
+    render(<Category categories={categories} />)
   ));
 
   it('카테고리 목록이 보임.', () => {
