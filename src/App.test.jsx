@@ -14,20 +14,16 @@ describe('<App/>', () => {
 
   it('지역 목록이 보임.', () => {
     const { getByText } = renderApp();
-    setTimeout(() => {
-      regionNames.forEach(((name) => {
-        expect(getByText(name)).not.toBeNull();
-      }));
-    }, 100);
+    regionNames.forEach((async (name) => {
+      await expect(getByText(name)).not.toBeNull();
+    }));
   });
 
   it('카테고리 목록이 보임.', () => {
     const { getByText } = renderApp();
-    setTimeout(() => {
-      categoryNames.forEach(((name) => {
-        expect(getByText(name)).not.toBeNull();
-      }));
-    }, 100);
+    categoryNames.forEach((async (name) => {
+      await expect(getByText(name)).not.toBeNull();
+    }));
   });
 
   it('선택된 버튼에 V표시가 보임', () => {
