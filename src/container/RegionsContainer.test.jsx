@@ -2,16 +2,15 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import regions from '../fixtures/regions';
+
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '부산' },
-      { id: 2, name: '대구' },
-    ],
+    regions,
   }));
 
   it('지역 목록이 보여집니다.', () => {
