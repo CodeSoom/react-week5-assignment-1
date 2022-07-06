@@ -5,6 +5,11 @@ const initialState = {
 };
 
 const reducerAction = {
+  setIsLoading: (state, action) => ({
+    ...state,
+    isLoading: action.payload.isLoading,
+  }),
+
   getRegions: (state, action) => ({
     ...state,
     regions: action.payload.regions,
