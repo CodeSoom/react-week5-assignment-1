@@ -2,44 +2,41 @@ import { fireEvent, render } from '@testing-library/react';
 
 import App from './App';
 
+import { regions, categories } from '../__fixture__/restaurantsInfo';
+
 describe('<App/>', () => {
-  const handleClick = jest.fn();
+  const regionNames = regions.map((region) => region.name);
+  const categoryNames = categories.map((category) => category.name);
 
   const renderApp = () => ((
-    render(<App onClick={handleClick} />)
+    render(<App />)
   ));
 
   it('지역 목록이 보임.', () => {
     const { getByText } = renderApp();
-
-    const regions = ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'];
-
-    regions.map((region) => expect(getByText(`${region}`)).toBeInTheDocument());
+    setTimeout(() => {
+      regionNames.forEach(((name) => {
+        expect(getByText(name)).not.toBeNull();
+      }));
+    }, 100);
   });
 
   it('카테고리 목록이 보임.', () => {
     const { getByText } = renderApp();
-
-    const categories = ['한식', '중식', '일식', '양식', '분식'];
-
-    categories.map((category) => expect(getByText(`${category}`)).toBeInTheDocument());
+    setTimeout(() => {
+      categoryNames.forEach(((name) => {
+        expect(getByText(name)).not.toBeNull();
+      }));
+    }, 100);
   });
 
-  describe('버튼을 클릭할 때', () => {
-    it('handleClick 함수 호출됨', () => {
-      const { getByRole } = renderApp();
+  it('선택된 버튼에 V표시가 보임', () => {
+    const { getByText, container } = renderApp();
 
-      fireEvent.click(getByRole('button', { name: '한식' }));
-
-      expect(handleClick).toBeCalled();
-    });
-
-    it('선택된 버튼에 V표시가 보임', () => {
-      const { getByText, container } = renderApp();
-
+    setTimeout(() => {
       fireEvent.click(getByText('한식'));
 
       expect(container).toHaveTextContent('한식(V)');
-    });
+    }, 100);
   });
 });
