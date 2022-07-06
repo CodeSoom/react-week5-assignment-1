@@ -8,7 +8,7 @@ describe('<Regions/>', () => {
   const regionNames = regions.map((region) => region.name);
 
   const renderRegion = () => ((
-    render(<Region />)
+    render(<Region regions={regions} />)
   ));
 
   it('지역 목록이 보임.', () => {
@@ -22,9 +22,9 @@ describe('<Regions/>', () => {
     const { getByText, container } = renderRegion();
 
     setTimeout(() => {
-      fireEvent.click(getByText('한식'));
+      fireEvent.click(getByText('서울'));
 
-      expect(container).toHaveTextContent('한식(V)');
+      expect(container).toHaveTextContent('서울(V)');
     }, 100);
   });
 });
