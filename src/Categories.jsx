@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 export default function Categories() {
-  const { categories } = useSelector((state) => state);
+  const { categories = [] } = useSelector((state) => state);
 
   return (
     <ul>
