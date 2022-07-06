@@ -11,8 +11,8 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState({});
   const [restaurants, setRestaurants] = useState([]);
 
-  const handleClick = (choiceButton, setSelected) => {
-    setSelected(choiceButton);
+  const handleClick = (setter, value) => () => {
+    setter(value);
   };
 
   const loadCategories = async () => {
@@ -49,7 +49,7 @@ export default function App() {
       <ul>
         {regions.map((region) => (
           <li key={regions.id}>
-            <button type="button" onClick={() => handleClick(region, setSelectedRegion)}>
+            <button type="button" onClick={handleClick(setSelectedRegion, region)}>
               {selectedRegion.id !== region.id ? (`${region.name}`) : (`${region.name}(V)`)}
             </button>
           </li>
@@ -58,7 +58,7 @@ export default function App() {
       <ul>
         {categories.map((category) => (
           <li key={category.id}>
-            <button type="button" onClick={() => handleClick(category, setSelectedCategory)}>
+            <button type="button" onClick={handleClick(setSelectedCategory, category)}>
               {selectedCategory.id !== category.id ? (`${category.name}`) : (`${category.name}(V)`)}
             </button>
           </li>
@@ -66,7 +66,7 @@ export default function App() {
       </ul>
       {restaurants.length !== 0 ? (
         <ul>
-          {restaurants.map((test) => (<li key={test.id}>{test.name}</li>))}
+          {restaurants.map((restaurant) => (<li key={restaurant.id}>{restaurant.name}</li>))}
         </ul>
       ) : (
         <p>조건에 해당하는 식당이 없습니다.</p>
