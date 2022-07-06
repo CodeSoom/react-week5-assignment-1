@@ -1,3 +1,6 @@
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+
 import regions from '../fixtures/regions';
 
 import { setRegions } from './actions';
@@ -6,24 +9,28 @@ import { fetchRegions } from './services/api';
 
 jest.mock('./services/api');
 
+const mockStore = configureStore([thunk]);
+
 describe('async-actions', () => {
-  const dispatch = jest.fn();
+  const store = mockStore();
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    store.clearActions();
   });
 
   describe('loadRegions', () => {
     it('fetches regions', async () => {
-      await loadRegions()(dispatch);
+      await store.dispatch(loadRegions());
 
       expect(fetchRegions).toBeCalled();
     });
 
     it('dispatches setRegions', async () => {
-      await loadRegions()(dispatch);
+      await store.dispatch(loadRegions());
 
-      expect(dispatch).toBeCalledWith(setRegions(regions));
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRegions(regions));
     });
   });
 });
