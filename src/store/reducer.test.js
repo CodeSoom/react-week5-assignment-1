@@ -12,6 +12,7 @@ describe('setCategories', () => {
       expect(state).toEqual(initailState);
     });
   });
+
   describe('setCategories', () => {
     it('카테고리리스트가 변경됩니다.', () => {
       const categories = [
