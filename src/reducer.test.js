@@ -22,7 +22,7 @@ describe('reducer', () => {
       selectedCategory: null,
     };
 
-    it('has the initial state', () => {
+    it('returns the initial state', () => {
       const state = reducer(
         undefined,
         { type: undefined },
