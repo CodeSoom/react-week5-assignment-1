@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import CategoryContainer from './CategoryContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-describe('CategoryContainer', () => {
+describe('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories: [
       { id: 1, name: '한식' },
@@ -16,7 +16,7 @@ describe('CategoryContainer', () => {
 
   it('카테고리 목록이 보여집니다.', () => {
     const { container } = render((
-      <CategoryContainer />
+      <CategoriesContainer />
     ));
 
     expect(container).toHaveTextContent('한식');

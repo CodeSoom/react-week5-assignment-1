@@ -1,4 +1,4 @@
-export default function Category({ categories }) {
+export default function Categories({ categories }) {
   return (
     <ul>
       {

@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 
-import Category from './Category';
+import Categories from './Categories';
 
-describe('Category', () => {
+describe('Categories', () => {
   it('카테고리 목록이 보여집니다.', () => {
     const categories = [
       {
@@ -11,7 +11,7 @@ describe('Category', () => {
     ];
 
     const { container } = render((
-      <Category
+      <Categories
         categories={categories}
       />
     ));
