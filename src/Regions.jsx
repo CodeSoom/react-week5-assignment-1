@@ -3,7 +3,7 @@ const buttonStyle = { width: '60px', margin: '0 5px' };
 const Regions = ({ region, regions, onClickRegion }) => (
   <div>
     <span>지역 선택 : </span>
-    { regions.map((regionItem) => (
+    { regions?.map((regionItem) => (
       <button
         type="button"
         key={`button-region-${regionItem.id}`}
