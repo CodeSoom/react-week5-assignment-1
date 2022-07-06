@@ -5,10 +5,12 @@ import { categories, regions } from './fixtures/restaurant';
 import reducer from './reducer';
 
 describe('reducer', () => {
-  it('isLoading 상태를 변경한다', () => {
-    const state = reducer({ isLoading: true }, setIsLoading(false));
+  describe('setIsLoading', () => {
+    it('isLoading 상태를 변경한다', () => {
+      const state = reducer({ isLoading: true }, setIsLoading(false));
 
-    expect(state.isLoading).toBe(false);
+      expect(state.isLoading).toBe(false);
+    });
   });
 
   context('state가 없는경우', () => {
