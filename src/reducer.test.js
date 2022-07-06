@@ -1,10 +1,16 @@
-import { getCategories, getRegions } from './actions';
+import { getCategories, getRegions, setIsLoading } from './actions';
 
 import { categories, regions } from './fixtures/restaurant';
 
 import reducer from './reducer';
 
 describe('reducer', () => {
+  it('isLoading 상태를 변경한다', () => {
+    const state = reducer({ isLoading: true }, setIsLoading(false));
+
+    expect(state.isLoading).toBe(false);
+  });
+
   context('state가 없는경우', () => {
     it('아무값도 바뀌지않는다.', () => {
       const state = reducer(undefined, { });
