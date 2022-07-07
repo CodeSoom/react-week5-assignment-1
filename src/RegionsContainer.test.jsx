@@ -8,7 +8,7 @@ import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-describe('Regions', () => {
+describe('RegionsContainer', () => {
   const dispathch = jest.fn();
 
   useDispatch.mockImplementation(() => dispathch);
@@ -22,7 +22,7 @@ describe('Regions', () => {
     <RegionsContainer />
   ));
 
-  it('regions가 렌더링된다', () => {
+  it('click 이벤트를 listen한다', () => {
     const { getByText } = renderRegionsContainer();
 
     fireEvent.click(getByText('서울'));
