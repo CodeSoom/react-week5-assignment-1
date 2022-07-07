@@ -2,6 +2,7 @@ const initialState = {
   isLoading: true,
   regions: [],
   categories: [],
+  region: '',
 };
 
 const reducerAction = {
@@ -19,6 +20,12 @@ const reducerAction = {
     ...state,
     categories: action.payload.categories,
   }),
+
+  setRegion: (state, action) => ({
+    ...state,
+    region: action.payload.region,
+  }),
+
 };
 
 export default function reducer(state = initialState, action) {
