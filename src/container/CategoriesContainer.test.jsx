@@ -9,6 +9,7 @@ import categories from '../fixtures/categories';
 import { getCategories } from '../store/async-actions';
 
 jest.mock('react-redux');
+jest.mock('../store/async-actions');
 
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
