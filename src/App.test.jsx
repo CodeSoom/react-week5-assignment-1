@@ -32,6 +32,7 @@ describe('App', () => {
     it('regions가 렌더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
         regions,
+        categories,
       }));
 
       const { container } = renderApp();
@@ -42,6 +43,7 @@ describe('App', () => {
     it('categories가 렌더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
         categories,
+        regions,
       }));
 
       const { container } = renderApp();
