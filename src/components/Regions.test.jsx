@@ -8,10 +8,10 @@ describe('<Regions />', () => {
   const renderRegions = (regions) => render((<Regions regions={regions} />));
 
   context('without regions', () => {
-    it('nothing renders', () => {
-      const { queryAllByRole } = renderRegions([]);
+    it('renders "지역을 불러오지 못했습니다."', () => {
+      const { getByText } = renderRegions([]);
 
-      expect(queryAllByRole('listitem')).toHaveLength(0);
+      expect(getByText('지역을 불러오지 못했습니다.')).toBeInTheDocument();
     });
   });
 
