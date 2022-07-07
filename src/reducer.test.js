@@ -1,6 +1,8 @@
-import { getCategories, getRegions, setIsLoading } from './actions';
+import {
+  setIsLoading, getCategories, getRegions, setRegion,
+} from './actions';
 
-import { categories, regions } from './fixtures/restaurant';
+import { categories, region, regions } from './fixtures/restaurant';
 
 import reducer from './reducer';
 
@@ -21,6 +23,7 @@ describe('reducer', () => {
         isLoading: true,
         regions: [],
         categories: [],
+        region: '',
       });
     });
   });
@@ -39,6 +42,14 @@ describe('reducer', () => {
         const state = reducer({ categories: [] }, getCategories(categories));
 
         expect(state.categories).toBe(categories);
+      });
+    });
+
+    describe('segRegion', () => {
+      it('region을 return 한다', () => {
+        const state = reducer({ region: '' }, setRegion(region));
+
+        expect(state.region).toBe(region);
       });
     });
   });
