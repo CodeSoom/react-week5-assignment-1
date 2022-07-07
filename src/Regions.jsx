@@ -1,8 +1,4 @@
-import { useSelector } from 'react-redux';
-
-export default function Regions() {
-  const { regions } = useSelector((state) => state);
-
+export default function Regions({ regions }) {
   return (
     <ul>
       {regions.map((i) => (
