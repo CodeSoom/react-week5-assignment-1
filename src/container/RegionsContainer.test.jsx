@@ -9,6 +9,7 @@ import regions from '../fixtures/regions';
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
+jest.mock('../store/async-actions');
 
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
