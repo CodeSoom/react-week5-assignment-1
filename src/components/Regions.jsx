@@ -1,5 +1,11 @@
 export default function Regions({ regions = [] }) {
-  if (!regions.length) return null;
+  if (!regions.length) {
+    return (
+      <p>
+        지역을 불러오지 못했습니다.
+      </p>
+    );
+  }
 
   return (
     <ul>
