@@ -10,8 +10,8 @@ describe('<Region />', () => {
   it('render region name', () => {
     const region = REGIONS[0];
 
-    const { getByText } = renderRegion(region);
+    const { container } = renderRegion(region);
 
-    expect(getByText(region.name)).toBeInTheDocument();
+    expect(container).toHaveTextContent(region.name);
   });
 });
