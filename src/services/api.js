@@ -1,7 +1,7 @@
-const baseUrl = 'https://eatgo-customer-api.ahastudio.com';
+const BASEURL = 'https://eatgo-customer-api.ahastudio.com';
 
 export async function fetchRegions() {
-  const url = `${baseUrl}/regions`;
+  const url = `${BASEURL}/regions`;
   const response = await fetch(url);
   const data = await response.json();
 
@@ -9,7 +9,7 @@ export async function fetchRegions() {
 }
 
 export async function fetchCategories() {
-  const url = `${baseUrl}/categories`;
+  const url = `${BASEURL}/categories`;
   const response = await fetch(url);
   const data = await response.json();
 
