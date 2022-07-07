@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { selectRegion } from './actions';
 
 import { loadRegions } from './async-actions';
 import Regions from './Regions';
@@ -13,8 +14,13 @@ const RegionsContainer = () => {
     dispatch(loadRegions());
   }, []);
 
+  const handleClick = (region) => dispatch(selectRegion(region));
+
   return (
-    <Regions regions={regions} />
+    <Regions
+      regions={regions}
+      onClick={handleClick}
+    />
   );
 };
 

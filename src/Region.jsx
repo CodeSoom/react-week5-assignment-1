@@ -1,5 +1,5 @@
 const Region = ({ region, selected, onClick }) => {
-  const handleClick = () => onClick(region.id);
+  const handleClick = () => onClick(region);
 
   return (
     <li>
