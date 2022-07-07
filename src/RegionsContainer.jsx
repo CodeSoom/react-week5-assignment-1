@@ -7,13 +7,13 @@ import Regions from './Regions';
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => state);
+  const { region, regions } = useSelector((state) => state);
 
   const handleClickSelectRegion = (e) => {
     dispatch(setRegion(e.target.name));
   };
 
   return (
-    <Regions regions={regions} onClickSelectRegion={handleClickSelectRegion} />
+    <Regions region={region} regions={regions} onClickSelectRegion={handleClickSelectRegion} />
   );
 }
