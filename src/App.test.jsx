@@ -28,12 +28,16 @@ describe('App', () => {
   it('regions가 보여집니다.', () => {
     const { getByText } = renderApp();
 
-    expect(getByText(regions[0].name)).not.toBeNull();
+    regions.forEach(({ name }) => {
+      expect(getByText(name)).not.toBeNull();
+    });
   });
 
   it('categories가 보여집니다.', () => {
     const { getByText } = renderApp();
 
-    expect(getByText(categories[1].name)).not.toBeNull();
+    categories.forEach(({ name }) => {
+      expect(getByText(name)).not.toBeNull();
+    });
   });
 });
