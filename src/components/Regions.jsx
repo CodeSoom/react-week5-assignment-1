@@ -1,3 +1,5 @@
+import Region from './Region';
+
 export default function Regions({ regions = [] }) {
   if (!regions.length) {
     return (
@@ -12,7 +14,7 @@ export default function Regions({ regions = [] }) {
       {
         regions.map((region) => (
           <li key={region.id}>
-            {region.name}
+            <Region region={region} />
           </li>
         ))
       }
