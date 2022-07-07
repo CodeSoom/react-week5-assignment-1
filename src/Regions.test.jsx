@@ -20,8 +20,8 @@ describe('Regions', () => {
   ));
 
   it('regions가 렌더링된다', () => {
-    const { getByText } = renderRegions();
+    const { container } = renderRegions();
 
-    expect(getByText(regions[0].name)).not.toBeNull();
+    expect(container).toHaveTextContent(regions[0].name);
   });
 });

@@ -18,8 +18,8 @@ describe('Categories', () => {
   ));
 
   it('categories가 렌더링된다', () => {
-    const { getByText } = renderRegions();
+    const { container } = renderRegions();
 
-    expect(getByText(categories[0].name)).not.toBeNull();
+    expect(container).toHaveTextContent(categories[0].name);
   });
 });
