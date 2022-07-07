@@ -4,6 +4,10 @@ import { region, regions } from './fixtures/restaurant';
 
 import Regions from './Regions';
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('Regions', () => {
   const handleClickSelectRegion = jest.fn();
 
