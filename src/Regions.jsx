@@ -1,7 +1,12 @@
+import Region from './Region';
+
 const Regions = ({ regions }) => (
   <ul>
-    {regions.map(({ id, name }) => (
-      <li key={id}>{name}</li>
+    {regions.map((region) => (
+      <Region
+        key={region.id}
+        region={region}
+      />
     ))}
   </ul>
 );
