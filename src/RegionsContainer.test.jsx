@@ -15,7 +15,7 @@ describe('RegionsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions,
-    region,
+    region: '',
   }));
 
   const renderRegionsContainer = () => render((
@@ -25,7 +25,7 @@ describe('RegionsContainer', () => {
   it('click 이벤트를 listen한다', () => {
     const { getByText } = renderRegionsContainer();
 
-    fireEvent.click(getByText('서울'));
+    fireEvent.click(getByText(region));
 
     expect(dispathch).toBeCalled();
   });
