@@ -34,9 +34,9 @@ describe('App', () => {
         regions,
       }));
 
-      const { getByText } = renderApp();
+      const { container } = renderApp();
 
-      expect(getByText(regions[0].name)).not.toBeNull();
+      expect(container).toHaveTextContent(regions[0].name);
     });
 
     it('categories가 렌더링된다', () => {
@@ -44,9 +44,9 @@ describe('App', () => {
         categories,
       }));
 
-      const { getByText } = renderApp();
+      const { container } = renderApp();
 
-      expect(getByText(categories[0].name)).not.toBeNull();
+      expect(container).toHaveTextContent(categories[0].name);
     });
   });
 });
