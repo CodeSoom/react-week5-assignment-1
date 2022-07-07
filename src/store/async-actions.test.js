@@ -22,16 +22,12 @@ describe('async-actions', () => {
   });
 
   describe('loadRegions', () => {
-    afterEach(() => {
-      fetchRegions.mockRestore();
+    beforeEach(() => {
+      fetchRegions.mockResolvedValue(REGIONS);
     });
 
-    it('calls setRegions action and dispatch', async () => {
-      fetchRegions.mockResolvedValue(REGIONS);
-
-      const dispatcher = loadRegions();
-
-      await dispatcher(dispatch);
+    it('dispatch setRegions', async () => {
+      await loadRegions()(dispatch);
 
       expect(dispatch).toBeCalledWith(setRegions(REGIONS));
     });
