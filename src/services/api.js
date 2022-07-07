@@ -1,4 +1,4 @@
-const baseURL = 'https://eatgo-customer-api.ahastudio.com';
+export const baseURL = 'https://eatgo-customer-api.ahastudio.com';
 
 export async function fetchRegions() {
   const url = `${baseURL}/regions`;
