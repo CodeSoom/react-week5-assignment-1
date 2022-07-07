@@ -3,7 +3,7 @@ export default function Regions({ regions, onClickSelectRegion }) {
     <ul>
       {regions.map((i) => (
         <li key={i.id}>
-          <button onClick={onClickSelectRegion} type="button" key={i.id}>{i.name}</button>
+          <button onClick={onClickSelectRegion} name={i.name} type="button" key={i.id}>{i.name}</button>
         </li>
       ))}
     </ul>

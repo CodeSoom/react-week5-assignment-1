@@ -10,7 +10,7 @@ export default function RegionsContainer() {
   const { regions } = useSelector((state) => state);
 
   const handleClickSelectRegion = (e) => {
-    dispatch(setRegion(e.target.value));
+    dispatch(setRegion(e.target.name));
   };
 
   return (
