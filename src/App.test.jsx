@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 
+import { fetchCategories } from './services/api';
+
 import App from './App';
 
+jest.mock('./services/api');
 jest.mock('react-redux');
 
 describe('App', () => {
@@ -32,9 +35,10 @@ describe('App', () => {
       );
   });
 
-  it('renders categories', () => {
+  it('renders fetched categories', () => {
     const { container } = render(<App />);
 
+    expect(fetchCategories).toHaveBeenCalled();
     categories
       .map((category) => category.name)
       .forEach(
