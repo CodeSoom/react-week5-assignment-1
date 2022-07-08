@@ -5,11 +5,14 @@ import categories from '../fixtures/categories';
 import Categories from './Categories';
 
 describe('Categories', () => {
+  const initialCategory = categories[2];
+
   const handleClick = jest.fn();
 
-  const renderCategories = () => render((
+  const renderCategories = ({ selectedCategory } = {}) => render((
     <Categories
       categories={categories}
+      selectedCategory={selectedCategory}
       onClick={handleClick}
     />
   ));
@@ -29,12 +32,16 @@ describe('Categories', () => {
   });
 
   it('listens click event', () => {
-    const category = categories[2];
-
     const { getByRole } = renderCategories();
 
-    fireEvent.click(getByRole('button', { name: category.name }));
+    fireEvent.click(getByRole('button', { name: initialCategory.name }));
 
-    expect(handleClick).toHaveBeenCalledWith(category);
+    expect(handleClick).toHaveBeenCalledWith(initialCategory);
+  });
+
+  it('renders check mark (V) with the selected category', () => {
+    const { getByRole } = renderCategories({ selectedCategory: initialCategory });
+
+    expect(getByRole('button', { name: `${initialCategory.name}(V)` })).toBeInTheDocument();
   });
 });
