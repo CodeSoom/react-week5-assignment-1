@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { fetchCategories } from './services/api';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { loadCategories } from './async-actions';
 
 import RegionsContainer from './RegionsContainer';
 
 const App = () => {
-  const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+
+  const categories = useSelector((state) => state.categories);
 
   useEffect(() => {
-    (async () => {
-      setCategories(await fetchCategories());
-    })();
+    dispatch(loadCategories());
   }, []);
 
   return (
