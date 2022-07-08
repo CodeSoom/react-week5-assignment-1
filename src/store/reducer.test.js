@@ -2,6 +2,7 @@ import reducer, { initialState } from './reducer';
 
 import {
   setRegions,
+  selectRegion,
 } from './actions';
 
 import REGIONS from '../fixtures/regions';
@@ -29,6 +30,14 @@ describe('reducer', () => {
         const state = reducer(initialState, setRegions(REGIONS));
 
         expect(state.regions).toEqual(REGIONS);
+      });
+    });
+
+    describe('selectRegion', () => {
+      it('update region id', () => {
+        const state = reducer(initialState, selectRegion(REGIONS[0].id));
+
+        expect(state.regionId).toBe(REGIONS[0].id);
       });
     });
   });
