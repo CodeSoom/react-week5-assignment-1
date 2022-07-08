@@ -8,7 +8,7 @@ const initialState = {
   categories: [],
   restaurants: [],
   region: '',
-  category: '',
+  categoryId: '',
 };
 
 const reducerAction = {
@@ -44,9 +44,9 @@ const reducerAction = {
     region: action.payload.region,
   }),
 
-  setCategory: (state, action) => ({
+  setCategoryId: (state, action) => ({
     ...state,
-    category: action.payload.category,
+    categoryId: action.payload.categoryId,
   }),
 
 };

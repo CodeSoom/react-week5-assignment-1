@@ -1,9 +1,9 @@
 import {
-  getCategories, getRegions, getRestaurants, setCategory, setRegion,
+  getCategories, getRegions, getRestaurants, setCategoryId, setRegion,
 } from './actions';
 
 import {
-  categories, category, region, regions, restaurants,
+  categories, categoryId, region, regions, restaurants,
 } from './fixtures/restaurant';
 
 import reducer from './reducer';
@@ -23,7 +23,7 @@ describe('reducer', () => {
         categories: [],
         restaurants: [],
         region: '',
-        category: '',
+        categoryId: '',
       });
     });
   });
@@ -53,11 +53,11 @@ describe('reducer', () => {
       });
     });
 
-    describe('setCategory', () => {
-      it('category를 return 한다', () => {
-        const state = reducer({ category: '' }, setCategory(category));
+    describe('setCategoryId', () => {
+      it('categoryId를 return 한다', () => {
+        const state = reducer({ categoryId: '' }, setCategoryId(categoryId));
 
-        expect(state.category).toBe(category);
+        expect(state.categoryId).toBe(categoryId);
       });
     });
 

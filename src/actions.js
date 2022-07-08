@@ -34,11 +34,11 @@ export function setRegion(region) {
   };
 }
 
-export function setCategory(category) {
+export function setCategoryId(categoryId) {
   return {
-    type: 'setCategory',
+    type: 'setCategoryId',
     payload: {
-      category,
+      categoryId,
     },
   };
 }
