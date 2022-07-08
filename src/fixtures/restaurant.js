@@ -4,4 +4,4 @@ export const categories = [{ id: 1, name: '한식' }, { id: 2, name: '중식' }]
 
 export const region = '서울';
 
-export const category = '일식';
+export const category = '중식';
