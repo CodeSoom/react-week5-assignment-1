@@ -25,6 +25,15 @@ export function getRestaurants(restaurants) {
   };
 }
 
+export function setStartLoading(target) {
+  return {
+    type: 'setStartLoading',
+    payload: {
+      target,
+    },
+  };
+}
+
 export function setRegion(region) {
   return {
     type: 'setRegion',

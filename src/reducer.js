@@ -12,6 +12,7 @@ const initialState = {
 };
 
 const reducerAction = {
+
   getRegions: (state, action) => ({
     ...state,
     isLoading: {
@@ -37,6 +38,14 @@ const reducerAction = {
       restaurants: false,
     },
     restaurants: action.payload.restaurants,
+  }),
+
+  setStartLoading: (state, action) => ({
+    ...state,
+    isLoading: {
+      ...state.isLoading,
+      [action.payload.target]: true,
+    },
   }),
 
   setRegion: (state, action) => ({
