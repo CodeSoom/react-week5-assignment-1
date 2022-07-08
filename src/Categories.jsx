@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux';
-
-export default function Categories() {
-  const { categories } = useSelector((state) => state);
-
+export default function Categories({ category, categories, onClickSelectCategory }) {
   return (
     <ul>
-      {categories.map(({ id, name }) => (
+      {categories.map(({ name, id }) => (
         <li key={id}>
-          <button type="button" key={id}>{name}</button>
+          <button onClick={onClickSelectCategory} name={name} type="button" key={id}>
+            {name}
+            {name === category && '(V)'}
+          </button>
         </li>
       ))}
     </ul>
