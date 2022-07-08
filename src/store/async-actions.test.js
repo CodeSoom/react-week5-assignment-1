@@ -31,4 +31,12 @@ describe('async-actions', () => {
       expect(fetchCategories).toBeCalled();
     });
   });
+
+  describe('getRestaurants', () => {
+    it('fetchRestaurants', async () => {
+      await store.dispatch(getRestaurants());
+
+      expect(getRestaurants).toBeCalled();
+    });
+  });
 });
