@@ -8,11 +8,11 @@ import { regions, categories } from './fixtures/restaurant';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const dispathch = jest.fn();
   useDispatch.mockImplementation(() => dispathch);
 

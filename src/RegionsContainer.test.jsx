@@ -8,11 +8,11 @@ import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('RegionsContainer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const dispathch = jest.fn();
 
   useDispatch.mockImplementation(() => dispathch);

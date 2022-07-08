@@ -8,11 +8,11 @@ import Categories from './Categories';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('Categories', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   useSelector.mockImplementation((selector) => selector({
     categories,
   }));

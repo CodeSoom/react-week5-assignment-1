@@ -4,11 +4,11 @@ import { region, regions } from './fixtures/restaurant';
 
 import Regions from './Regions';
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 describe('Regions', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const handleClickSelectRegion = jest.fn();
 
   const renderRegions = (paramRegion) => render((
