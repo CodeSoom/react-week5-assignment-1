@@ -1,6 +1,4 @@
-import React from 'react';
-
-export default function Categories({ regions }) {
+export default function Region({ regions }) {
   return (
     <ul>
       {regions.map((region) => (

@@ -8,6 +8,10 @@ test('Region', () => {
       id: 1,
       name: '서울',
     },
+    {
+      id: 2,
+      name: '광주',
+    },
   ];
   const { getByText } = render(<Region regions={regions} />);
 
