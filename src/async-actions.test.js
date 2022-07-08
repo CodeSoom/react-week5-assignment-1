@@ -1,12 +1,13 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+
 import categories from '../fixtures/categories';
-
 import regions from '../fixtures/regions';
+import restaurants from '../fixtures/restaurants';
 
-import { setCategories, setRegions } from './actions';
-import { loadCategories, loadRegions } from './async-actions';
-import { fetchCategories, fetchRegions } from './services/api';
+import { setCategories, setRegions, setRestaurants } from './actions';
+import { loadCategories, loadRegions, searchRestaurants } from './async-actions';
+import { fetchCategories, fetchRegions, fetchRestaurants } from './services/api';
 
 jest.mock('./services/api');
 
@@ -48,6 +49,25 @@ describe('async-actions', () => {
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setCategories(categories));
+    });
+  });
+
+  describe('searchRestaurants', () => {
+    const region = regions[1];
+    const category = categories[3];
+
+    it('fetches restaurants', async () => {
+      await store.dispatch(searchRestaurants({ region, category }));
+
+      expect(fetchRestaurants).toBeCalledWith({ region, category });
+    });
+
+    it('dispatches setRestaurants', async () => {
+      await store.dispatch(searchRestaurants({ region, category }));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurants(restaurants));
     });
   });
 });
