@@ -1,8 +1,10 @@
 import {
-  getCategories, getRegions, setRegion,
+  getCategories, getRegions, setCategory, setRegion,
 } from './actions';
 
-import { categories, region, regions } from './fixtures/restaurant';
+import {
+  categories, category, region, regions,
+} from './fixtures/restaurant';
 
 import reducer from './reducer';
 
@@ -19,6 +21,7 @@ describe('reducer', () => {
         regions: [],
         categories: [],
         region: '',
+        category: '',
       });
     });
   });
@@ -45,6 +48,14 @@ describe('reducer', () => {
         const state = reducer({ region: '' }, setRegion(region));
 
         expect(state.region).toBe(region);
+      });
+    });
+
+    describe('setCategory', () => {
+      it('category를 return 한다', () => {
+        const state = reducer({ category: '' }, setCategory(category));
+
+        expect(state.category).toBe(category);
       });
     });
   });
