@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
+import restaurants from '../fixtures/restaurants';
 
 import App from './App';
 
@@ -17,6 +18,7 @@ describe('App', () => {
   useSelector.mockImplementation((state) => state({
     regions,
     categories,
+    restaurants,
   }));
 
   beforeEach(() => {
