@@ -6,9 +6,7 @@ import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 
 import App from './App';
-import { loadCategories } from './async-actions';
 
-jest.mock('./async-actions');
 jest.mock('react-redux');
 
 describe('App', () => {
@@ -35,10 +33,9 @@ describe('App', () => {
       );
   });
 
-  it('renders fetched categories', () => {
+  it('renders categories', () => {
     const { container } = render(<App />);
 
-    expect(dispatch).toHaveBeenCalledWith(loadCategories());
     categories
       .map((category) => category.name)
       .forEach(
