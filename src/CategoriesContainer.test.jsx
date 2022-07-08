@@ -13,12 +13,15 @@ jest.mock('react-redux');
 jest.mock('./async-actions');
 
 describe('CategoriesContainer', () => {
+  const selectedCategory = categories[1];
+
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((state) => state({
     categories,
+    selectedCategory,
   }));
 
   const renderCategoriesContainer = () => render(<CategoriesContainer />);
@@ -46,5 +49,11 @@ describe('CategoriesContainer', () => {
     fireEvent.click(getByRole('button', { name: category.name }));
 
     expect(dispatch).toHaveBeenCalledWith(selectCategory(category));
+  });
+
+  it('renders check mark (V) with the selected cagegory', () => {
+    const { getByRole } = renderCategoriesContainer();
+
+    expect(getByRole('button', { name: `${selectedCategory.name}(V)` })).toBeInTheDocument();
   });
 });
