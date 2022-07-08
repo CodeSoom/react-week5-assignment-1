@@ -1,29 +1,43 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { category, categories } from './fixtures/restaurant';
 
-import { categories } from './fixtures/restaurant';
-
-import Categories from './Categories';
-
-jest.mock('react-redux');
+import CategoriesComponent from './Categories';
 
 describe('Categories', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }));
+  const handleClickSelectCategory = jest.fn();
 
-  const renderRegions = () => render((
-    <Categories />
+  const renderCategories = (value) => render((
+    <CategoriesComponent
+      category={value}
+      categories={categories}
+      onClickSelectCategory={handleClickSelectCategory}
+    />
   ));
 
   it('categories가 렌더링된다', () => {
-    const { container } = renderRegions();
+    const { container } = renderCategories();
 
     expect(container).toHaveTextContent(categories[0].name);
+  });
+
+  context('category가 없을때', () => {
+    it('(V) 표시가 보이지않는다', () => {
+      const { container } = renderCategories('');
+
+      expect(container).not.toHaveTextContent('(V)');
+    });
+  });
+
+  context('category가 있을때', () => {
+    it('(V) 표시가 렌더링된다', () => {
+      const { container } = renderCategories(category);
+
+      expect(container).toHaveTextContent('(V)');
+    });
   });
 });
