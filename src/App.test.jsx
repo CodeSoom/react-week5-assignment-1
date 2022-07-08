@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 
 import App from './App';
@@ -28,6 +29,16 @@ describe('App', () => {
       .map((region) => region.name)
       .forEach(
         (regionName) => expect(container).toHaveTextContent(regionName),
+      );
+  });
+
+  it('renders categories', () => {
+    const { container } = render(<App />);
+
+    categories
+      .map((category) => category.name)
+      .forEach(
+        (categoryName) => expect(container).toHaveTextContent(categoryName),
       );
   });
 });
