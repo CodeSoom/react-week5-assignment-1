@@ -1,9 +1,9 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { getCategories, getRegions } from './async-actions';
+import { getCategories, getRegions, getRestaurants } from './async-actions';
 
-import { fetchCategories, fetchRegions } from '../services/api';
+import { fetchCategories, fetchRegions, fetchRestaurants } from '../services/api';
 
 jest.mock('../services/api');
 
@@ -36,7 +36,7 @@ describe('async-actions', () => {
     it('fetchRestaurants', async () => {
       await store.dispatch(getRestaurants());
 
-      expect(getRestaurants).toBeCalled();
+      expect(fetchRestaurants).toBeCalled();
     });
   });
 });
