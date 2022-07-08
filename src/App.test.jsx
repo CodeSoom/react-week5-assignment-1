@@ -44,6 +44,7 @@ describe('App', () => {
         },
         regions,
         categories,
+        restaurants: [],
       }));
 
       const { container } = renderApp();
