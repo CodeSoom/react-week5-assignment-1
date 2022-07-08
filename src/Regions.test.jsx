@@ -5,11 +5,14 @@ import regions from '../fixtures/regions';
 import Regions from './Regions';
 
 describe('Regions', () => {
+  const initialRegion = regions[2];
+
   const handleClick = jest.fn();
 
-  const renderRegions = () => render((
+  const renderRegions = ({ selectedRegion } = {}) => render((
     <Regions
       regions={regions}
+      selectedRegion={selectedRegion}
       onClick={handleClick}
     />
   ));
@@ -29,12 +32,16 @@ describe('Regions', () => {
   });
 
   it('listens click event', () => {
-    const region = regions[2];
-
     const { getByRole } = renderRegions();
 
-    fireEvent.click(getByRole('button', { name: region.name }));
+    fireEvent.click(getByRole('button', { name: initialRegion.name }));
 
-    expect(handleClick).toHaveBeenCalledWith(region);
+    expect(handleClick).toHaveBeenCalledWith(initialRegion);
+  });
+
+  it('renders check mark (V) with the selected region', () => {
+    const { getByRole } = renderRegions({ selectedRegion: initialRegion });
+
+    expect(getByRole('button', { name: `${initialRegion.name}(V)` })).toBeInTheDocument();
   });
 });
