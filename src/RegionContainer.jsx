@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 import Region from './Region';
 
 export default function RegionContainer() {
-  const { region } = useSelector((state) => ({
-    region: state.region,
+  const { regions } = useSelector((state) => ({
+    regions: state.regions,
   }));
 
-  return <Region region={region} />;
+  return <Region regions={regions} />;
 }
