@@ -7,6 +7,10 @@ const reducers = {
     ...state,
     regions: action.payload.regions,
   }),
+  setRestaurants: (state, action) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
+  }),
 };
 
 export default reducers;
