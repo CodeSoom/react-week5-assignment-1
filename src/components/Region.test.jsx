@@ -49,4 +49,15 @@ describe('<Region />', () => {
       expect(container).toHaveTextContent('(V)');
     });
   });
+
+  context('region is not selected', () => {
+    it('doesnt render "(V)"', () => {
+      const { container } = renderRegion({
+        region: REGIONS[0],
+        selected: false,
+      });
+
+      expect(container).not.toHaveTextContent('(V)');
+    });
+  });
 });
