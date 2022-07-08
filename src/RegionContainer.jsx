@@ -6,7 +6,7 @@ import Region from './Region';
 
 export default function RegionContainer() {
   const { region } = useSelector((state) => ({
-    regions: state.regions,
+    region: state.region,
   }));
 
   return <Region region={region} />;
