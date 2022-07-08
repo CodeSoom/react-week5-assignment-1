@@ -14,12 +14,15 @@ jest.mock('react-redux');
 jest.mock('./async-actions');
 
 describe('RegionsContainer', () => {
+  const selectedRegion = regions[1];
+
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((state) => state({
     regions,
+    selectedRegion,
   }));
 
   const renderRegionsContainer = () => render(<RegionsContainer />);
@@ -47,5 +50,11 @@ describe('RegionsContainer', () => {
     fireEvent.click(getByRole('button', { name: region.name }));
 
     expect(dispatch).toHaveBeenCalledWith(selectRegion(region));
+  });
+
+  it('renders check mark (V) with the selected region', () => {
+    const { getByRole } = renderRegionsContainer();
+
+    expect(getByRole('button', { name: `${selectedRegion.name}(V)` })).toBeInTheDocument();
   });
 });

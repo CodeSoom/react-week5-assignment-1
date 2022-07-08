@@ -9,6 +9,7 @@ const RegionsContainer = () => {
   const dispatch = useDispatch();
 
   const regions = useSelector((state) => state.regions);
+  const selectedRegion = useSelector((state) => state.selectedRegion);
 
   useEffect(() => {
     dispatch(loadRegions());
@@ -19,6 +20,7 @@ const RegionsContainer = () => {
   return (
     <Regions
       regions={regions}
+      selectedRegion={selectedRegion}
       onClick={handleClick}
     />
   );
