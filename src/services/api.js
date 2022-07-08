@@ -15,3 +15,11 @@ export async function fetchCategories() {
 
   return data;
 }
+
+export async function fetchRestaurants(region, categoryId) {
+  const url = `${BASEURL}/restaurants?region=${region}&category=${categoryId}`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  return data;
+}

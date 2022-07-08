@@ -1,6 +1,6 @@
-import { getCategories, getRegions } from './actions';
+import { getCategories, getRegions, getRestaurants } from './actions';
 
-import { fetchCategories, fetchRegions } from './services/api';
+import { fetchCategories, fetchRegions, fetchRestaurants } from './services/api';
 
 export function loadRegions() {
   return async (dispatch) => {
@@ -15,5 +15,13 @@ export function loadCategories() {
     const categories = await fetchCategories();
 
     dispatch(getCategories(categories));
+  };
+}
+
+export function loadRestaurants() {
+  return async (dispatch) => {
+    const restaurants = await fetchRestaurants();
+
+    dispatch(getRestaurants(restaurants));
   };
 }
