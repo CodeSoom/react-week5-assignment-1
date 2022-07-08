@@ -1,4 +1,4 @@
-export default function Categories({ category, categories, onClickSelectCategory }) {
+export default function Categories({ categoryId, categories, onClickSelectCategory }) {
   return (
     <ul>
       {categories.map(({ name, id }) => (
@@ -12,7 +12,7 @@ export default function Categories({ category, categories, onClickSelectCategory
             key={id}
           >
             {name}
-            {id === category && '(V)'}
+            {id === categoryId && '(V)'}
           </button>
         </li>
       ))}

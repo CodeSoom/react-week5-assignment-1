@@ -13,7 +13,7 @@ describe('Categories', () => {
 
   const renderCategories = (value) => render((
     <CategoriesComponent
-      category={value}
+      categoryId={value}
       categories={categories}
       onClickSelectCategory={handleClickSelectCategory}
     />
@@ -25,7 +25,7 @@ describe('Categories', () => {
     expect(container).toHaveTextContent(categories[0].name);
   });
 
-  context('category가 없을때', () => {
+  context('categoryId가 없을때', () => {
     it('(V) 표시가 보이지않는다', () => {
       const { container } = renderCategories('');
 
@@ -33,7 +33,7 @@ describe('Categories', () => {
     });
   });
 
-  context('category가 있을때', () => {
+  context('categoryId가 있을때', () => {
     it('(V) 표시가 렌더링된다', () => {
       const { container } = renderCategories(categoryId);
 

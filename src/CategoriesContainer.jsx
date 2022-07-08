@@ -7,7 +7,7 @@ import CategoriesComponent from './Categories';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const { category, categories } = useSelector((state) => state);
+  const { categoryId, categories } = useSelector((state) => state);
 
   const handleClickSelectCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -15,7 +15,7 @@ export default function CategoriesContainer() {
 
   return (
     <CategoriesComponent
-      category={category}
+      categoryId={categoryId}
       categories={categories}
       onClickSelectCategory={handleClickSelectCategory}
     />
