@@ -18,9 +18,9 @@ export function getCategories() {
   };
 }
 
-export function getRestaurants() {
+export function getRestaurants({ region, categoryId }) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants();
+    const restaurants = await fetchRestaurants({ region, categoryId });
 
     dispatch(setRestaurants(restaurants));
   };
