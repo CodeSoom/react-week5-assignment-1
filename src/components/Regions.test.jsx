@@ -12,6 +12,8 @@ describe('Regions', () => {
       />
     ));
 
-    expect(container).toHaveTextContent('대구');
+    regions.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
   });
 });
