@@ -1,5 +1,5 @@
 import {
-  setIsLoading, getCategories, getRegions, setRegion,
+  getCategories, getRegions, setRegion,
 } from './actions';
 
 import { categories, region, regions } from './fixtures/restaurant';
@@ -7,20 +7,15 @@ import { categories, region, regions } from './fixtures/restaurant';
 import reducer from './reducer';
 
 describe('reducer', () => {
-  describe('setIsLoading', () => {
-    it('isLoading 상태를 변경한다', () => {
-      const state = reducer({ isLoading: true }, setIsLoading(false));
-
-      expect(state.isLoading).toBe(false);
-    });
-  });
-
   context('state가 없는경우', () => {
     it('아무값도 바뀌지않는다.', () => {
       const state = reducer(undefined, { });
 
       expect(state).toEqual({
-        isLoading: true,
+        isLoading: {
+          regions: true,
+          categories: true,
+        },
         regions: [],
         categories: [],
         region: '',

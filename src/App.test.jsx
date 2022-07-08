@@ -23,7 +23,10 @@ describe('App', () => {
   context('loading 중일때', () => {
     it('로딩중입니다! 가 렌더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
-        isLoading: true,
+        isLoading: {
+          regions: true,
+          categories: true,
+        },
       }));
 
       const { container } = renderApp();
@@ -35,6 +38,10 @@ describe('App', () => {
   context('loading이 끝난후', () => {
     it('regions가 렌더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
+        isLoading: {
+          regions: false,
+          categories: false,
+        },
         regions,
         categories,
       }));
@@ -45,11 +52,6 @@ describe('App', () => {
     });
 
     it('categories가 렌더링된다', () => {
-      useSelector.mockImplementation((selector) => selector({
-        categories,
-        regions,
-      }));
-
       const { container } = renderApp();
 
       expect(container).toHaveTextContent(categories[0].name);

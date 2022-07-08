@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setIsLoading } from './actions';
 import { loadCategories, loadRegions } from './actions-async';
 
 import RegionsContainer from './RegionsContainer';
@@ -12,18 +11,14 @@ export default function App() {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector((state) => state);
-
-  const loadData = async () => {
-    await dispatch(loadRegions());
-    await dispatch(loadCategories());
-    dispatch(setIsLoading(false));
-  };
+  const { regions, categories } = isLoading;
 
   useEffect(() => {
-    loadData();
+    dispatch(loadRegions());
+    dispatch(loadCategories());
   }, []);
 
-  if (isLoading) {
+  if (regions && categories) {
     return <div>로딩중입니다!</div>;
   }
 

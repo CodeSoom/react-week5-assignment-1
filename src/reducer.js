@@ -1,23 +1,29 @@
 const initialState = {
-  isLoading: true,
+  isLoading: {
+    regions: true,
+    categories: true,
+  },
   regions: [],
   categories: [],
   region: '',
 };
 
 const reducerAction = {
-  setIsLoading: (state, action) => ({
-    ...state,
-    isLoading: action.payload.isLoading,
-  }),
-
   getRegions: (state, action) => ({
     ...state,
+    isLoading: {
+      ...state.isLoading,
+      regions: false,
+    },
     regions: action.payload.regions,
   }),
 
   getCategories: (state, action) => ({
     ...state,
+    isLoading: {
+      ...state.isLoading,
+      categories: false,
+    },
     categories: action.payload.categories,
   }),
 
