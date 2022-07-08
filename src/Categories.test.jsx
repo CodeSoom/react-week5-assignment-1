@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { category, categories } from './fixtures/restaurant';
+import { categoryId, categories } from './fixtures/restaurant';
 
 import CategoriesComponent from './Categories';
 
@@ -35,7 +35,7 @@ describe('Categories', () => {
 
   context('category가 있을때', () => {
     it('(V) 표시가 렌더링된다', () => {
-      const { container } = renderCategories(category);
+      const { container } = renderCategories(categoryId);
 
       expect(container).toHaveTextContent('(V)');
     });

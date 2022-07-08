@@ -2,7 +2,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { category, categories } from './fixtures/restaurant';
+import { categoryId, categories } from './fixtures/restaurant';
 
 import CategoriesContainer from './CategoriesContainer';
 
@@ -29,7 +29,7 @@ describe('CategoriesContainer', () => {
   it('click 이벤트를 listen한다', () => {
     const { getByText } = renderCategoriesContainer();
 
-    fireEvent.click(getByText(category));
+    fireEvent.click(getByText('한식'), categoryId);
 
     expect(dispathch).toBeCalled();
   });

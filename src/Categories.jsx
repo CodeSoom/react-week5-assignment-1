@@ -3,9 +3,16 @@ export default function Categories({ category, categories, onClickSelectCategory
     <ul>
       {categories.map(({ name, id }) => (
         <li key={id}>
-          <button onClick={onClickSelectCategory} name={name} type="button" key={id}>
+          <button
+            onClick={() => {
+              onClickSelectCategory(id);
+            }}
+            name={name}
+            type="button"
+            key={id}
+          >
             {name}
-            {name === category && '(V)'}
+            {id === category && '(V)'}
           </button>
         </li>
       ))}
