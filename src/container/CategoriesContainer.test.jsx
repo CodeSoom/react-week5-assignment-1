@@ -30,19 +30,13 @@ describe('CategoriesContainer', () => {
     jest.clearAllMocks();
   });
 
-  it('categories API를 호출합니다.', () => {
+  it('getCategories를 dispatch 합니다.', () => {
     const { container } = renderCategoriesContainer();
 
     expect(dispatch).toHaveBeenCalledWith(getCategories());
+
     categories.forEach(({ name }) => {
       expect(container).toHaveTextContent(name);
     });
-  });
-
-  it('카테고리 목록이 보여집니다.', () => {
-    const { container } = renderCategoriesContainer();
-
-    expect(container).toHaveTextContent('한식');
-    expect(container).toHaveTextContent('양식');
   });
 });
