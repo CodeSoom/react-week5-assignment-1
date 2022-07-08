@@ -6,6 +6,7 @@ const initialState = {
   regions: [],
   categories: [],
   region: '',
+  category: '',
 };
 
 const reducerAction = {
@@ -30,6 +31,11 @@ const reducerAction = {
   setRegion: (state, action) => ({
     ...state,
     region: action.payload.region,
+  }),
+
+  setCategory: (state, action) => ({
+    ...state,
+    category: action.payload.category,
   }),
 
 };
