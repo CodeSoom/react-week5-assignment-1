@@ -1,6 +1,6 @@
 import Region from './Region';
 
-export default function Regions({ regions = [] }) {
+export default function Regions({ regions = [], onClickRegion }) {
   if (!regions.length) {
     return (
       <p>
@@ -14,7 +14,10 @@ export default function Regions({ regions = [] }) {
       {
         regions.map((region) => (
           <li key={region.id}>
-            <Region region={region} />
+            <Region
+              region={region}
+              onClick={onClickRegion}
+            />
           </li>
         ))
       }
