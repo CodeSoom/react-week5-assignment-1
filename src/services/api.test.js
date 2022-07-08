@@ -62,13 +62,13 @@ describe('api', () => {
     const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${region.name}&category=${category.id}`;
 
     it('fetches the restaurants url', async () => {
-      await fetchRestaurants(region, category);
+      await fetchRestaurants({ region, category });
 
       expect(fetch).toHaveBeenCalledWith(url);
     });
 
     it('returns restaurants', async () => {
-      const result = await fetchRestaurants(region, category);
+      const result = await fetchRestaurants({ region, category });
 
       expect(result).toEqual(restaurants);
     });
