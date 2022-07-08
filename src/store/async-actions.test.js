@@ -34,7 +34,7 @@ describe('async-actions', () => {
 
   describe('getRestaurants', () => {
     it('fetchRestaurants', async () => {
-      await store.dispatch(getRestaurants());
+      await store.dispatch(getRestaurants({ region: '서울', categoryId: '1' }));
 
       expect(fetchRestaurants).toBeCalled();
     });
