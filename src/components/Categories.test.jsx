@@ -11,6 +11,8 @@ describe('Categories', () => {
       />
     ));
 
-    expect(container).toHaveTextContent('한식');
+    categories.forEach(({ name }) => {
+      expect(container).toHaveTextContent(name);
+    });
   });
 });
