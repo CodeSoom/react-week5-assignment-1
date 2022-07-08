@@ -3,6 +3,7 @@ import reducers from './reducerHandler';
 export const initailState = {
   categories: [],
   regions: [],
+  restaurants: [],
 };
 
 export default function reducer(state = initailState, action) {
