@@ -16,6 +16,15 @@ export function getCategories(categories) {
   };
 }
 
+export function getRestaurants(restaurants) {
+  return {
+    type: 'getRestaurants',
+    payload: {
+      restaurants,
+    },
+  };
+}
+
 export function setRegion(region) {
   return {
     type: 'setRegion',
