@@ -24,3 +24,12 @@ export function setRegion(region) {
     },
   };
 }
+
+export function setCategory(category) {
+  return {
+    type: 'setCategory',
+    payload: {
+      category,
+    },
+  };
+}
