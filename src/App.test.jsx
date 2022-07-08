@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -35,14 +35,16 @@ describe('App', () => {
       );
   });
 
-  it('renders fetched categories', () => {
+  it('renders fetched categories', async () => {
     const { container } = render(<App />);
 
-    expect(fetchCategories).toHaveBeenCalled();
-    categories
-      .map((category) => category.name)
-      .forEach(
-        (categoryName) => expect(container).toHaveTextContent(categoryName),
-      );
+    await waitFor(() => {
+      expect(fetchCategories).toHaveBeenCalled();
+      categories
+        .map((category) => category.name)
+        .forEach(
+          (categoryName) => expect(container).toHaveTextContent(categoryName),
+        );
+    });
   });
 });
