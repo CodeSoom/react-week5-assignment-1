@@ -4,6 +4,8 @@ export const initailState = {
   categories: [],
   regions: [],
   restaurants: [],
+  selectedRegion: null,
+  selectedCategory: null,
 };
 
 export default function reducer(state = initailState, action) {
