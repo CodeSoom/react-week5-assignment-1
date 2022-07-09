@@ -52,8 +52,8 @@ describe('CategoriesContainer', () => {
   });
 
   it('renders check mark (V) with the selected cagegory', () => {
-    const { getByRole } = renderCategoriesContainer();
+    const { container } = renderCategoriesContainer();
 
-    expect(getByRole('button', { name: `${selectedCategory.name}(V)` })).toBeInTheDocument();
+    expect(container).toHaveTextContent(`${selectedCategory.name}(V)`);
   });
 });

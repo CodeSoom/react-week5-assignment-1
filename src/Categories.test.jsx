@@ -40,8 +40,8 @@ describe('Categories', () => {
   });
 
   it('renders check mark (V) with the selected category', () => {
-    const { getByRole } = renderCategories({ selectedCategory: initialCategory });
+    const { container } = renderCategories({ selectedCategory: initialCategory });
 
-    expect(getByRole('button', { name: `${initialCategory.name}(V)` })).toBeInTheDocument();
+    expect(container).toHaveTextContent(`${initialCategory.name}(V)`);
   });
 });

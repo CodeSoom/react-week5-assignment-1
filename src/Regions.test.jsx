@@ -40,8 +40,8 @@ describe('Regions', () => {
   });
 
   it('renders check mark (V) with the selected region', () => {
-    const { getByRole } = renderRegions({ selectedRegion: initialRegion });
+    const { container } = renderRegions({ selectedRegion: initialRegion });
 
-    expect(getByRole('button', { name: `${initialRegion.name}(V)` })).toBeInTheDocument();
+    expect(container).toHaveTextContent(`${initialRegion.name}(V)`);
   });
 });
