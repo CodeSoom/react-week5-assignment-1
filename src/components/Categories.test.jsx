@@ -1,4 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
+
 import categories from '../fixtures/categories';
 
 import Categories from './Categories';
@@ -27,16 +28,16 @@ describe('Categories', () => {
   });
 
   it('category를 클릭하면 handleClcikCategory가 호출됩니다.', () => {
-    const { getByRole } = renderCategories();
+    const { getByText } = renderCategories();
 
-    fireEvent.click(getByRole('button', { id: defaultCategory }));
+    fireEvent.click(getByText('한식'));
 
     expect(handleClickCategory).toHaveBeenCalledWith(defaultCategory);
   });
 
   it('선택되었으면 (V)가 함께 보여집니다.', () => {
-    const { getByRole } = renderCategories({ selectedCategory: defaultCategory });
+    const { getByText } = renderCategories({ selectedCategory: defaultCategory });
 
-    expect(getByRole('button', { name: `${defaultCategory}(V)` })).toBeInTheDocument();
+    expect(getByText('한식(V)')).not.toBeNull();
   });
 });
