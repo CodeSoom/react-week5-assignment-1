@@ -2,11 +2,11 @@ export default function Regions({ regions, selectedRegion, onClick }) {
   return (
     <ul>
       {
-        regions.map((region) => (
-          <li key={region.id}>
-            <button type="button" onClick={() => onClick(region.name)}>
-              {region.name}
-              {selectedRegion === region.name && '(V)'}
+        regions.map(({ id, name }) => (
+          <li key={id}>
+            <button type="button" onClick={() => onClick(name)}>
+              {name}
+              {selectedRegion === name && '(V)'}
             </button>
           </li>
         ))
