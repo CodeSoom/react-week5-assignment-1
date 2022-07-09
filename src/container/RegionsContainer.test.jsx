@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getRegions } from '../store/async-actions';
 
-import { selectRegion } from '../store/actions';
-
 import regions from '../fixtures/regions';
 
 import RegionsContainer from './RegionsContainer';
@@ -46,20 +44,10 @@ describe('RegionsContainer', () => {
   });
 
   it('특정 지역을 선택하면 selectRegion이 dispatch와 함께 호출됩니다.', () => {
-    const region = regions[0];
+    const { getByText } = renderRegionsContainer();
 
-    const { getByRole } = renderRegionsContainer();
+    fireEvent.click(getByText('서울'));
 
-    fireEvent.click(getByRole('button', { name: region.name }));
-
-    expect(dispatch).toHaveBeenCalledWith(selectRegion());
-  });
-
-  it('특정 지역을 선택하면 V가 선택된 지역에 보여집니다.', () => {
-    const { getByRole } = renderRegionsContainer();
-
-    expect(getByRole('button'),
-      { name: `${selectedRegion.name}(V)` })
-      .toBeInTheDocument();
+    expect(dispatch).toBeCalled();
   });
 });
