@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { searchRestaurants } from './async-actions';
 
+import Restaurants from './Restaurants';
+
 const RestaurantsContainer = () => {
   const dispatch = useDispatch();
 
@@ -12,15 +14,15 @@ const RestaurantsContainer = () => {
   const restaurants = useSelector((state) => state.restaurants);
 
   useEffect(() => {
-    dispatch(searchRestaurants({ region, category }));
-  }, []);
+    if (region && category) {
+      dispatch(searchRestaurants({ region, category }));
+    }
+  }, [region, category]);
 
   return (
-    <ul>
-      {restaurants.map(({ id, name }) => (
-        <li key={id}>{name}</li>
-      ))}
-    </ul>
+    <Restaurants
+      restaurants={restaurants}
+    />
   );
 };
 
