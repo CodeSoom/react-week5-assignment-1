@@ -2,7 +2,13 @@ import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 import restaurants from '../fixtures/restaurants';
 
-import { setCategories, setRegions, setRestaurants } from './actions';
+import {
+  setCategories,
+  setRegions,
+  setRestaurants,
+  selectCategory,
+  selectRegion,
+} from './actions';
 
 import reducer, { initailState } from './reducer';
 
