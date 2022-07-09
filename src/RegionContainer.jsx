@@ -1,33 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchRegions } from './service/api';
+import { selectRegion } from './action';
 
 import Region from './Region';
 
 export default function RegionContainer() {
-  const [regions, setRegions] = useState([]);
-  const [selectedRegion, setSelectedRegion] = useState({});
+  const dispatch = useDispatch();
 
-  const handleClick = (setter, value) => () => {
-    setter(value);
+  const { regions, selectedRegion } = useSelector((state) => ({
+    regions: state.regions,
+    selectedRegion: state.selectedRegion,
+  }));
+
+  const handleClick = (regionId) => {
+    dispatch(selectRegion(regionId));
   };
-
-  const loadRegions = async () => {
-    const regionsData = await fetchRegions();
-
-    setRegions(regionsData);
-  };
-
-  useEffect(() => {
-    loadRegions();
-  }, []);
 
   return (
     <Region
       onClick={handleClick}
       regions={regions}
       selectedRegion={selectedRegion}
-      setSelectedRegion={setSelectedRegion}
     />
 
   );

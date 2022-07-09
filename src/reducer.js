@@ -1,8 +1,8 @@
 const initialState = {
   regions: [],
-  selectedRegion: '',
+  selectedRegion: null,
   categories: [],
-  selectedCategory: '',
+  selectedCategory: null,
   restaurants: [],
 };
 
@@ -16,6 +16,15 @@ const reducers = {
     ...state,
     categories: action.payload.categories,
   }),
+
+  selectRegion: (state, action) => {
+    const selectedRegion = state.regions.find((region) => region.id === action.payload.regionId);
+
+    return {
+      ...state,
+      selectedRegion,
+    };
+  },
 };
 
 export default function reducer(previousState = initialState, action) {
