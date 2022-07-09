@@ -52,4 +52,30 @@ describe('setCategories', () => {
       expect(state.restaurants).toHaveLength(2);
     });
   });
+
+  describe('selectRegion', () => {
+    it('지역이 선택됩니다.', () => {
+      const state = reducer(
+        {
+          selectedRegion: null,
+        },
+        selectRegion(regions[0]),
+      );
+
+      expect(state.selectedRegion).toEqual(regions[0]);
+    });
+  });
+
+  describe('selectCategory', () => {
+    it('카테고리가 선택됩니다.', () => {
+      const state = reducer(
+        {
+          selectedCategory: null,
+        },
+        selectCategory(categories[1]),
+      );
+
+      expect(state.selectedCategory).toEqual(categories[1]);
+    });
+  });
 });
