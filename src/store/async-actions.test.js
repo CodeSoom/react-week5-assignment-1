@@ -3,8 +3,6 @@ import thunk from 'redux-thunk';
 
 import { getCategories, getRegions, getRestaurants } from './async-actions';
 
-import { fetchCategories, fetchRegions, fetchRestaurants } from '../services/api';
-
 jest.mock('../services/api');
 
 const mockStore = configureStore([thunk]);
@@ -20,7 +18,12 @@ describe('async-actions', () => {
     it('fetchRegions', async () => {
       await store.dispatch(getRegions());
 
-      expect(fetchRegions).toBeCalled();
+      expect(store.getActions()).toEqual([
+        {
+          type: 'setRegions',
+          payload: {},
+        },
+      ]);
     });
   });
 
@@ -28,7 +31,12 @@ describe('async-actions', () => {
     it('fetchCategories', async () => {
       await store.dispatch(getCategories());
 
-      expect(fetchCategories).toBeCalled();
+      expect(store.getActions()).toEqual([
+        {
+          type: 'setCategories',
+          payload: { },
+        },
+      ]);
     });
   });
 
@@ -36,7 +44,12 @@ describe('async-actions', () => {
     it('fetchRestaurants', async () => {
       await store.dispatch(getRestaurants({ region: '서울', categoryId: '1' }));
 
-      expect(fetchRestaurants).toBeCalled();
+      expect(store.getActions()).toEqual([
+        {
+          type: 'setRestaurants',
+          payload: {},
+        },
+      ]);
     });
   });
 });
