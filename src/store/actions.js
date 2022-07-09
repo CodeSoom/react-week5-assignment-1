@@ -18,3 +18,17 @@ export function setRestaurants(restaurants) {
     payload: { restaurants },
   };
 }
+
+export function selectRegion(region) {
+  return {
+    type: 'selectRegion',
+    payload: { region },
+  };
+}
+
+export function selectCategory(category) {
+  return {
+    type: 'selectCategory',
+    payload: { category },
+  };
+}
