@@ -1,3 +1,5 @@
+import { fetchCategories, fetchRegions } from './service/api';
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',
@@ -17,8 +19,11 @@ export function setCategories(categories) {
 }
 
 export function loadInitialData() {
-  // Todo: loadInitialData 작성
-//   return (dispatch) => {
-//     dispatch(setRegions(regions));
-//   };
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    const categories = await fetchCategories();
+
+    dispatch(setRegions(regions));
+    dispatch(setCategories(categories));
+  };
 }
