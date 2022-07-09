@@ -43,7 +43,7 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  it('특정 카테고리를 선택하면 selectedCategory가 dispatch와 함께 호출됩니다.', () => {
+  it('특정 카테고리를 선택하면 selectCategory가 dispatch와 함께 호출됩니다.', () => {
     const { getByText } = renderCategoriesContainer();
 
     fireEvent.click(getByText('한식'));
