@@ -20,8 +20,8 @@ export default function CategoriesContainer() {
     selectedCategory: state.selectedCategory,
   }));
 
-  const handleClickCategory = (category) => {
-    dispatch(selectCategory(category));
+  const handleClickCategory = (categoryId) => {
+    dispatch(selectCategory(categoryId));
   };
 
   return (
