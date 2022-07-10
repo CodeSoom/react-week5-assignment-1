@@ -26,10 +26,19 @@ const selectCategory = (selectedCategoryId) => ({
   },
 });
 
+const setRestaurants = (restaurants) => ({
+  type: 'setRestaurants',
+  payload: {
+    restaurants,
+  },
+});
+
 export {
   setRegions,
   selectRegion,
 
   setCategories,
   selectCategory,
+
+  setRestaurants,
 };
