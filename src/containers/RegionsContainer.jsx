@@ -5,7 +5,10 @@ import { selectRegion } from '../store/actions';
 import Regions from '../components/Regions';
 
 export default function RegionsContainer() {
-  const regions = useSelector((state) => state.regions);
+  const { regions, selectedRegionId } = useSelector((state) => ({
+    regions: state.regions,
+    selectedRegionId: state.selectedRegionId,
+  }));
 
   const dispatch = useDispatch();
 
@@ -17,6 +20,7 @@ export default function RegionsContainer() {
     <>
       <Regions
         regions={regions}
+        selectedRegionId={selectedRegionId}
         onClickRegion={handleClickRegion}
       />
     </>
