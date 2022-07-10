@@ -64,4 +64,15 @@ describe('<RestaurantsContainer />', () => {
       expect(loadRestaurants).toBeCalled();
     });
   });
+
+  context('without selectedRegionId and selectedCategoryId', () => {
+    given('selectedRegionId', () => null);
+    given('selectedselectedCategoryIdRegionId', () => null);
+
+    it('not dispatch load restaurants', () => {
+      renderRestaurantsContainer();
+
+      expect(loadRestaurants).not.toBeCalled();
+    });
+  });
 });
