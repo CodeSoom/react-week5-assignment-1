@@ -26,6 +26,7 @@ describe('<App />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions: given.regions,
+    categories: given.categories,
   }));
 
   beforeEach(() => {

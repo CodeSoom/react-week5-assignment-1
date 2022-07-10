@@ -8,6 +8,7 @@ import {
 } from './store/async-actions';
 
 import RegionsContainer from './containers/RegionsContainer';
+import CategoriesContainer from './containers/CategoriesContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <>
       <RegionsContainer />
+      <CategoriesContainer />
     </>
   );
 }
