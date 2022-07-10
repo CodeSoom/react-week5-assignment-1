@@ -5,6 +5,7 @@ import {
   selectRegion,
   setCategories,
   selectCategory,
+  setRestaurants,
 } from './actions';
 
 import REGIONS from '../fixtures/regions';

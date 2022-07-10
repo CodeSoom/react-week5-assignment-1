@@ -6,6 +6,8 @@ export const initialState = {
 
   categories: [],
   selectedCategoryId: null,
+
+  restaurants: [],
 };
 
 const reducer = (state = initialState, action) => {

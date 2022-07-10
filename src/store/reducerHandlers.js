@@ -26,4 +26,11 @@ export default {
       selectedCategoryId: action.payload.selectedCategoryId,
     };
   },
+
+  setRestaurants(state, action) {
+    return {
+      ...state,
+      restaurants: action.payload.restaurants,
+    };
+  },
 };
