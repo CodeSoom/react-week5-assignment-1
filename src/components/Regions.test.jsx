@@ -7,9 +7,9 @@ import REGIONS from '../fixtures/regions';
 describe('<Regions />', () => {
   const handleSelectRegion = jest.fn();
 
-  const renderRegions = ({ regions = [], selectedRegionId = null }) => render((<Regions
+  const renderRegions = ({ regions = [], selectedRegion = null }) => render((<Regions
     regions={regions}
-    selectedRegionId={selectedRegionId}
+    selectedRegion={selectedRegion}
     selectRegion={handleSelectRegion}
   />));
 
@@ -49,24 +49,24 @@ describe('<Regions />', () => {
     });
   });
 
-  context('with selected region id', () => {
+  context('with selected region', () => {
     it('selected region is shown', () => {
       const region = REGIONS[0];
 
       const { container } = renderRegions({
         regions: REGIONS,
-        selectedRegionId: region.id,
+        selectedRegion: region,
       });
 
       expect(container).toHaveTextContent(`${region.name}(V)`);
     });
   });
 
-  context('without selected region id', () => {
+  context('without selected region', () => {
     it('selected region is not shown', () => {
       const { container } = renderRegions({
         regions: REGIONS,
-        selectedRegionId: null,
+        selectedRegion: null,
       });
 
       expect(container).not.toHaveTextContent('(V)');
