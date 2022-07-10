@@ -1,34 +1,24 @@
-import { useEffect, useState } from 'react';
-
-import { fetchCategories } from './service/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCategory } from './action';
+import Category from './Category';
 
 export default function CategoryContainer() {
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState({});
+  const dispatch = useDispatch();
 
-  const handleClick = (setter, value) => () => {
-    setter(value);
+  const { categories, selectedCategory } = useSelector((state) => ({
+    categories: state.categories,
+    selectedCategory: state.selectedCategory,
+  }));
+
+  const handleClick = (categoryId) => {
+    dispatch(selectCategory(categoryId));
   };
-
-  const loadCategories = async () => {
-    const categoriesData = await fetchCategories();
-
-    setCategories(categoriesData);
-  };
-
-  useEffect(() => {
-    loadCategories();
-  }, []);
 
   return (
-    <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
-          <button type="button" onClick={handleClick(setSelectedCategory, category)}>
-            {selectedCategory.id !== category.id ? (`${category.name}`) : (`${category.name}(V)`)}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <Category
+      onClick={handleClick}
+      categories={categories}
+      selectedCategory={selectedCategory}
+    />
   );
 }

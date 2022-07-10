@@ -25,6 +25,17 @@ const reducers = {
       selectedRegion,
     };
   },
+
+  selectCategory: (state, action) => {
+    const selectedCategory = state.categories.find(
+      (category) => category.id === action.payload.categoryId,
+    );
+
+    return {
+      ...state,
+      selectedCategory,
+    };
+  },
 };
 
 export default function reducer(previousState = initialState, action) {
