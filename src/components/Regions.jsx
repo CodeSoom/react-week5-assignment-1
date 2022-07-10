@@ -1,7 +1,13 @@
 import Region from './Region';
 
-export default function Regions({ regions, selectRegion, selectedRegionId = null }) {
-  const isSelected = (region) => region.id === selectedRegionId;
+export default function Regions({ regions, selectRegion, selectedRegion = null }) {
+  const isSelected = (region) => {
+    if (!selectedRegion) {
+      return false;
+    }
+
+    return region.id === selectedRegion.id;
+  };
 
   if (!regions.length) {
     return (
