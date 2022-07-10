@@ -44,7 +44,7 @@ describe('<Regions />', () => {
 
         fireEvent.click(getByText(region.name));
 
-        expect(handleSelectRegion).toBeCalledWith(region.id);
+        expect(handleSelectRegion).toBeCalledWith(region);
       });
     });
   });

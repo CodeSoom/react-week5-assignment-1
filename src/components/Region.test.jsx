@@ -36,7 +36,7 @@ describe('<Region />', () => {
 
     fireEvent.click(getByRole('button'));
 
-    expect(handleClick).toBeCalledWith(region.id);
+    expect(handleClick).toBeCalledWith(region);
   });
 
   context('region is selected', () => {
