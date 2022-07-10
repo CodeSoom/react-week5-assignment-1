@@ -21,9 +21,9 @@ const loadCategories = () => async (dispatch) => {
 };
 
 const loadRestaurants = () => async (dispatch, getState) => {
-  const { selectedRegionId, selectedCategoryId } = getState();
+  const { selectedRegion, selectedCategoryId } = getState();
 
-  const restaurants = await fetchRestaurants(selectedRegionId, selectedCategoryId);
+  const restaurants = await fetchRestaurants(selectedRegion.name, selectedCategoryId);
   dispatch(setRestaurants(restaurants));
 };
 
