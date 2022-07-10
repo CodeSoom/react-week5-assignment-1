@@ -1,6 +1,6 @@
-import { categories, regions } from '../__fixture__/restaurantsInfo';
+import { categories, regions, restaurants } from '../__fixture__/restaurantsInfo';
 import {
-  selectCategory, selectRegion, setCategories, setRegions,
+  selectCategory, selectRegion, setCategories, setRegions, setRestaurants,
 } from './action';
 
 import reducer from './reducer';
@@ -27,6 +27,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).not.toHaveLength(0);
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('레스토랑 목록이 바뀜', () => {
+      const initialState = {
+        restaurants: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).not.toHaveLength(0);
     });
   });
 
