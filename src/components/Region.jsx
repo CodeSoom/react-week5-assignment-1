@@ -5,7 +5,6 @@ export default function Region({ region, onClick, selected }) {
       onClick={() => onClick(region.id)}
     >
       { region.name }
-      {' '}
       { selected ? '(V)' : '' }
     </button>
   );
