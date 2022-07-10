@@ -5,10 +5,10 @@ const setRegions = (regions) => ({
   },
 });
 
-const selectRegion = (regionId) => ({
+const selectRegion = (selectedRegionId) => ({
   type: 'selectRegion',
   payload: {
-    regionId,
+    selectedRegionId,
   },
 });
 

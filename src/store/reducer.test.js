@@ -37,7 +37,7 @@ describe('reducer', () => {
       it('update region id', () => {
         const state = reducer(initialState, selectRegion(REGIONS[0].id));
 
-        expect(state.regionId).toBe(REGIONS[0].id);
+        expect(state.selectedRegionId).toBe(REGIONS[0].id);
       });
     });
   });
