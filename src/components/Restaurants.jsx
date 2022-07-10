@@ -1,3 +1,5 @@
+import Restaurant from './Restaurant';
+
 export default function Restaurants({ restaurants = [] }) {
   if (!restaurants.length) {
     return (
@@ -11,9 +13,10 @@ export default function Restaurants({ restaurants = [] }) {
     <ul>
       {
         restaurants.map((restaurant) => (
-          <li key={restaurant.id}>
-            {restaurant.name}
-          </li>
+          <Restaurant
+            key={restaurant.id}
+            restaurant={restaurant}
+          />
         ))
       }
     </ul>
