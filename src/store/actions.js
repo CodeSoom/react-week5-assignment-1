@@ -36,9 +36,7 @@ const setRestaurants = (restaurants) => ({
 export {
   setRegions,
   selectRegion,
-
   setCategories,
   selectCategory,
-
   setRestaurants,
 };
