@@ -17,6 +17,11 @@ const reducers = {
     categories: action.payload.categories,
   }),
 
+  setRestaurants: (state, action) => ({
+    ...state,
+    restaurants: action.payload.restaurants,
+  }),
+
   selectRegion: (state, action) => {
     const selectedRegion = state.regions.find((region) => region.id === action.payload.regionId);
 
@@ -36,6 +41,7 @@ const reducers = {
       selectedCategory,
     };
   },
+
 };
 
 export default function reducer(previousState = initialState, action) {

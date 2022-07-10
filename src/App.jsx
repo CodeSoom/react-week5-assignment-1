@@ -5,6 +5,7 @@ import { loadInitialData } from './action';
 
 import CategoryContainer from './CategoryContainer';
 import RegionContainer from './RegionContainer';
+import RestaurantContainer from './RestaurantContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -17,8 +18,7 @@ export default function App() {
     <>
       <RegionContainer />
       <CategoryContainer />
-      {/* Todo: Redux 적용 후 진행 */}
-      {/* <RestaurantContainer /> */}
+      <RestaurantContainer />
     </>
   );
 }
