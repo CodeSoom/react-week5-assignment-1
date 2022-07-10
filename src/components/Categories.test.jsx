@@ -5,7 +5,7 @@ import categories from '../fixtures/categories';
 import Categories from './Categories';
 
 describe('Categories', () => {
-  const defaultCategory = categories[0].id;
+  const defaultCategory = categories[0];
 
   const handleClickCategory = jest.fn();
 
@@ -28,16 +28,16 @@ describe('Categories', () => {
   });
 
   it('category를 클릭하면 handleClcikCategory가 호출됩니다.', () => {
-    const { getByText } = renderCategories();
+    const { getByRole } = renderCategories();
 
-    fireEvent.click(getByText('한식'));
+    fireEvent.click(getByRole('button', { name: defaultCategory.name }));
 
-    expect(handleClickCategory).toHaveBeenCalledWith(defaultCategory);
+    expect(handleClickCategory).toHaveBeenCalledWith(defaultCategory.id);
   });
 
   it('선택되었으면 (V)가 함께 보여집니다.', () => {
-    const { getByText } = renderCategories({ selectedCategory: defaultCategory });
+    const { getByRole } = renderCategories({ selectedCategory: defaultCategory.id });
 
-    expect(getByText('한식(V)')).not.toBeNull();
+    expect(getByRole('button', { name: `${defaultCategory.name}(V)` })).toBeInTheDocument();
   });
 });
