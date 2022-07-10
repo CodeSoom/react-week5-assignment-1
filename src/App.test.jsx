@@ -12,6 +12,9 @@ describe('<App/>', () => {
     regions: [
       { id: 1, name: '서울' },
     ],
+    categories: [
+      { id: 1, name: '한식' },
+    ],
   }));
 
   const renderApp = () => ((
