@@ -13,9 +13,9 @@ describe('CategoriesContainer', () => {
     jest.clearAllMocks();
   });
 
-  const dispathch = jest.fn();
+  const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispathch);
+  useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     categories,
@@ -31,6 +31,6 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(getByText('한식'), categoryId);
 
-    expect(dispathch).toBeCalled();
+    expect(dispatch).toBeCalled();
   });
 });
