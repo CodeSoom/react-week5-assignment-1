@@ -13,6 +13,7 @@ describe('<Regions/>', () => {
 
   it('지역 목록이 보임.', () => {
     const { getByText } = renderRegion();
+
     regionNames.forEach((async (name) => {
       await expect(getByText(name)).not.toBeNull();
     }));

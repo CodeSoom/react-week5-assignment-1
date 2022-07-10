@@ -7,6 +7,7 @@ import CategoryContainer from './CategoryContainer';
 
 describe('<Category/>', () => {
   const dispatch = jest.fn();
+
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({

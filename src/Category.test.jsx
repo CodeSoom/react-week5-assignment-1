@@ -13,6 +13,7 @@ describe('<Category/>', () => {
 
   it('카테고리 목록이 보임.', () => {
     const { getByText } = renderCategory();
+
     categoryNames.forEach((async (name) => {
       await expect(getByText(name)).not.toBeNull();
     }));
