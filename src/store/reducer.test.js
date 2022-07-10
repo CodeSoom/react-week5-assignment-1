@@ -9,6 +9,7 @@ import {
 
 import REGIONS from '../fixtures/regions';
 import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
 
 describe('reducer', () => {
   context('without state', () => {
@@ -57,6 +58,14 @@ describe('reducer', () => {
         const state = reducer(initialState, selectCategory(CATEGORIES[0].id));
 
         expect(state.selectedCategoryId).toBe(CATEGORIES[0].id);
+      });
+    });
+
+    describe('setRestaurants', () => {
+      it('update restaurants', () => {
+        const state = reducer(initialState, setRestaurants(RESTAURANTS));
+
+        expect(state.restaurants).toEqual(RESTAURANTS);
       });
     });
   });
