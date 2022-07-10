@@ -22,7 +22,7 @@ describe('<RestaurantsContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants: given.restaurants,
-    selectedRegionId: given.selectedRegionId,
+    selectedRegion: given.selectedRegion,
     selectedCategoryId: given.selectedCategoryId,
   }));
 
@@ -54,9 +54,9 @@ describe('<RestaurantsContainer />', () => {
     });
   });
 
-  context('with selectedRegionId and selectedCategoryId', () => {
-    given('selectedRegionId', () => REGIONS[0].id);
-    given('selectedselectedCategoryIdRegionId', () => CATEGORIES[0].id);
+  context('with selectedRegion and selectedCategoryId', () => {
+    given('selectedRegion', () => REGIONS[0]);
+    given('selectedCategoryId', () => CATEGORIES[0].id);
 
     it('dispatch load restaurants', () => {
       renderRestaurantsContainer();
@@ -65,9 +65,9 @@ describe('<RestaurantsContainer />', () => {
     });
   });
 
-  context('without selectedRegionId and selectedCategoryId', () => {
-    given('selectedRegionId', () => null);
-    given('selectedselectedCategoryIdRegionId', () => null);
+  context('without selectedRegion and selectedCategoryId', () => {
+    given('selectedRegion', () => null);
+    given('selectedCategoryId', () => null);
 
     it('not dispatch load restaurants', () => {
       renderRestaurantsContainer();
