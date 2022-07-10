@@ -41,12 +41,14 @@ describe('<Region />', () => {
 
   context('region is selected', () => {
     it('renders "(V)" next to region name', () => {
+      const region = REGIONS[0];
+
       const { container } = renderRegion({
-        region: REGIONS[0],
+        region,
         selected: true,
       });
 
-      expect(container).toHaveTextContent('(V)');
+      expect(container).toHaveTextContent(`${region.name}(V)`);
     });
   });
 
