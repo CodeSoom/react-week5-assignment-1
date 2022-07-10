@@ -62,18 +62,19 @@ describe('async-actions', () => {
       fetchRestaurants.mockResolvedValue(RESTAURANTS);
 
       getState.mockImplementation(() => ({
-        selectedRegionId: given.selectedRegionId,
+        selectedRegion: given.selectedRegion,
         selectedCategoryId: given.selectedCategoryId,
       }));
     });
 
-    context('with selectedRegionId and selectedCategoryId', () => {
-      given('selectedRegionId', () => REGIONS[0].id);
+    context('with selectedRegion and selectedCategoryId', () => {
+      given('selectedRegion', () => REGIONS[0]);
       given('selectedCategoryId', () => CATEGORIES[0].id);
 
       it('dispatch setCategories', async () => {
         await loadRestaurants()(dispatch, getState);
 
+        expect(fetchRestaurants).toBeCalledWith(REGIONS[0].name, CATEGORIES[0].id);
         expect(dispatch).toBeCalledWith(setRestaurants(RESTAURANTS));
       });
     });

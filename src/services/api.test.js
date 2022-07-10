@@ -53,7 +53,7 @@ describe('services', () => {
     });
 
     it('returns restaurants', async () => {
-      const restaurants = await fetchRestaurants(REGIONS[0].id, CATEGORIES[0].id);
+      const restaurants = await fetchRestaurants(REGIONS[0].name, CATEGORIES[0].id);
 
       expect(fetch).toBeCalled();
       expect(restaurants).toEqual(RESTAURANTS);
