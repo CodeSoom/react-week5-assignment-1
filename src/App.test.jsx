@@ -56,6 +56,16 @@ describe('<App />', () => {
     });
   });
 
+  context('without regions', () => {
+    it('renders "지역을 불러오지 못했습니다."', () => {
+      given('regions', () => []);
+
+      const { getByText } = renderApp();
+
+      expect(getByText('지역을 불러오지 못했습니다.')).toBeInTheDocument();
+    });
+  });
+
   it('load categories initially', () => {
     renderApp();
 
@@ -72,6 +82,16 @@ describe('<App />', () => {
       const category = given.categories[0];
 
       expect(container).toHaveTextContent(category.name);
+    });
+  });
+
+  context('without categories', () => {
+    it('renders "카테고리를 불러오지 못했습니다."', () => {
+      given('categories', () => []);
+
+      const { getByText } = renderApp();
+
+      expect(getByText('카테고리를 불러오지 못했습니다.')).toBeInTheDocument();
     });
   });
 
