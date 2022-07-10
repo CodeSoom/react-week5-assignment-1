@@ -6,6 +6,7 @@ import given from 'given2';
 
 import REGIONS from './fixtures/regions';
 import CATEGORIES from './fixtures/categories';
+import RESTAURANTS from './fixtures/restaurants';
 
 import {
   loadRegions,
@@ -27,6 +28,7 @@ describe('<App />', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: given.regions,
     categories: given.categories,
+    restaurants: given.restaurants,
   }));
 
   beforeEach(() => {
@@ -70,6 +72,28 @@ describe('<App />', () => {
       const category = given.categories[0];
 
       expect(container).toHaveTextContent(category.name);
+    });
+  });
+
+  context('with restaurants', () => {
+    given('restaurants', () => RESTAURANTS);
+
+    it('renders restaurants', () => {
+      const { container } = renderApp();
+
+      RESTAURANTS.forEach((restaurant) => {
+        expect(container).toHaveTextContent(restaurant.name);
+      });
+    });
+  });
+
+  context('without restaurants', () => {
+    given('restaurants', () => []);
+
+    it('renders "레스토랑을 불러오지 못했습니다."', () => {
+      const { getByText } = renderApp();
+
+      expect(getByText('레스토랑을 불러오지 못했습니다.')).toBeInTheDocument();
     });
   });
 });
