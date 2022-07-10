@@ -3,6 +3,9 @@ import reducers from './reducerHandlers';
 export const initialState = {
   regions: [],
   selectedRegionId: null,
+
+  categories: [],
+  selectedCategoryId: null,
 };
 
 const reducer = (state = initialState, action) => {
