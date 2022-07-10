@@ -20,6 +20,8 @@ jest.mock('./store/async-actions');
 
 describe('<App />', () => {
   given('regions', () => []);
+  given('categories', () => []);
+  given('restaurants', () => []);
 
   const dispatch = jest.fn();
 
