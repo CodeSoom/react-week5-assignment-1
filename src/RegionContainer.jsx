@@ -1,13 +1,21 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRegion } from './actions';
 
 import Region from './Region';
 
 export default function RegionContainer() {
-  const { regions } = useSelector((state) => ({
+  const dispatch = useDispatch();
+
+  const { region, regions } = useSelector((state) => ({
     regions: state.regions,
+    region: state.region,
   }));
 
-  return <Region regions={regions} />;
+  function onClickRegion(regionItem) {
+    dispatch(setRegion(regionItem));
+  }
+
+  return <Region regions={regions} region={region} onClickRegion={onClickRegion} />;
 }
