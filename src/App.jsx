@@ -9,6 +9,7 @@ import {
 
 import RegionsContainer from './containers/RegionsContainer';
 import CategoriesContainer from './containers/CategoriesContainer';
+import RestaurantsContainer from './containers/RestaurantsContainer';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function App() {
     <>
       <RegionsContainer />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </>
   );
 }
