@@ -1,7 +1,11 @@
 import Category from './Category';
 
 export default function Categories({ categories, selectCategory, selectedCategoryId = null }) {
-  const isSelected = (category) => category.id === selectedCategoryId;
+  const isSelected = (category) => {
+    if (selectedCategoryId === null) return false;
+
+    return category.id === selectedCategoryId;
+  };
 
   if (!categories.length) {
     return (
