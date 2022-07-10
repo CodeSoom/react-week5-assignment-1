@@ -14,8 +14,8 @@ jest.mock('react-redux');
 jest.mock('../store/async-actions');
 
 describe('RestaurantsContainer', () => {
-  const selectedRegion = regions[0].name;
-  const selectedCategory = categories[0].id;
+  const selectedRegion = regions[0];
+  const selectedCategory = categories[0];
 
   const dispatch = jest.fn();
 
@@ -32,8 +32,8 @@ describe('RestaurantsContainer', () => {
 
     expect(dispatch).toHaveBeenCalledWith(
       getRestaurants({
-        region: selectedRegion,
-        categoryId: selectedCategory,
+        region: selectedRegion.name,
+        categoryId: selectedCategory.id,
       }),
     );
 
