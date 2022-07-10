@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { regions, categories, restaurants } from '../__fixture__/restaurantsInfo';
+
 import App from './App';
 
 describe('<App/>', () => {
@@ -9,12 +11,9 @@ describe('<App/>', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
+    regions,
+    categories,
+    restaurants,
   }));
 
   const renderApp = () => ((
