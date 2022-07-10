@@ -1,33 +1,59 @@
 import {
-  baseURL, fetchCategories, fetchRegions, fetchRestaurants,
+  fetchCategories, fetchRegions, fetchRestaurants,
 } from './api';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 describe('api', () => {
+  const fetch = jest.fn();
+
+  const mockFetch = (data) => {
+    global.fetch = fetch.mockResolvedValue({
+      async json() {
+        return data;
+      },
+    });
+  };
+
+  beforeEach(() => {
+    fetch.mockClear();
+  });
+
   describe('fetchRegions', () => {
     beforeEach(() => {
-      global.fetch = jest.fn().mockResolvedValue({ json: () => {} });
+      mockFetch(regions);
     });
 
-    it('지역 목록 Api를 호출합니다.', async () => {
-      await fetchRegions();
+    it('지역 목록을 반환합니다.', async () => {
+      const result = await fetchRegions();
 
-      expect(fetch).toHaveBeenCalledWith(`${baseURL}/regions`);
+      expect(result).toBe(regions);
     });
   });
 
   describe('fetchCategories', () => {
-    it('getRegions api주소와 함께 fetch됩니다.', async () => {
-      await fetchCategories();
+    beforeEach(() => {
+      mockFetch(categories);
+    });
 
-      expect(fetch).toHaveBeenCalledWith(`${baseURL}/regions`);
+    it('카테고리 목록을 반환합니다.', async () => {
+      const result = await fetchCategories();
+
+      expect(result).toBe(categories);
     });
   });
 
   describe('fetchRestaurants', () => {
-    it('getCategories api주소와 함께 fetch됩니다.', async () => {
-      await fetchRestaurants({ region: '서울', categoryId: '3' });
+    beforeEach(() => {
+      mockFetch(restaurants);
+    });
 
-      expect(fetch).toHaveBeenCalledWith(`${baseURL}/restaurants?region=서울&category=3`);
+    it('레스토랑 목록을 반환합니다.', async () => {
+      const result = await fetchRestaurants({ region: '서울', categoryId: 1 });
+
+      expect(result).toEqual(restaurants);
     });
   });
 });
