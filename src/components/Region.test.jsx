@@ -7,10 +7,10 @@ import REGIONS from '../fixtures/regions';
 describe('<Region />', () => {
   const handleClick = jest.fn();
 
-  const renderRegion = ({ region, selected = false }) => render((
+  const renderRegion = ({ region, isSelected = false }) => render((
     <Region
       region={region}
-      selected={selected}
+      isSelected={isSelected}
       onClick={handleClick}
     />
   ));
@@ -45,7 +45,7 @@ describe('<Region />', () => {
 
       const { container } = renderRegion({
         region,
-        selected: true,
+        isSelected: true,
       });
 
       expect(container).toHaveTextContent(`${region.name}(V)`);
@@ -56,7 +56,7 @@ describe('<Region />', () => {
     it('doesnt render "(V)"', () => {
       const { container } = renderRegion({
         region: REGIONS[0],
-        selected: false,
+        isSelected: false,
       });
 
       expect(container).not.toHaveTextContent('(V)');
