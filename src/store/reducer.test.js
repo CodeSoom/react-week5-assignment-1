@@ -3,9 +3,12 @@ import reducer, { initialState } from './reducer';
 import {
   setRegions,
   selectRegion,
+  setCategories,
+  selectCategory,
 } from './actions';
 
 import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
 
 describe('reducer', () => {
   context('without state', () => {
@@ -38,6 +41,22 @@ describe('reducer', () => {
         const state = reducer(initialState, selectRegion(REGIONS[0].id));
 
         expect(state.selectedRegionId).toBe(REGIONS[0].id);
+      });
+    });
+
+    describe('setCategories', () => {
+      it('update categories', () => {
+        const state = reducer(initialState, setCategories(CATEGORIES));
+
+        expect(state.categories).toEqual(CATEGORIES);
+      });
+    });
+
+    describe('selectCategory', () => {
+      it('update category id', () => {
+        const state = reducer(initialState, selectCategory(CATEGORIES[0].id));
+
+        expect(state.selectedCategoryId).toBe(CATEGORIES[0].id);
       });
     });
   });
