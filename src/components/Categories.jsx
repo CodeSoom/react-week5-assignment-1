@@ -1,6 +1,6 @@
 import Category from './Category';
 
-export default function Categories({ categories = [], selectCategory, selectedCategoryId = null }) {
+export default function Categories({ categories, selectCategory, selectedCategoryId = null }) {
   const isSelected = (category) => category.id === selectedCategoryId;
 
   if (!categories.length) {
