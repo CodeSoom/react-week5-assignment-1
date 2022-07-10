@@ -8,6 +8,7 @@ import REGIONS from './fixtures/regions';
 
 import {
   loadRegions,
+  loadCategories,
 } from './store/async-actions';
 
 import App from './App';
@@ -49,5 +50,12 @@ describe('<App />', () => {
 
       expect(container).toHaveTextContent(region.name);
     });
+  });
+
+  it('load categories initially', () => {
+    renderApp();
+
+    expect(dispatch).toBeCalled();
+    expect(loadCategories).toBeCalledTimes(1);
   });
 });
