@@ -18,7 +18,7 @@ export default function Regions({ regions = [], onClickRegion, selectedRegionId 
           <li key={region.id}>
             <Region
               region={region}
-              selected={isSelected(region)}
+              isSelected={isSelected(region)}
               onClick={onClickRegion}
             />
           </li>
