@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import given from 'given2';
 
 import REGIONS from './fixtures/regions';
+import CATEGORIES from './fixtures/categories';
 
 import {
   loadRegions,
@@ -57,5 +58,17 @@ describe('<App />', () => {
 
     expect(dispatch).toBeCalled();
     expect(loadCategories).toBeCalledTimes(1);
+  });
+
+  context('with categories', () => {
+    it('renders categories', () => {
+      given('categories', () => CATEGORIES);
+
+      const { container } = renderApp();
+
+      const category = given.categories[0];
+
+      expect(container).toHaveTextContent(category.name);
+    });
   });
 });
