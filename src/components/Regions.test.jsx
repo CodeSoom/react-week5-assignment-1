@@ -5,16 +5,16 @@ import Regions from './Regions';
 import REGIONS from '../fixtures/regions';
 
 describe('<Regions />', () => {
-  const handleClickRegion = jest.fn();
+  const handleSelectRegion = jest.fn();
 
   const renderRegions = ({ regions = [], selectedRegionId = null }) => render((<Regions
     regions={regions}
     selectedRegionId={selectedRegionId}
-    onClickRegion={handleClickRegion}
+    selectRegion={handleSelectRegion}
   />));
 
   beforeEach(() => {
-    handleClickRegion.mockClear();
+    handleSelectRegion.mockClear();
   });
 
   context('without regions', () => {
@@ -35,16 +35,16 @@ describe('<Regions />', () => {
     });
 
     describe('click region', () => {
-      it('calls handleClickRegion', () => {
+      it('calls handleSelectRegion', () => {
         const region = REGIONS[0];
 
         const { getByText } = renderRegions({ regions: REGIONS });
 
-        expect(handleClickRegion).not.toBeCalled();
+        expect(handleSelectRegion).not.toBeCalled();
 
         fireEvent.click(getByText(region.name));
 
-        expect(handleClickRegion).toBeCalledWith(region.id);
+        expect(handleSelectRegion).toBeCalledWith(region.id);
       });
     });
   });

@@ -1,6 +1,6 @@
 import Region from './Region';
 
-export default function Regions({ regions = [], onClickRegion, selectedRegionId = null }) {
+export default function Regions({ regions = [], selectRegion, selectedRegionId = null }) {
   const isSelected = (region) => region.id === selectedRegionId;
 
   if (!regions.length) {
@@ -19,7 +19,7 @@ export default function Regions({ regions = [], onClickRegion, selectedRegionId 
             <Region
               region={region}
               isSelected={isSelected(region)}
-              onClick={onClickRegion}
+              onClick={selectRegion}
             />
           </li>
         ))

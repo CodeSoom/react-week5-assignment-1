@@ -12,7 +12,7 @@ export default function RegionsContainer() {
 
   const dispatch = useDispatch();
 
-  const handleClickRegion = (regionId) => {
+  const handleSelectRegion = (regionId) => {
     dispatch(selectRegion(regionId));
   };
 
@@ -21,7 +21,7 @@ export default function RegionsContainer() {
       <Regions
         regions={regions}
         selectedRegionId={selectedRegionId}
-        onClickRegion={handleClickRegion}
+        selectRegion={handleSelectRegion}
       />
     </>
   );
