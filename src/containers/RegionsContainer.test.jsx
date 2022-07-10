@@ -17,6 +17,7 @@ describe('<RegionsContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions: given.regions,
+    selectedRegionId: given.selectedRegionId,
   }));
 
   const dispatch = jest.fn();
@@ -59,6 +60,28 @@ describe('<RegionsContainer />', () => {
         fireEvent.click(getByText(region.name));
 
         expect(dispatch).toBeCalledWith(selectRegion(region.id));
+      });
+    });
+
+    context('with selected region id', () => {
+      it('selected region is shown', () => {
+        const region = REGIONS[0];
+
+        given('selectedRegionId', () => region.id);
+
+        const { container } = renderRegionsContainer();
+
+        expect(container).toHaveTextContent(`${region.name}(V)`);
+      });
+    });
+
+    context('without selected region id', () => {
+      it('selected region is not shown', () => {
+        given('selectedRegionId', () => null);
+
+        const { container } = renderRegionsContainer();
+
+        expect(container).not.toHaveTextContent('(V)');
       });
     });
   });
