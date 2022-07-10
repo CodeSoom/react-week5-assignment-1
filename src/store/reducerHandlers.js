@@ -12,4 +12,18 @@ export default {
       selectedRegionId: action.payload.selectedRegionId,
     };
   },
+
+  setCategories(state, action) {
+    return {
+      ...state,
+      categories: action.payload.categories,
+    };
+  },
+
+  selectCategory(state, action) {
+    return {
+      ...state,
+      selectedCategoryId: action.payload.selectedCategoryId,
+    };
+  },
 };
