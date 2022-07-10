@@ -1,5 +1,7 @@
 import { categories, regions } from '../__fixture__/restaurantsInfo';
-import { selectRegion, setCategories, setRegions } from './action';
+import {
+  selectCategory, selectRegion, setCategories, setRegions,
+} from './action';
 
 import reducer from './reducer';
 
@@ -42,6 +44,24 @@ describe('reducer', () => {
       expect(state.selectedRegion).toEqual({
         id: 1,
         name: '서울',
+      });
+    });
+  });
+
+  describe('selectCategory', () => {
+    it('분류가 선택됨', () => {
+      const initialState = {
+        categories: [
+          { id: 1, name: '한식' },
+        ],
+        selectedCategory: null,
+      };
+
+      const state = reducer(initialState, selectCategory(1));
+
+      expect(state.selectedCategory).toEqual({
+        id: 1,
+        name: '한식',
       });
     });
   });
