@@ -17,7 +17,7 @@ describe('<RegionsContainer />', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions: given.regions,
-    selectedRegionId: given.selectedRegionId,
+    selectedRegion: given.selectedRegion,
   }));
 
   const dispatch = jest.fn();
@@ -63,11 +63,11 @@ describe('<RegionsContainer />', () => {
       });
     });
 
-    context('with selected region id', () => {
+    context('with selected region', () => {
       it('selected region is shown', () => {
         const region = REGIONS[0];
 
-        given('selectedRegionId', () => region.id);
+        given('selectedRegion', () => region);
 
         const { container } = renderRegionsContainer();
 
@@ -75,9 +75,9 @@ describe('<RegionsContainer />', () => {
       });
     });
 
-    context('without selected region id', () => {
+    context('without selected region', () => {
       it('selected region is not shown', () => {
-        given('selectedRegionId', () => null);
+        given('selectedRegion', () => null);
 
         const { container } = renderRegionsContainer();
 
