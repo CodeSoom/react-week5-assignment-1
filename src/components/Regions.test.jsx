@@ -5,7 +5,7 @@ import Regions from './Regions';
 import regions from '../fixtures/regions';
 
 describe('Regions', () => {
-  const defaultRegion = regions[0].name;
+  const defaultRegion = regions[0];
 
   const handleClickRegion = jest.fn();
 
@@ -30,14 +30,14 @@ describe('Regions', () => {
   it('region을 클릭하면 handleClickRegion이 호출됩니다', () => {
     const { getByRole } = renderRegion();
 
-    fireEvent.click(getByRole('button', { name: defaultRegion }));
+    fireEvent.click(getByRole('button', { name: defaultRegion.name }));
 
-    expect(handleClickRegion).toHaveBeenCalledWith(defaultRegion);
+    expect(handleClickRegion).toHaveBeenCalledWith(defaultRegion.name);
   });
 
   it('선택되었으면 (V)가 함께 보여집니다.', () => {
-    const { getByRole } = renderRegion({ selectedRegion: defaultRegion });
+    const { getByRole } = renderRegion({ selectedRegion: defaultRegion.name });
 
-    expect(getByRole('button', { name: `${defaultRegion}(V)` })).toBeInTheDocument();
+    expect(getByRole('button', { name: `${defaultRegion.name}(V)` })).toBeInTheDocument();
   });
 });
