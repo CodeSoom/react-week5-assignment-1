@@ -9,7 +9,7 @@ export default {
   selectRegion(state, action) {
     return {
       ...state,
-      selectedRegionId: action.payload.selectedRegionId,
+      selectedRegion: action.payload.selectedRegion,
     };
   },
 

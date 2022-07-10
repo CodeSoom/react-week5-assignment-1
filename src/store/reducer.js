@@ -2,6 +2,7 @@ import reducers from './reducerHandlers';
 
 export const initialState = {
   regions: [],
+  selectedRegion: null,
   selectedRegionId: null,
 
   categories: [],
