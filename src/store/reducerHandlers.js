@@ -1,0 +1,36 @@
+export default {
+  setRegions(state, action) {
+    return {
+      ...state,
+      regions: action.payload.regions,
+    };
+  },
+
+  selectRegion(state, action) {
+    return {
+      ...state,
+      selectedRegion: action.payload.selectedRegion,
+    };
+  },
+
+  setCategories(state, action) {
+    return {
+      ...state,
+      categories: action.payload.categories,
+    };
+  },
+
+  selectCategory(state, action) {
+    return {
+      ...state,
+      selectedCategoryId: action.payload.selectedCategoryId,
+    };
+  },
+
+  setRestaurants(state, action) {
+    return {
+      ...state,
+      restaurants: action.payload.restaurants,
+    };
+  },
+};
