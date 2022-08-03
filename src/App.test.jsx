@@ -10,6 +10,7 @@ test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
+    restaurants: [],
   }));
 
   const { getByText } = render(<App />);
