@@ -1,9 +1,13 @@
+import { addresses } from '../fixtures/staticData';
+
 export default function App() {
   return (
     <>
       <div>
         <ul>
-          <li>서울</li>
+          {addresses.map(((address) => (
+            <li key={address.id}>{address.name}</li>
+          )))}
         </ul>
       </div>
       <div>
