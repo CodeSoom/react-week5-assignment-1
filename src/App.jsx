@@ -5,7 +5,7 @@ import { setRestaurants, setCategories, setRegions } from './action';
 
 import CategoriesContainer from './CategoriesContainer';
 
-function loadRestaurants({ dispatch }) {
+function loadRestaurants({ dispatch = () => {} }) {
   const restaurants = [];
 
   // API 서버 확보
@@ -14,13 +14,13 @@ function loadRestaurants({ dispatch }) {
   dispatch(setRestaurants(restaurants));
 }
 
-function loadCategories({ dispatch }) {
+function loadCategories({ dispatch = () => {} }) {
   const categories = [];
 
   dispatch(setCategories(categories));
 }
 
-function loadRegions({ dispatch }) {
+function loadRegions({ dispatch = () => {} }) {
   const regions = [];
 
   dispatch(setRegions(regions));
@@ -28,6 +28,7 @@ function loadRegions({ dispatch }) {
 
 export default function App() {
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     loadRestaurants({ dispatch });
