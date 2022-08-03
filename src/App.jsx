@@ -37,6 +37,7 @@ export default function App() {
 
   return (
     <>
+      <h1>Restaurant Information</h1>
       <CategoriesContainer />
       <ul>
         <li>테스트</li>
