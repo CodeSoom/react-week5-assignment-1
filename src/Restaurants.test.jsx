@@ -7,7 +7,7 @@ import Restaurants from './Restaurants';
 jest.mock('react-redux');
 
 test('Restaurants', () => {
-  const restaurant = [
+  const restaurants = [
     {
       id: 6,
       categoryId: 1,
@@ -17,7 +17,7 @@ test('Restaurants', () => {
     },
   ];
 
-  const { getByText } = render(<Restaurants restaurant={restaurant} />);
+  const { getByText } = render(<Restaurants restaurants={restaurants} />);
 
   expect(getByText(/한국식 초밥/)).not.toBeNull();
 });

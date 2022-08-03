@@ -1,8 +1,8 @@
 export default function Restaurants({ restaurants = [] }) {
   return (
     <ul>
-      {restaurants.map((region) => (
-        <li key={region.id}>{region.name}</li>
+      {restaurants.map((restaurant) => (
+        <li key={restaurant.id}>{restaurant.name}</li>
       ))}
     </ul>
   );
