@@ -1,15 +1,11 @@
+import Addresses from './Addresses';
+
 import { addresses } from '../fixtures/staticData';
 
 export default function App() {
   return (
     <>
-      <div>
-        <ul>
-          {addresses.map(((address) => (
-            <li key={address.id}>{address.name}</li>
-          )))}
-        </ul>
-      </div>
+      <Addresses addresses={addresses} />
       <div>
         <ul>
           <li>한식</li>
