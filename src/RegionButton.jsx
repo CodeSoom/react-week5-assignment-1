@@ -1,4 +1,4 @@
-export default function AddressButton({ name, selected, onClick }) {
+export default function RegionButton({ name, selected, onClick }) {
   return (
     <div>
       <button

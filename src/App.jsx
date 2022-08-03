@@ -1,11 +1,11 @@
-import Addresses from './Addresses';
+import Regions from './Regions';
 
-import { addresses } from '../fixtures/staticData';
+import { regions } from '../fixtures/staticData';
 
 export default function App() {
   return (
     <>
-      <Addresses addresses={addresses} />
+      <Regions regions={regions} />
       <div>
         <ul>
           <li>한식</li>

@@ -1,14 +1,14 @@
 import { render } from '@testing-library/react';
 
-import Addresses from './Addresses';
+import Regions from './Regions';
 
-import { addresses } from '../fixtures/staticData';
+import { regions } from '../fixtures/staticData';
 
 function customRender() {
-  return render(<Addresses addresses={addresses} />);
+  return render(<Regions regions={regions} />);
 }
 
-describe('Addresses', () => {
+describe('Regions', () => {
   context('with 서울 selected', () => {
     test('서울 has check mark', () => {
       const { queryByText } = customRender();

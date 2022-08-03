@@ -1,6 +1,6 @@
-import AddressButton from './AddressButton';
+import RegionButton from './RegionButton';
 
-export default function Addresses({ addresses }) {
+export default function Regions({ regions }) {
   function onClick() {
     //
   }
@@ -8,10 +8,10 @@ export default function Addresses({ addresses }) {
   return (
     <div>
       <ul>
-        {addresses.map(((address) => {
-          const { id, name, selected } = address;
+        {regions.map(((region) => {
+          const { id, name, selected } = region;
           return (
-            <AddressButton
+            <RegionButton
               key={id}
               name={name}
               selected={selected}

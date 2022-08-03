@@ -7,7 +7,7 @@ function customRender() {
 }
 
 describe('App', () => {
-  test('renders addresses', () => {
+  test('renders regions', () => {
     const { queryByText } = customRender();
 
     expect(queryByText('서울(V)')).not.toBeNull();

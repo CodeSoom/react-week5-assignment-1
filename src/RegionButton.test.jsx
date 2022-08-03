@@ -1,17 +1,17 @@
 import { render } from '@testing-library/react';
 
-import AddressButton from './AddressButton';
+import RegionButton from './RegionButton';
 
-import { addresses } from '../fixtures/staticData';
+import { regions } from '../fixtures/staticData';
 
-const selectedAddress = addresses[0];
-const unselectedAddress = addresses[1];
+const selectedRegion = regions[0];
+const unselectedRegion = regions[1];
 const onClick = jest.fn();
 
 function customRender(address) {
   const { id, name, selected } = address;
   return render(
-    <AddressButton
+    <RegionButton
       key={id}
       name={name}
       selected={selected}
@@ -20,16 +20,16 @@ function customRender(address) {
   );
 }
 
-describe('AddressButton', () => {
+describe('RegionButton', () => {
   context('with 서울 selected', () => {
     test('서울 has check mark', () => {
-      const { queryByText } = customRender(selectedAddress);
+      const { queryByText } = customRender(selectedRegion);
 
       expect(queryByText('서울(V)')).not.toBeNull();
     });
 
     test('대전 does not have check mark', () => {
-      const { queryByText } = customRender(unselectedAddress);
+      const { queryByText } = customRender(unselectedRegion);
 
       expect(queryByText('대전(V)')).toBeNull();
       expect(queryByText('대전')).not.toBeNull();
