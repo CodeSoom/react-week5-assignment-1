@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { setRestaurants, setCategories, setRegions } from './action';
 
+import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 
 function loadRestaurants({ dispatch = () => {} }) {
@@ -39,10 +40,8 @@ export default function App() {
   return (
     <>
       <h1>Restaurant Information</h1>
+      <RegionsContainer />
       <CategoriesContainer />
-      <ul>
-        <li>테스트</li>
-      </ul>
     </>
   );
 }
