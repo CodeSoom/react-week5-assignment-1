@@ -8,6 +8,10 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [

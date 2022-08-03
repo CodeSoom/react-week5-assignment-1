@@ -6,6 +6,10 @@ import Restaurants from './Restaurants';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('Restaurants', () => {
   const restaurants = [
     {

@@ -6,6 +6,10 @@ import App from './App';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],

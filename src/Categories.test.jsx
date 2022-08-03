@@ -6,6 +6,10 @@ import Categories from './Categories';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('Categories', () => {
   const categories = [
     {

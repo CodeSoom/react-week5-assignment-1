@@ -6,6 +6,10 @@ import Regions from './Regions';
 
 jest.mock('react-redux');
 
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
 test('Regions', () => {
   const regions = [
     {
