@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -17,6 +17,9 @@ describe('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
   }));
+
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
 
   test('renders regions', () => {
     expect(screen.getByText('서울(V)')).not.toBeNull();

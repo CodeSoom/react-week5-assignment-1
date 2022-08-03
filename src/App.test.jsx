@@ -1,12 +1,26 @@
 import { render } from '@testing-library/react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
+
+import {
+  regions,
+} from '../fixtures/staticData';
+
+jest.mock('react-redux');
 
 function customRender() {
   return render(<App />);
 }
 
 describe('App', () => {
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
+
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   test('renders regions', () => {
     const { queryByText } = customRender();
 

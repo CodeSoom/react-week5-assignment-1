@@ -1,11 +1,9 @@
-import Regions from './Regions';
-
-import { regions } from '../fixtures/staticData';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   return (
     <>
-      <Regions regions={regions} />
+      <RegionsContainer />
       <div>
         <ul>
           <li>한식</li>

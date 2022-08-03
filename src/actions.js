@@ -8,6 +8,11 @@ export function setRestaurants(restaurants) {
 }
 
 // TODO: Delete this!
-export function doSomething() {
-  //
+export function setRegions(regions) {
+  return {
+    type: 'setRegions',
+    payload: {
+      regions,
+    },
+  };
 }
