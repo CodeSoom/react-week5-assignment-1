@@ -1,19 +1,25 @@
+import AddressButton from './AddressButton';
+
 export default function Addresses({ addresses }) {
-  function addressRender(address) {
-    return (
-      <li key={address.id}>
-        {address.name}
-        {address.selected && '(V)'}
-      </li>
-    );
+  function onClick() {
+    //
   }
 
   return (
     <div>
       <ul>
-        {addresses.map(((address) => (
-          addressRender(address)
-        )))}
+        {addresses.map(((address) => {
+          const { id, name, selected } = address;
+          return (
+            <AddressButton
+              key={id}
+              name={name}
+              selected={selected}
+              onClick={onClick}
+            />
+          );
+        }
+        ))}
       </ul>
     </div>
   );
