@@ -8,7 +8,7 @@ jest.mock('react-redux');
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
-    categories: [{ id: 1, name: '한식' }],
+    categories: [],
   }));
 
   const { getByText } = render(<App />);
