@@ -1,4 +1,4 @@
-export default function Categories({ categories }) {
+export default function Categories({ categories = []}) {
   return (
     <ul>
       {categories.map((category) => (
