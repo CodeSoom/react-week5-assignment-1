@@ -3,7 +3,8 @@ export default function RegionButton({ name, selected, onClick }) {
     <div>
       <button
         type="button"
-        onClick={onClick}
+        name={name}
+        onClick={(e) => onClick(e.target.name)}
       >
         {name}
         {selected && '(V)'}

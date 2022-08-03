@@ -22,5 +22,22 @@ export default function reducer(state = initialState, action) {
       regions: action.payload.regions,
     };
   }
+  if (action.type === 'markSelectedRegion') {
+    return {
+      ...state,
+      regions: [...state.regions.map((region) => {
+        if (region.name === action.payload.regionName) {
+          return {
+            ...region,
+            selected: true,
+          };
+        }
+        return {
+          ...region,
+          selected: false,
+        };
+      })],
+    };
+  }
   return state;
 }

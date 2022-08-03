@@ -1,10 +1,6 @@
 import RegionButton from './RegionButton';
 
-export default function Regions({ regions }) {
-  function onClick() {
-    //
-  }
-
+export default function Regions({ regions, onClick }) {
   return (
     <div>
       <ul>

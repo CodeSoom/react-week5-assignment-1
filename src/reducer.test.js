@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setRestaurants,
+  markSelectedRegion,
 } from './actions';
 
 import {
@@ -22,6 +23,28 @@ describe('Reducer', () => {
       expect(reducer(initialState, setRestaurants(restaurants))).toEqual({
         ...initialState,
         restaurants,
+      });
+    });
+  });
+
+  context('with markSelectedRegion', () => {
+    it('changes selected region', () => {
+      expect(reducer(initialState, markSelectedRegion('대전'))).toEqual({
+        ...initialState,
+        regions: [
+          ...initialState.regions.map((region) => {
+            if (region.name === '대전') {
+              return {
+                ...region,
+                selected: true,
+              };
+            }
+            return {
+              ...region,
+              selected: false,
+            };
+          }),
+        ],
       });
     });
   });

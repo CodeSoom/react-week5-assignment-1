@@ -7,12 +7,20 @@ export function setRestaurants(restaurants) {
   };
 }
 
-// TODO: Delete this!
 export function setRegions(regions) {
   return {
     type: 'setRegions',
     payload: {
       regions,
+    },
+  };
+}
+
+export function markSelectedRegion(regionName) {
+  return {
+    type: 'markSelectedRegion',
+    payload: {
+      regionName,
     },
   };
 }

@@ -5,6 +5,7 @@ import Regions from './Regions';
 
 import {
   setRegions,
+  markSelectedRegion,
 } from './actions';
 
 export default function RegionsContainer() {
@@ -18,7 +19,11 @@ export default function RegionsContainer() {
     dispatch(setRegions(regions));
   }, [regions]);
 
+  function handleRegionClick(regionName) {
+    dispatch(markSelectedRegion(regionName));
+  }
+
   return (
-    <Regions regions={regions} />
+    <Regions regions={regions} onClick={handleRegionClick} />
   );
 }
