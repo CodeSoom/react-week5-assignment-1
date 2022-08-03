@@ -8,6 +8,7 @@ jest.mock('react-redux');
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
+    regions: [],
     categories: [],
   }));
 
