@@ -5,14 +5,12 @@ import { setRestaurants, setCategories, setRegions } from './action';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
-function loadRestaurants({ dispatch = () => {} }) {
-  const restaurants = [];
+function loadRegions({ dispatch = () => {} }) {
+  const regions = [];
 
-  // API 서버 확보
-  // 데이터 fetch
-
-  dispatch(setRestaurants(restaurants));
+  dispatch(setRegions(regions));
 }
 
 function loadCategories({ dispatch = () => {} }) {
@@ -21,10 +19,9 @@ function loadCategories({ dispatch = () => {} }) {
   dispatch(setCategories(categories));
 }
 
-function loadRegions({ dispatch = () => {} }) {
-  const regions = [];
-
-  dispatch(setRegions(regions));
+function loadRestaurants({ dispatch = () => {} }) {
+  const restaurants = [];
+  dispatch(setRestaurants(restaurants));
 }
 
 export default function App() {
@@ -32,9 +29,9 @@ export default function App() {
 
 
   useEffect(() => {
-    loadRestaurants({ dispatch });
     loadCategories({ dispatch });
     loadRegions({ dispatch });
+    loadRestaurants({ dispatch });
   }, []);
 
   return (
@@ -42,6 +39,7 @@ export default function App() {
       <h1>Restaurant Information</h1>
       <RegionsContainer />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </>
   );
 }
