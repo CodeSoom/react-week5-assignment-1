@@ -9,9 +9,17 @@ function customRender() {
 }
 
 describe('Addresses', () => {
-  test('renders addresses', () => {
-    const { queryByText } = customRender();
+  context('with 서울 selected', () => {
+    test('서울 has check mark', () => {
+      const { queryByText } = customRender();
 
-    expect(queryByText('서울')).not.toBeNull();
+      expect(queryByText('서울(V)')).not.toBeNull();
+    });
+    test('대전 does not have check mark', () => {
+      const { queryByText } = customRender();
+
+      expect(queryByText('대전(V)')).toBeNull();
+      expect(queryByText('대전')).not.toBeNull();
+    });
   });
 });
