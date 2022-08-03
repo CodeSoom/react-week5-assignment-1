@@ -10,7 +10,7 @@ describe('App', () => {
   test('renders addresses', () => {
     const { queryByText } = customRender();
 
-    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('서울(V)')).not.toBeNull();
   });
 
   test('renders categories', () => {
