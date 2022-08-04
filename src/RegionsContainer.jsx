@@ -20,11 +20,6 @@ export default function RegionsContainer() {
     dispatch(setRegions(regions));
   }, [regions]);
 
-  useEffect(() => {
-    console.log(regions)
-    console.log(region)
-  })
-
   function handleRegionClick(regionName) {
     dispatch(selectRegion(regionName));
   }

@@ -23,6 +23,10 @@ describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('renders regions', () => {
     const { queryByText } = customRender();
 

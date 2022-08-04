@@ -33,7 +33,7 @@ describe('Reducer', () => {
     it('updates region', () => {
       expect(reducer(initialState, selectRegion('대전'))).toEqual({
         ...initialState,
-        region: regions.filter((region) => region.name === '대전'),
+        region: regions.filter((region) => region.name === '대전')[0],
       });
     });
   });
