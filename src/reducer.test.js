@@ -2,7 +2,9 @@ import reducer from './reducer';
 
 import {
   setRestaurants,
+  setRegions,
   selectRegion,
+  setCategories,
   selectCategory,
 } from './actions';
 
@@ -16,8 +18,8 @@ describe('Reducer', () => {
   const initialState = {
     region: {},
     category: {},
-    regions,
-    categories,
+    regions: [],
+    categories: [],
     restaurants: [],
   };
 
@@ -26,6 +28,24 @@ describe('Reducer', () => {
       expect(reducer(initialState, setRestaurants(restaurants))).toEqual({
         ...initialState,
         restaurants,
+      });
+    });
+  });
+
+  context('with setRegions', () => {
+    it('returns updated regions', () => {
+      expect(reducer(initialState, setRegions(regions))).toEqual({
+        ...initialState,
+        regions,
+      });
+    });
+  });
+
+  context('with setCategories', () => {
+    it('returns updated categories', () => {
+      expect(reducer(initialState, setCategories(categories))).toEqual({
+        ...initialState,
+        categories,
       });
     });
   });

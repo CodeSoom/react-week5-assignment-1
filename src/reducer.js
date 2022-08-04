@@ -38,7 +38,7 @@ export default function reducer(state = initialState, action) {
   if (action.type === 'setCategories') {
     return {
       ...state,
-      category: action.payload.categories,
+      categories: action.payload.categories,
     };
   }
 

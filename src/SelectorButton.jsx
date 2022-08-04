@@ -1,4 +1,4 @@
-export default function RegionButton({ selectedRegionName, name, onClick }) {
+export default function SelectorButton({ selectedName, name, onClick }) {
   return (
     <div>
       <button
@@ -7,7 +7,7 @@ export default function RegionButton({ selectedRegionName, name, onClick }) {
         onClick={(e) => onClick(e.target.name)}
       >
         {name}
-        {(selectedRegionName === name) && '(V)'}
+        {(selectedName === name) && '(V)'}
       </button>
     </div>
   );

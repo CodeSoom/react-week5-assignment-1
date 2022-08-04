@@ -1,4 +1,4 @@
-import CategoryButton from './CategoryButton';
+import SelectorButton from './SelectorButton';
 
 export default function Categories({ selectedCategoryName, categories, onClick }) {
   return (
@@ -7,10 +7,10 @@ export default function Categories({ selectedCategoryName, categories, onClick }
         {categories.map(((category) => {
           const { id, name } = category;
           return (
-            <CategoryButton
+            <SelectorButton
               key={id}
               name={name}
-              selectedCategoryName={selectedCategoryName}
+              selectedName={selectedCategoryName}
               onClick={onClick}
             />
           );
