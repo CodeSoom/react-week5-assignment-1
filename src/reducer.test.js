@@ -18,8 +18,8 @@ describe('Reducer', () => {
   const initialState = {
     region: {},
     category: {},
-    regions: [],
-    categories: [],
+    regions,
+    categories,
     restaurants: [],
   };
 
@@ -65,6 +65,24 @@ describe('Reducer', () => {
         ...initialState,
         category: categories.filter((category) => category.name === '중식')[0],
       });
+    });
+  });
+
+  context('with not predefined action', () => {
+    it('returns state as is', () => {
+      function someAction() {
+        return {
+          type: 'someAction',
+        };
+      }
+
+      expect(reducer(initialState, someAction())).toEqual(initialState);
+    });
+  });
+
+  context('with no actions', () => {
+    it('returns state as is', () => {
+      expect(reducer()).toEqual(initialState);
     });
   });
 });
