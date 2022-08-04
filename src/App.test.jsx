@@ -5,6 +5,7 @@ import App from './App';
 
 import {
   regions,
+  region,
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
@@ -16,6 +17,7 @@ function customRender() {
 describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
+    region,
   }));
 
   const dispatch = jest.fn();

@@ -2,10 +2,10 @@ import { render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import { regions } from '../fixtures/staticData';
+import { regions, region } from '../fixtures/staticData';
 
 function customRender() {
-  return render(<Regions regions={regions} />);
+  return render(<Regions regions={regions} selectedRegionName={region.name} />);
 }
 
 describe('Regions', () => {

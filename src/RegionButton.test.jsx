@@ -9,12 +9,13 @@ const unselectedRegion = regions[1];
 const onClick = jest.fn();
 
 function customRender(address) {
-  const { id, name, selected } = address;
+  const { id, name } = address;
+  const selectedRegionName = regions[0].name;
   return render(
     <RegionButton
       key={id}
       name={name}
-      selected={selected}
+      selectedRegionName={selectedRegionName}
       onClick={onClick}
     />,
   );

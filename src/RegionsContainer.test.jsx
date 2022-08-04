@@ -5,6 +5,7 @@ import RegionsContainer from './RegionsContainer';
 
 import {
   regions,
+  region,
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
@@ -16,6 +17,7 @@ describe('RegionsContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     regions,
+    region,
   }));
 
   const dispatch = jest.fn();

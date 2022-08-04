@@ -1,16 +1,16 @@
 import RegionButton from './RegionButton';
 
-export default function Regions({ regions, onClick }) {
+export default function Regions({ selectedRegionName, regions, onClick }) {
   return (
     <div>
       <ul>
         {regions.map(((region) => {
-          const { id, name, selected } = region;
+          const { id, name } = region;
           return (
             <RegionButton
               key={id}
               name={name}
-              selected={selected}
+              selectedRegionName={selectedRegionName}
               onClick={onClick}
             />
           );

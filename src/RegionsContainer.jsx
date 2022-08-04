@@ -5,25 +5,31 @@ import Regions from './Regions';
 
 import {
   setRegions,
-  markSelectedRegion,
+  selectRegion,
 } from './actions';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
 
-  const { regions } = useSelector((state) => ({
+  const { regions, region } = useSelector((state) => ({
     regions: state.regions,
+    region: state.region,
   }));
 
   useEffect(() => {
     dispatch(setRegions(regions));
   }, [regions]);
 
+  useEffect(() => {
+    console.log(regions)
+    console.log(region)
+  })
+
   function handleRegionClick(regionName) {
-    dispatch(markSelectedRegion(regionName));
+    dispatch(selectRegion(regionName));
   }
 
   return (
-    <Regions regions={regions} onClick={handleRegionClick} />
+    <Regions regions={regions} selectedRegionName={region.name} onClick={handleRegionClick} />
   );
 }

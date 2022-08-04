@@ -16,9 +16,9 @@ export function setRegions(regions) {
   };
 }
 
-export function markSelectedRegion(regionName) {
+export function selectRegion(regionName) {
   return {
-    type: 'markSelectedRegion',
+    type: 'selectRegion',
     payload: {
       regionName,
     },

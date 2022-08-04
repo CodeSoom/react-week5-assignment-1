@@ -73,3 +73,5 @@ export const restaurants = [
     information: '한국식 초밥 in 서울 강남구',
   },
 ];
+
+export const region = regions[0];
