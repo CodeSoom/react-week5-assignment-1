@@ -12,6 +12,7 @@ jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
   beforeEach(() => {
+    jest.clearAllMocks();
     render(<RegionsContainer />);
   });
 

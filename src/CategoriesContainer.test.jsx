@@ -12,6 +12,7 @@ jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
   beforeEach(() => {
+    jest.clearAllMocks();
     render(<CategoriesContainer />);
   });
 

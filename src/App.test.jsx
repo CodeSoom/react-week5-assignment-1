@@ -6,6 +6,8 @@ import App from './App';
 import {
   regions,
   region,
+  categories,
+  category,
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
@@ -18,6 +20,8 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     region,
+    categories,
+    category,
   }));
 
   const dispatch = jest.fn();
@@ -36,7 +40,7 @@ describe('App', () => {
   test('renders categories', () => {
     const { queryByText } = customRender();
 
-    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('한식(V)')).not.toBeNull();
   });
 
   test('renders restaurants', () => {
