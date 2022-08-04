@@ -31,21 +31,23 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
-  test('renders regions', () => {
-    const { queryByText } = customRender();
+  context('with selected region and category', () => {
+    test('renders regions', () => {
+      const { queryByText } = customRender();
 
-    expect(queryByText('서울(V)')).not.toBeNull();
-  });
+      expect(queryByText('서울(V)')).not.toBeNull();
+    });
 
-  test('renders categories', () => {
-    const { queryByText } = customRender();
+    test('renders categories', () => {
+      const { queryByText } = customRender();
 
-    expect(queryByText('한식(V)')).not.toBeNull();
-  });
+      expect(queryByText('한식(V)')).not.toBeNull();
+    });
 
-  test('renders restaurants', () => {
-    const { queryByText } = customRender();
+    test('renders restaurants', () => {
+      const { queryByText } = customRender();
 
-    expect(queryByText('양천주가')).not.toBeNull();
+      expect(queryByText('양천주가')).not.toBeNull();
+    });
   });
 });

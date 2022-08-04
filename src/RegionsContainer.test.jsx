@@ -25,8 +25,8 @@ describe('RegionsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   test('renders regions', () => {
-    expect(screen.getByText('서울(V)')).not.toBeNull();
-    expect(screen.getByText('대전')).not.toBeNull();
-    expect(screen.getByText('대구')).not.toBeNull();
+    expect(screen.queryByText('서울(V)')).not.toBeNull();
+    expect(screen.queryByText('대전')).not.toBeNull();
+    expect(screen.queryByText('대구')).not.toBeNull();
   });
 });
