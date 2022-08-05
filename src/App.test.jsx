@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
