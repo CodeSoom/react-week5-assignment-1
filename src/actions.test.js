@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import {
   loadRegions,
   loadCategories,
+  loadRestaurants,
 } from './actions';
 
 import {
   categories,
   regions,
+  restaurants,
 } from '../fixtures/staticData';
 
 const middlewares = [thunk];
@@ -50,6 +52,19 @@ describe('async actions', () => {
       const store = mockStore(initialState);
 
       await store.dispatch(loadRegions());
+
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  context('with loadRestaurants', () => {
+    it('should dispatch actions of setRegions', async () => {
+      const expectedActions = [
+        { type: 'setRestaurants', payload: { restaurants } },
+      ];
+      const store = mockStore(initialState);
+
+      await store.dispatch(loadRestaurants());
 
       expect(store.getActions()).toEqual(expectedActions);
     });

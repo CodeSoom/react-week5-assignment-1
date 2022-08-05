@@ -1,16 +1,13 @@
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
+import RestaurantsResultContainer from './RestaurantsResultContainer';
 
 export default function App() {
   return (
     <>
       <RegionsContainer />
       <CategoriesContainer />
-      <div>
-        <ul>
-          <li>양천주가</li>
-        </ul>
-      </div>
+      <RestaurantsResultContainer />
     </>
   );
 }

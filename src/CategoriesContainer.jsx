@@ -6,6 +6,7 @@ import RestaurantSelectorButtons from './RestaurantSelectorButtons';
 import {
   selectCategory,
   loadCategories,
+  loadRestaurants,
 } from './actions';
 
 export default function CategoriesContainer() {
@@ -22,6 +23,7 @@ export default function CategoriesContainer() {
 
   function handleCategoryClick(categoryName) {
     dispatch(selectCategory(categoryName));
+    dispatch(loadRestaurants());
   }
 
   return (

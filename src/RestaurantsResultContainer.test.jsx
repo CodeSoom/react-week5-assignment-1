@@ -6,6 +6,7 @@ import RestaurantsResultContainer from './RestaurantsResultContainer';
 import {
   region,
   category,
+  restaurants,
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
@@ -20,17 +21,13 @@ describe('RestaurantsResultContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     region,
     category,
+    restaurants,
   }));
 
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  test('calls loadRestaurant action to get restaurants', () => {
-    expect(dispatch).toBeCalled();
-  });
-
   test('renders restaurant result', () => {
-    expect(screen.queryByText('양천주가')).not.toBeNull();
-    expect(dispatch).toBeCalled();
+    expect(screen.queryByText('한국식 초밥')).not.toBeNull();
   });
 });

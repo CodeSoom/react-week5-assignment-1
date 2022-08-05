@@ -15,7 +15,7 @@ describe('RestaurantsResult', () => {
     it('renders restaurants', () => {
       const { queryByText } = customRender();
 
-      expect(queryByText('양천주가')).not.toBeNull();
+      expect(queryByText('한국식 초밥')).not.toBeNull();
     });
   });
 });

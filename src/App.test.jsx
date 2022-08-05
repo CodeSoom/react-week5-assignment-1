@@ -8,6 +8,7 @@ import {
   region,
   categories,
   category,
+  restaurants,
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
@@ -23,6 +24,7 @@ describe('App', () => {
     region,
     categories,
     category,
+    restaurants,
   }));
 
   const dispatch = jest.fn();
@@ -48,7 +50,7 @@ describe('App', () => {
     it('renders restaurants', () => {
       const { queryByText } = customRender();
 
-      expect(queryByText('양천주가')).not.toBeNull();
+      expect(queryByText('한국식 초밥')).not.toBeNull();
     });
   });
 });

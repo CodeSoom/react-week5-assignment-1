@@ -1,16 +1,11 @@
-export default function RestaurantsResult({ list, selectedItemName, onClick }) {
+export default function RestaurantsResult({ restaurants }) {
   return (
     <div>
       <ul>
-        {list.map(((item) => {
+        {restaurants && restaurants.map(((item) => {
           const { id, name } = item;
           return (
-            <SelectorButton
-              key={id}
-              name={name}
-              selectedName={selectedItemName}
-              onClick={onClick}
-            />
+            <li key={id}>{name}</li>
           );
         }
         ))}
