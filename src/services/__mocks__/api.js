@@ -1,6 +1,7 @@
 import {
   regions,
   categories,
+  restaurants,
 } from '../../../fixtures/staticData';
 
 export async function fetchCategories() {
@@ -9,4 +10,8 @@ export async function fetchCategories() {
 
 export async function fetchRegions() {
   return regions;
+}
+
+export async function fetchRestaurants() {
+  return restaurants;
 }
