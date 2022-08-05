@@ -33,19 +33,19 @@ describe('App', () => {
   });
 
   context('with selected region and category', () => {
-    test('renders regions', () => {
+    it('renders regions', () => {
       const { queryByText } = customRender();
 
       expect(queryByText('서울(V)')).not.toBeNull();
     });
 
-    test('renders categories', () => {
+    it('renders categories', () => {
       const { queryByText } = customRender();
 
       expect(queryByText('한식(V)')).not.toBeNull();
     });
 
-    test('renders restaurants', () => {
+    it('renders restaurants', () => {
       const { queryByText } = customRender();
 
       expect(queryByText('양천주가')).not.toBeNull();

@@ -6,8 +6,6 @@ import {
   selectRegion,
   setCategories,
   selectCategory,
-  loadCategories,
-  loadRegions,
 } from './actions';
 
 import {
@@ -27,28 +25,25 @@ const initialState = {
 describe('Reducer', () => {
   context('with setRestaurants', () => {
     it('returns updated restaurants', () => {
-      expect(reducer(initialState, setRestaurants(restaurants))).toEqual({
-        ...initialState,
-        restaurants,
-      });
+      const state = reducer(initialState, setRestaurants(restaurants));
+
+      expect(state.restaurants).toEqual(restaurants);
     });
   });
 
   context('with setRegions', () => {
     it('returns updated regions', () => {
-      expect(reducer(initialState, setRegions(regions))).toEqual({
-        ...initialState,
-        regions,
-      });
+      const state = reducer(initialState, setRegions(regions));
+
+      expect(state.regions).toEqual(regions);
     });
   });
 
   context('with setCategories', () => {
     it('returns updated categories', () => {
-      expect(reducer(initialState, setCategories(categories))).toEqual({
-        ...initialState,
-        categories,
-      });
+      const state = reducer(initialState, setCategories(categories));
+
+      expect(state.categories).toEqual(categories);
     });
   });
 
@@ -82,7 +77,7 @@ describe('Reducer', () => {
     });
   });
 
-  context('with not predefined action', () => {
+  context('without predefined action', () => {
     it('returns state as is', () => {
       function someAction() {
         return {
@@ -94,7 +89,7 @@ describe('Reducer', () => {
     });
   });
 
-  context('with no actions', () => {
+  context('without any actions', () => {
     it('returns state as is', () => {
       expect(reducer()).toEqual(initialState);
     });
