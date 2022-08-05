@@ -6,10 +6,6 @@ import App from './App';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
@@ -20,4 +16,8 @@ test('App', () => {
   const { getByText } = render(<App />);
 
   expect(getByText(/Restaurant Information/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });

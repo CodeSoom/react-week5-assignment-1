@@ -6,10 +6,6 @@ import Regions from './Regions';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('Regions', () => {
   const regions = [
     {
@@ -21,4 +17,8 @@ test('Regions', () => {
   const { getByText } = render(<Regions regions={regions} />);
 
   expect(getByText(/서울/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });

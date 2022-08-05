@@ -8,10 +8,6 @@ import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('CategoriesContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     categories: [
@@ -24,6 +20,10 @@ test('CategoriesContainer', () => {
   const { getByText } = render(<CategoriesContainer />);
 
   expect(getByText(/한식/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });
 
 // CategoriesContainer 컴포넌트의 역할

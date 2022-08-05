@@ -6,10 +6,6 @@ import Categories from './Categories';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('Categories', () => {
   const categories = [
     {
@@ -21,6 +17,10 @@ test('Categories', () => {
   const { getByText } = render(<Categories categories={categories} />);
 
   expect(getByText(/한식/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });
 
 // Categories 컴포넌트 역할

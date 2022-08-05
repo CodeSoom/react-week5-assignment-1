@@ -6,10 +6,6 @@ import Restaurants from './Restaurants';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('Restaurants', () => {
   const restaurants = [
     {
@@ -24,4 +20,8 @@ test('Restaurants', () => {
   const { getByText } = render(<Restaurants restaurants={restaurants} />);
 
   expect(getByText(/한국식 초밥/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });

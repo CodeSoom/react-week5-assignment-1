@@ -8,10 +8,6 @@ import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [
@@ -25,4 +21,8 @@ test('RegionsContainer', () => {
   const { getByText } = render(<RegionsContainer />);
 
   expect(getByText(/서울/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });

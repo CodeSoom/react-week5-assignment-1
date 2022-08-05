@@ -8,10 +8,6 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
@@ -28,4 +24,8 @@ test('RestaurantsContainer', () => {
   const { getByText } = render(<RestaurantsContainer />);
 
   expect(getByText(/한국식 초밥/)).not.toBeNull();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 });
