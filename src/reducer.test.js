@@ -6,6 +6,8 @@ import {
   selectRegion,
   setCategories,
   selectCategory,
+  loadCategories,
+  loadRegions,
 } from './actions';
 
 import {
@@ -14,15 +16,15 @@ import {
   restaurants,
 } from '../fixtures/staticData';
 
-describe('Reducer', () => {
-  const initialState = {
-    region: {},
-    category: {},
-    regions,
-    categories,
-    restaurants: [],
-  };
+const initialState = {
+  region: {},
+  category: {},
+  regions: [],
+  categories: [],
+  restaurants: [],
+};
 
+describe('Reducer', () => {
   context('with setRestaurants', () => {
     it('returns updated restaurants', () => {
       expect(reducer(initialState, setRestaurants(restaurants))).toEqual({
@@ -52,18 +54,30 @@ describe('Reducer', () => {
 
   context('with selectRegion', () => {
     it('updates region', () => {
-      expect(reducer(initialState, selectRegion('대전'))).toEqual({
+      const startState = {
         ...initialState,
-        region: regions.filter((region) => region.name === '대전')[0],
+        regions,
+      };
+      const state = reducer(startState, selectRegion('대전'));
+
+      expect(state.region).toEqual({
+        id: 2,
+        name: '대전',
       });
     });
   });
 
   context('with selectCategory', () => {
     it('updates category', () => {
-      expect(reducer(initialState, selectCategory('중식'))).toEqual({
+      const startState = {
         ...initialState,
-        category: categories.filter((category) => category.name === '중식')[0],
+        categories,
+      };
+      const state = reducer(startState, selectCategory('중식'));
+
+      expect(state.category).toEqual({
+        id: 2,
+        name: '중식',
       });
     });
   });

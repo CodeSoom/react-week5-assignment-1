@@ -11,6 +11,7 @@ import {
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 function customRender() {
   return render(<App />);

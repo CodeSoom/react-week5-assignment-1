@@ -1,15 +1,14 @@
-import {
-  regions,
-  categories,
-} from '../fixtures/staticData';
-
 const initialState = {
   region: {},
   category: {},
-  regions,
-  categories,
+  regions: [],
+  categories: [],
   restaurants: [],
 };
+
+function selectFromList({ list, filter }) {
+  return list.filter((item) => item.name === filter)[0];
+}
 
 export default function reducer(state = initialState, action) {
   if (!action) return state;
@@ -29,9 +28,13 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'selectRegion') {
+    const region = selectFromList({
+      list: state.regions,
+      filter: action.payload.regionName,
+    });
     return {
       ...state,
-      region: regions.filter((region) => region.name === action.payload.regionName)[0],
+      region,
     };
   }
 
@@ -43,9 +46,13 @@ export default function reducer(state = initialState, action) {
   }
 
   if (action.type === 'selectCategory') {
+    const category = selectFromList({
+      list: state.categories,
+      filter: action.payload.categoryName,
+    });
     return {
       ...state,
-      category: categories.filter((category) => category.name === action.payload.categoryName)[0],
+      category,
     };
   }
 

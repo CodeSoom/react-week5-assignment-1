@@ -9,6 +9,7 @@ import {
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('CategoriesContainer', () => {
   beforeEach(() => {
@@ -28,6 +29,8 @@ describe('CategoriesContainer', () => {
     expect(screen.queryByText('한식(V)')).not.toBeNull();
     expect(screen.queryByText('중식')).not.toBeNull();
     expect(screen.queryByText('일식')).not.toBeNull();
+
+    expect(dispatch).toBeCalled();
   });
 
   test('listens for click event on selectCategory', () => {

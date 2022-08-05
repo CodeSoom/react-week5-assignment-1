@@ -9,6 +9,7 @@ import {
 } from '../fixtures/staticData';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('RegionsContainer', () => {
   beforeEach(() => {
@@ -28,6 +29,8 @@ describe('RegionsContainer', () => {
     expect(screen.queryByText('서울(V)')).not.toBeNull();
     expect(screen.queryByText('대전')).not.toBeNull();
     expect(screen.queryByText('대구')).not.toBeNull();
+
+    expect(dispatch).toBeCalled();
   });
 
   test('listens for click event on selectRegion', () => {

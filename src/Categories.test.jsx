@@ -15,6 +15,7 @@ describe('Categories', () => {
 
       expect(queryByText('한식(V)')).not.toBeNull();
     });
+
     test('중식 does not have check mark', () => {
       const { queryByText } = customRender();
 
