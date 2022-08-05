@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Regions from './Regions';
+import RestaurantSelectorButtons from './RestaurantSelectorButtons';
 
 import {
   loadRegions,
@@ -25,6 +25,10 @@ export default function RegionsContainer() {
   }
 
   return (
-    <Regions regions={regions} selectedRegionName={region.name} onClick={handleRegionClick} />
+    <RestaurantSelectorButtons
+      list={regions}
+      selectedItemName={region.name}
+      onClick={handleRegionClick}
+    />
   );
 }

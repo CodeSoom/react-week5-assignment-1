@@ -6,13 +6,13 @@ import {
   regions,
   region,
   categories,
-  category
+  category,
 } from '../fixtures/staticData';
 
-function customRender({ lists, selectedItemName }) {
+function customRender({ list, selectedItemName }) {
   return render(<RestaurantSelectorButtons
-    lists={lists}
-    selectedRegionName={selectedItemName}
+    list={list}
+    selectedItemName={selectedItemName}
   />);
 }
 
@@ -20,7 +20,7 @@ describe('Regions', () => {
   context('with regions', () => {
     it('renders with 서울 being checked and others not', () => {
       const { queryByText } = customRender({
-        lists: regions,
+        list: regions,
         selectedItemName: region.name,
       });
 
@@ -34,7 +34,7 @@ describe('Regions', () => {
   context('with categories', () => {
     it('renders with 한식 being checked and others not', () => {
       const { queryByText } = customRender({
-        lists: categories,
+        list: categories,
         selectedItemName: category.name,
       });
 

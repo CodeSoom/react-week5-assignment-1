@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Categories from './Categories';
+import RestaurantSelectorButtons from './RestaurantSelectorButtons';
 
 import {
   selectCategory,
@@ -25,9 +25,9 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <Categories
-      categories={categories}
-      selectedCategoryName={category.name}
+    <RestaurantSelectorButtons
+      list={categories}
+      selectedItemName={category.name}
       onClick={handleCategoryClick}
     />
   );
