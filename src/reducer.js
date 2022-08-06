@@ -10,51 +10,55 @@ function selectFromList({ list, filter }) {
   return list.filter((item) => item.name === filter)[0];
 }
 
-export default function reducer(state = initialState, action) {
-  if (!action) return state;
-
-  if (action.type === 'setRestaurants') {
+const reducers = {
+  setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
-      restaurants: action.payload.restaurants,
+      restaurants,
     };
-  }
+  },
 
-  if (action.type === 'setRegions') {
+  setRegions(state, { payload: { regions } }) {
     return {
       ...state,
-      regions: action.payload.regions,
+      regions,
     };
-  }
+  },
 
-  if (action.type === 'selectRegion') {
+  setCategories(state, { payload: { categories } }) {
+    return {
+      ...state,
+      categories,
+    };
+  },
+
+  selectRegion(state, { payload: { regionName } }) {
     const region = selectFromList({
       list: state.regions,
-      filter: action.payload.regionName,
+      filter: regionName,
     });
     return {
       ...state,
       region,
     };
-  }
+  },
 
-  if (action.type === 'setCategories') {
-    return {
-      ...state,
-      categories: action.payload.categories,
-    };
-  }
-
-  if (action.type === 'selectCategory') {
+  selectCategory(state, { payload: { categoryName }}) {
     const category = selectFromList({
       list: state.categories,
-      filter: action.payload.categoryName,
+      filter: categoryName,
     });
     return {
       ...state,
       category,
     };
-  }
+  },
+};
 
+function defaultReducer(state) {
   return state;
+}
+
+export default function reducer(state = initialState, action) {
+  return (reducers[action && action.type] || defaultReducer)(state, action);
 }
