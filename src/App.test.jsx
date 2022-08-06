@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
-
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
@@ -14,9 +13,11 @@ test('App', () => {
     restaurants: [],
   }));
 
-  const { getByText } = render(<App />);
+  useDispatch.mockImplementation(jest.fn());
 
-  expect(getByText(/Restaurant Information/)).not.toBeNull();
+  const { queryByText } = render(<App />);
+
+  expect(queryByText(/Restaurant Information/)).not.toBeNull();
 
   beforeEach(() => {
     jest.clearAllMocks();
