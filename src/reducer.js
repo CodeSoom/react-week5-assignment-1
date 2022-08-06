@@ -43,7 +43,7 @@ const reducers = {
     };
   },
 
-  selectCategory(state, { payload: { categoryName }}) {
+  selectCategory(state, { payload: { categoryName } }) {
     const category = selectFromList({
       list: state.categories,
       filter: categoryName,
