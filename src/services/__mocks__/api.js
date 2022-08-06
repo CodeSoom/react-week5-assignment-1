@@ -4,14 +4,6 @@ import {
   restaurants,
 } from '../../../fixtures/staticData';
 
-export async function fetchCategories() {
-  return categories;
-}
-
-export async function fetchRegions() {
-  return regions;
-}
-
-export async function fetchRestaurants() {
-  return restaurants;
-}
+export const fetchRegions = jest.fn(async () => regions);
+export const fetchCategories = jest.fn(async () => categories);
+export const fetchRestaurants = jest.fn(async () => restaurants);
