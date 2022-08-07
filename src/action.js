@@ -47,3 +47,14 @@ export function loadRegions() {
     dispatch(setRegions(regions));
   };
 }
+
+export function setCurrentRegion(region) {
+  return {
+    type: 'setCurrentRegion',
+    payload: {
+      currentContent: {
+        region,
+      },
+    },
+  };
+}

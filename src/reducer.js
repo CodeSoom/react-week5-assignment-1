@@ -2,6 +2,10 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  currentContent: {
+    region: '',
+    category: 0,
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -20,6 +24,17 @@ export default function reducer(state = initialState, action) {
     return {
       ...state,
       regions,
+    };
+  }
+
+  if (action.type === 'setCurrentRegion') {
+    const { region } = action.payload.currentContent;
+
+    return {
+      ...state,
+      currentContent: {
+        region,
+      },
     };
   }
 

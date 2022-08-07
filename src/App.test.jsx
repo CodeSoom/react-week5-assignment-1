@@ -11,6 +11,10 @@ test('App', () => {
     regions: [],
     categories: [],
     restaurants: [],
+    currentContent: {
+      region: '',
+      category: 0,
+    },
   }));
 
   const dispatch = jest.fn();

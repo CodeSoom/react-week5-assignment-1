@@ -16,6 +16,9 @@ test('RegionsContainer', () => {
         name: '서울',
       },
     ],
+    currentContent: {
+      region: '서울',
+    },
   }));
 
   const { getByText } = render(<RegionsContainer />);
