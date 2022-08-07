@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { setRestaurants, setRegions, loadCategories } from './action';
+import { loadRestaurants, setRegions, loadCategories } from './action';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -13,18 +13,13 @@ function loadRegions({ dispatch = () => {} }) {
   dispatch(setRegions(regions));
 }
 
-function loadRestaurants({ dispatch = () => {} }) {
-  const restaurants = [];
-  dispatch(setRestaurants(restaurants));
-}
-
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadCategories());
     dispatch(loadRestaurants());
-    loadRegions({ dispatch });
+    // loadRegions({ dispatch });
   }, []);
 
   return (

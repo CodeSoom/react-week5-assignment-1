@@ -13,9 +13,13 @@ test('App', () => {
     restaurants: [],
   }));
 
-  useDispatch.mockImplementation(jest.fn());
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
 
   const { queryByText } = render(<App />);
+
+  expect(dispatch).toBeCalledTimes(2);
 
   expect(queryByText(/Restaurant Information/)).not.toBeNull();
 
