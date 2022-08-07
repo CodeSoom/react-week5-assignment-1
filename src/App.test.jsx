@@ -19,7 +19,7 @@ test('App', () => {
 
   const { queryByText } = render(<App />);
 
-  expect(dispatch).toBeCalledTimes(2);
+  expect(dispatch).toBeCalledTimes(3);
 
   expect(queryByText(/Restaurant Information/)).not.toBeNull();
 
