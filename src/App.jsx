@@ -11,8 +11,8 @@ export default function App() {
         </div>
       ))}
 
-      <p/>
-      
+      <p />
+
       {categories.map((category) => (
         <div key={category.id}>
           <button type="button">
