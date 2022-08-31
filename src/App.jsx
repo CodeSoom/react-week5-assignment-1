@@ -1,25 +1,13 @@
 import { regions, categories } from '../__fixtures__/list';
+import CategoriesContainer from './CategoriesContainer';
+import RegionsContainer from './RegionsContainer';
 
 export default function App() {
   return (
     <div>
-      {regions.map((region) => (
-        <div key={region.id}>
-          <button type="button">
-            {region.name}
-          </button>
-        </div>
-      ))}
-
+      <RegionsContainer />
       <p />
-
-      {categories.map((category) => (
-        <div key={category.id}>
-          <button type="button">
-            {category.name}
-          </button>
-        </div>
-      ))}
+      <CategoriesContainer />
     </div>
   );
 }
