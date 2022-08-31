@@ -1,9 +1,9 @@
-import Categories from './Categories';
+import Buttons from './Buttons';
 
 import { categories } from '../__fixtures__/list';
 
 export default function CategoriesContainer() {
   return (
-    <Categories categories={categories} />
+    <Buttons roles={categories} />
   );
 }
