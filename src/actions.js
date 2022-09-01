@@ -1,4 +1,14 @@
 import { fetchCategories } from './services/api';
 
-// 레스토랑 조회에 필요한 action 들을 정의
-// ex) loadCategories, loadRegions ... 등등
+export function selectRegion(selectedRegion) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      selectedRegion,
+    },
+  };
+}
+
+export function blabla() {
+  // TODO:
+}

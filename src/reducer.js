@@ -1,9 +1,19 @@
 const initialState = {
-  // TODO: 조회 초기 상태를 정의
+  selectedRegion: {
+    id: '',
+    name: '',
+  },
 };
 
 const reducers = {
-  // TODO: Reducer가 action에 따라 리턴할 값을 정의
+  selectRegion: (state, action) => {
+    const { selectedRegion } = action.payload;
+
+    return {
+      ...state,
+      selectedRegion,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action = { type: undefined }) {
