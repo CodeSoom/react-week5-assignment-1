@@ -1,6 +1,6 @@
 import Regions from './Regions';
 
-import { regions } from '../__fixtures__/list';
+import { regions } from '../__fixtures__/data';
 
 export default function RegionsContainer() {
   const selectedRegion = '';

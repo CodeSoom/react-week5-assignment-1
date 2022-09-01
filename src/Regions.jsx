@@ -1,14 +1,15 @@
+import Button from './Button';
+
 export default function Regions({ regions, selectedRegion }) {
   return (
     <ul>
       {
         regions.map((region) => (
-          <li key={region.id}>
-            <button type="button">
-              {region.name}
-              {region.name === selectedRegion ? '(V)' : ''}
-            </button>
-          </li>
+          <Button
+            key={region.id}
+            item={region}
+            selected={selectedRegion}
+          />
         ))
       }
     </ul>

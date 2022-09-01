@@ -2,7 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 
 import Categories from './Categories';
 
-import { categories } from '../__fixtures__/list';
+import { categories } from '../__fixtures__/data';
 
 describe('<Categories />', () => {
   it('shows categories', () => {

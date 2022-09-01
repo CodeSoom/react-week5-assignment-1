@@ -1,6 +1,6 @@
 import Categories from './Categories';
 
-import { categories } from '../__fixtures__/list';
+import { categories } from '../__fixtures__/data';
 
 export default function CategoriesContainer() {
   return (
