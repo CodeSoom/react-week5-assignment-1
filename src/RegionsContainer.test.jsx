@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import RegionsContainer from './RegionsContainer';
 
 describe('<RegionsContainer />', () => {
-  it('renders categories', () => {
+  it('renders regions', () => {
     const { getByText } = render((
       <RegionsContainer />
     ));

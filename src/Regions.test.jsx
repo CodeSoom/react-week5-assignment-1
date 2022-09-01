@@ -6,7 +6,7 @@ import { regions } from '../__fixtures__/list';
 
 describe('<Regions />', () => {
   it('shows regions', () => {
-    const { queryByText } = render(
+    const { container } = render(
       <Regions
         regions={regions}
         selectedRegion="부산"
@@ -14,7 +14,7 @@ describe('<Regions />', () => {
     );
 
     regions.forEach((region) => {
-      expect(queryByText(region.name)).not.toBeNull();
+      expect(container).toHaveTextContent(region.name);
     });
   });
 

@@ -1,4 +1,4 @@
-export default function Regions({ regions }) {
+export default function Regions({ regions, selectedRegion }) {
   return (
     <ul>
       {
@@ -6,6 +6,7 @@ export default function Regions({ regions }) {
           <li key={region.id}>
             <button type="button">
               {region.name}
+              {region.name === selectedRegion ? '(V)' : ''}
             </button>
           </li>
         ))
