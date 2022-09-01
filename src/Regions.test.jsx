@@ -1,8 +1,8 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Regions from './Regions';
 
-import regions from '../__fixtures__/list';
+import { regions } from '../__fixtures__/list';
 
 describe('<Regions />', () => {
   it('shows regions', () => {
@@ -18,17 +18,16 @@ describe('<Regions />', () => {
     });
   });
 
-  it('clicks each button to check it\'s selected', () => {
-    const { getByRole, queryByText } = render(
-      <Regions
-        regions={regions}
-        selectedRegion="부산"
-      />,
-    );
+  context('with selected', () => {
+    it('renders region with check mark(V)', () => {
+      const { getByText } = render(
+        <Regions
+          regions={regions}
+          selectedRegion="부산"
+        />,
+      );
 
-    regions.forEach((region) => {
-      fireEvent.click(getByRole('button', { name: region.name }));
-      expect(queryByText(region.name)).toBeEnabled();
+      expect(getByText('부산(V)')).not.toBeNull();
     });
   });
 });

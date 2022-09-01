@@ -1,9 +1,11 @@
-import Buttons from './Buttons';
+import Regions from './Regions';
 
 import { regions } from '../__fixtures__/list';
 
 export default function RegionsContainer() {
   return (
-    <Buttons roles={regions} />
+    <Regions
+      regions={regions}
+    />
   );
 }
