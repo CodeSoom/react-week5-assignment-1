@@ -18,6 +18,10 @@ describe('App', () => {
   });
 
   it('loads regions & categories from API', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
+
     render((
       <App />
     ));
