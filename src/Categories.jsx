@@ -1,13 +1,15 @@
-export default function Categories({ categories }) {
+import Button from './Button';
+
+export default function Categories({ categories, selectedCategory }) {
   return (
     <ul>
       {
         categories.map((category) => (
-          <li key={category.id}>
-            <button type="button">
-              {category.name}
-            </button>
-          </li>
+          <Button
+            key={category.id}
+            item={category}
+            selected={selectedCategory}
+          />
         ))
       }
     </ul>
