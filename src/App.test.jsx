@@ -11,17 +11,19 @@ jest.mock('react-redux');
 describe('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
+
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('loads regions & categories from API', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-    }));
-
     render((
       <App />
     ));
@@ -29,11 +31,7 @@ describe('App', () => {
     expect(dispatch).toBeCalledTimes(2);
   });
 
-  it('renders regions list', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-    }));
-
+  it('renders regions', () => {
     const { getAllByRole } = render((
       <App />
     ));

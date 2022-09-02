@@ -17,7 +17,7 @@ describe('RegionsContainer', () => {
     jest.clearAllMocks();
   });
 
-  it('renders regions list', () => {
+  it('renders regions', () => {
     useSelector.mockImplementation((selector) => selector({
       regions,
     }));
