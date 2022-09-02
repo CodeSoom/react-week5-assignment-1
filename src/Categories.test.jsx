@@ -1,20 +1,27 @@
 import { render } from '@testing-library/react';
 
+import given from 'given2';
+
 import Categories from './Categories';
 
 import { categories } from '../__fixtures__/data';
 
-const renderCategory = (c, s) => render(
-  <Categories
-    categories={c}
-    selectedCategory={s}
-  />,
-);
-
 describe('<Categories />', () => {
+  given('categories', () => categories);
+  given('selectedCategory', () => undefined);
+
+  const renderCategory = () => render(
+    <Categories
+      categories={given.categories}
+      selectedCategory={given.selectedCategory}
+    />,
+  );
+
   context('without selectedCategory', () => {
+    given('selectedCategory', () => undefined);
+
     it('renders categories', () => {
-      const { container } = renderCategory(categories);
+      const { container } = renderCategory();
 
       categories.forEach((category) => {
         expect(container).toHaveTextContent(category.name);
@@ -23,8 +30,10 @@ describe('<Categories />', () => {
   });
 
   context('with selectedCategory', () => {
+    given('selectedCategory', () => categories[0].name);
+
     it('renders category with (V) mark', () => {
-      const { container } = renderCategory(categories, categories[0].name);
+      const { container } = renderCategory();
 
       expect(container).toHaveTextContent('한식(V)');
     });
