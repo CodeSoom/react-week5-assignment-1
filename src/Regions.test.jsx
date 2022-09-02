@@ -5,20 +5,22 @@ import Regions from './Regions';
 import { regions } from '../__fixtures__/data';
 
 describe('<Regions />', () => {
-  it('shows regions', () => {
-    const { container } = render(
-      <Regions
-        regions={regions}
-        selectedRegion="부산"
-      />,
-    );
+  context('without selectedRegion', () => {
+    it('renders only regions', () => {
+      const { container } = render(
+        <Regions
+          regions={regions}
+          selectedRegion=""
+        />,
+      );
 
-    regions.forEach((region) => {
-      expect(container).toHaveTextContent(region.name);
+      regions.forEach((region) => {
+        expect(container).toHaveTextContent(region.name);
+      });
     });
   });
 
-  context('with selected', () => {
+  context('with selectedRegion', () => {
     it('renders region with check mark(V)', () => {
       const { getByText } = render(
         <Regions
