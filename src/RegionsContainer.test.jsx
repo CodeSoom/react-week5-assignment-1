@@ -2,13 +2,13 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import App from './App';
+import RegionsContainer from './RegionsContainer';
 
 import regions from '../fixtures/regions';
 
 jest.mock('react-redux');
 
-describe('App', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -17,21 +17,13 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
-  it('loads regions & categories from API', () => {
-    render((
-      <App />
-    ));
-
-    expect(dispatch).toBeCalledTimes(2);
-  });
-
   it('renders regions list', () => {
     useSelector.mockImplementation((selector) => selector({
       regions,
     }));
 
     const { getAllByRole } = render((
-      <App />
+      <RegionsContainer />
     ));
 
     regions.forEach((region, index) => {
