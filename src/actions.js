@@ -9,6 +9,11 @@ export function selectRegion(selectedRegion) {
   };
 }
 
-export function blabla() {
-  // TODO:
+export function selectCategory(selectedCategory) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      selectedCategory,
+    },
+  };
 }

@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   selectRegion,
+  selectCategory,
 } from './actions';
 
 import { regions, categories } from '../__fixtures__/data';
