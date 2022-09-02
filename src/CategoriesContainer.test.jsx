@@ -9,10 +9,12 @@ import categories from '../__fixtures__/data';
 jest.mock('../__mocks__/react-redux');
 
 describe('<CategoriesContainer />', () => {
-  useSelector.mockImplementation((selector) => selector({
-    categories,
-  }));
   it('renders categories', () => {
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+      selectedCategory: '',
+    }));
+
     const { getByText } = render((
       <CategoriesContainer />
     ));
