@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
 import given from 'given2';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
@@ -10,14 +10,12 @@ import regions from '../fixtures/regions';
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
-  const dispatch = jest.fn();
+  const handleClick = jest.fn();
 
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions: given.regions,
     }));
-
-    useDispatch.mockImplementation(() => dispatch);
   });
 
   afterEach(() => {
@@ -28,7 +26,7 @@ describe('RegionsContainer', () => {
     given('regions', () => regions);
 
     const { getAllByRole } = render((
-      <RegionsContainer />
+      <RegionsContainer onClick={handleClick} />
     ));
 
     regions.forEach((region, index) => {
@@ -41,22 +39,18 @@ describe('RegionsContainer', () => {
     given('regions', () => regions);
 
     const { getAllByRole } = render((
-      <RegionsContainer />
+      <RegionsContainer onClick={handleClick} />
     ));
 
     const regionButtons = getAllByRole('button');
 
-    expect(dispatch).not.toBeCalled();
-
     regionButtons.forEach((regionButton) => {
       fireEvent.click(regionButton);
 
-      expect(dispatch).toBeCalledWith({
-        type: 'applyRegion',
-        payload: {
-          region: regionButton.textContent,
-        },
-      });
+      expect(handleClick).toBeCalledWith({
+        field: 'region',
+        content: regionButton.textContent,
+      }); expect(handleClick).toBeCalled();
     });
   });
 });

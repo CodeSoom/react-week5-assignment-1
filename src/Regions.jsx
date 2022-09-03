@@ -5,7 +5,10 @@ export default function Regions({ regions, onClick }) {
         <li key={region.id}>
           <button
             type="button"
-            onClick={() => onClick(region.name)}
+            onClick={() => onClick({
+              field: 'region',
+              content: region.name,
+            })}
           >
             {region.name}
           </button>

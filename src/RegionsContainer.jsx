@@ -1,26 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Regions from './Regions';
 
-import {
-  applyRegion,
-} from './actions';
-
-export default function RegionsContainer() {
+export default function RegionsContainer({ onClick }) {
   const { regions } = useSelector((state) => ({
     regions: state.regions,
   }));
 
-  const dispatch = useDispatch();
-
-  function handleClick(region) {
-    dispatch(applyRegion(region));
-  }
-
   return (
     <Regions
       regions={regions}
-      onClick={handleClick}
+      onClick={onClick}
     />
   );
 }

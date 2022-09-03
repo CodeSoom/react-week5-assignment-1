@@ -36,7 +36,10 @@ describe('Categories', () => {
     categoriesButtons.forEach((categoryButton) => {
       fireEvent.click(categoryButton);
 
-      expect(handleClick).toBeCalledWith(categoryButton.textContent);
+      expect(handleClick).toBeCalledWith({
+        field: 'category',
+        content: categoryButton.textContent,
+      });
     });
   });
 });

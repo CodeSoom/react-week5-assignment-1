@@ -7,6 +7,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadButtonData,
+  applyFilter,
 } from './actions';
 
 export default function App() {
@@ -17,10 +18,14 @@ export default function App() {
     dispatch(loadButtonData('categories'));
   }, []);
 
+  function handleClick({ field, content }) {
+    dispatch(applyFilter({ field, content }));
+  }
+
   return (
     <>
-      <RegionsContainer />
-      <CategoriesContainer />
+      <RegionsContainer onClick={handleClick} />
+      <CategoriesContainer onClick={handleClick} />
       <RestaurantsContainer />
     </>
   );

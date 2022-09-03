@@ -36,7 +36,10 @@ describe('Regions', () => {
     regionButtons.forEach((regionButton) => {
       fireEvent.click(regionButton);
 
-      expect(handleClick).toBeCalledWith(regionButton.textContent);
+      expect(handleClick).toBeCalledWith({
+        field: 'region',
+        content: regionButton.textContent,
+      });
     });
   });
 });

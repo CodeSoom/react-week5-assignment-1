@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import given from 'given2';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -57,6 +57,30 @@ describe('App', () => {
     expect(getAllByRole('listitem')).toHaveLength(regions.length);
   });
 
+  it('renders region button to listent to click event', () => {
+    given('regions', () => regions);
+    given('categories', () => []);
+    given('restaurants', () => []);
+
+    const { getAllByRole } = render((
+      <App />
+    ));
+
+    const regionButtons = getAllByRole('button');
+
+    regionButtons.forEach((regionButton) => {
+      fireEvent.click(regionButton);
+
+      expect(dispatch).toBeCalledWith({
+        type: 'applyFilter',
+        payload: {
+          field: 'region',
+          content: regionButton.textContent,
+        },
+      });
+    });
+  });
+
   it('renders Categories', () => {
     given('regions', () => []);
     given('categories', () => categories);
@@ -70,6 +94,30 @@ describe('App', () => {
       expect(getAllByRole('button')[index].textContent).toBe(category.name);
     });
     expect(getAllByRole('listitem')).toHaveLength(categories.length);
+  });
+
+  it('renders category button to listent to click event', () => {
+    given('regions', () => []);
+    given('categories', () => categories);
+    given('restaurants', () => []);
+
+    const { getAllByRole } = render((
+      <App />
+    ));
+
+    const categoriesButtons = getAllByRole('button');
+
+    categoriesButtons.forEach((categoryButton) => {
+      fireEvent.click(categoryButton);
+
+      expect(dispatch).toBeCalledWith({
+        type: 'applyFilter',
+        payload: {
+          field: 'category',
+          content: categoryButton.textContent,
+        },
+      });
+    });
   });
 
   it('renders Restaurants', () => {

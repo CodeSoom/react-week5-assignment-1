@@ -21,11 +21,12 @@ export function loadButtonData(sort) {
   };
 }
 
-export function applyRegion(region) {
+export function applyFilter({ field, content }) {
   return {
-    type: 'applyRegion',
+    type: 'applyFilter',
     payload: {
-      region,
+      field,
+      content,
     },
   };
 }
