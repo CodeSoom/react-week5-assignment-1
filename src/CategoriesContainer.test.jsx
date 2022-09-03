@@ -57,14 +57,16 @@ describe('CategoriesContainer', () => {
     });
   });
 
-  it("renders 'V' button with equal filter", () => {
-    given('categories', () => categories);
-    given('filter', () => ({ category: categories[0].name }));
+  categories.forEach((category, index) => {
+    it("renders 'V' button with equal filter", () => {
+      given('categories', () => categories);
+      given('filter', () => ({ category: category.name }));
 
-    const { getAllByRole } = render((
-      <CategoriesContainer onClick={handleClick} />
-    ));
+      const { getAllByRole } = render((
+        <CategoriesContainer onClick={handleClick} />
+      ));
 
-    expect(getAllByRole('button')[0].textContent).toContain('V');
+      expect(getAllByRole('button')[index].textContent).toContain('V');
+    });
   });
 });
