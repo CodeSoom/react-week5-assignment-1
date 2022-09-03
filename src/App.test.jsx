@@ -12,17 +12,19 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-      { id: 2, name: '대전' },
-    ],
+    regions: [],
   }));
 
-  const { getByText } = render((
+  const { queryByText } = render((
     <App />
   ));
 
-  expect((getByText('서울'))).not.toBeNull();
+  expect(dispatch).toBeCalledWith({
+    type: 'setRegion',
+    payload: { regions: [] },
+  });
 
-  expect((getByText('한식'))).not.toBeNull();
+  expect((queryByText('서울'))).toBeNull();
+
+  // expect((getByText('한식'))).not.toBeNull();
 });
