@@ -15,7 +15,7 @@ describe('App', () => {
   given('state', () => ({
     regions: given.regions,
     categories: given.categories,
-    restaurant: given.restaurants,
+    restaurants: given.restaurants,
   }));
 
   const dispatch = jest.fn();
