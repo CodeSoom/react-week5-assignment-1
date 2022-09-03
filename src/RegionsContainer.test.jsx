@@ -15,6 +15,7 @@ describe('RegionsContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions: given.regions,
+      filter: given.filter,
     }));
   });
 
@@ -24,6 +25,7 @@ describe('RegionsContainer', () => {
 
   it('renders regions', () => {
     given('regions', () => regions);
+    given('filter', () => ({ region: null }));
 
     const { getAllByRole } = render((
       <RegionsContainer onClick={handleClick} />
@@ -37,6 +39,7 @@ describe('RegionsContainer', () => {
 
   it('renders button to listent to click event', () => {
     given('regions', () => regions);
+    given('filter', () => ({ region: null }));
 
     const { getAllByRole } = render((
       <RegionsContainer onClick={handleClick} />
