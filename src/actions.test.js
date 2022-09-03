@@ -5,7 +5,7 @@ import {
   setCategories, loadCategories,
 } from './actions';
 
-import { regions, categories } from '../__fixtures__/data';
+import { fetchCategories } from './services/api';
 
 jest.mock('./services/api');
 
@@ -14,13 +14,25 @@ const mockStore = configureStore([thunk]);
 describe('actions', () => {
   const store = mockStore();
 
+  describe('loadRegions', () => {
+    it('fetch regions', async () => {
+      await store.dispatch(loadRegions());
+
+      const actions = store.getActions();
+
+      expect(fetchRegions).toBeCalled();
+      expect(actions[0]).toEqual(setRegions());
+    });
+  });
+
   describe('loadCategories', () => {
     it('fetch categories', async () => {
       await store.dispatch(loadCategories());
 
-      const actions = store.setCategories();
+      const actions = store.getActions();
 
-      expect(actions[0]).toBe(setCategories(categories));
+      expect(fetchCategories).toBeCalled();
+      expect(actions[0]).toEqual(setCategories());
     });
   });
 });
