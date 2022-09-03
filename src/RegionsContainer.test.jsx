@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import given from 'given2';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,16 +12,20 @@ jest.mock('react-redux');
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: given.regions,
+    }));
+
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders regions', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-    }));
+    given('regions', () => regions);
 
     const { getAllByRole } = render((
       <RegionsContainer />
@@ -30,5 +35,21 @@ describe('RegionsContainer', () => {
       expect(getAllByRole('button')[index].textContent).toBe(region.name);
     });
     expect(getAllByRole('listitem')).toHaveLength(regions.length);
+  });
+
+  it('renders button to listent to click event', () => {
+    given('regions', () => regions);
+
+    const { getAllByRole } = render((
+      <RegionsContainer />
+    ));
+
+    const regionButtons = getAllByRole('button');
+
+    regionButtons.forEach((regionButton) => {
+      fireEvent.click(regionButton);
+
+      expect(dispatch).toBeCalled();
+    });
   });
 });
