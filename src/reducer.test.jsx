@@ -84,27 +84,27 @@ describe('reducer', () => {
     it('changes region name in filter', () => {
       const targetName = fixtureRegions[0].name;
 
-      const { filter: regionName } = reducer({
+      const { filter } = reducer({
         filter: { regionName: null },
       }, applyFilter({
         field: 'regionName',
         content: targetName,
       }));
 
-      expect(regionName).toBe(targetName);
+      expect(filter.regionName).toBe(targetName);
     });
 
     it('changes category id in filter', () => {
       const targetId = fixtureCategories[0].id;
 
-      const { filter: categoryId } = reducer({
+      const { filter } = reducer({
         filter: { categoryId: null },
       }, applyFilter({
         field: 'categoryId',
         content: targetId,
       }));
 
-      expect(categoryId).toBe(targetId);
+      expect(filter.categoryId).toBe(targetId);
     });
   });
 });

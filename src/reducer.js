@@ -18,9 +18,22 @@ export default function reducer(state = initialState, action) {
   const index = {
     setButtonData: () => {
       const { sort, data } = payload;
+
       return {
         ...state,
         [sort]: data,
+      };
+    },
+
+    applyFilter: () => {
+      const { field, content } = payload;
+
+      return {
+        ...state,
+        filter: {
+          ...filter,
+          [field]: content,
+        },
       };
     },
 
