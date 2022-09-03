@@ -21,6 +21,16 @@ export function loadButtonData(sort) {
   };
 }
 
+export function applyFilter({ field, content }) {
+  return {
+    type: 'applyFilter',
+    payload: {
+      field,
+      content,
+    },
+  };
+}
+
 export function setFilteringRestaurants(restaurants) {
   return {
     type: 'setFilteringRestaurants',
@@ -35,15 +45,5 @@ export function loadFilteringRestaurants({ regionName, categoryId }) {
     const restaurants = await fetchFilteringRestaurants({ regionName, categoryId });
 
     dispatch(setFilteringRestaurants(restaurants));
-  };
-}
-
-export function applyFilter({ field, content }) {
-  return {
-    type: 'applyFilter',
-    payload: {
-      field,
-      content,
-    },
   };
 }
