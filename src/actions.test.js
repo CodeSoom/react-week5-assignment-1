@@ -2,10 +2,11 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import {
+  setRegions, loadRegions,
   setCategories, loadCategories,
 } from './actions';
 
-import { fetchCategories } from './services/api';
+import { fetchRegions, fetchCategories } from './services/api';
 
 jest.mock('./services/api');
 
@@ -32,7 +33,7 @@ describe('actions', () => {
       const actions = store.getActions();
 
       expect(fetchCategories).toBeCalled();
-      expect(actions[0]).toEqual(setCategories());
+      expect(actions[1]).toEqual(setCategories());
     });
   });
 });
