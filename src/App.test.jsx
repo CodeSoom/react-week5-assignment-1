@@ -31,20 +31,40 @@ describe('App', () => {
     jest.clearAllMocks();
   });
 
-  it('loads regions & categories from API', () => {
-    given('regions', () => []);
-    given('categories', () => []);
-    given('restaurants', () => []);
-    given('filter', () => ({
-      region: null,
-      category: null,
-    }));
+  context('without filter field at least one', () => {
+    it('loads regions & categories from API', () => {
+      given('regions', () => []);
+      given('categories', () => []);
+      given('restaurants', () => []);
+      given('filter', () => ({
+        region: null,
+        category: null,
+      }));
 
-    render((
-      <App />
-    ));
+      render((
+        <App />
+      ));
 
-    expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toBeCalledTimes(2);
+    });
+  });
+
+  context('with full filter field', () => {
+    it('loads restaurants from API', () => {
+      given('regions', () => regions);
+      given('categories', () => categories);
+      given('restaurants', () => []);
+      given('filter', () => ({
+        region: regions[0].name,
+        category: categories[0].name,
+      }));
+
+      render((
+        <App />
+      ));
+
+      expect(dispatch).toBeCalledTimes(3);
+    });
   });
 
   it('renders regions', () => {
@@ -142,8 +162,8 @@ describe('App', () => {
   });
 
   it('renders Restaurants', () => {
-    given('regions', () => []);
-    given('categories', () => []);
+    given('regions', () => regions);
+    given('categories', () => categories);
     given('restaurants', () => restaurants);
     given('filter', () => ({
       region: null,
