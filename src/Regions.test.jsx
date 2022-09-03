@@ -12,6 +12,7 @@ describe('Regions', () => {
       <Regions
         regions={regions}
         onClick={handleClick}
+        filter={null}
       />
     ));
 
@@ -26,6 +27,7 @@ describe('Regions', () => {
       <Regions
         regions={regions}
         onClick={handleClick}
+        filter={null}
       />
     ));
 
@@ -40,6 +42,20 @@ describe('Regions', () => {
         field: 'region',
         content: regionButton.textContent,
       });
+    });
+  });
+
+  regions.forEach((region, index) => {
+    it("renders 'V' button with equal filter", () => {
+      const { getAllByRole } = render((
+        <Regions
+          regions={regions}
+          onClick={handleClick}
+          filter={region.name}
+        />
+      ));
+
+      expect(getAllByRole('button')[index].textContent).toContain('V');
     });
   });
 });

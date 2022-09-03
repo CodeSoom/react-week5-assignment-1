@@ -53,4 +53,17 @@ describe('RegionsContainer', () => {
       }); expect(handleClick).toBeCalled();
     });
   });
+
+  regions.forEach((region, index) => {
+    it("renders 'V' button with equal filter", () => {
+      given('regions', () => regions);
+      given('filter', () => ({ region: region.name }));
+
+      const { getAllByRole } = render((
+        <RegionsContainer onClick={handleClick} />
+      ));
+
+      expect(getAllByRole('button')[index].textContent).toContain('V');
+    });
+  });
 });
