@@ -1,4 +1,4 @@
-import { fetchButtonData, fetchFilteringRestaurants } from './services/api';
+import { fetchButtonData, fetchFilteredRestaurants } from './services/api';
 
 export function setButtonData({ sort, data }) {
   return {
@@ -31,19 +31,19 @@ export function applyFilter({ field, content }) {
   };
 }
 
-export function setFilteringRestaurants(restaurants) {
+export function setFilteredRestaurants(restaurants) {
   return {
-    type: 'setFilteringRestaurants',
+    type: 'setFilteredRestaurants',
     payload: {
       restaurants,
     },
   };
 }
 
-export function loadFilteringRestaurants({ regionName, categoryId }) {
+export function loadFilteredRestaurants({ regionName, categoryId }) {
   return async (dispatch) => {
-    const restaurants = await fetchFilteringRestaurants({ regionName, categoryId });
+    const restaurants = await fetchFilteredRestaurants({ regionName, categoryId });
 
-    dispatch(setFilteringRestaurants(restaurants));
+    dispatch(setFilteredRestaurants(restaurants));
   };
 }

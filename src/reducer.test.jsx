@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setButtonData,
   applyFilter,
+  setFilteredRestaurants,
 } from './actions';
 
 import fixtureRegions from '../fixtures/regions';
@@ -105,6 +106,16 @@ describe('reducer', () => {
       }));
 
       expect(filter.categoryId).toBe(targetId);
+    });
+  });
+
+  describe('setFilteredRestaurants', () => {
+    it('changes restaurants', () => {
+      const { restaurants } = reducer({
+        restaurants: [],
+      }, setFilteredRestaurants(fixtureRestaurants));
+
+      expect(restaurants).toHaveLength(fixtureRestaurants.length);
     });
   });
 });

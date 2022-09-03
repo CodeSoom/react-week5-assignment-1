@@ -7,7 +7,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadButtonData,
-  loadFilteringRestaurants,
+  loadFilteredRestaurants,
   applyFilter,
 } from './actions';
 
@@ -26,9 +26,9 @@ export default function App() {
   useEffect(() => {
     if (!(filter.regionName && filter.categoryId)) return;
 
-    dispatch(loadFilteringRestaurants({
+    dispatch(loadFilteredRestaurants({
       regionName: filter.regionName,
-      categoryId: filter.CategoryId,
+      categoryId: filter.categoryId,
     }));
   }, [filter]);
 

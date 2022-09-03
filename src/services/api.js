@@ -7,7 +7,7 @@ export async function fetchButtonData(sort) {
 }
 
 // 임시 함수
-export async function fetchFilteringRestaurants({ regionName, categoryId }) {
+export async function fetchFilteredRestaurants({ regionName, categoryId }) {
   const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
   const response = await fetch(url);
   const restaurants = await response.json();
