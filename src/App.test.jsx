@@ -162,8 +162,8 @@ describe('App', () => {
   });
 
   it('renders Restaurants', () => {
-    given('regions', () => regions);
-    given('categories', () => categories);
+    given('regions', () => []);
+    given('categories', () => []);
     given('restaurants', () => restaurants);
     given('filter', () => ({
       region: null,

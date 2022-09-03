@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -11,12 +11,22 @@ import {
 } from './actions';
 
 export default function App() {
+  const { filter } = useSelector((state) => ({
+    filter: state.filter,
+  }));
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadButtonData('regions'));
     dispatch(loadButtonData('categories'));
   }, []);
+
+  useEffect(() => {
+    if (!(filter.region && filter.category)) return;
+
+    dispatch();
+  }, [filter]);
 
   function handleClick({ field, content }) {
     dispatch(applyFilter({ field, content }));
