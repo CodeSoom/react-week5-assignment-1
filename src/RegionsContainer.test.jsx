@@ -49,7 +49,12 @@ describe('RegionsContainer', () => {
     regionButtons.forEach((regionButton) => {
       fireEvent.click(regionButton);
 
-      expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalledWith({
+        type: 'applyRegion',
+        payload: {
+          region: regionButton.textContent,
+        },
+      });
     });
   });
 });

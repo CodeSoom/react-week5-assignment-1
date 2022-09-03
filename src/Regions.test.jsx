@@ -34,7 +34,7 @@ describe('Regions', () => {
     regionButtons.forEach((regionButton) => {
       fireEvent.click(regionButton);
 
-      expect(handleClick).toBeCalled();
+      expect(handleClick).toBeCalledWith(regionButton.textContent);
     });
   });
 });
