@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import categories from '../__fixtures__/data';
+import { categories } from '../__fixtures__/data';
 
-jest.mock('../__mocks__/react-redux');
+jest.mock('react-redux');
 
 describe('<CategoriesContainer />', () => {
   it('renders categories', () => {
