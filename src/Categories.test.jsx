@@ -5,7 +5,7 @@ import Categories from './Categories';
 import categories from '../fixtures/categories';
 
 describe('Categories', () => {
-  it('renders regions list', () => {
+  it('renders categories', () => {
     const { getAllByRole } = render((
       <Categories categories={categories} />
     ));

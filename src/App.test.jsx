@@ -7,6 +7,7 @@ import App from './App';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
@@ -14,6 +15,7 @@ describe('App', () => {
   given('state', () => ({
     regions: given.regions,
     categories: given.categories,
+    restaurant: given.restaurants,
   }));
 
   const dispatch = jest.fn();
@@ -31,6 +33,7 @@ describe('App', () => {
   it('loads regions & categories from API', () => {
     given('regions', () => []);
     given('categories', () => []);
+    given('restaurants', () => []);
 
     render((
       <App />
@@ -42,6 +45,7 @@ describe('App', () => {
   it('renders regions', () => {
     given('regions', () => regions);
     given('categories', () => []);
+    given('restaurants', () => []);
 
     const { getAllByRole } = render((
       <App />
@@ -56,6 +60,7 @@ describe('App', () => {
   it('renders Categories', () => {
     given('regions', () => []);
     given('categories', () => categories);
+    given('restaurants', () => []);
 
     const { getAllByRole } = render((
       <App />
@@ -65,5 +70,19 @@ describe('App', () => {
       expect(getAllByRole('button')[index].textContent).toBe(category.name);
     });
     expect(getAllByRole('listitem')).toHaveLength(categories.length);
+  });
+
+  it('renders Restaurants', () => {
+    given('regions', () => []);
+    given('categories', () => []);
+    given('restaurants', () => restaurants);
+
+    const { getAllByRole } = render((
+      <App />
+    ));
+
+    restaurants.forEach((restaurant, index) => {
+      expect(getAllByRole('listitem')[index].textContent).toBe(restaurant.name);
+    });
   });
 });

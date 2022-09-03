@@ -5,7 +5,7 @@ import Regions from './Regions';
 import regions from '../fixtures/regions';
 
 describe('Regions', () => {
-  it('renders regions list', () => {
+  it('renders regions', () => {
     const { getAllByRole } = render((
       <Regions regions={regions} />
     ));
@@ -13,5 +13,6 @@ describe('Regions', () => {
     regions.forEach((region, index) => {
       expect(getAllByRole('button')[index].textContent).toBe(region.name);
     });
+    expect(getAllByRole('listitem')).toHaveLength(regions.length);
   });
 });
