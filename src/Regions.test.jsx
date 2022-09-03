@@ -23,7 +23,10 @@ describe('Regions', () => {
 
   it('renders button to listent to click event', () => {
     const { getAllByRole } = render((
-      <Regions regions={regions} />
+      <Regions
+        regions={regions}
+        onClick={handleClick}
+      />
     ));
 
     const regionButtons = getAllByRole('button');
