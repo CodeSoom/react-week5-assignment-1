@@ -16,6 +16,7 @@ describe('App', () => {
     regions: given.regions,
     categories: given.categories,
     restaurants: given.restaurants,
+    filter: given.filter,
   }));
 
   const dispatch = jest.fn();
@@ -34,6 +35,10 @@ describe('App', () => {
     given('regions', () => []);
     given('categories', () => []);
     given('restaurants', () => []);
+    given('filter', () => ({
+      region: null,
+      category: null,
+    }));
 
     render((
       <App />
@@ -46,6 +51,10 @@ describe('App', () => {
     given('regions', () => regions);
     given('categories', () => []);
     given('restaurants', () => []);
+    given('filter', () => ({
+      region: null,
+      category: null,
+    }));
 
     const { getAllByRole } = render((
       <App />
@@ -61,6 +70,10 @@ describe('App', () => {
     given('regions', () => regions);
     given('categories', () => []);
     given('restaurants', () => []);
+    given('filter', () => ({
+      region: null,
+      category: null,
+    }));
 
     const { getAllByRole } = render((
       <App />
@@ -85,6 +98,10 @@ describe('App', () => {
     given('regions', () => []);
     given('categories', () => categories);
     given('restaurants', () => []);
+    given('filter', () => ({
+      region: null,
+      category: null,
+    }));
 
     const { getAllByRole } = render((
       <App />
@@ -100,6 +117,10 @@ describe('App', () => {
     given('regions', () => []);
     given('categories', () => categories);
     given('restaurants', () => []);
+    given('filter', () => ({
+      region: null,
+      category: null,
+    }));
 
     const { getAllByRole } = render((
       <App />
@@ -124,6 +145,10 @@ describe('App', () => {
     given('regions', () => []);
     given('categories', () => []);
     given('restaurants', () => restaurants);
+    given('filter', () => ({
+      region: null,
+      category: null,
+    }));
 
     const { getAllByRole } = render((
       <App />

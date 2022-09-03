@@ -15,6 +15,7 @@ describe('CategoriesContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       categories: given.categories,
+      filter: given.filter,
     }));
   });
 
@@ -24,6 +25,7 @@ describe('CategoriesContainer', () => {
 
   it('renders categories', () => {
     given('categories', () => categories);
+    given('filter', () => ({ category: null }));
 
     const { getAllByRole } = render((
       <CategoriesContainer onClick={handleClick} />
@@ -37,6 +39,7 @@ describe('CategoriesContainer', () => {
 
   it('renders button to listent to click event', () => {
     given('categories', () => categories);
+    given('filter', () => ({ category: null }));
 
     const { getAllByRole } = render((
       <CategoriesContainer onClick={handleClick} />
@@ -52,5 +55,16 @@ describe('CategoriesContainer', () => {
         content: categoryButton.textContent,
       });
     });
+  });
+
+  it("renders 'V' button with equal filter", () => {
+    given('categories', () => categories);
+    given('filter', () => ({ category: categories[0].name }));
+
+    const { getAllByRole } = render((
+      <CategoriesContainer onClick={handleClick} />
+    ));
+
+    expect(getAllByRole('button')[0].textContent).toContain('V');
   });
 });

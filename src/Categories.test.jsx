@@ -12,6 +12,7 @@ describe('Categories', () => {
       <Categories
         categories={categories}
         onClick={handleClick}
+        filter={null}
       />
     ));
 
@@ -26,6 +27,7 @@ describe('Categories', () => {
       <Categories
         categories={categories}
         onClick={handleClick}
+        filter={null}
       />
     ));
 
@@ -41,5 +43,17 @@ describe('Categories', () => {
         content: categoryButton.textContent,
       });
     });
+  });
+
+  it("renders 'V' button with equal filter", () => {
+    const { getAllByRole } = render((
+      <Categories
+        categories={categories}
+        onClick={handleClick}
+        filter={categories[0].name}
+      />
+    ));
+
+    expect(getAllByRole('button')[0].textContent).toContain('V');
   });
 });
