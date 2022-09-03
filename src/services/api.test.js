@@ -1,4 +1,5 @@
 import {
+  fetchRegions,
   fetchCategories,
 } from './api';
 
