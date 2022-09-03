@@ -2,6 +2,7 @@ import reducer from './reducer';
 
 import {
   setButtonData,
+  applyFilter,
 } from './actions';
 
 import fixtureRegions from '../fixtures/regions';
@@ -64,7 +65,7 @@ describe('reducer', () => {
         data: fixtureRegions,
       }));
 
-      expect(regions).not.toHaveLength(0);
+      expect(regions).toHaveLength(fixtureRegions.length);
     });
 
     it('changes categories', () => {
@@ -75,7 +76,35 @@ describe('reducer', () => {
         data: fixtureCategories,
       }));
 
-      expect(categories).not.toHaveLength(0);
+      expect(categories).toHaveLength(fixtureCategories.length);
+    });
+  });
+
+  describe('applyFilter', () => {
+    it('changes region name in filter', () => {
+      const targetName = fixtureRegions[0].name;
+
+      const { filter: regionName } = reducer({
+        filter: { regionName: null },
+      }, applyFilter({
+        field: 'regionName',
+        content: targetName,
+      }));
+
+      expect(regionName).toBe(targetName);
+    });
+
+    it('changes category id in filter', () => {
+      const targetId = fixtureCategories[0].id;
+
+      const { filter: categoryId } = reducer({
+        filter: { categoryId: null },
+      }, applyFilter({
+        field: 'categoryId',
+        content: targetId,
+      }));
+
+      expect(categoryId).toBe(targetId);
     });
   });
 });
