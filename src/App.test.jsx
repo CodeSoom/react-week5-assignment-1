@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { given } from 'given2';
+import given from 'given2';
 
 import { useSelector, useDispatch } from 'react-redux';
 
