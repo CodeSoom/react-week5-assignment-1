@@ -8,6 +8,6 @@ export default function RestaurantsContainer() {
   }));
 
   return (
-    <Restaurants restaurants={restaurants} />
+    restaurants.length > 0 && <Restaurants restaurants={restaurants} />
   );
 }

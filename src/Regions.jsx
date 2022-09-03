@@ -6,7 +6,7 @@ export default function Regions({ regions, onClick, regionName }) {
           <button
             type="button"
             onClick={() => onClick({
-              field: 'region',
+              field: 'regionName',
               content: region.name,
             })}
           >

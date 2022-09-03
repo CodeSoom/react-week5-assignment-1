@@ -6,8 +6,8 @@ export default function Categories({ categories, onClick, categoryId }) {
           <button
             type="button"
             onClick={() => onClick({
-              field: 'category',
-              content: category.name,
+              field: 'categoryId',
+              content: category.id,
             })}
           >
             {category.name}
