@@ -9,8 +9,10 @@ import {
   setRegion,
 } from './actions';
 
-function loadRegion({ dispatch }) {
-  const regions = [];
+import { fetchRegions } from './services/api';
+
+async function loadRegions({ dispatch }) {
+  const regions = await fetchRegions();
   dispatch(setRegion(regions));
 }
 
@@ -18,7 +20,7 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    loadRegion({ dispatch });
+    loadRegions({ dispatch });
   }, []);
 
   return (
