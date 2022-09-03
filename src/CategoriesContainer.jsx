@@ -12,7 +12,7 @@ export default function CategoriesContainer({ onClick }) {
     <Categories
       categories={categories}
       onClick={onClick}
-      filter={filter.category}
+      categoryId={filter.categoryId}
     />
   );
 }

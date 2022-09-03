@@ -12,7 +12,7 @@ describe('Categories', () => {
       <Categories
         categories={categories}
         onClick={handleClick}
-        filter={null}
+        categoryId={null}
       />
     ));
 
@@ -27,7 +27,7 @@ describe('Categories', () => {
       <Categories
         categories={categories}
         onClick={handleClick}
-        filter={null}
+        categoryId={null}
       />
     ));
 
@@ -46,12 +46,12 @@ describe('Categories', () => {
   });
 
   categories.forEach((category, index) => {
-    it("renders 'V' button with equal filter", () => {
+    it("renders 'V' button with equal category id", () => {
       const { getAllByRole } = render((
         <Categories
           categories={categories}
           onClick={handleClick}
-          filter={category.name}
+          categoryId={category.id}
         />
       ));
 

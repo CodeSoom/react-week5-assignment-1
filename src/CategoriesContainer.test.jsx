@@ -25,7 +25,7 @@ describe('CategoriesContainer', () => {
 
   it('renders categories', () => {
     given('categories', () => categories);
-    given('filter', () => ({ category: null }));
+    given('filter', () => ({ categoryId: null }));
 
     const { getAllByRole } = render((
       <CategoriesContainer onClick={handleClick} />
@@ -39,7 +39,7 @@ describe('CategoriesContainer', () => {
 
   it('renders button to listent to click event', () => {
     given('categories', () => categories);
-    given('filter', () => ({ category: null }));
+    given('filter', () => ({ categoryId: null }));
 
     const { getAllByRole } = render((
       <CategoriesContainer onClick={handleClick} />
@@ -60,7 +60,7 @@ describe('CategoriesContainer', () => {
   categories.forEach((category, index) => {
     it("renders 'V' button with equal filter", () => {
       given('categories', () => categories);
-      given('filter', () => ({ category: category.name }));
+      given('filter', () => ({ categoryId: category.id }));
 
       const { getAllByRole } = render((
         <CategoriesContainer onClick={handleClick} />

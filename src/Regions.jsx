@@ -1,4 +1,4 @@
-export default function Regions({ regions, onClick, filter }) {
+export default function Regions({ regions, onClick, regionName }) {
   return (
     <ul>
       {regions.map((region) => (
@@ -11,7 +11,7 @@ export default function Regions({ regions, onClick, filter }) {
             })}
           >
             {region.name}
-            {region.name === filter ? '(V)' : ''}
+            {region.name === regionName ? '(V)' : ''}
           </button>
         </li>
       ))}

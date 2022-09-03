@@ -7,6 +7,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadButtonData,
+  loadFilteringRestaurants,
   applyFilter,
 } from './actions';
 
@@ -23,9 +24,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!(filter.region && filter.category)) return;
+    if (!(filter.regionName && filter.categoryId)) return;
 
-    dispatch();
+    dispatch(loadFilteringRestaurants({
+      regionName: filter.regionName,
+      categoryId: filter.CategoryId,
+    }));
   }, [filter]);
 
   function handleClick({ field, content }) {

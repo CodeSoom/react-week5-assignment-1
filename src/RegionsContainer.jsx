@@ -12,7 +12,7 @@ export default function RegionsContainer({ onClick }) {
     <Regions
       regions={regions}
       onClick={onClick}
-      filter={filter.region}
+      regionName={filter.regionName}
     />
   );
 }

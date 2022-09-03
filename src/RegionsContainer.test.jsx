@@ -25,7 +25,7 @@ describe('RegionsContainer', () => {
 
   it('renders regions', () => {
     given('regions', () => regions);
-    given('filter', () => ({ region: null }));
+    given('filter', () => ({ regionName: null }));
 
     const { getAllByRole } = render((
       <RegionsContainer onClick={handleClick} />
@@ -39,7 +39,7 @@ describe('RegionsContainer', () => {
 
   it('renders button to listent to click event', () => {
     given('regions', () => regions);
-    given('filter', () => ({ region: null }));
+    given('filter', () => ({ regionName: null }));
 
     const { getAllByRole } = render((
       <RegionsContainer onClick={handleClick} />
@@ -60,7 +60,7 @@ describe('RegionsContainer', () => {
   regions.forEach((region, index) => {
     it("renders 'V' button with equal filter", () => {
       given('regions', () => regions);
-      given('filter', () => ({ region: region.name }));
+      given('filter', () => ({ regionName: region.name }));
 
       const { getAllByRole } = render((
         <RegionsContainer onClick={handleClick} />

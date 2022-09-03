@@ -3,8 +3,8 @@ const initialState = {
   categories: [],
   restaurants: [],
   filter: {
-    region: null,
-    category: null,
+    regionName: null,
+    categoryId: null,
   },
 };
 

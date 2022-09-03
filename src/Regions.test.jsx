@@ -12,7 +12,7 @@ describe('Regions', () => {
       <Regions
         regions={regions}
         onClick={handleClick}
-        filter={null}
+        regionName={null}
       />
     ));
 
@@ -27,7 +27,7 @@ describe('Regions', () => {
       <Regions
         regions={regions}
         onClick={handleClick}
-        filter={null}
+        regionName={null}
       />
     ));
 
@@ -46,12 +46,12 @@ describe('Regions', () => {
   });
 
   regions.forEach((region, index) => {
-    it("renders 'V' button with equal filter", () => {
+    it("renders 'V' button with equal region name", () => {
       const { getAllByRole } = render((
         <Regions
           regions={regions}
           onClick={handleClick}
-          filter={region.name}
+          regionName={region.name}
         />
       ));
 

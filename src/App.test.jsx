@@ -37,8 +37,8 @@ describe('App', () => {
       given('categories', () => []);
       given('restaurants', () => []);
       given('filter', () => ({
-        region: null,
-        category: null,
+        regionName: null,
+        categoryId: null,
       }));
 
       render((
@@ -55,8 +55,8 @@ describe('App', () => {
       given('categories', () => categories);
       given('restaurants', () => []);
       given('filter', () => ({
-        region: regions[0].name,
-        category: categories[0].name,
+        regionName: regions[0].name,
+        categoryId: categories[0].id,
       }));
 
       render((
@@ -72,8 +72,8 @@ describe('App', () => {
     given('categories', () => []);
     given('restaurants', () => []);
     given('filter', () => ({
-      region: null,
-      category: null,
+      regionName: null,
+      categoryId: null,
     }));
 
     const { getAllByRole } = render((
@@ -91,8 +91,8 @@ describe('App', () => {
     given('categories', () => []);
     given('restaurants', () => []);
     given('filter', () => ({
-      region: null,
-      category: null,
+      regionName: null,
+      categoryId: null,
     }));
 
     const { getAllByRole } = render((
@@ -119,8 +119,8 @@ describe('App', () => {
     given('categories', () => categories);
     given('restaurants', () => []);
     given('filter', () => ({
-      region: null,
-      category: null,
+      regionName: null,
+      categoryId: null,
     }));
 
     const { getAllByRole } = render((
@@ -138,8 +138,8 @@ describe('App', () => {
     given('categories', () => categories);
     given('restaurants', () => []);
     given('filter', () => ({
-      region: null,
-      category: null,
+      regionName: null,
+      categoryId: null,
     }));
 
     const { getAllByRole } = render((
@@ -166,8 +166,8 @@ describe('App', () => {
     given('categories', () => []);
     given('restaurants', () => restaurants);
     given('filter', () => ({
-      region: null,
-      category: null,
+      regionName: null,
+      categoryId: null,
     }));
 
     const { getAllByRole } = render((
