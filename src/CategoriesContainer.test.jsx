@@ -15,11 +15,12 @@ describe('<CategoriesContainer />', () => {
       selectedCategory: '',
     }));
 
-    const { getByText } = render((
+    const { container } = render((
       <CategoriesContainer />
     ));
 
-    expect(getByText('한식')).not.toBeNull();
-    expect(getByText('분식')).not.toBeNull();
+    categories.forEach((category) => {
+      expect(container).toHaveTextContent(category.name);
+    });
   });
 });
