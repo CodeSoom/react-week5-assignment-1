@@ -9,7 +9,6 @@ import { regions, categories } from '../__fixtures__/data';
 jest.mock('../__mocks__/react-redux');
 jest.mock('./services/api');
 
-
 describe('<App />', () => {
   const fixtureState = {
     regions,
@@ -21,6 +20,7 @@ describe('<App />', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
+    regions: fixtureState.regions,
     categories: fixtureState.categories,
   }));
 
