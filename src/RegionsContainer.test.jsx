@@ -1,14 +1,24 @@
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import RegionsContainer from './RegionsContainer';
+
+import { regions } from '../__fixtures__/data';
 
 describe('<RegionsContainer />', () => {
   it('renders regions', () => {
-    const { getByText } = render((
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      selectedRegion: '',
+    }));
+
+    const { container } = render((
       <RegionsContainer />
     ));
 
-    expect(getByText('서울')).not.toBeNull();
-    expect(getByText('부산')).not.toBeNull();
+    regions.forEach((region) => {
+      expect(container).toHaveTextContent(region.name);
+    });
   });
 });
