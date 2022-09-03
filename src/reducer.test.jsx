@@ -1,5 +1,9 @@
 import reducer from './reducer';
 
+import {
+  setButtonData,
+} from './actions';
+
 import fixtureRegions from '../fixtures/regions';
 import fixtureCategories from '../fixtures/categories';
 import fixtureRestaurants from '../fixtures/restaurants';
@@ -49,5 +53,29 @@ describe('reducer', () => {
 
     expect(regionName).toBe(fixtureRegions[0].name);
     expect(categoryId).toBe(fixtureCategories[0].id);
+  });
+
+  describe('setButtonData', () => {
+    it('changes regions', () => {
+      const { regions } = reducer({
+        regions: [],
+      }, setButtonData({
+        sort: 'regions',
+        data: fixtureRegions,
+      }));
+
+      expect(regions).not.toHaveLength(0);
+    });
+
+    it('changes categories', () => {
+      const { categories } = reducer({
+        categories: [],
+      }, setButtonData({
+        sort: 'categories',
+        data: fixtureCategories,
+      }));
+
+      expect(categories).not.toHaveLength(0);
+    });
   });
 });
