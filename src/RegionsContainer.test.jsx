@@ -29,5 +29,6 @@ describe('RegionsContainer', () => {
     regions.forEach((region, index) => {
       expect(getAllByRole('button')[index].textContent).toBe(region.name);
     });
+    expect(getAllByRole('listitem')).toHaveLength(regions.length);
   });
 });

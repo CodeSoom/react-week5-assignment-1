@@ -50,6 +50,7 @@ describe('App', () => {
     regions.forEach((region, index) => {
       expect(getAllByRole('button')[index].textContent).toBe(region.name);
     });
+    expect(getAllByRole('listitem')).toHaveLength(regions.length);
   });
 
   it('renders Categories', () => {
@@ -63,5 +64,6 @@ describe('App', () => {
     categories.forEach((category, index) => {
       expect(getAllByRole('button')[index].textContent).toBe(category.name);
     });
+    expect(getAllByRole('listitem')).toHaveLength(categories.length);
   });
 });

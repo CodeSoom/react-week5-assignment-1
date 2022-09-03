@@ -13,5 +13,6 @@ describe('Categories', () => {
     categories.forEach((category, index) => {
       expect(getAllByRole('button')[index].textContent).toBe(category.name);
     });
+    expect(getAllByRole('listitem')).toHaveLength(categories.length);
   });
 });
