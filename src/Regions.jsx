@@ -3,7 +3,10 @@ export default function Regions({ regions, onClick }) {
     <ul>
       {regions.map((region) => (
         <li key={region.id}>
-          <button type="button" onClick={onClick}>
+          <button
+            type="button"
+            onClick={() => onClick(region.name)}
+          >
             {region.name}
           </button>
         </li>

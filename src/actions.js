@@ -20,3 +20,12 @@ export function loadButtonData(sort) {
     }));
   };
 }
+
+export function applyRegion(region) {
+  return {
+    type: 'applyRegion',
+    payload: {
+      region,
+    },
+  };
+}
