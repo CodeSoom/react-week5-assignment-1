@@ -31,6 +31,8 @@ describe('Regions', () => {
 
     const regionButtons = getAllByRole('button');
 
+    expect(handleClick).not.toBeCalled();
+
     regionButtons.forEach((regionButton) => {
       fireEvent.click(regionButton);
 

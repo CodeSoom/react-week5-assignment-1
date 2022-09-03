@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import given from 'given2';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,16 +12,20 @@ jest.mock('react-redux');
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      categories: given.categories,
+    }));
+
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it('renders categories', () => {
-    useSelector.mockImplementation((selector) => selector({
-      categories,
-    }));
+    given('categories', () => categories);
 
     const { getAllByRole } = render((
       <CategoriesContainer />
@@ -30,5 +35,28 @@ describe('CategoriesContainer', () => {
       expect(getAllByRole('button')[index].textContent).toBe(category.name);
     });
     expect(getAllByRole('listitem')).toHaveLength(categories.length);
+  });
+
+  it('renders button to listent to click event', () => {
+    given('categories', () => categories);
+
+    const { getAllByRole } = render((
+      <CategoriesContainer />
+    ));
+
+    const categoriesButtons = getAllByRole('button');
+
+    expect(dispatch).not.toBeCalled();
+
+    categoriesButtons.forEach((categoryButton) => {
+      fireEvent.click(categoryButton);
+
+      expect(dispatch).toBeCalledWith({
+        type: 'applyCategory',
+        payload: {
+          region: categoryButton.textContent,
+        },
+      });
+    });
   });
 });

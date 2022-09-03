@@ -46,6 +46,8 @@ describe('RegionsContainer', () => {
 
     const regionButtons = getAllByRole('button');
 
+    expect(dispatch).not.toBeCalled();
+
     regionButtons.forEach((regionButton) => {
       fireEvent.click(regionButton);
 
