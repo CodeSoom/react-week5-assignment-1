@@ -47,12 +47,12 @@ describe('CategoriesContainer', () => {
 
     const categoriesButtons = getAllByRole('button');
 
-    categoriesButtons.forEach((categoryButton) => {
-      fireEvent.click(categoryButton);
+    categories.forEach((category, index) => {
+      fireEvent.click(categoriesButtons[index]);
 
       expect(handleClick).toBeCalledWith({
-        field: 'category',
-        content: categoryButton.textContent,
+        field: 'categoryId',
+        content: category.id,
       });
     });
   });

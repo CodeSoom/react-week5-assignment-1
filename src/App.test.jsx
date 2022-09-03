@@ -107,7 +107,7 @@ describe('App', () => {
       expect(dispatch).toBeCalledWith({
         type: 'applyFilter',
         payload: {
-          field: 'region',
+          field: 'regionName',
           content: regionButton.textContent,
         },
       });
@@ -148,14 +148,14 @@ describe('App', () => {
 
     const categoriesButtons = getAllByRole('button');
 
-    categoriesButtons.forEach((categoryButton) => {
-      fireEvent.click(categoryButton);
+    categories.forEach((category, index) => {
+      fireEvent.click(categoriesButtons[index]);
 
       expect(dispatch).toBeCalledWith({
         type: 'applyFilter',
         payload: {
-          field: 'category',
-          content: categoryButton.textContent,
+          field: 'categoryId',
+          content: category.id,
         },
       });
     });

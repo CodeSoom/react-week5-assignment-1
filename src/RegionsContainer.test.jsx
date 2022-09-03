@@ -51,7 +51,7 @@ describe('RegionsContainer', () => {
       fireEvent.click(regionButton);
 
       expect(handleClick).toBeCalledWith({
-        field: 'region',
+        field: 'regionName',
         content: regionButton.textContent,
       }); expect(handleClick).toBeCalled();
     });
