@@ -1,4 +1,4 @@
-export default function Categories({ categories, onClick }) {
+export default function Categories({ categories, onClick, filter }) {
   return (
     <ul>
       {categories.map((category) => (
@@ -11,6 +11,7 @@ export default function Categories({ categories, onClick }) {
             })}
           >
             {category.name}
+            {category.name === filter ? '(V)' : ''}
           </button>
         </li>
       ))}
