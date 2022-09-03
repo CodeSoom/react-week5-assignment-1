@@ -9,10 +9,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  const {
-    regions, categories, restaurants, filter,
-  } = state;
-
   const { type, payload } = action;
 
   const index = {
@@ -26,6 +22,7 @@ export default function reducer(state = initialState, action) {
     },
 
     applyFilter: () => {
+      const { filter } = state;
       const { field, content } = payload;
 
       return {
@@ -36,6 +33,11 @@ export default function reducer(state = initialState, action) {
         },
       };
     },
+
+    setFilteredRestaurants: () => ({
+      ...state,
+      restaurants: payload.restaurants,
+    }),
 
     default: () => state,
   };
