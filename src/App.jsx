@@ -6,8 +6,8 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
 import {
-  loadButtonData,
-  loadFilteredRestaurants,
+  loadRestaurantInformations,
+  loadRestaurants,
   applyFilter,
 } from './actions';
 
@@ -19,14 +19,14 @@ export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadButtonData('regions'));
-    dispatch(loadButtonData('categories'));
+    dispatch(loadRestaurantInformations('regions'));
+    dispatch(loadRestaurantInformations('categories'));
   }, []);
 
   useEffect(() => {
     if (!(filter.regionName && filter.categoryId)) return;
 
-    dispatch(loadFilteredRestaurants({
+    dispatch(loadRestaurants({
       regionName: filter.regionName,
       categoryId: filter.categoryId,
     }));

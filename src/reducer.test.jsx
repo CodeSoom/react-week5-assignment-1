@@ -1,9 +1,9 @@
 import reducer from './reducer';
 
 import {
-  setButtonData,
+  setRestaurantInformations,
   applyFilter,
-  setFilteredRestaurants,
+  setRestaurants,
 } from './actions';
 
 import fixtureRegions from '../fixtures/regions';
@@ -57,11 +57,11 @@ describe('reducer', () => {
     expect(categoryId).toBe(fixtureCategories[0].id);
   });
 
-  describe('setButtonData', () => {
+  describe('setRestaurantInformations', () => {
     it('changes regions', () => {
       const { regions } = reducer({
         regions: [],
-      }, setButtonData({
+      }, setRestaurantInformations({
         sort: 'regions',
         data: fixtureRegions,
       }));
@@ -72,7 +72,7 @@ describe('reducer', () => {
     it('changes categories', () => {
       const { categories } = reducer({
         categories: [],
-      }, setButtonData({
+      }, setRestaurantInformations({
         sort: 'categories',
         data: fixtureCategories,
       }));
@@ -109,11 +109,11 @@ describe('reducer', () => {
     });
   });
 
-  describe('setFilteredRestaurants', () => {
+  describe('setRestaurants', () => {
     it('changes restaurants', () => {
       const { restaurants } = reducer({
         restaurants: [],
-      }, setFilteredRestaurants(fixtureRestaurants));
+      }, setRestaurants(fixtureRestaurants));
 
       expect(restaurants).toHaveLength(fixtureRestaurants.length);
     });

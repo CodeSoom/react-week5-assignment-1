@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
   const { type, payload } = action;
 
   const index = {
-    setButtonData: () => {
+    setRestaurantInformations: () => {
       const { sort, data } = payload;
 
       return {
@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
       };
     },
 
-    setFilteredRestaurants: () => ({
+    setRestaurants: () => ({
       ...state,
       restaurants: payload.restaurants,
     }),
