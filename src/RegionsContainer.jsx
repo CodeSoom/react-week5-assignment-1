@@ -16,7 +16,7 @@ export default function RegionsContainer() {
     <Regions
       regions={regions}
       selectedRegion={selectedRegion}
-      onClick={handleClick}
+      onRegionClick={handleClick}
     />
   );
 }

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 
 import { regions } from '../__fixtures__/data';
+import { selectRegion } from './actions';
 
 describe('<RegionsContainer />', () => {
   it('renders regions', () => {
@@ -37,7 +38,7 @@ describe('<RegionsContainer />', () => {
 
     regions.forEach((region) => {
       fireEvent.click(getByText(region.name));
+      expect(dispatch).toBeCalledWith(selectRegion(region));
     });
-    expect(dispatch).toBeCalledTimes(regions.length);
   });
 });

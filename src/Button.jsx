@@ -1,4 +1,4 @@
-export default function Button({ item: { id, name }, selected, onClick }) {
+export default function Button({ item: { name }, selected, onClick }) {
   return (
     <li>
       <button

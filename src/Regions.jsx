@@ -1,6 +1,6 @@
 import Button from './Button';
 
-export default function Regions({ regions, selectedRegion, onClick }) {
+export default function Regions({ regions, selectedRegion, onRegionClick }) {
   return (
     <ul>
       {
@@ -9,7 +9,7 @@ export default function Regions({ regions, selectedRegion, onClick }) {
             key={region.id}
             item={region}
             selected={selectedRegion}
-            onClick={onClick}
+            onClick={() => onRegionClick(region)}
           />
         ))
       }
