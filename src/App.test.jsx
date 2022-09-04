@@ -18,7 +18,9 @@ describe('<App />', () => {
   };
 
   const dispatch = jest.fn();
+
   useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     regions: fixtureState.regions,
     categories: fixtureState.categories,
