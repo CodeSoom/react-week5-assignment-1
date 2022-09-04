@@ -1,6 +1,7 @@
 import {
   fetchRegions,
   fetchCategories,
+  fetchRestaurants,
 } from './api';
 
 import {
@@ -42,7 +43,7 @@ describe('api', () => {
     it('fetch restaurants', async () => {
       mockFetch(restaurants);
 
-      const result = await fetchRestaurants();
+      const result = await fetchRestaurants('부산', 1);
 
       expect(restaurants).toStrictEqual(result);
       expect(fetch).toBeCalledTimes(1);
