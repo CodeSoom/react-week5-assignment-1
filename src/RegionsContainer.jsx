@@ -15,7 +15,9 @@ export default function RegionsContainer() {
 
   const handleClick = (region) => {
     dispatch(selectRegion(region));
-    dispatch(loadRestaurants(region.name, selectedCategory));
+    if (selectedCategory.id !== undefined) {
+      dispatch(loadRestaurants(region, selectedCategory));
+    }
   };
 
   return (

@@ -9,12 +9,12 @@ const initialState = {
   restaurants: [],
 
   selectedRegion: {
-    id: '',
-    name: '',
+    id: undefined,
+    name: undefined,
   },
   selectedCategory: {
-    id: '',
-    name: '',
+    id: undefined,
+    name: undefined,
   },
 };
 

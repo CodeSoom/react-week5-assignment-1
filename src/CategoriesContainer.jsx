@@ -15,7 +15,9 @@ export default function CategoriesContainer() {
 
   const handleCategoryClick = (category) => {
     dispatch(selectCategory(category));
-    dispatch(loadRestaurants(selectedRegion, category.id));
+    if (selectedRegion.name !== undefined) {
+      dispatch(loadRestaurants(selectedRegion, category));
+    }
   };
 
   return (
