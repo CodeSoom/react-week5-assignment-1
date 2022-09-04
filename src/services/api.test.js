@@ -3,7 +3,11 @@ import {
   fetchCategories,
 } from './api';
 
-import { categories, regions } from '../../__fixtures__/data';
+import {
+  categories,
+  regions,
+  restaurants,
+} from '../../__fixtures__/data';
 
 describe('api', () => {
   function mockFetch(data) {
@@ -30,6 +34,17 @@ describe('api', () => {
       const result = await fetchCategories();
 
       expect(categories).toStrictEqual(result);
+      expect(fetch).toBeCalledTimes(1);
+    });
+  });
+
+  describe('fetchRestaurants', () => {
+    it('fetch restaurants', async () => {
+      mockFetch(restaurants);
+
+      const result = await fetchRestaurants();
+
+      expect(restaurants).toStrictEqual(result);
       expect(fetch).toBeCalledTimes(1);
     });
   });
