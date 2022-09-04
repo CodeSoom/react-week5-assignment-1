@@ -4,13 +4,13 @@
 // };
 
 const initialState = {
+  regions: [],
   categories: [],
 
   selectedRegion: {
     id: '',
     name: '',
   },
-
   selectedCategory: {
     id: '',
     name: '',
@@ -18,7 +18,16 @@ const initialState = {
 };
 
 const reducers = {
-  setCategory: (state, action) => {
+  setRegions: (state, action) => {
+    const { regions } = action.payload;
+
+    return {
+      ...state,
+      regions,
+    };
+  },
+
+  setCategories: (state, action) => {
     const { categories } = action.payload;
 
     return {
