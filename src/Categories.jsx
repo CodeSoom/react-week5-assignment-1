@@ -1,6 +1,6 @@
 import Button from './Button';
 
-export default function Categories({ categories, selectedCategory }) {
+export default function Categories({ categories, selectedCategory, onCategoryClick }) {
   return (
     <ul>
       {
@@ -9,6 +9,7 @@ export default function Categories({ categories, selectedCategory }) {
             key={category.id}
             item={category}
             selected={selectedCategory}
+            onClick={() => onCategoryClick(category)}
           />
         ))
       }
