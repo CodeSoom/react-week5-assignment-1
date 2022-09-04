@@ -65,6 +65,6 @@ const reducers = {
   },
 };
 
-export default function reducer(state = initialState, action = { type: undefined }) {
+export default function reducer(state = initialState, action) {
   return reducers[action.type] ? reducers[action.type](state, action) : state;
 }
