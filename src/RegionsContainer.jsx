@@ -1,16 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRegion } from './actions';
+
+import { selectRegion, loadRestaurants } from './actions';
+
 import Regions from './Regions';
 
 export default function RegionsContainer() {
-  const { regions, selectedRegion } = useSelector((state) => ({
+  const { regions, selectedRegion, selectedCategory } = useSelector((state) => ({
     regions: state.regions,
     selectedRegion: state.selectedRegion,
+    selectedCategory: state.selectedCategory,
   }));
 
   const dispatch = useDispatch();
 
-  const handleClick = (region) => dispatch(selectRegion(region));
+  const handleClick = (region) => {
+    dispatch(selectRegion(region));
+    dispatch(loadRestaurants(region, selectedCategory));
+  };
 
   return (
     <Regions
