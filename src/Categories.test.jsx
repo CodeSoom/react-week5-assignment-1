@@ -30,7 +30,7 @@ describe('<Categories />', () => {
   });
 
   context('with selectedCategory', () => {
-    given('selectedCategory', () => categories[0].name);
+    given('selectedCategory', () => categories[0]);
 
     it('renders category with (V) mark', () => {
       const { container } = renderCategory();

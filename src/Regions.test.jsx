@@ -6,6 +6,8 @@ import Regions from './Regions';
 
 import { regions } from '../__fixtures__/data';
 
+const handleClick = jest.fn();
+
 describe('<Regions />', () => {
   given('regions', () => regions);
   given('selectedRegion', () => undefined);
@@ -14,6 +16,7 @@ describe('<Regions />', () => {
     <Regions
       regions={given.regions}
       selectedRegion={given.selectedRegion}
+      onRegionClick={handleClick}
     />,
   );
 
@@ -30,7 +33,8 @@ describe('<Regions />', () => {
   });
 
   context('with selectedRegion', () => {
-    given('selectedRegion', () => regions[0].name);
+    const selectedRegion = regions[0];
+    given('selectedRegion', () => selectedRegion);
     it('renders region with check mark(V)', () => {
       const { getByText } = renderRegions();
 

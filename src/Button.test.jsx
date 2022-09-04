@@ -3,10 +3,13 @@ import { render } from '@testing-library/react';
 import Button from './Button';
 import { region, category } from '../__fixtures__/data';
 
+const handleClick = jest.fn();
+
 const renderButton = (item, selected) => render(
   <Button
     item={item}
     selected={selected}
+    onClick={handleClick}
   />,
 );
 
@@ -26,8 +29,9 @@ describe('<Button/>', () => {
   });
 
   context('with selected', () => {
+    const selected = region.name;
     it('renders (V) mark', () => {
-      const { container } = renderButton(region, region.name);
+      const { container } = renderButton({ region, selected });
 
       expect(container).toHaveTextContent('(V)');
     });

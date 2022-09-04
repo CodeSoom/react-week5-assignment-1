@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import RestaurantsContainer from './RestaurantsContainer';
+
 import { restaurants } from '../__fixtures__/data';
 
 describe('<RestaurantsContainer />', () => {
