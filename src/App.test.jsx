@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import App from './App';
 
-import { regions, categories } from '../__fixtures__/data';
+import { regions, categories, restaurants } from '../__fixtures__/data';
 
 jest.mock('../__mocks__/react-redux');
 jest.mock('./services/api');
@@ -12,8 +12,9 @@ jest.mock('./services/api');
 describe('<App />', () => {
   const fixtureState = {
     regions,
-    selectedRegion: '',
     categories,
+    restaurants,
+    selectedRegion: '',
     selectedCategory: '',
   };
 
@@ -24,6 +25,7 @@ describe('<App />', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: fixtureState.regions,
     categories: fixtureState.categories,
+    restaurants: fixtureState.restaurants,
   }));
 
   it('renders regions and categories name', () => {

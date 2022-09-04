@@ -12,6 +12,7 @@ jest.mock('react-redux');
 describe('<CategoriesContainer />', () => {
   useSelector.mockImplementation((selector) => selector({
     categories,
+    selectedRegion: '',
     selectedCategory: '',
   }));
   it('renders categories', () => {

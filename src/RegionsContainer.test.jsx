@@ -11,6 +11,7 @@ describe('<RegionsContainer />', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     selectedRegion: '',
+    selectedCategory: '',
   }));
 
   it('renders regions', () => {

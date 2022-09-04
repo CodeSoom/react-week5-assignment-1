@@ -13,6 +13,8 @@ import {
   fetchRestaurants,
 } from './services/api';
 
+import { region, category } from '../__fixtures__/data';
+
 jest.mock('./services/api');
 
 const mockStore = configureStore([thunk]);
@@ -44,7 +46,7 @@ describe('actions', () => {
 
   describe('loadRestaurants', () => {
     it('fetch restaurants', async () => {
-      await store.dispatch(loadRestaurants());
+      await store.dispatch(loadRestaurants(region, category));
 
       const actions = store.getActions();
 
