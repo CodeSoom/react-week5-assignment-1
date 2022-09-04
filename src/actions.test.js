@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import {
   setRegions, loadRegions,
   setCategories, loadCategories,
+  setRestaurants, loadRestaurants,
 } from './actions';
 
 import {
@@ -41,12 +42,14 @@ describe('actions', () => {
     });
   });
 
-  describe('loadRestaurants', async () => {
-    await store.dispatch(loadRestaurants());
+  describe('loadRestaurants', () => {
+    it('fetch restaurants', async () => {
+      await store.dispatch(loadRestaurants());
 
-    const actions = store.getActions();
+      const actions = store.getActions();
 
-    expect(fetchRestaurants).toBeCalled();
-    expect(actions[2]).toEqual(setRestaurants())
+      expect(fetchRestaurants).toBeCalled();
+      expect(actions[2]).toEqual(setRestaurants());
+    });
   });
 });
