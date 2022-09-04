@@ -8,12 +8,12 @@ import { regions } from '../__fixtures__/data';
 import { selectRegion } from './actions';
 
 describe('<RegionsContainer />', () => {
-  it('renders regions', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-      selectedRegion: '',
-    }));
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+    selectedRegion: '',
+  }));
 
+  it('renders regions', () => {
     const { container } = render((
       <RegionsContainer />
     ));
@@ -27,10 +27,6 @@ describe('<RegionsContainer />', () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
-      regions,
-      selectedRegion: '',
-    }));
 
     const { getByText } = render((
       <RegionsContainer />
