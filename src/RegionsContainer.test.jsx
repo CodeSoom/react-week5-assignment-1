@@ -1,12 +1,10 @@
 import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
 import { regions } from '../__fixtures__/data';
-
-const handleClick = jest.fn();
 
 describe('<RegionsContainer />', () => {
   it('renders regions', () => {
@@ -25,6 +23,9 @@ describe('<RegionsContainer />', () => {
   });
 
   it('clicks each button to check it\'s selected', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions,
       selectedRegion: '',
@@ -37,7 +38,6 @@ describe('<RegionsContainer />', () => {
     regions.forEach((region) => {
       fireEvent.click(getByText(region.name));
     });
-
-    expect(handleClick).toBeCalledTimes(regions.length);
+    expect(dispatch).toBeCalledTimes(regions.length);
   });
 });
