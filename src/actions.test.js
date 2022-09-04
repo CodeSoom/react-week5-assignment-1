@@ -6,7 +6,11 @@ import {
   setCategories, loadCategories,
 } from './actions';
 
-import { fetchRegions, fetchCategories } from './services/api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+} from './services/api';
 
 jest.mock('./services/api');
 
@@ -35,5 +39,14 @@ describe('actions', () => {
       expect(fetchCategories).toBeCalled();
       expect(actions[1]).toEqual(setCategories());
     });
+  });
+
+  describe('loadRestaurants', async () => {
+    await store.dispatch(loadRestaurants());
+
+    const actions = store.getActions();
+
+    expect(fetchRestaurants).toBeCalled();
+    expect(actions[2]).toEqual(setRestaurants())
   });
 });
