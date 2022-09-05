@@ -39,10 +39,13 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
+    "given2": "^2.1.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0"
   }
 }
