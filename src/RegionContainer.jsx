@@ -1,15 +1,13 @@
-export default function RegionContainer({ regions }) {
+import { useSelector } from 'react-redux';
+
+import Regions from './Regions';
+
+export default function RegionContainer() {
+  const { regions } = useSelector((state) => ({
+    regions: state.regions,
+  }));
+
   return (
-    <div>
-      <ul>
-        {regions.map((region) => (
-          <li key={region.id}>
-            <button type="button">
-              {region.name}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Regions regions={regions} />
   );
 }
