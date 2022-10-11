@@ -1,27 +1,30 @@
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+
+import RegionContainer from './RegionContainer';
+import CategoriesContainer from './CategoriesContainer';
+
+import regions from '../fixtures/region';
+import categories from '../fixtures/categories';
+
+import {
+  setCategories,
+  setRegions,
+} from './actions';
 
 export default function App() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(setRegions(regions));
+    dispatch(setCategories(categories));
+  }, []);
 
   return (
     <div>
-      <div>
-        <ul>
-          <li>
-            <button>
-              서울
-            </button>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>
-            <button>
-              한식
-            </button>
-          </li>
-        </ul>
-      </div>
+      <RegionContainer />
+      <CategoriesContainer />
     </div>
   );
 }
