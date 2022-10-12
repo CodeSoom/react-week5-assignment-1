@@ -4,6 +4,8 @@ import regions from '../fixtures/region';
 import {
   setRegions,
   setCategories,
+  setSelectRegion,
+  setSelectCategory,
 } from './actions';
 
 import reducer from './reducer';
@@ -28,6 +30,22 @@ describe('Reducer', () => {
       const state = reducer(initailState, setCategories(categories));
 
       expect(state.categories).not.toHaveLength(0);
+    });
+  });
+
+  describe('Set SelectRegion', () => {
+    it('Set state SelectRegion', () => {
+      const state = reducer(initailState, setSelectRegion(1));
+
+      expect(state.selectRegion).not.toBeNull();
+    });
+  });
+
+  describe('Set SelectRegion', () => {
+    it('Set state SelectRegion', () => {
+      const state = reducer(initailState, setSelectCategory(1));
+
+      expect(state.selectCagegory).not.toBeNull();
     });
   });
 });
