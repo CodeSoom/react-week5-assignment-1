@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import regions from '../fixtures/region';
 
@@ -14,6 +14,8 @@ describe('RegionContainer', () => {
       regions,
       categories: [],
       restaurants: [],
+      selectRegion: 0,
+      selectCategory: 0,
     }));
 
     const { queryByText } = render((
@@ -21,5 +23,32 @@ describe('RegionContainer', () => {
     ));
 
     expect(queryByText(/서울/)).not.toBeNull();
+  });
+
+  it('dispatchs select region', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      categories: [],
+      restaurants: [],
+      selectRegion: 0,
+      selectCategory: 0,
+    }));
+
+    dispatch.mockImplementation(() => dispatch);
+
+    const { queryByText } = render((
+      <RegionContainer />
+    ));
+
+    fireEvent.click(queryByText(/서울/));
+
+    expect(dispatch).toBeCalledWith({
+      type: 'setSelectRegion',
+      payload: { selectRegionId: 1 },
+    });
   });
 });
