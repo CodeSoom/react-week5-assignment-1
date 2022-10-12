@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectRegion } from './actions';
+import { setSelectRegionId } from './actions';
 
 import Regions from './Regions';
 
@@ -11,7 +11,7 @@ export default function RegionContainer() {
   }));
 
   const handleClick = (regionId) => {
-    dispatch(setSelectRegion(regionId));
+    dispatch(setSelectRegionId(regionId));
   };
 
   return (

@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'setSelectRegion') {
+  if (action.type === 'setSelectRegionId') {
     const { selectRegionId } = action.payload;
 
     return {
@@ -34,7 +34,7 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'setSelectCategory') {
+  if (action.type === 'setSelectCategoryId') {
     const { selectCategoryId } = action.payload;
 
     return {

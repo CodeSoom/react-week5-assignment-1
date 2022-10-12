@@ -47,7 +47,7 @@ describe('RegionContainer', () => {
     fireEvent.click(queryByText(/서울/));
 
     expect(dispatch).toBeCalledWith({
-      type: 'setSelectRegion',
+      type: 'setSelectRegionId',
       payload: { selectRegionId: 1 },
     });
   });

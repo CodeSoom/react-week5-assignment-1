@@ -16,18 +16,18 @@ export function setCategories(categories) {
   };
 }
 
-export function setSelectRegion(selectRegionId) {
+export function setSelectRegionId(selectRegionId) {
   return {
-    type: 'setSelectRegion',
+    type: 'setSelectRegionId',
     payload: {
       selectRegionId,
     },
   };
 }
 
-export function setSelectCategory(selectCategoryId) {
+export function setSelectCategoryId(selectCategoryId) {
   return {
-    type: 'setSelectRegion',
+    type: 'setSelectCategoryId',
     payload: {
       selectCategoryId,
     },

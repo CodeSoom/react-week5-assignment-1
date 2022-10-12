@@ -4,8 +4,8 @@ import regions from '../fixtures/region';
 import {
   setRegions,
   setCategories,
-  setSelectRegion,
-  setSelectCategory,
+  setSelectRegionId,
+  setSelectCategoryId,
 } from './actions';
 
 import reducer from './reducer';
@@ -35,7 +35,7 @@ describe('Reducer', () => {
 
   describe('Set SelectRegionId', () => {
     it('Set state SelectRegionId', () => {
-      const state = reducer(initailState, setSelectRegion(1));
+      const state = reducer(initailState, setSelectRegionId(1));
 
       expect(state.selectRegionId).not.toBeNull();
     });
@@ -43,7 +43,7 @@ describe('Reducer', () => {
 
   describe('Set SelectRegionId', () => {
     it('Set state SelectRegionId', () => {
-      const state = reducer(initailState, setSelectCategory(1));
+      const state = reducer(initailState, setSelectCategoryId(1));
 
       expect(state.selectCagegoryId).not.toBeNull();
     });
