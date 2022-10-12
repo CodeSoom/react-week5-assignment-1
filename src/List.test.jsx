@@ -1,14 +1,23 @@
 import { render } from '@testing-library/react';
 
+import { useDispatch } from 'react-redux';
+
 import List from './List';
 
-describe('ListContainer', () => {
+jest.mock('react-redux');
+jest.mock('./services/api');
+
+describe('List', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   it('renders regions list', () => {
     const regions = [
       { id: 1, name: '서울' },
     ];
     const { getByText } = render((
-      <List itemTypes={regions} />
+      <List listItems={regions} />
     ));
 
     expect(getByText('서울')).not.toBeNull();
@@ -19,22 +28,9 @@ describe('ListContainer', () => {
       { id: 11, name: '한식' },
     ];
     const { getByText } = render((
-      <List itemTypes={categories} />
+      <List listItems={categories} />
     ));
 
     expect(getByText('한식')).not.toBeNull();
-  });
-
-  it('renders restaurants list', () => {
-    const restaurants = [
-      {
-        id: 101, name: '마녀식당', type: '일식', address: '서울시 강남구',
-      },
-    ];
-    const { getByText } = render((
-      <List itemTypes={restaurants} />
-    ));
-
-    expect(getByText('마녀식당')).not.toBeNull();
   });
 });

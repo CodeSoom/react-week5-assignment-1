@@ -1,19 +1,18 @@
 // import List from './List';
 
 export default function List({
-  itemTypes, hasButton, onClick,
+  listItems, selected, hasButton, onClick,
 }) {
-  if (itemTypes && itemTypes.length === 0) {
-    return (
-      <p>리스트가 없어요!</p>
-    );
-  }
-
   if (hasButton) {
     return (
       <ul>
-        {itemTypes.map((item) => (
-          <li key={item.id}><button type="button" onClick={onClick}>{item.name}</button></li>
+        {listItems.map((item) => (
+          <li key={item.id}>
+            <button type="button" onClick={() => onClick(item)}>
+              {item.name}
+              {item.name === selected?.name ? '(V)' : ''}
+            </button>
+          </li>
         ))}
       </ul>
     );
@@ -21,7 +20,7 @@ export default function List({
 
   return (
     <ul>
-      {itemTypes.map((item) => (
+      {listItems.map((item) => (
         <li key={item.id}>{item.name}</li>
       ))}
     </ul>

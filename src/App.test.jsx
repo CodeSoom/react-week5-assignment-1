@@ -31,10 +31,9 @@ describe('App', () => {
       <App />
     ));
 
-    expect(dispatch).toBeCalledTimes(3);
+    expect(dispatch).toBeCalledTimes(2);
 
     expect(queryByText(/서울/)).not.toBeNull();
     expect(queryByText(/한식/)).not.toBeNull();
-    expect(queryByText(/마녀식당/)).not.toBeNull();
   });
 });

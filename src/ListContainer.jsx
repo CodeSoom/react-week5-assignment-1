@@ -4,20 +4,21 @@ import {
   loadRegions,
   loadCategories,
   loadRestaurants,
+  setSelectedRegion,
+  setSelectedCategory,
 } from './actions';
 
 import List from './List';
 
-function handleClickLocation() {
-  // dispatch(setRegions(name));
-  console.log('dd');
-}
-
 export default function ListContainer() {
-  const { regions, categories, restaurants } = useSelector((state) => ({
+  const {
+    regions, categories, restaurants, selectedRegion, selectedCategory,
+  } = useSelector((state) => ({
     regions: state.regions,
     categories: state.categories,
     restaurants: state.restaurants,
+    selectedRegion: state.selectedRegion,
+    selectedCategory: state.selectedCategory,
   }));
 
   const dispatch = useDispatch();
@@ -25,16 +26,29 @@ export default function ListContainer() {
   useEffect(() => {
     dispatch(loadRegions());
     dispatch(loadCategories());
-    dispatch(loadRestaurants());
   }, []);
+
+  function handleClickRegion(item) {
+    dispatch(setSelectedRegion(item));
+    if (selectedCategory.id !== undefined) {
+      dispatch(loadRestaurants(item, selectedCategory));
+    }
+  }
+
+  function handleClickCategory(item) {
+    dispatch(setSelectedCategory(item));
+    if (selectedRegion.name !== undefined) {
+      dispatch(loadRestaurants(selectedRegion, item));
+    }
+  }
 
   return (
     <>
-      <List hasButton="true" itemTypes={regions} onClick={handleClickLocation} />
+      <List hasButton="true" listItems={regions} selected={selectedRegion} onClick={handleClickRegion} />
       <br />
-      <List hasButton="true" itemTypes={categories} />
+      <List hasButton="true" listItems={categories} selected={selectedCategory} onClick={handleClickCategory} />
       <br />
-      <List itemTypes={restaurants} />
+      <List listItems={restaurants} />
     </>
   );
 }
