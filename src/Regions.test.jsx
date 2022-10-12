@@ -8,6 +8,7 @@ jest.mock('react-redux');
 
 describe('Regions', () => {
   const handleClick = jest.fn();
+
   it('Shows region', () => {
     const { queryByText } = render((
       <Regions
@@ -20,7 +21,7 @@ describe('Regions', () => {
   });
 
   it('Changes text', () => {
-    const { getByText, queryByText } = render((
+    const { getByText } = render((
       <Regions
         regions={regions}
         handleClick={handleClick}
@@ -29,8 +30,8 @@ describe('Regions', () => {
 
     expect(handleClick).not.toBeCalled();
 
-    fireEvent.click(getByText(`${regions[0].name}`));
+    fireEvent.click(getByText('서울'));
 
-    expect(queryByText(/(V)/)).not.toBeNull();
+    expect(handleClick).toBeCalled();
   });
 });
