@@ -9,7 +9,7 @@ import regions from '../fixtures/region';
 import categories from '../fixtures/categories';
 
 import {
-  setCategories,
+  loadCategories,
   setRegions,
 } from './actions';
 
@@ -18,7 +18,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(setRegions(regions));
-    dispatch(setCategories(categories));
+    dispatch(loadCategories(categories));
   }, []);
 
   return (
