@@ -10,14 +10,14 @@ import categories from '../fixtures/categories';
 
 import {
   loadCategories,
-  setRegions,
+  loadRegions,
 } from './actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setRegions(regions));
+    dispatch(loadRegions(regions));
     dispatch(loadCategories(categories));
   }, []);
 
