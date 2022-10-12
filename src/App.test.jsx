@@ -8,6 +8,7 @@ import categories from '../fixtures/categories';
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   it('Shows regions', () => {
@@ -25,15 +26,7 @@ describe('App', () => {
       <App />
     ));
 
-    expect(dispatch).toBeCalledWith(({
-      type: 'setRegions',
-      payload: { regions },
-    }));
-
-    expect(dispatch).toBeCalledWith(({
-      type: 'setCategories',
-      payload: { categories },
-    }));
+    expect(dispatch).toBeCalledTimes(2);
 
     expect(queryByText(/서울/)).not.toBeNull();
     expect(queryByText(/한식/)).not.toBeNull();
