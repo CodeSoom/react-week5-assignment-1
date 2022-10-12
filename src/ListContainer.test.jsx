@@ -2,12 +2,12 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import App from './App';
+import ListContainer from './ListContainer';
 
 jest.mock('react-redux');
 jest.mock('./services/api');
 
-describe('App', () => {
+describe('ListContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [
       { id: 1, name: '서울' },
@@ -26,15 +26,11 @@ describe('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  it('renders list component', () => {
-    const { queryByText } = render((
-      <App />
+  it('change regions list', () => {
+    const { getByText } = render((
+      <ListContainer />
     ));
 
-    expect(dispatch).toBeCalledTimes(3);
-
-    expect(queryByText(/서울/)).not.toBeNull();
-    expect(queryByText(/한식/)).not.toBeNull();
-    expect(queryByText(/마녀식당/)).not.toBeNull();
+    expect(getByText('서울')).not.toBeNull();
   });
 });

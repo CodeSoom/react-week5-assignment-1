@@ -1,26 +1,36 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  fetchLocations,
+  loadRegions,
+  loadCategories,
+  loadRestaurants,
 } from './actions';
 
 import List from './List';
 
+function handleClickLocation() {
+  // dispatch(setRegions(name));
+  console.log('dd');
+}
+
 export default function ListContainer() {
-  const { locations, categories, restaurants } = useSelector((state) => ({
-    locations: state.locations,
+  const { regions, categories, restaurants } = useSelector((state) => ({
+    regions: state.regions,
     categories: state.categories,
     restaurants: state.restaurants,
   }));
 
   const dispatch = useDispatch();
 
-  function handleClickLocation(name) {
-    dispatch(fetchLocations(name));
-  }
+  useEffect(() => {
+    dispatch(loadRegions());
+    dispatch(loadCategories());
+    dispatch(loadRestaurants());
+  }, []);
 
   return (
     <>
-      <List hasButton="true" itemTypes={locations} onClick={handleClickLocation} />
+      <List hasButton="true" itemTypes={regions} onClick={handleClickLocation} />
       <br />
       <List hasButton="true" itemTypes={categories} />
       <br />
