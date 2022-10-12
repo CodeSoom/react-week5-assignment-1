@@ -33,19 +33,19 @@ describe('Reducer', () => {
     });
   });
 
-  describe('Set SelectRegion', () => {
-    it('Set state SelectRegion', () => {
+  describe('Set SelectRegionId', () => {
+    it('Set state SelectRegionId', () => {
       const state = reducer(initailState, setSelectRegion(1));
 
-      expect(state.selectRegion).not.toBeNull();
+      expect(state.selectRegionId).not.toBeNull();
     });
   });
 
-  describe('Set SelectRegion', () => {
-    it('Set state SelectRegion', () => {
+  describe('Set SelectRegionId', () => {
+    it('Set state SelectRegionId', () => {
       const state = reducer(initailState, setSelectCategory(1));
 
-      expect(state.selectCagegory).not.toBeNull();
+      expect(state.selectCagegoryId).not.toBeNull();
     });
   });
 });
