@@ -14,8 +14,6 @@ describe('RegionContainer', () => {
       regions,
       categories: [],
       restaurants: [],
-      selectRegion: 0,
-      selectCategory: 0,
     }));
 
     const { queryByText } = render((
@@ -34,8 +32,8 @@ describe('RegionContainer', () => {
       regions,
       categories: [],
       restaurants: [],
-      selectRegion: 0,
-      selectCategory: 0,
+      regionName: '',
+      categoryId: 0,
     }));
 
     dispatch.mockImplementation(() => dispatch);
@@ -46,9 +44,6 @@ describe('RegionContainer', () => {
 
     fireEvent.click(queryByText(/서울/));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setSelectRegionId',
-      payload: { selectRegionId: 1 },
-    });
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

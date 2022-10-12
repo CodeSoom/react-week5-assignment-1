@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import categories from '../fixtures/categories';
@@ -31,8 +32,8 @@ describe('CategoriesContainer', () => {
       regions: [],
       categories,
       restaurants: [],
-      selectRegion: 0,
-      selectCategory: 0,
+      regionName: '',
+      categoryId: 0,
     }));
 
     dispatch.mockImplementation(() => dispatch);
@@ -43,9 +44,6 @@ describe('CategoriesContainer', () => {
 
     fireEvent.click(queryByText(/한식/));
 
-    expect(dispatch).toBeCalledWith({
-      type: 'setSelectCategoryId',
-      payload: { selectCategoryId: 1 },
-    });
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

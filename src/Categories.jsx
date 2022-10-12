@@ -1,4 +1,4 @@
-export default function Categories({ categories, selectCategoryId, handleClick }) {
+export default function Categories({ categories, categoryId, handleClick }) {
   return (
     <div>
       <ul>
@@ -9,7 +9,7 @@ export default function Categories({ categories, selectCategoryId, handleClick }
               onClick={() => handleClick(category.id)}
             >
               {
-                category.id === selectCategoryId
+                category.id === categoryId
                   ? `${category.name}(V)`
                   : category.name
               }

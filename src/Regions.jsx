@@ -1,4 +1,4 @@
-export default function Regions({ regions, selectRegionId, handleClick }) {
+export default function Regions({ regions, regionName, handleClick }) {
   return (
     <div>
       <ul>
@@ -6,10 +6,10 @@ export default function Regions({ regions, selectRegionId, handleClick }) {
           <li key={region.id}>
             <button
               type="button"
-              onClick={() => handleClick(region.id)}
+              onClick={() => handleClick(region.name)}
             >
               {
-                region.id === selectRegionId
+                region.name === regionName
                   ? `${region.name}(V)`
                   : region.name
               }
