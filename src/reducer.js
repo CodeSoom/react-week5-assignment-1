@@ -2,8 +2,8 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  selectRegionId: undefined,
-  selectCagegoryId: undefined,
+  regionName: '',
+  categoryId: 0,
 };
 
 export default function reducer(state = initialState, action) {
@@ -25,21 +25,30 @@ export default function reducer(state = initialState, action) {
     };
   }
 
-  if (action.type === 'setSelectRegionId') {
-    const { selectRegionId } = action.payload;
+  if (action.type === 'setRegionName') {
+    const { regionName } = action.payload;
 
     return {
       ...state,
-      selectRegionId,
+      regionName,
     };
   }
 
-  if (action.type === 'setSelectCategoryId') {
-    const { selectCategoryId } = action.payload;
+  if (action.type === 'setCategoryId') {
+    const { categoryId } = action.payload;
 
     return {
       ...state,
-      selectCategoryId,
+      categoryId,
+    };
+  }
+
+  if (action.type === 'setRestaurants') {
+    const { restaurants } = action.payload;
+
+    return {
+      ...state,
+      restaurants,
     };
   }
 
