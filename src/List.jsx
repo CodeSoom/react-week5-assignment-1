@@ -3,6 +3,14 @@
 export default function List({
   listItems, selected, hasButton, onClick,
 }) {
+  if (!listItems || listItems.length < 1) {
+    return (
+      <ul>
+        <li>리스트가 없습니다.</li>
+      </ul>
+    );
+  }
+
   if (hasButton) {
     return (
       <ul>

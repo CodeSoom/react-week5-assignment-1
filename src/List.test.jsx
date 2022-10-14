@@ -23,28 +23,28 @@ const listItems = {
 };
 
 describe('List', () => {
-  const renderList = () => render((<List />));
   given('listItems', () => []);
 
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
   context('with listItems', () => {
-    it('renders regions list', () => {
+    it('renders listItems', () => {
       given('listItems', () => listItems);
 
-      const { getByText } = renderList();
+      const { getByText } = render((<List listItems={listItems.regions} />));
 
-      expect(getByText('서울')).toBe();
-      expect(getByText('한식')).toBe();
+      expect(getByText('서울')).not.toBeNull();
     });
   });
 
   context('without listItems', () => {
-    it('renders categories list', () => {
-      const { container } = renderList();
+    it('renders nothing', () => {
+      given('listItems', () => []);
 
-      expect(container).toBeNull();
+      const { getByText } = render((<List />));
+
+      expect(getByText('리스트가 없습니다.')).toBe();
     });
   });
 });

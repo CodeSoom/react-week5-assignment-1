@@ -26,13 +26,13 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   it('renders list component', () => {
-    const { queryByText } = render((
+    const { getByText } = render((
       <App />
     ));
 
     expect(dispatch).toBeCalledTimes(2);
 
-    expect(queryByText(/서울/)).not.toBeNull();
-    expect(queryByText(/한식/)).not.toBeNull();
+    expect(getByText('서울')).not.toBeNull();
+    expect(getByText('한식')).not.toBeNull();
   });
 });
