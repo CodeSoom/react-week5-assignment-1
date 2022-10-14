@@ -2,9 +2,23 @@ const initialState = {
   regions: [],
   stores: [],
   categories: [],
+  selectedIdx: 0,
+  selectedRegion: '',
 };
 
 export default function reducer(state = initialState, action) {
+  if (action.type === 'setIdx') {
+    const { selectedIdx } = action.payload;
+    return {
+      ...state, selectedIdx,
+    };
+  }
+  if (action.type === 'setRegion') {
+    const { selectedRegion } = action.payload;
+    return {
+      ...state, selectedRegion,
+    };
+  }
   if (action.type === 'setCategories') {
     const { categories } = action.payload;
     return {

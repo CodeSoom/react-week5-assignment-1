@@ -10,6 +10,23 @@ export function setRegions(regions) {
     },
   };
 }
+export function setRegion(selectedRegion) {
+  return {
+    type: 'setRegion',
+    payload: {
+      selectedRegion,
+    },
+  };
+}
+
+export function setIdx(selectedIdx) {
+  return {
+    type: 'setIdx',
+    payload: {
+      selectedIdx,
+    },
+  };
+}
 
 export function setStores(stores) {
   return {
@@ -29,9 +46,9 @@ export function setCategories(categories) {
   };
 }
 
-export function loadStores() {
+export function loadStores(region, category) {
   return async (dispatch) => {
-    const stores = await fetchStores();
+    const stores = await fetchStores(region, category);
     dispatch(setStores(stores));
   };
 }
@@ -39,7 +56,6 @@ export function loadStores() {
 export function loadRegions() {
   return async (dispatch) => {
     const stores = await fetchRegions();
-    console.log(stores);
     dispatch(setRegions(stores));
   };
 }
@@ -47,7 +63,6 @@ export function loadRegions() {
 export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
-    console.log(categories);
     dispatch(setCategories(categories));
   };
 }
