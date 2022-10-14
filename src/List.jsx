@@ -29,7 +29,13 @@ export default function List({
   return (
     <ul>
       {listItems.map((item) => (
-        <li key={item.id}>{item.name}</li>
+        <li key={item.id}>
+          {item.name}
+          |
+          {item.type}
+          |
+          {item.address}
+        </li>
       ))}
     </ul>
   );

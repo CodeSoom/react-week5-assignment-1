@@ -29,6 +29,6 @@ describe('App', () => {
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();
-    expect(queryByText('마녀식당')).not.toBeNull();
+    expect(queryByText('마녀식당|일식|서울시 강남구')).not.toBeNull();
   });
 });
