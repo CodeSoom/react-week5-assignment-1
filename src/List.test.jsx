@@ -23,28 +23,29 @@ const listItems = {
 };
 
 describe('List', () => {
-  given('listItems', () => []);
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
   context('with listItems', () => {
-    it('renders listItems', () => {
-      given('listItems', () => listItems);
-
-      const { getByText } = render((<List listItems={listItems.regions} />));
+    it('renders list through listItems', () => {
+      given('regions', () => listItems.regions);
+      const { getByText } = render((<List listItems={given.regions} />));
 
       expect(getByText('서울')).not.toBeNull();
     });
   });
 
   context('without listItems', () => {
-    it('renders nothing', () => {
-      given('listItems', () => []);
+    it("renders text : '리스트가 없습니다.'", () => {
+      given('regions', () => []);
 
-      const { getByText } = render((<List />));
+      const { getAllByText } = render((<List listItems={given.regions} />));
 
-      expect(getByText('리스트가 없습니다.')).toBe();
+      expect(getAllByText('리스트가 없습니다.')).not.toBeNull();
     });
   });
 });

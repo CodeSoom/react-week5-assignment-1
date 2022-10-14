@@ -22,17 +22,13 @@ describe('App', () => {
   }));
 
   const dispatch = jest.fn();
-
   useDispatch.mockImplementation(() => dispatch);
 
-  it('renders list component', () => {
-    const { getByText } = render((
-      <App />
-    ));
+  it('renders lists : regions, categories, restaurants', () => {
+    const { queryByText } = render((<App />));
 
-    expect(dispatch).toBeCalledTimes(2);
-
-    expect(getByText('서울')).not.toBeNull();
-    expect(getByText('한식')).not.toBeNull();
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('마녀식당')).not.toBeNull();
   });
 });
