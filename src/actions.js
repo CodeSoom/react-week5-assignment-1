@@ -19,11 +19,11 @@ export function setRegion(selectedRegion) {
   };
 }
 
-export function setIdx(selectedIdx) {
+export function setId(selectedId) {
   return {
-    type: 'setIdx',
+    type: 'setId',
     payload: {
-      selectedIdx,
+      selectedId,
     },
   };
 }

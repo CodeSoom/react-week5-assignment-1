@@ -2,15 +2,15 @@ const initialState = {
   regions: [],
   stores: [],
   categories: [],
-  selectedIdx: 0,
+  selectedId: 0,
   selectedRegion: '',
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'setIdx') {
-    const { selectedIdx } = action.payload;
+  if (action.type === 'setId') {
+    const { selectedId } = action.payload;
     return {
-      ...state, selectedIdx,
+      ...state, selectedId,
     };
   }
   if (action.type === 'setRegion') {
