@@ -1,23 +1,44 @@
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
+
+import { categories } from '../fixtures/data';
+
+import { selectCategory } from './actions';
 
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
-  it('목록이 랜더링된다', () => {
-    useSelector.mockImplementation((selector) => selector({
-      categories: [
-        { id: 1, name: '분식' },
-      ],
-    }));
+  const dispatch = jest.fn();
 
-    const { getByText } = render((
-      <CategoriesContainer />
-    ));
+  useDispatch.mockImplementation(() => dispatch);
 
-    expect(getByText('분식')).not.toBeNull();
+  const renderCategoriesContainer = () => render((
+    <CategoriesContainer />
+  ));
+
+  useSelector.mockImplementation((selector) => selector({
+    categories,
+  }));
+
+  it('카테고리 목록이 랜더링된다', () => {
+    renderCategoriesContainer(categories);
+
+    expect(screen.getByText('분식')).not.toBeNull();
+  });
+
+  context('카테고리를 클릭 시', () => {
+    it('dispatch가 실행된다', () => {
+      const category = categories[0];
+      renderCategoriesContainer(category);
+
+      expect(dispatch).not.toBeCalled();
+
+      fireEvent.click(screen.getByText(category.name));
+
+      expect(dispatch).toBeCalledWith(selectCategory(category.id));
+    });
   });
 });
