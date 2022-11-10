@@ -51,3 +51,21 @@ export function loadCategories() {
     dispatch(setCategories(categories));
   };
 }
+
+export function selectCategory(category) {
+  return {
+    type: 'selectCategory',
+    payload: {
+      category,
+    },
+  };
+}
+
+export function selectRegion(region) {
+  return {
+    type: 'selectRegion',
+    payload: {
+      region,
+    },
+  };
+}
