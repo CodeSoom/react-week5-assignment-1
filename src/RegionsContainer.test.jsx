@@ -1,23 +1,44 @@
-import { render } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
+
+import { regions } from '../fixtures/data';
+
+import { selectRegion } from './actions';
 
 jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
-  it('지역이 랜더링된다', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-    }));
+  const dispatch = jest.fn();
 
-    const { getByText } = render((
-      <RegionsContainer />
-    ));
+  useDispatch.mockImplementation(() => dispatch);
 
-    expect(getByText('서울')).not.toBeNull();
+  const renderCategoriesContainer = () => render((
+    <RegionsContainer />
+  ));
+
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+  }));
+
+  it('지역 목록이 랜더링된다', () => {
+    renderCategoriesContainer(regions);
+
+    expect(screen.getByText('서울')).not.toBeNull();
+  });
+
+  context('지역을 클릭 시', () => {
+    it('dispatch가 실행된다', () => {
+      const category = regions[0];
+      renderCategoriesContainer(category);
+
+      expect(dispatch).not.toBeCalled();
+
+      fireEvent.click(screen.getByText(category.name));
+
+      expect(dispatch).toBeCalledWith(selectRegion(category.id));
+    });
   });
 });
