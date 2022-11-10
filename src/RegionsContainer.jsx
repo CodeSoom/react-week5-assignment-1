@@ -17,7 +17,11 @@ export default function RegionsContainer() {
     regions: state.regions,
   }));
 
+  const handleClick = (name) => {
+    console.log(name);
+  };
+
   return (
-    <Regions regions={regions} />
+    <Regions regions={regions} onClick={handleClick} />
   );
 }

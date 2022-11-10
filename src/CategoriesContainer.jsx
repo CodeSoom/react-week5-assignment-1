@@ -17,7 +17,11 @@ export default function CategoriesContainer() {
     categories: state.categories,
   }));
 
+  const handleClick = (id) => {
+    console.log(id);
+  };
+
   return (
-    <Categories categories={categories} />
+    <Categories categories={categories} onClick={handleClick} />
   );
 }
