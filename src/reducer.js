@@ -31,6 +31,24 @@ const actionCreators = {
       restaurants,
     };
   },
+
+  selectCategory: (state, action) => {
+    const { category } = action.payload;
+
+    return {
+      ...state,
+      selectedCategoryId: category,
+    };
+  },
+
+  selectRegion: (state, action) => {
+    const { region } = action.payload;
+
+    return {
+      ...state,
+      selectedRegionId: region,
+    };
+  },
 };
 
 export default function reducer(state = initialState, action) {
