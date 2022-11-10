@@ -12,7 +12,7 @@ describe('reducer', () => {
   };
 
   describe('setRegions', () => {
-    it('지역을 변경해준다', () => {
+    it('지역 목록을 변경해준다', () => {
       const state = reducer(initialState, setRegions(regions));
 
       expect(state.regions).toHaveLength(5);
@@ -20,7 +20,7 @@ describe('reducer', () => {
   });
 
   describe('setCategories', () => {
-    it('카테고리를 변경해준다', () => {
+    it('카테고리 목록을 변경해준다', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(5);
@@ -28,7 +28,7 @@ describe('reducer', () => {
   });
 
   describe('setRestaurants', () => {
-    it('레스토랑을 변경해준다', () => {
+    it('레스토랑 목록을 변경해준다', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(2);
