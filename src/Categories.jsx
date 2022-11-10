@@ -1,11 +1,28 @@
-export default function Categories({ categories }) {
+import Category from './Category';
+
+export default function Categories({ categories, selectedCategoryId, onClick }) {
+  const isSelected = (category) => {
+    if (isSelected === null) {
+      return false;
+    }
+
+    return category.id === selectedCategoryId;
+  };
+
+  if (!categories.length) {
+    return <p>카테고리가 없어요!</p>;
+  }
+
   return (
     <ul>
       {
         categories.map((category) => (
-          <li key={category.id}>
-            <button type="button">{category.name}</button>
-          </li>
+          <Category
+            key={category.id}
+            category={category}
+            isSelected={isSelected(category)}
+            onClick={onClick}
+          />
         ))
       }
     </ul>
