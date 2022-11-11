@@ -17,7 +17,7 @@ describe('Categories', () => {
     />
   ));
 
-  context('카테고리 데이터가 없을 시', () => {
+  context('카테고리 목록이 없을 시', () => {
     it('"카테고리가 없어요!" 문구가 랜더링된다', () => {
       const { container } = renderCategories({
         categories: [],
@@ -27,7 +27,7 @@ describe('Categories', () => {
     });
   });
 
-  context('카테고리 데이터가 있을 시', () => {
+  context('카테고리 목록이 있을 시', () => {
     it('카테고리 목록이 나타난다', () => {
       renderCategories({ categories: categoryList });
 
@@ -46,7 +46,7 @@ describe('Categories', () => {
     });
   });
 
-  context('카테고리 아이디가 있을 시', () => {
+  context('선택한 카테고리 아이디가 있을 시', () => {
     it('"V"와 함께 선택된 카테고리가 랜더링된다', () => {
       renderCategories({
         categories: categoryList[0],
@@ -57,7 +57,7 @@ describe('Categories', () => {
     });
   });
 
-  context('카테고리 아이디가 없을 시', () => {
+  context('선택한 카테고리 아이디가 없을 시', () => {
     it('"V"가 랜더링되지 않는다', () => {
       const category = categoryList[0];
       const { container } = renderCategories({
