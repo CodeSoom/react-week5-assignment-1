@@ -35,8 +35,8 @@ describe('Region', () => {
     expect(handleClick).toBeCalledWith(region.name);
   });
 
-  context('카테고리를 선택하면', () => {
-    it('선택한 카테고리에 "V"가 랜더링된다', () => {
+  context('선택된 지역이 있으면', () => {
+    it('선택된 지역에 "V"가 랜더링된다', () => {
       const region = regions[0];
 
       const { container } = renderRegion({ region, isSelected: true });
@@ -45,7 +45,7 @@ describe('Region', () => {
     });
   });
 
-  context('카테고리를 선택하지 않은 목록에는', () => {
+  context('선택되지 않은 지역에는', () => {
     it('"V"가 랜더링되지 않는다', () => {
       const region = regions[0];
 
