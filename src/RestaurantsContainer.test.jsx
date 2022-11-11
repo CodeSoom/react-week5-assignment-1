@@ -46,6 +46,10 @@ describe('RestaurantsContainer', () => {
 
   context('선택한 지역 혹은 카테고리 아이디가 없을 시', () => {
     it('레스토랑이 없어요! 문구가 랜더링된다', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [],
+      }));
+
       const { container } = renderRestaurantsContainer([]);
 
       expect(container).toHaveTextContent('레스토랑이 없어요!');
