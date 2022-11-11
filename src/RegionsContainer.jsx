@@ -7,19 +7,19 @@ import { selectRegion } from './actions';
 export default function RegionContainer() {
   const dispatch = useDispatch();
 
-  const { regions, selectedRegionId } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegionId: state.selectedRegionId,
+    selectedRegion: state.selectedRegion,
   }));
 
-  function handleClickCheck(region) {
-    dispatch(selectRegion(region));
+  function handleClickCheck(name) {
+    dispatch(selectRegion(name));
   }
 
   return (
     <Regions
       regions={regions}
-      selectedRegionId={selectedRegionId}
+      selectedRegion={selectedRegion}
       onClick={handleClickCheck}
     />
   );

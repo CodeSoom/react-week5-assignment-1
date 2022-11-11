@@ -3,7 +3,7 @@ export default function Region({ region, isSelected, onClick }) {
     <li>
       <button
         type="button"
-        onClick={() => onClick(region.id)}
+        onClick={() => onClick(region.name)}
       >
         {region.name}
         {isSelected ? '(V)' : ''}

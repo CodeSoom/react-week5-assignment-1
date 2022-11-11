@@ -1,16 +1,16 @@
 import Region from './Region';
 
-export default function Regions({ regions, selectedRegionId, onClick }) {
+export default function Regions({ regions, selectedRegion, onClick }) {
   const isSelected = (region) => {
     if (isSelected === null) {
       return false;
     }
 
-    return region.id === selectedRegionId;
+    return region.name === selectedRegion;
   };
 
-  if (!regions.length) {
-    return <p>카테고리가 없어요!</p>;
+  if (!regions?.length) {
+    return <p>지역 목록이 없어요!</p>;
   }
 
   return (
