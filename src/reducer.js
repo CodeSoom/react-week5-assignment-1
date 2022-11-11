@@ -1,6 +1,9 @@
 const initialState = {
   regions: [],
   categories: [],
+  selectedRestaurant: [],
+  selectedRegion: '',
+  selectedCategory: null,
 };
 
 const reducers = {
@@ -16,6 +19,27 @@ const reducers = {
     return {
       ...state,
       categories,
+    };
+  },
+  selectedRegion: (state, action) => {
+    const { selectedRegion } = action.payload;
+    return {
+      ...state,
+      selectedRegion,
+    };
+  },
+  selectedCategory: (state, action) => {
+    const { selectedCategory } = action.payload;
+    return {
+      ...state,
+      selectedCategory,
+    };
+  },
+  selectedRestaurant: (state, action) => {
+    const { selectedRestaurant } = action.payload;
+    return {
+      ...state,
+      selectedRestaurant,
     };
   },
 };
