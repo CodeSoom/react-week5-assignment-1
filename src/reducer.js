@@ -2,6 +2,8 @@ const initialState = {
   restaurants: [],
   regions: [],
   categories: [],
+  selectedRegion: '',
+  selectedCategoryId: null,
 };
 
 const actionCreators = {
@@ -42,11 +44,11 @@ const actionCreators = {
   },
 
   selectRegion: (state, action) => {
-    const { region } = action.payload;
+    const { selectedRegion } = action.payload;
 
     return {
       ...state,
-      selectedRegionId: region,
+      selectedRegion,
     };
   },
 };
