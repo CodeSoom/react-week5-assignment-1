@@ -29,16 +29,14 @@ describe('CategoriesContainer', () => {
     expect(screen.getByText('분식')).not.toBeNull();
   });
 
-  context('카테고리를 클릭 시', () => {
-    it('dispatch가 실행된다', () => {
-      const category = categories[0];
-      renderCategoriesContainer(category);
+  it('dispatch가 실행된다', () => {
+    const category = categories[0];
+    renderCategoriesContainer(category);
 
-      expect(dispatch).not.toBeCalled();
+    expect(dispatch).not.toBeCalled();
 
-      fireEvent.click(screen.getByText(category.name));
+    fireEvent.click(screen.getByText(category.name));
 
-      expect(dispatch).toBeCalledWith(selectCategory(category.id));
-    });
+    expect(dispatch).toBeCalledWith(selectCategory(category.id));
   });
 });
