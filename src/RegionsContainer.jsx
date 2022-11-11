@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadRegions } from './actions';
+import { loadRegions, selectedRegion } from './actions';
 
 import Regions from './Regions';
 
@@ -13,15 +13,20 @@ export default function RegionsContainer() {
     dispatch(loadRegions());
   }, []);
 
-  const { regions } = useSelector((state) => ({
+  const { regions, selectedRegionName } = useSelector((state) => ({
     regions: state.regions,
+    selectedRegionName: state.selectedRegion,
   }));
 
   const handleClick = (name) => {
-    console.log(name);
+    dispatch(selectedRegion(name));
   };
 
   return (
-    <Regions regions={regions} onClick={handleClick} />
+    <Regions
+      regions={regions}
+      onClick={handleClick}
+      selectedRegionName={selectedRegionName}
+    />
   );
 }
