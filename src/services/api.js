@@ -11,3 +11,9 @@ export const fetchCategories = async () => {
   const data = await response.json();
   return data;
 };
+
+export const fetchSelected = async (regionName, categoryId) => {
+  const response = await fetch(`${URL}/restaurants?region=${regionName}&category=${categoryId}`);
+  const data = await response.json();
+  return data;
+};
