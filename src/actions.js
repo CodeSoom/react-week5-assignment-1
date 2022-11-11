@@ -31,9 +31,12 @@ export function setCategories(categories) {
   };
 }
 
-export function loadRestaurants() {
+export function loadRestaurants(selectedRegion, selectedCategoryId) {
   return async (dispatch) => {
-    const restaurants = await fetchRestaurants();
+    const restaurants = await fetchRestaurants(
+      selectedRegion,
+      selectedCategoryId,
+    );
     dispatch(setRestaurants(restaurants));
   };
 }
@@ -65,7 +68,7 @@ export function selectRegion(region) {
   return {
     type: 'selectRegion',
     payload: {
-      region,
+      selectedRegion: region,
     },
   };
 }
