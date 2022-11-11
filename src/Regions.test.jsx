@@ -18,11 +18,13 @@ describe('Regions', () => {
   ));
 
   context('지역 데이터가 없을 시', () => {
-    const { container } = renderRegions({
-      regions: [],
-    });
+    it('지역 목록이 없어요! 문구가 랜더링 된다', () => {
+      const { container } = renderRegions({
+        regions: [],
+      });
 
-    expect(container).toHaveTextContent('지역 목록이 없어요!');
+      expect(container).toHaveTextContent('지역 목록이 없어요!');
+    });
   });
 
   context('지역 데이터가 있을 시', () => {
