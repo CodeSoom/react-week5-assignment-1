@@ -15,7 +15,7 @@ describe('RegionsContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  const renderCategoriesContainer = () => render((
+  const renderRegionContainer = () => render((
     <RegionsContainer />
   ));
 
@@ -24,21 +24,21 @@ describe('RegionsContainer', () => {
   }));
 
   it('지역 목록이 랜더링된다', () => {
-    renderCategoriesContainer(regions);
+    renderRegionContainer(regions);
 
     expect(screen.getByText('서울')).not.toBeNull();
   });
 
   context('지역을 클릭 시', () => {
     it('dispatch가 실행된다', () => {
-      const category = regions[0];
-      renderCategoriesContainer(category);
+      const region = regions[0];
+      renderRegionContainer(region);
 
       expect(dispatch).not.toBeCalled();
 
-      fireEvent.click(screen.getByText(category.name));
+      fireEvent.click(screen.getByText(region.name));
 
-      expect(dispatch).toBeCalledWith(selectRegion(category.id));
+      expect(dispatch).toBeCalledWith(selectRegion(region.name));
     });
   });
 });
