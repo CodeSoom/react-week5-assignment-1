@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadCategories } from './actions';
+import { loadCategories, selectedCategory } from './actions';
 
 import Categories from './Categories';
 
@@ -13,15 +13,20 @@ export default function CategoriesContainer() {
     dispatch(loadCategories());
   }, []);
 
-  const { categories } = useSelector((state) => ({
+  const { categories, selectedCategoryId } = useSelector((state) => ({
     categories: state.categories,
+    selectedCategoryId: state.selectedCategory,
   }));
 
   const handleClick = (id) => {
-    console.log(id);
+    dispatch(selectedCategory(id));
   };
 
   return (
-    <Categories categories={categories} onClick={handleClick} />
+    <Categories
+      categories={categories}
+      onClick={handleClick}
+      selectedCategory={selectedCategoryId}
+    />
   );
 }
