@@ -6,11 +6,11 @@ const initialState = {
 
 const actionCreators = {
   setRegions: (state, action) => {
-    const { resions } = action.payload;
+    const { regions } = action.payload;
 
     return {
       ...state,
-      resions,
+      regions,
     };
   },
 
