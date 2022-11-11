@@ -1,5 +1,5 @@
 const initialState = {
-  resions: [],
+  regions: [],
   restaurants: [],
   categories: [],
 };
