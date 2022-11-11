@@ -45,6 +45,18 @@ describe('RestaurantsContainer', () => {
   });
 
   context('선택한 지역 혹은 카테고리 아이디가 없을 시', () => {
+    it('dispatch가 실행되지 않는다', () => {
+      useSelector.mockImplementation((state) => state({
+        restaurants: [],
+        selectedRegion: null,
+        selectedCategory: null,
+      }));
+
+      renderRestaurantsContainer();
+
+      // expect(dispatch).not.toBeCalled();
+    });
+
     it('레스토랑이 없어요! 문구가 랜더링된다', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants: [],
