@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -25,5 +25,13 @@ describe('RegionsContainer', () => {
     const { getByText } = renderRegionsContainer();
 
     expect(getByText('서울')).not.toBeNull();
+  });
+
+  it('지역을 클릭하면 dispatch가 호출된다.', () => {
+    const { getByText } = renderRegionsContainer();
+
+    fireEvent.click(getByText('서울'));
+
+    expect(dispatch).toHaveBeenCalled();
   });
 });
