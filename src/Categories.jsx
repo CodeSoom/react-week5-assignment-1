@@ -2,7 +2,7 @@ import Category from './Category';
 
 export default function Categories({ categories, selectedCategoryId, onClick }) {
   const isSelected = (category) => {
-    if (isSelected === null) {
+    if (selectedCategoryId === null) {
       return false;
     }
 

@@ -2,7 +2,7 @@ import Region from './Region';
 
 export default function Regions({ regions, selectedRegion, onClick }) {
   const isSelected = (region) => {
-    if (isSelected === null) {
+    if (selectedRegion === null) {
       return false;
     }
 
