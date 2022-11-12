@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { loadRestaurant } from './actions';
 
-import Restaurnat from './Restaurant';
+import Restaurant from './Restaurant';
 
 export default function RestaurantContainer() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function RestaurantContainer() {
   }));
 
   useEffect(() => {
-    if (selectedRegion === '' || selectedCategory === null) {
+    if (selectedRegion === '' || selectedCategory === '') {
       return;
     }
     dispatch(loadRestaurant(selectedRegion, selectedCategory));
@@ -25,6 +25,6 @@ export default function RestaurantContainer() {
     restaurant: state.selectedRestaurant,
   }));
   return (
-    <Restaurnat restaurants={restaurant} />
+    <Restaurant restaurants={restaurant} />
   );
 }
