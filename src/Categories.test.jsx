@@ -7,7 +7,7 @@ import { categories } from '../fixtures/data';
 jest.mock('react-redux');
 
 describe('Categories', () => {
-  it('Categories 리스트가 나타난다', () => {
+  it('카테고리 리스트가 나타난다', () => {
     const { getByText } = render((
       <Categories
         categories={categories}

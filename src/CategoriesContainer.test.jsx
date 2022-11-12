@@ -7,7 +7,7 @@ import CategoriesContainer from './CategoriesContainer';
 jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
-  it('Categories가 랜더링된다', () => {
+  it('카테고리가 랜더링된다', () => {
     useSelector.mockImplementation((selector) => selector({
       categories: [
         { id: 1, name: '한식' },
