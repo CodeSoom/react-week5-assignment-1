@@ -11,6 +11,8 @@ jest.mock('react-redux');
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
 
+  const loadRestaurants = jest.fn();
+
   const selectedCategory = categories[0];
   const selectedRegion = regions[0];
 
@@ -45,7 +47,7 @@ describe('RestaurantsContainer', () => {
   });
 
   context('선택한 지역 혹은 카테고리 아이디가 없을 시', () => {
-    it('dispatch가 실행되지 않는다', () => {
+    it('loadRestaurants가 실행되지 않는다', () => {
       useSelector.mockImplementation((state) => state({
         restaurants: [],
         selectedRegion: null,
@@ -54,7 +56,7 @@ describe('RestaurantsContainer', () => {
 
       renderRestaurantsContainer();
 
-      // expect(dispatch).not.toBeCalled();
+      expect(loadRestaurants).not.toBeCalled();
     });
 
     it('레스토랑이 없어요! 문구가 랜더링된다', () => {
