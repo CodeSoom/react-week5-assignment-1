@@ -13,12 +13,6 @@ describe('RestaurantContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    selectedRegion: '서울',
-    selectedCategory: '한식',
-    restaurants,
-  }));
-
   function renderRestaurantContainer() {
     return render((<RestaurantContainer />));
   }
@@ -26,16 +20,30 @@ describe('RestaurantContainer', () => {
   it('RestaurantContainer가 렌더링된다.', () => {
     const { container } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('양천주가');
+    expect(container).toHaveTextContent('레스토랑 정보가 존재하지 않습니다.');
   });
 
   context('선택된 지역이나 카테고리가 없을 경우', () => {
-    it('dispatch가 호출되지 않는다.', () => {
+    useSelector.mockImplementation((selector) => selector({
+      selectedRegion: '',
+      selectedCategory: '',
+      selectedRestaurant: [],
+    }));
 
+    it('아무것도 하지 않는다.', () => {
+      expect(dispatch).not.toBeCalled();
     });
   });
 
-  context('선택된 지역이나 카테고리가 있을 경우', () => {
+  context('선택된 지역과 카테고리가 있을 경우', () => {
+    it('dispatch가 호출된다.', () => {
+      useSelector.mockImplementation((selector) => selector({
+        selectedRegion: '서울',
+        selectedCategory: '1',
+        selectedRestaurant: restaurants,
+      }));
 
+      expect(dispatch).toBeCalled();
+    });
   });
 });
