@@ -9,17 +9,17 @@ import Restaurant from './Restaurant';
 export default function RestaurantContainer() {
   const dispatch = useDispatch();
 
-  const { selectedRegion, selectedCategory } = useSelector((state) => ({
-    selectedRegion: state.selectedRegion,
-    selectedCategory: state.selectedCategory,
+  const { selectedRegionName, selectedCategoryId } = useSelector((state) => ({
+    selectedRegionName: state.selectedRegionName,
+    selectedCategoryId: state.selectedCategoryId,
   }));
 
   useEffect(() => {
-    if (selectedRegion === '' || selectedCategory === '') {
+    if (selectedRegionName === '' || selectedCategoryId === '') {
       return;
     }
-    dispatch(loadRestaurant(selectedRegion, selectedCategory));
-  }, [selectedRegion, selectedCategory]);
+    dispatch(loadRestaurant(selectedRegionName, selectedCategoryId));
+  }, [selectedRegionName, selectedCategoryId]);
 
   const { restaurant } = useSelector((state) => ({
     restaurant: state.selectedRestaurant,
