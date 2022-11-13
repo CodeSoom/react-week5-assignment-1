@@ -1,4 +1,4 @@
-export default function Region({ region, isSelected, onClick }) {
+export default function Region({ region, selectedRegion, onClick }) {
   return (
     <li>
       <button
@@ -6,7 +6,8 @@ export default function Region({ region, isSelected, onClick }) {
         onClick={() => onClick(region.name)}
       >
         {region.name}
-        {isSelected ? '(V)' : ''}
+        {selectedRegion === region.name && '(V)'}
+
       </button>
     </li>
   );
