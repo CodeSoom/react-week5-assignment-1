@@ -1,4 +1,4 @@
-export default function Category({ category, isSelected, onClick }) {
+export default function Category({ category, selectedCategoryId, onClick }) {
   return (
     <li>
       <button
@@ -6,7 +6,8 @@ export default function Category({ category, isSelected, onClick }) {
         onClick={() => onClick(category.id)}
       >
         {category.name}
-        {isSelected ? '(V)' : ''}
+        {selectedCategoryId === category.id && '(V)'}
+
       </button>
     </li>
   );
