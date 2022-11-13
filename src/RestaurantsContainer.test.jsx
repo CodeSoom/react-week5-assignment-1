@@ -9,11 +9,15 @@ import { restaurants, categories, regions } from '../fixtures/data';
 jest.mock('react-redux');
 
 describe('RestaurantsContainer', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const dispatch = jest.fn();
 
   const loadRestaurants = jest.fn();
 
-  const selectedCategory = categories[0];
+  const selectedCategoryId = categories[0].id;
   const selectedRegion = regions[0];
 
   useDispatch.mockImplementation(() => dispatch);
@@ -27,7 +31,7 @@ describe('RestaurantsContainer', () => {
       (selector) => selector({
         restaurants,
         selectedRegion,
-        selectedCategory,
+        selectedCategoryId,
       }),
     );
 
@@ -47,14 +51,16 @@ describe('RestaurantsContainer', () => {
   });
 
   context('선택한 지역 혹은 카테고리 아이디가 없을 시', () => {
-    it('loadRestaurants가 실행되지 않는다', () => {
+    it('dispatch가 실행되지 않는다', () => {
       useSelector.mockImplementation((state) => state({
         restaurants: [],
-        selectedRegion: null,
-        selectedCategory: null,
+        selectedRegion: '',
+        selectedCategoryId: '',
       }));
 
       renderRestaurantsContainer();
+
+      expect(dispatch).not.toBeCalled();
 
       expect(loadRestaurants).not.toBeCalled();
     });
