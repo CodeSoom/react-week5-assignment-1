@@ -6,6 +6,7 @@ import App from './App';
 
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 jest.mock('react-redux');
 
@@ -21,7 +22,7 @@ describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
-    restaurants: [],
+    selectedRestaurant: [],
   }));
 
   it('App이 렌더링된다.', () => {
