@@ -12,6 +12,11 @@ describe('RestaurantContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    selectedRegionName: '',
+    selectedCategoryId: '',
+    selectedRestaurant: [],
+  }));
 
   function renderRestaurantContainer() {
     return render((<RestaurantContainer />));
@@ -24,13 +29,17 @@ describe('RestaurantContainer', () => {
   });
 
   context('선택된 지역이나 카테고리가 없을 경우', () => {
-    useSelector.mockImplementation((selector) => selector({
-      selectedRegion: '',
-      selectedCategory: '',
-      selectedRestaurant: [],
-    }));
+    it('dispatch가 실행되지 않는다.', () => {
+      renderRestaurantContainer();
 
-    it('아무것도 하지 않는다.', () => {
+      useSelector.mockImplementation((selector) => selector({
+        selectedRegionName: '',
+        selectedCategoryId: '',
+        selectedRestaurant: [],
+      }));
+
+      jest.clearAllMocks();
+
       expect(dispatch).not.toBeCalled();
     });
   });
@@ -38,10 +47,12 @@ describe('RestaurantContainer', () => {
   context('선택된 지역과 카테고리가 있을 경우', () => {
     it('dispatch가 호출된다.', () => {
       useSelector.mockImplementation((selector) => selector({
-        selectedRegion: '서울',
-        selectedCategory: '1',
+        selectedRegionName: '서울',
+        selectedCategoryId: '1',
         selectedRestaurant: restaurants,
       }));
+
+      renderRestaurantContainer();
 
       expect(dispatch).toBeCalled();
     });
