@@ -97,7 +97,7 @@ describe('reducer', () => {
     it('아무 일도 일어나지 않는다.', () => {
       const state = reducer();
 
-      expect(state.regions).toBe([]);
+      expect(state.regions).toHaveLength(0);
     });
   });
 });
