@@ -24,15 +24,22 @@ describe('Regions', () => {
     expect(getByText('대전')).not.toBeNull();
   });
 
-  it('지역을 클릭하면 선택된 지역에 체크 표시가 붙는다.', () => {
+  it('지역 목록을 클릭했을 때, onClick 함수에 지역명을 전달한다.', () => {
+    const { getByText } = renderRegions({
+      regionLists: regions,
+    });
+
+    fireEvent.click(getByText('서울'));
+
+    expect(handleClick).toBeCalledWith('서울');
+  });
+
+  it('선택된 지역에 체크표시가 붙는다.', () => {
     const { getByText } = renderRegions({
       regionLists: regions,
       selectedRegionName: '대전',
     });
 
-    fireEvent.click(getByText('대전'));
-
-    expect(handleClick).toBeCalled();
     expect(getByText('대전✅')).not.toBeNull();
   });
 });
