@@ -9,7 +9,7 @@ jest.mock('react-redux');
 describe('Region', () => {
   const handleClick = jest.fn();
 
-  const renderRegion = ({ region, selectedRegion = [] }) => render((
+  const renderRegion = ({ region, selectedRegion = '' }) => render((
     <Region
       region={region}
       selectedRegion={selectedRegion}

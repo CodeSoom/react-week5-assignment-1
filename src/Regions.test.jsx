@@ -9,7 +9,7 @@ jest.mock('react-redux');
 describe('Regions', () => {
   const handleClick = jest.fn();
 
-  const renderRegions = ({ regions = [], selectedRegion = null }) => render((
+  const renderRegions = ({ regions = [], selectedRegion = '' }) => render((
     <Regions
       regions={regions}
       selectedRegion={selectedRegion}
@@ -62,7 +62,7 @@ describe('Regions', () => {
       const region = regionList[0];
       const { container } = renderRegions({
         regions: region,
-        selectedRegion: null,
+        selectedRegion: '',
       });
 
       expect(container).not.toHaveTextContent('(V)');

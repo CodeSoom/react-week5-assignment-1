@@ -16,7 +16,7 @@ export default function RestaurantsContainer() {
   }));
 
   useEffect(() => {
-    if (selectedRegion === null || selectedCategoryId === null) {
+    if (selectedRegion === '' || selectedCategoryId === '') {
       return;
     }
 

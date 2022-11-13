@@ -3,7 +3,7 @@ const initialState = {
   regions: [],
   categories: [],
   selectedRegion: '',
-  selectedCategoryId: null,
+  selectedCategoryId: '',
 };
 
 const actionCreators = {

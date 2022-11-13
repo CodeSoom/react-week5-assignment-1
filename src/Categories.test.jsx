@@ -9,7 +9,7 @@ jest.mock('react-redux');
 describe('Categories', () => {
   const handleClick = jest.fn();
 
-  const renderCategories = ({ categories = [], selectedCategoryId = null }) => render((
+  const renderCategories = ({ categories = [], selectedCategoryId = '' }) => render((
     <Categories
       categories={categories}
       selectedCategoryId={selectedCategoryId}
@@ -62,7 +62,7 @@ describe('Categories', () => {
       const category = categoryList[0];
       const { container } = renderCategories({
         categories: category,
-        selectedCategoryId: null,
+        selectedCategoryId: '',
       });
 
       expect(container).not.toHaveTextContent('(V)');

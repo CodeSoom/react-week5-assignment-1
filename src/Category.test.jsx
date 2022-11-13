@@ -9,7 +9,7 @@ jest.mock('react-redux');
 describe('Category', () => {
   const handleClick = jest.fn();
 
-  const renderCategory = ({ category, selectedCategoryId = [] }) => render((
+  const renderCategory = ({ category, selectedCategoryId = '' }) => render((
     <Category
       category={category}
       selectedCategoryId={selectedCategoryId}
