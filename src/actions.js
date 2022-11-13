@@ -55,8 +55,6 @@ export function loadRestaurants() {
       categoryId: category.id,
     });
 
-    //
-    console.log(restaurants);
     dispatch(setRestaurants(restaurants));
   };
 }
@@ -64,9 +62,9 @@ export function loadRestaurants() {
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
-    const categories = await fetchCategories();
-
     dispatch(setRegions(regions));
+
+    const categories = await fetchCategories();
     dispatch(setCategories(categories));
   };
 }
