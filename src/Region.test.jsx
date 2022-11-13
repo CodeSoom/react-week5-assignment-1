@@ -9,10 +9,10 @@ jest.mock('react-redux');
 describe('Region', () => {
   const handleClick = jest.fn();
 
-  const renderRegion = ({ region, isSelected = false }) => render((
+  const renderRegion = ({ region, selectedRegion = [] }) => render((
     <Region
       region={region}
-      isSelected={isSelected}
+      selectedRegion={selectedRegion}
       onClick={handleClick}
     />
   ));
@@ -39,7 +39,7 @@ describe('Region', () => {
     it('선택된 지역에 "V"가 랜더링된다', () => {
       const region = regions[0];
 
-      const { container } = renderRegion({ region, isSelected: true });
+      const { container } = renderRegion({ region, selectedRegion: region.name });
 
       expect(container).toHaveTextContent(`${region.name}(V)`);
     });
