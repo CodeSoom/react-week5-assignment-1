@@ -9,10 +9,10 @@ jest.mock('react-redux');
 describe('Category', () => {
   const handleClick = jest.fn();
 
-  const renderCategory = ({ category, isSelected = false }) => render((
+  const renderCategory = ({ category, selectedCategoryId = [] }) => render((
     <Category
       category={category}
-      isSelected={isSelected}
+      selectedCategoryId={selectedCategoryId}
       onClick={handleClick}
     />
   ));
@@ -39,7 +39,7 @@ describe('Category', () => {
     it('선택된 카테고리에 "V"가 랜더링된다', () => {
       const category = categories[0];
 
-      const { container } = renderCategory({ category, isSelected: true });
+      const { container } = renderCategory({ category, selectedCategoryId: category.id });
 
       expect(container).toHaveTextContent(`${category.name}(V)`);
     });
