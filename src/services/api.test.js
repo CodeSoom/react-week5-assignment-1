@@ -1,12 +1,12 @@
 import {
   fetchRegions,
   fetchCategories,
-  fetchSelected
-} from "./api";
+  fetchSelected,
+} from './api';
 
 import regions from '../../fixtures/regions';
-import categories from "../../fixtures/categories";
-import restaurants from "../../fixtures/restaurants";
+import categories from '../../fixtures/categories';
+import restaurants from '../../fixtures/restaurants';
 
 describe('api', () => {
   describe('fetchRegions', () => {
@@ -48,6 +48,6 @@ describe('api', () => {
       const restaurantLists = await fetchSelected();
 
       expect(restaurantLists).toEqual(restaurants);
-    })
+    });
   });
 });
