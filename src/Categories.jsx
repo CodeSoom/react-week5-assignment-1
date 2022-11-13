@@ -1,7 +1,7 @@
 export default function Categories({
   categories,
   onClick,
-  selectedCategory,
+  selectedCategoryId,
 }) {
   return (
     <div>
@@ -14,7 +14,7 @@ export default function Categories({
           >
             {category.name}
             {
-              selectedCategory === category.id && '✅'
+              selectedCategoryId === category.id && '✅'
             }
           </button>
         ))

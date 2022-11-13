@@ -15,7 +15,7 @@ export default function CategoriesContainer() {
 
   const { categories, selectedCategoryId } = useSelector((state) => ({
     categories: state.categories,
-    selectedCategoryId: state.selectedCategory,
+    selectedCategoryId: state.selectedCategoryId,
   }));
 
   const handleClick = (id) => {
@@ -26,7 +26,7 @@ export default function CategoriesContainer() {
     <Categories
       categories={categories}
       onClick={handleClick}
-      selectedCategory={selectedCategoryId}
+      selectedCategoryId={selectedCategoryId}
     />
   );
 }

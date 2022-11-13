@@ -17,14 +17,14 @@ export const setCategories = (categories) => ({
 export const selectedRegion = (regionName) => ({
   type: 'selectedRegion',
   payload: {
-    selectedRegion: regionName,
+    selectedRegionName: regionName,
   },
 });
 
 export const selectedCategory = (categoryId) => ({
   type: 'selectedCategory',
   payload: {
-    selectedCategory: categoryId,
+    selectedCategoryId: categoryId,
   },
 });
 
