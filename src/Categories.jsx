@@ -1,9 +1,9 @@
-const Categories = ({ categories }) => (
+import Category from './Category';
+
+const Categories = ({ categories, onUpdateCategory }) => (
   <ul>
     {categories.map((category) => (
-      <li key={category.id}>
-        {category.name}
-      </li>
+      <Category key={category.id} category={category} onCheckCategory={onUpdateCategory} />
     ))}
   </ul>
 );
