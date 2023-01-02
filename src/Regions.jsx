@@ -1,8 +1,11 @@
-const Regions = ({ regions }) => (
+const Regions = ({ regions, onUpdateCheckedRegion }) => (
   <ul>
     {regions.map((region) => (
       <li key={region.id}>
-        {region.region}
+        <button type="button" onClick={() => onUpdateCheckedRegion(region.id)}>
+          {region.name}
+          {region.checked ? '(V)' : null }
+        </button>
       </li>
     ))}
   </ul>
