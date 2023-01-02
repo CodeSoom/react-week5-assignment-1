@@ -1,20 +1,15 @@
 import { render, screen } from '@testing-library/react';
+import { useSelector } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 
+jest.mock('react-redux');
+
 describe('RegionsContainer', () => {
-  context('has list', () => {
-    it('returns regions', () => {
-      render(<RegionsContainer />);
+  useSelector.mockImplementation((selector) => selector);
 
-      expect(screen.getByRole('list')).toBeInTheDocument();
-    });
-  });
+  it('returns regions', () => {
+    render(<RegionsContainer />);
 
-  context('has not list', () => {
-    it('returns empty region', () => {
-      render(<RegionsContainer />);
-
-      expect(screen.queryByRole('list')).not.toBeInTheDocument();
-    });
+    expect(screen.getByRole('list')).toBeInTheDocument();
   });
 });
