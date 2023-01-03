@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Regions from './Regions';
 import { setRegions } from './store/actions';
 
-const fetchRegions = ({ dispatch }) => {
-  const regions = [];
+import { fetchRegions } from './services/api';
+
+const loadRegions = async ({ dispatch }) => {
+  const regions = await fetchRegions();
+
   dispatch(setRegions(regions));
 };
 
@@ -14,7 +17,7 @@ const RegionsContainer = () => {
     regions: state.regions,
   }));
 
-  console.log(regions);
+  const dispatch = useDispatch();
 
   const updateCheckedRegions = (checkedRegionId) => {
     const updatedRegions = regions.map((region) => {
@@ -35,10 +38,7 @@ const RegionsContainer = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch('https://eatgo-customer-api.ahastudio.com/regions');
-      const fetchedRegions = await response.json();
-
-      fetchRegions(fetchedRegions);
+      loadRegions({ dispatch });
     })();
   }, []);
 

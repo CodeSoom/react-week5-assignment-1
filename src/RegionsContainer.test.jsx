@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('RegionsContainer', () => {
   useSelector.mockImplementation((selector) => selector);
