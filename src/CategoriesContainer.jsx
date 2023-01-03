@@ -1,14 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
 import Categories from './Categories';
 
-const initialState = [
-  { id: 1, name: '한식', checked: false },
-  { id: 2, name: '중식', checked: false },
-  { id: 3, name: '일식', checked: false },
-];
-
 const CategoriesContainer = () => {
-  const [categories, setCategories] = useState(initialState);
+  const [categories, setCategories] = useState([]);
 
   const updateCheckedCategory = (checkedCategoryId) => {
     const updatedCategories = categories.map((category) => {
@@ -27,8 +22,17 @@ const CategoriesContainer = () => {
     setCategories(updatedCategories);
   };
 
+  useEffect(() => {
+    (async () => {
+      const response = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
+      const fetchedCategories = await response.json();
+
+      setCategories(fetchedCategories);
+    })();
+  }, []);
+
   return (
-    <Categories categories={categories} onCheckCategory={updateCheckedCategory} />
+    <Categories categories={categories} onUpdateCategory={updateCheckedCategory} />
   );
 };
 export default CategoriesContainer;
