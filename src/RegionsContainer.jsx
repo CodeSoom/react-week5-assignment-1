@@ -2,15 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Regions from './Regions';
-import { setRegions } from './store/actions';
-
-import { fetchRegions } from './services/api';
-
-const loadRegions = async ({ dispatch }) => {
-  const regions = await fetchRegions();
-
-  dispatch(setRegions(regions));
-};
+import { loadRegions, setRegions } from './store/actions';
 
 const RegionsContainer = () => {
   const { regions } = useSelector((state) => ({
@@ -37,9 +29,7 @@ const RegionsContainer = () => {
   };
 
   useEffect(() => {
-    (async () => {
-      loadRegions({ dispatch });
-    })();
+    dispatch(loadRegions());
   }, []);
 
   return (

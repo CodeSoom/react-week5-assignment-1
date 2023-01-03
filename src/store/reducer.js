@@ -1,5 +1,6 @@
 const initialState = {
   regions: [],
+  categories: [],
 };
 
 const reducer = (state = initialState, action) => {
