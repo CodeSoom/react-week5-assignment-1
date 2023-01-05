@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import Restaurants from './Restaurants';
-
 import { loadRestaurants } from './store/actions';
 
 const RestaurantsContainer = () => {
@@ -23,4 +21,5 @@ const RestaurantsContainer = () => {
     <Restaurants restaurants={restaurants} />
   );
 };
+
 export default RestaurantsContainer;

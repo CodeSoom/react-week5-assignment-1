@@ -7,6 +7,6 @@ describe('Restaurants', () => {
   it('레스토랑 목록을 렌더한다.', () => {
     render(<Restaurants restaurants={restaurants} />);
 
-    expect(screen.getByRole('listitem')).toHaveTextContent('야미야미');
+    expect(screen.getAllByRole('listitem')).toHaveLength(3);
   });
 });

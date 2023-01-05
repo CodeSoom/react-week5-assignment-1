@@ -23,4 +23,5 @@ const RegionsContainer = () => {
     <Regions regions={regions} onUpdateCheckedRegion={updateCheckedRegions} />
   );
 };
+
 export default RegionsContainer;

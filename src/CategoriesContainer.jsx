@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
-
 import { checkCategory, loadCategories } from './store/actions';
 
 const CategoriesContainer = () => {
@@ -25,4 +23,5 @@ const CategoriesContainer = () => {
     <Categories categories={categories} onUpdateCategory={updateCheckedCategory} />
   );
 };
+
 export default CategoriesContainer;

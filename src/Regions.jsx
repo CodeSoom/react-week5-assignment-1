@@ -10,4 +10,5 @@ const Regions = ({ regions, onUpdateCheckedRegion }) => (
     ))}
   </ul>
 );
+
 export default Regions;

@@ -7,4 +7,5 @@ const Categories = ({ categories, onUpdateCategory }) => (
     ))}
   </ul>
 );
+
 export default Categories;
