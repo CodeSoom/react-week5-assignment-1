@@ -1,34 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from './Categories';
 
+import { checkCategory, loadCategories } from './store/actions';
+
 const CategoriesContainer = () => {
-  const [categories, setCategories] = useState([]);
+  const { categories } = useSelector((state) => ({
+    categories: state.categories,
+  }));
+
+  const dispatch = useDispatch();
 
   const updateCheckedCategory = (checkedCategoryId) => {
-    const updatedCategories = categories.map((category) => {
-      const newCategory = {
-        ...category,
-        checked: false,
-      };
-
-      if (category.id === checkedCategoryId) {
-        newCategory.checked = true;
-      }
-
-      return newCategory;
-    });
-
-    setCategories(updatedCategories);
+    dispatch(checkCategory(checkedCategoryId));
   };
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch('https://eatgo-customer-api.ahastudio.com/categories');
-      const fetchedCategories = await response.json();
-
-      setCategories(fetchedCategories);
-    })();
+    dispatch(loadCategories());
   }, []);
 
   return (

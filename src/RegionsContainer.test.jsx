@@ -6,7 +6,7 @@ jest.mock('react-redux');
 jest.mock('./services/api');
 
 describe('RegionsContainer', () => {
-  useSelector.mockImplementation((selector) => selector);
+  // useSelector.mockImplementation((selector) => selector.regions);
 
   it('지역 리스트를 화면에 렌더한다.', () => {
     render(<RegionsContainer />);
