@@ -16,15 +16,6 @@ describe('RegionContainer', () => {
     const regions = [
       { id: 1, name: '서울' },
     ];
-    // fireEvent.change(getByLabelText('할 일'), {
-    //     target: { value: '무언가 하기' },
-    //   });
-
-    //   expect(handleChange).toBeCalled();
-
-    //   fireEvent.click(getByText('추가'));
-
-    //   expect(handleClick).toBeCalled();
     // 페칭한 데이터 있는지 확인
     expect(getByText('서울')).not.toBeNull();
     fireEvent.click(getByText('서울'));
