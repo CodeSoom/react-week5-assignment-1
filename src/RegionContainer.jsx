@@ -1,7 +1,6 @@
 export default function RegionContainer() {
   function handleClickButton() {
-    console.log('hi');
-    return [];
+
   }
 
   return (
