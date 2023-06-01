@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategory, updateSelectedData } from './action';
+import Category from './Category';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -17,17 +18,10 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <div>
-      {categoryData?.map((category) => (
-        <button
-          type="button"
-          key={category.id}
-          onClick={() => handleClickCategory(category)}
-        >
-          {selectedData?.selectedCategory?.name === category.name ? `${category.name} v` : category.name}
-        </button>
-      ))}
-
-    </div>
+    <Category
+      categoryData={categoryData}
+      selectedData={selectedData}
+      onClick={handleClickCategory}
+    />
   );
 }
