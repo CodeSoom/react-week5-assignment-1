@@ -3,7 +3,7 @@ import { regionData } from './services/fetchData';
 export function setRegionData(data) {
   return {
     type: 'SET_REGION_DATA',
-    payload: { regionData: data },
+    payload: data,
   };
 }
 
@@ -12,4 +12,11 @@ export function fetchRegion() {
     const data = await regionData();
     await dispatch(setRegionData(data));
   });
+}
+
+export function updateSelectedData(selectedRegion) {
+  return {
+    type: 'UPDATE_SELECTED_DATA',
+    payload: selectedRegion,
+  };
 }
