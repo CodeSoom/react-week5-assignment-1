@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSelectedData, fetchRegion } from './action';
+import Region from './Region';
 
 export default function RegionContainer() {
   // 데이터 페칭하기
@@ -16,17 +17,10 @@ export default function RegionContainer() {
   }
 
   return (
-    <div>
-      {regionData?.map((item) => (
-        <button
-          type="button"
-          key={item.id}
-          onClick={() => handleClickButton(item)}
-        >
-          {selectedData?.selectedRegion?.name === item.name ? `${item.name} v` : item.name}
-        </button>
-      ))}
-    </div>
-
+    <Region
+      regionData={regionData}
+      selectedData={selectedData}
+      onClick={handleClickButton}
+    />
   );
 }
