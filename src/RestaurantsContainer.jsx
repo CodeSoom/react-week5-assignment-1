@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRestaurant } from './action';
+import Restaurants from './Restaurants';
 
 export default function RestaurantsContainer() {
   const { restaurantData } = useSelector((state) => state);
@@ -12,7 +13,7 @@ export default function RestaurantsContainer() {
 
   return (
     <ul>
-      {restaurantData.map((restaurant) => <li key={restaurant.id}>{restaurant.name}</li>)}
+      <Restaurants restaurantData={restaurantData} />
     </ul>
   );
 }

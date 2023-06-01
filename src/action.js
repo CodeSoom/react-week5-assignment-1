@@ -25,7 +25,6 @@ export function fetchCategory() {
   return (
     async (dispatch) => {
       const data = await categoryData();
-      console.log('Categories', data);
       await dispatch(setCategoryData(data));
     }
   );

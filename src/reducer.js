@@ -12,14 +12,13 @@ const handleAction = {
   },
   SET_CATEGORY_DATA: (state, action) => {
     const { categoryData } = action.payload;
-    console.log('22', categoryData);
+
     return {
       ...state,
       categoryData,
     };
   },
   SET_RESTAURANT_DATA: (state, action) => {
-    console.log(action.payload);
     const { restaurantData } = action.payload;
     return {
       ...state,
@@ -28,10 +27,7 @@ const handleAction = {
   },
   UPDATE_SELECTED_DATA: (state, action) => {
     const { selectedRegion, selectedCategory } = action.payload;
-    console.log(action.payload);
-    console.log('selectedRegion', selectedRegion);
-    console.log('selectedCategory', selectedCategory);
-    console.log('state', state);
+
     return {
       ...state,
       selectedData: {
@@ -45,7 +41,6 @@ const handleAction = {
 
 export default function store(state = initialState, action) {
   if (handleAction[action.type]) {
-    console.log(action.type);
     return handleAction[action.type](state, action);
   }
   return state;
