@@ -1,4 +1,4 @@
-import { regionData } from './services/fetchData';
+import { regionData } from './services/api';
 
 export function setRegionData(data) {
   return {

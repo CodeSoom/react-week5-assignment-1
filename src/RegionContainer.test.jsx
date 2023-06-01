@@ -5,7 +5,7 @@ import RegionContainer from './RegionContainer';
 describe('RegionContainer', () => {
   const dispatch = jest.fn();
   jest.mock('react-redux');
-  jest.mock('./services/fetchData');
+  jest.mock('./services/api');
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation(() => ({
     regionData:
