@@ -1,4 +1,4 @@
-import { regionData, categoryData } from './services/api';
+import { regionData, categoryData, restaurantData } from './services/api';
 
 export function setRegionData(data) {
   return {
@@ -27,6 +27,25 @@ export function fetchCategory() {
       const data = await categoryData();
       console.log('Categories', data);
       await dispatch(setCategoryData(data));
+    }
+  );
+}
+
+export function setRestaurantData(data) {
+  return {
+    type: 'SET_RESTAURANT_DATA',
+    payload: data,
+  };
+}
+
+export function fetchRestaurant({ selectedRegion, selectedCategory }) {
+  return (
+    async (dispatch) => {
+      const data = await restaurantData({
+        regionName: selectedRegion.name,
+        categoryId: selectedCategory.id,
+      });
+      await dispatch(setRestaurantData(data));
     }
   );
 }

@@ -19,3 +19,16 @@ export async function categoryData() {
     return console.log(error);
   }
 }
+
+export async function restaurantData({ regionName, categoryId }) {
+  console.log('regionName:', regionName);
+  console.log('categoryId:', categoryId);
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants?region=${regionName}&category=${categoryId}`;
+  try {
+    const data = await fetch(url);
+    const result = { restaurantData: await data.json() };
+    return result;
+  } catch (error) {
+    return console.log(error);
+  }
+}

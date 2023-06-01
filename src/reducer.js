@@ -1,4 +1,6 @@
-const initialState = { regionData: [], categoryData: [], selectedData: {} };
+const initialState = {
+  regionData: [], categoryData: [], restaurantData: [], selectedData: {},
+};
 
 const handleAction = {
   SET_REGION_DATA: (state, action) => {
@@ -14,6 +16,14 @@ const handleAction = {
     return {
       ...state,
       categoryData,
+    };
+  },
+  SET_RESTAURANT_DATA: (state, action) => {
+    console.log(action.payload);
+    const { restaurantData } = action.payload;
+    return {
+      ...state,
+      restaurantData,
     };
   },
   UPDATE_SELECTED_DATA: (state, action) => {
