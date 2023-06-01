@@ -1,4 +1,4 @@
-import { regionData } from './services/api';
+import { regionData, categoryData } from './services/api';
 
 export function setRegionData(data) {
   return {
@@ -14,9 +14,26 @@ export function fetchRegion() {
   });
 }
 
-export function updateSelectedData(selectedRegion) {
+export function setCategoryData(data) {
+  return {
+    type: 'SET_CATEGORY_DATA',
+    payload: data,
+  };
+}
+
+export function fetchCategory() {
+  return (
+    async (dispatch) => {
+      const data = await categoryData();
+      console.log('Categories', data);
+      await dispatch(setCategoryData(data));
+    }
+  );
+}
+
+export function updateSelectedData(selectedData) {
   return {
     type: 'UPDATE_SELECTED_DATA',
-    payload: selectedRegion,
+    payload: selectedData,
   };
 }

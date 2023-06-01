@@ -13,7 +13,7 @@ export default function RegionContainer() {
   }, []);
 
   function handleClickButton(item) {
-    dispatch(updateSelectedData({ selectedRegion: item }));
+    dispatch(updateSelectedData({ selectedCategory: selectedData?.selectedCategory, selectedRegion: item }));
   }
 
   return (

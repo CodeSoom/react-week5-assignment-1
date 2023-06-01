@@ -5,7 +5,7 @@ export async function regionData() {
     const result = { regionData: await data.json() };
     return result;
   } catch (error) {
-    alert(error);
+    return console.log(error);
   }
 }
 
@@ -13,9 +13,9 @@ export async function categoryData() {
   const url = 'https://eatgo-customer-api.ahastudio.com/categories';
   try {
     const data = await fetch(url);
-    const result = { regionData: await data.json() };
+    const result = { categoryData: await data.json() };
     return result;
   } catch (error) {
-    alert(error);
+    return console.log(error);
   }
 }
