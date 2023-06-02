@@ -3,10 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
-  // TODO
-  // 1. api 호출하기
-  // 2. 식당 리스트 보여주기
-  // 3. 값이 바뀔 때마다 식당 다르게 보여주기
   const dispatch = jest.fn();
   jest.mock('react-redux');
   jest.mock('./services/api');
@@ -24,7 +20,7 @@ describe('RestaurantsContainer', () => {
     const { getByText } = renderRestaurantsContainer();
     expect(getByText('코코식당')).not.toBeNull();
   });
-  it('선택된 식당이 바뀌면 ', () => {
+  it('선택된 식당이 변경되면 해당 식당이 보인다. ', () => {
     useSelector.mockImplementation(() => ({
       restaurantData: [
         { id: 1, name: '바뀐식당' }, { id: 2, name: '이렇게' },
