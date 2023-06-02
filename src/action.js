@@ -49,7 +49,7 @@ export function fetchRestaurant({ selectedRegion, selectedCategory }) {
   );
 }
 
-export function updateSelectedData(selectedData) {
+export function updateSelectedData({ selectedData }) {
   return {
     type: 'UPDATE_SELECTED_DATA',
     payload: selectedData,

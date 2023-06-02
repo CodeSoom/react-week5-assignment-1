@@ -27,7 +27,6 @@ const handleAction = {
   },
   UPDATE_SELECTED_DATA: (state, action) => {
     const { selectedRegion, selectedCategory } = action.payload;
-
     return {
       ...state,
       selectedData: {
@@ -39,7 +38,7 @@ const handleAction = {
   },
 };
 
-export default function store(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   if (handleAction[action.type]) {
     return handleAction[action.type](state, action);
   }
