@@ -1,13 +1,13 @@
-export default function Category({ categoryData, selectedData, onClick }) {
+export default function Category({ categories, selectedRegionAndCategory, onClick }) {
   return (
     <>
-      {categoryData?.map((category) => (
+      {categories?.map((category) => (
         <button
           type="button"
           key={category.id}
           onClick={() => onClick(category)}
         >
-          {selectedData?.selectedCategory?.name === category.name ? `${category.name} v` : category.name}
+          {selectedRegionAndCategory?.selectedCategory?.name === category.name ? `${category.name} v` : category.name}
         </button>
       ))}
     </>

@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRestaurant } from './action';
+import { loadRestaurants } from './action';
 import Restaurants from './Restaurants';
 
 export default function RestaurantsContainer() {
-  const { restaurantData } = useSelector((state) => state);
+  const { restaurants } = useSelector((state) => state);
   const { selectedRegion, selectedCategory } = useSelector((state) => state.selectedData);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchRestaurant({ selectedRegion, selectedCategory }));
+    dispatch(loadRestaurants({ selectedRegion, selectedCategory }));
   }, [selectedRegion, selectedCategory]);
 
   return (
     <ul>
-      <Restaurants restaurantData={restaurantData} />
+      <Restaurants restaurants={restaurants} />
     </ul>
   );
 }

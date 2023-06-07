@@ -8,7 +8,7 @@ describe('RegionContainer', () => {
   jest.mock('./services/api');
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation(() => ({
-    regionData:
+    regions:
     [
       { id: 1, name: '서울' },
       { id: 2, name: '부산' }],

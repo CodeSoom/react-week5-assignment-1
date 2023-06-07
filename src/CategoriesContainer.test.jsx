@@ -10,7 +10,7 @@ describe('CategoriesContainer', () => {
   jest.mock('./services/api');
 
   useSelector.mockImplementation(() => ({
-    categoryData:
+    categories:
     [{ id: 1, name: '한식' }, { id: 2, name: '양식' }],
   }));
 

@@ -1,27 +1,27 @@
 const initialState = {
-  regionData: [],
-  categoryData: [],
-  restaurantData: [],
-  selectedData: { selectedRegion: {}, selectedCategory: {} },
+  regions: [],
+  categories: [],
+  restaurants: [],
+  selectedRegionAndCategory: { selectedRegion: {}, selectedCategory: {} },
 };
 
 const handleAction = {
-  SET_REGION_DATA: (state, { payload: { regionData } }) => ({
+  SET_REGIONS: (state, { payload: { regions } }) => ({
     ...state,
-    regionData,
+    regions,
   }),
-  SET_CATEGORY_DATA: (state, { payload: { categoryData } }) => ({
+  SET_CATEGORIES: (state, { payload: { categories } }) => ({
     ...state,
-    categoryData,
+    categories,
   }),
-  SET_RESTAURANT_DATA: (state, { payload: { restaurantData } }) => ({
+  SET_RESTAURANTS: (state, { payload: { restaurants } }) => ({
     ...state,
-    restaurantData,
+    restaurants,
   }),
-  UPDATE_SELECTED_DATA: (state, { payload: { selectedRegion, selectedCategory } }) => ({
+  SET_SELECTED_REGION_AND_CATEGORY: (state, { payload: { selectedRegion, selectedCategory } }) => ({
     ...state,
-    selectedData: {
-      ...state.selectedData,
+    selectedRegionAndCategory: {
+      ...state.selectedRegionAndCategory,
       selectedRegion,
       selectedCategory,
     },

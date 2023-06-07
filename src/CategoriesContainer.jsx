@@ -1,27 +1,27 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory, updateSelectedData } from './action';
+import { loadCategories, setSelectedRegionAndCategory } from './action';
 import Category from './Category';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
-  const { categoryData, selectedData } = useSelector((state) => state);
+  const { categories, selectedRegionAndCategory } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(fetchCategory());
+    dispatch(loadCategories());
   }, []);
 
   function handleClickCategory(category) {
-    dispatch(updateSelectedData({
-      selectedRegion: selectedData?.selectedRegion,
+    dispatch(setSelectedRegionAndCategory({
+      selectedRegion: selectedRegionAndCategory?.selectedRegion,
       selectedCategory: category,
     }));
   }
 
   return (
     <Category
-      categoryData={categoryData}
-      selectedData={selectedData}
+      categories={categories}
+      selectedRegionAndCategory={selectedRegionAndCategory}
       onClick={handleClickCategory}
     />
   );

@@ -1,47 +1,47 @@
 import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
 
-export function setRegionData(data) {
+export function setRegions(data) {
   return {
-    type: 'SET_REGION_DATA',
+    type: 'SET_REGIONS',
     payload: data,
   };
 }
 
-export function fetchRegion() {
+export function loadRegions() {
   return (async (dispatch) => {
     const data = await fetchRegions();
-    await dispatch(setRegionData(data));
+    await dispatch(setRegions(data));
   });
 }
 
-export function setCategoryData(data) {
+export function setCategories(data) {
   return {
-    type: 'SET_CATEGORY_DATA',
+    type: 'SET_CATEGORIES',
     payload: data,
   };
 }
 
-export function fetchCategory() {
+export function loadCategories() {
   return (
     async (dispatch) => {
       const data = await fetchCategories();
-      await dispatch(setCategoryData(data));
+      await dispatch(setCategories(data));
     }
   );
 }
 
-export function setRestaurantData(data) {
+export function setRestaurants(data) {
   return {
-    type: 'SET_RESTAURANT_DATA',
+    type: 'SET_RESTAURANTS',
     payload: data,
   };
 }
 
-export function fetchRestaurant({ selectedRegion, selectedCategory }) {
+export function loadRestaurants({ selectedRegion, selectedCategory }) {
   const isEmptyObject = (object) => Object.keys(object || {}).length === 0;
 
   if (isEmptyObject(selectedRegion) || isEmptyObject(selectedCategory)) {
-    return setRestaurantData({ restaurantData: [{ id: 0, name: '불러온 레스토랑 목록이 없습니다.' }] });
+    return setRestaurants({ restaurantData: [{ id: 0, name: '불러온 레스토랑 목록이 없습니다.' }] });
   }
 
   return (
@@ -50,14 +50,14 @@ export function fetchRestaurant({ selectedRegion, selectedCategory }) {
         regionName: selectedRegion.name,
         categoryId: selectedCategory.id,
       });
-      await dispatch(setRestaurantData(data));
+      await dispatch(setRestaurants(data));
     }
   );
 }
 
-export function updateSelectedData(selectedData) {
+export function setSelectedRegionAndCategory(selectedData) {
   return {
-    type: 'UPDATE_SELECTED_DATA',
+    type: 'SET_SELECTED_REGION_AND_CATEGORY',
     payload: selectedData,
   };
 }

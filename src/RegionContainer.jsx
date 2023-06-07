@@ -1,28 +1,28 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateSelectedData, fetchRegion } from './action';
+import { setSelectedRegionAndCategory, loadRegions } from './action';
 import Region from './Region';
 
 export default function RegionContainer() {
   // 데이터 페칭하기
   const dispatch = useDispatch();
-  const { regionData, selectedData } = useSelector((state) => state);
+  const { regions, selectedRegionAndCategory } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(fetchRegion());
+    dispatch(loadRegions());
   }, []);
 
   function handleClickButton(item) {
-    dispatch(updateSelectedData({
-      selectedCategory: selectedData?.selectedCategory,
+    dispatch(setSelectedRegionAndCategory({
+      selectedCategory: selectedRegionAndCategory?.selectedCategory,
       selectedRegion: item,
     }));
   }
 
   return (
     <Region
-      regionData={regionData}
-      selectedData={selectedData}
+      regions={regions}
+      selectedRegionAndCategory={selectedRegionAndCategory}
       onClick={handleClickButton}
     />
   );

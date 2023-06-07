@@ -2,8 +2,8 @@ import { render, fireEvent } from '@testing-library/react';
 import Category from './Category';
 
 describe('Region', () => {
-  const categoryData = [{ id: 1, name: '한식' }, { id: 2, name: '양식' }];
-  const selectedData = {
+  const categories = [{ id: 1, name: '한식' }, { id: 2, name: '양식' }];
+  const selectedRegionAndCategory = {
     selectedCategory: { id: 1, name: '한식' },
   };
 
@@ -11,15 +11,15 @@ describe('Region', () => {
 
   const renderCategory = () => render(
     <Category
-      categoryData={categoryData}
-      selectedData={selectedData}
+      categories={categories}
+      selectedRegionAndCategory={selectedRegionAndCategory}
       onClick={onClick}
     />,
   );
 
   it('지역 input이 보인다.', () => {
     const { getByText } = renderCategory();
-    expect(getByText('양식')).not.toBeNull;
+    expect(getByText('양식')).not.toBeNull();
   });
   it('지역 input을 클릭하면 함수를 호출한다.', () => {
     const { getByText } = renderCategory();
@@ -28,6 +28,6 @@ describe('Region', () => {
   });
   it('선택된 input 옆에는 체크표시가 된다.', () => {
     const { getByText } = renderCategory();
-    expect(getByText('한식 v')).not.toBeNull;
+    expect(getByText('한식 v')).not.toBeNull();
   });
 });

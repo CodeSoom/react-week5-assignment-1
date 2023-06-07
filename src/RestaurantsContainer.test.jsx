@@ -9,7 +9,7 @@ describe('RestaurantsContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation(() => ({
-    restaurantData: [
+    restaurants: [
       { id: 1, name: '코코식당' }, { id: 2, name: '네네식당' },
     ],
   }));
@@ -22,7 +22,7 @@ describe('RestaurantsContainer', () => {
   });
   it('선택된 식당이 변경되면 해당 식당이 보인다. ', () => {
     useSelector.mockImplementation(() => ({
-      restaurantData: [
+      restaurants: [
         { id: 1, name: '바뀐식당' }, { id: 2, name: '이렇게' },
       ],
     }));
