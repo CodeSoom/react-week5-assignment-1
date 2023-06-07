@@ -1,12 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 import Category from './Category';
+import { categories, selectedRegionAndCategory } from '../fixtures/data';
 
 describe('Region', () => {
-  const categories = [{ id: 1, name: '한식' }, { id: 2, name: '양식' }];
-  const selectedRegionAndCategory = {
-    selectedCategory: { id: 1, name: '한식' },
-  };
-
   const onClick = jest.fn();
 
   const renderCategory = () => render(

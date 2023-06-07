@@ -1,5 +1,6 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { regions } from '../fixtures/data';
 import RegionContainer from './RegionContainer';
 
 describe('RegionContainer', () => {
@@ -7,12 +8,7 @@ describe('RegionContainer', () => {
   jest.mock('react-redux');
   jest.mock('./services/api');
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation(() => ({
-    regions:
-    [
-      { id: 1, name: '서울' },
-      { id: 2, name: '부산' }],
-  }));
+  useSelector.mockImplementation(() => ({ regions }));
 
   const renderRegionContainer = () => render(<RegionContainer />);
 

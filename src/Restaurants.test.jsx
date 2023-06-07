@@ -1,11 +1,8 @@
 import { render } from '@testing-library/react';
 import Restaurants from './Restaurants';
+import { restaurants } from '../fixtures/data';
 
 describe('RestaurantsContainer', () => {
-  const restaurants = [
-    { id: 1, name: '코코식당' }, { id: 2, name: '네네식당' },
-  ];
-
   const renderRestaurants = () => render(<Restaurants restaurants={restaurants} />);
 
   it('식당 리스트가 보인다', () => {

@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { categories } from '../fixtures/data';
 import CategoriesContainer from './CategoriesContainer';
 
 describe('CategoriesContainer', () => {
@@ -9,10 +10,7 @@ describe('CategoriesContainer', () => {
   jest.mock('react-redux');
   jest.mock('./services/api');
 
-  useSelector.mockImplementation(() => ({
-    categories:
-    [{ id: 1, name: '한식' }, { id: 2, name: '양식' }],
-  }));
+  useSelector.mockImplementation(() => ({ categories }));
 
   useDispatch.mockImplementation(() => dispatch);
 

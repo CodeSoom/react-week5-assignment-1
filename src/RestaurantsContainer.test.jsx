@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { restaurants } from '../fixtures/data';
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
@@ -8,11 +9,7 @@ describe('RestaurantsContainer', () => {
   jest.mock('./services/api');
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation(() => ({
-    restaurants: [
-      { id: 1, name: '코코식당' }, { id: 2, name: '네네식당' },
-    ],
-  }));
+  useSelector.mockImplementation(() => ({ restaurants }));
 
   const renderRestaurantsContainer = () => render(<RestaurantsContainer />);
 
@@ -20,7 +17,7 @@ describe('RestaurantsContainer', () => {
     const { getByText } = renderRestaurantsContainer();
     expect(getByText('코코식당')).not.toBeNull();
   });
-  it('선택된 식당이 변경되면 해당 식당이 보인다. ', () => {
+  it('받아온 식당데이터가 변경되는 경우 식당이 보인다. ', () => {
     useSelector.mockImplementation(() => ({
       restaurants: [
         { id: 1, name: '바뀐식당' }, { id: 2, name: '이렇게' },

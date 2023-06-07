@@ -1,17 +1,15 @@
 import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
+import {
+  regions, categories, restaurants, selectedRegionAndCategory,
+} from '../fixtures/data';
 
 describe('App', () => {
   jest.mock('react-redux');
   jest.mock('./services/api');
 
   const dispatch = jest.fn();
-
-  const regions = [{ id: 1, name: '서울' }, { id: 2, name: '부산' }];
-  const categories = [{ id: 1, name: '한식' }, { id: 2, name: '양식' }];
-  const restaurants = [{ id: 1, name: '코코식당' }, { id: 2, name: '네네식당' }];
-  const selectedRegionAndCategory = { selectedRegion: { id: 1, name: '서울' }, selectedCategory: { id: 1, name: '한식' } };
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation(() => ({

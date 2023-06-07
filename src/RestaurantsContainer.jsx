@@ -5,8 +5,12 @@ import Restaurants from './Restaurants';
 
 export default function RestaurantsContainer() {
   const { restaurants } = useSelector((state) => state);
-  const { selectedRegion, selectedCategory } = useSelector((state) => state.selectedData);
+  const { selectedRegion, selectedCategory } = useSelector(
+    (state) => state.selectedRegionAndCategory,
+  );
+
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(loadRestaurants({ selectedRegion, selectedCategory }));
   }, [selectedRegion, selectedCategory]);
