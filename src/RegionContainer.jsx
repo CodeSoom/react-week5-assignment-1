@@ -6,7 +6,10 @@ import Region from './Region';
 export default function RegionContainer() {
   // 데이터 페칭하기
   const dispatch = useDispatch();
-  const { regions, selectedRegionAndCategory } = useSelector((state) => state);
+  const { regions, selectedRegionAndCategory } = useSelector((state) => ({
+    regions: state.regions,
+    selectedRegionAndCategory: state.selectedRegionAndCategory,
+  }));
 
   useEffect(() => {
     dispatch(loadRegions());

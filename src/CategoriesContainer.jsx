@@ -5,7 +5,10 @@ import Category from './Category';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
-  const { categories, selectedRegionAndCategory } = useSelector((state) => state);
+  const { categories, selectedRegionAndCategory } = useSelector((state) => ({
+    categories: state.categories,
+    selectedRegionAndCategory: state.selectedRegionAndCategory,
+  }));
 
   useEffect(() => {
     dispatch(loadCategories());
