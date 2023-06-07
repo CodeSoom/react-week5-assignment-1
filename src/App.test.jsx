@@ -8,12 +8,17 @@ describe('App', () => {
 
   const dispatch = jest.fn();
 
+  const regionData = [{ id: 1, name: '서울' }, { id: 2, name: '부산' }];
+  const categoryData = [{ id: 1, name: '한식' }, { id: 2, name: '양식' }];
+  const restaurantData = [{ id: 1, name: '코코식당' }, { id: 2, name: '네네식당' }];
+  const selectedData = { selectedRegion: { id: 1, name: '서울' }, selectedCategory: { id: 1, name: '한식' } };
+
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation(() => ({
-    regionData: [{ id: 1, name: '서울' }, { id: 2, name: '부산' }],
-    categoryData: [{ id: 1, name: '한식' }, { id: 2, name: '양식' }],
-    restaurantData: [{ id: 1, name: '코코식당' }, { id: 2, name: '네네식당' }],
-    selectedData: { selectedRegion: { id: 1, name: '서울' }, selectedCategory: { id: 1, name: '한식' } },
+    regionData,
+    categoryData,
+    restaurantData,
+    selectedData,
   }));
 
   const renderApp = () => render(<App />);
@@ -21,8 +26,7 @@ describe('App', () => {
   describe('RegionContainer가 렌더링 된다.', () => {
     it('지역정보들이 input으로 보인다.', () => {
       const { getByText } = renderApp();
-      expect(getByText(/부산/)).not.toBeNull();
-      expect(getByText(/서울/)).not.toBeNull();
+      regionData.forEach((region) => expect(getByText(new RegExp(`[${region.name}]`))).not.toBeNull());
     });
 
     it('input 클릭시 상태가 업데이트된다.', () => {

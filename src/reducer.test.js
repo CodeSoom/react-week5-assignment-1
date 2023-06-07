@@ -5,7 +5,7 @@ import {
 
 describe('reducer', () => {
   const prevState = {
-    regionData: [], categoryData: [], restaurantData: [], selectedData: {},
+    regionData: [], categoryData: [], restaurantData: [], selectedData: { selectedRegion: {}, selectedCategory: {} },
   };
   describe('fetch된 Region 데이터가 변경되었을 때', () => {
     it('변경된 region state가 반환된다.', () => {
@@ -28,10 +28,8 @@ describe('reducer', () => {
   describe('클릭한 region과 category가 변경되었을 때 ', () => {
     it('변경된 region state가 반환된다.', () => {
       const state = reducer(prevState, updateSelectedData({
-        selectedData: {
-          selectedRegion: { id: 1, name: '서울' },
-          selectedCategory: { id: 1, name: '한식' },
-        },
+        selectedRegion: { id: 1, name: '서울' },
+        selectedCategory: { id: 1, name: '한식' },
       }));
 
       expect(state.selectedData.selectedRegion.name).toBe('서울');

@@ -1,11 +1,11 @@
-export async function regionData() {
+export async function fetchRegions() {
   return [];
 }
 
-export async function categoryData() {
+export async function fetchCategories() {
   return [];
 }
 
-export async function restaurantData() {
+export async function fetchRestaurants() {
   return [];
 }

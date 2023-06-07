@@ -1,4 +1,4 @@
-import { regionData, categoryData, restaurantData } from './services/api';
+import { fetchRegions, fetchCategories, fetchRestaurants } from './services/api';
 
 export function setRegionData(data) {
   return {
@@ -9,7 +9,7 @@ export function setRegionData(data) {
 
 export function fetchRegion() {
   return (async (dispatch) => {
-    const data = await regionData();
+    const data = await fetchRegions();
     await dispatch(setRegionData(data));
   });
 }
@@ -24,7 +24,7 @@ export function setCategoryData(data) {
 export function fetchCategory() {
   return (
     async (dispatch) => {
-      const data = await categoryData();
+      const data = await fetchCategories();
       await dispatch(setCategoryData(data));
     }
   );
@@ -38,9 +38,15 @@ export function setRestaurantData(data) {
 }
 
 export function fetchRestaurant({ selectedRegion, selectedCategory }) {
+  const isEmptyObject = (object) => Object.keys(object || {}).length === 0;
+
+  if (isEmptyObject(selectedRegion) || isEmptyObject(selectedCategory)) {
+    return setRestaurantData({ restaurantData: [{ id: 0, name: '불러온 레스토랑 목록이 없습니다.' }] });
+  }
+
   return (
     async (dispatch) => {
-      const data = await restaurantData({
+      const data = await fetchRestaurants({
         regionName: selectedRegion.name,
         categoryId: selectedCategory.id,
       });
@@ -49,7 +55,7 @@ export function fetchRestaurant({ selectedRegion, selectedCategory }) {
   );
 }
 
-export function updateSelectedData({ selectedData }) {
+export function updateSelectedData(selectedData) {
   return {
     type: 'UPDATE_SELECTED_DATA',
     payload: selectedData,

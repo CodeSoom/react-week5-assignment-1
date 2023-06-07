@@ -5,6 +5,7 @@ import CategoriesContainer from './CategoriesContainer';
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
   const renderCategoriesContainer = () => render(<CategoriesContainer />);
+
   jest.mock('react-redux');
   jest.mock('./services/api');
 

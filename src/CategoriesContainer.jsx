@@ -6,6 +6,7 @@ import Category from './Category';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
   const { categoryData, selectedData } = useSelector((state) => state);
+
   useEffect(() => {
     dispatch(fetchCategory());
   }, []);
